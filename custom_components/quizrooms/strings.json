@@ -1,0 +1,54 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up QuizRooms",
+        "description": "QuizRooms hosts local-first, multi-room confidence-wagering trivia on your Home Assistant instance. By default, guest play and TV dashboards are restricted to your local network only.",
+        "data": {
+          "allow_external_access": "Allow external (non-LAN) access",
+          "allowed_subnets": "Additional Allowed IP Subnets (CIDR, comma-separated)",
+          "custom_lan_base_url": "Custom LAN Base URL for QR codes (optional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_subnet": "One or more CIDR subnets are invalid (example: 192.168.1.0/24, 100.64.0.0/10).",
+      "invalid_url": "Custom LAN Base URL must start with http:// or https://."
+    },
+    "abort": {
+      "already_configured": "QuizRooms is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "QuizRooms Network & Runtime Options",
+        "description": "Changes apply immediately without restarting Home Assistant.",
+        "data": {
+          "allow_external_access": "Allow external (non-LAN) access",
+          "allowed_subnets": "Allowed IP Subnets (CIDR, comma-separated)",
+          "custom_lan_base_url": "Custom LAN Base URL for QR codes (optional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_subnet": "One or more CIDR subnets are invalid (example: 192.168.1.0/24, 100.64.0.0/10).",
+      "invalid_url": "Custom LAN Base URL must start with http:// or https://."
+    }
+  },
+  "entity": {
+    "number": {
+      "max_rooms": {
+        "name": "Max Rooms"
+      }
+    },
+    "sensor": {
+      "active_games": {
+        "name": "Active Games"
+      },
+      "active_players": {
+        "name": "Active Players"
+      }
+    }
+  }
+}

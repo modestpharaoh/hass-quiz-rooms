@@ -1,0 +1,69 @@
+tv_set_mode:
+  name: Set TV Dashboard Mode
+  description: Switch the TV dashboard between Overview mode and Follow Game mode, and optionally update its theme.
+  fields:
+    mode:
+      name: Mode
+      description: Display mode for connected TV dashboards.
+      required: true
+      selector:
+        select:
+          options:
+            - label: Overview (All Public Rooms)
+              value: overview
+            - label: Follow Single Room
+              value: follow
+    room_code:
+      name: Room Code
+      description: 4-character room code to follow when mode is set to 'follow'.
+      required: false
+      example: "Q7KM"
+      selector:
+        text:
+    theme:
+      name: TV Theme
+      description: Optional theme override pushed to TV displays.
+      required: false
+      selector:
+        select:
+          options:
+            - label: Auto (System)
+              value: auto
+            - label: Light
+              value: light
+            - label: Dark
+              value: dark
+
+close_room:
+  name: Close Room
+  description: Force-close an active QuizRooms game room and disconnect its participants.
+  fields:
+    room_code:
+      name: Room Code
+      description: The 4-character code of the room to close.
+      required: true
+      example: "Q7KM"
+      selector:
+        text:
+
+pause_room:
+  name: Pause or Resume Room
+  description: Pause or resume the active countdown timer in a running room.
+  fields:
+    room_code:
+      name: Room Code
+      description: The 4-character code of the room to pause or resume.
+      required: true
+      example: "Q7KM"
+      selector:
+        text:
+    paused:
+      name: Paused
+      description: True to pause, false to resume. Omit to toggle current state.
+      required: false
+      selector:
+        boolean:
+
+reload_packs:
+  name: Reload Trivia Packs
+  description: Reload built-in and custom trivia packs from disk without disrupting running games.

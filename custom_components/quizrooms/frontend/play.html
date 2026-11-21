@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>QuizRooms — Play</title>
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("quizrooms_theme") || "auto";
+        if (mode !== "auto" && mode !== "light" && mode !== "dark") mode = "auto";
+        var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.themeMode = mode;
+        document.documentElement.dataset.theme = mode === "auto" ? (dark ? "dark" : "light") : mode;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/play.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">Q</div>
+        <div>
+          <h1 class="brand-title">QuizRooms</h1>
+          <p class="brand-sub" id="connection-status">Connecting…</p>
+        </div>
+      </div>
+      <div class="topbar-controls">
+        <div id="theme-pill-mount"></div>
+      </div>
+    </header>
+
+    <main id="app-root" aria-live="polite"></main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="lightbox-root"></div>
+  <div id="toast-root" class="toast hidden" role="status"></div>
+
+  <script src="/quizrooms/assets/js/theme.js"></script>
+  <script src="/quizrooms/assets/js/qrcode.js"></script>
+  <script src="/quizrooms/assets/js/confetti.js"></script>
+  <script src="/quizrooms/assets/js/play.js"></script>
+</body>
+</html>

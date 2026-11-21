@@ -1,0 +1,10 @@
+[project]
+name = "hass-quiz-rooms"
+version = "1.0.0"
+description = "Local-first multi-room confidence-wagering trivia game for Home Assistant"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v"

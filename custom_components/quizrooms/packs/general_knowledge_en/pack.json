@@ -1,0 +1,430 @@
+{
+  "pack_id": "general_knowledge_en",
+  "title": "General Knowledge Studio",
+  "description": "28 original questions spanning science, history, geography, arts, and visual trivia.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "General Knowledge",
+  "questions": [
+    {
+      "id": "gk_01",
+      "prompt": "Which planet in our Solar System is famous for the prominent icy ring system illustrated here?",
+      "image": "media/visual_01.svg",
+      "choices": [
+        "Saturn",
+        "Jupiter",
+        "Neptune",
+        "Uranus"
+      ],
+      "answer": "Saturn",
+      "aliases": [],
+      "explanation": "Saturn's rings are made mostly of water ice particles and rocky debris."
+    },
+    {
+      "id": "gk_02",
+      "prompt": "In which European capital city would you find this world-famous wrought-iron lattice tower?",
+      "image": "media/visual_02.svg",
+      "choices": [
+        "Paris",
+        "London",
+        "Rome",
+        "Berlin"
+      ],
+      "answer": "Paris",
+      "aliases": [
+        "Paris, France"
+      ],
+      "explanation": "The Eiffel Tower was built in Paris for the 1889 World's Fair."
+    },
+    {
+      "id": "gk_03",
+      "prompt": "Which classic six-carbon aromatic hydrocarbon has the hexagonal ring structure and formula shown?",
+      "image": "media/visual_03.svg",
+      "choices": [
+        "Benzene",
+        "Methane",
+        "Ethanol",
+        "Glucose"
+      ],
+      "answer": "Benzene",
+      "aliases": [
+        "Benzol"
+      ],
+      "explanation": "Benzene (C6H6) is the foundational aromatic ring in organic chemistry."
+    },
+    {
+      "id": "gk_04",
+      "prompt": "What is the chemical symbol for gold on the periodic table?",
+      "choices": [
+        "Au",
+        "Ag",
+        "Gd",
+        "Go"
+      ],
+      "answer": "Au",
+      "aliases": [],
+      "explanation": "Au comes from the Latin word 'aurum', meaning shining dawn."
+    },
+    {
+      "id": "gk_05",
+      "prompt": "Which ocean is the largest and deepest on Earth?",
+      "choices": [
+        "Pacific Ocean",
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Southern Ocean"
+      ],
+      "answer": "Pacific Ocean",
+      "aliases": [
+        "Pacific"
+      ],
+      "explanation": "The Pacific Ocean covers about one-third of Earth's surface."
+    },
+    {
+      "id": "gk_06",
+      "prompt": "In what year did Apollo 11 first land humans on the Moon?",
+      "choices": [
+        "1969",
+        "1965",
+        "1971",
+        "1967"
+      ],
+      "answer": "1969",
+      "aliases": [],
+      "explanation": "Neil Armstrong and Buzz Aldrin landed on the Moon on July 20, 1969."
+    },
+    {
+      "id": "gk_07",
+      "prompt": "Which author wrote the dystopian novel '1984'?",
+      "choices": [
+        "George Orwell",
+        "Aldous Huxley",
+        "Ray Bradbury",
+        "H. G. Wells"
+      ],
+      "answer": "George Orwell",
+      "aliases": [
+        "Orwell",
+        "Eric Arthur Blair"
+      ],
+      "explanation": "George Orwell published '1984' in 1949."
+    },
+    {
+      "id": "gk_08",
+      "prompt": "How many keys are on a standard full-size acoustic piano?",
+      "choices": [
+        "88",
+        "76",
+        "92",
+        "84"
+      ],
+      "answer": "88",
+      "aliases": [
+        "eighty eight",
+        "eighty-eight"
+      ],
+      "explanation": "A standard piano has 52 white keys and 36 black keys, totaling 88."
+    },
+    {
+      "id": "gk_09",
+      "prompt": "Which desert is the largest hot desert in the world?",
+      "choices": [
+        "Sahara",
+        "Gobi",
+        "Kalahari",
+        "Arabian Desert"
+      ],
+      "answer": "Sahara",
+      "aliases": [
+        "Sahara Desert",
+        "The Sahara"
+      ],
+      "explanation": "The Sahara spans roughly 9.2 million square kilometers across North Africa."
+    },
+    {
+      "id": "gk_10",
+      "prompt": "Which mammal is capable of true sustained flight?",
+      "choices": [
+        "Bat",
+        "Flying Squirrel",
+        "Sugar Glider",
+        "Colugo"
+      ],
+      "answer": "Bat",
+      "aliases": [
+        "Bats"
+      ],
+      "explanation": "Bats are the only mammals capable of true powered flight; others only glide."
+    },
+    {
+      "id": "gk_11",
+      "prompt": "Which Renaissance artist painted the ceiling of the Sistine Chapel?",
+      "choices": [
+        "Michelangelo",
+        "Leonardo da Vinci",
+        "Raphael",
+        "Donatello"
+      ],
+      "answer": "Michelangelo",
+      "aliases": [
+        "Michelangelo Buonarroti"
+      ],
+      "explanation": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512."
+    },
+    {
+      "id": "gk_12",
+      "prompt": "What is the hardest naturally occurring mineral on the Mohs scale?",
+      "choices": [
+        "Diamond",
+        "Quartz",
+        "Corundum",
+        "Topaz"
+      ],
+      "answer": "Diamond",
+      "aliases": [
+        "Diamonds"
+      ],
+      "explanation": "Diamond sits at 10 on the Mohs hardness scale."
+    },
+    {
+      "id": "gk_13",
+      "prompt": "Which programming language was created by Guido van Rossum and first released in 1991?",
+      "choices": [
+        "Python",
+        "Ruby",
+        "Java",
+        "Perl"
+      ],
+      "answer": "Python",
+      "aliases": [],
+      "explanation": "Python was named after the comedy troupe Monty Python."
+    },
+    {
+      "id": "gk_14",
+      "prompt": "What is the capital city of Australia?",
+      "choices": [
+        "Canberra",
+        "Sydney",
+        "Melbourne",
+        "Brisbane"
+      ],
+      "answer": "Canberra",
+      "aliases": [],
+      "explanation": "Canberra was chosen in 1908 as a compromise between rivals Sydney and Melbourne."
+    },
+    {
+      "id": "gk_15",
+      "prompt": "Which gas makes up about 78% of Earth's atmosphere?",
+      "choices": [
+        "Nitrogen",
+        "Oxygen",
+        "Argon",
+        "Carbon Dioxide"
+      ],
+      "answer": "Nitrogen",
+      "aliases": [
+        "N2"
+      ],
+      "explanation": "Dry air is roughly 78% nitrogen, 21% oxygen, and 1% argon and trace gases."
+    },
+    {
+      "id": "gk_16",
+      "prompt": "Which instrument measures atmospheric pressure?",
+      "choices": [
+        "Barometer",
+        "Anemometer",
+        "Hygrometer",
+        "Seismograph"
+      ],
+      "answer": "Barometer",
+      "aliases": [],
+      "explanation": "Evangelista Torricelli invented the mercury barometer in 1643."
+    },
+    {
+      "id": "gk_17",
+      "prompt": "In chess, which piece can only move diagonally?",
+      "choices": [
+        "Bishop",
+        "Rook",
+        "Knight",
+        "Queen"
+      ],
+      "answer": "Bishop",
+      "aliases": [
+        "The Bishop"
+      ],
+      "explanation": "Each bishop stays on squares of a single color for the entire game."
+    },
+    {
+      "id": "gk_18",
+      "prompt": "Which country invented the board game Go (Weiqi) over 2,500 years ago?",
+      "choices": [
+        "China",
+        "Japan",
+        "India",
+        "South Korea"
+      ],
+      "answer": "China",
+      "aliases": [
+        "Ancient China"
+      ],
+      "explanation": "Go originated in China and is one of the oldest continuously played board games."
+    },
+    {
+      "id": "gk_19",
+      "prompt": "Which planet rotates on its side at an axial tilt of about 98 degrees?",
+      "choices": [
+        "Uranus",
+        "Venus",
+        "Neptune",
+        "Mars"
+      ],
+      "answer": "Uranus",
+      "aliases": [],
+      "explanation": "Uranus appears to roll around the Sun on its side, creating extreme 42-year seasons."
+    },
+    {
+      "id": "gk_20",
+      "prompt": "What is the primary ingredient in traditional Japanese miso paste?",
+      "choices": [
+        "Soybeans",
+        "Chickpeas",
+        "Lentils",
+        "Sesame seeds"
+      ],
+      "answer": "Soybeans",
+      "aliases": [
+        "Soy",
+        "Soya beans"
+      ],
+      "explanation": "Miso is made by fermenting soybeans with salt and koji."
+    },
+    {
+      "id": "gk_21",
+      "prompt": "Which river flows through the city of Cairo?",
+      "choices": [
+        "Nile",
+        "Tigris",
+        "Euphrates",
+        "Congo"
+      ],
+      "answer": "Nile",
+      "aliases": [
+        "Nile River",
+        "The Nile"
+      ],
+      "explanation": "The Nile flows northward through northeastern Africa into the Mediterranean Sea."
+    },
+    {
+      "id": "gk_22",
+      "prompt": "Who discovered penicillin in 1928?",
+      "choices": [
+        "Alexander Fleming",
+        "Louis Pasteur",
+        "Marie Curie",
+        "Robert Koch"
+      ],
+      "answer": "Alexander Fleming",
+      "aliases": [
+        "Fleming",
+        "Sir Alexander Fleming"
+      ],
+      "explanation": "Fleming noticed mold inhibiting bacteria on a forgotten Petri dish."
+    },
+    {
+      "id": "gk_23",
+      "prompt": "Which musical composer wrote the 'Four Seasons' violin concertos?",
+      "choices": [
+        "Antonio Vivaldi",
+        "Johann Sebastian Bach",
+        "Wolfgang Amadeus Mozart",
+        "Ludwig van Beethoven"
+      ],
+      "answer": "Antonio Vivaldi",
+      "aliases": [
+        "Vivaldi"
+      ],
+      "explanation": "Italian Baroque composer Antonio Vivaldi published The Four Seasons in 1725."
+    },
+    {
+      "id": "gk_24",
+      "prompt": "What is the largest internal organ in the human body?",
+      "choices": [
+        "Liver",
+        "Heart",
+        "Lungs",
+        "Stomach"
+      ],
+      "answer": "Liver",
+      "aliases": [
+        "The liver"
+      ],
+      "explanation": "While skin is the largest overall organ, the liver is the largest internal organ."
+    },
+    {
+      "id": "gk_25",
+      "prompt": "Which mountain range separates Europe from Asia?",
+      "choices": [
+        "Ural Mountains",
+        "Alps",
+        "Andes",
+        "Carpathians"
+      ],
+      "answer": "Ural Mountains",
+      "aliases": [
+        "Urals",
+        "The Urals"
+      ],
+      "explanation": "The Urals run north-to-south through western Russia."
+    },
+    {
+      "id": "gk_26",
+      "prompt": "How many hearts does an octopus have?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "answer": "3",
+      "aliases": [
+        "three"
+      ],
+      "explanation": "An octopus has two branchial hearts for its gills and one systemic heart for its body."
+    },
+    {
+      "id": "gk_27",
+      "prompt": "Which scientist formulated the three laws of motion and universal gravitation?",
+      "choices": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Galileo Galilei",
+        "Nikola Tesla"
+      ],
+      "answer": "Isaac Newton",
+      "aliases": [
+        "Newton",
+        "Sir Isaac Newton"
+      ],
+      "explanation": "Newton published Principia Mathematica in 1687."
+    },
+    {
+      "id": "gk_28",
+      "prompt": "What is the smallest country in the world by land area?",
+      "choices": [
+        "Vatican City",
+        "Monaco",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "answer": "Vatican City",
+      "aliases": [
+        "The Vatican",
+        "Vatican"
+      ],
+      "explanation": "Vatican City covers just 0.49 square kilometers inside Rome."
+    }
+  ]
+}

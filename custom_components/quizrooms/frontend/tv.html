@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QuizRooms — TV Studio Dashboard</title>
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("quizrooms_theme") || "auto";
+        if (mode !== "auto" && mode !== "light" && mode !== "dark") mode = "auto";
+        var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.themeMode = mode;
+        document.documentElement.dataset.theme = mode === "auto" ? (dark ? "dark" : "light") : mode;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/tv.css" />
+</head>
+<body>
+  <div class="tv-shell">
+    <header class="tv-header">
+      <div class="tv-brand">
+        <div class="tv-brand-mark" aria-hidden="true">Q</div>
+        <div>
+          <h1>QuizRooms Studio</h1>
+          <div class="tv-brand-url" id="tv-join-url">/quizrooms/play</div>
+        </div>
+      </div>
+      <div class="tv-controls">
+        <button type="button" id="tv-overview-btn" class="btn btn-secondary btn-sm hidden">All Rooms</button>
+        <button type="button" id="tv-sound-btn" class="btn btn-secondary btn-sm" aria-pressed="false">Sound: Off</button>
+        <div id="tv-theme-mount"></div>
+      </div>
+    </header>
+
+    <main id="tv-main" class="tv-main" aria-live="polite"></main>
+  </div>
+
+  <script src="/quizrooms/assets/js/theme.js"></script>
+  <script src="/quizrooms/assets/js/qrcode.js"></script>
+  <script src="/quizrooms/assets/js/confetti.js"></script>
+  <script src="/quizrooms/assets/js/sfx.js"></script>
+  <script src="/quizrooms/assets/js/tv.js"></script>
+</body>
+</html>

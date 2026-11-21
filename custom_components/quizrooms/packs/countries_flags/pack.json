@@ -1,0 +1,740 @@
+{
+  "pack_id": "countries_flags",
+  "title": "World Countries & Flags",
+  "description": "Identify 40 countries from their locally bundled vector flags. Play in Multiple Choice or Free-Text mode!",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "questions": [
+    {
+      "id": "flag_jp",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_01.svg",
+      "choices": [
+        "Japan",
+        "South Korea",
+        "Bangladesh",
+        "Palau"
+      ],
+      "answer": "Japan",
+      "aliases": [
+        "Nippon",
+        "Nihon"
+      ],
+      "explanation": "Japan's flag is known as the Hinomaru ('circle of the sun').",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_02.svg",
+      "choices": [
+        "France",
+        "Netherlands",
+        "Italy",
+        "Belgium"
+      ],
+      "answer": "France",
+      "aliases": [
+        "French Republic"
+      ],
+      "explanation": "France's vertical Tricolore of blue, white, and red dates to the 1790s.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_de",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_03.svg",
+      "choices": [
+        "Germany",
+        "Belgium",
+        "Austria",
+        "Hungary"
+      ],
+      "answer": "Germany",
+      "aliases": [
+        "Deutschland"
+      ],
+      "explanation": "Germany's black, red, and gold tricolor was adopted in 1919 and restored in 1949.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_it",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_04.svg",
+      "choices": [
+        "Italy",
+        "Ireland",
+        "Mexico",
+        "Hungary"
+      ],
+      "answer": "Italy",
+      "aliases": [
+        "Italia"
+      ],
+      "explanation": "Italy's green, white, and red vertical tricolor is called Il Tricolore.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_uk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_05.svg",
+      "choices": [
+        "United Kingdom",
+        "Australia",
+        "New Zealand",
+        "Iceland"
+      ],
+      "answer": "United Kingdom",
+      "aliases": [
+        "UK",
+        "Britain",
+        "Great Britain",
+        "United Kingdom of Great Britain and Northern Ireland"
+      ],
+      "explanation": "The Union Jack combines the crosses of St. George, St. Andrew, and St. Patrick.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_us",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_06.svg",
+      "choices": [
+        "United States",
+        "Liberia",
+        "Malaysia",
+        "Greece"
+      ],
+      "answer": "United States",
+      "aliases": [
+        "USA",
+        "US",
+        "United States of America",
+        "America"
+      ],
+      "explanation": "The Stars and Stripes has 50 stars for the states and 13 stripes for the original colonies.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ca",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_07.svg",
+      "choices": [
+        "Canada",
+        "Peru",
+        "Switzerland",
+        "Austria"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Canada's iconic red Maple Leaf flag was officially adopted in 1965.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_br",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_08.svg",
+      "choices": [
+        "Brazil",
+        "Argentina",
+        "Jamaica",
+        "Portugal"
+      ],
+      "answer": "Brazil",
+      "aliases": [
+        "Brasil"
+      ],
+      "explanation": "Brazil's green banner features a yellow diamond and starry blue celestial globe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_eg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_09.svg",
+      "choices": [
+        "Egypt",
+        "Iraq",
+        "Syria",
+        "Yemen"
+      ],
+      "answer": "Egypt",
+      "aliases": [
+        "Misr",
+        "مصر"
+      ],
+      "explanation": "Egypt's flag features red, white, and black horizontal bands with the golden Eagle of Saladin.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sa",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_10.svg",
+      "choices": [
+        "Saudi Arabia",
+        "Pakistan",
+        "Nigeria",
+        "Brazil"
+      ],
+      "answer": "Saudi Arabia",
+      "aliases": [
+        "KSA",
+        "Kingdom of Saudi Arabia",
+        "السعودية"
+      ],
+      "explanation": "Saudi Arabia's green flag carries white Arabic calligraphy above a horizontal sword.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ae",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_11.svg",
+      "choices": [
+        "United Arab Emirates",
+        "Jordan",
+        "Kuwait",
+        "Sudan"
+      ],
+      "answer": "United Arab Emirates",
+      "aliases": [
+        "UAE",
+        "Emirates",
+        "الإمارات"
+      ],
+      "explanation": "The UAE flag uses the four Pan-Arab colors: red, green, white, and black.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_jo",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_12.svg",
+      "choices": [
+        "Jordan",
+        "United Arab Emirates",
+        "Egypt",
+        "Kuwait"
+      ],
+      "answer": "Jordan",
+      "aliases": [
+        "الأردن"
+      ],
+      "explanation": "Jordan's flag features a seven-pointed white star inside a red hoist triangle.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ma",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_13.svg",
+      "choices": [
+        "Morocco",
+        "Tunisia",
+        "Turkey",
+        "Vietnam"
+      ],
+      "answer": "Morocco",
+      "aliases": [
+        "المغرب"
+      ],
+      "explanation": "Morocco's red flag features a green five-pointed star known as the Seal of Solomon.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_14.svg",
+      "choices": [
+        "Tunisia",
+        "Turkey",
+        "Morocco",
+        "Algeria"
+      ],
+      "answer": "Tunisia",
+      "aliases": [
+        "تونس"
+      ],
+      "explanation": "Tunisia's flag has a white central disk containing a red crescent and five-pointed star.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_15.svg",
+      "choices": [
+        "Turkey",
+        "Tunisia",
+        "Morocco",
+        "Pakistan"
+      ],
+      "answer": "Turkey",
+      "aliases": [
+        "Türkiye",
+        "Turkiye",
+        "Republic of Turkey"
+      ],
+      "explanation": "Turkey's flag displays a white crescent moon and star on a vibrant red field.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_16.svg",
+      "choices": [
+        "Greece",
+        "Finland",
+        "Uruguay",
+        "Israel"
+      ],
+      "answer": "Greece",
+      "aliases": [
+        "Hellas"
+      ],
+      "explanation": "Greece's nine blue-and-white stripes represent the nine syllables of 'Freedom or Death'.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ch",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_17.svg",
+      "choices": [
+        "Switzerland",
+        "Denmark",
+        "Austria",
+        "Norway"
+      ],
+      "answer": "Switzerland",
+      "aliases": [
+        "Swiss Confederation"
+      ],
+      "explanation": "Switzerland's bold white cross on a red field is one of the world's oldest national emblems.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_se",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_18.svg",
+      "choices": [
+        "Sweden",
+        "Finland",
+        "Norway",
+        "Ukraine"
+      ],
+      "answer": "Sweden",
+      "aliases": [
+        "Sverige"
+      ],
+      "explanation": "Sweden's yellow Nordic cross on blue dates back to the 16th century.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_no",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_19.svg",
+      "choices": [
+        "Norway",
+        "Iceland",
+        "Denmark",
+        "Sweden"
+      ],
+      "answer": "Norway",
+      "aliases": [
+        "Norge"
+      ],
+      "explanation": "Norway's flag layers a navy-blue cross fimbriated in white on a red background.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_dk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_20.svg",
+      "choices": [
+        "Denmark",
+        "Norway",
+        "Switzerland",
+        "Sweden"
+      ],
+      "answer": "Denmark",
+      "aliases": [
+        "Danmark"
+      ],
+      "explanation": "Known as the Dannebrog, Denmark's flag is the oldest continuously used national flag.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fi",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_21.svg",
+      "choices": [
+        "Finland",
+        "Sweden",
+        "Greece",
+        "Iceland"
+      ],
+      "answer": "Finland",
+      "aliases": [
+        "Suomi"
+      ],
+      "explanation": "Finland's blue Nordic cross symbolizes its lakes and sky; white represents winter snow.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_is",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_22.svg",
+      "choices": [
+        "Iceland",
+        "Norway",
+        "Finland",
+        "United Kingdom"
+      ],
+      "answer": "Iceland",
+      "aliases": [
+        "Ísland"
+      ],
+      "explanation": "Iceland's flag represents volcanic fire (red), glacial ice (white), and the Atlantic Ocean (blue).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_nl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_23.svg",
+      "choices": [
+        "Netherlands",
+        "France",
+        "Luxembourg",
+        "Russia"
+      ],
+      "answer": "Netherlands",
+      "aliases": [
+        "Holland",
+        "The Netherlands"
+      ],
+      "explanation": "The Dutch red-white-blue horizontal tricolor inspired many later European tricolors.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_be",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_24.svg",
+      "choices": [
+        "Belgium",
+        "Germany",
+        "Romania",
+        "France"
+      ],
+      "answer": "Belgium",
+      "aliases": [
+        "België",
+        "Belgique"
+      ],
+      "explanation": "Belgium's vertical black, yellow, and red stripes draw from the Duchy of Brabant colors.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ie",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_25.svg",
+      "choices": [
+        "Ireland",
+        "Italy",
+        "Ivory Coast",
+        "India"
+      ],
+      "answer": "Ireland",
+      "aliases": [
+        "Republic of Ireland",
+        "Éire"
+      ],
+      "explanation": "Ireland's tricolor pairs green, white, and orange in equal vertical bands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_26.svg",
+      "choices": [
+        "Poland",
+        "Indonesia",
+        "Austria",
+        "Czechia"
+      ],
+      "answer": "Poland",
+      "aliases": [
+        "Polska"
+      ],
+      "explanation": "Poland's flag is white on top and crimson red on the bottom.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ua",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_27.svg",
+      "choices": [
+        "Ukraine",
+        "Sweden",
+        "Poland",
+        "Germany"
+      ],
+      "answer": "Ukraine",
+      "aliases": [
+        "Україна"
+      ],
+      "explanation": "Ukraine's flag depicts blue skies above golden wheat fields.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_28.svg",
+      "choices": [
+        "Czechia",
+        "Poland",
+        "Netherlands",
+        "Philippines"
+      ],
+      "answer": "Czechia",
+      "aliases": [
+        "Czech Republic"
+      ],
+      "explanation": "Czechia's flag adds a blue hoist triangle to white and red horizontal bands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_at",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_29.svg",
+      "choices": [
+        "Austria",
+        "Poland",
+        "Switzerland",
+        "Hungary"
+      ],
+      "answer": "Austria",
+      "aliases": [
+        "Österreich"
+      ],
+      "explanation": "Austria's red-white-red triband is one of the oldest heraldic designs in Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_hu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_30.svg",
+      "choices": [
+        "Hungary",
+        "Italy",
+        "Austria",
+        "Bulgaria"
+      ],
+      "answer": "Hungary",
+      "aliases": [
+        "Magyarország"
+      ],
+      "explanation": "Hungary's horizontal tricolor symbolizes strength (red), fidelity (white), and hope (green).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_31.svg",
+      "choices": [
+        "South Korea",
+        "Japan",
+        "China",
+        "Thailand"
+      ],
+      "answer": "South Korea",
+      "aliases": [
+        "Korea",
+        "Republic of Korea",
+        "ROK"
+      ],
+      "explanation": "South Korea's Taegeukgi shows a red-and-blue balance circle flanked by four black trigrams.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_in",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_32.svg",
+      "choices": [
+        "India",
+        "Ireland",
+        "Hungary",
+        "Thailand"
+      ],
+      "answer": "India",
+      "aliases": [
+        "Bharat"
+      ],
+      "explanation": "India's Tiranga centers the 24-spoke navy Ashoka Chakra wheel on white.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_33.svg",
+      "choices": [
+        "China",
+        "Vietnam",
+        "Turkey",
+        "Morocco"
+      ],
+      "answer": "China",
+      "aliases": [
+        "PRC",
+        "People's Republic of China"
+      ],
+      "explanation": "China's red flag features one large gold star accompanied by four smaller stars in an arc.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_vn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_34.svg",
+      "choices": [
+        "Vietnam",
+        "China",
+        "Morocco",
+        "Turkey"
+      ],
+      "answer": "Vietnam",
+      "aliases": [
+        "Viet Nam"
+      ],
+      "explanation": "Vietnam's flag displays a single large five-pointed golden star centered on red.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_id",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_35.svg",
+      "choices": [
+        "Indonesia",
+        "Poland",
+        "Austria",
+        "Thailand"
+      ],
+      "answer": "Indonesia",
+      "aliases": [],
+      "explanation": "Indonesia's Sang Saka Merah Putih has red on top and white on the bottom.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_th",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_36.svg",
+      "choices": [
+        "Thailand",
+        "Netherlands",
+        "France",
+        "Indonesia"
+      ],
+      "answer": "Thailand",
+      "aliases": [],
+      "explanation": "Thailand's five horizontal stripes feature a double-width navy blue stripe in the center.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_za",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_37.svg",
+      "choices": [
+        "South Africa",
+        "Jamaica",
+        "Brazil",
+        "Czechia"
+      ],
+      "answer": "South Africa",
+      "aliases": [
+        "RSA"
+      ],
+      "explanation": "Adopted in 1994, South Africa's six-color flag uses a bold green Y-shape symbolizing unity.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_jm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_38.svg",
+      "choices": [
+        "Jamaica",
+        "South Africa",
+        "Brazil",
+        "Sweden"
+      ],
+      "answer": "Jamaica",
+      "aliases": [],
+      "explanation": "Jamaica's gold saltire divides green and black triangles — the only current national flag without red, white, or blue.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ar",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_39.svg",
+      "choices": [
+        "Argentina",
+        "Greece",
+        "Brazil",
+        "Uruguay"
+      ],
+      "answer": "Argentina",
+      "aliases": [],
+      "explanation": "Argentina's light blue and white bands center the golden Sun of May.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_au",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_40.svg",
+      "choices": [
+        "Australia",
+        "United Kingdom",
+        "New Zealand",
+        "United States"
+      ],
+      "answer": "Australia",
+      "aliases": [],
+      "explanation": "Australia's flag displays the Union Jack, the seven-pointed Commonwealth Star, and the Southern Cross.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}
