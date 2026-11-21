@@ -1,0 +1,642 @@
+{
+  "pack_id": "africa_gk_en",
+  "title": "Africa General Knowledge",
+  "description": "36 original questions celebrating Africa's geography, wildlife, ancient kingdoms, landmarks, and heritage (Multiple Choice & Free-Text).",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Regional GK",
+  "questions": [
+    {
+      "id": "africa_gk_en_001",
+      "prompt": "What is the largest hot desert in the world, stretching across North Africa?",
+      "choices": [
+        "Kalahari",
+        "Sahara",
+        "Atacama",
+        "Namib"
+      ],
+      "answer": "Sahara",
+      "aliases": [
+        "Sahara Desert",
+        "The Sahara"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Sahara spans roughly 9.2 million square kilometers across eleven nations.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_002",
+      "prompt": "Which mountain in Tanzania is the highest peak in Africa?",
+      "choices": [
+        "Mount Meru",
+        "Atlas Mountains",
+        "Mount Kenya",
+        "Mount Kilimanjaro"
+      ],
+      "answer": "Mount Kilimanjaro",
+      "aliases": [
+        "Kilimanjaro"
+      ],
+      "difficulty": "easy",
+      "explanation": "Kilimanjaro is a dormant volcano rising 5,895 meters above sea level.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_003",
+      "prompt": "Which African country is home to the Great Pyramids of Giza?",
+      "choices": [
+        "Libya",
+        "Sudan",
+        "Egypt",
+        "Morocco"
+      ],
+      "answer": "Egypt",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "The Great Pyramid of Khufu is the oldest of the Seven Wonders of the Ancient World.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_004",
+      "prompt": "What is the largest lake in Africa by surface area?",
+      "choices": [
+        "Lake Chad",
+        "Lake Malawi",
+        "Lake Victoria",
+        "Lake Tanganyika"
+      ],
+      "answer": "Lake Victoria",
+      "aliases": [
+        "Victoria"
+      ],
+      "difficulty": "easy",
+      "explanation": "Lake Victoria is bordered by Kenya, Tanzania, and Uganda.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_005",
+      "prompt": "Which large island nation lies off the southeastern coast of mainland Africa?",
+      "choices": [
+        "Zanzibar",
+        "Madagascar",
+        "Mauritius",
+        "Seychelles"
+      ],
+      "answer": "Madagascar",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Madagascar is famous for its unique endemic lemurs and baobab trees.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_006",
+      "prompt": "Which is Africa's most populous country?",
+      "choices": [
+        "Nigeria",
+        "Egypt",
+        "Ethiopia",
+        "South Africa"
+      ],
+      "answer": "Nigeria",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Nigeria has over 240 million residents in West Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_007",
+      "prompt": "Which famous waterfall sits on the Zambezi River between Zambia and Zimbabwe?",
+      "choices": [
+        "Blue Nile Falls",
+        "Victoria Falls",
+        "Tugela Falls",
+        "Kalambo Falls"
+      ],
+      "answer": "Victoria Falls",
+      "aliases": [
+        "Mosi-oa-Tunya"
+      ],
+      "difficulty": "easy",
+      "explanation": "Locally called Mosi-oa-Tunya ('The Smoke That Thunders'), Victoria Falls is over 1.7 km wide.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_008",
+      "prompt": "Which East African national park in Tanzania is famous for the annual Great Wildebeest Migration?",
+      "choices": [
+        "Serengeti",
+        "Chobe",
+        "Etosha",
+        "Kruger"
+      ],
+      "answer": "Serengeti",
+      "aliases": [
+        "Serengeti National Park"
+      ],
+      "difficulty": "easy",
+      "explanation": "Over a million wildebeest and zebras migrate across the Serengeti-Mara ecosystem.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_009",
+      "prompt": "Which African country has three official capital cities: Pretoria, Cape Town, and Bloemfontein?",
+      "choices": [
+        "Morocco",
+        "Nigeria",
+        "South Africa",
+        "Kenya"
+      ],
+      "answer": "South Africa",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "South Africa separates its executive, legislative, and judicial capitals.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_010",
+      "prompt": "Which major river flows northward through Sudan and Egypt into the Mediterranean Sea?",
+      "choices": [
+        "Niger",
+        "Zambezi",
+        "Congo",
+        "Nile"
+      ],
+      "answer": "Nile",
+      "aliases": [
+        "Nile River",
+        "The Nile"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Nile is historically the lifeblood of northeastern Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_011",
+      "prompt": "Which North African country is the largest in Africa by total land area?",
+      "choices": [
+        "Algeria",
+        "DR Congo",
+        "Sudan",
+        "Libya"
+      ],
+      "answer": "Algeria",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Algeria became Africa's largest country by area in 2011.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_012",
+      "prompt": "Which fastest land animal on Earth inhabits African savannas?",
+      "choices": [
+        "Cheetah",
+        "Lion",
+        "Leopard",
+        "Hyena"
+      ],
+      "answer": "Cheetah",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Cheetahs can accelerate to speeds around 100–110 km/h in short bursts.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_013",
+      "prompt": "Which West African city in Mali was a renowned medieval center of Islamic scholarship and manuscripts?",
+      "choices": [
+        "Abidjan",
+        "Kano",
+        "Accra",
+        "Timbuktu"
+      ],
+      "answer": "Timbuktu",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Timbuktu's Sankore libraries preserved hundreds of thousands of historic manuscripts.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_014",
+      "prompt": "Which African country is the only one that was never formally colonized by a European power (aside from a brief WWII occupation)?",
+      "choices": [
+        "Ethiopia",
+        "Senegal",
+        "Kenya",
+        "Ghana"
+      ],
+      "answer": "Ethiopia",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Ethiopia defeated Italian forces at the Battle of Adwa in 1896.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_015",
+      "prompt": "Which deep African river is the world's deepest river and crosses the equator twice?",
+      "choices": [
+        "Limpopo River",
+        "Orange River",
+        "Congo River",
+        "Niger River"
+      ],
+      "answer": "Congo River",
+      "aliases": [
+        "Congo",
+        "The Congo"
+      ],
+      "difficulty": "medium",
+      "explanation": "Parts of the Congo River plunge over 220 meters deep.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_016",
+      "prompt": "Which mountain range runs across Morocco, Algeria, and Tunisia?",
+      "choices": [
+        "Rwenzori",
+        "Atlas Mountains",
+        "Drakensberg",
+        "Simien Mountains"
+      ],
+      "answer": "Atlas Mountains",
+      "aliases": [
+        "Atlas",
+        "The Atlas"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Atlas Mountains separate the Mediterranean coast from the Sahara.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_017",
+      "prompt": "Which East African valley is a massive geological trench containing several Great Lakes?",
+      "choices": [
+        "Congo Basin",
+        "Okavango Delta",
+        "Great Rift Valley",
+        "Nile Valley"
+      ],
+      "answer": "Great Rift Valley",
+      "aliases": [
+        "East African Rift",
+        "Rift Valley"
+      ],
+      "difficulty": "medium",
+      "explanation": "The East African Rift is slowly splitting the Somali plate from the Nubian plate.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_018",
+      "prompt": "Which African country is the world's largest producer of cocoa beans?",
+      "choices": [
+        "Ivory Coast",
+        "Egypt",
+        "Namibia",
+        "Kenya"
+      ],
+      "answer": "Ivory Coast",
+      "aliases": [
+        "Côte d'Ivoire",
+        "Cote d'Ivoire"
+      ],
+      "difficulty": "medium",
+      "explanation": "Ivory Coast produces roughly 40% of the world's cocoa supply.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_019",
+      "prompt": "Which famous coastal desert in southwestern Africa meets the cold Atlantic Ocean?",
+      "choices": [
+        "Sahara",
+        "Namib Desert",
+        "Kalahari",
+        "Danakil"
+      ],
+      "answer": "Namib Desert",
+      "aliases": [
+        "Namib",
+        "The Namib"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Namib is considered one of the oldest deserts on Earth.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_020",
+      "prompt": "Which landmark Cape near Cape Town is famous in maritime history?",
+      "choices": [
+        "Cape Verde",
+        "Cape Guardafui",
+        "Cape Blanco",
+        "Cape of Good Hope"
+      ],
+      "answer": "Cape of Good Hope",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Portuguese navigator Bartolomeu Dias rounded the Cape in 1488.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_021",
+      "prompt": "Which ancient stone city ruins in southern Africa gave modern Zimbabwe its name?",
+      "choices": [
+        "Great Zimbabwe",
+        "Axum",
+        "Meroë",
+        "Carthage"
+      ],
+      "answer": "Great Zimbabwe",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Built between the 11th and 15th centuries, Great Zimbabwe was a thriving trade capital.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_022",
+      "prompt": "In which country is the Serengeti's neighboring Ngorongoro Crater located?",
+      "choices": [
+        "Kenya",
+        "Tanzania",
+        "Rwanda",
+        "Uganda"
+      ],
+      "answer": "Tanzania",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Ngorongoro is the world's largest inactive, intact volcanic caldera.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_023",
+      "prompt": "Which landlocked African nation is completely surrounded by South Africa?",
+      "choices": [
+        "Lesotho",
+        "Malawi",
+        "Eswatini",
+        "Botswana"
+      ],
+      "answer": "Lesotho",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Lesotho is the only independent state that lies entirely above 1,000 meters elevation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_024",
+      "prompt": "Which African city hosts the headquarters of the African Union?",
+      "choices": [
+        "Nairobi",
+        "Cairo",
+        "Johannesburg",
+        "Addis Ababa"
+      ],
+      "answer": "Addis Ababa",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Addis Ababa in Ethiopia has hosted the OAU/AU since 1963.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_025",
+      "prompt": "Which African lake is the second-deepest freshwater lake in the world after Lake Baikal?",
+      "choices": [
+        "Lake Malawi",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Turkana"
+      ],
+      "answer": "Lake Tanganyika",
+      "aliases": [
+        "Tanganyika"
+      ],
+      "difficulty": "hard",
+      "explanation": "Lake Tanganyika reaches a maximum depth of 1,470 meters.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_026",
+      "prompt": "Which inland river delta in Botswana never reaches the ocean, instead fanning out into the Kalahari?",
+      "choices": [
+        "Niger Delta",
+        "Zambezi Delta",
+        "Okavango Delta",
+        "Nile Delta"
+      ],
+      "answer": "Okavango Delta",
+      "aliases": [
+        "Okavango"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Okavango Delta is a UNESCO World Heritage wildlife oasis.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_027",
+      "prompt": "Which 14th-century ruler of the Mali Empire is famed for his legendary wealth and pilgrimage to Mecca?",
+      "choices": [
+        "Askia Muhammad",
+        "Shaka Zulu",
+        "Sundiata Keita",
+        "Mansa Musa"
+      ],
+      "answer": "Mansa Musa",
+      "aliases": [
+        "Musa I"
+      ],
+      "difficulty": "hard",
+      "explanation": "Mansa Musa's 1324 caravan put Mali prominently on medieval world maps.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_028",
+      "prompt": "Which medieval Ethiopian town is famous for eleven monolithic churches carved straight down into solid volcanic rock?",
+      "choices": [
+        "Axum",
+        "Harar",
+        "Lalibela",
+        "Gondar"
+      ],
+      "answer": "Lalibela",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Lalibela's rock-hewn churches date from the 12th and 13th centuries.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_029",
+      "prompt": "Which small African country is the smallest on the African mainland by land area?",
+      "choices": [
+        "Rwanda",
+        "The Gambia",
+        "Eswatini",
+        "Djibouti"
+      ],
+      "answer": "The Gambia",
+      "aliases": [
+        "Gambia"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Gambia follows the winding Gambia River and is surrounded by Senegal.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_030",
+      "prompt": "Which African island archipelago in the Indian Ocean is the smallest sovereign African nation overall?",
+      "choices": [
+        "Cabo Verde",
+        "Seychelles",
+        "Comoros",
+        "Mauritius"
+      ],
+      "answer": "Seychelles",
+      "aliases": [
+        "The Seychelles"
+      ],
+      "difficulty": "hard",
+      "explanation": "Seychelles spans 115 granite and coral islands covering 459 km² of land.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_031",
+      "prompt": "Which ancient kingdom centered in northern Ethiopia erected giant carved granite obelisks (stelae)?",
+      "choices": [
+        "Kingdom of Aksum",
+        "Kingdom of Kush",
+        "Songhai Empire",
+        "Benin Empire"
+      ],
+      "answer": "Kingdom of Aksum",
+      "aliases": [
+        "Aksum",
+        "Axum"
+      ],
+      "difficulty": "hard",
+      "explanation": "Aksum was a major Red Sea trading power from the 1st to 8th centuries CE.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_032",
+      "prompt": "Which strait separates Africa from the Arabian Peninsula at the southern end of the Red Sea?",
+      "choices": [
+        "Strait of Hormuz",
+        "Mozambique Channel",
+        "Strait of Gibraltar",
+        "Bab-el-Mandeb"
+      ],
+      "answer": "Bab-el-Mandeb",
+      "aliases": [
+        "Bab al-Mandab",
+        "Bab el Mandeb"
+      ],
+      "difficulty": "hard",
+      "explanation": "Bab-el-Mandeb lies between Djibouti/Eritrea and Yemen.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_033",
+      "prompt": "Which African country has the highest number of ancient pyramids in the world (over 200)?",
+      "choices": [
+        "Libya",
+        "Ethiopia",
+        "Sudan",
+        "Egypt"
+      ],
+      "answer": "Sudan",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "The Kingdom of Kush built steep-sided pyramids at Meroë, Nuri, and El-Kurru.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_034",
+      "prompt": "Which West African river flows in a giant boomerang arc through Guinea, Mali, Niger, and Nigeria?",
+      "choices": [
+        "Senegal River",
+        "Niger River",
+        "Volta River",
+        "Congo River"
+      ],
+      "answer": "Niger River",
+      "aliases": [
+        "Niger",
+        "The Niger"
+      ],
+      "difficulty": "hard",
+      "explanation": "At 4,180 km, the Niger is Africa's third-longest river.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_035",
+      "prompt": "Which extreme geothermal depression in northeastern Ethiopia is one of the hottest inhabited places on Earth?",
+      "choices": [
+        "Danakil Depression",
+        "Lake Assal",
+        "Qattara Depression",
+        "Kalahari Basin"
+      ],
+      "answer": "Danakil Depression",
+      "aliases": [
+        "Danakil",
+        "Afar Depression"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Danakil Depression features colorful sulfur springs and salt flats below sea level.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "africa_gk_en_036",
+      "prompt": "Which island off Tanzania's coast was historically a famed hub of the East African spice trade?",
+      "choices": [
+        "Reunion",
+        "Pemba",
+        "Socotra",
+        "Zanzibar"
+      ],
+      "answer": "Zanzibar",
+      "aliases": [
+        "Unguja"
+      ],
+      "difficulty": "hard",
+      "explanation": "Zanzibar's Stone Town blends Swahili, Arab, Persian, and Indian architecture.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

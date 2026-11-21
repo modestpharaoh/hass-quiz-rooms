@@ -477,6 +477,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     wager_mode=data.get("wager_mode"),
                     deduct_wrong_wager=data.get("deduct_wrong_wager"),
                     unique_answers_only=data.get("unique_answers_only"),
+                    difficulty=data.get("difficulty"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )
@@ -564,6 +565,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     wager_mode=data.get("wager_mode"),
                     deduct_wrong_wager=data.get("deduct_wrong_wager"),
                     unique_answers_only=data.get("unique_answers_only"),
+                    difficulty=data.get("difficulty"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )

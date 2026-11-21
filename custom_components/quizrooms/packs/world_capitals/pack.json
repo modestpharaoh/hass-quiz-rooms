@@ -21,7 +21,8 @@
       "aliases": [],
       "explanation": "Andorra la Vella is the capital of Andorra (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ae",
@@ -40,7 +41,8 @@
       ],
       "explanation": "Abu Dhabi is the capital of United Arab Emirates (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_af",
@@ -55,7 +57,8 @@
       "aliases": [],
       "explanation": "Kabul is the capital of Afghanistan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ag",
@@ -70,7 +73,8 @@
       "aliases": [],
       "explanation": "St. John's is the capital of Antigua and Barbuda (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_al",
@@ -87,7 +91,8 @@
       ],
       "explanation": "Tirana is the capital of Albania (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_am",
@@ -102,7 +107,8 @@
       "aliases": [],
       "explanation": "Yerevan is the capital of Armenia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ao",
@@ -117,7 +123,8 @@
       "aliases": [],
       "explanation": "Luanda is the capital of Angola (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ar",
@@ -132,7 +139,8 @@
       "aliases": [],
       "explanation": "Buenos Aires is the capital of Argentina (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_at",
@@ -149,7 +157,8 @@
       ],
       "explanation": "Vienna is the capital of Austria (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_au",
@@ -164,7 +173,8 @@
       "aliases": [],
       "explanation": "Canberra is the capital of Australia (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_az",
@@ -179,7 +189,8 @@
       "aliases": [],
       "explanation": "Baku is the capital of Azerbaijan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ba",
@@ -194,7 +205,8 @@
       "aliases": [],
       "explanation": "Sarajevo is the capital of Bosnia and Herzegovina (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bb",
@@ -209,7 +221,8 @@
       "aliases": [],
       "explanation": "Bridgetown is the capital of Barbados (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bd",
@@ -224,7 +237,8 @@
       "aliases": [],
       "explanation": "Dhaka is the capital of Bangladesh (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_be",
@@ -242,7 +256,8 @@
       ],
       "explanation": "Brussels is the capital of Belgium (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_bf",
@@ -257,7 +272,8 @@
       "aliases": [],
       "explanation": "Ouagadougou is the capital of Burkina Faso (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_bg",
@@ -274,7 +290,8 @@
       ],
       "explanation": "Sofia is the capital of Bulgaria (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bh",
@@ -292,7 +309,8 @@
       ],
       "explanation": "Manama is the capital of Bahrain (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bi",
@@ -307,7 +325,8 @@
       "aliases": [],
       "explanation": "Bujumbura is the capital of Burundi (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_bj",
@@ -322,7 +341,8 @@
       "aliases": [],
       "explanation": "Porto-Novo is the capital of Benin (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bn",
@@ -339,7 +359,8 @@
       ],
       "explanation": "Bandar Seri Begawan is the capital of Brunei (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bo",
@@ -356,7 +377,8 @@
       ],
       "explanation": "Sucre is the capital of Bolivia (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_br",
@@ -373,7 +395,8 @@
       ],
       "explanation": "Brasília is the capital of Brazil (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_bs",
@@ -388,7 +411,8 @@
       "aliases": [],
       "explanation": "Nassau is the capital of Bahamas (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bt",
@@ -403,7 +427,8 @@
       "aliases": [],
       "explanation": "Thimphu is the capital of Bhutan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bw",
@@ -418,7 +443,8 @@
       "aliases": [],
       "explanation": "Gaborone is the capital of Botswana (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_by",
@@ -433,7 +459,8 @@
       "aliases": [],
       "explanation": "Minsk is the capital of Belarus (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_bz",
@@ -448,7 +475,8 @@
       "aliases": [],
       "explanation": "Belmopan is the capital of Belize (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ca",
@@ -463,7 +491,8 @@
       "aliases": [],
       "explanation": "Ottawa is the capital of Canada (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_cd",
@@ -478,7 +507,8 @@
       "aliases": [],
       "explanation": "Kinshasa is the capital of Democratic Republic of the Congo (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_cf",
@@ -493,7 +523,8 @@
       "aliases": [],
       "explanation": "Bangui is the capital of Central African Republic (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_cg",
@@ -508,7 +539,8 @@
       "aliases": [],
       "explanation": "Brazzaville is the capital of Republic of the Congo (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ch",
@@ -525,7 +557,8 @@
       ],
       "explanation": "Bern is the capital of Switzerland (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ci",
@@ -542,7 +575,8 @@
       ],
       "explanation": "Yamoussoukro is the capital of Ivory Coast (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_cl",
@@ -557,7 +591,8 @@
       "aliases": [],
       "explanation": "Santiago is the capital of Chile (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_cm",
@@ -572,7 +607,8 @@
       "aliases": [],
       "explanation": "Yaoundé is the capital of Cameroon (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_cn",
@@ -589,7 +625,8 @@
       ],
       "explanation": "Beijing is the capital of China (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_co",
@@ -604,7 +641,8 @@
       "aliases": [],
       "explanation": "Bogotá is the capital of Colombia (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_cr",
@@ -619,7 +657,8 @@
       "aliases": [],
       "explanation": "San José is the capital of Costa Rica (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_cu",
@@ -634,7 +673,8 @@
       "aliases": [],
       "explanation": "Havana is the capital of Cuba (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_cv",
@@ -649,7 +689,8 @@
       "aliases": [],
       "explanation": "Praia is the capital of Cabo Verde (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_cy",
@@ -664,7 +705,8 @@
       "aliases": [],
       "explanation": "Nicosia is the capital of Cyprus (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_cz",
@@ -681,7 +723,8 @@
       ],
       "explanation": "Prague is the capital of Czechia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_de",
@@ -696,7 +739,8 @@
       "aliases": [],
       "explanation": "Berlin is the capital of Germany (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_dj",
@@ -711,7 +755,8 @@
       "aliases": [],
       "explanation": "Djibouti is the capital of Djibouti (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_dk",
@@ -729,7 +774,8 @@
       ],
       "explanation": "Copenhagen is the capital of Denmark (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_dm",
@@ -744,7 +790,8 @@
       "aliases": [],
       "explanation": "Roseau is the capital of Dominica (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_do",
@@ -759,7 +806,8 @@
       "aliases": [],
       "explanation": "Santo Domingo is the capital of Dominican Republic (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_dz",
@@ -777,7 +825,8 @@
       ],
       "explanation": "Algiers is the capital of Algeria (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ec",
@@ -792,7 +841,8 @@
       "aliases": [],
       "explanation": "Quito is the capital of Ecuador (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ee",
@@ -807,7 +857,8 @@
       "aliases": [],
       "explanation": "Tallinn is the capital of Estonia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_eg",
@@ -825,7 +876,8 @@
       ],
       "explanation": "Cairo is the capital of Egypt (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_er",
@@ -840,7 +892,8 @@
       "aliases": [],
       "explanation": "Asmara is the capital of Eritrea (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_es",
@@ -855,7 +908,8 @@
       "aliases": [],
       "explanation": "Madrid is the capital of Spain (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_et",
@@ -870,7 +924,8 @@
       "aliases": [],
       "explanation": "Addis Ababa is the capital of Ethiopia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_fi",
@@ -885,7 +940,8 @@
       "aliases": [],
       "explanation": "Helsinki is the capital of Finland (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_fj",
@@ -900,7 +956,8 @@
       "aliases": [],
       "explanation": "Suva is the capital of Fiji (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_fm",
@@ -915,7 +972,8 @@
       "aliases": [],
       "explanation": "Palikir is the capital of Micronesia (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_fr",
@@ -930,7 +988,8 @@
       "aliases": [],
       "explanation": "Paris is the capital of France (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ga",
@@ -945,7 +1004,8 @@
       "aliases": [],
       "explanation": "Libreville is the capital of Gabon (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_gb",
@@ -960,7 +1020,8 @@
       "aliases": [],
       "explanation": "London is the capital of United Kingdom (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_gd",
@@ -975,7 +1036,8 @@
       "aliases": [],
       "explanation": "St. George's is the capital of Grenada (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ge",
@@ -990,7 +1052,8 @@
       "aliases": [],
       "explanation": "Tbilisi is the capital of Georgia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_gh",
@@ -1005,7 +1068,8 @@
       "aliases": [],
       "explanation": "Accra is the capital of Ghana (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_gm",
@@ -1020,7 +1084,8 @@
       "aliases": [],
       "explanation": "Banjul is the capital of Gambia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_gn",
@@ -1035,7 +1100,8 @@
       "aliases": [],
       "explanation": "Conakry is the capital of Guinea (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_gq",
@@ -1050,7 +1116,8 @@
       "aliases": [],
       "explanation": "Malabo is the capital of Equatorial Guinea (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_gr",
@@ -1067,7 +1134,8 @@
       ],
       "explanation": "Athens is the capital of Greece (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_gt",
@@ -1082,7 +1150,8 @@
       "aliases": [],
       "explanation": "Guatemala City is the capital of Guatemala (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_gw",
@@ -1097,7 +1166,8 @@
       "aliases": [],
       "explanation": "Bissau is the capital of Guinea-Bissau (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_gy",
@@ -1112,7 +1182,8 @@
       "aliases": [],
       "explanation": "Georgetown is the capital of Guyana (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_hn",
@@ -1127,7 +1198,8 @@
       "aliases": [],
       "explanation": "Tegucigalpa is the capital of Honduras (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_hr",
@@ -1142,7 +1214,8 @@
       "aliases": [],
       "explanation": "Zagreb is the capital of Croatia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ht",
@@ -1157,7 +1230,8 @@
       "aliases": [],
       "explanation": "Port-au-Prince is the capital of Haiti (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_hu",
@@ -1172,7 +1246,8 @@
       "aliases": [],
       "explanation": "Budapest is the capital of Hungary (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_id",
@@ -1187,7 +1262,8 @@
       "aliases": [],
       "explanation": "Jakarta is the capital of Indonesia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ie",
@@ -1202,22 +1278,8 @@
       "aliases": [],
       "explanation": "Dublin is the capital of Ireland (Europe).",
       "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "cap_il",
-      "prompt": "What is the capital city of Israel?",
-      "choices": [
-        "Jerusalem",
-        "Ankara",
-        "Malé",
-        "Sana'a"
-      ],
-      "answer": "Jerusalem",
-      "aliases": [],
-      "explanation": "Jerusalem is the capital of Israel (Asia).",
-      "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_in",
@@ -1234,7 +1296,8 @@
       ],
       "explanation": "New Delhi is the capital of India (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_iq",
@@ -1251,7 +1314,8 @@
       ],
       "explanation": "Baghdad is the capital of Iraq (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ir",
@@ -1268,7 +1332,8 @@
       ],
       "explanation": "Tehran is the capital of Iran (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_is",
@@ -1283,7 +1348,8 @@
       "aliases": [],
       "explanation": "Reykjavik is the capital of Iceland (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_it",
@@ -1300,7 +1366,8 @@
       ],
       "explanation": "Rome is the capital of Italy (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_jm",
@@ -1315,7 +1382,8 @@
       "aliases": [],
       "explanation": "Kingston is the capital of Jamaica (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_jo",
@@ -1333,7 +1401,8 @@
       ],
       "explanation": "Amman is the capital of Jordan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_jp",
@@ -1351,7 +1420,8 @@
       ],
       "explanation": "Tokyo is the capital of Japan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ke",
@@ -1366,7 +1436,8 @@
       "aliases": [],
       "explanation": "Nairobi is the capital of Kenya (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_kg",
@@ -1381,7 +1452,8 @@
       "aliases": [],
       "explanation": "Bishkek is the capital of Kyrgyzstan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_kh",
@@ -1396,7 +1468,8 @@
       "aliases": [],
       "explanation": "Phnom Penh is the capital of Cambodia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ki",
@@ -1411,7 +1484,8 @@
       "aliases": [],
       "explanation": "South Tarawa is the capital of Kiribati (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_km",
@@ -1426,7 +1500,8 @@
       "aliases": [],
       "explanation": "Moroni is the capital of Comoros (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_kn",
@@ -1441,7 +1516,8 @@
       "aliases": [],
       "explanation": "Basseterre is the capital of Saint Kitts and Nevis (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_kp",
@@ -1456,7 +1532,8 @@
       "aliases": [],
       "explanation": "Pyongyang is the capital of North Korea (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_kr",
@@ -1471,7 +1548,8 @@
       "aliases": [],
       "explanation": "Seoul is the capital of South Korea (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_kw",
@@ -1490,7 +1568,8 @@
       ],
       "explanation": "Kuwait City is the capital of Kuwait (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_kz",
@@ -1508,7 +1587,8 @@
       ],
       "explanation": "Astana is the capital of Kazakhstan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_la",
@@ -1523,7 +1603,8 @@
       "aliases": [],
       "explanation": "Vientiane is the capital of Laos (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_lb",
@@ -1540,7 +1621,8 @@
       ],
       "explanation": "Beirut is the capital of Lebanon (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_lc",
@@ -1555,7 +1637,8 @@
       "aliases": [],
       "explanation": "Castries is the capital of Saint Lucia (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_li",
@@ -1570,7 +1653,8 @@
       "aliases": [],
       "explanation": "Vaduz is the capital of Liechtenstein (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_lk",
@@ -1589,7 +1673,8 @@
       ],
       "explanation": "Sri Jayawardenepura Kotte, Colombo is the capital of Sri Lanka (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_lr",
@@ -1604,7 +1689,8 @@
       "aliases": [],
       "explanation": "Monrovia is the capital of Liberia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ls",
@@ -1619,7 +1705,8 @@
       "aliases": [],
       "explanation": "Maseru is the capital of Lesotho (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_lt",
@@ -1634,7 +1721,8 @@
       "aliases": [],
       "explanation": "Vilnius is the capital of Lithuania (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_lu",
@@ -1649,7 +1737,8 @@
       "aliases": [],
       "explanation": "Luxembourg City is the capital of Luxembourg (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_lv",
@@ -1664,7 +1753,8 @@
       "aliases": [],
       "explanation": "Riga is the capital of Latvia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ly",
@@ -1681,7 +1771,8 @@
       ],
       "explanation": "Tripoli is the capital of Libya (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ma",
@@ -1698,7 +1789,8 @@
       ],
       "explanation": "Rabat is the capital of Morocco (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_mc",
@@ -1713,7 +1805,8 @@
       "aliases": [],
       "explanation": "Monaco is the capital of Monaco (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_md",
@@ -1728,7 +1821,8 @@
       "aliases": [],
       "explanation": "Chișinău is the capital of Moldova (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_me",
@@ -1743,7 +1837,8 @@
       "aliases": [],
       "explanation": "Podgorica is the capital of Montenegro (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mg",
@@ -1758,7 +1853,8 @@
       "aliases": [],
       "explanation": "Antananarivo is the capital of Madagascar (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mh",
@@ -1773,7 +1869,8 @@
       "aliases": [],
       "explanation": "Majuro is the capital of Marshall Islands (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_mk",
@@ -1788,7 +1885,8 @@
       "aliases": [],
       "explanation": "Skopje is the capital of North Macedonia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ml",
@@ -1803,7 +1901,8 @@
       "aliases": [],
       "explanation": "Bamako is the capital of Mali (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mm",
@@ -1821,7 +1920,8 @@
       ],
       "explanation": "Naypyidaw is the capital of Myanmar (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mn",
@@ -1836,7 +1936,8 @@
       "aliases": [],
       "explanation": "Ulaanbaatar is the capital of Mongolia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mr",
@@ -1851,7 +1952,8 @@
       "aliases": [],
       "explanation": "Nouakchott is the capital of Mauritania (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mt",
@@ -1866,7 +1968,8 @@
       "aliases": [],
       "explanation": "Valletta is the capital of Malta (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mu",
@@ -1881,7 +1984,8 @@
       "aliases": [],
       "explanation": "Port Louis is the capital of Mauritius (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_mv",
@@ -1898,7 +2002,8 @@
       ],
       "explanation": "Malé is the capital of Maldives (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mw",
@@ -1913,7 +2018,8 @@
       "aliases": [],
       "explanation": "Lilongwe is the capital of Malawi (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_mx",
@@ -1932,7 +2038,8 @@
       ],
       "explanation": "Mexico City is the capital of Mexico (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_my",
@@ -1947,7 +2054,8 @@
       "aliases": [],
       "explanation": "Kuala Lumpur is the capital of Malaysia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_mz",
@@ -1962,7 +2070,8 @@
       "aliases": [],
       "explanation": "Maputo is the capital of Mozambique (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_na",
@@ -1977,7 +2086,8 @@
       "aliases": [],
       "explanation": "Windhoek is the capital of Namibia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ne",
@@ -1992,7 +2102,8 @@
       "aliases": [],
       "explanation": "Niamey is the capital of Niger (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ng",
@@ -2007,7 +2118,8 @@
       "aliases": [],
       "explanation": "Abuja is the capital of Nigeria (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ni",
@@ -2022,7 +2134,8 @@
       "aliases": [],
       "explanation": "Managua is the capital of Nicaragua (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_nl",
@@ -2039,7 +2152,8 @@
       ],
       "explanation": "Amsterdam is the capital of Netherlands (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_no",
@@ -2054,7 +2168,8 @@
       "aliases": [],
       "explanation": "Oslo is the capital of Norway (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_np",
@@ -2069,7 +2184,8 @@
       "aliases": [],
       "explanation": "Kathmandu is the capital of Nepal (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_nr",
@@ -2084,7 +2200,8 @@
       "aliases": [],
       "explanation": "Yaren District is the capital of Nauru (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_nz",
@@ -2099,7 +2216,8 @@
       "aliases": [],
       "explanation": "Wellington is the capital of New Zealand (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_om",
@@ -2116,7 +2234,8 @@
       ],
       "explanation": "Muscat is the capital of Oman (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pa",
@@ -2133,7 +2252,8 @@
       ],
       "explanation": "Panama City is the capital of Panama (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_pe",
@@ -2148,7 +2268,8 @@
       "aliases": [],
       "explanation": "Lima is the capital of Peru (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pg",
@@ -2163,7 +2284,8 @@
       "aliases": [],
       "explanation": "Port Moresby is the capital of Papua New Guinea (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ph",
@@ -2178,7 +2300,8 @@
       "aliases": [],
       "explanation": "Manila is the capital of Philippines (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pk",
@@ -2193,7 +2316,8 @@
       "aliases": [],
       "explanation": "Islamabad is the capital of Pakistan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pl",
@@ -2210,7 +2334,8 @@
       ],
       "explanation": "Warsaw is the capital of Poland (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ps",
@@ -2229,7 +2354,8 @@
       ],
       "explanation": "Ramallah is the capital of Palestine (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pt",
@@ -2246,7 +2372,8 @@
       ],
       "explanation": "Lisbon is the capital of Portugal (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_pw",
@@ -2261,7 +2388,8 @@
       "aliases": [],
       "explanation": "Ngerulmud is the capital of Palau (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_py",
@@ -2276,7 +2404,8 @@
       "aliases": [],
       "explanation": "Asunción is the capital of Paraguay (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_qa",
@@ -2294,7 +2423,8 @@
       ],
       "explanation": "Doha is the capital of Qatar (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ro",
@@ -2312,7 +2442,8 @@
       ],
       "explanation": "Bucharest is the capital of Romania (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_rs",
@@ -2327,7 +2458,8 @@
       "aliases": [],
       "explanation": "Belgrade is the capital of Serbia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ru",
@@ -2344,7 +2476,8 @@
       ],
       "explanation": "Moscow is the capital of Russia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_rw",
@@ -2359,7 +2492,8 @@
       "aliases": [],
       "explanation": "Kigali is the capital of Rwanda (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sa",
@@ -2377,7 +2511,8 @@
       ],
       "explanation": "Riyadh is the capital of Saudi Arabia (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_sb",
@@ -2392,7 +2527,8 @@
       "aliases": [],
       "explanation": "Honiara is the capital of Solomon Islands (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_sc",
@@ -2407,7 +2543,8 @@
       "aliases": [],
       "explanation": "Victoria is the capital of Seychelles (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_sd",
@@ -2424,7 +2561,8 @@
       ],
       "explanation": "Khartoum is the capital of Sudan (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_se",
@@ -2439,7 +2577,8 @@
       "aliases": [],
       "explanation": "Stockholm is the capital of Sweden (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_sg",
@@ -2454,7 +2593,8 @@
       "aliases": [],
       "explanation": "Singapore is the capital of Singapore (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_si",
@@ -2469,7 +2609,8 @@
       "aliases": [],
       "explanation": "Ljubljana is the capital of Slovenia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sk",
@@ -2484,7 +2625,8 @@
       "aliases": [],
       "explanation": "Bratislava is the capital of Slovakia (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sl",
@@ -2499,7 +2641,8 @@
       "aliases": [],
       "explanation": "Freetown is the capital of Sierra Leone (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sm",
@@ -2514,7 +2657,8 @@
       "aliases": [],
       "explanation": "San Marino is the capital of San Marino (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_sn",
@@ -2529,7 +2673,8 @@
       "aliases": [],
       "explanation": "Dakar is the capital of Senegal (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_so",
@@ -2544,7 +2689,8 @@
       "aliases": [],
       "explanation": "Mogadishu is the capital of Somalia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sr",
@@ -2559,7 +2705,8 @@
       "aliases": [],
       "explanation": "Paramaribo is the capital of Suriname (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ss",
@@ -2574,7 +2721,8 @@
       "aliases": [],
       "explanation": "Juba is the capital of South Sudan (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_st",
@@ -2589,7 +2737,8 @@
       "aliases": [],
       "explanation": "São Tomé is the capital of Sao Tome and Principe (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_sv",
@@ -2604,7 +2753,8 @@
       "aliases": [],
       "explanation": "San Salvador is the capital of El Salvador (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_sy",
@@ -2622,7 +2772,8 @@
       ],
       "explanation": "Damascus is the capital of Syria (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_sz",
@@ -2637,7 +2788,8 @@
       "aliases": [],
       "explanation": "Lobamba, Mbabane is the capital of Eswatini (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_td",
@@ -2652,7 +2804,8 @@
       "aliases": [],
       "explanation": "N'Djamena is the capital of Chad (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_tg",
@@ -2667,7 +2820,8 @@
       "aliases": [],
       "explanation": "Lomé is the capital of Togo (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_th",
@@ -2684,7 +2838,8 @@
       ],
       "explanation": "Bangkok is the capital of Thailand (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_tj",
@@ -2699,7 +2854,8 @@
       "aliases": [],
       "explanation": "Dushanbe is the capital of Tajikistan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_tl",
@@ -2714,7 +2870,8 @@
       "aliases": [],
       "explanation": "Dili is the capital of Timor-Leste (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_tm",
@@ -2729,7 +2886,8 @@
       "aliases": [],
       "explanation": "Ashgabat is the capital of Turkmenistan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_tn",
@@ -2746,7 +2904,8 @@
       ],
       "explanation": "Tunis is the capital of Tunisia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_to",
@@ -2761,7 +2920,8 @@
       "aliases": [],
       "explanation": "Nukuʻalofa is the capital of Tonga (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_tr",
@@ -2776,7 +2936,8 @@
       "aliases": [],
       "explanation": "Ankara is the capital of Türkiye (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_tt",
@@ -2791,7 +2952,8 @@
       "aliases": [],
       "explanation": "Port of Spain is the capital of Trinidad and Tobago (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_tv",
@@ -2806,7 +2968,8 @@
       "aliases": [],
       "explanation": "Funafuti is the capital of Tuvalu (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_tw",
@@ -2821,7 +2984,8 @@
       "aliases": [],
       "explanation": "Taipei is the capital of Taiwan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_tz",
@@ -2836,7 +3000,8 @@
       "aliases": [],
       "explanation": "Dodoma is the capital of Tanzania (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_ua",
@@ -2851,7 +3016,8 @@
       "aliases": [],
       "explanation": "Kiev is the capital of Ukraine (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_ug",
@@ -2866,7 +3032,8 @@
       "aliases": [],
       "explanation": "Kampala is the capital of Uganda (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_us",
@@ -2887,7 +3054,8 @@
       ],
       "explanation": "Washington, D.C. is the capital of United States (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_uy",
@@ -2902,7 +3070,8 @@
       "aliases": [],
       "explanation": "Montevideo is the capital of Uruguay (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_uz",
@@ -2917,7 +3086,8 @@
       "aliases": [],
       "explanation": "Tashkent is the capital of Uzbekistan (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_va",
@@ -2935,7 +3105,8 @@
       ],
       "explanation": "Vatican City is the capital of Vatican City (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_vc",
@@ -2950,7 +3121,8 @@
       "aliases": [],
       "explanation": "Kingstown is the capital of Saint Vincent and the Grenadines (North America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ve",
@@ -2965,7 +3137,8 @@
       "aliases": [],
       "explanation": "Caracas is the capital of Venezuela (South America).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_vn",
@@ -2980,7 +3153,8 @@
       "aliases": [],
       "explanation": "Hanoi is the capital of Vietnam (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_vu",
@@ -2995,7 +3169,8 @@
       "aliases": [],
       "explanation": "Port Vila is the capital of Vanuatu (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ws",
@@ -3010,7 +3185,8 @@
       "aliases": [],
       "explanation": "Apia is the capital of Samoa (Oceania).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_xk",
@@ -3025,7 +3201,8 @@
       "aliases": [],
       "explanation": "Pristina is the capital of Kosovo (Europe).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "cap_ye",
@@ -3043,7 +3220,8 @@
       ],
       "explanation": "Sana'a is the capital of Yemen (Asia).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_za",
@@ -3061,7 +3239,8 @@
       ],
       "explanation": "Pretoria is the capital of South Africa (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "cap_zm",
@@ -3076,7 +3255,8 @@
       "aliases": [],
       "explanation": "Lusaka is the capital of Zambia (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "cap_zw",
@@ -3091,7 +3271,8 @@
       "aliases": [],
       "explanation": "Harare is the capital of Zimbabwe (Africa).",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     }
   ],
   "cover": "media/cover.svg"

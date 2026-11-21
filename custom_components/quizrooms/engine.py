@@ -16,15 +16,18 @@ from .avatars import (
 from .const import (
     ACTIVE_ROOM_IDLE_TIMEOUT_SECONDS,
     ALLOWED_ANSWER_MODES,
+    ALLOWED_ROOM_DIFFICULTIES,
     ALLOWED_ROUND_COUNTS,
     ALLOWED_TIMERS,
     ALLOWED_VISIBILITIES,
     ALLOWED_WAGER_MODES,
     ANSWER_MODE_FREE_TEXT,
     ANSWER_MODE_MULTIPLE_CHOICE,
+    DEFAULT_DIFFICULTY,
     DEFAULT_MAX_ROOMS,
     DEFAULT_ROUND_COUNT,
     DEFAULT_TIMER_SECONDS,
+    DIFFICULTY_RANDOM,
     LOBBY_IDLE_TIMEOUT_SECONDS,
     MAX_MAX_ROOMS,
     MAX_ROUND_COUNT,
@@ -229,6 +232,7 @@ class QuizEngine:
         wager_mode: str | None,
         deduct_wrong_wager: bool | None,
         unique_answers_only: bool | None,
+        difficulty: str | None = None,
         visibility: str | None,
         allow_late_join: bool | None,
         fallback_code: str,
@@ -287,6 +291,13 @@ class QuizEngine:
         deduct_wrong = True if deduct_wrong_wager is None else bool(deduct_wrong_wager)
         unique_only = has_open_ended if unique_answers_only is None else bool(unique_answers_only)
 
+        diff = (difficulty or DEFAULT_DIFFICULTY).strip().lower()
+        if diff not in ALLOWED_ROOM_DIFFICULTIES:
+            raise EngineError(
+                "invalid_difficulty",
+                f"Difficulty must be one of {ALLOWED_ROOM_DIFFICULTIES}.",
+            )
+
         vis = visibility or VISIBILITY_PUBLIC
         if vis not in ALLOWED_VISIBILITIES:
             raise EngineError("invalid_visibility", f"Invalid visibility '{vis}'.")
@@ -316,6 +327,7 @@ class QuizEngine:
             wager_mode=w_mode,
             deduct_wrong_wager=deduct_wrong,
             unique_answers_only=unique_only,
+            difficulty=diff,
             visibility=vis,
             allow_late_join=late_join,
         )
@@ -335,6 +347,7 @@ class QuizEngine:
         wager_mode: str | None = None,
         deduct_wrong_wager: bool | None = None,
         unique_answers_only: bool | None = None,
+        difficulty: str | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> tuple[Room, str, str]:
@@ -371,6 +384,7 @@ class QuizEngine:
             wager_mode=wager_mode,
             deduct_wrong_wager=deduct_wrong_wager,
             unique_answers_only=unique_answers_only,
+            difficulty=difficulty,
             visibility=visibility,
             allow_late_join=allow_late_join,
             fallback_code=code,
@@ -423,6 +437,7 @@ class QuizEngine:
         wager_mode: str | None = None,
         deduct_wrong_wager: bool | None = None,
         unique_answers_only: bool | None = None,
+        difficulty: str | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> Room:
@@ -446,6 +461,7 @@ class QuizEngine:
             unique_answers_only=(
                 unique_answers_only if unique_answers_only is not None else cur.unique_answers_only
             ),
+            difficulty=difficulty if difficulty is not None else cur.difficulty,
             visibility=visibility if visibility is not None else cur.visibility,
             allow_late_join=allow_late_join if allow_late_join is not None else cur.allow_late_join,
             fallback_code=room.code,
@@ -588,6 +604,7 @@ class QuizEngine:
                         rtl=q.rtl,
                         open_ended=q.open_ended,
                         starts_with=q.starts_with,
+                        difficulty=q.difficulty,
                     )
                 )
 
@@ -596,6 +613,12 @@ class QuizEngine:
                 "no_questions_available",
                 "Selected packs no longer exist or have no questions. Choose another pack.",
             )
+
+        # Apply room difficulty filter when a specific tier (easy/medium/hard) is chosen
+        if room.settings.difficulty != DIFFICULTY_RANDOM:
+            filtered_pool = [q for q in pool if q.difficulty == room.settings.difficulty]
+            if filtered_pool:
+                pool = filtered_pool
 
         self._rng.shuffle(pool)
         count = max(1, min(room.settings.round_count, len(pool)))
@@ -832,6 +855,7 @@ class QuizEngine:
             "rtl": question.rtl,
             "open_ended": question.open_ended,
             "starts_with": question.starts_with,
+            "difficulty": question.difficulty,
             "outcomes": outcomes,
         }
 
@@ -1176,6 +1200,7 @@ class QuizEngine:
                     "answer_mode": room.settings.answer_mode,
                     "wager_mode": room.settings.wager_mode,
                     "unique_answers_only": room.settings.unique_answers_only,
+                    "difficulty": room.settings.difficulty,
                     "top_players": [
                         {
                             "nickname": row["nickname"],
@@ -1212,6 +1237,7 @@ class QuizEngine:
                     "pack_titles": room.pack_titles,
                     "cover_url": room.cover_url,
                     "unique_answers_only": room.settings.unique_answers_only,
+                    "difficulty": room.settings.difficulty,
                     "player_count": len(room.players),
                     "connected_count": sum(1 for p in room.players.values() if p.connected),
                     "players": [
@@ -1265,6 +1291,7 @@ class QuizEngine:
                 else [],
                 "open_ended": q.open_ended,
                 "starts_with": q.starts_with,
+                "difficulty": q.difficulty,
                 "media_url": f"{URL_MEDIA}/{q.media_id}" if q.media_id else None,
                 "language": q.language,
                 "rtl": q.rtl,
@@ -1330,6 +1357,7 @@ class QuizEngine:
                 "wager_mode": room.settings.wager_mode,
                 "deduct_wrong_wager": room.settings.deduct_wrong_wager,
                 "unique_answers_only": room.settings.unique_answers_only,
+                "difficulty": room.settings.difficulty,
                 "visibility": room.settings.visibility,
                 "allow_late_join": room.settings.allow_late_join,
             },

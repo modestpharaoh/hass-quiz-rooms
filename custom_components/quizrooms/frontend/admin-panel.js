@@ -502,6 +502,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
       "choices": ["Christopher Nolan", "Denis Villeneuve", "Ridley Scott", "James Cameron"],
       "answer": "Christopher Nolan",
       "aliases": ["Nolan"],
+      "difficulty": "easy",
       "explanation": "Released in 2010."
     }
   ]

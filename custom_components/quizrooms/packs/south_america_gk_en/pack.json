@@ -1,0 +1,654 @@
+{
+  "pack_id": "south_america_gk_en",
+  "title": "South America General Knowledge",
+  "description": "36 original questions covering the Andes, Amazon, Patagonia, ancient cultures, and landmarks of South America (Multiple Choice & Free-Text).",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Regional GK",
+  "questions": [
+    {
+      "id": "south_america_gk_en_001",
+      "prompt": "Which South American country is the largest by both area and population?",
+      "choices": [
+        "Brazil",
+        "Peru",
+        "Colombia",
+        "Argentina"
+      ],
+      "answer": "Brazil",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Brazil covers nearly half of the South American continent.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_002",
+      "prompt": "Which vast tropical rainforest spans nine South American nations, primarily Brazil?",
+      "choices": [
+        "Daintree",
+        "Amazon Rainforest",
+        "Congo Rainforest",
+        "Valdivian Forest"
+      ],
+      "answer": "Amazon Rainforest",
+      "aliases": [
+        "Amazon",
+        "The Amazon"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Amazon is the largest tropical rainforest on Earth.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_003",
+      "prompt": "Which iconic 15th-century Inca citadel sits high in the Peruvian Andes?",
+      "choices": [
+        "Chichen Itza",
+        "Machu Picchu",
+        "Tikal",
+        "Teotihuacan"
+      ],
+      "answer": "Machu Picchu",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Machu Picchu was built during the reign of Inca emperor Pachacuti.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_004",
+      "prompt": "What is the longest continental mountain range in the world, running down South America's west coast?",
+      "choices": [
+        "Alps",
+        "Andes",
+        "Rockies",
+        "Himalayas"
+      ],
+      "answer": "Andes",
+      "aliases": [
+        "Andes Mountains",
+        "The Andes"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Andes stretch over 7,000 kilometers from Venezuela to Chile and Argentina.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_005",
+      "prompt": "Which iconic Art Deco statue overlooks Rio de Janeiro from Corcovado Mountain?",
+      "choices": [
+        "Virgin of Quito",
+        "Christ the Redeemer",
+        "Statue of Liberty",
+        "Angel of Independence"
+      ],
+      "answer": "Christ the Redeemer",
+      "aliases": [
+        "Cristo Redentor"
+      ],
+      "difficulty": "easy",
+      "explanation": "Standing 30 meters tall, Christ the Redeemer was completed in 1931.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_006",
+      "prompt": "Which South American river carries the largest volume of water of any river on Earth?",
+      "choices": [
+        "São Francisco River",
+        "Amazon River",
+        "Orinoco River",
+        "Paraná River"
+      ],
+      "answer": "Amazon River",
+      "aliases": [
+        "Amazon",
+        "The Amazon"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Amazon accounts for roughly one-fifth of all river flow into Earth's oceans.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_007",
+      "prompt": "Which South American country is famous for tango dancing and Patagonia?",
+      "choices": [
+        "Ecuador",
+        "Argentina",
+        "Uruguay",
+        "Chile"
+      ],
+      "answer": "Argentina",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Tango developed in the working-class neighborhoods of Buenos Aires and Montevideo.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_008",
+      "prompt": "Which volcanic archipelago belonging to Ecuador inspired Charles Darwin's theory of evolution?",
+      "choices": [
+        "Easter Island",
+        "Galápagos Islands",
+        "San Andrés",
+        "Falkland Islands"
+      ],
+      "answer": "Galápagos Islands",
+      "aliases": [
+        "Galapagos",
+        "Galapagos Islands"
+      ],
+      "difficulty": "easy",
+      "explanation": "Darwin visited the Galápagos aboard HMS Beagle in 1835.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_009",
+      "prompt": "Which South American country is named after the imaginary line dividing Earth's northern and southern hemispheres?",
+      "choices": [
+        "Colombia",
+        "Bolivia",
+        "Paraguay",
+        "Ecuador"
+      ],
+      "answer": "Ecuador",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "The equator runs just north of Quito, Ecuador's capital.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_010",
+      "prompt": "Which long, narrow country stretches along South America's southwestern Pacific coast?",
+      "choices": [
+        "Peru",
+        "Argentina",
+        "Chile",
+        "Uruguay"
+      ],
+      "answer": "Chile",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Chile spans over 4,200 km north-to-south while averaging only 177 km wide.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_011",
+      "prompt": "Which South American country is famed worldwide for its high-altitude Arabica coffee?",
+      "choices": [
+        "Paraguay",
+        "Colombia",
+        "Uruguay",
+        "Suriname"
+      ],
+      "answer": "Colombia",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Colombia's Andean slopes offer ideal volcanic soil and climate for coffee.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_012",
+      "prompt": "Which domesticated Andean pack animal is closely related to the alpaca?",
+      "choices": [
+        "Llama",
+        "Yak",
+        "Tapir",
+        "Camel"
+      ],
+      "answer": "Llama",
+      "aliases": [
+        "Llamas"
+      ],
+      "difficulty": "easy",
+      "explanation": "Llamas have carried loads across the Andes for thousands of years.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_013",
+      "prompt": "What is the highest mountain in the Americas and the Western Hemisphere, located in Argentina?",
+      "choices": [
+        "Huascarán",
+        "Cotopaxi",
+        "Aconcagua",
+        "Chimborazo"
+      ],
+      "answer": "Aconcagua",
+      "aliases": [
+        "Mount Aconcagua"
+      ],
+      "difficulty": "medium",
+      "explanation": "Aconcagua rises to 6,961 meters in Mendoza Province, Argentina.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_014",
+      "prompt": "Which waterfall system on the Argentina-Brazil border features over 270 individual drops?",
+      "choices": [
+        "Iguazu Falls",
+        "Niagara Falls",
+        "Angel Falls",
+        "Kaieteur Falls"
+      ],
+      "answer": "Iguazu Falls",
+      "aliases": [
+        "Iguaçu Falls",
+        "Iguazu"
+      ],
+      "difficulty": "medium",
+      "explanation": "Iguazu Falls is the largest waterfall system in the world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_015",
+      "prompt": "Which Venezuelan waterfall is the tallest uninterrupted waterfall on Earth?",
+      "choices": [
+        "Tugela Falls",
+        "Iguazu Falls",
+        "Angel Falls",
+        "Gocta Falls"
+      ],
+      "answer": "Angel Falls",
+      "aliases": [
+        "Salto Ángel",
+        "Salto Angel"
+      ],
+      "difficulty": "medium",
+      "explanation": "Angel Falls plunges 979 meters from Auyán-tepui in Canaima National Park.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_016",
+      "prompt": "Which desert in northern Chile is the driest non-polar desert on Earth?",
+      "choices": [
+        "Patagonian Desert",
+        "Monte Desert",
+        "Atacama Desert",
+        "Sechura Desert"
+      ],
+      "answer": "Atacama Desert",
+      "aliases": [
+        "Atacama",
+        "The Atacama"
+      ],
+      "difficulty": "medium",
+      "explanation": "Some weather stations in the Atacama have gone decades without measurable rainfall.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_017",
+      "prompt": "Which high-altitude lake straddling Peru and Bolivia is the highest navigable lake in the world?",
+      "choices": [
+        "Lake Nahuel Huapi",
+        "Lake Titicaca",
+        "Lake Poopó",
+        "Lake Maracaibo"
+      ],
+      "answer": "Lake Titicaca",
+      "aliases": [
+        "Titicaca"
+      ],
+      "difficulty": "medium",
+      "explanation": "Lake Titicaca sits at 3,812 meters above sea level.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_018",
+      "prompt": "Which huge salt flat in southwestern Bolivia turns into a giant natural mirror after rain?",
+      "choices": [
+        "Atacama Salt Flat",
+        "Salinas Grandes",
+        "Salar de Uyuni",
+        "Pantanal"
+      ],
+      "answer": "Salar de Uyuni",
+      "aliases": [
+        "Uyuni",
+        "Uyuni Salt Flats"
+      ],
+      "difficulty": "medium",
+      "explanation": "Salar de Uyuni spans over 10,000 square kilometers and holds vast lithium reserves.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_019",
+      "prompt": "Which South American liberator earned the title 'El Libertador' for leading independence across northern South America?",
+      "choices": [
+        "Simón Bolívar",
+        "Antonio José de Sucre",
+        "José de San Martín",
+        "Bernardo O'Higgins"
+      ],
+      "answer": "Simón Bolívar",
+      "aliases": [
+        "Simon Bolivar",
+        "Bolivar"
+      ],
+      "difficulty": "medium",
+      "explanation": "Bolivia is named in honor of Simón Bolívar.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_020",
+      "prompt": "Which two South American countries are completely landlocked?",
+      "choices": [
+        "Colombia and Peru",
+        "Bolivia and Paraguay",
+        "Ecuador and Uruguay",
+        "Chile and Guyana"
+      ],
+      "answer": "Bolivia and Paraguay",
+      "aliases": [
+        "Paraguay and Bolivia"
+      ],
+      "difficulty": "medium",
+      "explanation": "Every other sovereign South American country borders an ocean.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_021",
+      "prompt": "Which Brazilian planned modernist capital was inaugurated in 1960 in the shape of an airplane?",
+      "choices": [
+        "Rio de Janeiro",
+        "Brasília",
+        "São Paulo",
+        "Salvador"
+      ],
+      "answer": "Brasília",
+      "aliases": [
+        "Brasilia"
+      ],
+      "difficulty": "medium",
+      "explanation": "Oscar Niemeyer and Lúcio Costa designed Brasília's iconic modernist architecture.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_022",
+      "prompt": "Which vast tropical wetland centered in Brazil is the largest tropical wetland area on Earth?",
+      "choices": [
+        "Pampas",
+        "Pantanal",
+        "Llanos",
+        "Chaco"
+      ],
+      "answer": "Pantanal",
+      "aliases": [
+        "The Pantanal"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Pantanal is one of the best places in the Americas to spot jaguars.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_023",
+      "prompt": "Which region at the southern tip of South America is shared by Argentina and Chile?",
+      "choices": [
+        "Guiana Shield",
+        "Patagonia",
+        "Altiplano",
+        "Pampas"
+      ],
+      "answer": "Patagonia",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Patagonia is famed for glacial peaks, fjords, and windswept steppes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_024",
+      "prompt": "Which ancient Peruvian culture created giant desert geoglyphs depicting animals and geometric lines?",
+      "choices": [
+        "Nazca",
+        "Chavín",
+        "Muisca",
+        "Moche"
+      ],
+      "answer": "Nazca",
+      "aliases": [
+        "Nazca Lines",
+        "Nasca"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Nazca Lines were etched into Peru's arid coastal plain between 500 BCE and 500 CE.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_025",
+      "prompt": "Which Ecuadorian volcano's summit is the farthest point on Earth's surface from the center of the planet?",
+      "choices": [
+        "Chimborazo",
+        "Ojos del Salado",
+        "Cotopaxi",
+        "Aconcagua"
+      ],
+      "answer": "Chimborazo",
+      "aliases": [
+        "Mount Chimborazo"
+      ],
+      "difficulty": "hard",
+      "explanation": "Because Earth bulges at the equator, Chimborazo's peak sits farther from Earth's center than Everest.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_026",
+      "prompt": "Which strait near the southern tip of South America was first navigated by Europeans in 1520?",
+      "choices": [
+        "Drake Passage",
+        "Strait of Magellan",
+        "Panama Canal",
+        "Beagle Channel"
+      ],
+      "answer": "Strait of Magellan",
+      "aliases": [
+        "Magellan Strait"
+      ],
+      "difficulty": "hard",
+      "explanation": "Ferdinand Magellan's fleet passed through the strait linking the Atlantic and Pacific.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_027",
+      "prompt": "Which 1494 treaty divided newly encountered lands outside Europe between Portugal and Spain?",
+      "choices": [
+        "Treaty of Tordesillas",
+        "Treaty of Utrecht",
+        "Treaty of Zaragoza",
+        "Treaty of Madrid"
+      ],
+      "answer": "Treaty of Tordesillas",
+      "aliases": [
+        "Tordesillas"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Treaty of Tordesillas explains why Brazil speaks Portuguese while its neighbors speak Spanish.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_028",
+      "prompt": "Which South American country is home to the world's largest single-drop waterfall by volume, Kaieteur Falls?",
+      "choices": [
+        "Guyana",
+        "Venezuela",
+        "Colombia",
+        "Suriname"
+      ],
+      "answer": "Guyana",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Kaieteur Falls drops 226 meters on the Potaro River in Guyana.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_029",
+      "prompt": "Which grassy plains region in Argentina, Uruguay, and southern Brazil is famed for cattle ranching and gauchos?",
+      "choices": [
+        "Pampas",
+        "Llanos",
+        "Altiplano",
+        "Cerrado"
+      ],
+      "answer": "Pampas",
+      "aliases": [
+        "The Pampas"
+      ],
+      "difficulty": "hard",
+      "explanation": "The fertile Pampas cover over 1.2 million square kilometers.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_030",
+      "prompt": "Which city in southern Peru served as the historic capital of the Inca Empire?",
+      "choices": [
+        "Arequipa",
+        "Trujillo",
+        "Lima",
+        "Cusco"
+      ],
+      "answer": "Cusco",
+      "aliases": [
+        "Cuzco"
+      ],
+      "difficulty": "hard",
+      "explanation": "Cusco's name meant 'navel of the world' in Quechua.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_031",
+      "prompt": "What is the name of the indigenous knotted-string recording system used by the Inca Empire?",
+      "choices": [
+        "Ayllu",
+        "Inti",
+        "Quipu",
+        "Chasqui"
+      ],
+      "answer": "Quipu",
+      "aliases": [
+        "Khipu"
+      ],
+      "difficulty": "hard",
+      "explanation": "Quipus recorded census figures, tribute, and accounts using dyed cotton or camelid cords.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_032",
+      "prompt": "Which active volcano on the Chile-Argentina border is the highest volcano on Earth?",
+      "choices": [
+        "Villarrica",
+        "Misti",
+        "Cotopaxi",
+        "Ojos del Salado"
+      ],
+      "answer": "Ojos del Salado",
+      "aliases": [
+        "Nevado Ojos del Salado"
+      ],
+      "difficulty": "hard",
+      "explanation": "Ojos del Salado rises to 6,893 meters in the Atacama Andes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_033",
+      "prompt": "Which Argentine city on Tierra del Fuego is widely promoted as the southernmost city in the world?",
+      "choices": [
+        "El Calafate",
+        "Ushuaia",
+        "Punta Arenas",
+        "Bariloche"
+      ],
+      "answer": "Ushuaia",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Ushuaia sits on the Beagle Channel and serves as a gateway to Antarctica.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_034",
+      "prompt": "Which European spaceport operates in South America near Kourou?",
+      "choices": [
+        "Atacama Launch Site",
+        "Alcântara Space Center",
+        "Guiana Space Centre",
+        "Punta Indio"
+      ],
+      "answer": "Guiana Space Centre",
+      "aliases": [
+        "Kourou",
+        "French Guiana"
+      ],
+      "difficulty": "hard",
+      "explanation": "French Guiana's equatorial location gives rockets an extra rotational boost from Earth.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_035",
+      "prompt": "Which South American lake in Venezuela is famous for near-continuous nocturnal Catatumbo lightning?",
+      "choices": [
+        "Lake Poopó",
+        "Lake Titicaca",
+        "Lake Maracaibo",
+        "Lake Valencia"
+      ],
+      "answer": "Lake Maracaibo",
+      "aliases": [
+        "Maracaibo"
+      ],
+      "difficulty": "hard",
+      "explanation": "Catatumbo lightning flashes over Lake Maracaibo more nights per year than almost anywhere else.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "south_america_gk_en_036",
+      "prompt": "Which remote Pacific island famous for its moai stone statues is a special territory of Chile?",
+      "choices": [
+        "Chiloé",
+        "Easter Island",
+        "Galápagos",
+        "Juan Fernández"
+      ],
+      "answer": "Easter Island",
+      "aliases": [
+        "Rapa Nui"
+      ],
+      "difficulty": "hard",
+      "explanation": "Known locally as Rapa Nui, Easter Island lies over 3,500 km west of mainland Chile.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

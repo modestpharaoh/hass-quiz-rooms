@@ -20,7 +20,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_002",
@@ -32,7 +33,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_003",
@@ -44,7 +46,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_004",
@@ -56,7 +59,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_005",
@@ -68,7 +72,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_006",
@@ -80,7 +85,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_007",
@@ -92,7 +98,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_008",
@@ -104,7 +111,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_009",
@@ -116,7 +124,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_010",
@@ -128,7 +137,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_011",
@@ -140,7 +150,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_012",
@@ -152,7 +163,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_013",
@@ -164,7 +176,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_014",
@@ -176,7 +189,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_015",
@@ -188,7 +202,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_016",
@@ -200,7 +215,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_boy_017",
@@ -212,7 +228,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_boy_018",
@@ -224,7 +241,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_boy_019",
@@ -236,7 +254,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_boy_020",
@@ -248,7 +267,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_021",
@@ -260,7 +280,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_022",
@@ -272,7 +293,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_boy_023",
@@ -284,7 +306,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_boy_024",
@@ -296,7 +319,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم ولد) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_girl_025",
@@ -308,7 +332,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_026",
@@ -320,7 +345,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_027",
@@ -332,7 +358,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_028",
@@ -344,7 +371,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_029",
@@ -356,7 +384,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_030",
@@ -368,7 +397,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_031",
@@ -380,7 +410,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_032",
@@ -392,7 +423,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_033",
@@ -404,7 +436,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_034",
@@ -416,7 +449,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_035",
@@ -428,7 +462,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_036",
@@ -440,7 +475,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_037",
@@ -452,7 +488,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_038",
@@ -464,7 +501,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_039",
@@ -476,7 +514,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_040",
@@ -488,7 +527,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_girl_041",
@@ -500,7 +540,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_girl_042",
@@ -512,7 +553,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_girl_043",
@@ -524,7 +566,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_girl_044",
@@ -536,7 +579,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_045",
@@ -548,7 +592,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_046",
@@ -560,7 +605,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_girl_047",
@@ -572,7 +618,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_girl_048",
@@ -584,7 +631,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (اسم بنت) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_animal_049",
@@ -596,7 +644,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_050",
@@ -608,7 +657,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_051",
@@ -620,7 +670,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_052",
@@ -632,7 +683,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_053",
@@ -644,7 +696,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_054",
@@ -656,7 +709,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_055",
@@ -668,7 +722,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_056",
@@ -680,7 +735,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_057",
@@ -692,7 +748,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_058",
@@ -704,7 +761,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_059",
@@ -716,7 +774,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_060",
@@ -728,7 +787,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_061",
@@ -740,7 +800,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_062",
@@ -752,7 +813,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_063",
@@ -764,7 +826,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_064",
@@ -776,7 +839,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_animal_065",
@@ -788,7 +852,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_animal_066",
@@ -800,7 +865,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_animal_067",
@@ -812,7 +878,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_animal_068",
@@ -824,7 +891,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_069",
@@ -836,7 +904,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_070",
@@ -848,7 +917,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_animal_071",
@@ -860,7 +930,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_animal_072",
@@ -872,7 +943,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (حيوان أو طائر) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_plant_073",
@@ -884,7 +956,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_074",
@@ -896,7 +969,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_075",
@@ -908,7 +982,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_076",
@@ -920,7 +995,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_077",
@@ -932,7 +1008,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_078",
@@ -944,7 +1021,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_079",
@@ -956,7 +1034,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_080",
@@ -968,7 +1047,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_081",
@@ -980,7 +1060,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_082",
@@ -992,7 +1073,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_083",
@@ -1004,7 +1086,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_084",
@@ -1016,7 +1099,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_085",
@@ -1028,7 +1112,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_086",
@@ -1040,7 +1125,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_087",
@@ -1052,7 +1138,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_088",
@@ -1064,7 +1151,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_plant_089",
@@ -1076,7 +1164,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_plant_090",
@@ -1088,7 +1177,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_plant_091",
@@ -1100,7 +1190,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_plant_092",
@@ -1112,7 +1203,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_093",
@@ -1124,7 +1216,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_094",
@@ -1136,7 +1229,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_plant_095",
@@ -1148,7 +1242,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_plant_096",
@@ -1160,7 +1255,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (نبات أو فاكهة أو خضار) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_097",
@@ -1172,7 +1268,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_098",
@@ -1184,7 +1281,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_099",
@@ -1196,7 +1294,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_100",
@@ -1208,7 +1307,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_101",
@@ -1220,7 +1320,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_102",
@@ -1232,7 +1333,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_103",
@@ -1244,7 +1346,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_104",
@@ -1256,7 +1359,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_105",
@@ -1268,7 +1372,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_106",
@@ -1280,7 +1385,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_107",
@@ -1292,7 +1398,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_108",
@@ -1304,7 +1411,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_109",
@@ -1316,7 +1424,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_110",
@@ -1328,7 +1437,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_111",
@@ -1340,7 +1450,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_112",
@@ -1352,7 +1463,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_113",
@@ -1364,7 +1476,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_object_114",
@@ -1376,7 +1489,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_115",
@@ -1388,7 +1502,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_116",
@@ -1400,7 +1515,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_117",
@@ -1412,7 +1528,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_118",
@@ -1424,7 +1541,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_119",
@@ -1436,7 +1554,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_object_120",
@@ -1448,7 +1567,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (جماد) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_121",
@@ -1460,7 +1580,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_122",
@@ -1472,7 +1593,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_123",
@@ -1484,7 +1606,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_124",
@@ -1496,7 +1619,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_125",
@@ -1508,7 +1632,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_126",
@@ -1520,7 +1645,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_127",
@@ -1532,7 +1658,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_128",
@@ -1544,7 +1671,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_129",
@@ -1556,7 +1684,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_130",
@@ -1568,7 +1697,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_131",
@@ -1580,7 +1710,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_132",
@@ -1592,7 +1723,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_133",
@@ -1604,7 +1736,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_134",
@@ -1616,7 +1749,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_135",
@@ -1628,7 +1762,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_136",
@@ -1640,7 +1775,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_137",
@@ -1652,7 +1788,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_place_138",
@@ -1664,7 +1801,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_139",
@@ -1676,7 +1814,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_140",
@@ -1688,7 +1827,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_141",
@@ -1700,7 +1840,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_142",
@@ -1712,7 +1853,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_143",
@@ -1724,7 +1866,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_place_144",
@@ -1736,7 +1879,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (بلد أو مدينة) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_145",
@@ -1748,7 +1892,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_146",
@@ -1760,7 +1905,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_147",
@@ -1772,7 +1918,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_148",
@@ -1784,7 +1931,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_149",
@@ -1796,7 +1944,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_150",
@@ -1808,7 +1957,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_151",
@@ -1820,7 +1970,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_152",
@@ -1832,7 +1983,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_153",
@@ -1844,7 +1996,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_154",
@@ -1856,7 +2009,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_155",
@@ -1868,7 +2022,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_156",
@@ -1880,7 +2035,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_157",
@@ -1892,7 +2048,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_158",
@@ -1904,7 +2061,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_159",
@@ -1916,7 +2074,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_160",
@@ -1928,7 +2087,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_161",
@@ -1940,7 +2100,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_job_162",
@@ -1952,7 +2113,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_163",
@@ -1964,7 +2126,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_164",
@@ -1976,7 +2139,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_165",
@@ -1988,7 +2152,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_166",
@@ -2000,7 +2165,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_167",
@@ -2012,7 +2178,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_job_168",
@@ -2024,7 +2191,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (مهنة أو وظيفة) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_food_169",
@@ -2036,7 +2204,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_170",
@@ -2048,7 +2217,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_171",
@@ -2060,7 +2230,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_172",
@@ -2072,7 +2243,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_173",
@@ -2084,7 +2256,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_174",
@@ -2096,7 +2269,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_175",
@@ -2108,7 +2282,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_176",
@@ -2120,7 +2295,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_177",
@@ -2132,7 +2308,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_178",
@@ -2144,7 +2321,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_179",
@@ -2156,7 +2334,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_180",
@@ -2168,7 +2347,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_181",
@@ -2180,7 +2360,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_182",
@@ -2192,7 +2373,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_183",
@@ -2204,7 +2386,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_184",
@@ -2216,7 +2399,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_food_185",
@@ -2228,7 +2412,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_food_186",
@@ -2240,7 +2425,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_food_187",
@@ -2252,7 +2438,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_food_188",
@@ -2264,7 +2451,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_189",
@@ -2276,7 +2464,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_190",
@@ -2288,7 +2477,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "easy"
     },
     {
       "id": "ac_food_191",
@@ -2300,7 +2490,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_food_192",
@@ -2312,7 +2503,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (أكلة أو مشروب) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_193",
@@ -2324,7 +2516,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_194",
@@ -2336,7 +2529,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_195",
@@ -2348,7 +2542,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_196",
@@ -2360,7 +2555,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_197",
@@ -2372,7 +2568,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_198",
@@ -2384,7 +2581,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_199",
@@ -2396,7 +2594,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_200",
@@ -2408,7 +2607,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_201",
@@ -2420,7 +2620,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_202",
@@ -2432,7 +2633,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_203",
@@ -2444,7 +2646,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_204",
@@ -2456,7 +2659,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_205",
@@ -2468,7 +2672,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_206",
@@ -2480,7 +2685,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_207",
@@ -2492,7 +2698,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_208",
@@ -2504,7 +2711,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_209",
@@ -2516,7 +2724,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_kitchen_210",
@@ -2528,7 +2737,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_211",
@@ -2540,7 +2750,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_212",
@@ -2552,7 +2763,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_213",
@@ -2564,7 +2776,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_214",
@@ -2576,7 +2789,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_215",
@@ -2588,7 +2802,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_kitchen_216",
@@ -2600,7 +2815,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء موجود في المطبخ) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_217",
@@ -2612,7 +2828,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_218",
@@ -2624,7 +2841,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_219",
@@ -2636,7 +2854,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_220",
@@ -2648,7 +2867,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_221",
@@ -2660,7 +2880,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_222",
@@ -2672,7 +2893,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_223",
@@ -2684,7 +2906,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_224",
@@ -2696,7 +2919,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_225",
@@ -2708,7 +2932,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_226",
@@ -2720,7 +2945,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_227",
@@ -2732,7 +2958,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_228",
@@ -2744,7 +2971,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_229",
@@ -2756,7 +2984,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_230",
@@ -2768,7 +2997,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_231",
@@ -2780,7 +3010,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_232",
@@ -2792,7 +3023,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_233",
@@ -2804,7 +3036,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_street_234",
@@ -2816,7 +3049,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_235",
@@ -2828,7 +3062,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_236",
@@ -2840,7 +3075,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_237",
@@ -2852,7 +3088,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_238",
@@ -2864,7 +3101,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_239",
@@ -2876,7 +3114,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_street_240",
@@ -2888,7 +3127,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شيء تراه في الشارع أو السفر) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_241",
@@ -2900,7 +3140,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_242",
@@ -2912,7 +3153,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_243",
@@ -2924,7 +3166,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_244",
@@ -2936,7 +3179,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_245",
@@ -2948,7 +3192,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_246",
@@ -2960,7 +3205,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_247",
@@ -2972,7 +3218,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_248",
@@ -2984,7 +3231,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_249",
@@ -2996,7 +3244,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_250",
@@ -3008,7 +3257,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_251",
@@ -3020,7 +3270,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_252",
@@ -3032,7 +3283,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_253",
@@ -3044,7 +3296,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_254",
@@ -3056,7 +3309,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_255",
@@ -3068,7 +3322,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_256",
@@ -3080,7 +3335,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_257",
@@ -3092,7 +3348,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_clothes_258",
@@ -3104,7 +3361,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_259",
@@ -3116,7 +3374,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_260",
@@ -3128,7 +3387,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_261",
@@ -3140,7 +3400,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_262",
@@ -3152,7 +3413,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_263",
@@ -3164,7 +3426,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_clothes_264",
@@ -3176,7 +3439,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (ملابس أو إكسسوار) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_265",
@@ -3188,7 +3452,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_266",
@@ -3200,7 +3465,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_267",
@@ -3212,7 +3478,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_268",
@@ -3224,7 +3491,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_269",
@@ -3236,7 +3504,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_270",
@@ -3248,7 +3517,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_271",
@@ -3260,7 +3530,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_272",
@@ -3272,7 +3543,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_273",
@@ -3284,7 +3556,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_274",
@@ -3296,7 +3569,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_275",
@@ -3308,7 +3582,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_276",
@@ -3320,7 +3595,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_277",
@@ -3332,7 +3608,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_278",
@@ -3344,7 +3621,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_279",
@@ -3356,7 +3634,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_280",
@@ -3368,7 +3647,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_281",
@@ -3380,7 +3660,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_sport_282",
@@ -3392,7 +3673,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_283",
@@ -3404,7 +3686,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_284",
@@ -3416,7 +3699,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_285",
@@ -3428,7 +3712,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_286",
@@ -3440,7 +3725,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_287",
@@ -3452,7 +3738,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_sport_288",
@@ -3464,7 +3751,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (رياضة أو لعبة) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_289",
@@ -3476,7 +3764,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_290",
@@ -3488,7 +3777,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_291",
@@ -3500,7 +3790,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_292",
@@ -3512,7 +3803,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_293",
@@ -3524,7 +3816,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_294",
@@ -3536,7 +3829,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_295",
@@ -3548,7 +3842,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_296",
@@ -3560,7 +3855,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_297",
@@ -3572,7 +3868,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_298",
@@ -3584,7 +3881,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_299",
@@ -3596,7 +3894,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_300",
@@ -3608,7 +3907,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_301",
@@ -3620,7 +3920,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_302",
@@ -3632,7 +3933,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_303",
@@ -3644,7 +3946,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_304",
@@ -3656,7 +3959,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_305",
@@ -3668,7 +3972,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_trait_306",
@@ -3680,7 +3985,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_307",
@@ -3692,7 +3998,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_308",
@@ -3704,7 +4011,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_309",
@@ -3716,7 +4024,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_310",
@@ -3728,7 +4037,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_311",
@@ -3740,7 +4050,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_trait_312",
@@ -3752,7 +4063,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (صفة أو شعور) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_313",
@@ -3764,7 +4076,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الألف (أ / ا) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_314",
@@ -3776,7 +4089,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الباء (ب) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_315",
@@ -3788,7 +4102,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف التاء (ت) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_316",
@@ -3800,7 +4115,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الجيم (ج) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_317",
@@ -3812,7 +4128,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الحاء (ح) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_318",
@@ -3824,7 +4141,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الخاء (خ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_319",
@@ -3836,7 +4154,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الدال (د) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_320",
@@ -3848,7 +4167,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الراء (ر) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_321",
@@ -3860,7 +4180,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الزاي (ز) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_322",
@@ -3872,7 +4193,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف السين (س) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_323",
@@ -3884,7 +4206,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الشين (ش) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_324",
@@ -3896,7 +4219,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الصاد (ص) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_325",
@@ -3908,7 +4232,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الطاء (ط) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_326",
@@ -3920,7 +4245,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف العين (ع) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_327",
@@ -3932,7 +4258,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الغين (غ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_328",
@@ -3944,7 +4271,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الفاء (ف) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_329",
@@ -3956,7 +4284,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف القاف (ق) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "hard"
     },
     {
       "id": "ac_famous_330",
@@ -3968,7 +4297,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الكاف (ك) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_331",
@@ -3980,7 +4310,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف اللام (ل) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_332",
@@ -3992,7 +4323,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الميم (م) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_333",
@@ -4004,7 +4336,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف النون (ن) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_334",
@@ -4016,7 +4349,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الهاء (هـ) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_335",
@@ -4028,7 +4362,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الواو (و) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     },
     {
       "id": "ac_famous_336",
@@ -4040,7 +4375,8 @@
       "aliases": [],
       "explanation": "يجب أن تكون الإجابة (شخصية مشهورة أو تاريخية أو كرتونية) وتبدأ بحرف الياء (ي) دون تكرار.",
       "language": "ar",
-      "rtl": true
+      "rtl": true,
+      "difficulty": "medium"
     }
   ]
 }

@@ -14,6 +14,14 @@
     lastLockedCount: 0,
   };
 
+  function diffBadgeHtml(diff, extraStyle = "") {
+    const d = String(diff || "").toLowerCase();
+    if (!d || d === "random") return "";
+    const cls = d === "easy" ? "badge-lobby" : d === "hard" ? "badge-paused" : "badge-live";
+    const label = d.charAt(0).toUpperCase() + d.slice(1);
+    return `<span class="badge ${cls}"${extraStyle ? ` style="${extraStyle}"` : ""}>${esc(label)}</span>`;
+  }
+
   function esc(str) {
     return String(str == null ? "" : str)
       .replace(/&/g, "&amp;")
@@ -324,6 +332,7 @@
                   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} Player${r.player_count === 1 ? "" : "s"}</span>
+                    ${diffBadgeHtml(r.difficulty)}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
                     <button type="button" class="btn btn-primary btn-sm" data-follow-code="${esc(r.code)}">Follow</button>
                   </div>
@@ -372,7 +381,7 @@
           <div>
             <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
             <p style="font-size:1.3rem;color:var(--text-secondary);margin-top:6px;" dir="auto">
-              ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds · ${room.settings.timer_seconds}s${room.settings.unique_answers_only ? " · No Repeated Answers" : ""}
+              ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds · ${room.settings.timer_seconds}s · ${room.settings.difficulty && room.settings.difficulty !== "random" ? esc(room.settings.difficulty.toUpperCase()) : "All Levels"}${room.settings.unique_answers_only ? " · No Repeated Answers" : ""}
             </p>
           </div>
         </div>
@@ -394,6 +403,7 @@
               <span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">
                 Round ${q.round_number} / ${q.total_rounds}
               </span>
+              ${diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
             <div id="tv-timer-num" class="tv-timer-big">${Math.ceil(q.remaining_seconds || 0)}s</div>

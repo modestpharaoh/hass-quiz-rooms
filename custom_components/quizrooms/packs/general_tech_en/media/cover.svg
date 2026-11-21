@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="General Technology English Cover">
+  <defs>
+    <linearGradient id="cbg-ten" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-ten)"/>
+  <!-- CPU Chip -->
+  <rect x="46" y="46" width="68" height="68" rx="14" fill="#0F172A" stroke="#38BDF8" stroke-width="5"/>
+  <rect x="60" y="60" width="40" height="40" rx="8" fill="#38BDF8"/>
+  <circle cx="80" cy="80" r="9" fill="#0F172A"/>
+  <!-- Pins -->
+  <g stroke="#7DD3FC" stroke-width="5" stroke-linecap="round">
+    <line x1="62" y1="28" x2="62" y2="42"/><line x1="80" y1="28" x2="80" y2="42"/><line x1="98" y1="28" x2="98" y2="42"/>
+    <line x1="62" y1="118" x2="62" y2="132"/><line x1="80" y1="118" x2="80" y2="132"/><line x1="98" y1="118" x2="98" y2="132"/>
+    <line x1="28" y1="62" x2="42" y2="62"/><line x1="28" y1="80" x2="42" y2="80"/><line x1="28" y1="98" x2="42" y2="98"/>
+    <line x1="118" y1="62" x2="132" y2="62"/><line x1="118" y1="80" x2="132" y2="80"/><line x1="118" y1="98" x2="132" y2="98"/>
+  </g>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

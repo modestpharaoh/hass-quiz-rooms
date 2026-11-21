@@ -1,0 +1,1815 @@
+{
+  "pack_id": "countries_populations_2026",
+  "title": "World Populations (2026)",
+  "description": "90 countries with 2026 demographic population estimates — playable in Multiple Choice or Free-Text mode.",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "questions": [
+    {
+      "id": "pop26_001",
+      "prompt": "What is the estimated 2026 population of India?",
+      "choices": [
+        "~1.48 billion",
+        "~650 million",
+        "~1.00 billion",
+        "~920 million"
+      ],
+      "answer": "~1.48 billion",
+      "aliases": [
+        "1.48 billion",
+        "1.48B",
+        "1476 million",
+        "1.5 billion"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place India at ~1.48 billion. India is the world's most populous country in 2026.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_002",
+      "prompt": "What is the estimated 2026 population of China?",
+      "choices": [
+        "~1.85 billion",
+        "~920 million",
+        "~1.95 billion",
+        "~1.41 billion"
+      ],
+      "answer": "~1.41 billion",
+      "aliases": [
+        "1.41 billion",
+        "1.41B",
+        "1412 million",
+        "1.4 billion"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place China at ~1.41 billion. China has the second-largest population globally in 2026.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_003",
+      "prompt": "What is the estimated 2026 population of United States?",
+      "choices": [
+        "~349 million",
+        "~244 million",
+        "~517 million",
+        "~168 million"
+      ],
+      "answer": "~349 million",
+      "aliases": [
+        "349 million",
+        "349M",
+        "350 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place United States at ~349 million. The United States is the third-most populous country in the world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_004",
+      "prompt": "What is the estimated 2026 population of Indonesia?",
+      "choices": [
+        "~202 million",
+        "~138 million",
+        "~533 million",
+        "~288 million"
+      ],
+      "answer": "~288 million",
+      "aliases": [
+        "288 million",
+        "288M",
+        "290 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Indonesia at ~288 million. Indonesia is Southeast Asia's most populous nation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_005",
+      "prompt": "What is the estimated 2026 population of Pakistan?",
+      "choices": [
+        "~383 million",
+        "~259 million",
+        "~479 million",
+        "~181 million"
+      ],
+      "answer": "~259 million",
+      "aliases": [
+        "259 million",
+        "259M",
+        "260 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Pakistan at ~259 million. Pakistan ranks fifth globally in population.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_006",
+      "prompt": "What is the estimated 2026 population of Nigeria?",
+      "choices": [
+        "~242 million",
+        "~116 million",
+        "~448 million",
+        "~169 million"
+      ],
+      "answer": "~242 million",
+      "aliases": [
+        "242 million",
+        "242M",
+        "240 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Nigeria at ~242 million. Nigeria is Africa's most populous country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_007",
+      "prompt": "What is the estimated 2026 population of Brazil?",
+      "choices": [
+        "~150 million",
+        "~317 million",
+        "~396 million",
+        "~214 million"
+      ],
+      "answer": "~214 million",
+      "aliases": [
+        "214 million",
+        "214M",
+        "215 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Brazil at ~214 million. Brazil is South America's largest country by population.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_008",
+      "prompt": "What is the estimated 2026 population of Bangladesh?",
+      "choices": [
+        "~177 million",
+        "~85 million",
+        "~124 million",
+        "~262 million"
+      ],
+      "answer": "~177 million",
+      "aliases": [
+        "177 million",
+        "177M",
+        "175 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Bangladesh at ~177 million. Bangladesh is one of the most densely populated nations on Earth.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_009",
+      "prompt": "What is the estimated 2026 population of Russia?",
+      "choices": [
+        "~212 million",
+        "~265 million",
+        "~143 million",
+        "~100 million"
+      ],
+      "answer": "~143 million",
+      "aliases": [
+        "143 million",
+        "143M",
+        "144 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Russia at ~143 million. Russia spans eleven time zones across Eastern Europe and Northern Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_010",
+      "prompt": "What is the estimated 2026 population of Ethiopia?",
+      "choices": [
+        "~206 million",
+        "~67 million",
+        "~139 million",
+        "~97 million"
+      ],
+      "answer": "~139 million",
+      "aliases": [
+        "139 million",
+        "139M",
+        "140 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Ethiopia at ~139 million. Ethiopia is Africa's second-most populous nation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_011",
+      "prompt": "What is the estimated 2026 population of Mexico?",
+      "choices": [
+        "~133 million",
+        "~64 million",
+        "~197 million",
+        "~93 million"
+      ],
+      "answer": "~133 million",
+      "aliases": [
+        "133 million",
+        "133M",
+        "132 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Mexico at ~133 million. Mexico is the most populous Spanish-speaking country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_012",
+      "prompt": "What is the estimated 2026 population of Japan?",
+      "choices": [
+        "~85 million",
+        "~122 million",
+        "~59 million",
+        "~226 million"
+      ],
+      "answer": "~122 million",
+      "aliases": [
+        "122 million",
+        "122M",
+        "123 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Japan at ~122 million. Japan has one of the world's highest life expectancies.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_013",
+      "prompt": "What is the estimated 2026 population of Egypt?",
+      "choices": [
+        "~58 million",
+        "~222 million",
+        "~84 million",
+        "~120 million"
+      ],
+      "answer": "~120 million",
+      "aliases": [
+        "120 million",
+        "120M",
+        "118 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Egypt at ~120 million. Egypt is the most populous country in the Arab world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_014",
+      "prompt": "What is the estimated 2026 population of Philippines?",
+      "choices": [
+        "~118 million",
+        "~175 million",
+        "~83 million",
+        "~57 million"
+      ],
+      "answer": "~118 million",
+      "aliases": [
+        "118 million",
+        "118M",
+        "117 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Philippines at ~118 million. The Philippines is an archipelago of over 7,000 islands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_015",
+      "prompt": "What is the estimated 2026 population of DR Congo?",
+      "choices": [
+        "~56 million",
+        "~116 million",
+        "~81 million",
+        "~172 million"
+      ],
+      "answer": "~116 million",
+      "aliases": [
+        "116 million",
+        "116M",
+        "115 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place DR Congo at ~116 million. DR Congo is the most populous Francophone country in the world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_016",
+      "prompt": "What is the estimated 2026 population of Vietnam?",
+      "choices": [
+        "~71 million",
+        "~189 million",
+        "~49 million",
+        "~102 million"
+      ],
+      "answer": "~102 million",
+      "aliases": [
+        "102 million",
+        "102M",
+        "100 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Vietnam at ~102 million. Vietnam surpassed 100 million residents in the 2020s.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_017",
+      "prompt": "What is the estimated 2026 population of Iran?",
+      "choices": [
+        "~60 million",
+        "~144 million",
+        "~93 million",
+        "~39 million"
+      ],
+      "answer": "~93 million",
+      "aliases": [
+        "93 million",
+        "93M",
+        "92 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Iran at ~93 million. Iran is among the most populous countries in Western Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_018",
+      "prompt": "What is the estimated 2026 population of Turkey?",
+      "choices": [
+        "~88 million",
+        "~57 million",
+        "~37 million",
+        "~136 million"
+      ],
+      "answer": "~88 million",
+      "aliases": [
+        "88 million",
+        "88M",
+        "87 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Turkey at ~88 million. Turkey bridges Eastern Europe and Western Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_019",
+      "prompt": "What is the estimated 2026 population of Germany?",
+      "choices": [
+        "~35 million",
+        "~130 million",
+        "~181 million",
+        "~84 million"
+      ],
+      "answer": "~84 million",
+      "aliases": [
+        "84 million",
+        "84M",
+        "85 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Germany at ~84 million. Germany is the most populous member state of the European Union.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_020",
+      "prompt": "What is the estimated 2026 population of Thailand?",
+      "choices": [
+        "~112 million",
+        "~155 million",
+        "~72 million",
+        "~47 million"
+      ],
+      "answer": "~72 million",
+      "aliases": [
+        "72 million",
+        "72M",
+        "71 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Thailand at ~72 million. Thailand sits at the heart of mainland Southeast Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_021",
+      "prompt": "What is the estimated 2026 population of United Kingdom?",
+      "choices": [
+        "~46 million",
+        "~150 million",
+        "~70 million",
+        "~29 million"
+      ],
+      "answer": "~70 million",
+      "aliases": [
+        "70 million",
+        "70M",
+        "69 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place United Kingdom at ~70 million. The United Kingdom consists of England, Scotland, Wales, and Northern Ireland.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_022",
+      "prompt": "What is the estimated 2026 population of France?",
+      "choices": [
+        "~28 million",
+        "~67 million",
+        "~104 million",
+        "~44 million"
+      ],
+      "answer": "~67 million",
+      "aliases": [
+        "67 million",
+        "67M",
+        "68 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place France at ~67 million. France is the second-most populous nation in the EU.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_023",
+      "prompt": "What is the estimated 2026 population of Italy?",
+      "choices": [
+        "~38 million",
+        "~25 million",
+        "~59 million",
+        "~127 million"
+      ],
+      "answer": "~59 million",
+      "aliases": [
+        "59 million",
+        "59M",
+        "60 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Italy at ~59 million. Italy has one of Europe's largest urban populations.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_024",
+      "prompt": "What is the estimated 2026 population of South Africa?",
+      "choices": [
+        "~27 million",
+        "~65 million",
+        "~42 million",
+        "~101 million"
+      ],
+      "answer": "~65 million",
+      "aliases": [
+        "65 million",
+        "65M",
+        "64 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place South Africa at ~65 million. South Africa is the southernmost country on the African mainland.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_025",
+      "prompt": "What is the estimated 2026 population of South Korea?",
+      "choices": [
+        "~34 million",
+        "~112 million",
+        "~81 million",
+        "~52 million"
+      ],
+      "answer": "~52 million",
+      "aliases": [
+        "52 million",
+        "52M",
+        "51 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place South Korea at ~52 million. Roughly half of South Korea's population lives in the Seoul metropolitan area.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_026",
+      "prompt": "What is the estimated 2026 population of Spain?",
+      "choices": [
+        "~48 million",
+        "~74 million",
+        "~103 million",
+        "~31 million"
+      ],
+      "answer": "~48 million",
+      "aliases": [
+        "48 million",
+        "48M",
+        "49 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Spain at ~48 million. Spain occupies most of the Iberian Peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_027",
+      "prompt": "What is the estimated 2026 population of Argentina?",
+      "choices": [
+        "~19 million",
+        "~46 million",
+        "~71 million",
+        "~30 million"
+      ],
+      "answer": "~46 million",
+      "aliases": [
+        "46 million",
+        "46M",
+        "47 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Argentina at ~46 million. Argentina is the second-largest country in South America by area.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_028",
+      "prompt": "What is the estimated 2026 population of Canada?",
+      "choices": [
+        "~41 million",
+        "~88 million",
+        "~17 million",
+        "~64 million"
+      ],
+      "answer": "~41 million",
+      "aliases": [
+        "41 million",
+        "41M",
+        "42 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Canada at ~41 million. Canada surpassed 40 million residents in 2023.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_029",
+      "prompt": "What is the estimated 2026 population of Saudi Arabia?",
+      "choices": [
+        "~54 million",
+        "~23 million",
+        "~14.7 million",
+        "~35 million"
+      ],
+      "answer": "~35 million",
+      "aliases": [
+        "35 million",
+        "35M",
+        "36 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Saudi Arabia at ~35 million. Saudi Arabia is the largest country on the Arabian Peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_030",
+      "prompt": "What is the estimated 2026 population of Australia?",
+      "choices": [
+        "~18 million",
+        "~58 million",
+        "~42 million",
+        "~27 million"
+      ],
+      "answer": "~27 million",
+      "aliases": [
+        "27 million",
+        "27M",
+        "28 million"
+      ],
+      "difficulty": "easy",
+      "explanation": "2026 demographic estimates place Australia at ~27 million. Australia is both a country and an island continent.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_031",
+      "prompt": "What is the estimated 2026 population of Tanzania?",
+      "choices": [
+        "~47 million",
+        "~72 million",
+        "~30 million",
+        "~112 million"
+      ],
+      "answer": "~72 million",
+      "aliases": [
+        "72 million",
+        "72M",
+        "70 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Tanzania at ~72 million. Tanzania is home to Mount Kilimanjaro and the Serengeti.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_032",
+      "prompt": "What is the estimated 2026 population of Kenya?",
+      "choices": [
+        "~91 million",
+        "~25 million",
+        "~59 million",
+        "~127 million"
+      ],
+      "answer": "~59 million",
+      "aliases": [
+        "59 million",
+        "59M",
+        "58 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Kenya at ~59 million. Kenya is East Africa's largest commercial hub.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_033",
+      "prompt": "What is the estimated 2026 population of Myanmar?",
+      "choices": [
+        "~85 million",
+        "~23 million",
+        "~55 million",
+        "~36 million"
+      ],
+      "answer": "~55 million",
+      "aliases": [
+        "55 million",
+        "55M",
+        "54 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Myanmar at ~55 million. Myanmar borders China, India, Bangladesh, Laos, and Thailand.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_034",
+      "prompt": "What is the estimated 2026 population of Colombia?",
+      "choices": [
+        "~54 million",
+        "~35 million",
+        "~23 million",
+        "~116 million"
+      ],
+      "answer": "~54 million",
+      "aliases": [
+        "54 million",
+        "54M",
+        "53 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Colombia at ~54 million. Colombia borders both the Pacific Ocean and the Caribbean Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_035",
+      "prompt": "What is the estimated 2026 population of Sudan?",
+      "choices": [
+        "~82 million",
+        "~22 million",
+        "~53 million",
+        "~34 million"
+      ],
+      "answer": "~53 million",
+      "aliases": [
+        "53 million",
+        "53M",
+        "52 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Sudan at ~53 million. The White Nile and Blue Nile meet at Khartoum in Sudan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_036",
+      "prompt": "What is the estimated 2026 population of Uganda?",
+      "choices": [
+        "~82 million",
+        "~34 million",
+        "~53 million",
+        "~22 million"
+      ],
+      "answer": "~53 million",
+      "aliases": [
+        "53 million",
+        "53M",
+        "52 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Uganda at ~53 million. Uganda sits on the northern shore of Lake Victoria.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_037",
+      "prompt": "What is the estimated 2026 population of Iraq?",
+      "choices": [
+        "~48 million",
+        "~103 million",
+        "~74 million",
+        "~20 million"
+      ],
+      "answer": "~48 million",
+      "aliases": [
+        "48 million",
+        "48M",
+        "47 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Iraq at ~48 million. Iraq is home to the historic Tigris and Euphrates rivers.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_038",
+      "prompt": "What is the estimated 2026 population of Algeria?",
+      "choices": [
+        "~20 million",
+        "~74 million",
+        "~31 million",
+        "~48 million"
+      ],
+      "answer": "~48 million",
+      "aliases": [
+        "48 million",
+        "48M",
+        "47 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Algeria at ~48 million. Algeria is Africa's largest country by land area.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_039",
+      "prompt": "What is the estimated 2026 population of Afghanistan?",
+      "choices": [
+        "~97 million",
+        "~29 million",
+        "~19 million",
+        "~45 million"
+      ],
+      "answer": "~45 million",
+      "aliases": [
+        "45 million",
+        "45M",
+        "44 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Afghanistan at ~45 million. Afghanistan is a mountainous country in South-Central Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_040",
+      "prompt": "What is the estimated 2026 population of Yemen?",
+      "choices": [
+        "~18 million",
+        "~43 million",
+        "~67 million",
+        "~92 million"
+      ],
+      "answer": "~43 million",
+      "aliases": [
+        "43 million",
+        "43M",
+        "42 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Yemen at ~43 million. Yemen sits at the southern end of the Arabian Peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_041",
+      "prompt": "What is the estimated 2026 population of Morocco?",
+      "choices": [
+        "~60 million",
+        "~84 million",
+        "~39 million",
+        "~25 million"
+      ],
+      "answer": "~39 million",
+      "aliases": [
+        "39 million",
+        "39M",
+        "38 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Morocco at ~39 million. Morocco overlooks both the Atlantic Ocean and the Mediterranean Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_042",
+      "prompt": "What is the estimated 2026 population of Poland?",
+      "choices": [
+        "~25 million",
+        "~59 million",
+        "~82 million",
+        "~38 million"
+      ],
+      "answer": "~38 million",
+      "aliases": [
+        "38 million",
+        "38M",
+        "37 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Poland at ~38 million. Poland is the largest country in Central Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_043",
+      "prompt": "What is the estimated 2026 population of Ukraine?",
+      "choices": [
+        "~84 million",
+        "~39 million",
+        "~25 million",
+        "~16 million"
+      ],
+      "answer": "~39 million",
+      "aliases": [
+        "39 million",
+        "39M",
+        "38 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Ukraine at ~39 million. Ukraine is Europe's largest country entirely within Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_044",
+      "prompt": "What is the estimated 2026 population of Uzbekistan?",
+      "choices": [
+        "~25 million",
+        "~16 million",
+        "~82 million",
+        "~38 million"
+      ],
+      "answer": "~38 million",
+      "aliases": [
+        "38 million",
+        "38M",
+        "37 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Uzbekistan at ~38 million. Uzbekistan is Central Asia's most populous country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_045",
+      "prompt": "What is the estimated 2026 population of Angola?",
+      "choices": [
+        "~26 million",
+        "~62 million",
+        "~17 million",
+        "~40 million"
+      ],
+      "answer": "~40 million",
+      "aliases": [
+        "40 million",
+        "40M",
+        "39 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Angola at ~40 million. Angola is a Portuguese-speaking nation in Southern Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_046",
+      "prompt": "What is the estimated 2026 population of Malaysia?",
+      "choices": [
+        "~36 million",
+        "~15 million",
+        "~23 million",
+        "~77 million"
+      ],
+      "answer": "~36 million",
+      "aliases": [
+        "36 million",
+        "36M",
+        "35 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Malaysia at ~36 million. Malaysia spans Peninsular Malaysia and part of Borneo.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_047",
+      "prompt": "What is the estimated 2026 population of Mozambique?",
+      "choices": [
+        "~37 million",
+        "~24 million",
+        "~57 million",
+        "~80 million"
+      ],
+      "answer": "~37 million",
+      "aliases": [
+        "37 million",
+        "37M",
+        "36 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Mozambique at ~37 million. Mozambique has a long Indian Ocean coastline.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_048",
+      "prompt": "What is the estimated 2026 population of Ghana?",
+      "choices": [
+        "~36 million",
+        "~23 million",
+        "~56 million",
+        "~15 million"
+      ],
+      "answer": "~36 million",
+      "aliases": [
+        "36 million",
+        "36M",
+        "35 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Ghana at ~36 million. Ghana lies along the Gulf of Guinea in West Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_049",
+      "prompt": "What is the estimated 2026 population of Peru?",
+      "choices": [
+        "~23 million",
+        "~14.7 million",
+        "~54 million",
+        "~35 million"
+      ],
+      "answer": "~35 million",
+      "aliases": [
+        "35 million",
+        "35M",
+        "34 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Peru at ~35 million. Peru encompasses Pacific coast, Andes peaks, and Amazon rainforest.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_050",
+      "prompt": "What is the estimated 2026 population of Madagascar?",
+      "choices": [
+        "~71 million",
+        "~33 million",
+        "~21 million",
+        "~51 million"
+      ],
+      "answer": "~33 million",
+      "aliases": [
+        "33 million",
+        "33M",
+        "32 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Madagascar at ~33 million. Madagascar is the world's fourth-largest island.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_051",
+      "prompt": "What is the estimated 2026 population of Ivory Coast?",
+      "choices": [
+        "~21 million",
+        "~13.9 million",
+        "~71 million",
+        "~33 million"
+      ],
+      "answer": "~33 million",
+      "aliases": [
+        "33 million",
+        "33M",
+        "32 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Ivory Coast at ~33 million. Ivory Coast is the world's top cocoa producer.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_052",
+      "prompt": "What is the estimated 2026 population of Nepal?",
+      "choices": [
+        "~64 million",
+        "~12.6 million",
+        "~46 million",
+        "~30 million"
+      ],
+      "answer": "~30 million",
+      "aliases": [
+        "30 million",
+        "30M",
+        "31 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Nepal at ~30 million. Nepal is home to Mount Everest in the Himalayas.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_053",
+      "prompt": "What is the estimated 2026 population of Cameroon?",
+      "choices": [
+        "~31 million",
+        "~20 million",
+        "~67 million",
+        "~48 million"
+      ],
+      "answer": "~31 million",
+      "aliases": [
+        "31 million",
+        "31M",
+        "30 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Cameroon at ~31 million. Cameroon is bilingual in French and English.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_054",
+      "prompt": "What is the estimated 2026 population of Venezuela?",
+      "choices": [
+        "~29 million",
+        "~19 million",
+        "~45 million",
+        "~62 million"
+      ],
+      "answer": "~29 million",
+      "aliases": [
+        "29 million",
+        "29M",
+        "28 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Venezuela at ~29 million. Venezuela sits on South America's northern Caribbean coast.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_055",
+      "prompt": "What is the estimated 2026 population of Syria?",
+      "choices": [
+        "~10.9 million",
+        "~17 million",
+        "~26 million",
+        "~40 million"
+      ],
+      "answer": "~26 million",
+      "aliases": [
+        "26 million",
+        "26M",
+        "25 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Syria at ~26 million. Damascus in Syria is among the oldest continuously inhabited cities.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_056",
+      "prompt": "What is the estimated 2026 population of Taiwan?",
+      "choices": [
+        "~49 million",
+        "~36 million",
+        "~23 million",
+        "~15.0 million"
+      ],
+      "answer": "~23 million",
+      "aliases": [
+        "23 million",
+        "23M",
+        "24 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Taiwan at ~23 million. Taiwan is a major global hub for semiconductor manufacturing.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_057",
+      "prompt": "What is the estimated 2026 population of Sri Lanka?",
+      "choices": [
+        "~23 million",
+        "~15.0 million",
+        "~36 million",
+        "~49 million"
+      ],
+      "answer": "~23 million",
+      "aliases": [
+        "23 million",
+        "23M",
+        "22 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Sri Lanka at ~23 million. Sri Lanka is an island nation south of India.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_058",
+      "prompt": "What is the estimated 2026 population of Chile?",
+      "choices": [
+        "~8.4 million",
+        "~20 million",
+        "~43 million",
+        "~13.0 million"
+      ],
+      "answer": "~20 million",
+      "aliases": [
+        "20 million",
+        "20M",
+        "19 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Chile at ~20 million. Chile stretches over 4,200 km along South America's Pacific edge.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_059",
+      "prompt": "What is the estimated 2026 population of Kazakhstan?",
+      "choices": [
+        "~8.8 million",
+        "~13.7 million",
+        "~45 million",
+        "~21 million"
+      ],
+      "answer": "~21 million",
+      "aliases": [
+        "21 million",
+        "21M",
+        "20 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Kazakhstan at ~21 million. Kazakhstan is the world's largest landlocked country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_060",
+      "prompt": "What is the estimated 2026 population of Netherlands?",
+      "choices": [
+        "~59 million",
+        "~18 million",
+        "~8.1 million",
+        "~44 million"
+      ],
+      "answer": "~18 million",
+      "aliases": [
+        "18 million",
+        "18M",
+        "19 million"
+      ],
+      "difficulty": "medium",
+      "explanation": "2026 demographic estimates place Netherlands at ~18 million. The Netherlands is known for its engineering of polders and dikes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_061",
+      "prompt": "What is the estimated 2026 population of Romania?",
+      "choices": [
+        "~19 million",
+        "~47 million",
+        "~31 million",
+        "~8.6 million"
+      ],
+      "answer": "~19 million",
+      "aliases": [
+        "19 million",
+        "19M",
+        "18 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Romania at ~19 million. Romania lies along the lower Danube River and Black Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_062",
+      "prompt": "What is the estimated 2026 population of Ecuador?",
+      "choices": [
+        "~19 million",
+        "~8.6 million",
+        "~63 million",
+        "~31 million"
+      ],
+      "answer": "~19 million",
+      "aliases": [
+        "19 million",
+        "19M",
+        "18 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Ecuador at ~19 million. Ecuador is named after the equator crossing the country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_063",
+      "prompt": "What is the estimated 2026 population of Guatemala?",
+      "choices": [
+        "~31 million",
+        "~47 million",
+        "~19 million",
+        "~8.6 million"
+      ],
+      "answer": "~19 million",
+      "aliases": [
+        "19 million",
+        "19M",
+        "18 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Guatemala at ~19 million. Guatemala is Central America's most populous nation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_064",
+      "prompt": "What is the estimated 2026 population of Senegal?",
+      "choices": [
+        "~19 million",
+        "~47 million",
+        "~63 million",
+        "~8.6 million"
+      ],
+      "answer": "~19 million",
+      "aliases": [
+        "19 million",
+        "19M",
+        "18 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Senegal at ~19 million. Dakar in Senegal sits on Africa's westernmost peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_065",
+      "prompt": "What is the estimated 2026 population of Cambodia?",
+      "choices": [
+        "~44 million",
+        "~59 million",
+        "~30 million",
+        "~18 million"
+      ],
+      "answer": "~18 million",
+      "aliases": [
+        "18 million",
+        "18M",
+        "17 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Cambodia at ~18 million. Cambodia is famous for the Angkor Wat temple complex.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_066",
+      "prompt": "What is the estimated 2026 population of Zimbabwe?",
+      "choices": [
+        "~28 million",
+        "~7.7 million",
+        "~56 million",
+        "~17 million"
+      ],
+      "answer": "~17 million",
+      "aliases": [
+        "17 million",
+        "17M",
+        "16 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Zimbabwe at ~17 million. Zimbabwe shares Victoria Falls with Zambia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_067",
+      "prompt": "What is the estimated 2026 population of Rwanda?",
+      "choices": [
+        "~6.8 million",
+        "~15 million",
+        "~25 million",
+        "~50 million"
+      ],
+      "answer": "~15 million",
+      "aliases": [
+        "15 million",
+        "15M",
+        "14 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Rwanda at ~15 million. Rwanda is known as the Land of a Thousand Hills.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_068",
+      "prompt": "What is the estimated 2026 population of Tunisia?",
+      "choices": [
+        "~12.4 million",
+        "~30 million",
+        "~20 million",
+        "~41 million"
+      ],
+      "answer": "~12.4 million",
+      "aliases": [
+        "12.4 million",
+        "12 million",
+        "12M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Tunisia at ~12.4 million. Tunisia is Africa's northernmost country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_069",
+      "prompt": "What is the estimated 2026 population of Bolivia?",
+      "choices": [
+        "~12.7 million",
+        "~42 million",
+        "~5.7 million",
+        "~21 million"
+      ],
+      "answer": "~12.7 million",
+      "aliases": [
+        "12.7 million",
+        "13 million",
+        "12.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Bolivia at ~12.7 million. Bolivia sits high in the central Andes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_070",
+      "prompt": "What is the estimated 2026 population of Belgium?",
+      "choices": [
+        "~39 million",
+        "~5.3 million",
+        "~11.8 million",
+        "~19 million"
+      ],
+      "answer": "~11.8 million",
+      "aliases": [
+        "11.8 million",
+        "12 million",
+        "11.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Belgium at ~11.8 million. Brussels in Belgium hosts key European Union institutions.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_071",
+      "prompt": "What is the estimated 2026 population of Jordan?",
+      "choices": [
+        "~19 million",
+        "~11.6 million",
+        "~28 million",
+        "~5.2 million"
+      ],
+      "answer": "~11.6 million",
+      "aliases": [
+        "11.6 million",
+        "12 million",
+        "11.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Jordan at ~11.6 million. Jordan is famous for Petra and Wadi Rum.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_072",
+      "prompt": "What is the estimated 2026 population of Cuba?",
+      "choices": [
+        "~36 million",
+        "~4.9 million",
+        "~10.9 million",
+        "~27 million"
+      ],
+      "answer": "~10.9 million",
+      "aliases": [
+        "10.9 million",
+        "11 million",
+        "11M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Cuba at ~10.9 million. Cuba is the largest island in the Caribbean.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_073",
+      "prompt": "What is the estimated 2026 population of Czechia?",
+      "choices": [
+        "~18 million",
+        "~10.7 million",
+        "~26 million",
+        "~35 million"
+      ],
+      "answer": "~10.7 million",
+      "aliases": [
+        "10.7 million",
+        "11 million",
+        "10.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Czechia at ~10.7 million. Prague is the historic capital of Czechia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_074",
+      "prompt": "What is the estimated 2026 population of Sweden?",
+      "choices": [
+        "~4.8 million",
+        "~26 million",
+        "~10.7 million",
+        "~35 million"
+      ],
+      "answer": "~10.7 million",
+      "aliases": [
+        "10.7 million",
+        "11 million",
+        "10.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Sweden at ~10.7 million. Sweden is the most populous Nordic country.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_075",
+      "prompt": "What is the estimated 2026 population of Portugal?",
+      "choices": [
+        "~10.4 million",
+        "~25 million",
+        "~17 million",
+        "~4.7 million"
+      ],
+      "answer": "~10.4 million",
+      "aliases": [
+        "10.4 million",
+        "10 million",
+        "10.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Portugal at ~10.4 million. Portugal occupies the western Atlantic edge of Iberia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_076",
+      "prompt": "What is the estimated 2026 population of United Arab Emirates?",
+      "choices": [
+        "~38 million",
+        "~28 million",
+        "~11.5 million",
+        "~19 million"
+      ],
+      "answer": "~11.5 million",
+      "aliases": [
+        "11.5 million",
+        "11 million",
+        "12 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place United Arab Emirates at ~11.5 million. The UAE is a federation of seven emirates on the Gulf.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_077",
+      "prompt": "What is the estimated 2026 population of Greece?",
+      "choices": [
+        "~4.5 million",
+        "~33 million",
+        "~10.0 million",
+        "~16 million"
+      ],
+      "answer": "~10.0 million",
+      "aliases": [
+        "10 million",
+        "10M",
+        "10.0 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Greece at ~10.0 million. Greece comprises a mountainous mainland and thousands of islands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_078",
+      "prompt": "What is the estimated 2026 population of Hungary?",
+      "choices": [
+        "~32 million",
+        "~9.6 million",
+        "~16 million",
+        "~24 million"
+      ],
+      "answer": "~9.6 million",
+      "aliases": [
+        "9.6 million",
+        "10 million",
+        "9.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Hungary at ~9.6 million. Budapest straddles the Danube River in Hungary.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_079",
+      "prompt": "What is the estimated 2026 population of Austria?",
+      "choices": [
+        "~9.1 million",
+        "~30 million",
+        "~4.1 million",
+        "~22 million"
+      ],
+      "answer": "~9.1 million",
+      "aliases": [
+        "9.1 million",
+        "9 million",
+        "9M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Austria at ~9.1 million. Austria is an Alpine nation in Central Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_080",
+      "prompt": "What is the estimated 2026 population of Switzerland?",
+      "choices": [
+        "~4.0 million",
+        "~9.0 million",
+        "~14.8 million",
+        "~22 million"
+      ],
+      "answer": "~9.0 million",
+      "aliases": [
+        "9 million",
+        "9.0 million",
+        "9M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Switzerland at ~9.0 million. Switzerland has four official national languages.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_081",
+      "prompt": "What is the estimated 2026 population of Paraguay?",
+      "choices": [
+        "~3.2 million",
+        "~23 million",
+        "~7.1 million",
+        "~11.7 million"
+      ],
+      "answer": "~7.1 million",
+      "aliases": [
+        "7.1 million",
+        "7 million",
+        "7M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Paraguay at ~7.1 million. Paraguay is a landlocked nation in central South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_082",
+      "prompt": "What is the estimated 2026 population of Bulgaria?",
+      "choices": [
+        "~6.7 million",
+        "~3.0 million",
+        "~11.1 million",
+        "~16 million"
+      ],
+      "answer": "~6.7 million",
+      "aliases": [
+        "6.7 million",
+        "7 million",
+        "6.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Bulgaria at ~6.7 million. Bulgaria borders the Black Sea in Southeastern Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_083",
+      "prompt": "What is the estimated 2026 population of Denmark?",
+      "choices": [
+        "~14.7 million",
+        "~6.0 million",
+        "~20 million",
+        "~9.9 million"
+      ],
+      "answer": "~6.0 million",
+      "aliases": [
+        "6 million",
+        "6.0 million",
+        "6M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Denmark at ~6.0 million. Denmark consists of the Jutland peninsula and over 400 islands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_084",
+      "prompt": "What is the estimated 2026 population of Singapore?",
+      "choices": [
+        "~2.7 million",
+        "~5.9 million",
+        "~9.7 million",
+        "~19 million"
+      ],
+      "answer": "~5.9 million",
+      "aliases": [
+        "5.9 million",
+        "6 million",
+        "6M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Singapore at ~5.9 million. Singapore is a sovereign island city-state in Maritime Southeast Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_085",
+      "prompt": "What is the estimated 2026 population of Finland?",
+      "choices": [
+        "~18 million",
+        "~5.6 million",
+        "~2.5 million",
+        "~9.2 million"
+      ],
+      "answer": "~5.6 million",
+      "aliases": [
+        "5.6 million",
+        "5.5 million",
+        "6 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Finland at ~5.6 million. Finland is known as the Land of a Thousand Lakes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_086",
+      "prompt": "What is the estimated 2026 population of Norway?",
+      "choices": [
+        "~18 million",
+        "~2.5 million",
+        "~5.6 million",
+        "~9.2 million"
+      ],
+      "answer": "~5.6 million",
+      "aliases": [
+        "5.6 million",
+        "5.5 million",
+        "6 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Norway at ~5.6 million. Norway is famous for its deep coastal fjords.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_087",
+      "prompt": "What is the estimated 2026 population of Oman?",
+      "choices": [
+        "~18 million",
+        "~2.5 million",
+        "~5.6 million",
+        "~13.7 million"
+      ],
+      "answer": "~5.6 million",
+      "aliases": [
+        "5.6 million",
+        "5.5 million",
+        "6 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Oman at ~5.6 million. Oman sits on the southeastern coast of the Arabian Peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_088",
+      "prompt": "What is the estimated 2026 population of New Zealand?",
+      "choices": [
+        "~2.4 million",
+        "~13.0 million",
+        "~5.3 million",
+        "~17 million"
+      ],
+      "answer": "~5.3 million",
+      "aliases": [
+        "5.3 million",
+        "5 million",
+        "5.5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place New Zealand at ~5.3 million. New Zealand consists primarily of North Island and South Island.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_089",
+      "prompt": "What is the estimated 2026 population of Ireland?",
+      "choices": [
+        "~2.4 million",
+        "~8.9 million",
+        "~5.4 million",
+        "~13.2 million"
+      ],
+      "answer": "~5.4 million",
+      "aliases": [
+        "5.4 million",
+        "5.5 million",
+        "5 million"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Ireland at ~5.4 million. Ireland is nicknamed the Emerald Isle.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "pop26_090",
+      "prompt": "What is the estimated 2026 population of Qatar?",
+      "choices": [
+        "~7.6 million",
+        "~3.1 million",
+        "~10.2 million",
+        "~1.4 million"
+      ],
+      "answer": "~3.1 million",
+      "aliases": [
+        "3.1 million",
+        "3 million",
+        "3M"
+      ],
+      "difficulty": "hard",
+      "explanation": "2026 demographic estimates place Qatar at ~3.1 million. Qatar is a peninsular country on the Persian Gulf.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

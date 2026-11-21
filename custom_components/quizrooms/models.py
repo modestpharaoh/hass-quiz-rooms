@@ -8,8 +8,10 @@ from typing import Any
 
 from .const import (
     ANSWER_MODE_MULTIPLE_CHOICE,
+    DEFAULT_DIFFICULTY,
     DEFAULT_ROUND_COUNT,
     DEFAULT_TIMER_SECONDS,
+    DIFFICULTY_MEDIUM,
     PHASE_LOBBY,
     ROOM_STATUS_LOBBY,
     URL_MEDIA,
@@ -48,6 +50,7 @@ class Question:
     rtl: bool = False
     open_ended: bool = False
     starts_with: str | None = None
+    difficulty: str = DIFFICULTY_MEDIUM
 
 
 @dataclass(frozen=True)
@@ -71,6 +74,10 @@ class Pack:
 
     def to_summary(self) -> dict[str, Any]:
         """Serialize pack metadata for lobby and admin views."""
+        diff_counts = {"easy": 0, "medium": 0, "hard": 0}
+        for q in self.questions:
+            if q.difficulty in diff_counts:
+                diff_counts[q.difficulty] += 1
         return {
             "pack_id": self.pack_id,
             "title": self.title,
@@ -78,6 +85,7 @@ class Pack:
             "language": self.language,
             "rtl": self.rtl,
             "question_count": len(self.questions),
+            "difficulties": diff_counts,
             "has_media": any(q.media_id is not None for q in self.questions),
             "cover_url": f"{URL_MEDIA}/{self.cover_media_id}" if self.cover_media_id else None,
             "open_ended": self.open_ended,
@@ -107,6 +115,7 @@ class SnapshotQuestion:
     rtl: bool
     open_ended: bool = False
     starts_with: str | None = None
+    difficulty: str = DIFFICULTY_MEDIUM
 
 
 @dataclass
@@ -154,6 +163,7 @@ class RoomSettings:
     wager_mode: str = WAGER_MODE_POOL
     deduct_wrong_wager: bool = True
     unique_answers_only: bool = False
+    difficulty: str = DEFAULT_DIFFICULTY
     visibility: str = VISIBILITY_PUBLIC
     allow_late_join: bool = True
 

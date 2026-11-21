@@ -17,6 +17,8 @@ import zipfile
 
 from .const import (
     ALLOWED_MEDIA_EXTENSIONS,
+    ALLOWED_QUESTION_DIFFICULTIES,
+    DIFFICULTY_MEDIUM,
     MAX_UNCOMPRESSED_ZIP_BYTES,
     MAX_UPLOAD_BYTES,
     MAX_ZIP_FILES,
@@ -65,6 +67,7 @@ def sample_pack_template() -> dict[str, Any]:
                 "choices": ["Mars", "Venus", "Mercury", "Jupiter"],
                 "answer": "Mars",
                 "aliases": ["The Red Planet"],
+                "difficulty": "easy",
                 "explanation": "Iron oxide dust on Mars gives it its reddish appearance."
             },
             {
@@ -73,6 +76,7 @@ def sample_pack_template() -> dict[str, Any]:
                 "choices": ["Cairo", "Alexandria", "Giza", "Luxor"],
                 "answer": "Cairo",
                 "aliases": ["Al-Qahirah", "القاهرة"],
+                "difficulty": "easy",
                 "explanation": "Cairo sits near the Nile Delta and is Egypt's capital."
             }
         ]
@@ -230,6 +234,15 @@ def _validate_pack_payload(
             errors.append(f"{prefix}.rtl must be a boolean.")
             q_rtl = bool(rtl)
 
+        q_diff_raw = q.get("difficulty", DIFFICULTY_MEDIUM)
+        if not isinstance(q_diff_raw, str) or q_diff_raw.strip().lower() not in ALLOWED_QUESTION_DIFFICULTIES:
+            errors.append(
+                f"{prefix}.difficulty ('{q_diff_raw}') must be one of {ALLOWED_QUESTION_DIFFICULTIES}."
+            )
+            q_diff = DIFFICULTY_MEDIUM
+        else:
+            q_diff = q_diff_raw.strip().lower()
+
         image = q.get("image")
         normalized_image: str | None = None
         if image is not None and image != "":
@@ -271,6 +284,7 @@ def _validate_pack_payload(
                 "rtl": q_rtl,
                 "open_ended": q_open_ended,
                 "starts_with": starts_with,
+                "difficulty": q_diff,
             }
         )
 
@@ -453,6 +467,7 @@ class PackRegistry:
                     rtl=q["rtl"],
                     open_ended=q["open_ended"],
                     starts_with=q["starts_with"],
+                    difficulty=q["difficulty"],
                 )
             )
 

@@ -22,7 +22,8 @@
       "aliases": [],
       "explanation": "Capital: Andorra la Vella · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ae",
@@ -43,7 +44,8 @@
       ],
       "explanation": "Capital: Abu Dhabi · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_af",
@@ -59,7 +61,8 @@
       "aliases": [],
       "explanation": "Capital: Kabul · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ag",
@@ -75,7 +78,8 @@
       "aliases": [],
       "explanation": "Capital: St. John's · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_al",
@@ -91,7 +95,8 @@
       "aliases": [],
       "explanation": "Capital: Tirana · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_am",
@@ -107,7 +112,8 @@
       "aliases": [],
       "explanation": "Capital: Yerevan · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ao",
@@ -123,7 +129,8 @@
       "aliases": [],
       "explanation": "Capital: Luanda · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ar",
@@ -139,7 +146,8 @@
       "aliases": [],
       "explanation": "Capital: Buenos Aires · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_at",
@@ -158,7 +166,8 @@
       ],
       "explanation": "Capital: Vienna · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_au",
@@ -174,7 +183,8 @@
       "aliases": [],
       "explanation": "Capital: Canberra · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_az",
@@ -190,7 +200,8 @@
       "aliases": [],
       "explanation": "Capital: Baku · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ba",
@@ -209,7 +220,8 @@
       ],
       "explanation": "Capital: Sarajevo · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bb",
@@ -225,7 +237,8 @@
       "aliases": [],
       "explanation": "Capital: Bridgetown · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bd",
@@ -241,7 +254,8 @@
       "aliases": [],
       "explanation": "Capital: Dhaka · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_be",
@@ -260,7 +274,8 @@
       ],
       "explanation": "Capital: Brussels · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_bf",
@@ -276,7 +291,8 @@
       "aliases": [],
       "explanation": "Capital: Ouagadougou · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_bg",
@@ -292,7 +308,8 @@
       "aliases": [],
       "explanation": "Capital: Sofia · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bh",
@@ -308,7 +325,8 @@
       "aliases": [],
       "explanation": "Capital: Manama · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bi",
@@ -324,7 +342,8 @@
       "aliases": [],
       "explanation": "Capital: Bujumbura · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_bj",
@@ -340,7 +359,8 @@
       "aliases": [],
       "explanation": "Capital: Porto-Novo · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bn",
@@ -356,7 +376,8 @@
       "aliases": [],
       "explanation": "Capital: Bandar Seri Begawan · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bo",
@@ -372,7 +393,8 @@
       "aliases": [],
       "explanation": "Capital: Sucre · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_br",
@@ -390,7 +412,8 @@
       ],
       "explanation": "Capital: Brasília · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_bs",
@@ -406,7 +429,8 @@
       "aliases": [],
       "explanation": "Capital: Nassau · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bt",
@@ -422,7 +446,8 @@
       "aliases": [],
       "explanation": "Capital: Thimphu · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bw",
@@ -438,7 +463,8 @@
       "aliases": [],
       "explanation": "Capital: Gaborone · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_by",
@@ -454,7 +480,8 @@
       "aliases": [],
       "explanation": "Capital: Minsk · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_bz",
@@ -470,7 +497,8 @@
       "aliases": [],
       "explanation": "Capital: Belmopan · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ca",
@@ -486,7 +514,8 @@
       "aliases": [],
       "explanation": "Capital: Ottawa · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_cd",
@@ -506,7 +535,8 @@
       ],
       "explanation": "Capital: Kinshasa · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_cf",
@@ -522,7 +552,8 @@
       "aliases": [],
       "explanation": "Capital: Bangui · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_cg",
@@ -541,7 +572,8 @@
       ],
       "explanation": "Capital: Brazzaville · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ch",
@@ -560,7 +592,8 @@
       ],
       "explanation": "Capital: Bern · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ci",
@@ -579,7 +612,8 @@
       ],
       "explanation": "Capital: Yamoussoukro · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_cl",
@@ -595,7 +629,8 @@
       "aliases": [],
       "explanation": "Capital: Santiago · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_cm",
@@ -611,7 +646,8 @@
       "aliases": [],
       "explanation": "Capital: Yaoundé · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_cn",
@@ -620,7 +656,7 @@
       "choices": [
         "China",
         "Georgia",
-        "Israel",
+        "Jordan",
         "Palestine"
       ],
       "answer": "China",
@@ -630,7 +666,8 @@
       ],
       "explanation": "Capital: Beijing · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_co",
@@ -646,7 +683,8 @@
       "aliases": [],
       "explanation": "Capital: Bogotá · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_cr",
@@ -662,7 +700,8 @@
       "aliases": [],
       "explanation": "Capital: San José · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_cu",
@@ -678,7 +717,8 @@
       "aliases": [],
       "explanation": "Capital: Havana · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_cv",
@@ -696,7 +736,8 @@
       ],
       "explanation": "Capital: Praia · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_cy",
@@ -712,7 +753,8 @@
       "aliases": [],
       "explanation": "Capital: Nicosia · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_cz",
@@ -730,7 +772,8 @@
       ],
       "explanation": "Capital: Prague · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_de",
@@ -748,7 +791,8 @@
       ],
       "explanation": "Capital: Berlin · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_dj",
@@ -764,7 +808,8 @@
       "aliases": [],
       "explanation": "Capital: Djibouti · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_dk",
@@ -782,7 +827,8 @@
       ],
       "explanation": "Capital: Copenhagen · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_dm",
@@ -798,7 +844,8 @@
       "aliases": [],
       "explanation": "Capital: Roseau · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_do",
@@ -814,7 +861,8 @@
       "aliases": [],
       "explanation": "Capital: Santo Domingo · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_dz",
@@ -832,7 +880,8 @@
       ],
       "explanation": "Capital: Algiers · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ec",
@@ -848,7 +897,8 @@
       "aliases": [],
       "explanation": "Capital: Quito · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ee",
@@ -864,7 +914,8 @@
       "aliases": [],
       "explanation": "Capital: Tallinn · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_eg",
@@ -884,7 +935,8 @@
       ],
       "explanation": "Capital: Cairo · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_er",
@@ -900,7 +952,8 @@
       "aliases": [],
       "explanation": "Capital: Asmara · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_es",
@@ -919,7 +972,8 @@
       ],
       "explanation": "Capital: Madrid · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_et",
@@ -935,7 +989,8 @@
       "aliases": [],
       "explanation": "Capital: Addis Ababa · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_fi",
@@ -953,7 +1008,8 @@
       ],
       "explanation": "Capital: Helsinki · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_fj",
@@ -969,7 +1025,8 @@
       "aliases": [],
       "explanation": "Capital: Suva · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_fm",
@@ -985,7 +1042,8 @@
       "aliases": [],
       "explanation": "Capital: Palikir · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_fr",
@@ -1003,7 +1061,8 @@
       ],
       "explanation": "Capital: Paris · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ga",
@@ -1019,7 +1078,8 @@
       "aliases": [],
       "explanation": "Capital: Libreville · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_gb",
@@ -1040,7 +1100,8 @@
       ],
       "explanation": "Capital: London · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_gd",
@@ -1056,7 +1117,8 @@
       "aliases": [],
       "explanation": "Capital: St. George's · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ge",
@@ -1072,7 +1134,8 @@
       "aliases": [],
       "explanation": "Capital: Tbilisi · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_gh",
@@ -1088,7 +1151,8 @@
       "aliases": [],
       "explanation": "Capital: Accra · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_gm",
@@ -1104,7 +1168,8 @@
       "aliases": [],
       "explanation": "Capital: Banjul · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_gn",
@@ -1120,7 +1185,8 @@
       "aliases": [],
       "explanation": "Capital: Conakry · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_gq",
@@ -1136,7 +1202,8 @@
       "aliases": [],
       "explanation": "Capital: Malabo · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_gr",
@@ -1154,7 +1221,8 @@
       ],
       "explanation": "Capital: Athens · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_gt",
@@ -1170,7 +1238,8 @@
       "aliases": [],
       "explanation": "Capital: Guatemala City · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_gw",
@@ -1186,7 +1255,8 @@
       "aliases": [],
       "explanation": "Capital: Bissau · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_gy",
@@ -1202,7 +1272,8 @@
       "aliases": [],
       "explanation": "Capital: Georgetown · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_hn",
@@ -1218,7 +1289,8 @@
       "aliases": [],
       "explanation": "Capital: Tegucigalpa · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_hr",
@@ -1236,7 +1308,8 @@
       ],
       "explanation": "Capital: Zagreb · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ht",
@@ -1252,7 +1325,8 @@
       "aliases": [],
       "explanation": "Capital: Port-au-Prince · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_hu",
@@ -1270,7 +1344,8 @@
       ],
       "explanation": "Capital: Budapest · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_id",
@@ -1286,7 +1361,8 @@
       "aliases": [],
       "explanation": "Capital: Jakarta · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ie",
@@ -1306,7 +1382,8 @@
       ],
       "explanation": "Capital: Dublin · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_il",
@@ -1322,7 +1399,8 @@
       "aliases": [],
       "explanation": "Capital: Jerusalem · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_in",
@@ -1340,7 +1418,8 @@
       ],
       "explanation": "Capital: New Delhi · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_iq",
@@ -1358,7 +1437,8 @@
       ],
       "explanation": "Capital: Baghdad · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ir",
@@ -1374,7 +1454,8 @@
       "aliases": [],
       "explanation": "Capital: Tehran · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_is",
@@ -1392,7 +1473,8 @@
       ],
       "explanation": "Capital: Reykjavik · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_it",
@@ -1410,7 +1492,8 @@
       ],
       "explanation": "Capital: Rome · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_jm",
@@ -1426,7 +1509,8 @@
       "aliases": [],
       "explanation": "Capital: Kingston · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_jo",
@@ -1444,7 +1528,8 @@
       ],
       "explanation": "Capital: Amman · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_jp",
@@ -1463,7 +1548,8 @@
       ],
       "explanation": "Capital: Tokyo · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ke",
@@ -1479,7 +1565,8 @@
       "aliases": [],
       "explanation": "Capital: Nairobi · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_kg",
@@ -1495,7 +1582,8 @@
       "aliases": [],
       "explanation": "Capital: Bishkek · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_kh",
@@ -1511,7 +1599,8 @@
       "aliases": [],
       "explanation": "Capital: Phnom Penh · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ki",
@@ -1527,7 +1616,8 @@
       "aliases": [],
       "explanation": "Capital: South Tarawa · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_km",
@@ -1543,7 +1633,8 @@
       "aliases": [],
       "explanation": "Capital: Moroni · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_kn",
@@ -1559,7 +1650,8 @@
       "aliases": [],
       "explanation": "Capital: Basseterre · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_kp",
@@ -1577,7 +1669,8 @@
       ],
       "explanation": "Capital: Pyongyang · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_kr",
@@ -1597,7 +1690,8 @@
       ],
       "explanation": "Capital: Seoul · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_kw",
@@ -1615,7 +1709,8 @@
       ],
       "explanation": "Capital: Kuwait City · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_kz",
@@ -1631,7 +1726,8 @@
       "aliases": [],
       "explanation": "Capital: Astana · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_la",
@@ -1647,7 +1743,8 @@
       "aliases": [],
       "explanation": "Capital: Vientiane · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_lb",
@@ -1665,7 +1762,8 @@
       ],
       "explanation": "Capital: Beirut · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_lc",
@@ -1681,7 +1779,8 @@
       "aliases": [],
       "explanation": "Capital: Castries · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_li",
@@ -1697,7 +1796,8 @@
       "aliases": [],
       "explanation": "Capital: Vaduz · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_lk",
@@ -1713,7 +1813,8 @@
       "aliases": [],
       "explanation": "Capital: Sri Jayawardenepura Kotte, Colombo · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_lr",
@@ -1729,7 +1830,8 @@
       "aliases": [],
       "explanation": "Capital: Monrovia · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ls",
@@ -1745,7 +1847,8 @@
       "aliases": [],
       "explanation": "Capital: Maseru · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_lt",
@@ -1761,7 +1864,8 @@
       "aliases": [],
       "explanation": "Capital: Vilnius · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_lu",
@@ -1777,7 +1881,8 @@
       "aliases": [],
       "explanation": "Capital: Luxembourg City · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_lv",
@@ -1793,7 +1898,8 @@
       "aliases": [],
       "explanation": "Capital: Riga · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ly",
@@ -1811,7 +1917,8 @@
       ],
       "explanation": "Capital: Tripoli · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ma",
@@ -1829,7 +1936,8 @@
       ],
       "explanation": "Capital: Rabat · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_mc",
@@ -1845,7 +1953,8 @@
       "aliases": [],
       "explanation": "Capital: Monaco · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_md",
@@ -1861,7 +1970,8 @@
       "aliases": [],
       "explanation": "Capital: Chișinău · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_me",
@@ -1877,7 +1987,8 @@
       "aliases": [],
       "explanation": "Capital: Podgorica · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mg",
@@ -1893,7 +2004,8 @@
       "aliases": [],
       "explanation": "Capital: Antananarivo · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mh",
@@ -1909,7 +2021,8 @@
       "aliases": [],
       "explanation": "Capital: Majuro · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_mk",
@@ -1927,7 +2040,8 @@
       ],
       "explanation": "Capital: Skopje · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ml",
@@ -1943,7 +2057,8 @@
       "aliases": [],
       "explanation": "Capital: Bamako · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mm",
@@ -1961,7 +2076,8 @@
       ],
       "explanation": "Capital: Naypyidaw · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mn",
@@ -1977,7 +2093,8 @@
       "aliases": [],
       "explanation": "Capital: Ulaanbaatar · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mr",
@@ -1993,7 +2110,8 @@
       "aliases": [],
       "explanation": "Capital: Nouakchott · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mt",
@@ -2009,7 +2127,8 @@
       "aliases": [],
       "explanation": "Capital: Valletta · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mu",
@@ -2025,7 +2144,8 @@
       "aliases": [],
       "explanation": "Capital: Port Louis · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_mv",
@@ -2041,7 +2161,8 @@
       "aliases": [],
       "explanation": "Capital: Malé · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mw",
@@ -2057,7 +2178,8 @@
       "aliases": [],
       "explanation": "Capital: Lilongwe · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_mx",
@@ -2073,7 +2195,8 @@
       "aliases": [],
       "explanation": "Capital: Mexico City · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_my",
@@ -2082,14 +2205,15 @@
       "choices": [
         "Malaysia",
         "Azerbaijan",
-        "Israel",
+        "Egypt",
         "Uzbekistan"
       ],
       "answer": "Malaysia",
       "aliases": [],
       "explanation": "Capital: Kuala Lumpur · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_mz",
@@ -2105,7 +2229,8 @@
       "aliases": [],
       "explanation": "Capital: Maputo · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_na",
@@ -2121,7 +2246,8 @@
       "aliases": [],
       "explanation": "Capital: Windhoek · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ne",
@@ -2137,7 +2263,8 @@
       "aliases": [],
       "explanation": "Capital: Niamey · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ng",
@@ -2153,7 +2280,8 @@
       "aliases": [],
       "explanation": "Capital: Abuja · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ni",
@@ -2169,7 +2297,8 @@
       "aliases": [],
       "explanation": "Capital: Managua · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_nl",
@@ -2188,7 +2317,8 @@
       ],
       "explanation": "Capital: Amsterdam · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_no",
@@ -2206,7 +2336,8 @@
       ],
       "explanation": "Capital: Oslo · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_np",
@@ -2222,7 +2353,8 @@
       "aliases": [],
       "explanation": "Capital: Kathmandu · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_nr",
@@ -2238,7 +2370,8 @@
       "aliases": [],
       "explanation": "Capital: Yaren District · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_nz",
@@ -2256,7 +2389,8 @@
       ],
       "explanation": "Capital: Wellington · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_om",
@@ -2275,7 +2409,8 @@
       ],
       "explanation": "Capital: Muscat · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pa",
@@ -2291,7 +2426,8 @@
       "aliases": [],
       "explanation": "Capital: Panama City · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_pe",
@@ -2307,7 +2443,8 @@
       "aliases": [],
       "explanation": "Capital: Lima · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pg",
@@ -2323,7 +2460,8 @@
       "aliases": [],
       "explanation": "Capital: Port Moresby · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ph",
@@ -2339,7 +2477,8 @@
       "aliases": [],
       "explanation": "Capital: Manila · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pk",
@@ -2355,7 +2494,8 @@
       "aliases": [],
       "explanation": "Capital: Islamabad · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pl",
@@ -2373,7 +2513,8 @@
       ],
       "explanation": "Capital: Warsaw · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ps",
@@ -2392,7 +2533,8 @@
       ],
       "explanation": "Capital: Ramallah · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pt",
@@ -2408,7 +2550,8 @@
       "aliases": [],
       "explanation": "Capital: Lisbon · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_pw",
@@ -2424,7 +2567,8 @@
       "aliases": [],
       "explanation": "Capital: Ngerulmud · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_py",
@@ -2440,7 +2584,8 @@
       "aliases": [],
       "explanation": "Capital: Asunción · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_qa",
@@ -2458,7 +2603,8 @@
       ],
       "explanation": "Capital: Doha · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ro",
@@ -2474,7 +2620,8 @@
       "aliases": [],
       "explanation": "Capital: Bucharest · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_rs",
@@ -2490,7 +2637,8 @@
       "aliases": [],
       "explanation": "Capital: Belgrade · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ru",
@@ -2508,7 +2656,8 @@
       ],
       "explanation": "Capital: Moscow · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_rw",
@@ -2524,7 +2673,8 @@
       "aliases": [],
       "explanation": "Capital: Kigali · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sa",
@@ -2544,7 +2694,8 @@
       ],
       "explanation": "Capital: Riyadh · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_sb",
@@ -2560,7 +2711,8 @@
       "aliases": [],
       "explanation": "Capital: Honiara · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_sc",
@@ -2576,7 +2728,8 @@
       "aliases": [],
       "explanation": "Capital: Victoria · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_sd",
@@ -2594,7 +2747,8 @@
       ],
       "explanation": "Capital: Khartoum · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_se",
@@ -2612,7 +2766,8 @@
       ],
       "explanation": "Capital: Stockholm · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_sg",
@@ -2628,7 +2783,8 @@
       "aliases": [],
       "explanation": "Capital: Singapore · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_si",
@@ -2644,7 +2800,8 @@
       "aliases": [],
       "explanation": "Capital: Ljubljana · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sk",
@@ -2660,7 +2817,8 @@
       "aliases": [],
       "explanation": "Capital: Bratislava · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sl",
@@ -2676,7 +2834,8 @@
       "aliases": [],
       "explanation": "Capital: Freetown · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sm",
@@ -2692,7 +2851,8 @@
       "aliases": [],
       "explanation": "Capital: San Marino · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_sn",
@@ -2708,7 +2868,8 @@
       "aliases": [],
       "explanation": "Capital: Dakar · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_so",
@@ -2724,7 +2885,8 @@
       "aliases": [],
       "explanation": "Capital: Mogadishu · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sr",
@@ -2740,7 +2902,8 @@
       "aliases": [],
       "explanation": "Capital: Paramaribo · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ss",
@@ -2756,7 +2919,8 @@
       "aliases": [],
       "explanation": "Capital: Juba · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_st",
@@ -2772,7 +2936,8 @@
       "aliases": [],
       "explanation": "Capital: São Tomé · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_sv",
@@ -2788,7 +2953,8 @@
       "aliases": [],
       "explanation": "Capital: San Salvador · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_sy",
@@ -2806,7 +2972,8 @@
       ],
       "explanation": "Capital: Damascus · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_sz",
@@ -2824,7 +2991,8 @@
       ],
       "explanation": "Capital: Lobamba, Mbabane · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_td",
@@ -2840,7 +3008,8 @@
       "aliases": [],
       "explanation": "Capital: N'Djamena · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_tg",
@@ -2856,14 +3025,15 @@
       "aliases": [],
       "explanation": "Capital: Lomé · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_th",
       "prompt": "Which country does this flag belong to?",
       "image": "media/flag_171.svg",
       "choices": [
-        "Israel",
+        "Mali",
         "Oman",
         "Qatar",
         "Thailand"
@@ -2872,7 +3042,8 @@
       "aliases": [],
       "explanation": "Capital: Bangkok · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_tj",
@@ -2888,7 +3059,8 @@
       "aliases": [],
       "explanation": "Capital: Dushanbe · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_tl",
@@ -2906,7 +3078,8 @@
       ],
       "explanation": "Capital: Dili · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_tm",
@@ -2922,7 +3095,8 @@
       "aliases": [],
       "explanation": "Capital: Ashgabat · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_tn",
@@ -2940,7 +3114,8 @@
       ],
       "explanation": "Capital: Tunis · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_to",
@@ -2956,7 +3131,8 @@
       "aliases": [],
       "explanation": "Capital: Nukuʻalofa · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_tr",
@@ -2976,7 +3152,8 @@
       ],
       "explanation": "Capital: Ankara · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_tt",
@@ -2992,7 +3169,8 @@
       "aliases": [],
       "explanation": "Capital: Port of Spain · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_tv",
@@ -3008,7 +3186,8 @@
       "aliases": [],
       "explanation": "Capital: Funafuti · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_tw",
@@ -3026,7 +3205,8 @@
       ],
       "explanation": "Capital: Taipei · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_tz",
@@ -3042,7 +3222,8 @@
       "aliases": [],
       "explanation": "Capital: Dodoma · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_ua",
@@ -3060,7 +3241,8 @@
       ],
       "explanation": "Capital: Kiev · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_ug",
@@ -3076,7 +3258,8 @@
       "aliases": [],
       "explanation": "Capital: Kampala · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_us",
@@ -3099,7 +3282,8 @@
       ],
       "explanation": "Capital: Washington, D.C. · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_uy",
@@ -3115,7 +3299,8 @@
       "aliases": [],
       "explanation": "Capital: Montevideo · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_uz",
@@ -3131,7 +3316,8 @@
       "aliases": [],
       "explanation": "Capital: Tashkent · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_va",
@@ -3151,7 +3337,8 @@
       ],
       "explanation": "Capital: Vatican City · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_vc",
@@ -3167,7 +3354,8 @@
       "aliases": [],
       "explanation": "Capital: Kingstown · Region: North America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ve",
@@ -3183,7 +3371,8 @@
       "aliases": [],
       "explanation": "Capital: Caracas · Region: South America.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_vn",
@@ -3201,7 +3390,8 @@
       ],
       "explanation": "Capital: Hanoi · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_vu",
@@ -3217,7 +3407,8 @@
       "aliases": [],
       "explanation": "Capital: Port Vila · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ws",
@@ -3233,7 +3424,8 @@
       "aliases": [],
       "explanation": "Capital: Apia · Region: Oceania.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_xk",
@@ -3249,7 +3441,8 @@
       "aliases": [],
       "explanation": "Capital: Pristina · Region: Europe.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "hard"
     },
     {
       "id": "flag_ye",
@@ -3267,7 +3460,8 @@
       ],
       "explanation": "Capital: Sana'a · Region: Asia.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_za",
@@ -3285,7 +3479,8 @@
       ],
       "explanation": "Capital: Pretoria · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "easy"
     },
     {
       "id": "flag_zm",
@@ -3301,7 +3496,8 @@
       "aliases": [],
       "explanation": "Capital: Lusaka · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     },
     {
       "id": "flag_zw",
@@ -3317,7 +3513,8 @@
       "aliases": [],
       "explanation": "Capital: Harare · Region: Africa.",
       "language": "en",
-      "rtl": false
+      "rtl": false,
+      "difficulty": "medium"
     }
   ],
   "cover": "media/cover.svg"

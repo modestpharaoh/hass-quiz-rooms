@@ -1,0 +1,681 @@
+{
+  "pack_id": "general_tech_ar",
+  "title": "التكنولوجيا والمعلوماتية",
+  "description": "36 سؤالاً تقنياً أصلياً بالعربية حول الحوسبة والشبكات والأمن السيبراني والمنزل الذكي (اختيار من متعدد وإجابات حرة).",
+  "cover": "media/cover.svg",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "تكنولوجيا",
+  "questions": [
+    {
+      "id": "general_tech_ar_001",
+      "prompt": "ماذا يعني الاختصار CPU في عالم الحاسوب؟",
+      "choices": [
+        "وحدة المعالجة المركزية",
+        "بطاقة الشبكة المحلية",
+        "ذاكرة التخزين الدائمة",
+        "وحدة الطاقة المركزية"
+      ],
+      "answer": "وحدة المعالجة المركزية",
+      "aliases": [
+        "المعالج",
+        "Central Processing Unit"
+      ],
+      "difficulty": "easy",
+      "explanation": "وحدة المعالجة المركزية هي العقل الذي ينفذ أوامر الحاسوب.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_002",
+      "prompt": "ما اللغة الأساسية المستخدمة لبناء هيكل صفحات الويب؟",
+      "choices": [
+        "MP3",
+        "HTML",
+        "PDF",
+        "SQL"
+      ],
+      "answer": "HTML",
+      "aliases": [
+        "اتش تي ام ال"
+      ],
+      "difficulty": "easy",
+      "explanation": "لغة HTML تحدد بنية وعناصر صفحات الإنترنت.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_003",
+      "prompt": "ما اسم أصغر نقطة ضوئية تشكّل الصورة على الشاشات الرقمية؟",
+      "choices": [
+        "بكسل",
+        "ميجا",
+        "بايت",
+        "راوتر"
+      ],
+      "answer": "بكسل",
+      "aliases": [
+        "بيكسل",
+        "Pixel"
+      ],
+      "difficulty": "easy",
+      "explanation": "تتكون الصور الرقمية من آلاف أو ملايين النقاط المسماة بكسل.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_004",
+      "prompt": "ما الجهاز الذي يوزّع اتصال الإنترنت لاسلكياً داخل المنزل؟",
+      "choices": [
+        "الطابعة",
+        "السماعة",
+        "الماسح الضوئي",
+        "الراوتر"
+      ],
+      "answer": "الراوتر",
+      "aliases": [
+        "الموجه",
+        "Router",
+        "راوتر"
+      ],
+      "difficulty": "easy",
+      "explanation": "يقوم الموجه (الراوتر) بتوجيه البيانات وربط الأجهزة بالشبكة.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_005",
+      "prompt": "ما الاختصار المستخدم على لوحة المفاتيح لنسخ النص المحدد؟",
+      "choices": [
+        "Ctrl+Z",
+        "Ctrl+C",
+        "Ctrl+V",
+        "Ctrl+P"
+      ],
+      "answer": "Ctrl+C",
+      "aliases": [
+        "Ctrl C"
+      ],
+      "difficulty": "easy",
+      "explanation": "Ctrl+C للنسخ وCtrl+V للصق وCtrl+Z للتراجع.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_006",
+      "prompt": "ما الذاكرة المؤقتة السريعة التي تُفرغ عند إطفاء الحاسوب؟",
+      "choices": [
+        "القرص المدمج",
+        "بطاقة الذاكرة",
+        "ذاكرة الوصول العشوائي RAM",
+        "القرص الصلب"
+      ],
+      "answer": "ذاكرة الوصول العشوائي RAM",
+      "aliases": [
+        "رام",
+        "RAM",
+        "ذاكرة الوصول العشوائي"
+      ],
+      "difficulty": "easy",
+      "explanation": "تحتفظ ذاكرة RAM بالبيانات النشطة أثناء تشغيل الجهاز فقط.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_007",
+      "prompt": "ما نظام التشغيل مفتوح المصدر الشهير الذي يعمل على معظم الهواتف الذكية؟",
+      "choices": [
+        "أندرويد",
+        "دوس",
+        "ماك أو إس",
+        "ويندوز"
+      ],
+      "answer": "أندرويد",
+      "aliases": [
+        "اندرويد",
+        "Android"
+      ],
+      "difficulty": "easy",
+      "explanation": "أندرويد نظام تشغيل مفتوح النواة تدعمه غوغل للأجهزة الذكية.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_008",
+      "prompt": "ما البرنامج الذي يحمي الشبكة بتصفية الاتصالات الواردة والصادرة؟",
+      "choices": [
+        "الآلة الحاسبة",
+        "جدار الحماية",
+        "مشغل الصوت",
+        "محرر النصوص"
+      ],
+      "answer": "جدار الحماية",
+      "aliases": [
+        "Firewall",
+        "فايروول"
+      ],
+      "difficulty": "easy",
+      "explanation": "يمنع جدار الحماية الاتصالات غير المصرح بها من وإلى الشبكة.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_009",
+      "prompt": "كم بت (Bit) يوجد في البايت الواحد (Byte)؟",
+      "choices": [
+        "8",
+        "4",
+        "16",
+        "10"
+      ],
+      "answer": "8",
+      "aliases": [
+        "٨",
+        "ثمانية",
+        "ثمانيه"
+      ],
+      "difficulty": "easy",
+      "explanation": "يتكون البايت الواحد من 8 بتات ثنائية (0 أو 1).",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_010",
+      "prompt": "ما المنصة المحلية مفتوحة المصدر الأشهر لأتمتة المنزل الذكي؟",
+      "choices": [
+        "فوتوشوب",
+        "Home Assistant",
+        "إكسل",
+        "باوربوينت"
+      ],
+      "answer": "Home Assistant",
+      "aliases": [
+        "هوم أسيستنت",
+        "هوم اسيستنت"
+      ],
+      "difficulty": "easy",
+      "explanation": "تركز Home Assistant على التحكم المحلي والخصوصية في المنازل الذكية.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_011",
+      "prompt": "ما النظام العددي الذي يعتمد عليه الحاسوب في تمثيل البيانات (0 و 1)؟",
+      "choices": [
+        "النظام الستيني",
+        "النظام الثنائي",
+        "النظام الروماني",
+        "النظام العشري"
+      ],
+      "answer": "النظام الثنائي",
+      "aliases": [
+        "ثنائي",
+        "Binary"
+      ],
+      "difficulty": "easy",
+      "explanation": "يعمل الحاسوب داخلياً بالإشارات الكهربائية الممثلة بالرقمين 0 و1.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_012",
+      "prompt": "ما الصيغة الشهيرة للوثائق التي تحافظ على تنسيقها الثابت عبر الأجهزة؟",
+      "choices": [
+        "GIF",
+        "PDF",
+        "WAV",
+        "AVI"
+      ],
+      "answer": "PDF",
+      "aliases": [
+        "بي دي اف"
+      ],
+      "difficulty": "easy",
+      "explanation": "تضمن صيغة PDF عرض المستند بالشكل نفسه على كل الأنظمة.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_013",
+      "prompt": "ما البروتوكول الذي يضيف التشفير لحماية تصفح مواقع الإنترنت؟",
+      "choices": [
+        "HTTPS",
+        "FTP",
+        "HTTP",
+        "SMTP"
+      ],
+      "answer": "HTTPS",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "يستخدم HTTPS بروتوكول TLS لتشفير البيانات بين المتصفح والخادم.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_014",
+      "prompt": "ما الخدمة التي تحوّل أسماء المواقع النصية إلى عناوين IP رقمية؟",
+      "choices": [
+        "USB",
+        "GPU",
+        "DNS",
+        "BIOS"
+      ],
+      "answer": "DNS",
+      "aliases": [
+        "نظام أسماء النطاقات",
+        "نظام اسماء النطاقات"
+      ],
+      "difficulty": "medium",
+      "explanation": "يعمل DNS كدليل هاتف للإنترنت يحوّل الأسماء إلى عناوين IP.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_015",
+      "prompt": "ما نظام التحكم في الإصدارات الموزع الذي ابتكره لينوس تورفالدز عام 2005؟",
+      "choices": [
+        "Java",
+        "Nginx",
+        "Git",
+        "Docker"
+      ],
+      "answer": "Git",
+      "aliases": [
+        "جيت",
+        "غيت"
+      ],
+      "difficulty": "medium",
+      "explanation": "أصبح Git المعيار العالمي لإدارة الشيفرة البرمجية.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_016",
+      "prompt": "ما البروتوكول اللاسلكي الشبكي منخفض الطاقة الشائع في مستشعرات المنزل الذكي؟",
+      "choices": [
+        "Zigbee",
+        "SATA",
+        "VGA",
+        "HDMI"
+      ],
+      "answer": "Zigbee",
+      "aliases": [
+        "زيجبي",
+        "زيغبي"
+      ],
+      "difficulty": "medium",
+      "explanation": "يتيح Zigbee بناء شبكة متداخلة (Mesh) تستهلك طاقة ضئيلة جداً.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_017",
+      "prompt": "ما البروتوكول الخفيف المعتمد على النشر والاشتراك في إنترنت الأشياء؟",
+      "choices": [
+        "IMAP",
+        "POP3",
+        "MQTT",
+        "FTP"
+      ],
+      "answer": "MQTT",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "يربط MQTT أجهزة إنترنت الأشياء عبر وسيط رسائل سريع وخفيف.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_018",
+      "prompt": "ما نوع أقراص التخزين السريعة التي لا تحتوي على أجزاء ميكانيكية متحركة؟",
+      "choices": [
+        "SSD",
+        "Floppy",
+        "HDD",
+        "DVD"
+      ],
+      "answer": "SSD",
+      "aliases": [
+        "قرص الحالة الصلبة"
+      ],
+      "difficulty": "medium",
+      "explanation": "تعتمد أقراص SSD على ذاكرة فلاش فتكون أسرع وأكثر متانة.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_019",
+      "prompt": "ما اللغة القياسية المستخدمة للاستعلام عن قواعد البيانات العلائقية؟",
+      "choices": [
+        "CSS",
+        "SQL",
+        "XML",
+        "SVG"
+      ],
+      "answer": "SQL",
+      "aliases": [
+        "اس كيو ال"
+      ],
+      "difficulty": "medium",
+      "explanation": "تتيح SQL قراءة البيانات وتحديثها وإدارتها في قواعد البيانات.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_020",
+      "prompt": "من هو العالم الذي ابتكر شبكة الويب العالمية عام 1989؟",
+      "choices": [
+        "آلان تورينغ",
+        "بيل غيتس",
+        "تيم بيرنرز لي",
+        "ستيف جوبز"
+      ],
+      "answer": "تيم بيرنرز لي",
+      "aliases": [
+        "Tim Berners-Lee",
+        "بيرنرز لي"
+      ],
+      "difficulty": "medium",
+      "explanation": "اخترع تيم بيرنرز لي HTTP وHTML وأول متصفح ويب في CERN.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_021",
+      "prompt": "ما رقم المنفذ الافتراضي لبروتوكول HTTPS الآمن؟",
+      "choices": [
+        "443",
+        "25",
+        "21",
+        "80"
+      ],
+      "answer": "443",
+      "aliases": [
+        "٤٤٣"
+      ],
+      "difficulty": "medium",
+      "explanation": "يستخدم HTTPS المنفذ 443 بينما يستخدم HTTP غير المشفر المنفذ 80.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_022",
+      "prompt": "ما النموذج اللوني المستخدم في شاشات العرض الرقمية؟",
+      "choices": [
+        "HSL فقط",
+        "RYB",
+        "CMYK",
+        "RGB"
+      ],
+      "answer": "RGB",
+      "aliases": [
+        "أحمر أخضر أزرق"
+      ],
+      "difficulty": "medium",
+      "explanation": "تمزج الشاشات الضوء الأحمر والأخضر والأزرق لتكوين الألوان.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_023",
+      "prompt": "ماذا يعني الاختصار API في هندسة البرمجيات؟",
+      "choices": [
+        "مؤشر الشبكة السريع",
+        "وحدة طباعة تلقائية",
+        "واجهة برمجة التطبيقات",
+        "ذاكرة الصور النشطة"
+      ],
+      "answer": "واجهة برمجة التطبيقات",
+      "aliases": [
+        "Application Programming Interface"
+      ],
+      "difficulty": "medium",
+      "explanation": "تحدد الـ API طريقة تواصل البرامج والخدمات فيما بينها.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_024",
+      "prompt": "ما صيغة تبادل البيانات النصية الخفيفة المشتقة من كائنات جافاسكربت؟",
+      "choices": [
+        "ISO",
+        "BMP",
+        "EXE",
+        "JSON"
+      ],
+      "answer": "JSON",
+      "aliases": [
+        "جيسون"
+      ],
+      "difficulty": "medium",
+      "explanation": "تُستخدم JSON على نطاق واسع في واجهات الويب والتطبيقات.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_025",
+      "prompt": "ما رمز استجابة HTTP الذي يعني أن المستخدم أرسل طلبات كثيرة جداً (Rate Limit)؟",
+      "choices": [
+        "301",
+        "429",
+        "404",
+        "500"
+      ],
+      "answer": "429",
+      "aliases": [
+        "٤٢٩"
+      ],
+      "difficulty": "hard",
+      "explanation": "يشير الرمز 429 إلى تجاوز الحد المسموح به من الطلبات.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_026",
+      "prompt": "أي طبقة في نموذج OSI مسؤولة عن التوجيه والعنونة المنطقية مثل IP؟",
+      "choices": [
+        "طبقة الشبكة",
+        "طبقة الجلسة",
+        "طبقة التطبيقات",
+        "الطبقة الفيزيائية"
+      ],
+      "answer": "طبقة الشبكة",
+      "aliases": [
+        "Network Layer",
+        "الطبقة الثالثة"
+      ],
+      "difficulty": "hard",
+      "explanation": "تعمل طبقة الشبكة (Layer 3) على توجيه الحزم عبر الشبكات.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_027",
+      "prompt": "في التشفير بالمفتاح العام، أي مفتاح يُستخدم للتحقق من صحة التوقيع الرقمي؟",
+      "choices": [
+        "ملف الكوكيز",
+        "المفتاح العام",
+        "كلمة المرور",
+        "المفتاح الخاص"
+      ],
+      "answer": "المفتاح العام",
+      "aliases": [
+        "Public Key",
+        "مفتاح عام"
+      ],
+      "difficulty": "hard",
+      "explanation": "يُنشأ التوقيع بالمفتاح الخاص ويتحقق منه الجميع بالمفتاح العام.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_028",
+      "prompt": "ما المعيار الحديث للمنازل الذكية المبني على IPv6 عبر Thread وWi-Fi؟",
+      "choices": [
+        "Matter",
+        "Token Ring",
+        "IrDA",
+        "Bluetooth 1.0"
+      ],
+      "answer": "Matter",
+      "aliases": [
+        "ماتر"
+      ],
+      "difficulty": "hard",
+      "explanation": "يوحّد معيار Matter توافق أجهزة المنزل الذكي محلياً عبر IPv6.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_029",
+      "prompt": "ما الخوارزمية الشهيرة لإيجاد أقصر مسار في رسم بياني بأوزان غير سالبة؟",
+      "choices": [
+        "تشفير قيصر",
+        "ترميز مورس",
+        "خوارزمية ديكسترا",
+        "الفرز الفقاعي"
+      ],
+      "answer": "خوارزمية ديكسترا",
+      "aliases": [
+        "ديكسترا",
+        "Dijkstra"
+      ],
+      "difficulty": "hard",
+      "explanation": "نشر إيدسخر ديكسترا خوارزميته عام 1959 وتُستخدم في التوجيه والخرائط.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_030",
+      "prompt": "كم عدد عناوين الأجهزة القابلة للاستخدام في شبكة فرعية IPv4 من نوع /24؟",
+      "choices": [
+        "128",
+        "255",
+        "254",
+        "256"
+      ],
+      "answer": "254",
+      "aliases": [
+        "٢٥٤"
+      ],
+      "difficulty": "hard",
+      "explanation": "من أصل 256 عنواناً يُحجز عنوانان للشبكة والبث فيبقى 254 جهازاً.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_031",
+      "prompt": "ما ميزة نواة لينكس التي تعزل العمليات والشبكات لتشغيل الحاويات (Containers)؟",
+      "choices": [
+        "Namespaces",
+        "BIOS",
+        "BIOS UEFI",
+        "Cron"
+      ],
+      "answer": "Namespaces",
+      "aliases": [
+        "مساحات الأسماء",
+        "مساحات الاسماء"
+      ],
+      "difficulty": "hard",
+      "explanation": "تُشكّل Namespaces مع cgroups الأساس التقني لحاويات Docker.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_032",
+      "prompt": "إلى أي عائلة من دوال التجزئة التشفيرية تنتمي الدالة SHA-256؟",
+      "choices": [
+        "DES",
+        "AES",
+        "SHA-2",
+        "MD5"
+      ],
+      "answer": "SHA-2",
+      "aliases": [
+        "SHA2"
+      ],
+      "difficulty": "hard",
+      "explanation": "تعد SHA-256 من أبرز دوال عائلة SHA-2 المستخدمة في التحقق والأمان.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_033",
+      "prompt": "ما بنية البيانات التي توفر بحثاً بمتوسط تعقيد زمني O(1) عبر دالة تجزئة؟",
+      "choices": [
+        "شجرة البحث الثنائية",
+        "المكدس",
+        "جدول التجزئة",
+        "القائمة المتصلة"
+      ],
+      "answer": "جدول التجزئة",
+      "aliases": [
+        "Hash Table",
+        "هاش تيبل"
+      ],
+      "difficulty": "hard",
+      "explanation": "تُحوّل دالة التجزئة المفتاح مباشرة إلى فهرس في المصفوفة.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_034",
+      "prompt": "ما بروتوكول طبقة النقل الذي لا يضمن وصول الحزم لكنه أسرع للبث المباشر والألعاب؟",
+      "choices": [
+        "UDP",
+        "TLS",
+        "TCP",
+        "SSH"
+      ],
+      "answer": "UDP",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "يرسل UDP الحزم دون إنشاء اتصال مسبق مما يقلل زمن التأخير.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_035",
+      "prompt": "ما اسم التقنية التي تخزّن نتائج الاستعلامات المتكررة مؤقتاً لتسريع الاستجابة؟",
+      "choices": [
+        "النسخ الورقي",
+        "التخزين المؤقت (Caching)",
+        "التجزئة القرصية",
+        "التصريف الحراري"
+      ],
+      "answer": "التخزين المؤقت (Caching)",
+      "aliases": [
+        "الكاش",
+        "التخزين المؤقت",
+        "Caching",
+        "Cache"
+      ],
+      "difficulty": "hard",
+      "explanation": "يقلل الـ Caching الحمل على الخوادم وقواعد البيانات ويسرّع الأداء.",
+      "language": "ar",
+      "rtl": true
+    },
+    {
+      "id": "general_tech_ar_036",
+      "prompt": "ما المبدأ الأمني الذي يمنح كل مستخدم أو برنامج الحد الأدنى فقط من الصلاحيات اللازمة؟",
+      "choices": [
+        "مبدأ التكرار الكامل",
+        "مبدأ الوصول المفتوح",
+        "مبدأ أقل الامتيازات",
+        "مبدأ التشفير الثابت"
+      ],
+      "answer": "مبدأ أقل الامتيازات",
+      "aliases": [
+        "أقل الامتيازات",
+        "اقل الامتيازات",
+        "Least Privilege"
+      ],
+      "difficulty": "hard",
+      "explanation": "يقلل مبدأ أقل الامتيازات من الأضرار المحتملة عند أي اختراق.",
+      "language": "ar",
+      "rtl": true
+    }
+  ]
+}

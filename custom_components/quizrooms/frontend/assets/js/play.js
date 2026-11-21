@@ -64,6 +64,14 @@
     try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) { }
   }
 
+  function diffBadgeHtml(diff, prefix = "") {
+    const d = String(diff || "").toLowerCase();
+    if (!d || d === "random") return "";
+    const cls = d === "easy" ? "badge-lobby" : d === "hard" ? "badge-paused" : "badge-live";
+    const label = d.charAt(0).toUpperCase() + d.slice(1);
+    return `<span class="badge ${cls}">${esc(prefix + label)}</span>`;
+  }
+
   function esc(str) {
     return String(str == null ? "" : str)
       .replace(/&/g, "&amp;")
@@ -593,6 +601,7 @@
                   <div style="display:flex;gap:6px;flex-wrap:wrap;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
+                    ${diffBadgeHtml(r.difficulty)}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
                   </div>
                   <button class="btn btn-primary btn-sm" data-join-code="${esc(r.code)}" ${joinDisabled ? "disabled" : ""}>
@@ -825,11 +834,14 @@
                   <option value="free_text">Free-Text (Fuzzy + RTL)</option>
                 </select>
               </div>
-              <div style="display:flex;align-items:end;">
-                <label class="toggle-line" style="width:100%;cursor:pointer;" title="When enabled, wrong or unanswered questions deduct the selected confidence number.">
-                  <span style="font-size:0.86rem;font-weight:700;">Deduct Wager if Wrong</span>
-                  <input id="cr-deduct-wrong" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
-                </label>
+              <div>
+                <label class="field-label" for="cr-difficulty">Difficulty</label>
+                <select id="cr-difficulty" class="select-input">
+                  <option value="random" selected>Random (All Levels)</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
               </div>
             </div>
 
@@ -842,20 +854,23 @@
                 </select>
               </div>
               <div style="display:flex;align-items:end;">
-                <label class="toggle-line" style="width:100%;cursor:pointer;">
-                  <span style="font-size:0.86rem;font-weight:700;">Allow Late Joiners</span>
-                  <input id="cr-late-join" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+                <label class="toggle-line" style="width:100%;cursor:pointer;" title="When enabled, wrong or unanswered questions deduct the selected confidence number.">
+                  <span style="font-size:0.86rem;font-weight:700;">Deduct Wager if Wrong</span>
+                  <input id="cr-deduct-wrong" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
                 </label>
               </div>
             </div>
 
-            <label class="toggle-line" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
-              <div>
-                <div style="font-size:0.88rem;font-weight:800;">No Repeated Answers</div>
-                <div style="font-size:0.76rem;color:var(--text-muted);">Rejects matching answers between players or across rounds</div>
-              </div>
-              <input id="cr-unique-answers" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-primary);" />
-            </label>
+            <div class="form-row-2">
+              <label class="toggle-line" style="cursor:pointer;">
+                <span style="font-size:0.86rem;font-weight:700;">Allow Late Joiners</span>
+                <input id="cr-late-join" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+              </label>
+              <label class="toggle-line" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
+                <span style="font-size:0.86rem;font-weight:700;">No Repeated Answers</span>
+                <input id="cr-unique-answers" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+              </label>
+            </div>
 
             <button type="submit" class="btn btn-primary" style="width:100%;">Create &amp; Open Lobby</button>
           </form>
@@ -902,6 +917,7 @@
           wager_mode: "pool",
           deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
           unique_answers_only: document.getElementById("cr-unique-answers").checked,
+          difficulty: document.getElementById("cr-difficulty").value,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
         });
@@ -976,6 +992,7 @@
               <span class="badge">${room.settings.round_count} Rounds</span>
               <span class="badge">${room.settings.timer_seconds}s Timer</span>
               <span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
+              ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
               <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
               <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
               ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}
@@ -1113,6 +1130,7 @@
         <div class="question-top">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             <span class="badge badge-live">Round ${q.round_number} / ${q.total_rounds}</span>
+            ${diffBadgeHtml(q.difficulty)}
             ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
           </div>
           <span id="timer-readout" class="timer-readout">${Math.ceil(q.remaining_seconds || 0)}s</span>

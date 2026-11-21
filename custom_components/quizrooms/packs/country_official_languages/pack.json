@@ -1,0 +1,1840 @@
+{
+  "pack_id": "country_official_languages",
+  "title": "Official Languages of the World",
+  "description": "105 countries and their official national languages — playable in Multiple Choice or Free-Text mode.",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Languages & Geography",
+  "questions": [
+    {
+      "id": "lang_001",
+      "prompt": "What is an official language of Egypt?",
+      "choices": [
+        "French",
+        "Arabic",
+        "Turkish",
+        "Persian"
+      ],
+      "answer": "Arabic",
+      "aliases": [
+        "Modern Standard Arabic",
+        "العربية"
+      ],
+      "difficulty": "easy",
+      "explanation": "Arabic is the official language of Egypt.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_002",
+      "prompt": "What is an official language of Saudi Arabia?",
+      "choices": [
+        "Turkish",
+        "Urdu",
+        "Arabic",
+        "Persian"
+      ],
+      "answer": "Arabic",
+      "aliases": [
+        "العربية"
+      ],
+      "difficulty": "easy",
+      "explanation": "Arabic is the sole official language of Saudi Arabia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_003",
+      "prompt": "What is an official language of Brazil?",
+      "choices": [
+        "Italian",
+        "Portuguese",
+        "Spanish",
+        "French"
+      ],
+      "answer": "Portuguese",
+      "aliases": [
+        "Brazilian Portuguese"
+      ],
+      "difficulty": "easy",
+      "explanation": "Brazil is the largest Portuguese-speaking country in the world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_004",
+      "prompt": "What is an official language of Mexico?",
+      "choices": [
+        "French",
+        "Spanish",
+        "English",
+        "Portuguese"
+      ],
+      "answer": "Spanish",
+      "aliases": [
+        "Castilian"
+      ],
+      "difficulty": "easy",
+      "explanation": "Spanish is the de facto national language of Mexico.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_005",
+      "prompt": "What is an official language of France?",
+      "choices": [
+        "Italian",
+        "Spanish",
+        "French",
+        "German"
+      ],
+      "answer": "French",
+      "aliases": [
+        "Français"
+      ],
+      "difficulty": "easy",
+      "explanation": "French is the official language of France.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_006",
+      "prompt": "What is an official language of Germany?",
+      "choices": [
+        "French",
+        "Polish",
+        "German",
+        "Dutch"
+      ],
+      "answer": "German",
+      "aliases": [
+        "Deutsch"
+      ],
+      "difficulty": "easy",
+      "explanation": "German is the official language of Germany.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_007",
+      "prompt": "What is an official language of Italy?",
+      "choices": [
+        "Italian",
+        "French",
+        "Greek",
+        "Spanish"
+      ],
+      "answer": "Italian",
+      "aliases": [
+        "Italiano"
+      ],
+      "difficulty": "easy",
+      "explanation": "Italian is the official language of Italy.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_008",
+      "prompt": "What is an official language of Spain?",
+      "choices": [
+        "French",
+        "Portuguese",
+        "Italian",
+        "Spanish"
+      ],
+      "answer": "Spanish",
+      "aliases": [
+        "Castilian",
+        "Español"
+      ],
+      "difficulty": "easy",
+      "explanation": "Spanish (Castilian) is the nationwide official language of Spain.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_009",
+      "prompt": "What is an official language of Japan?",
+      "choices": [
+        "Mandarin",
+        "Korean",
+        "Japanese",
+        "Thai"
+      ],
+      "answer": "Japanese",
+      "aliases": [
+        "Nihongo"
+      ],
+      "difficulty": "easy",
+      "explanation": "Japanese is the national language of Japan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_010",
+      "prompt": "What is an official language of South Korea?",
+      "choices": [
+        "Vietnamese",
+        "Mandarin",
+        "Korean",
+        "Japanese"
+      ],
+      "answer": "Korean",
+      "aliases": [
+        "Hangul",
+        "Hangugeo"
+      ],
+      "difficulty": "easy",
+      "explanation": "Korean is the official language of South Korea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_011",
+      "prompt": "What is an official language of China?",
+      "choices": [
+        "Mandarin Chinese",
+        "Cantonese",
+        "Korean",
+        "Japanese"
+      ],
+      "answer": "Mandarin Chinese",
+      "aliases": [
+        "Chinese",
+        "Mandarin",
+        "Standard Chinese"
+      ],
+      "difficulty": "easy",
+      "explanation": "Standard Mandarin Chinese is the official language of China.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_012",
+      "prompt": "What is an official language of Russia?",
+      "choices": [
+        "Ukrainian",
+        "Polish",
+        "German",
+        "Russian"
+      ],
+      "answer": "Russian",
+      "aliases": [
+        "Russkiy"
+      ],
+      "difficulty": "easy",
+      "explanation": "Russian is the official language of the Russian Federation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_013",
+      "prompt": "What is an official language of Turkey?",
+      "choices": [
+        "Arabic",
+        "Persian",
+        "Turkish",
+        "Greek"
+      ],
+      "answer": "Turkish",
+      "aliases": [
+        "Türkçe"
+      ],
+      "difficulty": "easy",
+      "explanation": "Turkish is the official language of Turkey.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_014",
+      "prompt": "What is an official language of Greece?",
+      "choices": [
+        "Turkish",
+        "Italian",
+        "Greek",
+        "Bulgarian"
+      ],
+      "answer": "Greek",
+      "aliases": [
+        "Modern Greek"
+      ],
+      "difficulty": "easy",
+      "explanation": "Greek is the official language of Greece.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_015",
+      "prompt": "What is an official language of Portugal?",
+      "choices": [
+        "Italian",
+        "Portuguese",
+        "Spanish",
+        "French"
+      ],
+      "answer": "Portuguese",
+      "aliases": [
+        "Português"
+      ],
+      "difficulty": "easy",
+      "explanation": "Portuguese originated on the western Iberian Peninsula.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_016",
+      "prompt": "What is an official language of Argentina?",
+      "choices": [
+        "Portuguese",
+        "Spanish",
+        "French",
+        "Italian"
+      ],
+      "answer": "Spanish",
+      "aliases": [
+        "Castilian"
+      ],
+      "difficulty": "easy",
+      "explanation": "Spanish is the national language of Argentina.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_017",
+      "prompt": "What is an official language of United Kingdom?",
+      "choices": [
+        "French",
+        "English",
+        "German",
+        "Dutch"
+      ],
+      "answer": "English",
+      "aliases": [
+        "British English"
+      ],
+      "difficulty": "easy",
+      "explanation": "English is the primary language of the United Kingdom.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_018",
+      "prompt": "What is an official language of Australia?",
+      "choices": [
+        "English",
+        "Spanish",
+        "Dutch",
+        "French"
+      ],
+      "answer": "English",
+      "aliases": [
+        "Australian English"
+      ],
+      "difficulty": "easy",
+      "explanation": "English is the national language of Australia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_019",
+      "prompt": "What is an official language of Poland?",
+      "choices": [
+        "Russian",
+        "Polish",
+        "Czech",
+        "German"
+      ],
+      "answer": "Polish",
+      "aliases": [
+        "Polski"
+      ],
+      "difficulty": "easy",
+      "explanation": "Polish is a West Slavic language and official in Poland.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_020",
+      "prompt": "What is an official language of Sweden?",
+      "choices": [
+        "Norwegian",
+        "Danish",
+        "Swedish",
+        "Finnish"
+      ],
+      "answer": "Swedish",
+      "aliases": [
+        "Svenska"
+      ],
+      "difficulty": "easy",
+      "explanation": "Swedish is the official language of Sweden.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_021",
+      "prompt": "What is an official language of Norway?",
+      "choices": [
+        "Danish",
+        "Icelandic",
+        "Swedish",
+        "Norwegian"
+      ],
+      "answer": "Norwegian",
+      "aliases": [
+        "Bokmål",
+        "Nynorsk"
+      ],
+      "difficulty": "easy",
+      "explanation": "Norwegian (Bokmål and Nynorsk) is official in Norway.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_022",
+      "prompt": "What is an official language of Denmark?",
+      "choices": [
+        "Dutch",
+        "Danish",
+        "Swedish",
+        "Norwegian"
+      ],
+      "answer": "Danish",
+      "aliases": [
+        "Dansk"
+      ],
+      "difficulty": "easy",
+      "explanation": "Danish is the official language of Denmark.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_023",
+      "prompt": "What is an official language of Netherlands?",
+      "choices": [
+        "Dutch",
+        "German",
+        "French",
+        "Danish"
+      ],
+      "answer": "Dutch",
+      "aliases": [
+        "Nederlands"
+      ],
+      "difficulty": "easy",
+      "explanation": "Dutch is the official language of the Netherlands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_024",
+      "prompt": "What is an official language of Thailand?",
+      "choices": [
+        "Khmer",
+        "Vietnamese",
+        "Lao",
+        "Thai"
+      ],
+      "answer": "Thai",
+      "aliases": [
+        "Siamese"
+      ],
+      "difficulty": "easy",
+      "explanation": "Thai is the official language of Thailand.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_025",
+      "prompt": "What is an official language of Vietnam?",
+      "choices": [
+        "Mandarin",
+        "Thai",
+        "Khmer",
+        "Vietnamese"
+      ],
+      "answer": "Vietnamese",
+      "aliases": [
+        "Tiếng Việt"
+      ],
+      "difficulty": "easy",
+      "explanation": "Vietnamese is written in a Latin-based alphabet called Quốc ngữ.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_026",
+      "prompt": "What is an official language of Indonesia?",
+      "choices": [
+        "Tagalog",
+        "Malay",
+        "Thai",
+        "Indonesian"
+      ],
+      "answer": "Indonesian",
+      "aliases": [
+        "Bahasa Indonesia"
+      ],
+      "difficulty": "easy",
+      "explanation": "Indonesian (Bahasa Indonesia) unifies hundreds of islands.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_027",
+      "prompt": "What is an official language of Iran?",
+      "choices": [
+        "Urdu",
+        "Persian",
+        "Arabic",
+        "Turkish"
+      ],
+      "answer": "Persian",
+      "aliases": [
+        "Farsi",
+        "فارسي"
+      ],
+      "difficulty": "easy",
+      "explanation": "Persian (Farsi) is the official language of Iran.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_028",
+      "prompt": "What is an official language of Colombia?",
+      "choices": [
+        "French",
+        "English",
+        "Portuguese",
+        "Spanish"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Spanish is the official language of Colombia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_029",
+      "prompt": "What is an official language of Peru?",
+      "choices": [
+        "Portuguese",
+        "Italian",
+        "French",
+        "Spanish"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Spanish is the primary official language of Peru, alongside Quechua and Aymara.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_030",
+      "prompt": "What is an official language of Chile?",
+      "choices": [
+        "Italian",
+        "English",
+        "Spanish",
+        "Portuguese"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Spanish is the official language of Chile.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_031",
+      "prompt": "What is an official language of Morocco?",
+      "choices": [
+        "Turkish",
+        "Spanish",
+        "French",
+        "Arabic"
+      ],
+      "answer": "Arabic",
+      "aliases": [
+        "Arabic and Amazigh",
+        "Berber"
+      ],
+      "difficulty": "easy",
+      "explanation": "Arabic and Amazigh are the official languages of Morocco.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_032",
+      "prompt": "What is an official language of Jordan?",
+      "choices": [
+        "Hebrew",
+        "Turkish",
+        "Persian",
+        "Arabic"
+      ],
+      "answer": "Arabic",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Arabic is the official language of Jordan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_033",
+      "prompt": "What is an official language of Lebanon?",
+      "choices": [
+        "French",
+        "Greek",
+        "Arabic",
+        "Turkish"
+      ],
+      "answer": "Arabic",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Arabic is the official language of Lebanon.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_034",
+      "prompt": "What is an official language of United Arab Emirates?",
+      "choices": [
+        "English",
+        "Urdu",
+        "Arabic",
+        "Persian"
+      ],
+      "answer": "Arabic",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Arabic is the official language of the United Arab Emirates.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_035",
+      "prompt": "What is an official language of Iraq?",
+      "choices": [
+        "Persian",
+        "Turkish",
+        "Syriac",
+        "Arabic"
+      ],
+      "answer": "Arabic",
+      "aliases": [
+        "Arabic and Kurdish"
+      ],
+      "difficulty": "easy",
+      "explanation": "Arabic and Kurdish are the official languages of Iraq.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_036",
+      "prompt": "What is an official language of Austria?",
+      "choices": [
+        "German",
+        "Hungarian",
+        "Czech",
+        "Italian"
+      ],
+      "answer": "German",
+      "aliases": [
+        "Austrian German"
+      ],
+      "difficulty": "medium",
+      "explanation": "German is the official language of Austria.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_037",
+      "prompt": "What is an official language of Hungary?",
+      "choices": [
+        "Hungarian",
+        "German",
+        "Romanian",
+        "Slovak"
+      ],
+      "answer": "Hungarian",
+      "aliases": [
+        "Magyar"
+      ],
+      "difficulty": "medium",
+      "explanation": "Hungarian belongs to the Uralic language family.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_038",
+      "prompt": "What is an official language of Romania?",
+      "choices": [
+        "Russian",
+        "Hungarian",
+        "Bulgarian",
+        "Romanian"
+      ],
+      "answer": "Romanian",
+      "aliases": [
+        "Română"
+      ],
+      "difficulty": "medium",
+      "explanation": "Romanian is a Romance language descended from Latin.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_039",
+      "prompt": "What is an official language of Bulgaria?",
+      "choices": [
+        "Bulgarian",
+        "Romanian",
+        "Serbian",
+        "Greek"
+      ],
+      "answer": "Bulgarian",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Bulgarian uses the Cyrillic alphabet.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_040",
+      "prompt": "What is an official language of Ukraine?",
+      "choices": [
+        "Romanian",
+        "Ukrainian",
+        "Russian",
+        "Polish"
+      ],
+      "answer": "Ukrainian",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Ukrainian is the sole official language of Ukraine.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_041",
+      "prompt": "What is an official language of Czechia?",
+      "choices": [
+        "German",
+        "Slovak",
+        "Polish",
+        "Czech"
+      ],
+      "answer": "Czech",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Czech is a West Slavic language spoken in Czechia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_042",
+      "prompt": "What is an official language of Finland?",
+      "choices": [
+        "Swedish",
+        "Norwegian",
+        "Estonian",
+        "Finnish"
+      ],
+      "answer": "Finnish",
+      "aliases": [
+        "Finnish and Swedish"
+      ],
+      "difficulty": "medium",
+      "explanation": "Finnish and Swedish are the two national languages of Finland.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_043",
+      "prompt": "What is an official language of Iceland?",
+      "choices": [
+        "Swedish",
+        "Danish",
+        "Icelandic",
+        "Norwegian"
+      ],
+      "answer": "Icelandic",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Icelandic remains closely related to Old Norse.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_044",
+      "prompt": "What is an official language of Pakistan?",
+      "choices": [
+        "Arabic",
+        "Hindi",
+        "Persian",
+        "Urdu"
+      ],
+      "answer": "Urdu",
+      "aliases": [
+        "Urdu and English"
+      ],
+      "difficulty": "medium",
+      "explanation": "Urdu is the national language of Pakistan, with English also official.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_045",
+      "prompt": "What is an official language of Bangladesh?",
+      "choices": [
+        "Urdu",
+        "Burmese",
+        "Hindi",
+        "Bengali"
+      ],
+      "answer": "Bengali",
+      "aliases": [
+        "Bangla"
+      ],
+      "difficulty": "medium",
+      "explanation": "Bengali (Bangla) is the official language of Bangladesh.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_046",
+      "prompt": "What is an official language of Malaysia?",
+      "choices": [
+        "Mandarin",
+        "Indonesian",
+        "Thai",
+        "Malay"
+      ],
+      "answer": "Malay",
+      "aliases": [
+        "Bahasa Melayu",
+        "Malaysian"
+      ],
+      "difficulty": "medium",
+      "explanation": "Malay (Bahasa Melayu) is the official language of Malaysia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_047",
+      "prompt": "What is an official language of Philippines?",
+      "choices": [
+        "Filipino",
+        "Spanish",
+        "Indonesian",
+        "Malay"
+      ],
+      "answer": "Filipino",
+      "aliases": [
+        "Tagalog",
+        "Filipino and English"
+      ],
+      "difficulty": "medium",
+      "explanation": "Filipino (based on Tagalog) and English are official in the Philippines.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_048",
+      "prompt": "What is an official language of Cambodia?",
+      "choices": [
+        "Vietnamese",
+        "Thai",
+        "Khmer",
+        "Lao"
+      ],
+      "answer": "Khmer",
+      "aliases": [
+        "Cambodian"
+      ],
+      "difficulty": "medium",
+      "explanation": "Khmer is the official language of Cambodia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_049",
+      "prompt": "What is an official language of Myanmar?",
+      "choices": [
+        "Bengali",
+        "Burmese",
+        "Thai",
+        "Khmer"
+      ],
+      "answer": "Burmese",
+      "aliases": [
+        "Myanmar"
+      ],
+      "difficulty": "medium",
+      "explanation": "Burmese is the official language of Myanmar.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_050",
+      "prompt": "What is an official language of Nepal?",
+      "choices": [
+        "Tibetan",
+        "Nepali",
+        "Hindi",
+        "Bengali"
+      ],
+      "answer": "Nepali",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Nepali is written in the Devanagari script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_051",
+      "prompt": "What is an official language of Ethiopia?",
+      "choices": [
+        "Amharic",
+        "Somali",
+        "Arabic",
+        "Swahili"
+      ],
+      "answer": "Amharic",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Amharic is the federal working language of Ethiopia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_052",
+      "prompt": "What is an official language of Kenya?",
+      "choices": [
+        "Swahili",
+        "Arabic",
+        "Amharic",
+        "French"
+      ],
+      "answer": "Swahili",
+      "aliases": [
+        "Kiswahili",
+        "Swahili and English"
+      ],
+      "difficulty": "medium",
+      "explanation": "Swahili and English are the official languages of Kenya.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_053",
+      "prompt": "What is an official language of Tanzania?",
+      "choices": [
+        "Swahili",
+        "French",
+        "Arabic",
+        "Portuguese"
+      ],
+      "answer": "Swahili",
+      "aliases": [
+        "Kiswahili"
+      ],
+      "difficulty": "medium",
+      "explanation": "Swahili is Tanzania's national and unifying language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_054",
+      "prompt": "What is an official language of Nigeria?",
+      "choices": [
+        "Arabic",
+        "Swahili",
+        "French",
+        "English"
+      ],
+      "answer": "English",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "English is the official federal language of Nigeria.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_055",
+      "prompt": "What is an official language of Senegal?",
+      "choices": [
+        "Portuguese",
+        "Arabic",
+        "French",
+        "English"
+      ],
+      "answer": "French",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "French is the official language of Senegal alongside national languages like Wolof.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_056",
+      "prompt": "What is an official language of Angola?",
+      "choices": [
+        "French",
+        "Spanish",
+        "English",
+        "Portuguese"
+      ],
+      "answer": "Portuguese",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Portuguese is the official language of Angola.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_057",
+      "prompt": "What is an official language of Mozambique?",
+      "choices": [
+        "English",
+        "Swahili",
+        "French",
+        "Portuguese"
+      ],
+      "answer": "Portuguese",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Mozambique is a member of the Community of Portuguese Language Countries.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_058",
+      "prompt": "What is an official language of DR Congo?",
+      "choices": [
+        "Portuguese",
+        "French",
+        "Arabic",
+        "English"
+      ],
+      "answer": "French",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "French is the official language of the Democratic Republic of the Congo.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_059",
+      "prompt": "What is an official language of Cuba?",
+      "choices": [
+        "English",
+        "French",
+        "Spanish",
+        "Portuguese"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Spanish is the official language of Cuba.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_060",
+      "prompt": "What is an official language of Jamaica?",
+      "choices": [
+        "Dutch",
+        "Spanish",
+        "French",
+        "English"
+      ],
+      "answer": "English",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "English is the official language of Jamaica.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_061",
+      "prompt": "What is an official language of Haiti?",
+      "choices": [
+        "Portuguese",
+        "English",
+        "Spanish",
+        "French"
+      ],
+      "answer": "French",
+      "aliases": [
+        "Haitian Creole",
+        "French and Haitian Creole"
+      ],
+      "difficulty": "medium",
+      "explanation": "French and Haitian Creole are the official languages of Haiti.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_062",
+      "prompt": "What is an official language of Uruguay?",
+      "choices": [
+        "Italian",
+        "Portuguese",
+        "French",
+        "Spanish"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Spanish is the official language of Uruguay.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_063",
+      "prompt": "What is an official language of Venezuela?",
+      "choices": [
+        "Spanish",
+        "French",
+        "English",
+        "Portuguese"
+      ],
+      "answer": "Spanish",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Spanish is the official language of Venezuela.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_064",
+      "prompt": "What is an official language of Israel?",
+      "choices": [
+        "Greek",
+        "Turkish",
+        "Arabic",
+        "Hebrew"
+      ],
+      "answer": "Hebrew",
+      "aliases": [
+        "Modern Hebrew"
+      ],
+      "difficulty": "medium",
+      "explanation": "Hebrew is the official state language of Israel.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_065",
+      "prompt": "What is an official language of Tunisia?",
+      "choices": [
+        "Italian",
+        "French",
+        "Turkish",
+        "Arabic"
+      ],
+      "answer": "Arabic",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Arabic is the official language of Tunisia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_066",
+      "prompt": "What is an official language of Algeria?",
+      "choices": [
+        "Spanish",
+        "Turkish",
+        "Arabic",
+        "French"
+      ],
+      "answer": "Arabic",
+      "aliases": [
+        "Arabic and Tamazight"
+      ],
+      "difficulty": "medium",
+      "explanation": "Arabic and Tamazight are the official languages of Algeria.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_067",
+      "prompt": "What is an official language of Croatia?",
+      "choices": [
+        "Serbian",
+        "Croatian",
+        "Italian",
+        "Slovenian"
+      ],
+      "answer": "Croatian",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Croatian is written using the Latin alphabet.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_068",
+      "prompt": "What is an official language of Serbia?",
+      "choices": [
+        "Croatian",
+        "Bulgarian",
+        "Romanian",
+        "Serbian"
+      ],
+      "answer": "Serbian",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Serbian uses both Cyrillic and Latin scripts.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_069",
+      "prompt": "What is an official language of Slovakia?",
+      "choices": [
+        "Czech",
+        "Slovak",
+        "Polish",
+        "Hungarian"
+      ],
+      "answer": "Slovak",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Slovak is the official language of Slovakia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_070",
+      "prompt": "What is an official language of Kazakhstan?",
+      "choices": [
+        "Kazakh",
+        "Mongolian",
+        "Turkish",
+        "Uzbek"
+      ],
+      "answer": "Kazakh",
+      "aliases": [
+        "Kazakh and Russian"
+      ],
+      "difficulty": "medium",
+      "explanation": "Kazakh is the state language of Kazakhstan, with Russian as an official language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_071",
+      "prompt": "What is an official language of Suriname?",
+      "choices": [
+        "Dutch",
+        "French",
+        "Portuguese",
+        "Spanish"
+      ],
+      "answer": "Dutch",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Suriname is the only sovereign nation in South America where Dutch is official.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_072",
+      "prompt": "What is an official language of Guyana?",
+      "choices": [
+        "Dutch",
+        "English",
+        "Spanish",
+        "Portuguese"
+      ],
+      "answer": "English",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Guyana is the only South American country with English as its official language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_073",
+      "prompt": "What is an official language of Belize?",
+      "choices": [
+        "English",
+        "French",
+        "Portuguese",
+        "Spanish"
+      ],
+      "answer": "English",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Belize is the only Central American country whose official language is English.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_074",
+      "prompt": "What is an official language of Equatorial Guinea?",
+      "choices": [
+        "English",
+        "Spanish",
+        "Arabic",
+        "Swahili"
+      ],
+      "answer": "Spanish",
+      "aliases": [
+        "Spanish, French, and Portuguese"
+      ],
+      "difficulty": "hard",
+      "explanation": "Equatorial Guinea is the only African nation with Spanish as an official language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_075",
+      "prompt": "What is an official language of Cabo Verde?",
+      "choices": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "English"
+      ],
+      "answer": "Portuguese",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Portuguese is the official language of the island nation of Cabo Verde.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_076",
+      "prompt": "What is an official language of Timor-Leste?",
+      "choices": [
+        "Portuguese",
+        "English",
+        "Spanish",
+        "Indonesian"
+      ],
+      "answer": "Portuguese",
+      "aliases": [
+        "Tetum",
+        "Tetum and Portuguese"
+      ],
+      "difficulty": "hard",
+      "explanation": "Tetum and Portuguese are the official languages of Timor-Leste.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_077",
+      "prompt": "What is an official language of Bhutan?",
+      "choices": [
+        "Dzongkha",
+        "Burmese",
+        "Nepali",
+        "Hindi"
+      ],
+      "answer": "Dzongkha",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Dzongkha is the national language of the Himalayan kingdom of Bhutan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_078",
+      "prompt": "What is an official language of Maldives?",
+      "choices": [
+        "Dhivehi",
+        "Sinhala",
+        "Hindi",
+        "Arabic"
+      ],
+      "answer": "Dhivehi",
+      "aliases": [
+        "Maldivian"
+      ],
+      "difficulty": "hard",
+      "explanation": "Dhivehi is an Indo-Aryan language written in the Thaana script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_079",
+      "prompt": "What is an official language of Sri Lanka?",
+      "choices": [
+        "Sinhala",
+        "Bengali",
+        "Burmese",
+        "Hindi"
+      ],
+      "answer": "Sinhala",
+      "aliases": [
+        "Sinhala and Tamil",
+        "Tamil"
+      ],
+      "difficulty": "hard",
+      "explanation": "Sinhala and Tamil are the official languages of Sri Lanka.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_080",
+      "prompt": "What is an official language of Laos?",
+      "choices": [
+        "Khmer",
+        "Vietnamese",
+        "Lao",
+        "Thai"
+      ],
+      "answer": "Lao",
+      "aliases": [
+        "Laotian"
+      ],
+      "difficulty": "hard",
+      "explanation": "Lao is closely related to Thai and is official in Laos.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_081",
+      "prompt": "What is an official language of Mongolia?",
+      "choices": [
+        "Mongolian",
+        "Russian",
+        "Kazakh",
+        "Mandarin"
+      ],
+      "answer": "Mongolian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Mongolian is written in Cyrillic and traditional vertical script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_082",
+      "prompt": "What is an official language of Georgia?",
+      "choices": [
+        "Georgian",
+        "Turkish",
+        "Armenian",
+        "Russian"
+      ],
+      "answer": "Georgian",
+      "aliases": [
+        "Kartuli"
+      ],
+      "difficulty": "hard",
+      "explanation": "Georgian has its own unique ancient script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_083",
+      "prompt": "What is an official language of Armenia?",
+      "choices": [
+        "Persian",
+        "Armenian",
+        "Russian",
+        "Georgian"
+      ],
+      "answer": "Armenian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Armenian uses its own alphabet created in 405 CE.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_084",
+      "prompt": "What is an official language of Azerbaijan?",
+      "choices": [
+        "Turkish",
+        "Azerbaijani",
+        "Russian",
+        "Persian"
+      ],
+      "answer": "Azerbaijani",
+      "aliases": [
+        "Azeri"
+      ],
+      "difficulty": "hard",
+      "explanation": "Azerbaijani is a Turkic language written in Latin script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_085",
+      "prompt": "What is an official language of Uzbekistan?",
+      "choices": [
+        "Persian",
+        "Uzbek",
+        "Kazakh",
+        "Russian"
+      ],
+      "answer": "Uzbek",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Uzbek is the official language of Uzbekistan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_086",
+      "prompt": "What is an official language of Tajikistan?",
+      "choices": [
+        "Kazakh",
+        "Russian",
+        "Uzbek",
+        "Tajik"
+      ],
+      "answer": "Tajik",
+      "aliases": [
+        "Tajik Persian"
+      ],
+      "difficulty": "hard",
+      "explanation": "Tajik is a variety of Persian written in Cyrillic script.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_087",
+      "prompt": "What is an official language of Kyrgyzstan?",
+      "choices": [
+        "Kyrgyz",
+        "Kazakh",
+        "Uzbek",
+        "Tajik"
+      ],
+      "answer": "Kyrgyz",
+      "aliases": [
+        "Kyrgyz and Russian"
+      ],
+      "difficulty": "hard",
+      "explanation": "Kyrgyz is the state language of Kyrgyzstan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_088",
+      "prompt": "What is an official language of Turkmenistan?",
+      "choices": [
+        "Kazakh",
+        "Uzbek",
+        "Turkmen",
+        "Persian"
+      ],
+      "answer": "Turkmen",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Turkmen is a Turkic language official in Turkmenistan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_089",
+      "prompt": "What is an official language of Afghanistan?",
+      "choices": [
+        "Pashto",
+        "Turkish",
+        "Arabic",
+        "Urdu"
+      ],
+      "answer": "Pashto",
+      "aliases": [
+        "Dari",
+        "Pashto and Dari"
+      ],
+      "difficulty": "hard",
+      "explanation": "Pashto and Dari are the two official languages of Afghanistan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_090",
+      "prompt": "What is an official language of Albania?",
+      "choices": [
+        "Italian",
+        "Greek",
+        "Albanian",
+        "Serbian"
+      ],
+      "answer": "Albanian",
+      "aliases": [
+        "Shqip"
+      ],
+      "difficulty": "hard",
+      "explanation": "Albanian forms its own independent branch of the Indo-European family.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_091",
+      "prompt": "What is an official language of Estonia?",
+      "choices": [
+        "Estonian",
+        "Latvian",
+        "Lithuanian",
+        "Russian"
+      ],
+      "answer": "Estonian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Estonian is a Finnic language related to Finnish.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_092",
+      "prompt": "What is an official language of Latvia?",
+      "choices": [
+        "Polish",
+        "Lithuanian",
+        "Latvian",
+        "Estonian"
+      ],
+      "answer": "Latvian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Latvian is one of only two living Baltic languages.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_093",
+      "prompt": "What is an official language of Lithuania?",
+      "choices": [
+        "Lithuanian",
+        "Estonian",
+        "Latvian",
+        "Polish"
+      ],
+      "answer": "Lithuanian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Lithuanian is among the most conservative Indo-European languages.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_094",
+      "prompt": "What is an official language of Slovenia?",
+      "choices": [
+        "Croatian",
+        "German",
+        "Italian",
+        "Slovene"
+      ],
+      "answer": "Slovene",
+      "aliases": [
+        "Slovenian"
+      ],
+      "difficulty": "hard",
+      "explanation": "Slovene is a South Slavic language official in Slovenia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_095",
+      "prompt": "What is an official language of Malta?",
+      "choices": [
+        "Maltese",
+        "Greek",
+        "Italian",
+        "Arabic"
+      ],
+      "answer": "Maltese",
+      "aliases": [
+        "Maltese and English"
+      ],
+      "difficulty": "hard",
+      "explanation": "Maltese is the only Semitic language written in the Latin alphabet.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_096",
+      "prompt": "What is an official language of Andorra?",
+      "choices": [
+        "Spanish",
+        "Catalan",
+        "Portuguese",
+        "French"
+      ],
+      "answer": "Catalan",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Andorra is the only sovereign state where Catalan is the sole official language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_097",
+      "prompt": "What is an official language of San Marino?",
+      "choices": [
+        "German",
+        "Italian",
+        "French",
+        "Spanish"
+      ],
+      "answer": "Italian",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "San Marino is an enclave within northern Italy.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_098",
+      "prompt": "What is an official language of Liechtenstein?",
+      "choices": [
+        "Italian",
+        "Romansh",
+        "French",
+        "German"
+      ],
+      "answer": "German",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "German is the official language of Liechtenstein.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_099",
+      "prompt": "What is an official language of Madagascar?",
+      "choices": [
+        "Portuguese",
+        "Arabic",
+        "Malagasy",
+        "Swahili"
+      ],
+      "answer": "Malagasy",
+      "aliases": [
+        "Malagasy and French"
+      ],
+      "difficulty": "hard",
+      "explanation": "Malagasy is an Austronesian language closely related to languages of Borneo.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_100",
+      "prompt": "What is an official language of Rwanda?",
+      "choices": [
+        "Kinyarwanda",
+        "Portuguese",
+        "Swahili",
+        "Arabic"
+      ],
+      "answer": "Kinyarwanda",
+      "aliases": [
+        "Kinyarwanda, French, and English"
+      ],
+      "difficulty": "hard",
+      "explanation": "Kinyarwanda is spoken by virtually the entire population of Rwanda.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_101",
+      "prompt": "What is an official language of Somalia?",
+      "choices": [
+        "French",
+        "Swahili",
+        "Amharic",
+        "Somali"
+      ],
+      "answer": "Somali",
+      "aliases": [
+        "Somali and Arabic"
+      ],
+      "difficulty": "hard",
+      "explanation": "Somali and Arabic are the official languages of Somalia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_102",
+      "prompt": "What is an official language of Eritrea?",
+      "choices": [
+        "Swahili",
+        "Somali",
+        "Tigrinya",
+        "Amharic"
+      ],
+      "answer": "Tigrinya",
+      "aliases": [
+        "Tigrinya and Arabic"
+      ],
+      "difficulty": "hard",
+      "explanation": "Tigrinya, Arabic, and English serve as working languages in Eritrea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_103",
+      "prompt": "What is an official language of Paraguay?",
+      "choices": [
+        "Portuguese",
+        "Guarani",
+        "Quechua",
+        "French"
+      ],
+      "answer": "Guarani",
+      "aliases": [
+        "Spanish and Guarani",
+        "Spanish"
+      ],
+      "difficulty": "hard",
+      "explanation": "Paraguay is famous for making indigenous Guarani co-official alongside Spanish.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_104",
+      "prompt": "What is an official language of Papua New Guinea?",
+      "choices": [
+        "Indonesian",
+        "Tok Pisin",
+        "Malay",
+        "French"
+      ],
+      "answer": "Tok Pisin",
+      "aliases": [
+        "English",
+        "Hiri Motu"
+      ],
+      "difficulty": "hard",
+      "explanation": "Tok Pisin, English, and Hiri Motu are official in Papua New Guinea, the most linguistically diverse nation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "lang_105",
+      "prompt": "What is an official language of Brunei?",
+      "choices": [
+        "Indonesian",
+        "Thai",
+        "Malay",
+        "Filipino"
+      ],
+      "answer": "Malay",
+      "aliases": [
+        "Bahasa Melayu"
+      ],
+      "difficulty": "hard",
+      "explanation": "Malay is the official language of Brunei Darussalam.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Africa General Knowledge Cover">
+  <defs>
+    <linearGradient id="cbg-af" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#7C2D12"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-af)"/>
+  <!-- Sunset sun -->
+  <circle cx="80" cy="76" r="36" fill="#FDE047"/>
+  <!-- Acacia tree silhouette -->
+  <path d="M40,66 Q80,44 120,66 Q98,74 80,70 Q62,74 40,66 Z" fill="#1C1917"/>
+  <path d="M77,68 L74,116 L86,116 L83,68 Z" fill="#1C1917"/>
+  <path d="M79,82 L58,68 M81,82 L102,68" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/>
+  <!-- Savanna horizon -->
+  <path d="M4,114 Q80,104 156,114 L156,130 C156,144 144,156 130,156 L30,156 C16,156 4,144 4,130 Z" fill="#1C1917"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

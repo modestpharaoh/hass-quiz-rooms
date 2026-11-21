@@ -20,7 +20,8 @@
       ],
       "answer": "Saturn",
       "aliases": [],
-      "explanation": "Saturn's rings are made mostly of water ice particles and rocky debris."
+      "explanation": "Saturn's rings are made mostly of water ice particles and rocky debris.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_02",
@@ -36,7 +37,8 @@
       "aliases": [
         "Paris, France"
       ],
-      "explanation": "The Eiffel Tower was built in Paris for the 1889 World's Fair."
+      "explanation": "The Eiffel Tower was built in Paris for the 1889 World's Fair.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_03",
@@ -52,7 +54,8 @@
       "aliases": [
         "Benzol"
       ],
-      "explanation": "Benzene (C6H6) is the foundational aromatic ring in organic chemistry."
+      "explanation": "Benzene (C6H6) is the foundational aromatic ring in organic chemistry.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_04",
@@ -65,7 +68,8 @@
       ],
       "answer": "Au",
       "aliases": [],
-      "explanation": "Au comes from the Latin word 'aurum', meaning shining dawn."
+      "explanation": "Au comes from the Latin word 'aurum', meaning shining dawn.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_05",
@@ -80,7 +84,8 @@
       "aliases": [
         "Pacific"
       ],
-      "explanation": "The Pacific Ocean covers about one-third of Earth's surface."
+      "explanation": "The Pacific Ocean covers about one-third of Earth's surface.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_06",
@@ -93,7 +98,8 @@
       ],
       "answer": "1969",
       "aliases": [],
-      "explanation": "Neil Armstrong and Buzz Aldrin landed on the Moon on July 20, 1969."
+      "explanation": "Neil Armstrong and Buzz Aldrin landed on the Moon on July 20, 1969.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_07",
@@ -109,7 +115,8 @@
         "Orwell",
         "Eric Arthur Blair"
       ],
-      "explanation": "George Orwell published '1984' in 1949."
+      "explanation": "George Orwell published '1984' in 1949.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_08",
@@ -125,7 +132,8 @@
         "eighty eight",
         "eighty-eight"
       ],
-      "explanation": "A standard piano has 52 white keys and 36 black keys, totaling 88."
+      "explanation": "A standard piano has 52 white keys and 36 black keys, totaling 88.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_09",
@@ -141,7 +149,8 @@
         "Sahara Desert",
         "The Sahara"
       ],
-      "explanation": "The Sahara spans roughly 9.2 million square kilometers across North Africa."
+      "explanation": "The Sahara spans roughly 9.2 million square kilometers across North Africa.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_10",
@@ -156,7 +165,8 @@
       "aliases": [
         "Bats"
       ],
-      "explanation": "Bats are the only mammals capable of true powered flight; others only glide."
+      "explanation": "Bats are the only mammals capable of true powered flight; others only glide.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_11",
@@ -171,7 +181,8 @@
       "aliases": [
         "Michelangelo Buonarroti"
       ],
-      "explanation": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512."
+      "explanation": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_12",
@@ -186,7 +197,8 @@
       "aliases": [
         "Diamonds"
       ],
-      "explanation": "Diamond sits at 10 on the Mohs hardness scale."
+      "explanation": "Diamond sits at 10 on the Mohs hardness scale.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_13",
@@ -199,7 +211,8 @@
       ],
       "answer": "Python",
       "aliases": [],
-      "explanation": "Python was named after the comedy troupe Monty Python."
+      "explanation": "Python was named after the comedy troupe Monty Python.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_14",
@@ -212,7 +225,8 @@
       ],
       "answer": "Canberra",
       "aliases": [],
-      "explanation": "Canberra was chosen in 1908 as a compromise between rivals Sydney and Melbourne."
+      "explanation": "Canberra was chosen in 1908 as a compromise between rivals Sydney and Melbourne.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_15",
@@ -227,7 +241,8 @@
       "aliases": [
         "N2"
       ],
-      "explanation": "Dry air is roughly 78% nitrogen, 21% oxygen, and 1% argon and trace gases."
+      "explanation": "Dry air is roughly 78% nitrogen, 21% oxygen, and 1% argon and trace gases.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_16",
@@ -240,7 +255,8 @@
       ],
       "answer": "Barometer",
       "aliases": [],
-      "explanation": "Evangelista Torricelli invented the mercury barometer in 1643."
+      "explanation": "Evangelista Torricelli invented the mercury barometer in 1643.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_17",
@@ -255,7 +271,8 @@
       "aliases": [
         "The Bishop"
       ],
-      "explanation": "Each bishop stays on squares of a single color for the entire game."
+      "explanation": "Each bishop stays on squares of a single color for the entire game.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_18",
@@ -270,7 +287,8 @@
       "aliases": [
         "Ancient China"
       ],
-      "explanation": "Go originated in China and is one of the oldest continuously played board games."
+      "explanation": "Go originated in China and is one of the oldest continuously played board games.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_19",
@@ -283,7 +301,8 @@
       ],
       "answer": "Uranus",
       "aliases": [],
-      "explanation": "Uranus appears to roll around the Sun on its side, creating extreme 42-year seasons."
+      "explanation": "Uranus appears to roll around the Sun on its side, creating extreme 42-year seasons.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_20",
@@ -299,7 +318,8 @@
         "Soy",
         "Soya beans"
       ],
-      "explanation": "Miso is made by fermenting soybeans with salt and koji."
+      "explanation": "Miso is made by fermenting soybeans with salt and koji.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_21",
@@ -315,7 +335,8 @@
         "Nile River",
         "The Nile"
       ],
-      "explanation": "The Nile flows northward through northeastern Africa into the Mediterranean Sea."
+      "explanation": "The Nile flows northward through northeastern Africa into the Mediterranean Sea.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_22",
@@ -331,7 +352,8 @@
         "Fleming",
         "Sir Alexander Fleming"
       ],
-      "explanation": "Fleming noticed mold inhibiting bacteria on a forgotten Petri dish."
+      "explanation": "Fleming noticed mold inhibiting bacteria on a forgotten Petri dish.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_23",
@@ -346,7 +368,8 @@
       "aliases": [
         "Vivaldi"
       ],
-      "explanation": "Italian Baroque composer Antonio Vivaldi published The Four Seasons in 1725."
+      "explanation": "Italian Baroque composer Antonio Vivaldi published The Four Seasons in 1725.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_24",
@@ -361,7 +384,8 @@
       "aliases": [
         "The liver"
       ],
-      "explanation": "While skin is the largest overall organ, the liver is the largest internal organ."
+      "explanation": "While skin is the largest overall organ, the liver is the largest internal organ.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_25",
@@ -377,7 +401,8 @@
         "Urals",
         "The Urals"
       ],
-      "explanation": "The Urals run north-to-south through western Russia."
+      "explanation": "The Urals run north-to-south through western Russia.",
+      "difficulty": "medium"
     },
     {
       "id": "gk_26",
@@ -392,7 +417,8 @@
       "aliases": [
         "three"
       ],
-      "explanation": "An octopus has two branchial hearts for its gills and one systemic heart for its body."
+      "explanation": "An octopus has two branchial hearts for its gills and one systemic heart for its body.",
+      "difficulty": "hard"
     },
     {
       "id": "gk_27",
@@ -408,7 +434,8 @@
         "Newton",
         "Sir Isaac Newton"
       ],
-      "explanation": "Newton published Principia Mathematica in 1687."
+      "explanation": "Newton published Principia Mathematica in 1687.",
+      "difficulty": "easy"
     },
     {
       "id": "gk_28",
@@ -424,7 +451,8 @@
         "The Vatican",
         "Vatican"
       ],
-      "explanation": "Vatican City covers just 0.49 square kilometers inside Rome."
+      "explanation": "Vatican City covers just 0.49 square kilometers inside Rome.",
+      "difficulty": "easy"
     }
   ],
   "cover": "media/cover.svg"

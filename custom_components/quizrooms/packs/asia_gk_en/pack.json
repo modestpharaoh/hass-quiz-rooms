@@ -1,0 +1,650 @@
+{
+  "pack_id": "asia_gk_en",
+  "title": "Asia General Knowledge",
+  "description": "36 original questions exploring Asian peaks, rivers, Silk Road cities, heritage, and culture (Multiple Choice & Free-Text).",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Regional GK",
+  "questions": [
+    {
+      "id": "asia_gk_en_001",
+      "prompt": "What is the highest mountain above sea level on Earth, located in the Himalayas?",
+      "choices": [
+        "Mount Fuji",
+        "K2",
+        "Mount Everest",
+        "Kangchenjunga"
+      ],
+      "answer": "Mount Everest",
+      "aliases": [
+        "Everest",
+        "Sagarmatha",
+        "Chomolungma"
+      ],
+      "difficulty": "easy",
+      "explanation": "Mount Everest rises to 8,848.86 meters on the Nepal-Tibet border.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_002",
+      "prompt": "Which iconic white marble mausoleum stands in Agra, India?",
+      "choices": [
+        "Hawa Mahal",
+        "Qutb Minar",
+        "Red Fort",
+        "Taj Mahal"
+      ],
+      "answer": "Taj Mahal",
+      "aliases": [
+        "The Taj Mahal"
+      ],
+      "difficulty": "easy",
+      "explanation": "Emperor Shah Jahan commissioned the Taj Mahal in 1632.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_003",
+      "prompt": "Which ancient fortification stretches thousands of kilometers across northern China?",
+      "choices": [
+        "Great Wall of China",
+        "Forbidden City",
+        "Grand Canal",
+        "Terracotta Army"
+      ],
+      "answer": "Great Wall of China",
+      "aliases": [
+        "Great Wall",
+        "The Great Wall"
+      ],
+      "difficulty": "easy",
+      "explanation": "Built across multiple dynasties, the Great Wall defended China's northern frontier.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_004",
+      "prompt": "Which sacred snow-capped volcano is Japan's highest mountain?",
+      "choices": [
+        "Mount Fuji",
+        "Mount Aso",
+        "Mount Kita",
+        "Mount Ontake"
+      ],
+      "answer": "Mount Fuji",
+      "aliases": [
+        "Fuji",
+        "Fujiyama"
+      ],
+      "difficulty": "easy",
+      "explanation": "Mount Fuji stands 3,776 meters tall southwest of Tokyo.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_005",
+      "prompt": "Which Asian country is the world's largest archipelago state by number of islands (over 17,000)?",
+      "choices": [
+        "Indonesia",
+        "Maldives",
+        "Japan",
+        "Philippines"
+      ],
+      "answer": "Indonesia",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Indonesia spans from Sumatra in the west to New Guinea in the east.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_006",
+      "prompt": "Which ancient overland network of trade routes linked China with the Mediterranean world?",
+      "choices": [
+        "Silk Road",
+        "Amber Road",
+        "Royal Road",
+        "Spice Canal"
+      ],
+      "answer": "Silk Road",
+      "aliases": [
+        "The Silk Road"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Silk Road carried silk, paper, spices, ideas, and technologies across Eurasia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_007",
+      "prompt": "Which country is home to the Petronas Twin Towers in Kuala Lumpur?",
+      "choices": [
+        "Thailand",
+        "Indonesia",
+        "Malaysia",
+        "Singapore"
+      ],
+      "answer": "Malaysia",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "The 452-meter Petronas Towers were the world's tallest buildings from 1998 to 2004.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_008",
+      "prompt": "Which Asian river is considered sacred in Hinduism and flows across northern India?",
+      "choices": [
+        "Ganges",
+        "Yangtze",
+        "Indus",
+        "Mekong"
+      ],
+      "answer": "Ganges",
+      "aliases": [
+        "Ganga",
+        "Ganges River"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Ganges flows from the Himalayas to the Bay of Bengal.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_009",
+      "prompt": "What is the longest river in Asia?",
+      "choices": [
+        "Ganges River",
+        "Mekong River",
+        "Yellow River",
+        "Yangtze River"
+      ],
+      "answer": "Yangtze River",
+      "aliases": [
+        "Yangtze",
+        "Chang Jiang"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Yangtze stretches about 6,300 kilometers entirely within China.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_010",
+      "prompt": "Which traditional Japanese art involves folding paper into decorative shapes?",
+      "choices": [
+        "Ikebana",
+        "Bonsai",
+        "Origami",
+        "Calligraphy"
+      ],
+      "answer": "Origami",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Origami comes from 'ori' (folding) and 'kami' (paper).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_011",
+      "prompt": "Which vast cold desert spans parts of northern China and southern Mongolia?",
+      "choices": [
+        "Taklamakan",
+        "Thar Desert",
+        "Gobi Desert",
+        "Karakum"
+      ],
+      "answer": "Gobi Desert",
+      "aliases": [
+        "Gobi",
+        "The Gobi"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Gobi is a rain-shadow desert north of the Tibetan Plateau.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_012",
+      "prompt": "Which Asian nation is nicknamed the 'Land of the Rising Sun'?",
+      "choices": [
+        "Vietnam",
+        "South Korea",
+        "Thailand",
+        "Japan"
+      ],
+      "answer": "Japan",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "In Japanese, Nihon / Nippon literally means 'origin of the sun'.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_013",
+      "prompt": "In which Southeast Asian country is the vast Angkor Wat temple complex located?",
+      "choices": [
+        "Thailand",
+        "Myanmar",
+        "Laos",
+        "Cambodia"
+      ],
+      "answer": "Cambodia",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Built in the 12th century, Angkor Wat is the largest religious monument in the world.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_014",
+      "prompt": "Which city-state sits at the southern tip of the Malay Peninsula?",
+      "choices": [
+        "Singapore",
+        "Macau",
+        "Brunei",
+        "Hong Kong"
+      ],
+      "answer": "Singapore",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Singapore became an independent sovereign republic in 1965.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_015",
+      "prompt": "Which high-altitude plateau in Asia is nicknamed the 'Roof of the World'?",
+      "choices": [
+        "Tibetan Plateau",
+        "Iranian Plateau",
+        "Deccan Plateau",
+        "Anatolian Plateau"
+      ],
+      "answer": "Tibetan Plateau",
+      "aliases": [
+        "Tibet",
+        "Qinghai-Tibet Plateau"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Tibetan Plateau averages over 4,500 meters in elevation.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_016",
+      "prompt": "What is the world's largest landlocked country, located in Central Asia?",
+      "choices": [
+        "Mongolia",
+        "Uzbekistan",
+        "Kazakhstan",
+        "Afghanistan"
+      ],
+      "answer": "Kazakhstan",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Kazakhstan covers over 2.7 million square kilometers.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_017",
+      "prompt": "Which inland saltwater lake between Asia and Europe is the largest enclosed body of water on Earth?",
+      "choices": [
+        "Lake Baikal",
+        "Caspian Sea",
+        "Dead Sea",
+        "Aral Sea"
+      ],
+      "answer": "Caspian Sea",
+      "aliases": [
+        "The Caspian Sea",
+        "Caspian"
+      ],
+      "difficulty": "medium",
+      "explanation": "Five countries border the Caspian Sea, including Kazakhstan, Iran, and Russia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_018",
+      "prompt": "Which major river flows through China, Myanmar, Laos, Thailand, Cambodia, and Vietnam?",
+      "choices": [
+        "Red River",
+        "Salween",
+        "Mekong River",
+        "Irrawaddy"
+      ],
+      "answer": "Mekong River",
+      "aliases": [
+        "Mekong",
+        "The Mekong"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Mekong supports tens of millions of people across mainland Southeast Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_019",
+      "prompt": "Which Korean alphabet was commissioned by King Sejong the Great in the 15th century?",
+      "choices": [
+        "Kanji",
+        "Hangul",
+        "Devanagari",
+        "Katakana"
+      ],
+      "answer": "Hangul",
+      "aliases": [
+        "Hangeul"
+      ],
+      "difficulty": "medium",
+      "explanation": "Hangul was designed so everyday citizens could learn to read and write easily.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_020",
+      "prompt": "Which mountain on the Pakistan-China border is the second-highest peak in the world?",
+      "choices": [
+        "K2",
+        "Lhotse",
+        "Nanga Parbat",
+        "Kangchenjunga"
+      ],
+      "answer": "K2",
+      "aliases": [
+        "Mount Godwin-Austen"
+      ],
+      "difficulty": "medium",
+      "explanation": "K2 rises 8,611 meters in the Karakoram range.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_021",
+      "prompt": "Which island nation south of India was historically known as Ceylon?",
+      "choices": [
+        "Sri Lanka",
+        "Taiwan",
+        "Mauritius",
+        "Maldives"
+      ],
+      "answer": "Sri Lanka",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Ceylon adopted the name Sri Lanka in 1972.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_022",
+      "prompt": "Which Siberian lake in Russia is the deepest freshwater lake in the world?",
+      "choices": [
+        "Lake Baikal",
+        "Lake Balkhash",
+        "Lake Issyk-Kul",
+        "Qinghai Lake"
+      ],
+      "answer": "Lake Baikal",
+      "aliases": [
+        "Baikal"
+      ],
+      "difficulty": "medium",
+      "explanation": "Lake Baikal plunges to 1,642 meters and holds about 20% of Earth's unfrozen fresh water.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_023",
+      "prompt": "Which historic imperial palace complex sits at the center of Beijing?",
+      "choices": [
+        "Forbidden City",
+        "Gyeongbokgung",
+        "Potala Palace",
+        "Summer Palace"
+      ],
+      "answer": "Forbidden City",
+      "aliases": [
+        "The Forbidden City"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Forbidden City served as the Chinese imperial palace for nearly 500 years.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_024",
+      "prompt": "Which strategic waterway between Malaysia and Indonesia is one of the busiest shipping lanes on Earth?",
+      "choices": [
+        "Strait of Malacca",
+        "Sunda Strait",
+        "Taiwan Strait",
+        "Strait of Hormuz"
+      ],
+      "answer": "Strait of Malacca",
+      "aliases": [
+        "Malacca Strait"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Strait of Malacca connects the Indian Ocean to the South China Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_025",
+      "prompt": "Which ancient Silk Road oasis city in Uzbekistan is famed for Registan Square?",
+      "choices": [
+        "Samarkand",
+        "Almaty",
+        "Bishkek",
+        "Ashgabat"
+      ],
+      "answer": "Samarkand",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Samarkand flourished as the capital of the Timurid Empire.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_026",
+      "prompt": "Which Himalayan kingdom measures national progress using 'Gross National Happiness'?",
+      "choices": [
+        "Laos",
+        "Sikkim",
+        "Bhutan",
+        "Nepal"
+      ],
+      "answer": "Bhutan",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Bhutan introduced Gross National Happiness in the 1970s.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_027",
+      "prompt": "Which island shared by Indonesia, Malaysia, and Brunei is the third-largest island in the world?",
+      "choices": [
+        "Sumatra",
+        "Borneo",
+        "Sulawesi",
+        "Java"
+      ],
+      "answer": "Borneo",
+      "aliases": [
+        "Kalimantan"
+      ],
+      "difficulty": "hard",
+      "explanation": "Borneo is the only island politically divided among three sovereign nations.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_028",
+      "prompt": "Which massive 9th-century Buddhist monument on the island of Java is the world's largest Buddhist temple?",
+      "choices": [
+        "Sukhothai",
+        "Prambanan",
+        "Bagan",
+        "Borobudur"
+      ],
+      "answer": "Borobudur",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Borobudur features nine stacked platforms topped by a central dome.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_029",
+      "prompt": "Which ancient Indus Valley civilization city in modern Pakistan was renowned for advanced urban drainage?",
+      "choices": [
+        "Persepolis",
+        "Mohenjo-daro",
+        "Taxila",
+        "Babylon"
+      ],
+      "answer": "Mohenjo-daro",
+      "aliases": [
+        "Mohenjo Daro",
+        "Harappa"
+      ],
+      "difficulty": "hard",
+      "explanation": "Mohenjo-daro flourished around 2500 BCE with grid streets and covered drains.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_030",
+      "prompt": "Which river is known as the 'Cradle of Chinese Civilization' for its loess-rich silt?",
+      "choices": [
+        "Pearl River",
+        "Amur River",
+        "Tarim River",
+        "Yellow River"
+      ],
+      "answer": "Yellow River",
+      "aliases": [
+        "Huang He"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Yellow River (Huang He) is China's second-longest river.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_031",
+      "prompt": "Which desert in northwestern China's Tarim Basin is one of the largest shifting-sand deserts in the world?",
+      "choices": [
+        "Thar Desert",
+        "Gobi Desert",
+        "Taklamakan Desert",
+        "Kyzylkum"
+      ],
+      "answer": "Taklamakan Desert",
+      "aliases": [
+        "Taklamakan"
+      ],
+      "difficulty": "hard",
+      "explanation": "Silk Road caravans skirted the northern and southern edges of the Taklamakan.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_032",
+      "prompt": "Which ancient city in Myanmar is famous for a plain containing more than 2,000 Buddhist pagodas and temples?",
+      "choices": [
+        "Yangon",
+        "Bagan",
+        "Luang Prabang",
+        "Mandalay"
+      ],
+      "answer": "Bagan",
+      "aliases": [
+        "Pagan"
+      ],
+      "difficulty": "hard",
+      "explanation": "Bagan was the capital of the Pagan Kingdom from the 9th to 13th centuries.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_033",
+      "prompt": "Which mountain pass connects Pakistan and Afghanistan through the Spin Ghar mountains?",
+      "choices": [
+        "Nathu La",
+        "Khyber Pass",
+        "Bolan Pass",
+        "Karakoram Pass"
+      ],
+      "answer": "Khyber Pass",
+      "aliases": [
+        "The Khyber Pass"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Khyber Pass has been a crucial trade and strategic corridor for millennia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_034",
+      "prompt": "Which Japanese former imperial capital served as the nation's capital for over 1,000 years until 1868?",
+      "choices": [
+        "Nagoya",
+        "Osaka",
+        "Nara",
+        "Kyoto"
+      ],
+      "answer": "Kyoto",
+      "aliases": [
+        "Heian-kyo"
+      ],
+      "difficulty": "hard",
+      "explanation": "Kyoto is renowned for its classical wooden temples, shrines, and gardens.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_035",
+      "prompt": "Which ocean trench east of the Philippines and Mariana Islands contains Earth's deepest known point?",
+      "choices": [
+        "Kuril Trench",
+        "Java Trench",
+        "Mariana Trench",
+        "Tonga Trench"
+      ],
+      "answer": "Mariana Trench",
+      "aliases": [
+        "Challenger Deep"
+      ],
+      "difficulty": "hard",
+      "explanation": "Challenger Deep in the Mariana Trench reaches nearly 11,000 meters depth.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "asia_gk_en_036",
+      "prompt": "Which ancient Persian ceremonial capital was founded by Darius I around 518 BCE in southern Iran?",
+      "choices": [
+        "Pasargadae",
+        "Susa",
+        "Persepolis",
+        "Ctesiphon"
+      ],
+      "answer": "Persepolis",
+      "aliases": [
+        "Takht-e Jamshid"
+      ],
+      "difficulty": "hard",
+      "explanation": "Persepolis was the ceremonial heart of the Achaemenid Empire.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

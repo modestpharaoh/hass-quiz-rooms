@@ -1,0 +1,656 @@
+{
+  "pack_id": "europe_west_gk_en",
+  "title": "Europe & Western World GK",
+  "description": "36 original questions on European and Western geography, landmarks, history, science, and culture (Multiple Choice & Free-Text).",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Regional GK",
+  "questions": [
+    {
+      "id": "europe_west_gk_en_001",
+      "prompt": "Which river flows through the heart of London?",
+      "choices": [
+        "Seine",
+        "Danube",
+        "Rhine",
+        "Thames"
+      ],
+      "answer": "Thames",
+      "aliases": [
+        "River Thames",
+        "The Thames"
+      ],
+      "difficulty": "easy",
+      "explanation": "The River Thames flows through southern England and central London.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_002",
+      "prompt": "In which Italian city is the ancient Colosseum located?",
+      "choices": [
+        "Florence",
+        "Rome",
+        "Venice",
+        "Milan"
+      ],
+      "answer": "Rome",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Completed in 80 CE, the Colosseum stands in central Rome.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_003",
+      "prompt": "Which mountain range forms a natural arc across Switzerland, Austria, France, and northern Italy?",
+      "choices": [
+        "Rockies",
+        "Apennines",
+        "Alps",
+        "Pyrenees"
+      ],
+      "answer": "Alps",
+      "aliases": [
+        "The Alps"
+      ],
+      "difficulty": "easy",
+      "explanation": "Mont Blanc is the highest peak in the Alps.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_004",
+      "prompt": "Which city is home to the Statue of Liberty?",
+      "choices": [
+        "Boston",
+        "Washington, D.C.",
+        "Philadelphia",
+        "New York City"
+      ],
+      "answer": "New York City",
+      "aliases": [
+        "New York",
+        "NYC"
+      ],
+      "difficulty": "easy",
+      "explanation": "France gifted the Statue of Liberty to the United States in 1886.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_005",
+      "prompt": "Which European country is shaped like a high-heeled boot on a map?",
+      "choices": [
+        "Norway",
+        "Greece",
+        "Spain",
+        "Italy"
+      ],
+      "answer": "Italy",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "The Italian Peninsula extends southeast into the Mediterranean Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_006",
+      "prompt": "Which sea separates southern Europe from North Africa?",
+      "choices": [
+        "Baltic Sea",
+        "Mediterranean Sea",
+        "Black Sea",
+        "North Sea"
+      ],
+      "answer": "Mediterranean Sea",
+      "aliases": [
+        "Mediterranean"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Mediterranean connects to the Atlantic via the Strait of Gibraltar.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_007",
+      "prompt": "In which French museum is Leonardo da Vinci's Mona Lisa displayed?",
+      "choices": [
+        "Louvre",
+        "British Museum",
+        "Prado",
+        "Musée d'Orsay"
+      ],
+      "answer": "Louvre",
+      "aliases": [
+        "The Louvre",
+        "Louvre Museum"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Louvre in Paris is the world's most visited art museum.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_008",
+      "prompt": "Which North American waterfall sits on the border between Canada and the United States?",
+      "choices": [
+        "Victoria Falls",
+        "Niagara Falls",
+        "Yosemite Falls",
+        "Iguazu Falls"
+      ],
+      "answer": "Niagara Falls",
+      "aliases": [
+        "Niagara"
+      ],
+      "difficulty": "easy",
+      "explanation": "Niagara Falls lies between Ontario and New York State.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_009",
+      "prompt": "Which European country is famous for its windmills, tulip fields, and canals?",
+      "choices": [
+        "Austria",
+        "Netherlands",
+        "Denmark",
+        "Belgium"
+      ],
+      "answer": "Netherlands",
+      "aliases": [
+        "The Netherlands",
+        "Holland"
+      ],
+      "difficulty": "easy",
+      "explanation": "Roughly a third of the Netherlands lies below sea level.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_010",
+      "prompt": "Which playwright wrote 'Hamlet', 'Macbeth', and 'Romeo and Juliet'?",
+      "choices": [
+        "Christopher Marlowe",
+        "William Shakespeare",
+        "Charles Dickens",
+        "Jane Austen"
+      ],
+      "answer": "William Shakespeare",
+      "aliases": [
+        "Shakespeare"
+      ],
+      "difficulty": "easy",
+      "explanation": "Shakespeare was born in Stratford-upon-Avon, England, in 1564.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_011",
+      "prompt": "What currency is shared by most European Union member states?",
+      "choices": [
+        "Pound Sterling",
+        "Krona",
+        "Euro",
+        "Swiss Franc"
+      ],
+      "answer": "Euro",
+      "aliases": [
+        "EUR",
+        "The Euro"
+      ],
+      "difficulty": "easy",
+      "explanation": "The Euro became physical circulating currency in 2002.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_012",
+      "prompt": "Which Greek temple dedicated to Athena overlooks Athens from the Acropolis?",
+      "choices": [
+        "Pantheon",
+        "Colosseum",
+        "Alhambra",
+        "Parthenon"
+      ],
+      "answer": "Parthenon",
+      "aliases": [
+        "The Parthenon"
+      ],
+      "difficulty": "easy",
+      "explanation": "Built in the 5th century BCE, the Parthenon is an icon of classical architecture.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_013",
+      "prompt": "Which European river flows through more countries (ten) than any other river on Earth?",
+      "choices": [
+        "Danube",
+        "Volga",
+        "Elbe",
+        "Rhine"
+      ],
+      "answer": "Danube",
+      "aliases": [
+        "Danube River",
+        "The Danube"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Danube runs from Germany's Black Forest to the Black Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_014",
+      "prompt": "Which landmark canyon in Arizona was carved over millions of years by the Colorado River?",
+      "choices": [
+        "Zion Canyon",
+        "Bryce Canyon",
+        "Grand Canyon",
+        "Antelope Canyon"
+      ],
+      "answer": "Grand Canyon",
+      "aliases": [
+        "The Grand Canyon"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Grand Canyon reaches depths of over 1,800 meters.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_015",
+      "prompt": "Which Spanish architect designed Barcelona's Sagrada Família basilica?",
+      "choices": [
+        "Santiago Calatrava",
+        "Salvador Dalí",
+        "Antoni Gaudí",
+        "Pablo Picasso"
+      ],
+      "answer": "Antoni Gaudí",
+      "aliases": [
+        "Gaudi",
+        "Antoni Gaudi"
+      ],
+      "difficulty": "medium",
+      "explanation": "Construction of the Sagrada Família began in 1882.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_016",
+      "prompt": "Which European mountain range separates Spain from France?",
+      "choices": [
+        "Pyrenees",
+        "Alps",
+        "Carpathians",
+        "Balkans"
+      ],
+      "answer": "Pyrenees",
+      "aliases": [
+        "The Pyrenees"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Pyrenees stretch from the Bay of Biscay to the Mediterranean.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_017",
+      "prompt": "Which 15th-century German inventor introduced movable-type mechanical printing to Europe?",
+      "choices": [
+        "Martin Luther",
+        "Nicolaus Copernicus",
+        "Johannes Gutenberg",
+        "Galileo Galilei"
+      ],
+      "answer": "Johannes Gutenberg",
+      "aliases": [
+        "Gutenberg"
+      ],
+      "difficulty": "medium",
+      "explanation": "Gutenberg's press in Mainz revolutionized the spread of knowledge.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_018",
+      "prompt": "Which strait separates Great Britain from mainland France?",
+      "choices": [
+        "Bering Strait",
+        "Strait of Dover",
+        "Bosphorus",
+        "Strait of Gibraltar"
+      ],
+      "answer": "Strait of Dover",
+      "aliases": [
+        "English Channel",
+        "Dover Strait"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Channel Tunnel runs beneath the Strait of Dover.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_019",
+      "prompt": "In which city is the Brandenburg Gate located?",
+      "choices": [
+        "Frankfurt",
+        "Munich",
+        "Vienna",
+        "Berlin"
+      ],
+      "answer": "Berlin",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "The Brandenburg Gate is an 18th-century neoclassical monument in Berlin.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_020",
+      "prompt": "Which U.S. national park became the world's first national park in 1872?",
+      "choices": [
+        "Grand Canyon",
+        "Yosemite",
+        "Glacier",
+        "Yellowstone"
+      ],
+      "answer": "Yellowstone",
+      "aliases": [
+        "Yellowstone National Park"
+      ],
+      "difficulty": "medium",
+      "explanation": "Yellowstone spans parts of Wyoming, Montana, and Idaho.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_021",
+      "prompt": "Which Nordic island nation sits directly astride the Mid-Atlantic Ridge?",
+      "choices": [
+        "Greenland",
+        "Faroe Islands",
+        "Iceland",
+        "Ireland"
+      ],
+      "answer": "Iceland",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Iceland harnesses abundant geothermal energy from volcanic activity.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_022",
+      "prompt": "Which Belgian city is widely considered the de facto capital of the European Union?",
+      "choices": [
+        "Antwerp",
+        "Strasbourg",
+        "Luxembourg",
+        "Brussels"
+      ],
+      "answer": "Brussels",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Brussels hosts the European Commission and Council of the EU.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_023",
+      "prompt": "Which Canadian province is predominantly French-speaking?",
+      "choices": [
+        "Ontario",
+        "Alberta",
+        "Manitoba",
+        "Quebec"
+      ],
+      "answer": "Quebec",
+      "aliases": [
+        "Québec"
+      ],
+      "difficulty": "medium",
+      "explanation": "Quebec City and Montreal are major cultural centers of Francophone North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_024",
+      "prompt": "Which Roman-era wall was built across northern Britain in 122 CE?",
+      "choices": [
+        "Berlin Wall",
+        "Aurelian Wall",
+        "Hadrian's Wall",
+        "Antonine Wall"
+      ],
+      "answer": "Hadrian's Wall",
+      "aliases": [
+        "Hadrians Wall"
+      ],
+      "difficulty": "medium",
+      "explanation": "Hadrian's Wall marked the northwestern frontier of the Roman Empire.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_025",
+      "prompt": "What is the longest river wholly within Europe?",
+      "choices": [
+        "Volga",
+        "Danube",
+        "Dnieper",
+        "Rhine"
+      ],
+      "answer": "Volga",
+      "aliases": [
+        "Volga River",
+        "The Volga"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Volga runs about 3,531 km through western Russia to the Caspian Sea.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_026",
+      "prompt": "Which 1215 English charter established that the monarch was subject to the rule of law?",
+      "choices": [
+        "Treaty of Westphalia",
+        "Magna Carta",
+        "Bill of Rights",
+        "Domesday Book"
+      ],
+      "answer": "Magna Carta",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "King John sealed the Magna Carta at Runnymede in 1215.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_027",
+      "prompt": "Which mountain in the Caucasus is the highest peak in Europe?",
+      "choices": [
+        "Matterhorn",
+        "Mount Elbrus",
+        "Mont Blanc",
+        "Mount Olympus"
+      ],
+      "answer": "Mount Elbrus",
+      "aliases": [
+        "Elbrus"
+      ],
+      "difficulty": "hard",
+      "explanation": "Mount Elbrus rises to 5,642 meters in southern Russia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_028",
+      "prompt": "Which historic Moorish palace and fortress complex overlooks Granada, Spain?",
+      "choices": [
+        "Escorial",
+        "Alcázar",
+        "Mezquita",
+        "Alhambra"
+      ],
+      "answer": "Alhambra",
+      "aliases": [
+        "The Alhambra"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Alhambra is celebrated for its intricate Nasrid stucco and tilework.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_029",
+      "prompt": "Which European microstate is completely landlocked inside the Italian Peninsula and claims to be the oldest republic?",
+      "choices": [
+        "Monaco",
+        "Liechtenstein",
+        "Andorra",
+        "San Marino"
+      ],
+      "answer": "San Marino",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "San Marino traces its founding tradition back to 301 CE.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_030",
+      "prompt": "Which 1648 series of peace treaties ended the Thirty Years' War and shaped modern European state sovereignty?",
+      "choices": [
+        "Treaty of Utrecht",
+        "Treaty of Tordesillas",
+        "Peace of Westphalia",
+        "Congress of Vienna"
+      ],
+      "answer": "Peace of Westphalia",
+      "aliases": [
+        "Treaty of Westphalia",
+        "Westphalia"
+      ],
+      "difficulty": "hard",
+      "explanation": "Signed in Münster and Osnabrück, Westphalia established territorial sovereignty.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_031",
+      "prompt": "Which astronomer published 'De revolutionibus orbium coelestium' in 1543 placing the Sun at the center?",
+      "choices": [
+        "Tycho Brahe",
+        "Nicolaus Copernicus",
+        "Johannes Kepler",
+        "Edmond Halley"
+      ],
+      "answer": "Nicolaus Copernicus",
+      "aliases": [
+        "Copernicus"
+      ],
+      "difficulty": "hard",
+      "explanation": "Copernicus initiated the heliocentric revolution in astronomy.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_032",
+      "prompt": "Which North American Great Lake is the largest freshwater lake in the world by surface area?",
+      "choices": [
+        "Lake Michigan",
+        "Lake Huron",
+        "Lake Ontario",
+        "Lake Superior"
+      ],
+      "answer": "Lake Superior",
+      "aliases": [
+        "Superior"
+      ],
+      "difficulty": "hard",
+      "explanation": "Lake Superior covers over 82,000 square kilometers.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_033",
+      "prompt": "Which Norwegian explorer led the first expedition to reach the South Pole in December 1911?",
+      "choices": [
+        "Fridtjof Nansen",
+        "Robert Falcon Scott",
+        "Ernest Shackleton",
+        "Roald Amundsen"
+      ],
+      "answer": "Roald Amundsen",
+      "aliases": [
+        "Amundsen"
+      ],
+      "difficulty": "hard",
+      "explanation": "Amundsen's team reached the South Pole 34 days before Scott's expedition.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_034",
+      "prompt": "Which Dutch city is home to the International Court of Justice?",
+      "choices": [
+        "Amsterdam",
+        "Utrecht",
+        "Rotterdam",
+        "The Hague"
+      ],
+      "answer": "The Hague",
+      "aliases": [
+        "Hague",
+        "Den Haag"
+      ],
+      "difficulty": "hard",
+      "explanation": "The International Court of Justice sits in the Peace Palace in The Hague.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_035",
+      "prompt": "Which strait separates Sicily from mainland southern Italy?",
+      "choices": [
+        "Strait of Otranto",
+        "Strait of Gibraltar",
+        "Strait of Bonifacio",
+        "Strait of Messina"
+      ],
+      "answer": "Strait of Messina",
+      "aliases": [
+        "Messina"
+      ],
+      "difficulty": "hard",
+      "explanation": "The Strait of Messina is barely 3.1 kilometers wide at its narrowest point.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "europe_west_gk_en_036",
+      "prompt": "Which ancient Celtic-era stone monument stands on Salisbury Plain in England?",
+      "choices": [
+        "Avebury",
+        "Stonehenge",
+        "Newgrange",
+        "Skara Brae"
+      ],
+      "answer": "Stonehenge",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Stonehenge's iconic sarsen stones were erected around 2500 BCE.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

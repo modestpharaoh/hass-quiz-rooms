@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Asia General Knowledge Cover">
+  <defs>
+    <linearGradient id="cbg-as" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-as)"/>
+  <!-- Rising sun -->
+  <circle cx="80" cy="64" r="32" fill="#FDE047"/>
+  <!-- Stylized Pagoda / Torii Silhouette -->
+  <path d="M30,66 Q80,54 130,66 L124,75 Q80,66 36,75 Z" fill="#18181B"/>
+  <rect x="44" y="84" width="72" height="8" rx="3" fill="#18181B"/>
+  <rect x="52" y="72" width="10" height="58" rx="2" fill="#18181B"/>
+  <rect x="98" y="72" width="10" height="58" rx="2" fill="#18181B"/>
+  <rect x="75" y="72" width="10" height="16" rx="2" fill="#18181B"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

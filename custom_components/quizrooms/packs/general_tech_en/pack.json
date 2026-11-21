@@ -1,0 +1,641 @@
+{
+  "pack_id": "general_tech_en",
+  "title": "General Technology",
+  "description": "36 original questions covering computing, networking, cybersecurity, AI, software, and smart homes (Multiple Choice & Free-Text).",
+  "cover": "media/cover.svg",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Technology",
+  "questions": [
+    {
+      "id": "general_tech_en_001",
+      "prompt": "What does the acronym CPU stand for in computing?",
+      "choices": [
+        "Central Processing Unit",
+        "Computer Personal Unit",
+        "Core Program Utility",
+        "Central Power Unit"
+      ],
+      "answer": "Central Processing Unit",
+      "aliases": [
+        "processor"
+      ],
+      "difficulty": "easy",
+      "explanation": "The CPU executes instructions that make up computer programs.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_002",
+      "prompt": "Which markup language defines the structure of web pages?",
+      "choices": [
+        "CSS",
+        "SQL",
+        "HTML",
+        "YAML"
+      ],
+      "answer": "HTML",
+      "aliases": [
+        "HyperText Markup Language"
+      ],
+      "difficulty": "easy",
+      "explanation": "HTML stands for HyperText Markup Language.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_003",
+      "prompt": "What does Wi-Fi allow devices to do without physical cables?",
+      "choices": [
+        "Connect to a wireless local network",
+        "Cool internal hardware",
+        "Print physical photos",
+        "Charge batteries wirelessly"
+      ],
+      "answer": "Connect to a wireless local network",
+      "aliases": [
+        "wireless network",
+        "wireless networking"
+      ],
+      "difficulty": "easy",
+      "explanation": "Wi-Fi uses radio waves to connect devices to a local area network.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_004",
+      "prompt": "Which unit equals 1,024 bytes in traditional binary computing?",
+      "choices": [
+        "Kilobyte",
+        "Gigabyte",
+        "Bit",
+        "Megabyte"
+      ],
+      "answer": "Kilobyte",
+      "aliases": [
+        "KB",
+        "Kibibyte"
+      ],
+      "difficulty": "easy",
+      "explanation": "A binary kilobyte (kibibyte) consists of 1,024 bytes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_005",
+      "prompt": "What does URL stand for?",
+      "choices": [
+        "Unified Reference Line",
+        "User Request Log",
+        "Universal Routing Link",
+        "Uniform Resource Locator"
+      ],
+      "answer": "Uniform Resource Locator",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "A URL specifies the web address of a resource on the Internet.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_006",
+      "prompt": "Which company originally created the Android mobile operating system before Google acquired it?",
+      "choices": [
+        "Nokia",
+        "Microsoft",
+        "Android Inc.",
+        "Apple"
+      ],
+      "answer": "Android Inc.",
+      "aliases": [
+        "Android"
+      ],
+      "difficulty": "easy",
+      "explanation": "Andy Rubin and colleagues founded Android Inc. in 2003 before Google bought it in 2005.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_007",
+      "prompt": "What is the name of the small glowing picture element that makes up a digital screen?",
+      "choices": [
+        "Node",
+        "Voxel",
+        "Pixel",
+        "Vector"
+      ],
+      "answer": "Pixel",
+      "aliases": [
+        "Pixels"
+      ],
+      "difficulty": "easy",
+      "explanation": "Pixel is short for 'picture element'.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_008",
+      "prompt": "Which keyboard shortcut commonly copies selected text on Windows and Linux?",
+      "choices": [
+        "Ctrl+Z",
+        "Ctrl+V",
+        "Ctrl+C",
+        "Ctrl+X"
+      ],
+      "answer": "Ctrl+C",
+      "aliases": [
+        "Control C",
+        "Ctrl C"
+      ],
+      "difficulty": "easy",
+      "explanation": "Ctrl+C copies, while Ctrl+V pastes and Ctrl+X cuts.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_009",
+      "prompt": "What type of software protects a computer network by filtering incoming and outgoing traffic?",
+      "choices": [
+        "Compiler",
+        "Spreadsheet",
+        "Firewall",
+        "Driver"
+      ],
+      "answer": "Firewall",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "A firewall enforces security rules on network traffic.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_010",
+      "prompt": "Which hardware component stores active working data temporarily while a computer is powered on?",
+      "choices": [
+        "RAM",
+        "Optical Drive",
+        "SSD",
+        "Power Supply"
+      ],
+      "answer": "RAM",
+      "aliases": [
+        "Random Access Memory"
+      ],
+      "difficulty": "easy",
+      "explanation": "RAM is volatile high-speed memory cleared when power is turned off.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_011",
+      "prompt": "What does PDF stand for?",
+      "choices": [
+        "Printed Digital Form",
+        "Public Display Format",
+        "Portable Document Format",
+        "Personal Data File"
+      ],
+      "answer": "Portable Document Format",
+      "aliases": [],
+      "difficulty": "easy",
+      "explanation": "Adobe introduced PDF in 1993 for consistent document rendering.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_012",
+      "prompt": "Which open-source home automation platform runs locally to control smart devices?",
+      "choices": [
+        "Home Assistant",
+        "Audacity",
+        "Photoshop",
+        "Blender"
+      ],
+      "answer": "Home Assistant",
+      "aliases": [
+        "HASS",
+        "HA"
+      ],
+      "difficulty": "easy",
+      "explanation": "Home Assistant focuses on local control and privacy for smart homes.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_013",
+      "prompt": "Which protocol adds TLS encryption on top of standard web browsing?",
+      "choices": [
+        "Telnet",
+        "HTTPS",
+        "SNMP",
+        "FTP"
+      ],
+      "answer": "HTTPS",
+      "aliases": [
+        "HTTP Secure"
+      ],
+      "difficulty": "medium",
+      "explanation": "HTTPS encrypts HTTP traffic using Transport Layer Security (TLS).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_014",
+      "prompt": "What does DNS translate human-readable domain names into?",
+      "choices": [
+        "IP addresses",
+        "MAC addresses",
+        "USB ports",
+        "File permissions"
+      ],
+      "answer": "IP addresses",
+      "aliases": [
+        "IP address",
+        "IPs"
+      ],
+      "difficulty": "medium",
+      "explanation": "The Domain Name System resolves names like example.com to numerical IP addresses.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_015",
+      "prompt": "Which distributed version control system was created by Linus Torvalds in 2005?",
+      "choices": [
+        "Mercurial",
+        "CVS",
+        "Subversion",
+        "Git"
+      ],
+      "answer": "Git",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Git was originally built to manage Linux kernel development.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_016",
+      "prompt": "What is the standard default TCP port number for HTTPS traffic?",
+      "choices": [
+        "22",
+        "53",
+        "80",
+        "443"
+      ],
+      "answer": "443",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Port 443 is used for encrypted HTTPS, whereas port 80 is plain HTTP.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_017",
+      "prompt": "Which wireless mesh protocol is widely used by low-power smart home sensors and bulbs on 2.4 GHz?",
+      "choices": [
+        "Zigbee",
+        "HDMI",
+        "SATA",
+        "PCIe"
+      ],
+      "answer": "Zigbee",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "Zigbee enables low-power mesh networking for IoT devices.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_018",
+      "prompt": "What does SSD stand for in modern computer storage?",
+      "choices": [
+        "Static Storage Device",
+        "Super Speed Drive",
+        "Serial System Disk",
+        "Solid-State Drive"
+      ],
+      "answer": "Solid-State Drive",
+      "aliases": [
+        "Solid State Drive"
+      ],
+      "difficulty": "medium",
+      "explanation": "SSDs use flash memory with no moving spinning platters.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_019",
+      "prompt": "In databases, what does SQL stand for?",
+      "choices": [
+        "System Query Library",
+        "Sequential Query Link",
+        "Simple Queue Logic",
+        "Structured Query Language"
+      ],
+      "answer": "Structured Query Language",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "SQL is used to query and manage relational databases.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_020",
+      "prompt": "Which lightweight publish-subscribe messaging protocol is a cornerstone of IoT and smart home telemetry?",
+      "choices": [
+        "SMTP",
+        "ICMP",
+        "MQTT",
+        "POP3"
+      ],
+      "answer": "MQTT",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "MQTT uses a broker and topics for low-bandwidth IoT messaging.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_021",
+      "prompt": "What does API stand for in software engineering?",
+      "choices": [
+        "Application Programming Interface",
+        "Automated Protocol Index",
+        "Advanced Program Integration",
+        "Active Process Input"
+      ],
+      "answer": "Application Programming Interface",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "An API defines how software components communicate with one another.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_022",
+      "prompt": "Which computer scientist invented the World Wide Web in 1989 while at CERN?",
+      "choices": [
+        "Vint Cerf",
+        "Alan Turing",
+        "Tim Berners-Lee",
+        "Dennis Ritchie"
+      ],
+      "answer": "Tim Berners-Lee",
+      "aliases": [
+        "Sir Tim Berners-Lee",
+        "Berners-Lee"
+      ],
+      "difficulty": "medium",
+      "explanation": "Tim Berners-Lee created HTTP, HTML, and the first web browser.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_023",
+      "prompt": "Which color model do digital monitors use to mix light?",
+      "choices": [
+        "CMYK",
+        "RYB",
+        "RGB",
+        "Pantone"
+      ],
+      "answer": "RGB",
+      "aliases": [
+        "Red Green Blue"
+      ],
+      "difficulty": "medium",
+      "explanation": "Screens emit additive Red, Green, and Blue light; printers use subtractive CMYK.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_024",
+      "prompt": "What does JSON stand for?",
+      "choices": [
+        "Java Serialized Object Network",
+        "Joined System Output Node",
+        "Java Standard Object Name",
+        "JavaScript Object Notation"
+      ],
+      "answer": "JavaScript Object Notation",
+      "aliases": [],
+      "difficulty": "medium",
+      "explanation": "JSON is a lightweight text format for structured data exchange.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_025",
+      "prompt": "Which HTTP status code indicates that a client has sent too many requests in a given amount of time?",
+      "choices": [
+        "429",
+        "403",
+        "418",
+        "502"
+      ],
+      "answer": "429",
+      "aliases": [
+        "Too Many Requests"
+      ],
+      "difficulty": "hard",
+      "explanation": "HTTP 429 Too Many Requests is used for rate limiting.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_026",
+      "prompt": "What is the name of the consensus-free cryptographic hash family that includes SHA-256?",
+      "choices": [
+        "RSA",
+        "MD5",
+        "AES",
+        "SHA-2"
+      ],
+      "answer": "SHA-2",
+      "aliases": [
+        "SHA2"
+      ],
+      "difficulty": "hard",
+      "explanation": "SHA-256 belongs to the SHA-2 family published by NIST.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_027",
+      "prompt": "Which layer of the OSI model handles logical addressing and packet routing (such as IP)?",
+      "choices": [
+        "Session Layer",
+        "Network Layer",
+        "Transport Layer",
+        "Data Link Layer"
+      ],
+      "answer": "Network Layer",
+      "aliases": [
+        "Layer 3",
+        "L3"
+      ],
+      "difficulty": "hard",
+      "explanation": "Layer 3 (Network) routes packets across interconnected networks.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_028",
+      "prompt": "What technique lets a single CPU core execute instructions out of program order to reduce pipeline stalls?",
+      "choices": [
+        "Out-of-order execution",
+        "Polling",
+        "Bit-banging",
+        "Swap paging"
+      ],
+      "answer": "Out-of-order execution",
+      "aliases": [
+        "OoOE"
+      ],
+      "difficulty": "hard",
+      "explanation": "Modern superscalar CPUs reorder independent instructions dynamically.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_029",
+      "prompt": "Which Linux kernel feature isolates process trees, networks, and mount points to power containers?",
+      "choices": [
+        "Swapfiles",
+        "Inodes",
+        "Namespaces",
+        "Cron jobs"
+      ],
+      "answer": "Namespaces",
+      "aliases": [
+        "Linux namespaces"
+      ],
+      "difficulty": "hard",
+      "explanation": "Namespaces combined with cgroups form the foundation of Linux containers.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_030",
+      "prompt": "In public-key cryptography, which key is used to verify a digital signature?",
+      "choices": [
+        "Public key",
+        "Salt",
+        "Private key",
+        "Session cookie"
+      ],
+      "answer": "Public key",
+      "aliases": [
+        "The public key"
+      ],
+      "difficulty": "hard",
+      "explanation": "The signer signs with their private key, and anyone can verify with the public key.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_031",
+      "prompt": "What does ACID stand for in relational database transactions?",
+      "choices": [
+        "Async, Cached, Indexed, Distributed",
+        "Access, Control, Indexing, Data",
+        "Allocation, Compression, Integrity, Delivery",
+        "Atomicity, Consistency, Isolation, Durability"
+      ],
+      "answer": "Atomicity, Consistency, Isolation, Durability",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "ACID properties guarantee reliable database transactions.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_032",
+      "prompt": "Which algorithm is famously used to find the shortest path in a weighted graph with non-negative edges?",
+      "choices": [
+        "Bubble sort",
+        "Diffie-Hellman",
+        "Dijkstra's algorithm",
+        "Huffman coding"
+      ],
+      "answer": "Dijkstra's algorithm",
+      "aliases": [
+        "Dijkstra"
+      ],
+      "difficulty": "hard",
+      "explanation": "Edsger Dijkstra published his shortest-path algorithm in 1959.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_033",
+      "prompt": "What is the maximum number of host addresses in a standard IPv4 /24 subnet (excluding network and broadcast)?",
+      "choices": [
+        "254",
+        "256",
+        "126",
+        "255"
+      ],
+      "answer": "254",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "A /24 subnet has 256 total addresses minus the network and broadcast addresses = 254.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_034",
+      "prompt": "Which smart-home connectivity standard launched in 2022 operates over IPv6 using Thread and Wi-Fi?",
+      "choices": [
+        "IrDA",
+        "Token Ring",
+        "X10",
+        "Matter"
+      ],
+      "answer": "Matter",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "Matter unifies local smart-home interoperability across ecosystems over IPv6.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_035",
+      "prompt": "What does CIDR stand for in IP networking?",
+      "choices": [
+        "Common Interface Domain Registry",
+        "Classless Inter-Domain Routing",
+        "Central Internet Data Relay",
+        "Coded IP Delivery Route"
+      ],
+      "answer": "Classless Inter-Domain Routing",
+      "aliases": [],
+      "difficulty": "hard",
+      "explanation": "CIDR replaced rigid classful IP addressing with flexible prefix lengths like /24.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "general_tech_en_036",
+      "prompt": "Which data structure provides average O(1) key-value lookup using a hash function?",
+      "choices": [
+        "Binary search tree",
+        "Linked list",
+        "Hash table",
+        "Priority queue"
+      ],
+      "answer": "Hash table",
+      "aliases": [
+        "Hash map",
+        "Dictionary"
+      ],
+      "difficulty": "hard",
+      "explanation": "Hash tables map keys through a hash function to array buckets for constant-time average lookup.",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

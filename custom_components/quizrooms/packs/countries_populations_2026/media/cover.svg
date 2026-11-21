@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="World Populations 2026 Cover">
+  <defs>
+    <linearGradient id="cbg-pop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0C4A6E"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-pop)"/>
+  <circle cx="80" cy="54" r="14" fill="#FDE047"/>
+  <path d="M56,96 C56,80 66,72 80,72 C94,72 104,80 104,96 Z" fill="#FDE047"/>
+  <circle cx="44" cy="64" r="10" fill="#7DD3FC"/>
+  <path d="M26,96 C26,84 34,78 44,78 C52,78 57,82 59,90 L59,96 Z" fill="#7DD3FC"/>
+  <circle cx="116" cy="64" r="10" fill="#7DD3FC"/>
+  <path d="M101,96 L101,90 C103,82 108,78 116,78 C126,78 134,84 134,96 Z" fill="#7DD3FC"/>
+  <rect x="30" y="108" width="100" height="26" rx="13" fill="#0F172A" fill-opacity="0.65"/>
+  <text x="80" y="126" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#F8FAFC">2026</text>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>
