@@ -7,7 +7,7 @@
 **Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS, zero external CDNs or telemetry, full Arabic/RTL support, locally bundled SVG flags & fonts, Light/Dark/Auto themes, Admin pack importer (`.json` & `.zip`), and a 16:9 Studio TV Dashboard.
 
 ## Key Features
-- **Zero External Dependencies:** All HTML, CSS, JS, QR code generator, bundled SVG flags (40 countries), and Latin + Arabic WOFF fonts are served locally by Home Assistant.
+- **Zero External Dependencies:** All HTML, CSS, JS, QR code generator, bundled SVG flags (197 countries), and Latin + Arabic WOFF fonts are served locally by Home Assistant.
 - **Strict Local-Network Security:** Unauthenticated guest, TV, WebSocket, and media endpoints (`/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/media/...`) are guarded by `network_guard` middleware allowing only RFC 1918 + IPv6 ULA/link-local + configured CIDRs by default, with fail-closed reverse-proxy (`X-Forwarded-For` / `CF-Connecting-IP` / Nabu Casa) protection.
 - **Multi-Room Confidence Wagering:** Concurrent Public and Private rooms, open lobby discovery, 1-room-per-browser anti-spam, `host_token` room controls, 1–10 or one-time chip-pool wagering, snapshot isolation, and automatic idle TTL cleanup (15 min lobbies / 2 hr games).
 - **Arabic / RTL & Fuzzy Matching:** Full `dir="auto"` + logical CSS layout flipping plus Arabic normalizer (Tashkeel, Tatweel, Alef, Teh Marbuta, Alef Maksura, Eastern Arabic numerals).

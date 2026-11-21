@@ -1,190 +1,2540 @@
 {
   "pack_id": "countries_flags",
   "title": "World Countries & Flags",
-  "description": "Identify 40 countries from their locally bundled vector flags. Play in Multiple Choice or Free-Text mode!",
+  "description": "Identify 197 world countries from their authentic locally bundled vector flags. Play in Multiple Choice or Free-Text mode!",
   "language": "en",
   "rtl": false,
-  "version": "1.0.0",
-  "author": "QuizRooms",
+  "version": "2.0.0",
+  "author": "QuizRooms (flags via lipis/flag-icons, MIT)",
   "category": "Geography",
   "questions": [
     {
-      "id": "flag_jp",
+      "id": "flag_ad",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_01.svg",
+      "image": "media/flag_001.svg",
       "choices": [
-        "Japan",
-        "South Korea",
-        "Bangladesh",
-        "Palau"
+        "Iceland",
+        "Cyprus",
+        "Norway",
+        "Andorra"
       ],
-      "answer": "Japan",
-      "aliases": [
-        "Nippon",
-        "Nihon"
-      ],
-      "explanation": "Japan's flag is known as the Hinomaru ('circle of the sun').",
+      "answer": "Andorra",
+      "aliases": [],
+      "explanation": "Capital: Andorra la Vella · Region: Europe.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_fr",
+      "id": "flag_ae",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_02.svg",
+      "image": "media/flag_002.svg",
+      "choices": [
+        "United Arab Emirates",
+        "Singapore",
+        "Saudi Arabia",
+        "Yemen"
+      ],
+      "answer": "United Arab Emirates",
+      "aliases": [
+        "UAE",
+        "Emirates",
+        "U.A.E.",
+        "الإمارات"
+      ],
+      "explanation": "Capital: Abu Dhabi · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_af",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_003.svg",
+      "choices": [
+        "United Arab Emirates",
+        "Japan",
+        "Tajikistan",
+        "Afghanistan"
+      ],
+      "answer": "Afghanistan",
+      "aliases": [],
+      "explanation": "Capital: Kabul · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ag",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_004.svg",
+      "choices": [
+        "Antigua and Barbuda",
+        "Canada",
+        "Saint Lucia",
+        "Barbados"
+      ],
+      "answer": "Antigua and Barbuda",
+      "aliases": [],
+      "explanation": "Capital: St. John's · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_al",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_005.svg",
+      "choices": [
+        "Albania",
+        "Greece",
+        "Finland",
+        "Latvia"
+      ],
+      "answer": "Albania",
+      "aliases": [],
+      "explanation": "Capital: Tirana · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_am",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_006.svg",
+      "choices": [
+        "Bahrain",
+        "Pakistan",
+        "Armenia",
+        "Timor-Leste"
+      ],
+      "answer": "Armenia",
+      "aliases": [],
+      "explanation": "Capital: Yerevan · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ao",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_007.svg",
+      "choices": [
+        "Cabo Verde",
+        "Guinea",
+        "Angola",
+        "Mauritania"
+      ],
+      "answer": "Angola",
+      "aliases": [],
+      "explanation": "Capital: Luanda · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ar",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_008.svg",
+      "choices": [
+        "Peru",
+        "Paraguay",
+        "Guyana",
+        "Argentina"
+      ],
+      "answer": "Argentina",
+      "aliases": [],
+      "explanation": "Capital: Buenos Aires · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_at",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_009.svg",
+      "choices": [
+        "Austria",
+        "Moldova",
+        "Cyprus",
+        "Norway"
+      ],
+      "answer": "Austria",
+      "aliases": [
+        "Österreich",
+        "Osterreich"
+      ],
+      "explanation": "Capital: Vienna · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_au",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_010.svg",
+      "choices": [
+        "Papua New Guinea",
+        "Palau",
+        "Tonga",
+        "Australia"
+      ],
+      "answer": "Australia",
+      "aliases": [],
+      "explanation": "Capital: Canberra · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_az",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_011.svg",
+      "choices": [
+        "Vietnam",
+        "Georgia",
+        "Bangladesh",
+        "Azerbaijan"
+      ],
+      "answer": "Azerbaijan",
+      "aliases": [],
+      "explanation": "Capital: Baku · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ba",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_012.svg",
       "choices": [
         "France",
-        "Netherlands",
-        "Italy",
+        "Malta",
+        "Germany",
+        "Bosnia and Herzegovina"
+      ],
+      "answer": "Bosnia and Herzegovina",
+      "aliases": [
+        "Bosnia",
+        "Bosnia & Herzegovina"
+      ],
+      "explanation": "Capital: Sarajevo · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bb",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_013.svg",
+      "choices": [
+        "Barbados",
+        "Mexico",
+        "Panama",
+        "Grenada"
+      ],
+      "answer": "Barbados",
+      "aliases": [],
+      "explanation": "Capital: Bridgetown · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bd",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_014.svg",
+      "choices": [
+        "Bangladesh",
+        "Turkmenistan",
+        "Saudi Arabia",
+        "Pakistan"
+      ],
+      "answer": "Bangladesh",
+      "aliases": [],
+      "explanation": "Capital: Dhaka · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_be",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_015.svg",
+      "choices": [
+        "Spain",
+        "Hungary",
+        "Croatia",
         "Belgium"
       ],
-      "answer": "France",
+      "answer": "Belgium",
       "aliases": [
-        "French Republic"
+        "België",
+        "Belgique"
       ],
-      "explanation": "France's vertical Tricolore of blue, white, and red dates to the 1790s.",
+      "explanation": "Capital: Brussels · Region: Europe.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_de",
+      "id": "flag_bf",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_03.svg",
+      "image": "media/flag_016.svg",
       "choices": [
-        "Germany",
-        "Belgium",
-        "Austria",
-        "Hungary"
+        "Sudan",
+        "Burkina Faso",
+        "Somalia",
+        "Mauritania"
       ],
-      "answer": "Germany",
-      "aliases": [
-        "Deutschland"
-      ],
-      "explanation": "Germany's black, red, and gold tricolor was adopted in 1919 and restored in 1949.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_it",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_04.svg",
-      "choices": [
-        "Italy",
-        "Ireland",
-        "Mexico",
-        "Hungary"
-      ],
-      "answer": "Italy",
-      "aliases": [
-        "Italia"
-      ],
-      "explanation": "Italy's green, white, and red vertical tricolor is called Il Tricolore.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_uk",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_05.svg",
-      "choices": [
-        "United Kingdom",
-        "Australia",
-        "New Zealand",
-        "Iceland"
-      ],
-      "answer": "United Kingdom",
-      "aliases": [
-        "UK",
-        "Britain",
-        "Great Britain",
-        "United Kingdom of Great Britain and Northern Ireland"
-      ],
-      "explanation": "The Union Jack combines the crosses of St. George, St. Andrew, and St. Patrick.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_us",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_06.svg",
-      "choices": [
-        "United States",
-        "Liberia",
-        "Malaysia",
-        "Greece"
-      ],
-      "answer": "United States",
-      "aliases": [
-        "USA",
-        "US",
-        "United States of America",
-        "America"
-      ],
-      "explanation": "The Stars and Stripes has 50 stars for the states and 13 stripes for the original colonies.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_ca",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_07.svg",
-      "choices": [
-        "Canada",
-        "Peru",
-        "Switzerland",
-        "Austria"
-      ],
-      "answer": "Canada",
+      "answer": "Burkina Faso",
       "aliases": [],
-      "explanation": "Canada's iconic red Maple Leaf flag was officially adopted in 1965.",
+      "explanation": "Capital: Ouagadougou · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_017.svg",
+      "choices": [
+        "Bulgaria",
+        "Greece",
+        "Kosovo",
+        "Netherlands"
+      ],
+      "answer": "Bulgaria",
+      "aliases": [],
+      "explanation": "Capital: Sofia · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bh",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_018.svg",
+      "choices": [
+        "Türkiye",
+        "Saudi Arabia",
+        "Maldives",
+        "Bahrain"
+      ],
+      "answer": "Bahrain",
+      "aliases": [],
+      "explanation": "Capital: Manama · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bi",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_019.svg",
+      "choices": [
+        "Burundi",
+        "Mauritania",
+        "Zambia",
+        "Republic of the Congo"
+      ],
+      "answer": "Burundi",
+      "aliases": [],
+      "explanation": "Capital: Bujumbura · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bj",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_020.svg",
+      "choices": [
+        "Algeria",
+        "Mali",
+        "Benin",
+        "Madagascar"
+      ],
+      "answer": "Benin",
+      "aliases": [],
+      "explanation": "Capital: Porto-Novo · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_021.svg",
+      "choices": [
+        "Brunei",
+        "Bhutan",
+        "Lebanon",
+        "Philippines"
+      ],
+      "answer": "Brunei",
+      "aliases": [],
+      "explanation": "Capital: Bandar Seri Begawan · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bo",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_022.svg",
+      "choices": [
+        "Paraguay",
+        "Chile",
+        "Argentina",
+        "Bolivia"
+      ],
+      "answer": "Bolivia",
+      "aliases": [],
+      "explanation": "Capital: Sucre · Region: South America.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_br",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_08.svg",
+      "image": "media/flag_023.svg",
       "choices": [
+        "Bolivia",
+        "Suriname",
         "Brazil",
-        "Argentina",
-        "Jamaica",
-        "Portugal"
+        "Trinidad and Tobago"
       ],
       "answer": "Brazil",
       "aliases": [
         "Brasil"
       ],
-      "explanation": "Brazil's green banner features a yellow diamond and starry blue celestial globe.",
+      "explanation": "Capital: Brasília · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bs",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_024.svg",
+      "choices": [
+        "Bahamas",
+        "United States",
+        "Panama",
+        "Barbados"
+      ],
+      "answer": "Bahamas",
+      "aliases": [],
+      "explanation": "Capital: Nassau · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_025.svg",
+      "choices": [
+        "Indonesia",
+        "Bhutan",
+        "United Arab Emirates",
+        "Kuwait"
+      ],
+      "answer": "Bhutan",
+      "aliases": [],
+      "explanation": "Capital: Thimphu · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_026.svg",
+      "choices": [
+        "Botswana",
+        "Mauritius",
+        "Ethiopia",
+        "Niger"
+      ],
+      "answer": "Botswana",
+      "aliases": [],
+      "explanation": "Capital: Gaborone · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_by",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_027.svg",
+      "choices": [
+        "Monaco",
+        "Ukraine",
+        "Belarus",
+        "Bulgaria"
+      ],
+      "answer": "Belarus",
+      "aliases": [],
+      "explanation": "Capital: Minsk · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_bz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_028.svg",
+      "choices": [
+        "Jamaica",
+        "Belize",
+        "Saint Kitts and Nevis",
+        "Nicaragua"
+      ],
+      "answer": "Belize",
+      "aliases": [],
+      "explanation": "Capital: Belmopan · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ca",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_029.svg",
+      "choices": [
+        "Jamaica",
+        "Antigua and Barbuda",
+        "Canada",
+        "Belize"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Capital: Ottawa · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cd",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_030.svg",
+      "choices": [
+        "Somalia",
+        "Comoros",
+        "Uganda",
+        "Democratic Republic of the Congo"
+      ],
+      "answer": "Democratic Republic of the Congo",
+      "aliases": [
+        "DRC",
+        "DR Congo",
+        "Congo-Kinshasa"
+      ],
+      "explanation": "Capital: Kinshasa · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cf",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_031.svg",
+      "choices": [
+        "Sao Tome and Principe",
+        "Central African Republic",
+        "Guinea-Bissau",
+        "Equatorial Guinea"
+      ],
+      "answer": "Central African Republic",
+      "aliases": [],
+      "explanation": "Capital: Bangui · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_032.svg",
+      "choices": [
+        "Rwanda",
+        "Mauritania",
+        "Republic of the Congo",
+        "Malawi"
+      ],
+      "answer": "Republic of the Congo",
+      "aliases": [
+        "Congo",
+        "Congo-Brazzaville"
+      ],
+      "explanation": "Capital: Brazzaville · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ch",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_033.svg",
+      "choices": [
+        "Moldova",
+        "Switzerland",
+        "Slovenia",
+        "Italy"
+      ],
+      "answer": "Switzerland",
+      "aliases": [
+        "Swiss Confederation",
+        "Helvetia"
+      ],
+      "explanation": "Capital: Bern · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ci",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_034.svg",
+      "choices": [
+        "Sao Tome and Principe",
+        "Chad",
+        "Ivory Coast",
+        "Botswana"
+      ],
+      "answer": "Ivory Coast",
+      "aliases": [
+        "Côte d'Ivoire",
+        "Cote d'Ivoire"
+      ],
+      "explanation": "Capital: Yamoussoukro · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_035.svg",
+      "choices": [
+        "Brazil",
+        "Argentina",
+        "Uruguay",
+        "Chile"
+      ],
+      "answer": "Chile",
+      "aliases": [],
+      "explanation": "Capital: Santiago · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_036.svg",
+      "choices": [
+        "Mauritius",
+        "Chad",
+        "Sao Tome and Principe",
+        "Cameroon"
+      ],
+      "answer": "Cameroon",
+      "aliases": [],
+      "explanation": "Capital: Yaoundé · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_037.svg",
+      "choices": [
+        "China",
+        "Georgia",
+        "Israel",
+        "Palestine"
+      ],
+      "answer": "China",
+      "aliases": [
+        "PRC",
+        "People's Republic of China"
+      ],
+      "explanation": "Capital: Beijing · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_co",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_038.svg",
+      "choices": [
+        "Venezuela",
+        "Suriname",
+        "Peru",
+        "Colombia"
+      ],
+      "answer": "Colombia",
+      "aliases": [],
+      "explanation": "Capital: Bogotá · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_039.svg",
+      "choices": [
+        "Costa Rica",
+        "Saint Vincent and the Grenadines",
+        "Cuba",
+        "Haiti"
+      ],
+      "answer": "Costa Rica",
+      "aliases": [],
+      "explanation": "Capital: San José · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_040.svg",
+      "choices": [
+        "Cuba",
+        "Guatemala",
+        "Saint Lucia",
+        "Saint Kitts and Nevis"
+      ],
+      "answer": "Cuba",
+      "aliases": [],
+      "explanation": "Capital: Havana · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cv",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_041.svg",
+      "choices": [
+        "Mali",
+        "Namibia",
+        "Cabo Verde",
+        "Republic of the Congo"
+      ],
+      "answer": "Cabo Verde",
+      "aliases": [
+        "Cape Verde"
+      ],
+      "explanation": "Capital: Praia · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cy",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_042.svg",
+      "choices": [
+        "Cyprus",
+        "France",
+        "Andorra",
+        "Bulgaria"
+      ],
+      "answer": "Cyprus",
+      "aliases": [],
+      "explanation": "Capital: Nicosia · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_cz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_043.svg",
+      "choices": [
+        "Portugal",
+        "Ukraine",
+        "Czechia",
+        "Monaco"
+      ],
+      "answer": "Czechia",
+      "aliases": [
+        "Czech Republic"
+      ],
+      "explanation": "Capital: Prague · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_de",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_044.svg",
+      "choices": [
+        "Liechtenstein",
+        "Romania",
+        "Germany",
+        "Denmark"
+      ],
+      "answer": "Germany",
+      "aliases": [
+        "Deutschland"
+      ],
+      "explanation": "Capital: Berlin · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_dj",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_045.svg",
+      "choices": [
+        "Djibouti",
+        "Rwanda",
+        "Tanzania",
+        "Nigeria"
+      ],
+      "answer": "Djibouti",
+      "aliases": [],
+      "explanation": "Capital: Djibouti · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_dk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_046.svg",
+      "choices": [
+        "Croatia",
+        "Ukraine",
+        "Denmark",
+        "Serbia"
+      ],
+      "answer": "Denmark",
+      "aliases": [
+        "Danmark"
+      ],
+      "explanation": "Capital: Copenhagen · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_dm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_047.svg",
+      "choices": [
+        "Belize",
+        "Costa Rica",
+        "Saint Kitts and Nevis",
+        "Dominica"
+      ],
+      "answer": "Dominica",
+      "aliases": [],
+      "explanation": "Capital: Roseau · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_do",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_048.svg",
+      "choices": [
+        "Belize",
+        "Dominican Republic",
+        "Haiti",
+        "Costa Rica"
+      ],
+      "answer": "Dominican Republic",
+      "aliases": [],
+      "explanation": "Capital: Santo Domingo · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_dz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_049.svg",
+      "choices": [
+        "Cabo Verde",
+        "Algeria",
+        "Guinea",
+        "Guinea-Bissau"
+      ],
+      "answer": "Algeria",
+      "aliases": [
+        "الجزائر"
+      ],
+      "explanation": "Capital: Algiers · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ec",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_050.svg",
+      "choices": [
+        "Argentina",
+        "Peru",
+        "Ecuador",
+        "Colombia"
+      ],
+      "answer": "Ecuador",
+      "aliases": [],
+      "explanation": "Capital: Quito · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ee",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_051.svg",
+      "choices": [
+        "Belarus",
+        "Albania",
+        "Estonia",
+        "United Kingdom"
+      ],
+      "answer": "Estonia",
+      "aliases": [],
+      "explanation": "Capital: Tallinn · Region: Europe.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_eg",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_09.svg",
+      "image": "media/flag_052.svg",
       "choices": [
         "Egypt",
-        "Iraq",
-        "Syria",
-        "Yemen"
+        "Rwanda",
+        "Sao Tome and Principe",
+        "Nigeria"
       ],
       "answer": "Egypt",
       "aliases": [
         "Misr",
+        "Arab Republic of Egypt",
         "مصر"
       ],
-      "explanation": "Egypt's flag features red, white, and black horizontal bands with the golden Eagle of Saladin.",
+      "explanation": "Capital: Cairo · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_er",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_053.svg",
+      "choices": [
+        "Somalia",
+        "Senegal",
+        "Sudan",
+        "Eritrea"
+      ],
+      "answer": "Eritrea",
+      "aliases": [],
+      "explanation": "Capital: Asmara · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_es",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_054.svg",
+      "choices": [
+        "Sweden",
+        "Spain",
+        "Finland",
+        "North Macedonia"
+      ],
+      "answer": "Spain",
+      "aliases": [
+        "España",
+        "Espana"
+      ],
+      "explanation": "Capital: Madrid · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_et",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_055.svg",
+      "choices": [
+        "Ethiopia",
+        "Mozambique",
+        "Sao Tome and Principe",
+        "Liberia"
+      ],
+      "answer": "Ethiopia",
+      "aliases": [],
+      "explanation": "Capital: Addis Ababa · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fi",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_056.svg",
+      "choices": [
+        "Moldova",
+        "Bosnia and Herzegovina",
+        "Liechtenstein",
+        "Finland"
+      ],
+      "answer": "Finland",
+      "aliases": [
+        "Suomi"
+      ],
+      "explanation": "Capital: Helsinki · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fj",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_057.svg",
+      "choices": [
+        "Fiji",
+        "Micronesia",
+        "Nauru",
+        "Vanuatu"
+      ],
+      "answer": "Fiji",
+      "aliases": [],
+      "explanation": "Capital: Suva · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_058.svg",
+      "choices": [
+        "Tonga",
+        "Solomon Islands",
+        "Micronesia",
+        "Australia"
+      ],
+      "answer": "Micronesia",
+      "aliases": [],
+      "explanation": "Capital: Palikir · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_fr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_059.svg",
+      "choices": [
+        "Switzerland",
+        "Germany",
+        "Slovenia",
+        "France"
+      ],
+      "answer": "France",
+      "aliases": [
+        "French Republic"
+      ],
+      "explanation": "Capital: Paris · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ga",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_060.svg",
+      "choices": [
+        "Comoros",
+        "Ivory Coast",
+        "Gabon",
+        "Namibia"
+      ],
+      "answer": "Gabon",
+      "aliases": [],
+      "explanation": "Capital: Libreville · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gb",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_061.svg",
+      "choices": [
+        "United Kingdom",
+        "Cyprus",
+        "Russia",
+        "Liechtenstein"
+      ],
+      "answer": "United Kingdom",
+      "aliases": [
+        "UK",
+        "Britain",
+        "Great Britain",
+        "U.K."
+      ],
+      "explanation": "Capital: London · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gd",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_062.svg",
+      "choices": [
+        "Saint Vincent and the Grenadines",
+        "Saint Kitts and Nevis",
+        "Grenada",
+        "Dominica"
+      ],
+      "answer": "Grenada",
+      "aliases": [],
+      "explanation": "Capital: St. George's · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ge",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_063.svg",
+      "choices": [
+        "Vietnam",
+        "Georgia",
+        "Türkiye",
+        "Qatar"
+      ],
+      "answer": "Georgia",
+      "aliases": [],
+      "explanation": "Capital: Tbilisi · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gh",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_064.svg",
+      "choices": [
+        "Ghana",
+        "Burkina Faso",
+        "Eritrea",
+        "Gambia"
+      ],
+      "answer": "Ghana",
+      "aliases": [],
+      "explanation": "Capital: Accra · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_065.svg",
+      "choices": [
+        "Guinea-Bissau",
+        "Ivory Coast",
+        "Senegal",
+        "Gambia"
+      ],
+      "answer": "Gambia",
+      "aliases": [],
+      "explanation": "Capital: Banjul · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_066.svg",
+      "choices": [
+        "Guinea",
+        "Mozambique",
+        "Somalia",
+        "Zimbabwe"
+      ],
+      "answer": "Guinea",
+      "aliases": [],
+      "explanation": "Capital: Conakry · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gq",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_067.svg",
+      "choices": [
+        "South Sudan",
+        "Equatorial Guinea",
+        "Angola",
+        "Benin"
+      ],
+      "answer": "Equatorial Guinea",
+      "aliases": [],
+      "explanation": "Capital: Malabo · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_068.svg",
+      "choices": [
+        "Greece",
+        "Norway",
+        "Vatican City",
+        "Finland"
+      ],
+      "answer": "Greece",
+      "aliases": [
+        "Hellas"
+      ],
+      "explanation": "Capital: Athens · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_069.svg",
+      "choices": [
+        "Panama",
+        "Guatemala",
+        "Haiti",
+        "Dominica"
+      ],
+      "answer": "Guatemala",
+      "aliases": [],
+      "explanation": "Capital: Guatemala City · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_070.svg",
+      "choices": [
+        "Guinea-Bissau",
+        "Liberia",
+        "Comoros",
+        "Mauritania"
+      ],
+      "answer": "Guinea-Bissau",
+      "aliases": [],
+      "explanation": "Capital: Bissau · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_gy",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_071.svg",
+      "choices": [
+        "Trinidad and Tobago",
+        "Colombia",
+        "Guyana",
+        "Uruguay"
+      ],
+      "answer": "Guyana",
+      "aliases": [],
+      "explanation": "Capital: Georgetown · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_hn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_072.svg",
+      "choices": [
+        "Honduras",
+        "Canada",
+        "Antigua and Barbuda",
+        "Mexico"
+      ],
+      "answer": "Honduras",
+      "aliases": [],
+      "explanation": "Capital: Tegucigalpa · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_hr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_073.svg",
+      "choices": [
+        "Denmark",
+        "Slovakia",
+        "Austria",
+        "Croatia"
+      ],
+      "answer": "Croatia",
+      "aliases": [
+        "Hrvatska"
+      ],
+      "explanation": "Capital: Zagreb · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ht",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_074.svg",
+      "choices": [
+        "Panama",
+        "Dominican Republic",
+        "Canada",
+        "Haiti"
+      ],
+      "answer": "Haiti",
+      "aliases": [],
+      "explanation": "Capital: Port-au-Prince · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_hu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_075.svg",
+      "choices": [
+        "Ireland",
+        "Russia",
+        "Kosovo",
+        "Hungary"
+      ],
+      "answer": "Hungary",
+      "aliases": [
+        "Magyarország"
+      ],
+      "explanation": "Capital: Budapest · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_id",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_076.svg",
+      "choices": [
+        "Turkmenistan",
+        "Indonesia",
+        "Palestine",
+        "Qatar"
+      ],
+      "answer": "Indonesia",
+      "aliases": [],
+      "explanation": "Capital: Jakarta · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ie",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_077.svg",
+      "choices": [
+        "Ireland",
+        "Bulgaria",
+        "Luxembourg",
+        "Czechia"
+      ],
+      "answer": "Ireland",
+      "aliases": [
+        "Republic of Ireland",
+        "Éire",
+        "Eire"
+      ],
+      "explanation": "Capital: Dublin · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_il",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_078.svg",
+      "choices": [
+        "Armenia",
+        "Syria",
+        "Israel",
+        "South Korea"
+      ],
+      "answer": "Israel",
+      "aliases": [],
+      "explanation": "Capital: Jerusalem · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_in",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_079.svg",
+      "choices": [
+        "Qatar",
+        "India",
+        "Laos",
+        "North Korea"
+      ],
+      "answer": "India",
+      "aliases": [
+        "Bharat"
+      ],
+      "explanation": "Capital: New Delhi · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_iq",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_080.svg",
+      "choices": [
+        "Iraq",
+        "United Arab Emirates",
+        "Timor-Leste",
+        "Thailand"
+      ],
+      "answer": "Iraq",
+      "aliases": [
+        "العراق"
+      ],
+      "explanation": "Capital: Baghdad · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ir",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_081.svg",
+      "choices": [
+        "Indonesia",
+        "Qatar",
+        "Yemen",
+        "Iran"
+      ],
+      "answer": "Iran",
+      "aliases": [],
+      "explanation": "Capital: Tehran · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_is",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_082.svg",
+      "choices": [
+        "Portugal",
+        "Czechia",
+        "Germany",
+        "Iceland"
+      ],
+      "answer": "Iceland",
+      "aliases": [
+        "Ísland"
+      ],
+      "explanation": "Capital: Reykjavik · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_it",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_083.svg",
+      "choices": [
+        "Hungary",
+        "Italy",
+        "Belgium",
+        "Lithuania"
+      ],
+      "answer": "Italy",
+      "aliases": [
+        "Italia"
+      ],
+      "explanation": "Capital: Rome · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_jm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_084.svg",
+      "choices": [
+        "Saint Vincent and the Grenadines",
+        "Dominica",
+        "Jamaica",
+        "United States"
+      ],
+      "answer": "Jamaica",
+      "aliases": [],
+      "explanation": "Capital: Kingston · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_jo",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_085.svg",
+      "choices": [
+        "Yemen",
+        "Brunei",
+        "Philippines",
+        "Jordan"
+      ],
+      "answer": "Jordan",
+      "aliases": [
+        "الأردن"
+      ],
+      "explanation": "Capital: Amman · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_jp",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_086.svg",
+      "choices": [
+        "Turkmenistan",
+        "South Korea",
+        "Tajikistan",
+        "Japan"
+      ],
+      "answer": "Japan",
+      "aliases": [
+        "Nippon",
+        "Nihon"
+      ],
+      "explanation": "Capital: Tokyo · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ke",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_087.svg",
+      "choices": [
+        "Kenya",
+        "Republic of the Congo",
+        "Nigeria",
+        "Malawi"
+      ],
+      "answer": "Kenya",
+      "aliases": [],
+      "explanation": "Capital: Nairobi · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_088.svg",
+      "choices": [
+        "Laos",
+        "Syria",
+        "Bahrain",
+        "Kyrgyzstan"
+      ],
+      "answer": "Kyrgyzstan",
+      "aliases": [],
+      "explanation": "Capital: Bishkek · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kh",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_089.svg",
+      "choices": [
+        "Japan",
+        "Türkiye",
+        "Cambodia",
+        "South Korea"
+      ],
+      "answer": "Cambodia",
+      "aliases": [],
+      "explanation": "Capital: Phnom Penh · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ki",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_090.svg",
+      "choices": [
+        "Kiribati",
+        "Vanuatu",
+        "Papua New Guinea",
+        "Solomon Islands"
+      ],
+      "answer": "Kiribati",
+      "aliases": [],
+      "explanation": "Capital: South Tarawa · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_km",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_091.svg",
+      "choices": [
+        "Equatorial Guinea",
+        "Comoros",
+        "Djibouti",
+        "Libya"
+      ],
+      "answer": "Comoros",
+      "aliases": [],
+      "explanation": "Capital: Moroni · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_092.svg",
+      "choices": [
+        "Honduras",
+        "Saint Vincent and the Grenadines",
+        "Saint Kitts and Nevis",
+        "Jamaica"
+      ],
+      "answer": "Saint Kitts and Nevis",
+      "aliases": [],
+      "explanation": "Capital: Basseterre · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kp",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_093.svg",
+      "choices": [
+        "North Korea",
+        "Singapore",
+        "Türkiye",
+        "Malaysia"
+      ],
+      "answer": "North Korea",
+      "aliases": [
+        "DPRK"
+      ],
+      "explanation": "Capital: Pyongyang · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_094.svg",
+      "choices": [
+        "South Korea",
+        "Kuwait",
+        "Kazakhstan",
+        "Bhutan"
+      ],
+      "answer": "South Korea",
+      "aliases": [
+        "ROK",
+        "Korea",
+        "Republic of Korea"
+      ],
+      "explanation": "Capital: Seoul · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_095.svg",
+      "choices": [
+        "Timor-Leste",
+        "Georgia",
+        "Kuwait",
+        "Qatar"
+      ],
+      "answer": "Kuwait",
+      "aliases": [
+        "الكويت"
+      ],
+      "explanation": "Capital: Kuwait City · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_kz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_096.svg",
+      "choices": [
+        "Kazakhstan",
+        "Bhutan",
+        "Georgia",
+        "Saudi Arabia"
+      ],
+      "answer": "Kazakhstan",
+      "aliases": [],
+      "explanation": "Capital: Astana · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_la",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_097.svg",
+      "choices": [
+        "Laos",
+        "Timor-Leste",
+        "Afghanistan",
+        "Myanmar"
+      ],
+      "answer": "Laos",
+      "aliases": [],
+      "explanation": "Capital: Vientiane · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lb",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_098.svg",
+      "choices": [
+        "Kuwait",
+        "Lebanon",
+        "Brunei",
+        "Taiwan"
+      ],
+      "answer": "Lebanon",
+      "aliases": [
+        "لبنان"
+      ],
+      "explanation": "Capital: Beirut · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lc",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_099.svg",
+      "choices": [
+        "Honduras",
+        "Guatemala",
+        "Jamaica",
+        "Saint Lucia"
+      ],
+      "answer": "Saint Lucia",
+      "aliases": [],
+      "explanation": "Capital: Castries · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_li",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_100.svg",
+      "choices": [
+        "Romania",
+        "Andorra",
+        "Liechtenstein",
+        "Greece"
+      ],
+      "answer": "Liechtenstein",
+      "aliases": [],
+      "explanation": "Capital: Vaduz · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_101.svg",
+      "choices": [
+        "Sri Lanka",
+        "Turkmenistan",
+        "Syria",
+        "Tajikistan"
+      ],
+      "answer": "Sri Lanka",
+      "aliases": [],
+      "explanation": "Capital: Sri Jayawardenepura Kotte, Colombo · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_102.svg",
+      "choices": [
+        "Burundi",
+        "Liberia",
+        "Angola",
+        "Guinea-Bissau"
+      ],
+      "answer": "Liberia",
+      "aliases": [],
+      "explanation": "Capital: Monrovia · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ls",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_103.svg",
+      "choices": [
+        "Ghana",
+        "South Sudan",
+        "Equatorial Guinea",
+        "Lesotho"
+      ],
+      "answer": "Lesotho",
+      "aliases": [],
+      "explanation": "Capital: Maseru · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_104.svg",
+      "choices": [
+        "Norway",
+        "Slovenia",
+        "Lithuania",
+        "Greece"
+      ],
+      "answer": "Lithuania",
+      "aliases": [],
+      "explanation": "Capital: Vilnius · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_105.svg",
+      "choices": [
+        "Andorra",
+        "Luxembourg",
+        "Belarus",
+        "Portugal"
+      ],
+      "answer": "Luxembourg",
+      "aliases": [],
+      "explanation": "Capital: Luxembourg City · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_lv",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_106.svg",
+      "choices": [
+        "Latvia",
+        "Sweden",
+        "Spain",
+        "North Macedonia"
+      ],
+      "answer": "Latvia",
+      "aliases": [],
+      "explanation": "Capital: Riga · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ly",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_107.svg",
+      "choices": [
+        "Morocco",
+        "Rwanda",
+        "Libya",
+        "Democratic Republic of the Congo"
+      ],
+      "answer": "Libya",
+      "aliases": [
+        "ليبيا"
+      ],
+      "explanation": "Capital: Tripoli · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ma",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_108.svg",
+      "choices": [
+        "Burundi",
+        "Morocco",
+        "Libya",
+        "Ghana"
+      ],
+      "answer": "Morocco",
+      "aliases": [
+        "المغرب"
+      ],
+      "explanation": "Capital: Rabat · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mc",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_109.svg",
+      "choices": [
+        "Monaco",
+        "Iceland",
+        "Malta",
+        "Ukraine"
+      ],
+      "answer": "Monaco",
+      "aliases": [],
+      "explanation": "Capital: Monaco · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_md",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_110.svg",
+      "choices": [
+        "Moldova",
+        "Malta",
+        "Sweden",
+        "United Kingdom"
+      ],
+      "answer": "Moldova",
+      "aliases": [],
+      "explanation": "Capital: Chișinău · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_me",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_111.svg",
+      "choices": [
+        "San Marino",
+        "Netherlands",
+        "Montenegro",
+        "Austria"
+      ],
+      "answer": "Montenegro",
+      "aliases": [],
+      "explanation": "Capital: Podgorica · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_112.svg",
+      "choices": [
+        "Comoros",
+        "Zambia",
+        "Madagascar",
+        "Gabon"
+      ],
+      "answer": "Madagascar",
+      "aliases": [],
+      "explanation": "Capital: Antananarivo · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mh",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_113.svg",
+      "choices": [
+        "Nauru",
+        "Papua New Guinea",
+        "Marshall Islands",
+        "Solomon Islands"
+      ],
+      "answer": "Marshall Islands",
+      "aliases": [],
+      "explanation": "Capital: Majuro · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_114.svg",
+      "choices": [
+        "San Marino",
+        "North Macedonia",
+        "Latvia",
+        "Belgium"
+      ],
+      "answer": "North Macedonia",
+      "aliases": [
+        "Macedonia"
+      ],
+      "explanation": "Capital: Skopje · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ml",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_115.svg",
+      "choices": [
+        "Mali",
+        "Sudan",
+        "Mozambique",
+        "Namibia"
+      ],
+      "answer": "Mali",
+      "aliases": [],
+      "explanation": "Capital: Bamako · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_116.svg",
+      "choices": [
+        "Laos",
+        "Kuwait",
+        "Myanmar",
+        "Türkiye"
+      ],
+      "answer": "Myanmar",
+      "aliases": [
+        "Burma"
+      ],
+      "explanation": "Capital: Naypyidaw · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_117.svg",
+      "choices": [
+        "Japan",
+        "Lebanon",
+        "Palestine",
+        "Mongolia"
+      ],
+      "answer": "Mongolia",
+      "aliases": [],
+      "explanation": "Capital: Ulaanbaatar · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_118.svg",
+      "choices": [
+        "Mali",
+        "Mauritania",
+        "Ethiopia",
+        "Burkina Faso"
+      ],
+      "answer": "Mauritania",
+      "aliases": [],
+      "explanation": "Capital: Nouakchott · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_119.svg",
+      "choices": [
+        "Spain",
+        "Norway",
+        "Malta",
+        "Greece"
+      ],
+      "answer": "Malta",
+      "aliases": [],
+      "explanation": "Capital: Valletta · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_120.svg",
+      "choices": [
+        "Lesotho",
+        "Somalia",
+        "Mauritius",
+        "Comoros"
+      ],
+      "answer": "Mauritius",
+      "aliases": [],
+      "explanation": "Capital: Port Louis · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mv",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_121.svg",
+      "choices": [
+        "Yemen",
+        "China",
+        "Georgia",
+        "Maldives"
+      ],
+      "answer": "Maldives",
+      "aliases": [],
+      "explanation": "Capital: Malé · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_122.svg",
+      "choices": [
+        "South Africa",
+        "Guinea",
+        "Malawi",
+        "Ghana"
+      ],
+      "answer": "Malawi",
+      "aliases": [],
+      "explanation": "Capital: Lilongwe · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mx",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_123.svg",
+      "choices": [
+        "Panama",
+        "Honduras",
+        "Mexico",
+        "Canada"
+      ],
+      "answer": "Mexico",
+      "aliases": [],
+      "explanation": "Capital: Mexico City · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_my",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_124.svg",
+      "choices": [
+        "Malaysia",
+        "Azerbaijan",
+        "Israel",
+        "Uzbekistan"
+      ],
+      "answer": "Malaysia",
+      "aliases": [],
+      "explanation": "Capital: Kuala Lumpur · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_mz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_125.svg",
+      "choices": [
+        "Mozambique",
+        "Guinea",
+        "Burkina Faso",
+        "Niger"
+      ],
+      "answer": "Mozambique",
+      "aliases": [],
+      "explanation": "Capital: Maputo · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_na",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_126.svg",
+      "choices": [
+        "Democratic Republic of the Congo",
+        "Niger",
+        "Namibia",
+        "Mali"
+      ],
+      "answer": "Namibia",
+      "aliases": [],
+      "explanation": "Capital: Windhoek · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ne",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_127.svg",
+      "choices": [
+        "Chad",
+        "Malawi",
+        "Cameroon",
+        "Niger"
+      ],
+      "answer": "Niger",
+      "aliases": [],
+      "explanation": "Capital: Niamey · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ng",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_128.svg",
+      "choices": [
+        "Kenya",
+        "Nigeria",
+        "Benin",
+        "Central African Republic"
+      ],
+      "answer": "Nigeria",
+      "aliases": [],
+      "explanation": "Capital: Abuja · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ni",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_129.svg",
+      "choices": [
+        "Cuba",
+        "Mexico",
+        "Costa Rica",
+        "Nicaragua"
+      ],
+      "answer": "Nicaragua",
+      "aliases": [],
+      "explanation": "Capital: Managua · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_nl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_130.svg",
+      "choices": [
+        "Netherlands",
+        "France",
+        "Germany",
+        "Estonia"
+      ],
+      "answer": "Netherlands",
+      "aliases": [
+        "Holland",
+        "The Netherlands"
+      ],
+      "explanation": "Capital: Amsterdam · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_no",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_131.svg",
+      "choices": [
+        "Norway",
+        "Spain",
+        "Liechtenstein",
+        "Germany"
+      ],
+      "answer": "Norway",
+      "aliases": [
+        "Norge"
+      ],
+      "explanation": "Capital: Oslo · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_np",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_132.svg",
+      "choices": [
+        "Nepal",
+        "Laos",
+        "Vietnam",
+        "Malaysia"
+      ],
+      "answer": "Nepal",
+      "aliases": [],
+      "explanation": "Capital: Kathmandu · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_nr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_133.svg",
+      "choices": [
+        "Solomon Islands",
+        "Tonga",
+        "Palau",
+        "Nauru"
+      ],
+      "answer": "Nauru",
+      "aliases": [],
+      "explanation": "Capital: Yaren District · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_nz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_134.svg",
+      "choices": [
+        "Nauru",
+        "Samoa",
+        "New Zealand",
+        "Fiji"
+      ],
+      "answer": "New Zealand",
+      "aliases": [
+        "Aotearoa"
+      ],
+      "explanation": "Capital: Wellington · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_om",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_135.svg",
+      "choices": [
+        "Turkmenistan",
+        "Oman",
+        "Mongolia",
+        "Iraq"
+      ],
+      "answer": "Oman",
+      "aliases": [
+        "عمان",
+        "عُمان"
+      ],
+      "explanation": "Capital: Muscat · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pa",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_136.svg",
+      "choices": [
+        "Panama",
+        "Nicaragua",
+        "Dominican Republic",
+        "Canada"
+      ],
+      "answer": "Panama",
+      "aliases": [],
+      "explanation": "Capital: Panama City · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pe",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_137.svg",
+      "choices": [
+        "Peru",
+        "Argentina",
+        "Guyana",
+        "Paraguay"
+      ],
+      "answer": "Peru",
+      "aliases": [],
+      "explanation": "Capital: Lima · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_138.svg",
+      "choices": [
+        "Fiji",
+        "Papua New Guinea",
+        "Micronesia",
+        "Palau"
+      ],
+      "answer": "Papua New Guinea",
+      "aliases": [],
+      "explanation": "Capital: Port Moresby · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ph",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_139.svg",
+      "choices": [
+        "Lebanon",
+        "Kazakhstan",
+        "Malaysia",
+        "Philippines"
+      ],
+      "answer": "Philippines",
+      "aliases": [],
+      "explanation": "Capital: Manila · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_140.svg",
+      "choices": [
+        "Pakistan",
+        "Taiwan",
+        "Japan",
+        "Bahrain"
+      ],
+      "answer": "Pakistan",
+      "aliases": [],
+      "explanation": "Capital: Islamabad · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_141.svg",
+      "choices": [
+        "Belarus",
+        "Poland",
+        "Portugal",
+        "Norway"
+      ],
+      "answer": "Poland",
+      "aliases": [
+        "Polska"
+      ],
+      "explanation": "Capital: Warsaw · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ps",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_142.svg",
+      "choices": [
+        "Armenia",
+        "Bahrain",
+        "Syria",
+        "Palestine"
+      ],
+      "answer": "Palestine",
+      "aliases": [
+        "State of Palestine",
+        "فلسطين"
+      ],
+      "explanation": "Capital: Ramallah · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_143.svg",
+      "choices": [
+        "Portugal",
+        "Serbia",
+        "Belarus",
+        "Lithuania"
+      ],
+      "answer": "Portugal",
+      "aliases": [],
+      "explanation": "Capital: Lisbon · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_pw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_144.svg",
+      "choices": [
+        "Solomon Islands",
+        "Micronesia",
+        "Palau",
+        "Australia"
+      ],
+      "answer": "Palau",
+      "aliases": [],
+      "explanation": "Capital: Ngerulmud · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_py",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_145.svg",
+      "choices": [
+        "Paraguay",
+        "Venezuela",
+        "Guyana",
+        "Bolivia"
+      ],
+      "answer": "Paraguay",
+      "aliases": [],
+      "explanation": "Capital: Asunción · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_qa",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_146.svg",
+      "choices": [
+        "Bangladesh",
+        "Afghanistan",
+        "Armenia",
+        "Qatar"
+      ],
+      "answer": "Qatar",
+      "aliases": [
+        "قطر"
+      ],
+      "explanation": "Capital: Doha · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ro",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_147.svg",
+      "choices": [
+        "Romania",
+        "Hungary",
+        "North Macedonia",
+        "Czechia"
+      ],
+      "answer": "Romania",
+      "aliases": [],
+      "explanation": "Capital: Bucharest · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_rs",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_148.svg",
+      "choices": [
+        "Serbia",
+        "Luxembourg",
+        "France",
+        "Kosovo"
+      ],
+      "answer": "Serbia",
+      "aliases": [],
+      "explanation": "Capital: Belgrade · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ru",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_149.svg",
+      "choices": [
+        "Malta",
+        "Russia",
+        "Austria",
+        "Latvia"
+      ],
+      "answer": "Russia",
+      "aliases": [
+        "Russian Federation"
+      ],
+      "explanation": "Capital: Moscow · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_rw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_150.svg",
+      "choices": [
+        "Uganda",
+        "Madagascar",
+        "Algeria",
+        "Rwanda"
+      ],
+      "answer": "Rwanda",
+      "aliases": [],
+      "explanation": "Capital: Kigali · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_sa",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_10.svg",
+      "image": "media/flag_151.svg",
       "choices": [
-        "Saudi Arabia",
-        "Pakistan",
-        "Nigeria",
-        "Brazil"
+        "Lebanon",
+        "Nepal",
+        "Syria",
+        "Saudi Arabia"
       ],
       "answer": "Saudi Arabia",
       "aliases": [
@@ -192,547 +2542,780 @@
         "Kingdom of Saudi Arabia",
         "السعودية"
       ],
-      "explanation": "Saudi Arabia's green flag carries white Arabic calligraphy above a horizontal sword.",
+      "explanation": "Capital: Riyadh · Region: Asia.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_ae",
+      "id": "flag_sb",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_11.svg",
+      "image": "media/flag_152.svg",
       "choices": [
-        "United Arab Emirates",
-        "Jordan",
-        "Kuwait",
-        "Sudan"
+        "Vanuatu",
+        "New Zealand",
+        "Solomon Islands",
+        "Australia"
       ],
-      "answer": "United Arab Emirates",
-      "aliases": [
-        "UAE",
-        "Emirates",
-        "الإمارات"
-      ],
-      "explanation": "The UAE flag uses the four Pan-Arab colors: red, green, white, and black.",
+      "answer": "Solomon Islands",
+      "aliases": [],
+      "explanation": "Capital: Honiara · Region: Oceania.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_jo",
+      "id": "flag_sc",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_12.svg",
+      "image": "media/flag_153.svg",
       "choices": [
-        "Jordan",
-        "United Arab Emirates",
-        "Egypt",
-        "Kuwait"
+        "Equatorial Guinea",
+        "Seychelles",
+        "Ethiopia",
+        "Mozambique"
       ],
-      "answer": "Jordan",
-      "aliases": [
-        "الأردن"
-      ],
-      "explanation": "Jordan's flag features a seven-pointed white star inside a red hoist triangle.",
+      "answer": "Seychelles",
+      "aliases": [],
+      "explanation": "Capital: Victoria · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_ma",
+      "id": "flag_sd",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_13.svg",
+      "image": "media/flag_154.svg",
       "choices": [
-        "Morocco",
-        "Tunisia",
-        "Turkey",
-        "Vietnam"
+        "Mozambique",
+        "Sudan",
+        "Seychelles",
+        "Kenya"
       ],
-      "answer": "Morocco",
+      "answer": "Sudan",
       "aliases": [
-        "المغرب"
+        "السودان"
       ],
-      "explanation": "Morocco's red flag features a green five-pointed star known as the Seal of Solomon.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_tn",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_14.svg",
-      "choices": [
-        "Tunisia",
-        "Turkey",
-        "Morocco",
-        "Algeria"
-      ],
-      "answer": "Tunisia",
-      "aliases": [
-        "تونس"
-      ],
-      "explanation": "Tunisia's flag has a white central disk containing a red crescent and five-pointed star.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_tr",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_15.svg",
-      "choices": [
-        "Turkey",
-        "Tunisia",
-        "Morocco",
-        "Pakistan"
-      ],
-      "answer": "Turkey",
-      "aliases": [
-        "Türkiye",
-        "Turkiye",
-        "Republic of Turkey"
-      ],
-      "explanation": "Turkey's flag displays a white crescent moon and star on a vibrant red field.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_gr",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_16.svg",
-      "choices": [
-        "Greece",
-        "Finland",
-        "Uruguay",
-        "Israel"
-      ],
-      "answer": "Greece",
-      "aliases": [
-        "Hellas"
-      ],
-      "explanation": "Greece's nine blue-and-white stripes represent the nine syllables of 'Freedom or Death'.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_ch",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_17.svg",
-      "choices": [
-        "Switzerland",
-        "Denmark",
-        "Austria",
-        "Norway"
-      ],
-      "answer": "Switzerland",
-      "aliases": [
-        "Swiss Confederation"
-      ],
-      "explanation": "Switzerland's bold white cross on a red field is one of the world's oldest national emblems.",
+      "explanation": "Capital: Khartoum · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_se",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_18.svg",
+      "image": "media/flag_155.svg",
       "choices": [
-        "Sweden",
-        "Finland",
-        "Norway",
-        "Ukraine"
+        "Romania",
+        "Spain",
+        "Liechtenstein",
+        "Sweden"
       ],
       "answer": "Sweden",
       "aliases": [
         "Sverige"
       ],
-      "explanation": "Sweden's yellow Nordic cross on blue dates back to the 16th century.",
+      "explanation": "Capital: Stockholm · Region: Europe.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_no",
+      "id": "flag_sg",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_19.svg",
+      "image": "media/flag_156.svg",
       "choices": [
-        "Norway",
-        "Iceland",
-        "Denmark",
-        "Sweden"
+        "Bhutan",
+        "Sri Lanka",
+        "Malaysia",
+        "Singapore"
       ],
-      "answer": "Norway",
-      "aliases": [
-        "Norge"
-      ],
-      "explanation": "Norway's flag layers a navy-blue cross fimbriated in white on a red background.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_dk",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_20.svg",
-      "choices": [
-        "Denmark",
-        "Norway",
-        "Switzerland",
-        "Sweden"
-      ],
-      "answer": "Denmark",
-      "aliases": [
-        "Danmark"
-      ],
-      "explanation": "Known as the Dannebrog, Denmark's flag is the oldest continuously used national flag.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_fi",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_21.svg",
-      "choices": [
-        "Finland",
-        "Sweden",
-        "Greece",
-        "Iceland"
-      ],
-      "answer": "Finland",
-      "aliases": [
-        "Suomi"
-      ],
-      "explanation": "Finland's blue Nordic cross symbolizes its lakes and sky; white represents winter snow.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_is",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_22.svg",
-      "choices": [
-        "Iceland",
-        "Norway",
-        "Finland",
-        "United Kingdom"
-      ],
-      "answer": "Iceland",
-      "aliases": [
-        "Ísland"
-      ],
-      "explanation": "Iceland's flag represents volcanic fire (red), glacial ice (white), and the Atlantic Ocean (blue).",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_nl",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_23.svg",
-      "choices": [
-        "Netherlands",
-        "France",
-        "Luxembourg",
-        "Russia"
-      ],
-      "answer": "Netherlands",
-      "aliases": [
-        "Holland",
-        "The Netherlands"
-      ],
-      "explanation": "The Dutch red-white-blue horizontal tricolor inspired many later European tricolors.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_be",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_24.svg",
-      "choices": [
-        "Belgium",
-        "Germany",
-        "Romania",
-        "France"
-      ],
-      "answer": "Belgium",
-      "aliases": [
-        "België",
-        "Belgique"
-      ],
-      "explanation": "Belgium's vertical black, yellow, and red stripes draw from the Duchy of Brabant colors.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_ie",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_25.svg",
-      "choices": [
-        "Ireland",
-        "Italy",
-        "Ivory Coast",
-        "India"
-      ],
-      "answer": "Ireland",
-      "aliases": [
-        "Republic of Ireland",
-        "Éire"
-      ],
-      "explanation": "Ireland's tricolor pairs green, white, and orange in equal vertical bands.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_pl",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_26.svg",
-      "choices": [
-        "Poland",
-        "Indonesia",
-        "Austria",
-        "Czechia"
-      ],
-      "answer": "Poland",
-      "aliases": [
-        "Polska"
-      ],
-      "explanation": "Poland's flag is white on top and crimson red on the bottom.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_ua",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_27.svg",
-      "choices": [
-        "Ukraine",
-        "Sweden",
-        "Poland",
-        "Germany"
-      ],
-      "answer": "Ukraine",
-      "aliases": [
-        "Україна"
-      ],
-      "explanation": "Ukraine's flag depicts blue skies above golden wheat fields.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_cz",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_28.svg",
-      "choices": [
-        "Czechia",
-        "Poland",
-        "Netherlands",
-        "Philippines"
-      ],
-      "answer": "Czechia",
-      "aliases": [
-        "Czech Republic"
-      ],
-      "explanation": "Czechia's flag adds a blue hoist triangle to white and red horizontal bands.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_at",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_29.svg",
-      "choices": [
-        "Austria",
-        "Poland",
-        "Switzerland",
-        "Hungary"
-      ],
-      "answer": "Austria",
-      "aliases": [
-        "Österreich"
-      ],
-      "explanation": "Austria's red-white-red triband is one of the oldest heraldic designs in Europe.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_hu",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_30.svg",
-      "choices": [
-        "Hungary",
-        "Italy",
-        "Austria",
-        "Bulgaria"
-      ],
-      "answer": "Hungary",
-      "aliases": [
-        "Magyarország"
-      ],
-      "explanation": "Hungary's horizontal tricolor symbolizes strength (red), fidelity (white), and hope (green).",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_kr",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_31.svg",
-      "choices": [
-        "South Korea",
-        "Japan",
-        "China",
-        "Thailand"
-      ],
-      "answer": "South Korea",
-      "aliases": [
-        "Korea",
-        "Republic of Korea",
-        "ROK"
-      ],
-      "explanation": "South Korea's Taegeukgi shows a red-and-blue balance circle flanked by four black trigrams.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_in",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_32.svg",
-      "choices": [
-        "India",
-        "Ireland",
-        "Hungary",
-        "Thailand"
-      ],
-      "answer": "India",
-      "aliases": [
-        "Bharat"
-      ],
-      "explanation": "India's Tiranga centers the 24-spoke navy Ashoka Chakra wheel on white.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_cn",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_33.svg",
-      "choices": [
-        "China",
-        "Vietnam",
-        "Turkey",
-        "Morocco"
-      ],
-      "answer": "China",
-      "aliases": [
-        "PRC",
-        "People's Republic of China"
-      ],
-      "explanation": "China's red flag features one large gold star accompanied by four smaller stars in an arc.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_vn",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_34.svg",
-      "choices": [
-        "Vietnam",
-        "China",
-        "Morocco",
-        "Turkey"
-      ],
-      "answer": "Vietnam",
-      "aliases": [
-        "Viet Nam"
-      ],
-      "explanation": "Vietnam's flag displays a single large five-pointed golden star centered on red.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_id",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_35.svg",
-      "choices": [
-        "Indonesia",
-        "Poland",
-        "Austria",
-        "Thailand"
-      ],
-      "answer": "Indonesia",
+      "answer": "Singapore",
       "aliases": [],
-      "explanation": "Indonesia's Sang Saka Merah Putih has red on top and white on the bottom.",
+      "explanation": "Capital: Singapore · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_si",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_157.svg",
+      "choices": [
+        "France",
+        "Estonia",
+        "Andorra",
+        "Slovenia"
+      ],
+      "answer": "Slovenia",
+      "aliases": [],
+      "explanation": "Capital: Ljubljana · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_158.svg",
+      "choices": [
+        "Greece",
+        "Liechtenstein",
+        "Norway",
+        "Slovakia"
+      ],
+      "answer": "Slovakia",
+      "aliases": [],
+      "explanation": "Capital: Bratislava · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_159.svg",
+      "choices": [
+        "Egypt",
+        "Chad",
+        "Burundi",
+        "Sierra Leone"
+      ],
+      "answer": "Sierra Leone",
+      "aliases": [],
+      "explanation": "Capital: Freetown · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_160.svg",
+      "choices": [
+        "Kosovo",
+        "Italy",
+        "Montenegro",
+        "San Marino"
+      ],
+      "answer": "San Marino",
+      "aliases": [],
+      "explanation": "Capital: San Marino · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_161.svg",
+      "choices": [
+        "Democratic Republic of the Congo",
+        "Senegal",
+        "Gambia",
+        "Benin"
+      ],
+      "answer": "Senegal",
+      "aliases": [],
+      "explanation": "Capital: Dakar · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_so",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_162.svg",
+      "choices": [
+        "Ghana",
+        "Somalia",
+        "Angola",
+        "Egypt"
+      ],
+      "answer": "Somalia",
+      "aliases": [],
+      "explanation": "Capital: Mogadishu · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_163.svg",
+      "choices": [
+        "Bolivia",
+        "Suriname",
+        "Colombia",
+        "Peru"
+      ],
+      "answer": "Suriname",
+      "aliases": [],
+      "explanation": "Capital: Paramaribo · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ss",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_164.svg",
+      "choices": [
+        "Benin",
+        "Mauritius",
+        "South Sudan",
+        "Zimbabwe"
+      ],
+      "answer": "South Sudan",
+      "aliases": [],
+      "explanation": "Capital: Juba · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_st",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_165.svg",
+      "choices": [
+        "Democratic Republic of the Congo",
+        "Mali",
+        "Ethiopia",
+        "Sao Tome and Principe"
+      ],
+      "answer": "Sao Tome and Principe",
+      "aliases": [],
+      "explanation": "Capital: São Tomé · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sv",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_166.svg",
+      "choices": [
+        "Haiti",
+        "El Salvador",
+        "Nicaragua",
+        "Bahamas"
+      ],
+      "answer": "El Salvador",
+      "aliases": [],
+      "explanation": "Capital: San Salvador · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sy",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_167.svg",
+      "choices": [
+        "Syria",
+        "Qatar",
+        "Jordan",
+        "Indonesia"
+      ],
+      "answer": "Syria",
+      "aliases": [
+        "سوريا"
+      ],
+      "explanation": "Capital: Damascus · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_sz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_168.svg",
+      "choices": [
+        "Ghana",
+        "Eswatini",
+        "Senegal",
+        "Lesotho"
+      ],
+      "answer": "Eswatini",
+      "aliases": [
+        "Swaziland"
+      ],
+      "explanation": "Capital: Lobamba, Mbabane · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_td",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_169.svg",
+      "choices": [
+        "Botswana",
+        "Chad",
+        "Kenya",
+        "Burkina Faso"
+      ],
+      "answer": "Chad",
+      "aliases": [],
+      "explanation": "Capital: N'Djamena · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tg",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_170.svg",
+      "choices": [
+        "Togo",
+        "Sao Tome and Principe",
+        "Mauritania",
+        "Zimbabwe"
+      ],
+      "answer": "Togo",
+      "aliases": [],
+      "explanation": "Capital: Lomé · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_th",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_36.svg",
+      "image": "media/flag_171.svg",
       "choices": [
-        "Thailand",
-        "Netherlands",
-        "France",
-        "Indonesia"
+        "Israel",
+        "Oman",
+        "Qatar",
+        "Thailand"
       ],
       "answer": "Thailand",
       "aliases": [],
-      "explanation": "Thailand's five horizontal stripes feature a double-width navy blue stripe in the center.",
+      "explanation": "Capital: Bangkok · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tj",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_172.svg",
+      "choices": [
+        "Tajikistan",
+        "Lebanon",
+        "Bahrain",
+        "Uzbekistan"
+      ],
+      "answer": "Tajikistan",
+      "aliases": [],
+      "explanation": "Capital: Dushanbe · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tl",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_173.svg",
+      "choices": [
+        "Türkiye",
+        "Kuwait",
+        "Timor-Leste",
+        "Saudi Arabia"
+      ],
+      "answer": "Timor-Leste",
+      "aliases": [
+        "East Timor"
+      ],
+      "explanation": "Capital: Dili · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tm",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_174.svg",
+      "choices": [
+        "Japan",
+        "Jordan",
+        "Timor-Leste",
+        "Turkmenistan"
+      ],
+      "answer": "Turkmenistan",
+      "aliases": [],
+      "explanation": "Capital: Ashgabat · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_175.svg",
+      "choices": [
+        "Seychelles",
+        "Tunisia",
+        "South Sudan",
+        "Guinea"
+      ],
+      "answer": "Tunisia",
+      "aliases": [
+        "تونس"
+      ],
+      "explanation": "Capital: Tunis · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_to",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_176.svg",
+      "choices": [
+        "Australia",
+        "Tonga",
+        "Nauru",
+        "Micronesia"
+      ],
+      "answer": "Tonga",
+      "aliases": [],
+      "explanation": "Capital: Nukuʻalofa · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tr",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_177.svg",
+      "choices": [
+        "Türkiye",
+        "Nepal",
+        "Turkmenistan",
+        "Jordan"
+      ],
+      "answer": "Türkiye",
+      "aliases": [
+        "Türkiye",
+        "Turkiye",
+        "Republic of Turkey"
+      ],
+      "explanation": "Capital: Ankara · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tt",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_178.svg",
+      "choices": [
+        "Brazil",
+        "Bolivia",
+        "Venezuela",
+        "Trinidad and Tobago"
+      ],
+      "answer": "Trinidad and Tobago",
+      "aliases": [],
+      "explanation": "Capital: Port of Spain · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tv",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_179.svg",
+      "choices": [
+        "Marshall Islands",
+        "New Zealand",
+        "Micronesia",
+        "Tuvalu"
+      ],
+      "answer": "Tuvalu",
+      "aliases": [],
+      "explanation": "Capital: Funafuti · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tw",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_180.svg",
+      "choices": [
+        "Lebanon",
+        "Tajikistan",
+        "Georgia",
+        "Taiwan"
+      ],
+      "answer": "Taiwan",
+      "aliases": [
+        "Republic of China"
+      ],
+      "explanation": "Capital: Taipei · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_tz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_181.svg",
+      "choices": [
+        "Eritrea",
+        "Central African Republic",
+        "Tanzania",
+        "Equatorial Guinea"
+      ],
+      "answer": "Tanzania",
+      "aliases": [],
+      "explanation": "Capital: Dodoma · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ua",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_182.svg",
+      "choices": [
+        "Ukraine",
+        "Hungary",
+        "Greece",
+        "Moldova"
+      ],
+      "answer": "Ukraine",
+      "aliases": [
+        "Україна"
+      ],
+      "explanation": "Capital: Kiev · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ug",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_183.svg",
+      "choices": [
+        "Equatorial Guinea",
+        "Gambia",
+        "Uganda",
+        "Mauritania"
+      ],
+      "answer": "Uganda",
+      "aliases": [],
+      "explanation": "Capital: Kampala · Region: Africa.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_us",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_184.svg",
+      "choices": [
+        "Saint Vincent and the Grenadines",
+        "Cuba",
+        "United States",
+        "Grenada"
+      ],
+      "answer": "United States",
+      "aliases": [
+        "USA",
+        "US",
+        "U.S.",
+        "U.S.A.",
+        "America",
+        "United States of America"
+      ],
+      "explanation": "Capital: Washington, D.C. · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_uy",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_185.svg",
+      "choices": [
+        "Bolivia",
+        "Brazil",
+        "Uruguay",
+        "Chile"
+      ],
+      "answer": "Uruguay",
+      "aliases": [],
+      "explanation": "Capital: Montevideo · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_uz",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_186.svg",
+      "choices": [
+        "Uzbekistan",
+        "Sri Lanka",
+        "Palestine",
+        "Timor-Leste"
+      ],
+      "answer": "Uzbekistan",
+      "aliases": [],
+      "explanation": "Capital: Tashkent · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_va",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_187.svg",
+      "choices": [
+        "Vatican City",
+        "Kosovo",
+        "Poland",
+        "Lithuania"
+      ],
+      "answer": "Vatican City",
+      "aliases": [
+        "The Vatican",
+        "Holy See",
+        "Vatican"
+      ],
+      "explanation": "Capital: Vatican City · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_vc",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_188.svg",
+      "choices": [
+        "Dominica",
+        "Mexico",
+        "Saint Vincent and the Grenadines",
+        "Costa Rica"
+      ],
+      "answer": "Saint Vincent and the Grenadines",
+      "aliases": [],
+      "explanation": "Capital: Kingstown · Region: North America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ve",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_189.svg",
+      "choices": [
+        "Venezuela",
+        "Brazil",
+        "Guyana",
+        "Colombia"
+      ],
+      "answer": "Venezuela",
+      "aliases": [],
+      "explanation": "Capital: Caracas · Region: South America.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_vn",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_190.svg",
+      "choices": [
+        "Türkiye",
+        "Tajikistan",
+        "Oman",
+        "Vietnam"
+      ],
+      "answer": "Vietnam",
+      "aliases": [
+        "Viet Nam"
+      ],
+      "explanation": "Capital: Hanoi · Region: Asia.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_vu",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_191.svg",
+      "choices": [
+        "Vanuatu",
+        "Tuvalu",
+        "Solomon Islands",
+        "Australia"
+      ],
+      "answer": "Vanuatu",
+      "aliases": [],
+      "explanation": "Capital: Port Vila · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ws",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_192.svg",
+      "choices": [
+        "Samoa",
+        "New Zealand",
+        "Tonga",
+        "Kiribati"
+      ],
+      "answer": "Samoa",
+      "aliases": [],
+      "explanation": "Capital: Apia · Region: Oceania.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_xk",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_193.svg",
+      "choices": [
+        "Lithuania",
+        "Norway",
+        "Kosovo",
+        "Italy"
+      ],
+      "answer": "Kosovo",
+      "aliases": [],
+      "explanation": "Capital: Pristina · Region: Europe.",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "flag_ye",
+      "prompt": "Which country does this flag belong to?",
+      "image": "media/flag_194.svg",
+      "choices": [
+        "Lebanon",
+        "Pakistan",
+        "Yemen",
+        "Mongolia"
+      ],
+      "answer": "Yemen",
+      "aliases": [
+        "اليمن"
+      ],
+      "explanation": "Capital: Sana'a · Region: Asia.",
       "language": "en",
       "rtl": false
     },
     {
       "id": "flag_za",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_37.svg",
+      "image": "media/flag_195.svg",
       "choices": [
-        "South Africa",
-        "Jamaica",
-        "Brazil",
-        "Czechia"
+        "Kenya",
+        "Togo",
+        "Burkina Faso",
+        "South Africa"
       ],
       "answer": "South Africa",
       "aliases": [
         "RSA"
       ],
-      "explanation": "Adopted in 1994, South Africa's six-color flag uses a bold green Y-shape symbolizing unity.",
+      "explanation": "Capital: Pretoria · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_jm",
+      "id": "flag_zm",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_38.svg",
+      "image": "media/flag_196.svg",
       "choices": [
-        "Jamaica",
-        "South Africa",
-        "Brazil",
-        "Sweden"
+        "Mauritius",
+        "Zambia",
+        "Djibouti",
+        "Sudan"
       ],
-      "answer": "Jamaica",
+      "answer": "Zambia",
       "aliases": [],
-      "explanation": "Jamaica's gold saltire divides green and black triangles — the only current national flag without red, white, or blue.",
+      "explanation": "Capital: Lusaka · Region: Africa.",
       "language": "en",
       "rtl": false
     },
     {
-      "id": "flag_ar",
+      "id": "flag_zw",
       "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_39.svg",
+      "image": "media/flag_197.svg",
       "choices": [
-        "Argentina",
-        "Greece",
-        "Brazil",
-        "Uruguay"
+        "Morocco",
+        "Algeria",
+        "Zimbabwe",
+        "Malawi"
       ],
-      "answer": "Argentina",
+      "answer": "Zimbabwe",
       "aliases": [],
-      "explanation": "Argentina's light blue and white bands center the golden Sun of May.",
-      "language": "en",
-      "rtl": false
-    },
-    {
-      "id": "flag_au",
-      "prompt": "Which country does this flag belong to?",
-      "image": "media/flag_40.svg",
-      "choices": [
-        "Australia",
-        "United Kingdom",
-        "New Zealand",
-        "United States"
-      ],
-      "answer": "Australia",
-      "aliases": [],
-      "explanation": "Australia's flag displays the Union Jack, the seven-pointed Commonwealth Star, and the Southern Cross.",
+      "explanation": "Capital: Harare · Region: Africa.",
       "language": "en",
       "rtl": false
     }

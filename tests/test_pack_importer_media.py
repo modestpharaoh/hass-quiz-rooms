@@ -32,16 +32,19 @@ def test_builtin_starter_packs_loaded_with_local_svg_flags(pack_registry: PackRe
     ar_gk = pack_registry.get_pack("general_knowledge_ar")
 
     assert flags is not None and flags.is_builtin
-    assert len(flags.questions) == 40
+    assert len(flags.questions) >= 150
     assert all(q.media_id is not None for q in flags.questions)
-    # Verify opaque media IDs serve valid local SVG bytes without exposing filenames
-    first_mid = flags.questions[0].media_id
-    assert first_mid is not None and "flag" not in first_mid and ".svg" not in first_mid
-    media_result = pack_registry.get_media_bytes(first_mid)
+    # Verify opaque media IDs serve valid local SVG bytes without exposing filenames or ISO IDs
+    egypt_q = next(q for q in flags.questions if q.answer == "Egypt")
+    assert egypt_q.media_id is not None
+    assert "flag" not in egypt_q.media_id and ".svg" not in egypt_q.media_id and "eg" != egypt_q.media_id
+    media_result = pack_registry.get_media_bytes(egypt_q.media_id)
     assert media_result is not None
     raw_svg, ctype = media_result
     assert ctype == "image/svg+xml"
     assert b"<svg" in raw_svg
+    assert b"flag-icons-" not in raw_svg
+    assert len(raw_svg) > 3000  # detailed vector Eagle of Saladin emblem
 
     assert en_gk is not None and en_gk.is_builtin
     assert len(en_gk.questions) >= 25
