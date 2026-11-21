@@ -10,6 +10,7 @@ from typing import Any, Callable
 from .const import (
     ACTIVE_ROOM_IDLE_TIMEOUT_SECONDS,
     ALLOWED_ANSWER_MODES,
+    ALLOWED_ROUND_COUNTS,
     ALLOWED_TIMERS,
     ALLOWED_VISIBILITIES,
     ALLOWED_WAGER_MODES,
@@ -34,6 +35,7 @@ from .const import (
     ROOM_STATUS_FINISHED,
     ROOM_STATUS_IN_PROGRESS,
     ROOM_STATUS_LOBBY,
+    ROUND_COUNT_STEP,
     URL_MEDIA,
     VISIBILITY_PUBLIC,
     WAGER_MODE_FREE,
@@ -165,6 +167,7 @@ class QuizEngine:
         timer_seconds: int | None,
         answer_mode: str | None,
         wager_mode: str | None,
+        deduct_wrong_wager: bool | None,
         visibility: str | None,
         allow_late_join: bool | None,
         fallback_code: str,
@@ -186,7 +189,18 @@ class QuizEngine:
             raise EngineError("empty_pack", "Selected packs contain no questions.")
 
         r_count = DEFAULT_ROUND_COUNT if round_count is None else int(round_count)
-        r_count = max(MIN_ROUND_COUNT, min(MAX_ROUND_COUNT, min(r_count, total_available)))
+        if total_available < MIN_ROUND_COUNT:
+            # Small custom packs (< 5 questions) play all available questions cleanly
+            r_count = max(1, min(r_count, total_available))
+        else:
+            if r_count not in ALLOWED_ROUND_COUNTS:
+                raise EngineError(
+                    "invalid_round_count",
+                    f"Rounds must be a multiple of {ROUND_COUNT_STEP} between {MIN_ROUND_COUNT} and {MAX_ROUND_COUNT}.",
+                )
+            # Cap to the largest valid multiple of 5 available in selected pack(s)
+            max_multiple = (min(total_available, MAX_ROUND_COUNT) // ROUND_COUNT_STEP) * ROUND_COUNT_STEP
+            r_count = min(r_count, max(MIN_ROUND_COUNT, max_multiple))
 
         t_sec = DEFAULT_TIMER_SECONDS if timer_seconds is None else int(timer_seconds)
         if t_sec not in ALLOWED_TIMERS:
@@ -199,9 +213,11 @@ class QuizEngine:
         if a_mode not in ALLOWED_ANSWER_MODES:
             raise EngineError("invalid_answer_mode", f"Invalid answer mode '{a_mode}'.")
 
-        w_mode = wager_mode or WAGER_MODE_FREE
+        w_mode = wager_mode or WAGER_MODE_POOL
         if w_mode not in ALLOWED_WAGER_MODES:
             raise EngineError("invalid_wager_mode", f"Invalid wager mode '{w_mode}'.")
+
+        deduct_wrong = True if deduct_wrong_wager is None else bool(deduct_wrong_wager)
 
         vis = visibility or VISIBILITY_PUBLIC
         if vis not in ALLOWED_VISIBILITIES:
@@ -226,6 +242,7 @@ class QuizEngine:
             timer_seconds=t_sec,
             answer_mode=a_mode,
             wager_mode=w_mode,
+            deduct_wrong_wager=deduct_wrong,
             visibility=vis,
             allow_late_join=late_join,
         )
@@ -242,6 +259,7 @@ class QuizEngine:
         timer_seconds: int | None = None,
         answer_mode: str | None = None,
         wager_mode: str | None = None,
+        deduct_wrong_wager: bool | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> tuple[Room, str, str]:
@@ -276,6 +294,7 @@ class QuizEngine:
             timer_seconds=timer_seconds,
             answer_mode=answer_mode,
             wager_mode=wager_mode,
+            deduct_wrong_wager=deduct_wrong_wager,
             visibility=visibility,
             allow_late_join=allow_late_join,
             fallback_code=code,
@@ -305,11 +324,11 @@ class QuizEngine:
         self.rooms[code] = room
         return room, session_token, host_token
 
-    def _initial_wagers_for_room(self, settings: RoomSettings) -> list[int]:
-        if settings.wager_mode == WAGER_MODE_POOL:
-            pool_size = max(MIN_WAGER, min(MAX_WAGER, settings.round_count))
-            return list(range(MIN_WAGER, pool_size + 1))
-        return list(range(MIN_WAGER, MAX_WAGER + 1))
+    def _initial_wagers_for_room(
+        self, settings: RoomSettings, *, total_rounds: int | None = None
+    ) -> list[int]:
+        pool_size = max(MIN_WAGER, total_rounds if total_rounds is not None else settings.round_count)
+        return list(range(MIN_WAGER, pool_size + 1))
 
     def update_room_settings(
         self,
@@ -323,6 +342,7 @@ class QuizEngine:
         timer_seconds: int | None = None,
         answer_mode: str | None = None,
         wager_mode: str | None = None,
+        deduct_wrong_wager: bool | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> Room:
@@ -340,6 +360,9 @@ class QuizEngine:
             timer_seconds=timer_seconds if timer_seconds is not None else cur.timer_seconds,
             answer_mode=answer_mode if answer_mode is not None else cur.answer_mode,
             wager_mode=wager_mode if wager_mode is not None else cur.wager_mode,
+            deduct_wrong_wager=(
+                deduct_wrong_wager if deduct_wrong_wager is not None else cur.deduct_wrong_wager
+            ),
             visibility=visibility if visibility is not None else cur.visibility,
             allow_late_join=allow_late_join if allow_late_join is not None else cur.allow_late_join,
             fallback_code=room.code,
@@ -398,7 +421,10 @@ class QuizEngine:
             connected=True,
             score=0,
             joined_at=now,
-            available_wagers=self._initial_wagers_for_room(room.settings),
+            available_wagers=self._initial_wagers_for_room(
+                room.settings,
+                total_rounds=len(room.questions) if room.questions else room.settings.round_count,
+            ),
         )
         room.players[token] = player
         room.last_activity = now
@@ -476,7 +502,7 @@ class QuizEngine:
         else:
             room.pinned_media = {}
 
-        # Reset player stats cleanly
+        # Reset player stats cleanly with 1..N one-time confidence wager pool
         for player in room.players.values():
             player.score = 0
             player.streak = 0
@@ -484,7 +510,9 @@ class QuizEngine:
             player.correct_count = 0
             player.answered_count = 0
             player.total_wagered = 0
-            player.available_wagers = self._initial_wagers_for_room(room.settings)
+            player.available_wagers = self._initial_wagers_for_room(
+                room.settings, total_rounds=len(room.questions)
+            )
 
         room.round_history.clear()
         room.status = ROOM_STATUS_IN_PROGRESS
@@ -504,13 +532,12 @@ class QuizEngine:
         room.paused = False
         room.last_activity = now
 
-        # Refill wager pools if a player depleted theirs
-        if room.settings.wager_mode == WAGER_MODE_POOL:
-            remaining_rounds = len(room.questions) - room.current_index
-            for player in room.players.values():
-                if not player.available_wagers:
-                    refill_size = max(MIN_WAGER, min(MAX_WAGER, remaining_rounds))
-                    player.available_wagers = list(range(MIN_WAGER, refill_size + 1))
+        # Defensive refill only if somehow depleted mid-game
+        remaining_rounds = len(room.questions) - room.current_index
+        for player in room.players.values():
+            if not player.available_wagers:
+                refill_size = max(MIN_WAGER, remaining_rounds)
+                player.available_wagers = list(range(MIN_WAGER, refill_size + 1))
 
     def submit_answer(
         self,
@@ -544,7 +571,7 @@ class QuizEngine:
             if clean_answer not in question.choices:
                 raise EngineError("invalid_choice", "Submitted choice is not valid for this question.")
 
-        # Validate or default wager
+        # Validate wager against player's remaining 1..N chips; default to lowest available
         if wager is None:
             chosen_wager = min(player.available_wagers) if player.available_wagers else MIN_WAGER
         else:
@@ -552,18 +579,11 @@ class QuizEngine:
                 chosen_wager = int(wager)
             except (TypeError, ValueError) as err:
                 raise EngineError("invalid_wager", "Wager must be an integer.") from err
-            if room.settings.wager_mode == WAGER_MODE_POOL:
-                if chosen_wager not in player.available_wagers:
-                    raise EngineError(
-                        "wager_unavailable",
-                        f"Wager {chosen_wager} is not available in your remaining chip pool.",
-                    )
-            else:
-                if chosen_wager < MIN_WAGER or chosen_wager > MAX_WAGER:
-                    raise EngineError(
-                        "invalid_wager",
-                        f"Wager must be between {MIN_WAGER} and {MAX_WAGER}.",
-                    )
+            if chosen_wager not in player.available_wagers:
+                raise EngineError(
+                    "wager_unavailable",
+                    f"Wager {chosen_wager} is not available in your remaining confidence chips.",
+                )
 
         now = self._now()
         sub = PlayerSubmission(
@@ -595,17 +615,22 @@ class QuizEngine:
         for token, player in room.players.items():
             sub = room.current_submissions.get(token)
             if sub is None:
-                # Timer expired without answer -> default wager 0, no points gained/lost
+                # Timer expired without answer -> consume lowest available confidence number
+                default_wager = min(player.available_wagers) if player.available_wagers else MIN_WAGER
+                timeout_delta = -default_wager if room.settings.deduct_wrong_wager else 0
                 sub = PlayerSubmission(
                     answer="",
-                    wager=0,
+                    wager=default_wager,
                     submitted_at=now,
                     is_correct=False,
-                    delta=0,
+                    delta=timeout_delta,
                     outcome="timeout",
                 )
                 room.current_submissions[token] = sub
+                player.score += timeout_delta
                 player.streak = 0
+                if default_wager in player.available_wagers:
+                    player.available_wagers.remove(default_wager)
             else:
                 if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE:
                     correct = normalize_answer(sub.answer) == normalize_answer(question.answer)
@@ -614,7 +639,8 @@ class QuizEngine:
 
                 sub.is_correct = correct
                 sub.outcome = "correct" if correct else "wrong"
-                sub.delta = sub.wager if correct else -sub.wager
+                wrong_delta = -sub.wager if room.settings.deduct_wrong_wager else 0
+                sub.delta = sub.wager if correct else wrong_delta
                 player.score += sub.delta
                 player.answered_count += 1
                 player.total_wagered += sub.wager
@@ -626,7 +652,7 @@ class QuizEngine:
                 else:
                     player.streak = 0
 
-                if room.settings.wager_mode == WAGER_MODE_POOL and sub.wager in player.available_wagers:
+                if sub.wager in player.available_wagers:
                     player.available_wagers.remove(sub.wager)
 
             outcomes.append(
@@ -694,7 +720,8 @@ class QuizEngine:
         desired_correct = bool(approve)
         if sub.is_correct != desired_correct:
             old_delta = sub.delta
-            new_delta = sub.wager if desired_correct else -sub.wager
+            wrong_delta = -sub.wager if room.settings.deduct_wrong_wager else 0
+            new_delta = sub.wager if desired_correct else wrong_delta
             player.score += new_delta - old_delta
             sub.is_correct = desired_correct
             sub.delta = new_delta
@@ -1085,6 +1112,7 @@ class QuizEngine:
                 "score": me.score,
                 "streak": me.streak,
                 "available_wagers": list(me.available_wagers),
+                "wager_pool_size": len(room.questions) if room.questions else room.settings.round_count,
                 "submitted": my_sub is not None,
                 "my_submission": (
                     {
@@ -1111,6 +1139,7 @@ class QuizEngine:
                 "timer_seconds": room.settings.timer_seconds,
                 "answer_mode": room.settings.answer_mode,
                 "wager_mode": room.settings.wager_mode,
+                "deduct_wrong_wager": room.settings.deduct_wrong_wager,
                 "visibility": room.settings.visibility,
                 "allow_late_join": room.settings.allow_late_join,
             },

@@ -13,7 +13,7 @@ from .const import (
     PHASE_LOBBY,
     ROOM_STATUS_LOBBY,
     VISIBILITY_PUBLIC,
-    WAGER_MODE_FREE,
+    WAGER_MODE_POOL,
 )
 
 
@@ -139,7 +139,8 @@ class RoomSettings:
     round_count: int = DEFAULT_ROUND_COUNT
     timer_seconds: int = DEFAULT_TIMER_SECONDS
     answer_mode: str = ANSWER_MODE_MULTIPLE_CHOICE
-    wager_mode: str = WAGER_MODE_FREE
+    wager_mode: str = WAGER_MODE_POOL
+    deduct_wrong_wager: bool = True
     visibility: str = VISIBILITY_PUBLIC
     allow_late_join: bool = True
 

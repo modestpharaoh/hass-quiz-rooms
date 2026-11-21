@@ -27,7 +27,7 @@ def test_max_rooms_enforcement_and_graceful_mid_game_lowering(pack_registry, fak
             host_session_token=f"host_sess_{i}",
             host_nickname=f"Host {i}",
             pack_ids=["general_knowledge_en"],
-            round_count=3,
+            round_count=5,
         )
         created.append((room, sess, host_tok))
 

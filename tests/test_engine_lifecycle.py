@@ -92,7 +92,7 @@ def test_snapshot_isolation_survives_custom_pack_deletion_and_edits(pack_registr
     assert pack_registry.get_pack("ephemeral_pack") is None
 
     # Active game must continue seamlessly through both snapshotted rounds to Finale!
-    for _ in range(2):
+    for w in (2, 1):
         assert room.phase == PHASE_QUESTION
         q = room.questions[room.current_index]
         # Verify serialized state never leaks future questions or correct answer during question phase
@@ -102,13 +102,73 @@ def test_snapshot_isolation_survives_custom_pack_deletion_and_edits(pack_registr
         assert "correct_answer" not in state["question"]
         assert state["reveal"] is None
 
-        engine.submit_answer(room.code, session_token=sess, answer=q.answer, wager=7)
+        engine.submit_answer(room.code, session_token=sess, answer=q.answer, wager=w)
         engine.next_step(room.code, host_token=host_tok)
         assert room.phase == PHASE_REVEAL
         engine.next_step(room.code, host_token=host_tok)
 
     assert room.phase == PHASE_FINALE
-    assert room.players[sess].score == 14
+    assert room.players[sess].score == 3
+
+
+def test_rounds_multiples_of_five_and_wrong_wager_deduction_toggle(pack_registry, fake_clock) -> None:
+    engine = QuizEngine(pack_registry, clock=fake_clock, rng=random.Random(11))
+
+    # Non-multiples of 5 or out-of-range (e.g. 3, 7, 30) are rejected on packs with >= 5 questions
+    for bad_rounds in (3, 7, 30):
+        with pytest.raises(EngineError) as exc_info:
+            engine.create_room(
+                host_session_token="bad_r",
+                host_nickname="Tester",
+                pack_ids=["countries_flags"],
+                round_count=bad_rounds,
+            )
+        assert exc_info.value.code == "invalid_round_count"
+
+    # Valid multiples 5..25 succeed and create 1..N one-time wager chips
+    room25, s25, ht25 = engine.create_room(
+        host_session_token="h25",
+        host_nickname="BigGame",
+        pack_ids=["countries_flags"],
+        round_count=25,
+    )
+    assert room25.settings.round_count == 25
+    assert room25.settings.deduct_wrong_wager is True  # ON by default
+    engine.start_game(room25.code, host_token=ht25)
+    assert room25.players[s25].available_wagers == list(range(1, 26))
+    engine.close_room(room25.code, host_token=ht25)
+
+    # Host can disable wrong-answer deduction (deduct_wrong_wager=False)
+    room_no_pen, s_np, ht_np = engine.create_room(
+        host_session_token="h_np",
+        host_nickname="FriendlyHost",
+        pack_ids=["countries_flags"],
+        round_count=5,
+        deduct_wrong_wager=False,
+    )
+    engine.join_room(room_no_pen.code, session_token="p_timeout", nickname="Sleeper")
+    engine.start_game(room_no_pen.code, host_token=ht_np)
+    assert room_no_pen.players[s_np].available_wagers == [1, 2, 3, 4, 5]
+
+    # Pick wrong answer with wager 5 -> 0 points deducted (not -5), chip 5 consumed leaving [1, 2, 3, 4]
+    q0 = room_no_pen.questions[0]
+    wrong_choice = next(c for c in q0.choices if c != q0.answer)
+    engine.submit_answer(room_no_pen.code, session_token=s_np, answer=wrong_choice, wager=5)
+    # p_timeout does not answer -> consumes lowest available chip (1), delta 0 since penalty OFF
+    engine.next_step(room_no_pen.code, host_token=ht_np)
+    assert room_no_pen.players[s_np].score == 0
+    assert room_no_pen.players[s_np].available_wagers == [1, 2, 3, 4]
+    assert room_no_pen.players["p_timeout"].score == 0
+    assert room_no_pen.current_submissions["p_timeout"].wager == 1
+    assert room_no_pen.players["p_timeout"].available_wagers == [2, 3, 4, 5]
+
+    # Round 2: FriendlyHost chooses 1 (correct -> +1), leaving [2, 3, 4]
+    engine.next_step(room_no_pen.code, host_token=ht_np)
+    q1 = room_no_pen.questions[1]
+    engine.submit_answer(room_no_pen.code, session_token=s_np, answer=q1.answer, wager=1)
+    engine.next_step(room_no_pen.code, host_token=ht_np)
+    assert room_no_pen.players[s_np].score == 1
+    assert room_no_pen.players[s_np].available_wagers == [2, 3, 4]
 
 
 def test_confidence_wagering_pool_timeout_override_and_awards(pack_registry, fake_clock) -> None:
@@ -117,7 +177,7 @@ def test_confidence_wagering_pool_timeout_override_and_awards(pack_registry, fak
         host_session_token="host_s",
         host_nickname="Host",
         pack_ids=["general_knowledge_ar"],
-        round_count=2,
+        round_count=5,
         timer_seconds=30,
         answer_mode=ANSWER_MODE_FREE_TEXT,
         wager_mode=WAGER_MODE_POOL,
@@ -135,58 +195,69 @@ def test_confidence_wagering_pool_timeout_override_and_awards(pack_registry, fak
     assert exc_info.value.code == "forbidden"
 
     engine.start_game(room.code, host_token=host_tok)
-    assert room.players[host_sess].available_wagers == [1, 2]
+    assert room.players[host_sess].available_wagers == [1, 2, 3, 4, 5]
 
     # Late joiner rejected because allow_late_join=False
     with pytest.raises(EngineError) as exc_info:
         engine.join_room(room.code, session_token="p3", nickname="Latecomer")
     assert exc_info.value.code == "late_join_disabled"
 
-    # Round 1: Host answers wrong with wager=2; Player2 does not answer (timeout -> wager 0)
-    engine.submit_answer(room.code, session_token=host_sess, answer="إجابة خاطئة", wager=2)
+    # Round 1: Host answers wrong with wager=5; Player2 does not answer (timeout -> lowest chip 1, -1 with default deduction ON)
+    engine.submit_answer(room.code, session_token=host_sess, answer="إجابة خاطئة", wager=5)
     fake_clock.advance(31)
     revealed = engine.check_expired_timers()
     assert len(revealed) == 1
     assert room.phase == PHASE_REVEAL
-    assert room.players[host_sess].score == -2
-    assert room.players["p2"].score == 0
+    assert room.players[host_sess].score == -5
+    assert room.players["p2"].score == -1
     assert room.current_submissions["p2"].outcome == "timeout"
-    assert room.current_submissions["p2"].wager == 0
-    # Pool mode consumed chip 2 from host
-    assert room.players[host_sess].available_wagers == [1]
+    assert room.current_submissions["p2"].wager == 1
+    assert room.players["p2"].available_wagers == [2, 3, 4, 5]
+    # Pool mode consumed chip 5 from host -> [1, 2, 3, 4] left
+    assert room.players[host_sess].available_wagers == [1, 2, 3, 4]
 
-    # Host approves their own free-text answer via host override -> score flips from -2 to +2 (+4 swing)
+    # Host approves their own free-text answer via host override -> score flips from -5 to +5 (+10 swing)
     engine.override_free_text_answer(
         room.code,
         target_session_token=host_sess,
         approve=True,
         host_token=host_tok,
     )
-    assert room.players[host_sess].score == 2
+    assert room.players[host_sess].score == 5
     assert room.players[host_sess].streak == 1
 
-    # Round 2: Host uses remaining chip 1 (cannot reuse chip 2!)
+    # Round 2: Host cannot reuse spent chip 5!
     engine.next_step(room.code, host_token=host_tok)
     with pytest.raises(EngineError) as exc_info:
-        engine.submit_answer(room.code, session_token=host_sess, answer=room.questions[1].answer, wager=2)
+        engine.submit_answer(room.code, session_token=host_sess, answer=room.questions[1].answer, wager=5)
     assert exc_info.value.code == "wager_unavailable"
 
-    # Missing wager defaults to lowest available wager (1)
+    # Missing wager defaults to lowest available wager (1 for host, 2 for p2)
     engine.submit_answer(room.code, session_token=host_sess, answer=room.questions[1].answer, wager=None)
-    engine.submit_answer(room.code, session_token="p2", answer=room.questions[1].answer, wager=2)
+    engine.submit_answer(room.code, session_token="p2", answer=room.questions[1].answer, wager=None)
     engine.next_step(room.code, host_token=host_tok)  # reveal
-    engine.next_step(room.code, host_token=host_tok)  # finale
+    assert room.players[host_sess].available_wagers == [2, 3, 4]
+    assert room.players["p2"].available_wagers == [3, 4, 5]
 
+    # Finish remaining 3 rounds to reach Finale
+    for idx in (2, 3, 4):
+        engine.next_step(room.code, host_token=host_tok)  # next question
+        engine.submit_answer(room.code, session_token=host_sess, answer=room.questions[idx].answer, wager=None)
+        engine.submit_answer(room.code, session_token="p2", answer=room.questions[idx].answer, wager=None)
+        engine.next_step(room.code, host_token=host_tok)  # reveal
+
+    engine.next_step(room.code, host_token=host_tok)  # finale
     assert room.phase == PHASE_FINALE
     finale = engine.serialize_room_state(room)["finale"]
     award_ids = {a["id"] for a in finale["awards"]}
     assert {"high_roller", "safe_player", "streak_master"}.issubset(award_ids)
 
-    # Play again resets back to Lobby with players intact
+    # Play again resets back to Lobby with players intact and full 1..5 chips restored
     engine.play_again(room.code, host_token=host_tok)
     assert room.phase == PHASE_LOBBY
     assert len(room.players) == 2
     assert room.players[host_sess].score == 0
+    assert room.players[host_sess].available_wagers == [1, 2, 3, 4, 5]
 
 
 def test_lobby_and_active_room_ttl_cleanup(pack_registry, fake_clock) -> None:
@@ -201,7 +272,7 @@ def test_lobby_and_active_room_ttl_cleanup(pack_registry, fake_clock) -> None:
         host_session_token="s_active",
         host_nickname="ActiveHost",
         pack_ids=["general_knowledge_en"],
-        round_count=1,
+        round_count=5,
     )
     engine.start_game(active_room.code, host_token=active_ht)
 

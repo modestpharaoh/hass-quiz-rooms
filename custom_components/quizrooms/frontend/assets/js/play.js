@@ -261,17 +261,15 @@
       state.serverOffsetMs = room.question.server_now_ms - Date.now();
     }
 
-    // Reset local answer/wager selection when moving to a new question
+    // Reset local answer/wager selection when moving to a new question (default to lowest available number)
     if (room.phase === "question" && room.question) {
       const roundKey = `${room.code}:${room.question.index}`;
       if (state.lastRoundKey !== roundKey) {
         state.lastRoundKey = roundKey;
         state.lastCountdownSec = -1;
         state.selectedAnswer = "";
-        const avail = (room.me && room.me.available_wagers) || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        if (!avail.includes(state.selectedWager)) {
-          state.selectedWager = avail[Math.floor(avail.length / 2)] || avail[0] || 1;
-        }
+        const avail = (room.me && room.me.available_wagers) || [];
+        state.selectedWager = avail.length ? Math.min(...avail) : 1;
         if (window.QuizRoomsSFX) window.QuizRoomsSFX.roundStart();
       }
     }
@@ -581,8 +579,14 @@
 
             <div class="form-row-2">
               <div>
-                <label class="field-label" for="cr-rounds">Rounds</label>
-                <input id="cr-rounds" type="number" min="1" max="50" value="10" class="text-input mono" />
+                <label class="field-label" for="cr-rounds">Rounds (5–25)</label>
+                <select id="cr-rounds" class="select-input mono">
+                  <option value="5">5 rounds (Wagers 1–5)</option>
+                  <option value="10" selected>10 rounds (Wagers 1–10)</option>
+                  <option value="15">15 rounds (Wagers 1–15)</option>
+                  <option value="20">20 rounds (Wagers 1–20)</option>
+                  <option value="25">25 rounds (Wagers 1–25)</option>
+                </select>
               </div>
               <div>
                 <label class="field-label" for="cr-timer">Question Timer</label>
@@ -602,12 +606,11 @@
                   <option value="free_text">Free-Text (Fuzzy + RTL)</option>
                 </select>
               </div>
-              <div>
-                <label class="field-label" for="cr-wager-mode">Confidence Wager</label>
-                <select id="cr-wager-mode" class="select-input">
-                  <option value="free_1_to_10" selected>1–10 Any Round</option>
-                  <option value="pool">One-Time Chip Pool</option>
-                </select>
+              <div style="display:flex;align-items:end;">
+                <label class="toggle-line" style="width:100%;cursor:pointer;" title="When enabled, wrong or unanswered questions deduct the selected confidence number.">
+                  <span style="font-size:0.86rem;font-weight:700;">Deduct Wager if Wrong</span>
+                  <input id="cr-deduct-wrong" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+                </label>
               </div>
             </div>
 
@@ -661,7 +664,8 @@
           round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
           timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
           answer_mode: document.getElementById("cr-answer-mode").value,
-          wager_mode: document.getElementById("cr-wager-mode").value,
+          wager_mode: "pool",
+          deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
         });
@@ -730,7 +734,8 @@
               <span class="badge">${room.settings.round_count} Rounds</span>
               <span class="badge">${room.settings.timer_seconds}s Timer</span>
               <span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
-              <span class="badge">${room.settings.wager_mode === "pool" ? "Wager Chip Pool" : "1–10 Wagers"}</span>
+              <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
+              <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
 
@@ -776,8 +781,12 @@
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
       const locked = Boolean(me && me.submitted);
-      const availWagers = (me && me.available_wagers) || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      const allChips = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const poolSize = (me && me.wager_pool_size) || q.total_rounds || room.settings.round_count || 10;
+      const availWagers = (me && me.available_wagers) || Array.from({ length: poolSize }, (_, i) => i + 1);
+      if (!availWagers.includes(state.selectedWager)) {
+        state.selectedWager = availWagers.length ? Math.min(...availWagers) : 1;
+      }
+      const allChips = Array.from({ length: poolSize }, (_, i) => i + 1);
       const letters = ["A", "B", "C", "D", "E", "F"];
       const dir = q.rtl ? "rtl" : "auto";
 
@@ -818,7 +827,7 @@
       const wagerHtml = !locked
         ? `<div class="wager-section">
           <div class="wager-header">
-            <span>Confidence Wager ${room.settings.wager_mode === "pool" ? "(One-Time Chips)" : "(1–10 pts)"}</span>
+            <span>Confidence Wager (1–${poolSize} · use each once · ${room.settings.deduct_wrong_wager === false ? "no minus if wrong" : "−wager if wrong"})</span>
             <span class="badge badge-accent mono">${state.selectedWager} pts</span>
           </div>
           <div class="wager-chips">

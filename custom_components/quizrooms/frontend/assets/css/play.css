@@ -533,12 +533,6 @@
   gap: 8px;
 }
 
-@media (min-width: 560px) {
-  .wager-chips {
-    grid-template-columns: repeat(10, 1fr);
-  }
-}
-
 .wager-chip {
   position: relative;
   height: 44px;

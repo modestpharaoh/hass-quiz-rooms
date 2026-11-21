@@ -160,12 +160,12 @@ def test_setup_entry_handles_frozen_app_and_offloads_all_file_io(tmp_path: Path)
             host_session_token="host_async",
             host_nickname="AsyncHost",
             pack_ids=["countries_flags"],
-            round_count=2,
+            round_count=5,
         )
         before_start = len(hass.executor_calls)
         await coord.async_start_game(room.code, host_token=host_tok)
         assert len(hass.executor_calls) == before_start + 1
-        assert len(room.pinned_media) == 2
+        assert len(room.pinned_media) == 5
 
         # 4. Reload packs runs via executor
         before_reload = len(hass.executor_calls)
@@ -226,10 +226,11 @@ def test_websocket_lifecycle_create_and_start_room(tmp_path: Path, monkeypatch) 
                     "nickname": "PlayerOne",
                     "room_name": "Studio Night",
                     "pack_ids": ["countries_flags"],
-                    "round_count": 3,
+                    "round_count": 5,
                     "timer_seconds": 30,
                     "answer_mode": "multiple_choice",
-                    "wager_mode": "free_1_to_10",
+                    "wager_mode": "pool",
+                    "deduct_wrong_wager": True,
                     "visibility": "public",
                     "allow_late_join": True,
                 }

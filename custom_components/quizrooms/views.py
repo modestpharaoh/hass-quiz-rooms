@@ -382,6 +382,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     timer_seconds=data.get("timer_seconds"),
                     answer_mode=data.get("answer_mode"),
                     wager_mode=data.get("wager_mode"),
+                    deduct_wrong_wager=data.get("deduct_wrong_wager"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )
@@ -454,6 +455,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     timer_seconds=data.get("timer_seconds"),
                     answer_mode=data.get("answer_mode"),
                     wager_mode=data.get("wager_mode"),
+                    deduct_wrong_wager=data.get("deduct_wrong_wager"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )
