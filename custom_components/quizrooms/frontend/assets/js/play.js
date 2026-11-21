@@ -462,7 +462,7 @@
             if (myOutcome.is_correct) {
               if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(0.9);
               if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
-            } else if (myOutcome.outcome === "wrong") {
+            } else if (myOutcome.outcome === "wrong" || myOutcome.outcome === "duplicate") {
               if (window.QuizRoomsSFX) window.QuizRoomsSFX.wrong();
             } else if (myOutcome.outcome === "timeout") {
               if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
@@ -580,9 +580,12 @@
             return `
               <article class="studio-card room-card animate-in" dir="${r.rtl ? "rtl" : "auto"}">
                 <div class="room-card-top">
-                  <div>
-                    <h3 class="room-card-name" dir="auto">${esc(r.name)}</h3>
-                    <p class="room-card-packs" dir="auto">${esc((r.pack_titles || []).join(" · "))}</p>
+                  <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                    ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" class="pack-cover-thumb" />` : ""}
+                    <div style="min-width:0;">
+                      <h3 class="room-card-name" dir="auto">${esc(r.name)}</h3>
+                      <p class="room-card-packs" dir="auto">${esc((r.pack_titles || []).join(" · "))}</p>
+                    </div>
                   </div>
                   <span class="room-code-chip">${esc(r.code)}</span>
                 </div>
@@ -590,6 +593,7 @@
                   <div style="display:flex;gap:6px;flex-wrap:wrap;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
+                    ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
                   </div>
                   <button class="btn btn-primary btn-sm" data-join-code="${esc(r.code)}" ${joinDisabled ? "disabled" : ""}>
                     ${joinDisabled ? "Closed" : "Join"}
@@ -730,8 +734,12 @@
           return `
         <label class="pack-check-item" dir="${p.rtl ? "rtl" : "auto"}">
           <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
-          <div style="flex:1;text-align:start;">
-            <div style="font-weight:800;">${esc(p.title)}</div>
+          ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="pack-cover-thumb" />` : ""}
+          <div style="flex:1;min-width:0;text-align:start;">
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;">
+              <span>${esc(p.title)}</span>
+              ${p.open_ended ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">Open-Ended</span>` : ""}
+            </div>
             <div style="font-size:0.78rem;color:var(--text-muted);">
               ${p.question_count} Qs · ${esc(p.language.toUpperCase())}${p.has_media ? " · Visual" : ""}
             </div>
@@ -739,6 +747,28 @@
         </label>`;
         })
         .join("");
+
+      function syncOpenEndedDefaults() {
+        const selectedIds = new Set(
+          Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
+        );
+        const hasOpenEnded = state.packs.some((p) => selectedIds.has(p.pack_id) && p.open_ended);
+        const modeSelect = document.getElementById("cr-answer-mode");
+        const uniqueCheck = document.getElementById("cr-unique-answers");
+        if (hasOpenEnded) {
+          if (modeSelect) modeSelect.value = "free_text";
+          if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
+            uniqueCheck.checked = true;
+          }
+        } else if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
+          uniqueCheck.checked = false;
+        }
+      }
+
+      listEl.querySelectorAll('input[name="pack_id"]').forEach((cb) => {
+        cb.addEventListener("change", syncOpenEndedDefaults);
+      });
+      syncOpenEndedDefaults();
     }
 
     function openCreateModal() {
@@ -819,11 +849,26 @@
               </div>
             </div>
 
+            <label class="toggle-line" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
+              <div>
+                <div style="font-size:0.88rem;font-weight:800;">No Repeated Answers</div>
+                <div style="font-size:0.76rem;color:var(--text-muted);">Rejects matching answers between players or across rounds</div>
+              </div>
+              <input id="cr-unique-answers" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+            </label>
+
             <button type="submit" class="btn btn-primary" style="width:100%;">Create &amp; Open Lobby</button>
           </form>
         </div>
       </div>
     `;
+
+      const uniqueEl = document.getElementById("cr-unique-answers");
+      if (uniqueEl) {
+        uniqueEl.addEventListener("change", () => {
+          uniqueEl.dataset.userTouched = "true";
+        });
+      }
 
       renderModalPackList();
       if (!state.packs.length) {
@@ -856,6 +901,7 @@
           answer_mode: document.getElementById("cr-answer-mode").value,
           wager_mode: "pool",
           deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
+          unique_answers_only: document.getElementById("cr-unique-answers").checked,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
         });
@@ -917,16 +963,22 @@
             <span class="badge mono">${esc(room.code)}</span>
           </div>
           <div style="text-align:start;">
-            <h2 style="margin:0 0 8px;" dir="auto">${esc(room.settings.room_name)}</h2>
-            <p style="margin:0 0 12px;color:var(--text-secondary);" dir="auto">
-              ${esc(room.settings.pack_titles.join(" · "))}
-            </p>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+              ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" class="pack-cover-thumb lg" />` : ""}
+              <div>
+                <h2 style="margin:0 0 4px;" dir="auto">${esc(room.settings.room_name)}</h2>
+                <p style="margin:0;color:var(--text-secondary);" dir="auto">
+                  ${esc(room.settings.pack_titles.join(" · "))}
+                </p>
+              </div>
+            </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:14px;">
               <span class="badge">${room.settings.round_count} Rounds</span>
               <span class="badge">${room.settings.timer_seconds}s Timer</span>
               <span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
               <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
               <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
+              ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
 
@@ -995,9 +1047,16 @@
         </div>`
         : "";
 
+      const startsWithHtml = q.starts_with
+        ? `<div class="starts-with-banner" dir="${dir}">
+            <span>${q.rtl ? "يبدأ بحرف" : "Starts with"}</span>
+            <span class="starts-with-letter">${esc(q.starts_with)}</span>
+          </div>`
+        : "";
+
       let answerInputHtml = "";
       if (!locked) {
-        if (room.settings.answer_mode === "multiple_choice") {
+        if (room.settings.answer_mode === "multiple_choice" && !q.open_ended) {
           answerInputHtml = `
           <div class="choices-grid">
             ${q.choices
@@ -1013,7 +1072,7 @@
         } else {
           answerInputHtml = `
           <div style="margin-block-end:16px;">
-            <label class="field-label" for="free-text-input">Type your answer</label>
+            <label class="field-label" for="free-text-input">${q.rtl ? "اكتب إجابتك" : "Type your answer"}</label>
             <input id="free-text-input" class="text-input" dir="auto" autocomplete="off"
               placeholder="${q.rtl ? "اكتب إجابتك هنا…" : "Type your answer here…"}"
               value="${esc(state.selectedAnswer)}" />
@@ -1052,12 +1111,16 @@
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${dir}">
         <div class="question-top">
-          <span class="badge badge-live">Round ${q.round_number} / ${q.total_rounds}</span>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span class="badge badge-live">Round ${q.round_number} / ${q.total_rounds}</span>
+            ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
+          </div>
           <span id="timer-readout" class="timer-readout">${Math.ceil(q.remaining_seconds || 0)}s</span>
         </div>
         <div class="timer-track"><div id="timer-fill" class="timer-fill"></div></div>
         ${mediaHtml}
         <h2 class="question-prompt" dir="auto">${esc(q.prompt)}</h2>
+        ${startsWithHtml}
         ${answerInputHtml}
         ${wagerHtml}
 
@@ -1141,13 +1204,17 @@
       const rev = room.reveal;
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
-      const isFreeText = room.settings.answer_mode === "free_text";
+      const isFreeText = room.settings.answer_mode === "free_text" || Boolean(rev.open_ended);
       const isLast = rev.round_index + 1 >= rev.total_rounds;
 
       const outcomesHtml = rev.outcomes
         .map((o) => {
           const deltaClass = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
           const deltaLabel = o.delta > 0 ? `+${o.delta}` : String(o.delta);
+          const dupTag =
+            o.outcome === "duplicate"
+              ? ` <span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;" title="${esc(o.duplicate_reason || "Repeated answer")}">Repeated</span>`
+              : "";
           const overrideBtn =
             isHost && isFreeText && o.outcome !== "timeout"
               ? `<button class="btn btn-sm ${o.is_correct ? "btn-danger" : "btn-success"}"
@@ -1160,9 +1227,10 @@
             <div style="display:flex;align-items:center;gap:10px;text-align:start;min-width:0;flex:1;">
               ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
               <div style="min-width:0;">
-                <div style="font-weight:800;" dir="auto">${esc(o.nickname)}</div>
+                <div style="font-weight:800;" dir="auto">${esc(o.nickname)}${dupTag}</div>
                 <div style="font-size:0.84rem;color:var(--text-secondary);" dir="auto">
                   ${o.answer ? esc(o.answer) : "<em>No answer</em>"} · Wager ${o.wager}
+                  ${o.duplicate_reason ? ` · <em>${esc(o.duplicate_reason)}</em>` : ""}
                   ${o.overridden ? " · <em>Host override</em>" : ""}
                 </div>
               </div>
@@ -1183,7 +1251,7 @@
           <span class="badge badge-lobby">Answer Reveal · Round ${rev.round_index + 1}/${rev.total_rounds}</span>
         </div>
         <div class="reveal-answer-box">
-          <div class="reveal-answer-label">Correct Answer</div>
+          <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}</div>
           <div class="reveal-answer-text" dir="auto">${esc(rev.correct_answer)}</div>
           ${rev.explanation ? `<p class="reveal-explanation" dir="auto">${esc(rev.explanation)}</p>` : ""}
         </div>

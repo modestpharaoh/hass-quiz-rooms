@@ -54,7 +54,12 @@ from .models import (
     RoomSettings,
     SnapshotQuestion,
 )
-from .normalization import is_answer_match, normalize_answer
+from .normalization import (
+    canonical_duplicate_key,
+    is_answer_match,
+    matches_starts_with,
+    normalize_answer,
+)
 from .packs import PackRegistry
 
 
@@ -223,10 +228,11 @@ class QuizEngine:
         answer_mode: str | None,
         wager_mode: str | None,
         deduct_wrong_wager: bool | None,
+        unique_answers_only: bool | None,
         visibility: str | None,
         allow_late_join: bool | None,
         fallback_code: str,
-    ) -> tuple[RoomSettings, list[str], str, bool]:
+    ) -> tuple[RoomSettings, list[str], str, bool, str | None]:
         all_packs = self.pack_registry.list_packs()
         if not all_packs:
             raise EngineError("no_packs", "No trivia packs are currently available.")
@@ -264,15 +270,22 @@ class QuizEngine:
                 f"Timer must be one of {ALLOWED_TIMERS} seconds.",
             )
 
-        a_mode = answer_mode or ANSWER_MODE_MULTIPLE_CHOICE
+        has_open_ended = any(
+            p.open_ended or any(q.open_ended for q in p.questions) for p in selected_packs
+        )
+
+        a_mode = answer_mode or (ANSWER_MODE_FREE_TEXT if has_open_ended else ANSWER_MODE_MULTIPLE_CHOICE)
         if a_mode not in ALLOWED_ANSWER_MODES:
             raise EngineError("invalid_answer_mode", f"Invalid answer mode '{a_mode}'.")
+        if has_open_ended:
+            a_mode = ANSWER_MODE_FREE_TEXT
 
         w_mode = wager_mode or WAGER_MODE_POOL
         if w_mode not in ALLOWED_WAGER_MODES:
             raise EngineError("invalid_wager_mode", f"Invalid wager mode '{w_mode}'.")
 
         deduct_wrong = True if deduct_wrong_wager is None else bool(deduct_wrong_wager)
+        unique_only = has_open_ended if unique_answers_only is None else bool(unique_answers_only)
 
         vis = visibility or VISIBILITY_PUBLIC
         if vis not in ALLOWED_VISIBILITIES:
@@ -286,9 +299,13 @@ class QuizEngine:
         if not clean_name:
             clean_name = f"Room {fallback_code}"
 
-        # Determine primary room direction from first pack (questions still carry per-question rtl)
+        # Determine primary room direction and cover image from selected packs
         primary_lang = selected_packs[0].language
         primary_rtl = all(p.rtl for p in selected_packs)
+        cover_url = next(
+            (f"{URL_MEDIA}/{p.cover_media_id}" for p in selected_packs if p.cover_media_id),
+            None,
+        )
 
         settings = RoomSettings(
             room_name=clean_name,
@@ -298,10 +315,11 @@ class QuizEngine:
             answer_mode=a_mode,
             wager_mode=w_mode,
             deduct_wrong_wager=deduct_wrong,
+            unique_answers_only=unique_only,
             visibility=vis,
             allow_late_join=late_join,
         )
-        return settings, pack_titles, primary_lang, primary_rtl
+        return settings, pack_titles, primary_lang, primary_rtl, cover_url
 
     def create_room(
         self,
@@ -316,6 +334,7 @@ class QuizEngine:
         answer_mode: str | None = None,
         wager_mode: str | None = None,
         deduct_wrong_wager: bool | None = None,
+        unique_answers_only: bool | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> tuple[Room, str, str]:
@@ -343,7 +362,7 @@ class QuizEngine:
 
         nickname = self._clean_nickname(host_nickname)
         code = self._generate_room_code()
-        settings, pack_titles, primary_lang, primary_rtl = self._validate_settings(
+        settings, pack_titles, primary_lang, primary_rtl, cover_url = self._validate_settings(
             room_name=room_name,
             pack_ids=pack_ids,
             round_count=round_count,
@@ -351,6 +370,7 @@ class QuizEngine:
             answer_mode=answer_mode,
             wager_mode=wager_mode,
             deduct_wrong_wager=deduct_wrong_wager,
+            unique_answers_only=unique_answers_only,
             visibility=visibility,
             allow_late_join=allow_late_join,
             fallback_code=code,
@@ -369,6 +389,7 @@ class QuizEngine:
             pack_titles=pack_titles,
             pack_language=primary_lang,
             pack_rtl=primary_rtl,
+            cover_url=cover_url,
         )
         room.players[session_token] = Player(
             session_token=session_token,
@@ -401,6 +422,7 @@ class QuizEngine:
         answer_mode: str | None = None,
         wager_mode: str | None = None,
         deduct_wrong_wager: bool | None = None,
+        unique_answers_only: bool | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
     ) -> Room:
@@ -411,7 +433,7 @@ class QuizEngine:
             raise EngineError("game_already_started", "Room settings can only be changed in the lobby.")
 
         cur = room.settings
-        settings, pack_titles, primary_lang, primary_rtl = self._validate_settings(
+        settings, pack_titles, primary_lang, primary_rtl, cover_url = self._validate_settings(
             room_name=room_name if room_name is not None else cur.room_name,
             pack_ids=pack_ids if pack_ids is not None else cur.pack_ids,
             round_count=round_count if round_count is not None else cur.round_count,
@@ -421,6 +443,9 @@ class QuizEngine:
             deduct_wrong_wager=(
                 deduct_wrong_wager if deduct_wrong_wager is not None else cur.deduct_wrong_wager
             ),
+            unique_answers_only=(
+                unique_answers_only if unique_answers_only is not None else cur.unique_answers_only
+            ),
             visibility=visibility if visibility is not None else cur.visibility,
             allow_late_join=allow_late_join if allow_late_join is not None else cur.allow_late_join,
             fallback_code=room.code,
@@ -429,6 +454,7 @@ class QuizEngine:
         room.pack_titles = pack_titles
         room.pack_language = primary_lang
         room.pack_rtl = primary_rtl
+        room.cover_url = cover_url
         room.last_activity = self._now()
         for player in room.players.values():
             player.available_wagers = self._initial_wagers_for_room(settings)
@@ -560,6 +586,8 @@ class QuizEngine:
                         explanation=q.explanation,
                         language=q.language,
                         rtl=q.rtl,
+                        open_ended=q.open_ended,
+                        starts_with=q.starts_with,
                     )
                 )
 
@@ -594,6 +622,7 @@ class QuizEngine:
             )
 
         room.round_history.clear()
+        room.used_answers.clear()
         room.status = ROOM_STATUS_IN_PROGRESS
         room.paused = False
         room.remaining_when_paused = None
@@ -646,7 +675,7 @@ class QuizEngine:
             raise EngineError("empty_answer", "Please provide an answer before locking in.")
 
         question = room.questions[room.current_index]
-        if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE:
+        if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not question.open_ended:
             if clean_answer not in question.choices:
                 raise EngineError("invalid_choice", "Submitted choice is not valid for this question.")
 
@@ -691,6 +720,16 @@ class QuizEngine:
         now = self._now()
         outcomes: list[dict[str, Any]] = []
 
+        # Pre-count canonical answers across this round for unique-answer enforcement
+        round_key_counts: dict[str, int] = {}
+        if room.settings.unique_answers_only:
+            for existing_sub in room.current_submissions.values():
+                key = canonical_duplicate_key(existing_sub.answer)
+                if key:
+                    round_key_counts[key] = round_key_counts.get(key, 0) + 1
+
+        round_keys_to_record: set[str] = set()
+
         for token, player in room.players.items():
             sub = room.current_submissions.get(token)
             if sub is None:
@@ -711,13 +750,37 @@ class QuizEngine:
                 if default_wager in player.available_wagers:
                     player.available_wagers.remove(default_wager)
             else:
-                if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE:
-                    correct = normalize_answer(sub.answer) == normalize_answer(question.answer)
-                else:
-                    correct = is_answer_match(sub.answer, question.answer, question.aliases)
+                dup_key = canonical_duplicate_key(sub.answer)
+                if dup_key:
+                    round_keys_to_record.add(dup_key)
 
-                sub.is_correct = correct
-                sub.outcome = "correct" if correct else "wrong"
+                duplicate_reason = ""
+                if room.settings.unique_answers_only and dup_key:
+                    if round_key_counts.get(dup_key, 0) > 1:
+                        duplicate_reason = "Repeated by another player"
+                    elif dup_key in room.used_answers:
+                        duplicate_reason = "Already used in an earlier round"
+
+                if duplicate_reason:
+                    correct = False
+                    sub.is_correct = False
+                    sub.outcome = "duplicate"
+                    sub.duplicate_reason = duplicate_reason
+                else:
+                    if question.open_ended:
+                        if question.starts_with:
+                            correct = matches_starts_with(sub.answer, question.starts_with)
+                        else:
+                            correct = len(normalize_answer(sub.answer)) >= 2
+                    elif room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE:
+                        correct = normalize_answer(sub.answer) == normalize_answer(question.answer)
+                    else:
+                        correct = is_answer_match(sub.answer, question.answer, question.aliases)
+
+                    sub.is_correct = correct
+                    sub.outcome = "correct" if correct else "wrong"
+                    sub.duplicate_reason = ""
+
                 wrong_delta = -sub.wager if room.settings.deduct_wrong_wager else 0
                 sub.delta = sub.wager if correct else wrong_delta
                 player.score += sub.delta
@@ -744,12 +807,16 @@ class QuizEngine:
                     "wager": sub.wager,
                     "is_correct": sub.is_correct,
                     "outcome": sub.outcome,
+                    "duplicate_reason": sub.duplicate_reason,
                     "delta": sub.delta,
                     "score": player.score,
                     "streak": player.streak,
                     "overridden": sub.overridden,
                 }
             )
+
+        if room.settings.unique_answers_only and round_keys_to_record:
+            room.used_answers.update(round_keys_to_record)
 
         outcomes.sort(key=lambda item: (-item["score"], -item["delta"], item["nickname"].casefold()))
 
@@ -763,6 +830,8 @@ class QuizEngine:
             "explanation": question.explanation,
             "language": question.language,
             "rtl": question.rtl,
+            "open_ended": question.open_ended,
+            "starts_with": question.starts_with,
             "outcomes": outcomes,
         }
 
@@ -783,12 +852,17 @@ class QuizEngine:
         host_token: str | None = None,
         is_admin: bool = False,
     ) -> tuple[Room, dict[str, Any]]:
-        """Allow Host or HA Admin to approve/reject a player's free-text answer during Reveal."""
+        """Allow Host or HA Admin to approve/reject a player's free-text or open-ended answer during Reveal."""
         room = self._require_room(code)
         self._require_host_or_admin(room, host_token=host_token, is_admin=is_admin)
         if room.phase != PHASE_REVEAL:
             raise EngineError("invalid_phase", "Answer overrides are only available during reveal.")
-        if room.settings.answer_mode != ANSWER_MODE_FREE_TEXT:
+        cur_q = (
+            room.questions[room.current_index]
+            if 0 <= room.current_index < len(room.questions)
+            else None
+        )
+        if room.settings.answer_mode != ANSWER_MODE_FREE_TEXT and not (cur_q and cur_q.open_ended):
             raise EngineError("not_free_text", "Overrides are only applicable in Free-Text mode.")
 
         player = room.players.get(target_session_token)
@@ -807,6 +881,7 @@ class QuizEngine:
             sub.is_correct = desired_correct
             sub.delta = new_delta
             sub.outcome = "correct" if desired_correct else "wrong"
+            sub.duplicate_reason = ""
             sub.overridden = True
 
             if desired_correct:
@@ -824,6 +899,7 @@ class QuizEngine:
                     if entry["session_token"] == target_session_token:
                         entry["is_correct"] = sub.is_correct
                         entry["outcome"] = sub.outcome
+                        entry["duplicate_reason"] = sub.duplicate_reason
                         entry["delta"] = sub.delta
                         entry["score"] = player.score
                         entry["streak"] = player.streak
@@ -917,6 +993,7 @@ class QuizEngine:
         room.pinned_media = {}
         room.current_index = -1
         room.current_submissions = {}
+        room.used_answers.clear()
         room.round_history = []
         room.question_started_at = None
         room.question_ends_at = None
@@ -1085,6 +1162,7 @@ class QuizEngine:
                     "code": room.code,
                     "name": room.settings.room_name,
                     "pack_titles": room.pack_titles,
+                    "cover_url": room.cover_url,
                     "language": room.pack_language,
                     "rtl": room.pack_rtl,
                     "status": room.status,
@@ -1097,6 +1175,7 @@ class QuizEngine:
                     "total_rounds": len(room.questions) if room.questions else room.settings.round_count,
                     "answer_mode": room.settings.answer_mode,
                     "wager_mode": room.settings.wager_mode,
+                    "unique_answers_only": room.settings.unique_answers_only,
                     "top_players": [
                         {
                             "nickname": row["nickname"],
@@ -1131,6 +1210,8 @@ class QuizEngine:
                     "phase": room.phase,
                     "paused": room.paused,
                     "pack_titles": room.pack_titles,
+                    "cover_url": room.cover_url,
+                    "unique_answers_only": room.settings.unique_answers_only,
                     "player_count": len(room.players),
                     "connected_count": sum(1 for p in room.players.values() if p.connected),
                     "players": [
@@ -1180,8 +1261,10 @@ class QuizEngine:
                 "id": q.id,
                 "prompt": q.prompt,
                 "choices": list(q.choices)
-                if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE
+                if (room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not q.open_ended)
                 else [],
+                "open_ended": q.open_ended,
+                "starts_with": q.starts_with,
                 "media_url": f"{URL_MEDIA}/{q.media_id}" if q.media_id else None,
                 "language": q.language,
                 "rtl": q.rtl,
@@ -1246,9 +1329,11 @@ class QuizEngine:
                 "answer_mode": room.settings.answer_mode,
                 "wager_mode": room.settings.wager_mode,
                 "deduct_wrong_wager": room.settings.deduct_wrong_wager,
+                "unique_answers_only": room.settings.unique_answers_only,
                 "visibility": room.settings.visibility,
                 "allow_late_join": room.settings.allow_late_join,
             },
+            "cover_url": room.cover_url,
             "language": room.pack_language,
             "rtl": room.pack_rtl,
             "players": leaderboard,

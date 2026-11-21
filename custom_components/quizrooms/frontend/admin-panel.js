@@ -288,6 +288,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .player-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .player-pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 4px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; }
         .player-pill img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; display: block; }
+        .pack-thumb { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex: none; border: 1px solid var(--border); background: var(--card); display: block; }
       </style>
       <div id="panel-root" data-theme="light">
         <div class="wrap">
@@ -342,27 +343,31 @@ class QuizRoomsAdminPanel extends HTMLElement {
           .map(
             (r) => `
           <div class="item">
-            <div>
-              <strong style="font-family:monospace;font-size:1rem;color:var(--accent);">${this._esc(r.code)}</strong>
-              <strong style="margin-inline:8px;" dir="auto">${this._esc(r.name)}</strong>
-              <span class="badge">${this._esc(r.visibility)}</span>
-              <span class="badge ${r.status === "lobby" ? "badge-ok" : "badge-warn"}">
-                ${this._esc(r.status)}${r.paused ? " (PAUSED)" : ""} · R${r.current_round}/${r.total_rounds}
-              </span>
-              <span class="badge">${r.connected_count}/${r.player_count} online</span>
-              ${
-                r.players && r.players.length
-                  ? `<div class="player-pills">${r.players
-                      .map(
-                        (p) => `<span class="player-pill" style="${p.connected ? "" : "opacity:0.5;"}">
-                          ${p.avatar_url ? `<img src="${this._esc(p.avatar_url)}" alt="" />` : ""}
-                          <span dir="auto">${this._esc(p.nickname)}${p.is_host ? " ★" : ""}</span>
-                          <span style="color:var(--accent);font-family:monospace;">${p.score}</span>
-                        </span>`
-                      )
-                      .join("")}</div>`
-                  : ""
-              }
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              ${r.cover_url ? `<img src="${this._esc(r.cover_url)}" alt="" class="pack-thumb" />` : ""}
+              <div>
+                <strong style="font-family:monospace;font-size:1rem;color:var(--accent);">${this._esc(r.code)}</strong>
+                <strong style="margin-inline:8px;" dir="auto">${this._esc(r.name)}</strong>
+                <span class="badge">${this._esc(r.visibility)}</span>
+                <span class="badge ${r.status === "lobby" ? "badge-ok" : "badge-warn"}">
+                  ${this._esc(r.status)}${r.paused ? " (PAUSED)" : ""} · R${r.current_round}/${r.total_rounds}
+                </span>
+                <span class="badge">${r.connected_count}/${r.player_count} online</span>
+                ${r.unique_answers_only ? `<span class="badge badge-warn">No Repeats</span>` : ""}
+                ${
+                  r.players && r.players.length
+                    ? `<div class="player-pills">${r.players
+                        .map(
+                          (p) => `<span class="player-pill" style="${p.connected ? "" : "opacity:0.5;"}">
+                            ${p.avatar_url ? `<img src="${this._esc(p.avatar_url)}" alt="" />` : ""}
+                            <span dir="auto">${this._esc(p.nickname)}${p.is_host ? " ★" : ""}</span>
+                            <span style="color:var(--accent);font-family:monospace;">${p.score}</span>
+                          </span>`
+                        )
+                        .join("")}</div>`
+                    : ""
+                }
+              </div>
             </div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
               ${r.status === "lobby" ? `<button class="btn" data-act="start" data-code="${this._esc(r.code)}">Start</button>` : ""}
@@ -380,11 +385,15 @@ class QuizRoomsAdminPanel extends HTMLElement {
       .map(
         (p) => `
       <div class="item">
-        <div>
-          <strong dir="auto">${this._esc(p.title)}</strong>
-          <span class="badge" style="margin-inline-start:6px;">${this._esc(p.pack_id)}</span>
-          <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
-          <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
+        <div style="display:flex;align-items:center;gap:12px;">
+          ${p.cover_url ? `<img src="${this._esc(p.cover_url)}" alt="" class="pack-thumb" />` : ""}
+          <div>
+            <strong dir="auto">${this._esc(p.title)}</strong>
+            <span class="badge" style="margin-inline-start:6px;">${this._esc(p.pack_id)}</span>
+            <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
+            ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
+            <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
+          </div>
         </div>
         <div>
           ${p.is_builtin ? `<span class="sub">Protected</span>` : `<button class="btn btn-danger" data-del-pack="${this._esc(p.pack_id)}">Delete</button>`}
@@ -477,10 +486,12 @@ class QuizRoomsAdminPanel extends HTMLElement {
         ${
           this._showDocs
             ? `<div style="margin-top:14px;">
-                <p class="sub"><strong>ZIP Layout:</strong> Put <code>pack.json</code> at the archive root (or inside one top-level folder) with referenced images under <code>media/</code> (e.g., <code>"image": "media/pic1.png"</code>).</p>
+                <p class="sub"><strong>ZIP Layout:</strong> Put <code>pack.json</code> at the archive root (or inside one top-level folder) with an optional pack cover (<code>"cover": "media/cover.svg"</code>) and question images under <code>media/</code>. Set <code>"open_ended": true</code> for free-answer packs (like أتوبيس كومبليت) where <code>choices</code> are omitted and optional <code>"starts_with"</code> checks the starting letter.</p>
                 <pre>{
   "pack_id": "custom_trivia",
   "title": "Family Movie Night",
+  "cover": "media/cover.png",
+  "open_ended": false,
   "language": "en",
   "rtl": false,
   "questions": [

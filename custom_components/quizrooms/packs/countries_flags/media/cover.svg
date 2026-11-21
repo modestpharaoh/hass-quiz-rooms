@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="World Countries and Flags Cover">
+  <defs>
+    <linearGradient id="cbg-flags" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#134E4A"/>
+    </linearGradient>
+    <clipPath id="fl-tl"><rect x="20" y="28" width="56" height="42" rx="8"/></clipPath>
+    <clipPath id="fl-tr"><rect x="84" y="28" width="56" height="42" rx="8"/></clipPath>
+    <clipPath id="fl-bl"><rect x="20" y="90" width="56" height="42" rx="8"/></clipPath>
+    <clipPath id="fl-br"><rect x="84" y="90" width="56" height="42" rx="8"/></clipPath>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-flags)"/>
+
+  <!-- Top-Left: Japan -->
+  <g clip-path="url(#fl-tl)">
+    <rect x="20" y="28" width="56" height="42" fill="#FFFFFF"/>
+    <circle cx="48" cy="49" r="12" fill="#DC2626"/>
+  </g>
+  <rect x="20" y="28" width="56" height="42" rx="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Top-Right: Egypt -->
+  <g clip-path="url(#fl-tr)">
+    <rect x="84" y="28" width="56" height="14" fill="#CE1126"/>
+    <rect x="84" y="42" width="56" height="14" fill="#FFFFFF"/>
+    <rect x="84" y="56" width="56" height="14" fill="#111827"/>
+    <polygon points="112,44 115,49 112,54 109,49" fill="#D97706"/>
+  </g>
+  <rect x="84" y="28" width="56" height="42" rx="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Bottom-Left: Brazil -->
+  <g clip-path="url(#fl-bl)">
+    <rect x="20" y="90" width="56" height="42" fill="#16A34A"/>
+    <polygon points="48,96 70,111 48,126 26,111" fill="#FACC15"/>
+    <circle cx="48" cy="111" r="8" fill="#1D4ED8"/>
+  </g>
+  <rect x="20" y="90" width="56" height="42" rx="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Bottom-Right: Sweden -->
+  <g clip-path="url(#fl-br)">
+    <rect x="84" y="90" width="56" height="42" fill="#1D4ED8"/>
+    <rect x="100" y="90" width="9" height="42" fill="#FACC15"/>
+    <rect x="84" y="106.5" width="56" height="9" fill="#FACC15"/>
+  </g>
+  <rect x="84" y="90" width="56" height="42" rx="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
+
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

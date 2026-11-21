@@ -114,6 +114,36 @@ def _validate_pack_payload(
     if not isinstance(rtl, bool):
         errors.append("rtl must be a boolean (true or false).")
 
+    pack_open_ended = raw_data.get("open_ended", False)
+    if not isinstance(pack_open_ended, bool):
+        errors.append("open_ended must be a boolean (true or false).")
+        pack_open_ended = False
+
+    cover = raw_data.get("cover")
+    normalized_cover: str | None = None
+    if cover is not None and cover != "":
+        if not isinstance(cover, str):
+            errors.append("cover must be a relative path string.")
+        elif not allow_media:
+            errors.append(
+                f"cover ('{cover}') requires a .zip archive containing the media file (plain .json uploads are text-only)."
+            )
+        else:
+            rel_norm = _normalize_safe_rel_path(cover)
+            if rel_norm is None:
+                errors.append(f"cover ('{cover}') contains an invalid or unsafe path.")
+            else:
+                ext = Path(rel_norm).suffix.lower()
+                if ext not in ALLOWED_MEDIA_EXTENSIONS:
+                    errors.append(
+                        f"cover ('{cover}') has unsupported extension '{ext}'. Allowed: {sorted(ALLOWED_MEDIA_EXTENSIONS)}."
+                    )
+                elif available_media_paths is not None and rel_norm not in available_media_paths:
+                    errors.append(
+                        f"cover ('{cover}') was not found in the uploaded archive."
+                    )
+                normalized_cover = rel_norm
+
     questions_raw = raw_data.get("questions")
     if not isinstance(questions_raw, list) or len(questions_raw) == 0:
         errors.append("questions must be a non-empty array of question objects.")
@@ -139,23 +169,46 @@ def _validate_pack_payload(
         if not isinstance(prompt, str) or not prompt.strip():
             errors.append(f"{prefix}.prompt is required and must be a non-empty string.")
 
-        answer = q.get("answer")
-        if not isinstance(answer, str) or not answer.strip():
-            errors.append(f"{prefix}.answer is required and must be a non-empty string.")
+        q_open_ended = q.get("open_ended", pack_open_ended)
+        if not isinstance(q_open_ended, bool):
+            errors.append(f"{prefix}.open_ended must be a boolean.")
+            q_open_ended = bool(pack_open_ended)
 
+        starts_with_raw = q.get("starts_with")
+        starts_with: str | None = None
+        if starts_with_raw is not None and starts_with_raw != "":
+            if not isinstance(starts_with_raw, str) or not starts_with_raw.strip():
+                errors.append(f"{prefix}.starts_with must be a non-empty string.")
+            else:
+                starts_with = starts_with_raw.strip()
+
+        answer = q.get("answer")
         choices = q.get("choices")
-        if (
-            not isinstance(choices, list)
-            or len(choices) < 2
-            or not all(isinstance(c, str) and c.strip() for c in choices)
-        ):
-            errors.append(f"{prefix}.choices must be an array of at least 2 non-empty strings.")
-        elif isinstance(answer, str) and answer.strip():
-            stripped_choices = [c.strip() for c in choices]
-            if answer.strip() not in stripped_choices:
-                errors.append(
-                    f"{prefix}.answer ('{answer.strip()}') must match one of the entries in choices."
-                )
+        if q_open_ended:
+            if answer is None or (isinstance(answer, str) and not answer.strip()):
+                answer = "Open-ended answer"
+            elif not isinstance(answer, str):
+                errors.append(f"{prefix}.answer must be a string.")
+            if choices is None:
+                choices = []
+            elif not isinstance(choices, list) or not all(isinstance(c, str) and c.strip() for c in choices):
+                errors.append(f"{prefix}.choices must be an array of non-empty strings (or empty for open-ended questions).")
+        else:
+            if not isinstance(answer, str) or not answer.strip():
+                errors.append(f"{prefix}.answer is required and must be a non-empty string.")
+
+            if (
+                not isinstance(choices, list)
+                or len(choices) < 2
+                or not all(isinstance(c, str) and c.strip() for c in choices)
+            ):
+                errors.append(f"{prefix}.choices must be an array of at least 2 non-empty strings.")
+            elif isinstance(answer, str) and answer.strip():
+                stripped_choices = [c.strip() for c in choices]
+                if answer.strip() not in stripped_choices:
+                    errors.append(
+                        f"{prefix}.answer ('{answer.strip()}') must match one of the entries in choices."
+                    )
 
         aliases = q.get("aliases", [])
         if not isinstance(aliases, list) or not all(isinstance(a, str) for a in aliases):
@@ -216,6 +269,8 @@ def _validate_pack_payload(
                 "explanation": explanation.strip(),
                 "language": q_lang.strip(),
                 "rtl": q_rtl,
+                "open_ended": q_open_ended,
+                "starts_with": starts_with,
             }
         )
 
@@ -224,10 +279,16 @@ def _validate_pack_payload(
             errors[0], details=errors, code="invalid_schema", status_code=400
         )
 
+    effective_open_ended = bool(
+        pack_open_ended or (cleaned_questions and all(cq["open_ended"] for cq in cleaned_questions))
+    )
+
     return {
         "pack_id": pack_id,
         "title": title.strip(),
         "description": description.strip(),
+        "cover": normalized_cover,
+        "open_ended": effective_open_ended,
         "language": language.strip(),
         "rtl": rtl,
         "version": str(raw_data.get("version", "1.0.0")).strip() or "1.0.0",
@@ -332,6 +393,28 @@ class PackRegistry:
         )
 
         media_map: dict[str, MediaAsset] = {}
+        cover_rel: str | None = cleaned["cover"]
+        cover_media_id: str | None = None
+        if cover_rel:
+            resolved_cover = (resolved_pack_dir / cover_rel).resolve()
+            if not resolved_cover.is_relative_to(resolved_pack_dir) or not resolved_cover.is_file():
+                raise PackValidationError(
+                    f"Cover path '{cover_rel}' in pack '{cleaned['pack_id']}' is invalid."
+                )
+            cover_ext = resolved_cover.suffix.lower()
+            cover_ct = MEDIA_CONTENT_TYPES.get(cover_ext)
+            if cover_ct is None:
+                raise PackValidationError(f"Unsupported cover extension '{cover_ext}'.")
+            cover_media_id = self._opaque_id_for(cleaned["pack_id"], cover_rel)
+            media_map[cover_media_id] = MediaAsset(
+                opaque_id=cover_media_id,
+                pack_id=cleaned["pack_id"],
+                rel_path=cover_rel,
+                file_path=resolved_cover,
+                allowed_root=allowed_root,
+                content_type=cover_ct,
+            )
+
         questions: list[Question] = []
         for q in cleaned["questions"]:
             media_id: str | None = None
@@ -368,6 +451,8 @@ class PackRegistry:
                     explanation=q["explanation"],
                     language=q["language"],
                     rtl=q["rtl"],
+                    open_ended=q["open_ended"],
+                    starts_with=q["starts_with"],
                 )
             )
 
@@ -383,6 +468,9 @@ class PackRegistry:
             version=cleaned["version"],
             author=cleaned["author"],
             category=cleaned["category"],
+            cover=cover_rel,
+            cover_media_id=cover_media_id,
+            open_ended=cleaned["open_ended"],
         )
         return pack, media_map
 

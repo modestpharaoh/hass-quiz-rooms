@@ -12,6 +12,7 @@ from .const import (
     DEFAULT_TIMER_SECONDS,
     PHASE_LOBBY,
     ROOM_STATUS_LOBBY,
+    URL_MEDIA,
     VISIBILITY_PUBLIC,
     WAGER_MODE_POOL,
 )
@@ -45,6 +46,8 @@ class Question:
     explanation: str = ""
     language: str = "en"
     rtl: bool = False
+    open_ended: bool = False
+    starts_with: str | None = None
 
 
 @dataclass(frozen=True)
@@ -62,6 +65,9 @@ class Pack:
     version: str = "1.0.0"
     author: str = ""
     category: str = "General"
+    cover: str | None = None
+    cover_media_id: str | None = None
+    open_ended: bool = False
 
     def to_summary(self) -> dict[str, Any]:
         """Serialize pack metadata for lobby and admin views."""
@@ -73,6 +79,8 @@ class Pack:
             "rtl": self.rtl,
             "question_count": len(self.questions),
             "has_media": any(q.media_id is not None for q in self.questions),
+            "cover_url": f"{URL_MEDIA}/{self.cover_media_id}" if self.cover_media_id else None,
+            "open_ended": self.open_ended,
             "is_builtin": self.is_builtin,
             "version": self.version,
             "author": self.author,
@@ -97,6 +105,8 @@ class SnapshotQuestion:
     explanation: str
     language: str
     rtl: bool
+    open_ended: bool = False
+    starts_with: str | None = None
 
 
 @dataclass
@@ -108,8 +118,9 @@ class PlayerSubmission:
     submitted_at: float
     is_correct: bool = False
     delta: int = 0
-    outcome: str = "pending"  # pending | correct | wrong | timeout
+    outcome: str = "pending"  # pending | correct | wrong | timeout | duplicate
     overridden: bool = False
+    duplicate_reason: str = ""
 
 
 @dataclass
@@ -142,6 +153,7 @@ class RoomSettings:
     answer_mode: str = ANSWER_MODE_MULTIPLE_CHOICE
     wager_mode: str = WAGER_MODE_POOL
     deduct_wrong_wager: bool = True
+    unique_answers_only: bool = False
     visibility: str = VISIBILITY_PUBLIC
     allow_late_join: bool = True
 
@@ -165,9 +177,12 @@ class Room:
     pack_titles: list[str] = field(default_factory=list)
     pack_rtl: bool = False
     pack_language: str = "en"
+    cover_url: str | None = None
     current_index: int = -1
     # Per-round submissions keyed by player session_token
     current_submissions: dict[str, PlayerSubmission] = field(default_factory=dict)
+    # Normalized answers already used in earlier rounds when unique_answers_only is enabled
+    used_answers: set[str] = field(default_factory=set)
     # Historical reveal summaries per round
     round_history: list[dict[str, Any]] = field(default_factory=list)
     # Timing state (epoch seconds)

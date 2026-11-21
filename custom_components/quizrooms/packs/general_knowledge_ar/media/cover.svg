@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Arabic General Knowledge Cover">
+  <defs>
+    <linearGradient id="cbg-ar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#065F46"/>
+    </linearGradient>
+    <linearGradient id="gold-ar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cbg-ar)"/>
+  <!-- Glowing Arabic question mark (؟) above open book -->
+  <path d="M89,45 C89,37 83,32 76,32 C69,32 64,37 64,43 C64,49 69,52 74,55 C77,57 78,59 78,63" fill="none" stroke="url(#gold-ar)" stroke-width="7.5" stroke-linecap="round"/>
+  <circle cx="78" cy="73" r="4.5" fill="#FDE047"/>
+  <!-- Sparkles -->
+  <path d="M116,32 L118.5,38.5 L125,41 L118.5,43.5 L116,50 L113.5,43.5 L107,41 L113.5,38.5 Z" fill="#FDE68A"/>
+  <circle cx="44" cy="46" r="3.5" fill="#A7F3D0" opacity="0.9"/>
+  <!-- Open knowledge book -->
+  <path d="M30,88 C46,82 64,84 80,94 L80,128 C64,119 46,118 30,124 Z" fill="#FEFCE8"/>
+  <path d="M130,88 C114,82 96,84 80,94 L80,128 C96,119 114,118 130,124 Z" fill="#ECFDF5"/>
+  <!-- Page accent lines -->
+  <path d="M40,98 C50,95 61,96 71,101" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M40,108 C50,105 61,106 71,111" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M120,98 C110,95 99,96 89,101" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M120,108 C110,105 99,106 89,111" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <!-- Center spine & gold bookmark -->
+  <line x1="80" y1="94" x2="80" y2="128" stroke="#065F46" stroke-width="3" stroke-linecap="round"/>
+  <path d="M84,94 L94,94 L94,114 L89,109 L84,114 Z" fill="#F59E0B"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

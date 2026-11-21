@@ -186,3 +186,37 @@ def is_answer_match(
         if _matches_single_target(submitted_norm, target_norm):
             return True
     return False
+
+
+def canonical_duplicate_key(text: str) -> str:
+    """Return a normalized canonical key for detecting repeated answers across players or rounds."""
+    norm = normalize_answer(text)
+    if not norm:
+        return ""
+    stripped = _strip_optional_articles(norm)
+    return stripped or norm
+
+
+def matches_starts_with(submitted: str, required_prefix: str) -> bool:
+    """Verify an open-ended answer starts with the required letter/prefix (Arabic/RTL aware).
+
+    Handles Arabic letter variants (أ/إ/آ -> ا), strips Tashkeel/Tatweel, and allows an optional
+    leading Arabic definite article 'ال' when the target letter is not 'ا' or 'ل' and the
+    normalized answer has at least 4 characters (e.g., 'البرتقال' matches 'ب').
+    """
+    sub_norm = normalize_answer(submitted)
+    req_norm = normalize_answer(required_prefix)
+    if not sub_norm or not req_norm:
+        return False
+    if len(sub_norm) < 2:
+        return False
+    if sub_norm.startswith(req_norm):
+        return True
+    if (
+        req_norm not in ("ا", "ل")
+        and sub_norm.startswith("ال")
+        and len(sub_norm) >= 4
+        and sub_norm[2:].startswith(req_norm)
+    ):
+        return True
+    return False

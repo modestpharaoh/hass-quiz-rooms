@@ -426,5 +426,6 @@
       ],
       "explanation": "Vatican City covers just 0.49 square kilometers inside Rome."
     }
-  ]
+  ],
+  "cover": "media/cover.svg"
 }

@@ -313,12 +313,18 @@
               return `
               <article class="studio-card tv-room-card animate-in" data-follow-code="${esc(r.code)}" tabindex="0" role="button" aria-label="Follow room ${esc(r.code)}" dir="${r.rtl ? "rtl" : "auto"}">
                 <div>
-                  <div class="tv-room-code">${esc(r.code)}</div>
-                  <h2 class="tv-room-title" dir="auto">${esc(r.name)}</h2>
+                  <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px;">
+                    ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" style="width:58px;height:58px;border-radius:14px;object-fit:cover;flex:none;border:1px solid var(--border-subtle);" />` : ""}
+                    <div>
+                      <div class="tv-room-code">${esc(r.code)}</div>
+                      <h2 class="tv-room-title" dir="auto">${esc(r.name)}</h2>
+                    </div>
+                  </div>
                   <p class="tv-room-sub" dir="auto">${esc((r.pack_titles || []).join(" · "))}</p>
                   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} Player${r.player_count === 1 ? "" : "s"}</span>
+                    ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
                     <button type="button" class="btn btn-primary btn-sm" data-follow-code="${esc(r.code)}">Follow</button>
                   </div>
                   ${leaders ? `<div class="tv-mini-leaders">${leaders}</div>` : ""}
@@ -361,11 +367,14 @@
           <span class="badge badge-lobby">Lobby Open</span>
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
-        <div style="text-align:start;">
-          <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
-          <p style="font-size:1.3rem;color:var(--text-secondary);" dir="auto">
-            ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds · ${room.settings.timer_seconds}s
-          </p>
+        <div style="display:flex;align-items:center;gap:18px;text-align:start;">
+          ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" style="width:76px;height:76px;border-radius:18px;object-fit:cover;flex:none;border:2px solid var(--border-subtle);" />` : ""}
+          <div>
+            <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
+            <p style="font-size:1.3rem;color:var(--text-secondary);margin-top:6px;" dir="auto">
+              ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds · ${room.settings.timer_seconds}s${room.settings.unique_answers_only ? " · No Repeated Answers" : ""}
+            </p>
+          </div>
         </div>
         <div class="tv-lock-grid">
           ${room.players
@@ -381,9 +390,12 @@
           stageHtml = `
         <div>
           <div class="tv-stage-meta">
-            <span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">
-              Round ${q.round_number} / ${q.total_rounds}
-            </span>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">
+                Round ${q.round_number} / ${q.total_rounds}
+              </span>
+              ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
+            </div>
             <div id="tv-timer-num" class="tv-timer-big">${Math.ceil(q.remaining_seconds || 0)}s</div>
           </div>
           <div class="timer-track" style="height:14px;margin-top:14px;">
@@ -398,6 +410,14 @@
 
         <h2 class="tv-question-text" dir="auto">${esc(q.prompt)}</h2>
 
+        ${q.starts_with
+              ? `<div style="display:inline-flex;align-items:center;gap:12px;padding:10px 20px;border-radius:999px;background:var(--accent-amber-soft);border:2px solid var(--accent-amber);align-self:flex-start;font-size:1.3rem;font-weight:800;">
+                  <span>${q.rtl ? "يبدأ بحرف" : "Starts with"}</span>
+                  <span style="display:inline-grid;place-items:center;min-width:44px;height:44px;padding-inline:10px;border-radius:999px;background:var(--accent-amber);color:#120d02;font-size:1.55rem;font-weight:900;">${esc(q.starts_with)}</span>
+                </div>`
+              : ""
+            }
+
         ${q.choices && q.choices.length
               ? `<div class="tv-choices-grid">
                 ${q.choices
@@ -410,7 +430,7 @@
                 .join("")}
               </div>`
               : `<div class="badge badge-accent" style="font-size:1.05rem;padding:10px 18px;align-self:flex-start;">
-                Free-Text Mode — Submit on your phone!
+                ${q.open_ended ? (q.rtl ? "إجابة مفتوحة فريدة — اكتب إجابتك على هاتفك!" : "Open-Ended Mode — Submit a unique answer on your phone!") : "Free-Text Mode — Submit on your phone!"}
               </div>`
             }
 
@@ -436,7 +456,7 @@
 
         <div class="studio-card" style="padding:26px;background:var(--accent-secondary-soft);border-color:var(--accent-secondary);text-align:start;">
           <div style="font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-secondary);">
-            Correct Answer
+            ${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}
           </div>
           <div style="font-size:clamp(2rem,3.6vw,3.2rem);font-weight:800;margin-block:6px;" dir="auto">
             ${esc(rev.correct_answer)}
@@ -451,13 +471,13 @@
                 const cls = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
                 const sign = o.delta > 0 ? `+${o.delta}` : String(o.delta);
                 return `
-                <div class="tv-lb-row">
+                <div class="tv-lb-row" ${o.outcome === "duplicate" ? 'style="border-color:var(--accent-amber);background:var(--accent-amber-soft);"' : ""}>
                   <div style="display:flex;align-items:center;gap:10px;text-align:start;">
                     ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
                     <div>
-                      <div dir="auto">${esc(o.nickname)}</div>
+                      <div dir="auto">${esc(o.nickname)}${o.outcome === "duplicate" ? ` <span class="badge badge-live" style="font-size:0.68rem;padding:2px 6px;">Repeated</span>` : ""}</div>
                       <div style="font-size:0.85rem;color:var(--text-muted);" dir="auto">
-                        ${o.answer ? esc(o.answer) : "Timed out"} · W${o.wager}
+                        ${o.answer ? esc(o.answer) : "Timed out"} · W${o.wager}${o.duplicate_reason ? ` · ${esc(o.duplicate_reason)}` : ""}
                       </div>
                     </div>
                   </div>

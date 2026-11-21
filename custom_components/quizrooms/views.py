@@ -184,15 +184,20 @@ class QuizRoomsAssetsView(_QuizRoomsBaseView):
 
 
 class QuizRoomsMediaView(_QuizRoomsBaseView):
-    """Serve pack images via opaque IDs at /quizrooms/media/{opaque_id} with strict sandbox CSP."""
+    """Serve pack images and covers via opaque IDs at /quizrooms/media/{opaque_id} with strict sandbox CSP.
+
+    Permits LAN guests/TV AND authenticated Home Assistant users so the Admin Sidebar Panel
+    renders pack cover photos cleanly both locally and remotely.
+    """
 
     url = f"{URL_MEDIA}/{{opaque_id}}"
     name = "quizrooms:media"
     requires_auth = False
 
     async def get(self, request: web.Request, opaque_id: str) -> web.StreamResponse:
-        if blocked := _check_network_guard(self.coordinator, request):
-            return blocked
+        if request.get("hass_user") is None:
+            if blocked := _check_network_guard(self.coordinator, request):
+                return blocked
 
         found = await self.coordinator.async_run_in_executor(
             self.coordinator.pack_registry.get_media_bytes, opaque_id
@@ -471,6 +476,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     answer_mode=data.get("answer_mode"),
                     wager_mode=data.get("wager_mode"),
                     deduct_wrong_wager=data.get("deduct_wrong_wager"),
+                    unique_answers_only=data.get("unique_answers_only"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )
@@ -557,6 +563,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     answer_mode=data.get("answer_mode"),
                     wager_mode=data.get("wager_mode"),
                     deduct_wrong_wager=data.get("deduct_wrong_wager"),
+                    unique_answers_only=data.get("unique_answers_only"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                 )
