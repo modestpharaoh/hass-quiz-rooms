@@ -13,6 +13,8 @@ from custom_components.quizrooms.views import (
     QuizRoomsAssetsView,
     QuizRoomsMediaView,
     QuizRoomsPlayView,
+    QuizRoomsPublicBootstrapView,
+    QuizRoomsPublicTVModeView,
     QuizRoomsTVView,
     QuizRoomsWebSocketView,
 )
@@ -248,6 +250,88 @@ def test_websocket_lifecycle_create_and_start_room(tmp_path: Path, monkeypatch) 
         assert created_msg["code"] in coord.engine.rooms
         assert created_msg["host_token"]
         assert len(coord._ws_clients) == 0  # cleaned up on disconnect
+
+        await async_unload_entry(hass, entry)
+
+    asyncio.run(run())
+
+
+def test_tv_live_overview_updates_and_follow_mode(tmp_path: Path) -> None:
+    """Verify TV WS receives live lobby_update on create/close and Follow mode works via WS & HTTP."""
+    import json
+    from custom_components.quizrooms.coordinator import WSClient
+
+    hass = _FakeHass(tmp_path)
+    entry = _FakeEntry()
+
+    class _RecordingWS:
+        def __init__(self) -> None:
+            self.sent: list[dict[str, Any]] = []
+
+        async def send_json(self, payload: dict[str, Any]) -> None:
+            self.sent.append(payload)
+
+        async def close(self) -> None:
+            return None
+
+    class _JsonRequest(FakeRequest):
+        def __init__(self, body: dict[str, Any], **kwargs: Any) -> None:
+            super().__init__(**kwargs)
+            self._body = body
+
+        async def json(self) -> dict[str, Any]:
+            return self._body
+
+    async def run() -> None:
+        await async_setup_entry(hass, entry)
+        coord = hass.data[DOMAIN]["coordinator"]
+
+        tv_ws = _RecordingWS()
+        tv_client = WSClient(ws=tv_ws, role="tv")
+        coord.register_ws(tv_client)
+
+        # 1. Creating a room pushes lobby_update to TV Overview immediately
+        room, _sess, host_tok = coord.engine.create_room(
+            host_session_token="h_tv",
+            host_nickname="HostTV",
+            pack_ids=["general_knowledge_en"],
+        )
+        await coord.broadcast_lobby_and_tv()
+        assert any(
+            m["type"] == "lobby_update" and any(r["code"] == room.code for r in m["lobby"]["rooms"])
+            for m in tv_ws.sent
+        )
+
+        # 2. HTTP TV mode fallback follows the room (and blocks public IPs)
+        tv_mode_view = QuizRoomsPublicTVModeView(coord)
+        blocked = await tv_mode_view.post(
+            _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="203.0.113.5")
+        )
+        assert blocked.status == 403
+
+        ok = await tv_mode_view.post(
+            _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="192.168.1.20")
+        )
+        assert ok.status == 200
+        body = json.loads(ok.text or "{}")
+        assert body["tv"]["mode"] == "follow"
+        assert body["room"]["code"] == room.code
+        assert any(m["type"] == "tv_mode_changed" and m["room"]["code"] == room.code for m in tv_ws.sent)
+
+        # 3. Bootstrap includes the followed room while active
+        boot_resp = await QuizRoomsPublicBootstrapView(coord).get(
+            FakeRequest(path="/quizrooms/api/public/bootstrap", remote="192.168.1.20")
+        )
+        boot_data = json.loads(boot_resp.text or "{}")
+        assert boot_data["tv"]["mode"] == "follow"
+        assert boot_data["room"]["code"] == room.code
+
+        # 4. Closing the room returns TV to overview and removes it from live lobby_update
+        tv_ws.sent.clear()
+        await coord.async_close_room(room.code, host_token=host_tok)
+        assert coord.tv_state.mode == "overview"
+        assert any(m["type"] == "tv_mode_changed" and m["tv"]["mode"] == "overview" for m in tv_ws.sent)
+        assert any(m["type"] == "lobby_update" and m["lobby"]["rooms"] == [] for m in tv_ws.sent)
 
         await async_unload_entry(hass, entry)
 

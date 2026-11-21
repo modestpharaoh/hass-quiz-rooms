@@ -208,7 +208,7 @@ class QuizRoomsMediaView(_QuizRoomsBaseView):
 
 
 class QuizRoomsPublicBootstrapView(_QuizRoomsBaseView):
-    """Return initial lobby state, packs, and LAN base URL for /play and /tv."""
+    """Return initial lobby state, packs, TV state (with followed room), and LAN base URL."""
 
     url = f"{URL_API_PUBLIC}/bootstrap"
     name = "quizrooms:public_bootstrap"
@@ -218,12 +218,69 @@ class QuizRoomsPublicBootstrapView(_QuizRoomsBaseView):
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
 
+        followed_room = None
+        if self.coordinator.tv_state.mode == "follow" and self.coordinator.tv_state.room_code:
+            followed_room = self.coordinator.engine.get_room(self.coordinator.tv_state.room_code)
+            if followed_room is None:
+                # Auto-reset stale follow target back to overview
+                self.coordinator.tv_state.mode = "overview"
+                self.coordinator.tv_state.room_code = None
+
         return web.json_response(
             {
                 "lobby": self.coordinator.engine.serialize_public_lobby(),
                 "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
                 "tv": self.coordinator.tv_state.to_dict(),
+                "room": (
+                    self.coordinator.engine.serialize_room_state(followed_room, for_session_token=None)
+                    if followed_room is not None
+                    else None
+                ),
                 "lan_base_url": self.coordinator.resolve_lan_base_url(request),
+            }
+        )
+
+
+class QuizRoomsPublicTVModeView(_QuizRoomsBaseView):
+    """Allow local-network TV displays to switch Overview/Follow mode via HTTP fallback."""
+
+    url = f"{URL_API_PUBLIC}/tv_mode"
+    name = "quizrooms:public_tv_mode"
+    requires_auth = False
+
+    async def post(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_network_guard(self.coordinator, request):
+            return blocked
+
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+
+        try:
+            tv = await self.coordinator.async_set_tv_mode(
+                mode=str(body.get("mode") or "overview"),
+                room_code=body.get("room_code"),
+                theme=body.get("theme"),
+            )
+        except EngineError as err:
+            return web.json_response(err.to_dict(), status=err.status_code)
+
+        followed_room = (
+            self.coordinator.engine.get_room(tv["room_code"])
+            if tv.get("mode") == "follow" and tv.get("room_code")
+            else None
+        )
+        return web.json_response(
+            {
+                "ok": True,
+                "tv": tv,
+                "room": (
+                    self.coordinator.engine.serialize_room_state(followed_room, for_session_token=None)
+                    if followed_room is not None
+                    else None
+                ),
+                "lobby": self.coordinator.engine.serialize_public_lobby(),
             }
         )
 
@@ -250,7 +307,14 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
         self.coordinator.register_ws(client)
 
         try:
-            # Push initial snapshot on connect
+            followed_room = None
+            if role == "tv" and self.coordinator.tv_state.mode == "follow" and self.coordinator.tv_state.room_code:
+                followed_room = self.coordinator.engine.get_room(self.coordinator.tv_state.room_code)
+                if followed_room is None:
+                    self.coordinator.tv_state.mode = "overview"
+                    self.coordinator.tv_state.room_code = None
+
+            # Push initial snapshot on connect (includes followed room atomically for TV)
             await ws.send_json(
                 {
                     "type": "hello",
@@ -259,17 +323,13 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     "lobby": self.coordinator.engine.serialize_public_lobby(),
                     "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
                     "tv": self.coordinator.tv_state.to_dict(),
+                    "room": (
+                        self.coordinator.engine.serialize_room_state(followed_room, for_session_token=None)
+                        if followed_room is not None
+                        else None
+                    ),
                 }
             )
-            if role == "tv" and self.coordinator.tv_state.mode == "follow" and self.coordinator.tv_state.room_code:
-                followed = self.coordinator.engine.get_room(self.coordinator.tv_state.room_code)
-                if followed is not None:
-                    await ws.send_json(
-                        {
-                            "type": "room_state",
-                            "room": self.coordinator.engine.serialize_room_state(followed),
-                        }
-                    )
 
             async for msg in ws:
                 if msg.type == WSMsgType.TEXT:
@@ -750,6 +810,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAssetsView(coordinator),
         QuizRoomsMediaView(coordinator),
         QuizRoomsPublicBootstrapView(coordinator),
+        QuizRoomsPublicTVModeView(coordinator),
         QuizRoomsWebSocketView(coordinator),
         QuizRoomsAdminPanelJSView(coordinator),
         QuizRoomsAdminStateView(coordinator),

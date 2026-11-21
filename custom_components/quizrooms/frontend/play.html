@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -12,12 +13,13 @@
         var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.dataset.themeMode = mode;
         document.documentElement.dataset.theme = mode === "auto" ? (dark ? "dark" : "light") : mode;
-      } catch (e) {}
+      } catch (e) { }
     })();
   </script>
-  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=0.1.2" />
-  <link rel="stylesheet" href="/quizrooms/assets/css/play.css?v=0.1.2" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=0.1.3" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/play.css?v=0.1.3" />
 </head>
+
 <body>
   <div class="app-shell">
     <header class="topbar">
@@ -29,6 +31,8 @@
         </div>
       </div>
       <div class="topbar-controls">
+        <button type="button" id="play-sound-btn" class="btn btn-secondary btn-sm" aria-pressed="false">Sound:
+          Off</button>
         <div id="theme-pill-mount"></div>
       </div>
     </header>
@@ -40,9 +44,11 @@
   <div id="lightbox-root"></div>
   <div id="toast-root" class="toast hidden" role="status"></div>
 
-  <script src="/quizrooms/assets/js/theme.js?v=0.1.2"></script>
-  <script src="/quizrooms/assets/js/qrcode.js?v=0.1.2"></script>
-  <script src="/quizrooms/assets/js/confetti.js?v=0.1.2"></script>
-  <script src="/quizrooms/assets/js/play.js?v=0.1.2"></script>
+  <script src="/quizrooms/assets/js/theme.js?v=0.1.3"></script>
+  <script src="/quizrooms/assets/js/qrcode.js?v=0.1.3"></script>
+  <script src="/quizrooms/assets/js/confetti.js?v=0.1.3"></script>
+  <script src="/quizrooms/assets/js/sfx.js?v=0.1.3"></script>
+  <script src="/quizrooms/assets/js/play.js?v=0.1.3"></script>
 </body>
+
 </html>

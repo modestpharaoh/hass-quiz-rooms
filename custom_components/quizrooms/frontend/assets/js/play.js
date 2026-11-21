@@ -21,6 +21,7 @@
     lastRoundKey: "",
     lastRevealKey: "",
     lastFinaleKey: "",
+    lastCountdownSec: -1,
     timerRaf: null,
     serverOffsetMs: 0,
     showCreateModal: false,
@@ -47,7 +48,7 @@
     try {
       if (val) localStorage.setItem(key, val);
       else localStorage.removeItem(key);
-    } catch (_) {}
+    } catch (_) { }
   }
   function loadJSON(key, fallback) {
     try {
@@ -56,7 +57,7 @@
     } catch (_) { return fallback; }
   }
   function saveJSON(key, val) {
-    try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {}
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) { }
   }
 
   function esc(str) {
@@ -265,114 +266,137 @@
       const roundKey = `${room.code}:${room.question.index}`;
       if (state.lastRoundKey !== roundKey) {
         state.lastRoundKey = roundKey;
+        state.lastCountdownSec = -1;
         state.selectedAnswer = "";
         const avail = (room.me && room.me.available_wagers) || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         if (!avail.includes(state.selectedWager)) {
           state.selectedWager = avail[Math.floor(avail.length / 2)] || avail[0] || 1;
         }
+        if (window.QuizRoomsSFX) window.QuizRoomsSFX.roundStart();
       }
     }
 
-    // Celebratory burst on correct answer reveal
+    // Celebratory burst + SFX on reveal (correct / wrong / timeout)
     if (room.phase === "reveal" && room.reveal) {
       const revKey = `${room.code}:${room.reveal.round_index}`;
       if (state.lastRevealKey !== revKey) {
         state.lastRevealKey = revKey;
         const myOutcome = room.reveal.outcomes.find((o) => o.session_token === state.sessionToken);
-        if (myOutcome && myOutcome.is_correct && window.QuizRoomsConfetti) {
-          window.QuizRoomsConfetti.burst(0.9);
+          if (myOutcome) {
+            if (myOutcome.is_correct) {
+              if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(0.9);
+              if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
+            } else if (myOutcome.outcome === "wrong") {
+              if (window.QuizRoomsSFX) window.QuizRoomsSFX.wrong();
+            } else if (myOutcome.outcome === "timeout") {
+              if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
+            }
+          } else if (window.QuizRoomsSFX) {
+            window.QuizRoomsSFX.reveal();
+          }
         }
       }
+
+      // Celebratory burst + fanfare on finale podium
+      if (room.phase === "finale") {
+        const finKey = `${room.code}:finale:${room.finale ? room.finale.podium.length : 0}`;
+        if (state.lastFinaleKey !== finKey) {
+          state.lastFinaleKey = finKey;
+          if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(1.5);
+          if (window.QuizRoomsSFX) window.QuizRoomsSFX.finale();
+        }
+      }
+
+      render();
+      if (room.phase === "question" && !room.paused) startTimerLoop();
+      else stopTimerLoop();
     }
 
-    // Celebratory burst on finale podium
-    if (room.phase === "finale") {
-      const finKey = `${room.code}:finale:${room.finale ? room.finale.podium.length : 0}`;
-      if (state.lastFinaleKey !== finKey) {
-        state.lastFinaleKey = finKey;
-        if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(1.5);
+    function stopTimerLoop() {
+      if (state.timerRaf) {
+        cancelAnimationFrame(state.timerRaf);
+        state.timerRaf = null;
       }
     }
 
-    render();
-    if (room.phase === "question" && !room.paused) startTimerLoop();
-    else stopTimerLoop();
-  }
+    function startTimerLoop() {
+      stopTimerLoop();
+      function frame() {
+        const room = state.room;
+        if (!room || room.phase !== "question" || !room.question) return;
+        const q = room.question;
+        const fill = document.getElementById("timer-fill");
+        const readout = document.getElementById("timer-readout");
+        if (!fill || !readout) return;
 
-  function stopTimerLoop() {
-    if (state.timerRaf) {
-      cancelAnimationFrame(state.timerRaf);
-      state.timerRaf = null;
-    }
-  }
+        let rem = q.remaining_seconds || 0;
+        if (!room.paused && q.ends_at_ms) {
+          rem = Math.max(0, (q.ends_at_ms - (Date.now() + state.serverOffsetMs)) / 1000);
+        }
+        const sec = Math.ceil(rem);
+        const pct = Math.max(0, Math.min(100, (rem / (q.timer_seconds || 30)) * 100));
+        fill.style.width = pct.toFixed(1) + "%";
+        fill.classList.toggle("warn", rem <= 10 && rem > 5);
+        fill.classList.toggle("urgent", rem <= 5);
+        readout.classList.toggle("urgent", rem <= 5);
+        readout.textContent = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
 
-  function startTimerLoop() {
-    stopTimerLoop();
-    function frame() {
-      const room = state.room;
-      if (!room || room.phase !== "question" || !room.question) return;
-      const q = room.question;
-      const fill = document.getElementById("timer-fill");
-      const readout = document.getElementById("timer-readout");
-      if (!fill || !readout) return;
+        const alreadyLocked = Boolean(room.me && room.me.submitted);
+        if (!room.paused && sec > 0 && sec !== state.lastCountdownSec) {
+          state.lastCountdownSec = sec;
+          if (sec <= 5 && window.QuizRoomsSFX) {
+            window.QuizRoomsSFX.tickUrgent(sec);
+          } else if (sec <= 10 && !alreadyLocked && window.QuizRoomsSFX) {
+            window.QuizRoomsSFX.tickSoft();
+          }
+        }
 
-      let rem = q.remaining_seconds || 0;
-      if (!room.paused && q.ends_at_ms) {
-        rem = Math.max(0, (q.ends_at_ms - (Date.now() + state.serverOffsetMs)) / 1000);
+        if (!room.paused && rem > 0) {
+          state.timerRaf = requestAnimationFrame(frame);
+        }
       }
-      const pct = Math.max(0, Math.min(100, (rem / (q.timer_seconds || 30)) * 100));
-      fill.style.width = pct.toFixed(1) + "%";
-      fill.classList.toggle("warn", rem <= 10 && rem > 5);
-      fill.classList.toggle("urgent", rem <= 5);
-      readout.classList.toggle("urgent", rem <= 5);
-      readout.textContent = room.paused ? `PAUSED (${Math.ceil(rem)}s)` : `${Math.ceil(rem)}s`;
+      state.timerRaf = requestAnimationFrame(frame);
+    }
 
-      if (!room.paused && rem > 0) {
-        state.timerRaf = requestAnimationFrame(frame);
+    function getJoinUrl(code) {
+      const base = state.lanBaseUrl || window.location.origin;
+      return `${base}/quizrooms/play?code=${encodeURIComponent(code)}`;
+    }
+
+    function requireNickname() {
+      const input = document.getElementById("lobby-nickname");
+      const nick = (input ? input.value : state.nickname).trim();
+      if (!nick) {
+        showToast("Enter your nickname first!", true);
+        if (input) input.focus();
+        return null;
+      }
+      state.nickname = nick;
+      saveStr(LS_NICK, nick);
+      return nick;
+    }
+
+    function render() {
+      const root = document.getElementById("app-root");
+      if (!state.room) {
+        renderOpenLobby(root);
+      } else if (state.room.phase === "lobby") {
+        renderRoomLobby(root, state.room);
+      } else if (state.room.phase === "question") {
+        renderQuestionPhase(root, state.room);
+      } else if (state.room.phase === "reveal") {
+        renderRevealPhase(root, state.room);
+      } else if (state.room.phase === "finale") {
+        renderFinalePhase(root, state.room);
       }
     }
-    state.timerRaf = requestAnimationFrame(frame);
-  }
 
-  function getJoinUrl(code) {
-    const base = state.lanBaseUrl || window.location.origin;
-    return `${base}/quizrooms/play?code=${encodeURIComponent(code)}`;
-  }
+    function renderOpenLobby(root) {
+      const urlCode = new URLSearchParams(window.location.search).get("code") || "";
+      const { rooms, active_rooms, max_rooms, can_create_room } = state.lobby;
 
-  function requireNickname() {
-    const input = document.getElementById("lobby-nickname");
-    const nick = (input ? input.value : state.nickname).trim();
-    if (!nick) {
-      showToast("Enter your nickname first!", true);
-      if (input) input.focus();
-      return null;
-    }
-    state.nickname = nick;
-    saveStr(LS_NICK, nick);
-    return nick;
-  }
-
-  function render() {
-    const root = document.getElementById("app-root");
-    if (!state.room) {
-      renderOpenLobby(root);
-    } else if (state.room.phase === "lobby") {
-      renderRoomLobby(root, state.room);
-    } else if (state.room.phase === "question") {
-      renderQuestionPhase(root, state.room);
-    } else if (state.room.phase === "reveal") {
-      renderRevealPhase(root, state.room);
-    } else if (state.room.phase === "finale") {
-      renderFinalePhase(root, state.room);
-    }
-  }
-
-  function renderOpenLobby(root) {
-    const urlCode = new URLSearchParams(window.location.search).get("code") || "";
-    const { rooms, active_rooms, max_rooms, can_create_room } = state.lobby;
-
-    const roomsHtml = rooms.length
-      ? `<div class="rooms-grid">${rooms
+      const roomsHtml = rooms.length
+        ? `<div class="rooms-grid">${rooms
           .map((r) => {
             const statusClass = r.status === "lobby" ? "badge-lobby" : "badge-live";
             const statusText = r.status === "lobby" ? "Lobby" : `In Progress · R${r.current_round}/${r.total_rounds}`;
@@ -398,12 +422,12 @@
               </article>`;
           })
           .join("")}</div>`
-      : `<div class="studio-card empty-state">
+        : `<div class="studio-card empty-state">
           <p style="margin:0 0 6px;font-weight:700;color:var(--text-primary);">No open public rooms yet</p>
           <p style="margin:0;font-size:0.9rem;">Create a new trivia room above or enter a private room code to jump in.</p>
         </div>`;
 
-    root.innerHTML = `
+      root.innerHTML = `
       <section class="studio-card hero-card animate-in">
         <div class="hero-grid">
           <div>
@@ -440,83 +464,83 @@
       ${roomsHtml}
     `;
 
-    const nickEl = document.getElementById("lobby-nickname");
-    nickEl.addEventListener("input", () => {
-      state.nickname = nickEl.value;
-      saveStr(LS_NICK, nickEl.value.trim());
-    });
+      const nickEl = document.getElementById("lobby-nickname");
+      nickEl.addEventListener("input", () => {
+        state.nickname = nickEl.value;
+        saveStr(LS_NICK, nickEl.value.trim());
+      });
 
-    document.getElementById("join-code-btn").addEventListener("click", () => {
-      const nick = requireNickname();
-      if (!nick) return;
-      const code = (document.getElementById("join-code-input").value || "").trim().toUpperCase();
-      if (!code) {
-        showToast("Enter a 4-letter room code.", true);
-        return;
-      }
-      sendWS({ type: "join_room", code, session_token: state.sessionToken, nickname: nick });
-    });
-
-    document.getElementById("open-create-btn").addEventListener("click", () => {
-      const nick = requireNickname();
-      if (!nick) return;
-      openCreateModal();
-    });
-
-    root.querySelectorAll("[data-join-code]").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      document.getElementById("join-code-btn").addEventListener("click", () => {
         const nick = requireNickname();
         if (!nick) return;
-        sendWS({
-          type: "join_room",
-          code: btn.dataset.joinCode,
-          session_token: state.sessionToken,
-          nickname: nick,
+        const code = (document.getElementById("join-code-input").value || "").trim().toUpperCase();
+        if (!code) {
+          showToast("Enter a 4-letter room code.", true);
+          return;
+        }
+        sendWS({ type: "join_room", code, session_token: state.sessionToken, nickname: nick });
+      });
+
+      document.getElementById("open-create-btn").addEventListener("click", () => {
+        const nick = requireNickname();
+        if (!nick) return;
+        openCreateModal();
+      });
+
+      root.querySelectorAll("[data-join-code]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const nick = requireNickname();
+          if (!nick) return;
+          sendWS({
+            type: "join_room",
+            code: btn.dataset.joinCode,
+            session_token: state.sessionToken,
+            nickname: nick,
+          });
         });
       });
-    });
-  }
-
-  function renderModalPackList() {
-    const listEl = document.getElementById("cr-pack-list");
-    const countBadge = document.getElementById("cr-pack-count");
-    if (!listEl) return;
-
-    const prevChecked = new Set(
-      Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
-    );
-
-    if (countBadge) {
-      countBadge.textContent = `${state.packs.length} available`;
     }
 
-    if (!state.packs.length) {
-      if (state.packsError) {
-        listEl.innerHTML = `
+    function renderModalPackList() {
+      const listEl = document.getElementById("cr-pack-list");
+      const countBadge = document.getElementById("cr-pack-count");
+      if (!listEl) return;
+
+      const prevChecked = new Set(
+        Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
+      );
+
+      if (countBadge) {
+        countBadge.textContent = `${state.packs.length} available`;
+      }
+
+      if (!state.packs.length) {
+        if (state.packsError) {
+          listEl.innerHTML = `
           <div class="pack-empty-box">
             <span>${esc(state.packsError)}</span>
             <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Retry</button>
           </div>`;
-        const retryBtn = document.getElementById("retry-packs-btn");
-        if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
-      } else if (!state.packsLoaded) {
-        listEl.innerHTML = `<div class="pack-empty-box">Loading trivia packs…</div>`;
-      } else {
-        listEl.innerHTML = `
+          const retryBtn = document.getElementById("retry-packs-btn");
+          if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
+        } else if (!state.packsLoaded) {
+          listEl.innerHTML = `<div class="pack-empty-box">Loading trivia packs…</div>`;
+        } else {
+          listEl.innerHTML = `
           <div class="pack-empty-box">
             <span>No trivia packs loaded on the server yet.</span>
             <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Refresh</button>
           </div>`;
-        const retryBtn = document.getElementById("retry-packs-btn");
-        if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
+          const retryBtn = document.getElementById("retry-packs-btn");
+          if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
+        }
+        return;
       }
-      return;
-    }
 
-    listEl.innerHTML = state.packs
-      .map((p, idx) => {
-        const checked = prevChecked.size > 0 ? prevChecked.has(p.pack_id) : idx === 0;
-        return `
+      listEl.innerHTML = state.packs
+        .map((p, idx) => {
+          const checked = prevChecked.size > 0 ? prevChecked.has(p.pack_id) : idx === 0;
+          return `
         <label class="pack-check-item" dir="${p.rtl ? "rtl" : "auto"}">
           <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
           <div style="flex:1;text-align:start;">
@@ -526,15 +550,15 @@
             </div>
           </div>
         </label>`;
-      })
-      .join("");
-  }
+        })
+        .join("");
+    }
 
-  function openCreateModal() {
-    state.showCreateModal = true;
-    const modalRoot = document.getElementById("modal-root");
+    function openCreateModal() {
+      state.showCreateModal = true;
+      const modalRoot = document.getElementById("modal-root");
 
-    modalRoot.innerHTML = `
+      modalRoot.innerHTML = `
       <div class="modal-backdrop" id="create-backdrop">
         <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Create New Room">
           <div class="modal-header">
@@ -609,50 +633,50 @@
       </div>
     `;
 
-    renderModalPackList();
-    if (!state.packs.length) {
-      fetchBootstrap();
+      renderModalPackList();
+      if (!state.packs.length) {
+        fetchBootstrap();
+      }
+
+      document.getElementById("close-modal-btn").addEventListener("click", closeModal);
+      document.getElementById("create-backdrop").addEventListener("click", (e) => {
+        if (e.target.id === "create-backdrop") closeModal();
+      });
+
+      document.getElementById("create-room-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const selectedPacks = Array.from(
+          modalRoot.querySelectorAll('input[name="pack_id"]:checked')
+        ).map((el) => el.value);
+        if (!selectedPacks.length) {
+          showToast("Select at least one trivia pack.", true);
+          return;
+        }
+        sendWS({
+          type: "create_room",
+          session_token: state.sessionToken,
+          nickname: state.nickname,
+          room_name: document.getElementById("cr-name").value.trim(),
+          pack_ids: selectedPacks,
+          round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
+          timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
+          answer_mode: document.getElementById("cr-answer-mode").value,
+          wager_mode: document.getElementById("cr-wager-mode").value,
+          visibility: document.getElementById("cr-visibility").value,
+          allow_late_join: document.getElementById("cr-late-join").checked,
+        });
+      });
     }
 
-    document.getElementById("close-modal-btn").addEventListener("click", closeModal);
-    document.getElementById("create-backdrop").addEventListener("click", (e) => {
-      if (e.target.id === "create-backdrop") closeModal();
-    });
+    function closeModal() {
+      state.showCreateModal = false;
+      const modalRoot = document.getElementById("modal-root");
+      if (modalRoot) modalRoot.innerHTML = "";
+    }
 
-    document.getElementById("create-room-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const selectedPacks = Array.from(
-        modalRoot.querySelectorAll('input[name="pack_id"]:checked')
-      ).map((el) => el.value);
-      if (!selectedPacks.length) {
-        showToast("Select at least one trivia pack.", true);
-        return;
-      }
-      sendWS({
-        type: "create_room",
-        session_token: state.sessionToken,
-        nickname: state.nickname,
-        room_name: document.getElementById("cr-name").value.trim(),
-        pack_ids: selectedPacks,
-        round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
-        timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
-        answer_mode: document.getElementById("cr-answer-mode").value,
-        wager_mode: document.getElementById("cr-wager-mode").value,
-        visibility: document.getElementById("cr-visibility").value,
-        allow_late_join: document.getElementById("cr-late-join").checked,
-      });
-    });
-  }
-
-  function closeModal() {
-    state.showCreateModal = false;
-    const modalRoot = document.getElementById("modal-root");
-    if (modalRoot) modalRoot.innerHTML = "";
-  }
-
-  function renderRoomHeader(room) {
-    const isHost = Boolean(getHostToken(room.code) || (room.me && room.me.is_host));
-    return `
+    function renderRoomHeader(room) {
+      const isHost = Boolean(getHostToken(room.code) || (room.me && room.me.is_host));
+      return `
       <div class="studio-card room-header-card">
         <div class="room-meta">
           <span class="room-code-chip">${esc(room.code)}</span>
@@ -667,29 +691,29 @@
         </div>
       </div>
     `;
-  }
-
-  function wireLeaveButton() {
-    const btn = document.getElementById("leave-room-btn");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        state.room = null;
-        state.activeRoomCode = "";
-        saveStr(LS_ACTIVE_ROOM, "");
-        stopTimerLoop();
-        sendWS({ type: "leave_room" });
-        render();
-      });
     }
-  }
 
-  function renderRoomLobby(root, room) {
-    const hostToken = getHostToken(room.code);
-    const isHost = Boolean(hostToken);
-    const joinUrl = getJoinUrl(room.code);
-    const qrSvg = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl) : "";
+    function wireLeaveButton() {
+      const btn = document.getElementById("leave-room-btn");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          state.room = null;
+          state.activeRoomCode = "";
+          saveStr(LS_ACTIVE_ROOM, "");
+          stopTimerLoop();
+          sendWS({ type: "leave_room" });
+          render();
+        });
+      }
+    }
 
-    root.innerHTML = `
+    function renderRoomLobby(root, room) {
+      const hostToken = getHostToken(room.code);
+      const isHost = Boolean(hostToken);
+      const joinUrl = getJoinUrl(room.code);
+      const qrSvg = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl) : "";
+
+      root.innerHTML = `
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${room.rtl ? "rtl" : "auto"}">
         <div class="lobby-share-grid">
@@ -713,63 +737,62 @@
             <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);">Players Ready (${room.players.length})</div>
             <div class="player-roster">
               ${room.players
-                .map(
-                  (p) => `<span class="player-chip ${p.connected ? "" : "offline"}" dir="auto">
+          .map(
+            (p) => `<span class="player-chip ${p.connected ? "" : "offline"}" dir="auto">
                     ${esc(p.nickname)}${p.is_host ? " ★" : ""}
                   </span>`
-                )
-                .join("")}
+          )
+          .join("")}
             </div>
           </div>
         </div>
 
-        ${
-          isHost
-            ? `<div class="host-bar">
+        ${isHost
+          ? `<div class="host-bar">
                 <button id="start-game-btn" class="btn btn-primary" style="flex:1;">Start Game</button>
                 <button id="close-room-btn" class="btn btn-danger">Close Room</button>
               </div>`
-            : `<p style="margin-block:18px 0;text-align:center;color:var(--text-secondary);font-weight:700;">
+          : `<p style="margin-block:18px 0;text-align:center;color:var(--text-secondary);font-weight:700;">
                 Waiting for the host to start the game…
               </p>`
         }
       </section>
     `;
 
-    wireLeaveButton();
-    if (isHost) {
-      document.getElementById("start-game-btn").addEventListener("click", () => {
-        sendWS({ type: "start_game", code: room.code, host_token: hostToken });
-      });
-      document.getElementById("close-room-btn").addEventListener("click", () => {
-        sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-      });
+      wireLeaveButton();
+      if (isHost) {
+        document.getElementById("start-game-btn").addEventListener("click", () => {
+          sendWS({ type: "start_game", code: room.code, host_token: hostToken });
+        });
+        document.getElementById("close-room-btn").addEventListener("click", () => {
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
     }
-  }
 
-  function renderQuestionPhase(root, room) {
-    const q = room.question;
-    const me = room.me;
-    const hostToken = getHostToken(room.code);
-    const isHost = Boolean(hostToken);
-    const locked = Boolean(me && me.submitted);
-    const availWagers = (me && me.available_wagers) || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const allChips = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const letters = ["A", "B", "C", "D", "E", "F"];
-    const dir = q.rtl ? "rtl" : "auto";
+    function renderQuestionPhase(root, room) {
+      const q = room.question;
+      const me = room.me;
+      const hostToken = getHostToken(room.code);
+      const isHost = Boolean(hostToken);
+      const locked = Boolean(me && me.submitted);
+      const availWagers = (me && me.available_wagers) || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const allChips = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const letters = ["A", "B", "C", "D", "E", "F"];
+      const dir = q.rtl ? "rtl" : "auto";
 
-    const mediaHtml = q.media_url
-      ? `<div class="question-media-wrap">
+      const mediaHtml = q.media_url
+        ? `<div class="question-media-wrap">
           <div class="media-frame" id="zoom-media-trigger" title="Tap to zoom">
             <img src="${esc(q.media_url)}" alt="Question visual" />
           </div>
         </div>`
-      : "";
+        : "";
 
-    let answerInputHtml = "";
-    if (!locked) {
-      if (room.settings.answer_mode === "multiple_choice") {
-        answerInputHtml = `
+      let answerInputHtml = "";
+      if (!locked) {
+        if (room.settings.answer_mode === "multiple_choice") {
+          answerInputHtml = `
           <div class="choices-grid">
             ${q.choices
               .map(
@@ -781,45 +804,45 @@
               )
               .join("")}
           </div>`;
-      } else {
-        answerInputHtml = `
+        } else {
+          answerInputHtml = `
           <div style="margin-block-end:16px;">
             <label class="field-label" for="free-text-input">Type your answer</label>
             <input id="free-text-input" class="text-input" dir="auto" autocomplete="off"
               placeholder="${q.rtl ? "اكتب إجابتك هنا…" : "Type your answer here…"}"
               value="${esc(state.selectedAnswer)}" />
           </div>`;
+        }
       }
-    }
 
-    const wagerHtml = !locked
-      ? `<div class="wager-section">
+      const wagerHtml = !locked
+        ? `<div class="wager-section">
           <div class="wager-header">
             <span>Confidence Wager ${room.settings.wager_mode === "pool" ? "(One-Time Chips)" : "(1–10 pts)"}</span>
             <span class="badge badge-accent mono">${state.selectedWager} pts</span>
           </div>
           <div class="wager-chips">
             ${allChips
-              .map((val) => {
-                const available = availWagers.includes(val);
-                const selected = state.selectedWager === val && available;
-                return `<button type="button" class="wager-chip ${selected ? "selected" : ""}"
+          .map((val) => {
+            const available = availWagers.includes(val);
+            const selected = state.selectedWager === val && available;
+            return `<button type="button" class="wager-chip ${selected ? "selected" : ""}"
                   data-wager="${val}" ${available ? "" : "disabled"}>${val}</button>`;
-              })
-              .join("")}
+          })
+          .join("")}
           </div>
         </div>
         <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
           Lock In Answer &amp; Wager (${state.selectedWager} pts)
         </button>`
-      : `<div class="locked-banner">
+        : `<div class="locked-banner">
           Locked in: <span dir="auto">${esc(me.my_submission.answer)}</span> · Wager ${me.my_submission.wager} pts
           <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
             ${room.locked_in_count} / ${room.connected_count} players locked in
           </div>
         </div>`;
 
-    root.innerHTML = `
+      root.innerHTML = `
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${dir}">
         <div class="question-top">
@@ -832,100 +855,101 @@
         ${answerInputHtml}
         ${wagerHtml}
 
-        ${
-          isHost
-            ? `<div class="host-bar">
+        ${isHost
+          ? `<div class="host-bar">
                 <button id="host-pause-btn" class="btn btn-secondary btn-sm">${room.paused ? "Resume Timer" : "Pause Timer"}</button>
                 <button id="host-reveal-btn" class="btn btn-secondary btn-sm">Reveal Now</button>
                 <button id="host-close-btn" class="btn btn-danger btn-sm">Close Room</button>
               </div>`
-            : ""
+          : ""
         }
       </section>
     `;
 
-    wireLeaveButton();
+      wireLeaveButton();
 
-    const zoomTrigger = document.getElementById("zoom-media-trigger");
-    if (zoomTrigger) {
-      zoomTrigger.addEventListener("click", () => openLightbox(q.media_url));
-    }
+      const zoomTrigger = document.getElementById("zoom-media-trigger");
+      if (zoomTrigger) {
+        zoomTrigger.addEventListener("click", () => openLightbox(q.media_url));
+      }
 
-    if (!locked) {
-      root.querySelectorAll("[data-choice-idx]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.selectedAnswer = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
-          root.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
-          btn.classList.add("selected");
+      if (!locked) {
+        root.querySelectorAll("[data-choice-idx]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.selectedAnswer = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
+            root.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+          });
         });
-      });
 
-      const freeInput = document.getElementById("free-text-input");
-      if (freeInput) {
-        freeInput.addEventListener("input", () => {
-          state.selectedAnswer = freeInput.value;
+        const freeInput = document.getElementById("free-text-input");
+        if (freeInput) {
+          freeInput.addEventListener("input", () => {
+            state.selectedAnswer = freeInput.value;
+          });
+        }
+
+        root.querySelectorAll("[data-wager]").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            state.selectedWager = parseInt(chip.dataset.wager, 10);
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
+            root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
+            chip.classList.add("selected");
+            const lockBtn = document.getElementById("lock-in-btn");
+            if (lockBtn) lockBtn.textContent = `Lock In Answer & Wager (${state.selectedWager} pts)`;
+            const badge = root.querySelector(".wager-header .badge");
+            if (badge) badge.textContent = `${state.selectedWager} pts`;
+          });
+        });
+
+        document.getElementById("lock-in-btn").addEventListener("click", () => {
+          if (!state.selectedAnswer.trim()) {
+            showToast("Choose or enter an answer before locking in!", true);
+            return;
+          }
+          if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+          sendWS({
+            type: "submit_answer",
+            code: room.code,
+            session_token: state.sessionToken,
+            answer: state.selectedAnswer,
+            wager: state.selectedWager,
+          });
         });
       }
 
-      root.querySelectorAll("[data-wager]").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          state.selectedWager = parseInt(chip.dataset.wager, 10);
-          root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
-          chip.classList.add("selected");
-          const lockBtn = document.getElementById("lock-in-btn");
-          if (lockBtn) lockBtn.textContent = `Lock In Answer & Wager (${state.selectedWager} pts)`;
-          const badge = root.querySelector(".wager-header .badge");
-          if (badge) badge.textContent = `${state.selectedWager} pts`;
+      if (isHost) {
+        document.getElementById("host-pause-btn").addEventListener("click", () => {
+          sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
         });
-      });
-
-      document.getElementById("lock-in-btn").addEventListener("click", () => {
-        if (!state.selectedAnswer.trim()) {
-          showToast("Choose or enter an answer before locking in!", true);
-          return;
-        }
-        sendWS({
-          type: "submit_answer",
-          code: room.code,
-          session_token: state.sessionToken,
-          answer: state.selectedAnswer,
-          wager: state.selectedWager,
+        document.getElementById("host-reveal-btn").addEventListener("click", () => {
+          sendWS({ type: "next_step", code: room.code, host_token: hostToken });
         });
-      });
+        document.getElementById("host-close-btn").addEventListener("click", () => {
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
     }
 
-    if (isHost) {
-      document.getElementById("host-pause-btn").addEventListener("click", () => {
-        sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
-      });
-      document.getElementById("host-reveal-btn").addEventListener("click", () => {
-        sendWS({ type: "next_step", code: room.code, host_token: hostToken });
-      });
-      document.getElementById("host-close-btn").addEventListener("click", () => {
-        sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-      });
-    }
-  }
+    function renderRevealPhase(root, room) {
+      const rev = room.reveal;
+      const hostToken = getHostToken(room.code);
+      const isHost = Boolean(hostToken);
+      const isFreeText = room.settings.answer_mode === "free_text";
+      const isLast = rev.round_index + 1 >= rev.total_rounds;
 
-  function renderRevealPhase(root, room) {
-    const rev = room.reveal;
-    const hostToken = getHostToken(room.code);
-    const isHost = Boolean(hostToken);
-    const isFreeText = room.settings.answer_mode === "free_text";
-    const isLast = rev.round_index + 1 >= rev.total_rounds;
-
-    const outcomesHtml = rev.outcomes
-      .map((o) => {
-        const deltaClass = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
-        const deltaLabel = o.delta > 0 ? `+${o.delta}` : String(o.delta);
-        const overrideBtn =
-          isHost && isFreeText && o.outcome !== "timeout"
-            ? `<button class="btn btn-sm ${o.is_correct ? "btn-danger" : "btn-success"}"
+      const outcomesHtml = rev.outcomes
+        .map((o) => {
+          const deltaClass = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
+          const deltaLabel = o.delta > 0 ? `+${o.delta}` : String(o.delta);
+          const overrideBtn =
+            isHost && isFreeText && o.outcome !== "timeout"
+              ? `<button class="btn btn-sm ${o.is_correct ? "btn-danger" : "btn-success"}"
                 data-override-token="${esc(o.session_token)}" data-override-approve="${!o.is_correct}">
                 ${o.is_correct ? "Mark Wrong" : "Approve"}
               </button>`
-            : "";
-        return `
+              : "";
+          return `
           <div class="outcome-row ${esc(o.outcome)}">
             <div style="text-align:start;min-width:0;flex:1;">
               <div style="font-weight:800;" dir="auto">${esc(o.nickname)}</div>
@@ -940,10 +964,10 @@
               <span class="mono" style="font-weight:800;min-width:46px;text-align:end;">${o.score}</span>
             </div>
           </div>`;
-      })
-      .join("");
+        })
+        .join("");
 
-    root.innerHTML = `
+      root.innerHTML = `
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${rev.rtl ? "rtl" : "auto"}">
         <div class="question-top">
@@ -957,72 +981,71 @@
 
         <div class="outcomes-list">${outcomesHtml}</div>
 
-        ${
-          isHost
-            ? `<div class="host-bar">
+        ${isHost
+          ? `<div class="host-bar">
                 <button id="host-next-btn" class="btn btn-primary" style="flex:1;">
                   ${isLast ? "Show Finale Podium" : "Next Question"}
                 </button>
                 <button id="host-close-btn" class="btn btn-danger">Close Room</button>
               </div>`
-            : `<p style="margin:0;text-align:center;color:var(--text-muted);font-weight:700;">
+          : `<p style="margin:0;text-align:center;color:var(--text-muted);font-weight:700;">
                 Waiting for host to continue…
               </p>`
         }
       </section>
     `;
 
-    wireLeaveButton();
-    if (isHost) {
-      root.querySelectorAll("[data-override-token]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          sendWS({
-            type: "override_answer",
-            code: room.code,
-            host_token: hostToken,
-            target_session_token: btn.dataset.overrideToken,
-            approve: btn.dataset.overrideApprove === "true",
+      wireLeaveButton();
+      if (isHost) {
+        root.querySelectorAll("[data-override-token]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            sendWS({
+              type: "override_answer",
+              code: room.code,
+              host_token: hostToken,
+              target_session_token: btn.dataset.overrideToken,
+              approve: btn.dataset.overrideApprove === "true",
+            });
           });
         });
-      });
-      document.getElementById("host-next-btn").addEventListener("click", () => {
-        sendWS({ type: "next_step", code: room.code, host_token: hostToken });
-      });
-      document.getElementById("host-close-btn").addEventListener("click", () => {
-        sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-      });
+        document.getElementById("host-next-btn").addEventListener("click", () => {
+          sendWS({ type: "next_step", code: room.code, host_token: hostToken });
+        });
+        document.getElementById("host-close-btn").addEventListener("click", () => {
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
     }
-  }
 
-  function renderFinalePhase(root, room) {
-    const fin = room.finale;
-    const hostToken = getHostToken(room.code);
-    const isHost = Boolean(hostToken);
-    const medals = ["#1", "#2", "#3"];
+    function renderFinalePhase(root, room) {
+      const fin = room.finale;
+      const hostToken = getHostToken(room.code);
+      const isHost = Boolean(hostToken);
+      const medals = ["#1", "#2", "#3"];
 
-    const podiumHtml = fin.podium
-      .map(
-        (p, idx) => `
+      const podiumHtml = fin.podium
+        .map(
+          (p, idx) => `
         <div class="podium-slot rank-${idx + 1}">
           <div class="podium-medal">${medals[idx] || "#" + (idx + 1)}</div>
           <div class="podium-name" dir="auto">${esc(p.nickname)}</div>
           <div class="podium-score">${p.score} pts</div>
         </div>`
-      )
-      .join("");
+        )
+        .join("");
 
-    const awardsHtml = fin.awards
-      .map(
-        (a) => `
+      const awardsHtml = fin.awards
+        .map(
+          (a) => `
         <div class="award-card">
           <div class="award-title">${esc(a.title)}</div>
           <div class="award-winner" dir="auto">${esc(a.nickname)}</div>
           <div class="award-sub">${esc(a.subtitle)}</div>
         </div>`
-      )
-      .join("");
+        )
+        .join("");
 
-    root.innerHTML = `
+      root.innerHTML = `
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in">
         <div style="text-align:center;">
@@ -1035,57 +1058,69 @@
 
         <div class="outcomes-list">
           ${fin.leaderboard
-            .map(
-              (row) => `
+          .map(
+            (row) => `
               <div class="outcome-row">
                 <div style="font-weight:800;" dir="auto">#${row.rank} ${esc(row.nickname)}</div>
                 <div class="mono" style="font-weight:800;color:var(--accent-primary);">${row.score} pts</div>
               </div>`
-            )
-            .join("")}
+          )
+          .join("")}
         </div>
 
-        ${
-          isHost
-            ? `<div class="host-bar">
+        ${isHost
+          ? `<div class="host-bar">
                 <button id="play-again-btn" class="btn btn-primary" style="flex:1;">Play Again</button>
                 <button id="close-room-btn" class="btn btn-danger">Close Room</button>
               </div>`
-            : ""
+          : ""
         }
       </section>
     `;
 
-    wireLeaveButton();
-    if (isHost) {
-      document.getElementById("play-again-btn").addEventListener("click", () => {
-        sendWS({ type: "play_again", code: room.code, host_token: hostToken });
-      });
-      document.getElementById("close-room-btn").addEventListener("click", () => {
-        sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-      });
+      wireLeaveButton();
+      if (isHost) {
+        document.getElementById("play-again-btn").addEventListener("click", () => {
+          sendWS({ type: "play_again", code: room.code, host_token: hostToken });
+        });
+        document.getElementById("close-room-btn").addEventListener("click", () => {
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
     }
-  }
 
-  function openLightbox(src) {
-    const box = document.getElementById("lightbox-root");
-    box.innerHTML = `
+    function openLightbox(src) {
+      const box = document.getElementById("lightbox-root");
+      box.innerHTML = `
       <div class="lightbox" id="lightbox-close">
         <div class="media-frame">
           <img src="${esc(src)}" alt="Zoomed visual" />
         </div>
       </div>`;
-    document.getElementById("lightbox-close").addEventListener("click", () => {
-      box.innerHTML = "";
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.QuizRoomsTheme) {
-      window.QuizRoomsTheme.mountPill(document.getElementById("theme-pill-mount"));
+      document.getElementById("lightbox-close").addEventListener("click", () => {
+        box.innerHTML = "";
+      });
     }
-    render();
-    fetchBootstrap();
-    connectWS();
-  });
-})();
+
+    function syncSoundButton(btn, enabled) {
+      if (!btn) return;
+      btn.textContent = enabled ? "Sound: On" : "Sound: Off";
+      btn.setAttribute("aria-pressed", String(enabled));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.QuizRoomsTheme) {
+        window.QuizRoomsTheme.mountPill(document.getElementById("theme-pill-mount"));
+      }
+      const soundBtn = document.getElementById("play-sound-btn");
+      if (soundBtn && window.QuizRoomsSFX) {
+        syncSoundButton(soundBtn, window.QuizRoomsSFX.init("quizrooms_sound_play"));
+        soundBtn.addEventListener("click", () => {
+          syncSoundButton(soundBtn, window.QuizRoomsSFX.toggle());
+        });
+      }
+      render();
+      fetchBootstrap();
+      connectWS();
+    });
+  }) ();
