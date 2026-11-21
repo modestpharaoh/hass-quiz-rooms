@@ -259,8 +259,8 @@ class PackRegistry:
     """Manages built-in and custom trivia packs plus opaque media lookup."""
 
     def __init__(self, builtin_dir: Path, custom_dir: Path) -> None:
-        self.builtin_dir = builtin_dir.resolve()
-        self.custom_dir = custom_dir.resolve()
+        self.builtin_dir = Path(builtin_dir)
+        self.custom_dir = Path(custom_dir)
         self._salt = secrets.token_hex(16)
         self._packs: dict[str, Pack] = {}
         self._media: dict[str, MediaAsset] = {}
@@ -268,7 +268,9 @@ class PackRegistry:
         self._pinned_media: dict[str, MediaAsset] = {}
 
     def reload(self) -> list[Pack]:
-        """Load built-in and custom packs from disk."""
+        """Load built-in and custom packs from disk (blocking I/O — run in executor)."""
+        self.builtin_dir = self.builtin_dir.resolve()
+        self.custom_dir = self.custom_dir.resolve()
         packs: dict[str, Pack] = {}
         media: dict[str, MediaAsset] = {}
 

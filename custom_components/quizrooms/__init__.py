@@ -50,25 +50,40 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up QuizRooms from a config entry."""
     domain_data = hass.data.setdefault(DOMAIN, {})
     coordinator = QuizRoomsCoordinator.from_hass(hass, options=dict(entry.options))
+    await coordinator.async_initialize()
     domain_data["coordinator"] = coordinator
     domain_data["entry_id"] = entry.entry_id
 
-    # Register network_guard middleware once on hass.http.app
+    # Attach aiohttp middleware only if app is not yet frozen (HA freezes hass.http.app
+    # once HTTP starts; all unauthenticated QuizRooms views also enforce NetworkGuard directly).
     if not domain_data.get("middleware_registered"):
         app = getattr(getattr(hass, "http", None), "app", None)
-        if app is not None and hasattr(app, "middlewares"):
+        middlewares = getattr(app, "middlewares", None)
+        is_frozen = bool(getattr(app, "frozen", False) or getattr(middlewares, "frozen", False))
+        if middlewares is not None and not is_frozen:
             middleware = create_network_guard_middleware(
                 lambda: hass.data.get(DOMAIN, {}).get("coordinator")
             )
-            app.middlewares.insert(0, middleware)
-            domain_data["middleware_registered"] = True
+            try:
+                middlewares.insert(0, middleware)
+                domain_data["middleware_registered"] = True
+            except RuntimeError:
+                _LOGGER.debug(
+                    "hass.http.app.middlewares is frozen; relying on view-level NetworkGuard enforcement."
+                )
 
-    # Register HTTP views & WebSocket endpoint once
+    # Register HTTP views & WebSocket endpoint once (views dynamically resolve live coordinator)
     if not domain_data.get("views_registered"):
         register_views(hass, coordinator)
         domain_data["views_registered"] = True
 
-    # Register HA Admin Sidebar Panel
+    # Register HA Admin Sidebar Panel (clean up any stale registration on reload)
+    if DOMAIN in (hass.data.get("frontend_panels") or {}):
+        try:
+            frontend.async_remove_panel(hass, DOMAIN)
+        except Exception:  # pragma: no cover - defensive across HA versions
+            pass
+
     await panel_custom.async_register_panel(
         hass,
         webcomponent_name="quizrooms-admin-panel",

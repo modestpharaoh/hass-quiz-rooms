@@ -69,11 +69,14 @@ class QuizRoomsCoordinator:
         custom_packs_dir: Path,
         frontend_dir: Path,
         options: dict[str, Any] | None = None,
+        load_packs: bool = True,
     ) -> None:
         self.hass = hass
-        self.frontend_dir = frontend_dir.resolve()
+        self.frontend_dir = Path(frontend_dir)
         self.pack_registry = PackRegistry(builtin_packs_dir, custom_packs_dir)
-        self.pack_registry.reload()
+        if load_packs:
+            self.frontend_dir = self.frontend_dir.resolve()
+            self.pack_registry.reload()
 
         self.engine = QuizEngine(self.pack_registry, max_rooms=DEFAULT_MAX_ROOMS)
         self.network_guard = NetworkGuard()
@@ -89,7 +92,7 @@ class QuizRoomsCoordinator:
 
     @classmethod
     def from_hass(cls, hass: Any, options: dict[str, Any] | None = None) -> "QuizRoomsCoordinator":
-        base_dir = Path(__file__).resolve().parent
+        base_dir = Path(__file__).parent
         builtin_packs_dir = base_dir / "packs"
         frontend_dir = base_dir / "frontend"
         config_path = Path(hass.config.path(CUSTOM_PACKS_REL_DIR))
@@ -99,7 +102,23 @@ class QuizRoomsCoordinator:
             custom_packs_dir=config_path,
             frontend_dir=frontend_dir,
             options=options,
+            load_packs=False,
         )
+
+    async def async_run_in_executor(self, func: Callable[..., Any], *args: Any) -> Any:
+        """Run blocking filesystem or CPU work off the asyncio event loop."""
+        executor_fn = getattr(self.hass, "async_add_executor_job", None)
+        if callable(executor_fn):
+            return await executor_fn(func, *args)
+        return await asyncio.to_thread(func, *args)
+
+    async def async_initialize(self) -> None:
+        """Perform initial non-blocking filesystem resolution and pack loading."""
+        def _init_sync() -> None:
+            self.frontend_dir = self.frontend_dir.resolve()
+            self.pack_registry.reload()
+
+        await self.async_run_in_executor(_init_sync)
 
     def apply_options(self, options: dict[str, Any]) -> None:
         """Apply ConfigEntry / OptionsFlow settings dynamically without restart."""
@@ -421,7 +440,29 @@ class QuizRoomsCoordinator:
         await self.broadcast_lobby_and_tv()
         self.notify_entities()
 
+    async def async_start_game(
+        self,
+        code: str,
+        *,
+        host_token: str | None = None,
+        is_admin: bool = False,
+    ) -> Any:
+        """Start a room and pin snapshot media bytes off the event loop."""
+        room = self.engine.start_game(
+            code, host_token=host_token, is_admin=is_admin, pin_media=False
+        )
+        needed_media = {q.media_id for q in room.questions if q.media_id}
+        if needed_media:
+            room.pinned_media = await self.async_run_in_executor(
+                self.pack_registry.pin_media_for_room, needed_media
+            )
+        self.schedule_room_timer(room.code)
+        await self.broadcast_room_state(room.code)
+        await self.broadcast_lobby_and_tv()
+        self.notify_entities()
+        return room
+
     async def async_reload_packs(self) -> list[dict[str, Any]]:
-        packs = self.pack_registry.reload()
+        packs = await self.async_run_in_executor(self.pack_registry.reload)
         await self.broadcast_lobby_and_tv()
         return [p.to_summary() for p in packs]

@@ -13,6 +13,7 @@ from aiohttp import WSMsgType, web
 from homeassistant.components.http import HomeAssistantView
 
 from .const import (
+    DOMAIN,
     MAX_UPLOAD_BYTES,
     PHASE_QUESTION,
     URL_ADMIN_PANEL_JS,
@@ -69,83 +70,108 @@ def _require_ha_admin(request: web.Request) -> web.Response | None:
     return None
 
 
+def _read_text_sync(path: Path) -> str:
+    """Read UTF-8 text file synchronously (always invoke via executor)."""
+    return path.read_text(encoding="utf-8")
+
+
+def _read_asset_sync(frontend_dir: Path, filepath: str) -> tuple[bytes, str] | None:
+    """Resolve and read a local frontend asset synchronously (always invoke via executor)."""
+    if not filepath or "\x00" in filepath or "\\" in filepath:
+        return None
+    assets_root = (frontend_dir / "assets").resolve()
+    candidate = (assets_root / filepath).resolve()
+    if not candidate.is_relative_to(assets_root) or not candidate.is_file():
+        return None
+    ext = candidate.suffix.lower()
+    content_type = (
+        ASSET_MIME_OVERRIDES.get(ext)
+        or mimetypes.guess_type(str(candidate))[0]
+        or "application/octet-stream"
+    )
+    return candidate.read_bytes(), content_type
+
+
+class _QuizRoomsBaseView(HomeAssistantView):
+    """Base view that resolves the active QuizRoomsCoordinator cleanly across reloads."""
+
+    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
+        self._fallback_coordinator = coordinator
+
+    @property
+    def coordinator(self) -> QuizRoomsCoordinator:
+        hass = getattr(self._fallback_coordinator, "hass", None)
+        hass_data = getattr(hass, "data", None)
+        if isinstance(hass_data, dict):
+            live = hass_data.get(DOMAIN, {}).get("coordinator")
+            if live is not None:
+                return live
+        return self._fallback_coordinator
+
+
 # ---------------------------------------------------------------------------
 # Unauthenticated LAN-Guarded Guest, TV, Asset & Media Views
 # ---------------------------------------------------------------------------
 
 
-class QuizRoomsPlayView(HomeAssistantView):
+class QuizRoomsPlayView(_QuizRoomsBaseView):
     """Serve the Guest Lobby & Player SPA at /quizrooms/play."""
 
     url = URL_PLAY
     name = "quizrooms:play"
     requires_auth = False
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def get(self, request: web.Request) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
         html_path = self.coordinator.frontend_dir / "play.html"
+        html = await self.coordinator.async_run_in_executor(_read_text_sync, html_path)
         return web.Response(
-            text=html_path.read_text(encoding="utf-8"),
+            text=html,
             content_type="text/html",
             headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
         )
 
 
-class QuizRoomsTVView(HomeAssistantView):
+class QuizRoomsTVView(_QuizRoomsBaseView):
     """Serve the 16:9 TV Studio Dashboard at /quizrooms/tv."""
 
     url = URL_TV
     name = "quizrooms:tv"
     requires_auth = False
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def get(self, request: web.Request) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
         html_path = self.coordinator.frontend_dir / "tv.html"
+        html = await self.coordinator.async_run_in_executor(_read_text_sync, html_path)
         return web.Response(
-            text=html_path.read_text(encoding="utf-8"),
+            text=html,
             content_type="text/html",
             headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
         )
 
 
-class QuizRoomsAssetsView(HomeAssistantView):
+class QuizRoomsAssetsView(_QuizRoomsBaseView):
     """Serve local CSS, JS, and bundled fonts under /quizrooms/assets/{filepath:.+}."""
 
     url = f"{URL_ASSETS}/{{filepath:.+}}"
     name = "quizrooms:assets"
     requires_auth = False
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def get(self, request: web.Request, filepath: str) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
 
-        assets_root = (self.coordinator.frontend_dir / "assets").resolve()
-        if not filepath or "\x00" in filepath or "\\" in filepath:
-            return web.Response(status=404)
-
-        candidate = (assets_root / filepath).resolve()
-        if not candidate.is_relative_to(assets_root) or not candidate.is_file():
-            return web.Response(status=404)
-
-        ext = candidate.suffix.lower()
-        content_type = (
-            ASSET_MIME_OVERRIDES.get(ext)
-            or mimetypes.guess_type(str(candidate))[0]
-            or "application/octet-stream"
+        found = await self.coordinator.async_run_in_executor(
+            _read_asset_sync, self.coordinator.frontend_dir, filepath
         )
+        if found is None:
+            return web.Response(status=404)
+
+        data, content_type = found
         return web.Response(
-            body=candidate.read_bytes(),
+            body=data,
             headers={
                 "Content-Type": content_type,
                 "Cache-Control": "public, max-age=3600",
@@ -154,21 +180,20 @@ class QuizRoomsAssetsView(HomeAssistantView):
         )
 
 
-class QuizRoomsMediaView(HomeAssistantView):
+class QuizRoomsMediaView(_QuizRoomsBaseView):
     """Serve pack images via opaque IDs at /quizrooms/media/{opaque_id} with strict sandbox CSP."""
 
     url = f"{URL_MEDIA}/{{opaque_id}}"
     name = "quizrooms:media"
     requires_auth = False
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def get(self, request: web.Request, opaque_id: str) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
 
-        found = self.coordinator.pack_registry.get_media_bytes(opaque_id)
+        found = await self.coordinator.async_run_in_executor(
+            self.coordinator.pack_registry.get_media_bytes, opaque_id
+        )
         if found is None:
             return web.Response(
                 status=404,
@@ -182,15 +207,12 @@ class QuizRoomsMediaView(HomeAssistantView):
         return web.Response(body=data, headers=headers)
 
 
-class QuizRoomsPublicBootstrapView(HomeAssistantView):
+class QuizRoomsPublicBootstrapView(_QuizRoomsBaseView):
     """Return initial lobby state, packs, and LAN base URL for /play and /tv."""
 
     url = f"{URL_API_PUBLIC}/bootstrap"
     name = "quizrooms:public_bootstrap"
     requires_auth = False
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def get(self, request: web.Request) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
@@ -206,15 +228,12 @@ class QuizRoomsPublicBootstrapView(HomeAssistantView):
         )
 
 
-class QuizRoomsWebSocketView(HomeAssistantView):
+class QuizRoomsWebSocketView(_QuizRoomsBaseView):
     """Multiplexed WebSocket endpoint at /quizrooms/ws for Lobby, Players, and TV displays."""
 
     url = URL_WS
     name = "quizrooms:ws"
     requires_auth = False
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def get(self, request: web.Request) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
@@ -385,11 +404,7 @@ class QuizRoomsWebSocketView(HomeAssistantView):
 
             if msg_type == "start_game":
                 code = str(data.get("code") or client.room_code or "")
-                room = engine.start_game(code, host_token=data.get("host_token"))
-                self.coordinator.schedule_room_timer(room.code)
-                await self.coordinator.broadcast_room_state(room.code)
-                await self.coordinator.broadcast_lobby_and_tv()
-                self.coordinator.notify_entities()
+                await self.coordinator.async_start_game(code, host_token=data.get("host_token"))
                 return
 
             if msg_type == "submit_answer":
@@ -497,34 +512,29 @@ class QuizRoomsWebSocketView(HomeAssistantView):
 # ---------------------------------------------------------------------------
 
 
-class QuizRoomsAdminPanelJSView(HomeAssistantView):
+class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
     """Serve the HA Sidebar Admin Panel JS module."""
 
     url = URL_ADMIN_PANEL_JS
     name = "quizrooms:admin_panel_js"
     requires_auth = False  # Browser module import from HA sidebar; all data APIs require HA admin auth
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def get(self, request: web.Request) -> web.StreamResponse:
         js_path = self.coordinator.frontend_dir / "admin-panel.js"
+        js_text = await self.coordinator.async_run_in_executor(_read_text_sync, js_path)
         return web.Response(
-            text=js_path.read_text(encoding="utf-8"),
+            text=js_text,
             content_type="application/javascript",
             headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
         )
 
 
-class QuizRoomsAdminStateView(HomeAssistantView):
+class QuizRoomsAdminStateView(_QuizRoomsBaseView):
     """Return full admin state (all rooms, packs, max_rooms, TV state)."""
 
     url = f"{URL_API_ADMIN}/state"
     name = "quizrooms:admin_state"
     requires_auth = True
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def get(self, request: web.Request) -> web.StreamResponse:
         if denied := _require_ha_admin(request):
@@ -565,15 +575,12 @@ class QuizRoomsAdminPackTemplateView(HomeAssistantView):
         )
 
 
-class QuizRoomsAdminPackImportView(HomeAssistantView):
+class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
     """Upload and import a .json or .zip pack archive (Admin only)."""
 
     url = f"{URL_API_ADMIN}/packs/import"
     name = "quizrooms:admin_pack_import"
     requires_auth = True
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def post(self, request: web.Request) -> web.StreamResponse:
         if denied := _require_ha_admin(request):
@@ -615,7 +622,7 @@ class QuizRoomsAdminPackImportView(HomeAssistantView):
             file_bytes = await request.read()
 
         try:
-            pack = await self.coordinator.hass.async_add_executor_job(
+            pack = await self.coordinator.async_run_in_executor(
                 lambda: self.coordinator.pack_registry.import_pack_bytes(
                     filename, file_bytes, overwrite=overwrite
                 )
@@ -634,22 +641,19 @@ class QuizRoomsAdminPackImportView(HomeAssistantView):
         return web.json_response({"ok": True, "pack": pack.to_summary()}, status=201)
 
 
-class QuizRoomsAdminPackDeleteView(HomeAssistantView):
+class QuizRoomsAdminPackDeleteView(_QuizRoomsBaseView):
     """Delete an imported custom pack (built-in packs are protected)."""
 
     url = f"{URL_API_ADMIN}/packs/{{pack_id}}"
     name = "quizrooms:admin_pack_delete"
     requires_auth = True
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
-
     async def delete(self, request: web.Request, pack_id: str) -> web.StreamResponse:
         if denied := _require_ha_admin(request):
             return denied
 
         try:
-            await self.coordinator.hass.async_add_executor_job(
+            await self.coordinator.async_run_in_executor(
                 self.coordinator.pack_registry.delete_custom_pack, pack_id
             )
         except PackValidationError as err:
@@ -662,15 +666,12 @@ class QuizRoomsAdminPackDeleteView(HomeAssistantView):
         return web.json_response({"ok": True, "deleted": pack_id})
 
 
-class QuizRoomsAdminRoomActionView(HomeAssistantView):
+class QuizRoomsAdminRoomActionView(_QuizRoomsBaseView):
     """Allow HA Admins to advance, pause, resume, or force-close any room."""
 
     url = f"{URL_API_ADMIN}/rooms/{{code}}/action"
     name = "quizrooms:admin_room_action"
     requires_auth = True
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def post(self, request: web.Request, code: str) -> web.StreamResponse:
         if denied := _require_ha_admin(request):
@@ -701,11 +702,7 @@ class QuizRoomsAdminRoomActionView(HomeAssistantView):
                 await self.coordinator.broadcast_lobby_and_tv()
                 self.coordinator.notify_entities()
             elif action == "start":
-                room = self.coordinator.engine.start_game(code, is_admin=True)
-                self.coordinator.schedule_room_timer(room.code)
-                await self.coordinator.broadcast_room_state(room.code)
-                await self.coordinator.broadcast_lobby_and_tv()
-                self.coordinator.notify_entities()
+                await self.coordinator.async_start_game(code, is_admin=True)
             else:
                 return web.json_response(
                     {"error": "invalid_action", "message": f"Unsupported action '{action}'."},
@@ -717,15 +714,12 @@ class QuizRoomsAdminRoomActionView(HomeAssistantView):
         return web.json_response({"ok": True})
 
 
-class QuizRoomsAdminTVView(HomeAssistantView):
+class QuizRoomsAdminTVView(_QuizRoomsBaseView):
     """Control TV Dashboard mode/room/theme from Admin Panel."""
 
     url = f"{URL_API_ADMIN}/tv"
     name = "quizrooms:admin_tv"
     requires_auth = True
-
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
-        self.coordinator = coordinator
 
     async def post(self, request: web.Request) -> web.StreamResponse:
         if denied := _require_ha_admin(request):

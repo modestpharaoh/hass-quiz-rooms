@@ -419,6 +419,7 @@ class QuizEngine:
         *,
         host_token: str | None = None,
         is_admin: bool = False,
+        pin_media: bool = True,
     ) -> Room:
         """Snapshot selected pack questions into the room and start Question 1."""
         room = self._require_room(code)
@@ -469,8 +470,11 @@ class QuizEngine:
         room.pack_titles = pack_titles or room.pack_titles
 
         # Pin snapshot media bytes so active games survive admin pack deletion
-        needed_media = {q.media_id for q in room.questions if q.media_id}
-        room.pinned_media = self.pack_registry.pin_media_for_room(needed_media)
+        if pin_media:
+            needed_media = {q.media_id for q in room.questions if q.media_id}
+            room.pinned_media = self.pack_registry.pin_media_for_room(needed_media)
+        else:
+            room.pinned_media = {}
 
         # Reset player stats cleanly
         for player in room.players.values():

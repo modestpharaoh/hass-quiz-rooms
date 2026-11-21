@@ -98,27 +98,37 @@ class QuizRoomsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     def async_get_options_flow(
         config_entry: config_entries.ConfigEntry,
     ) -> config_entries.OptionsFlow:
+        if hasattr(config_entries.OptionsFlow, "config_entry"):
+            return QuizRoomsOptionsFlow()
         return QuizRoomsOptionsFlow(config_entry)
 
 
 class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
     """Runtime options flow (applied dynamically without restart)."""
 
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
-        self._config_entry = config_entry
+    def __init__(self, config_entry: config_entries.ConfigEntry | None = None) -> None:
+        if config_entry is not None:
+            self._fallback_config_entry = config_entry
+
+    @property
+    def _entry(self) -> config_entries.ConfigEntry:
+        if hasattr(self, "_fallback_config_entry"):
+            return self._fallback_config_entry
+        return self.config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
     ) -> config_entries.ConfigFlowResult:
         errors: dict[str, str] = {}
+        options = self._entry.options
         current = {
-            CONF_ALLOW_EXTERNAL_ACCESS: self._config_entry.options.get(
+            CONF_ALLOW_EXTERNAL_ACCESS: options.get(
                 CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS
             ),
-            CONF_ALLOWED_SUBNETS: self._config_entry.options.get(
+            CONF_ALLOWED_SUBNETS: options.get(
                 CONF_ALLOWED_SUBNETS, DEFAULT_ALLOWED_SUBNETS
             ),
-            CONF_CUSTOM_LAN_BASE_URL: self._config_entry.options.get(
+            CONF_CUSTOM_LAN_BASE_URL: options.get(
                 CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL
             ),
         }
