@@ -32,9 +32,12 @@ from .packs import PackRegistry
 _LOGGER = logging.getLogger(__name__)
 
 
-@dataclass
+@dataclass(eq=False)
 class WSClient:
-    """Represents a connected WebSocket client (lobby, room player, or TV display)."""
+    """Represents a connected WebSocket client (lobby, room player, or TV display).
+
+    Uses identity equality/hashing (eq=False) so live connections can be stored in sets.
+    """
 
     ws: Any
     role: str  # "lobby" | "room" | "tv"

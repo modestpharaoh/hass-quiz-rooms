@@ -14,6 +14,7 @@ from custom_components.quizrooms.views import (
     QuizRoomsMediaView,
     QuizRoomsPlayView,
     QuizRoomsTVView,
+    QuizRoomsWebSocketView,
 )
 from tests.conftest import FakeRequest
 
@@ -171,5 +172,83 @@ def test_setup_entry_handles_frozen_app_and_offloads_all_file_io(tmp_path: Path)
 
         # 5. Clean unload
         assert await async_unload_entry(hass, entry) is True
+
+    asyncio.run(run())
+
+
+def test_websocket_lifecycle_create_and_start_room(tmp_path: Path, monkeypatch) -> None:
+    """Verify WSClient hashing, hello handshake, create_room, start_game, and disconnect."""
+    import json
+    from aiohttp import WSMsgType, web
+
+    hass = _FakeHass(tmp_path)
+    entry = _FakeEntry()
+
+    class _FakeWSMsg:
+        def __init__(self, payload: dict[str, Any]) -> None:
+            self.type = WSMsgType.TEXT
+            self.data = json.dumps(payload)
+
+    class _FakeWS:
+        def __init__(self, incoming: list[dict[str, Any]]) -> None:
+            self._incoming = list(incoming)
+            self.sent: list[dict[str, Any]] = []
+            self.prepared = False
+
+        async def prepare(self, request: Any) -> None:
+            self.prepared = True
+
+        async def send_json(self, payload: dict[str, Any]) -> None:
+            self.sent.append(payload)
+
+        async def close(self) -> None:
+            return None
+
+        def __aiter__(self):
+            return self
+
+        async def __anext__(self):
+            if not self._incoming:
+                raise StopAsyncIteration
+            return _FakeWSMsg(self._incoming.pop(0))
+
+    async def run() -> None:
+        await async_setup_entry(hass, entry)
+        coord = hass.data[DOMAIN]["coordinator"]
+
+        ws_instance = _FakeWS(
+            [
+                {
+                    "type": "create_room",
+                    "session_token": "browser_tok_1",
+                    "nickname": "PlayerOne",
+                    "room_name": "Studio Night",
+                    "pack_ids": ["countries_flags"],
+                    "round_count": 3,
+                    "timer_seconds": 30,
+                    "answer_mode": "multiple_choice",
+                    "wager_mode": "free_1_to_10",
+                    "visibility": "public",
+                    "allow_late_join": True,
+                }
+            ]
+        )
+        monkeypatch.setattr(web, "WebSocketResponse", lambda **kw: ws_instance)
+
+        ws_view = QuizRoomsWebSocketView(coord)
+        await ws_view.get(FakeRequest(path="/quizrooms/ws", query={"role": "lobby"}))
+
+        assert ws_instance.prepared is True
+        types_sent = [m["type"] for m in ws_instance.sent]
+        assert "hello" in types_sent
+        assert "room_created" in types_sent
+        hello_msg = next(m for m in ws_instance.sent if m["type"] == "hello")
+        assert len(hello_msg["packs"]) == 3
+        created_msg = next(m for m in ws_instance.sent if m["type"] == "room_created")
+        assert created_msg["code"] in coord.engine.rooms
+        assert created_msg["host_token"]
+        assert len(coord._ws_clients) == 0  # cleaned up on disconnect
+
+        await async_unload_entry(hass, entry)
 
     asyncio.run(run())
