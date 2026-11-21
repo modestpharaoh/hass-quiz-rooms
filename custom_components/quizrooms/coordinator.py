@@ -10,6 +10,7 @@ from typing import Any, Callable
 
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 
+from .avatars import AvatarStore, list_preset_catalog
 from .const import (
     ALLOWED_THEMES,
     ALLOWED_TV_MODES,
@@ -94,9 +95,11 @@ class QuizRoomsCoordinator:
     ) -> None:
         self.hass = hass
         self.frontend_dir = Path(frontend_dir)
+        self.avatar_store = AvatarStore(self.frontend_dir)
         self.pack_registry = PackRegistry(builtin_packs_dir, custom_packs_dir)
         if load_packs:
             self.frontend_dir = self.frontend_dir.resolve()
+            self.avatar_store.set_frontend_dir(self.frontend_dir)
             self.pack_registry.reload()
 
         self.engine = QuizEngine(self.pack_registry, max_rooms=DEFAULT_MAX_ROOMS)
@@ -137,6 +140,7 @@ class QuizRoomsCoordinator:
         """Perform initial non-blocking filesystem resolution and pack loading."""
         def _init_sync() -> None:
             self.frontend_dir = self.frontend_dir.resolve()
+            self.avatar_store.set_frontend_dir(self.frontend_dir)
             self.pack_registry.reload()
 
         await self.async_run_in_executor(_init_sync)
@@ -345,11 +349,12 @@ class QuizRoomsCoordinator:
             await asyncio.gather(*tasks, return_exceptions=True)
 
     async def broadcast_lobby_and_tv(self) -> None:
-        """Broadcast open public rooms and room capacity to lobby & TV clients."""
+        """Broadcast open public rooms, capacity, and live global avatar availability."""
         lobby_payload = {
             "type": "lobby_update",
             "lobby": self.engine.serialize_public_lobby(),
             "packs": [p.to_summary() for p in self.pack_registry.list_packs()],
+            "avatars": list_preset_catalog(self.engine.get_taken_preset_avatars()),
         }
         tasks = [
             self._safe_send(client, lobby_payload)

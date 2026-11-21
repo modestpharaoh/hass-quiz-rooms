@@ -301,7 +301,10 @@
               const leaders = (r.top_players || [])
                 .map(
                   (p) => `<div class="tv-mini-leader-row">
-                  <span dir="auto">#${p.rank} ${esc(p.nickname)}</span>
+                  <span style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
+                    ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+                    #${p.rank} ${esc(p.nickname)}
+                  </span>
                   <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
                 </div>`
                 )
@@ -337,7 +340,10 @@
           .map(
             (p, idx) => `
         <div class="tv-lb-row ${idx === 0 ? "top-1" : ""}">
-          <span dir="auto">#${p.rank} ${esc(p.nickname)}</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;min-width:0;" dir="auto">
+            ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+            <span>#${p.rank} ${esc(p.nickname)}</span>
+          </span>
           <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
         </div>`
           )
@@ -363,7 +369,10 @@
         </div>
         <div class="tv-lock-grid">
           ${room.players
-              .map((p) => `<span class="tv-lock-badge" dir="auto">${esc(p.nickname)}${p.is_host ? " ★" : ""}</span>`)
+              .map((p) => `<span class="tv-lock-badge" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
+                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+                ${esc(p.nickname)}${p.is_host ? " ★" : ""}
+              </span>`)
               .join("")}
         </div>`;
         } else if (room.phase === "question" && room.question) {
@@ -408,7 +417,8 @@
         <div class="tv-lock-grid">
           ${room.players
               .map(
-                (p) => `<span class="tv-lock-badge ${p.locked_in ? "locked" : ""}" dir="auto">
+                (p) => `<span class="tv-lock-badge ${p.locked_in ? "locked" : ""}" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
+                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
                 ${p.locked_in ? "✓ " : ""}${esc(p.nickname)}
               </span>`
               )
@@ -442,10 +452,13 @@
                 const sign = o.delta > 0 ? `+${o.delta}` : String(o.delta);
                 return `
                 <div class="tv-lb-row">
-                  <div style="text-align:start;">
-                    <div dir="auto">${esc(o.nickname)}</div>
-                    <div style="font-size:0.85rem;color:var(--text-muted);" dir="auto">
-                      ${o.answer ? esc(o.answer) : "Timed out"} · W${o.wager}
+                  <div style="display:flex;align-items:center;gap:10px;text-align:start;">
+                    ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+                    <div>
+                      <div dir="auto">${esc(o.nickname)}</div>
+                      <div style="font-size:0.85rem;color:var(--text-muted);" dir="auto">
+                        ${o.answer ? esc(o.answer) : "Timed out"} · W${o.wager}
+                      </div>
                     </div>
                   </div>
                   <span class="delta-pill ${cls}">${sign}</span>
@@ -465,9 +478,10 @@
               .map(
                 (p, i) => `
               <div class="tv-podium-slot rank-${i + 1}">
-                <div style="font-size:2rem;font-weight:800;">#${i + 1}</div>
-                <div style="font-size:1.6rem;font-weight:800;margin-block:8px;" dir="auto">${esc(p.nickname)}</div>
-                <div class="mono" style="font-size:1.5rem;font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
+                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${i === 0 ? "avatar-xl" : "avatar-lg"}" style="margin-bottom:8px;" />` : ""}
+                <div style="font-size:1.7rem;font-weight:800;">#${i + 1}</div>
+                <div style="font-size:1.5rem;font-weight:800;margin-block:6px;" dir="auto">${esc(p.nickname)}</div>
+                <div class="mono" style="font-size:1.45rem;font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
               </div>`
               )
               .join("")}
@@ -476,10 +490,13 @@
           ${fin.awards
               .map(
                 (a) => `
-              <div class="tv-award-tile" style="text-align:start;">
-                <div style="font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--accent-amber);">${esc(a.title)}</div>
-                <div style="font-size:1.3rem;font-weight:800;margin-block:4px;" dir="auto">${esc(a.nickname)}</div>
-                <div style="font-size:0.9rem;color:var(--text-muted);">${esc(a.subtitle)}</div>
+              <div class="tv-award-tile" style="display:flex;align-items:center;gap:12px;text-align:start;">
+                ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-md" />` : ""}
+                <div>
+                  <div style="font-size:0.82rem;font-weight:800;text-transform:uppercase;color:var(--accent-amber);">${esc(a.title)}</div>
+                  <div style="font-size:1.2rem;font-weight:800;margin-block:2px;" dir="auto">${esc(a.nickname)}</div>
+                  <div style="font-size:0.88rem;color:var(--text-muted);">${esc(a.subtitle)}</div>
+                </div>
               </div>`
               )
               .join("")}

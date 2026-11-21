@@ -12,6 +12,7 @@ from typing import Any
 from aiohttp import WSMsgType, web
 from homeassistant.components.http import HomeAssistantView
 
+from .avatars import AvatarError, MAX_AVATAR_UPLOAD_BYTES, list_preset_catalog
 from .const import (
     DOMAIN,
     MAX_UPLOAD_BYTES,
@@ -20,6 +21,7 @@ from .const import (
     URL_API_ADMIN,
     URL_API_PUBLIC,
     URL_ASSETS,
+    URL_AVATAR,
     URL_MEDIA,
     URL_PLAY,
     URL_SIDEBAR_ICON_JS,
@@ -231,6 +233,7 @@ class QuizRoomsPublicBootstrapView(_QuizRoomsBaseView):
             {
                 "lobby": self.coordinator.engine.serialize_public_lobby(),
                 "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                "avatars": list_preset_catalog(self.coordinator.engine.get_taken_preset_avatars()),
                 "tv": self.coordinator.tv_state.to_dict(),
                 "room": (
                     self.coordinator.engine.serialize_room_state(followed_room, for_session_token=None)
@@ -240,6 +243,88 @@ class QuizRoomsPublicBootstrapView(_QuizRoomsBaseView):
                 "lan_base_url": self.coordinator.resolve_lan_base_url(request),
             }
         )
+
+
+class QuizRoomsPublicAvatarUploadView(_QuizRoomsBaseView):
+    """Upload a custom profile photo (LAN-only, max 256 KB, PNG/JPEG/WebP/GIF only)."""
+
+    url = f"{URL_API_PUBLIC}/avatar"
+    name = "quizrooms:public_avatar_upload"
+    requires_auth = False
+
+    async def post(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_network_guard(self.coordinator, request):
+            return blocked
+
+        file_bytes = b""
+        content_type = request.content_type or ""
+        if content_type.startswith("multipart/"):
+            reader = await request.multipart()
+            while (part := await reader.next()) is not None:
+                if part.name == "file":
+                    chunks: list[bytes] = []
+                    total = 0
+                    while True:
+                        chunk = await part.read_chunk(32768)
+                        if not chunk:
+                            break
+                        total += len(chunk)
+                        if total > MAX_AVATAR_UPLOAD_BYTES:
+                            return web.json_response(
+                                {
+                                    "error": "avatar_too_large",
+                                    "message": f"Profile photo must be under {MAX_AVATAR_UPLOAD_BYTES // 1024} KB.",
+                                },
+                                status=413,
+                            )
+                        chunks.append(chunk)
+                    file_bytes = b"".join(chunks)
+        else:
+            file_bytes = await request.read()
+
+        try:
+            avatar_ref, avatar_url = self.coordinator.avatar_store.store_custom_upload(file_bytes)
+        except AvatarError as err:
+            return web.json_response(
+                {"error": err.code, "message": err.message},
+                status=err.status_code,
+            )
+
+        return web.json_response({"ok": True, "avatar": avatar_ref, "avatar_url": avatar_url}, status=201)
+
+
+class QuizRoomsAvatarView(_QuizRoomsBaseView):
+    """Serve preset SVG avatars and custom profile photos with strict sandbox CSP.
+
+    Permits LAN guests/TV AND authenticated Home Assistant users so the Admin Sidebar Panel
+    renders player avatars cleanly both locally and remotely.
+    """
+
+    url = f"{URL_AVATAR}/{{kind}}/{{avatar_id}}"
+    name = "quizrooms:avatar"
+    requires_auth = False
+
+    async def get(self, request: web.Request, kind: str, avatar_id: str) -> web.StreamResponse:
+        hass_user = request.get("hass_user")
+        if hass_user is None:
+            if blocked := _check_network_guard(self.coordinator, request):
+                return blocked
+
+        found: tuple[bytes, str] | None = None
+        if kind == "preset":
+            found = await self.coordinator.async_run_in_executor(
+                self.coordinator.avatar_store.get_preset_svg_bytes, avatar_id
+            )
+        elif kind == "custom":
+            found = self.coordinator.avatar_store.get_custom_bytes(avatar_id)
+
+        if found is None:
+            return web.Response(status=404, text="Avatar not found", headers=dict(MEDIA_SECURITY_HEADERS))
+
+        data, content_type = found
+        headers = dict(MEDIA_SECURITY_HEADERS)
+        headers["Content-Type"] = content_type
+        return web.Response(body=data, headers=headers)
 
 
 class QuizRoomsPublicTVModeView(_QuizRoomsBaseView):
@@ -323,6 +408,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     "lan_base_url": self.coordinator.resolve_lan_base_url(request),
                     "lobby": self.coordinator.engine.serialize_public_lobby(),
                     "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                    "avatars": list_preset_catalog(self.coordinator.engine.get_taken_preset_avatars()),
                     "tv": self.coordinator.tv_state.to_dict(),
                     "room": (
                         self.coordinator.engine.serialize_room_state(followed_room, for_session_token=None)
@@ -377,6 +463,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 room, session_token, host_token = engine.create_room(
                     host_session_token=data.get("session_token"),
                     host_nickname=str(data.get("nickname") or ""),
+                    host_avatar=data.get("avatar"),
                     room_name=data.get("room_name"),
                     pack_ids=data.get("pack_ids"),
                     round_count=data.get("round_count"),
@@ -408,6 +495,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     str(data.get("code") or ""),
                     session_token=data.get("session_token"),
                     nickname=data.get("nickname"),
+                    avatar=data.get("avatar"),
                 )
                 client.role = "room"
                 client.room_code = room.code
@@ -424,6 +512,18 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 await self.coordinator.broadcast_room_state(room.code)
                 await self.coordinator.broadcast_lobby_and_tv()
                 self.coordinator.notify_entities()
+                return
+
+            if msg_type == "update_avatar":
+                code = str(data.get("code") or client.room_code or "")
+                session_token = str(data.get("session_token") or client.session_token or "")
+                room, _player = engine.update_player_avatar(
+                    code,
+                    session_token=session_token,
+                    avatar=str(data.get("avatar") or ""),
+                )
+                await self.coordinator.broadcast_room_state(room.code)
+                await self.coordinator.broadcast_lobby_and_tv()
                 return
 
             if msg_type == "leave_room":
@@ -829,7 +929,9 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsTVView(coordinator),
         QuizRoomsAssetsView(coordinator),
         QuizRoomsMediaView(coordinator),
+        QuizRoomsAvatarView(coordinator),
         QuizRoomsPublicBootstrapView(coordinator),
+        QuizRoomsPublicAvatarUploadView(coordinator),
         QuizRoomsPublicTVModeView(coordinator),
         QuizRoomsWebSocketView(coordinator),
         QuizRoomsAdminPanelJSView(coordinator),

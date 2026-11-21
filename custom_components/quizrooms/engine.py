@@ -7,6 +7,12 @@ import secrets
 import time
 from typing import Any, Callable
 
+from .avatars import (
+    CUSTOM_AVATAR_ID_RE,
+    PRESET_AVATAR_IDS,
+    PRESET_AVATARS,
+    avatar_to_url,
+)
 from .const import (
     ACTIVE_ROOM_IDLE_TIMEOUT_SECONDS,
     ALLOWED_ANSWER_MODES,
@@ -131,6 +137,55 @@ class QuizEngine:
             raise EngineError("invalid_nickname", "Please enter a nickname to join.")
         return cleaned
 
+    def get_taken_preset_avatars(self, *, exclude_session_token: str | None = None) -> set[str]:
+        """Return preset avatar IDs currently claimed by active players across ALL rooms."""
+        taken: set[str] = set()
+        for room in self.rooms.values():
+            for token, player in room.players.items():
+                if exclude_session_token and token == exclude_session_token:
+                    continue
+                if player.avatar.startswith("preset:"):
+                    pid = player.avatar.split(":", 1)[1]
+                    if pid in PRESET_AVATAR_IDS:
+                        taken.add(pid)
+        return taken
+
+    def _resolve_avatar(
+        self,
+        avatar: str | None,
+        *,
+        session_token: str,
+        strict: bool = True,
+    ) -> str:
+        """Validate a custom or globally-unique preset avatar, or auto-assign an unclaimed preset."""
+        taken = self.get_taken_preset_avatars(exclude_session_token=session_token)
+        raw = (avatar or "").strip()
+
+        if raw.startswith("custom:"):
+            cid = raw.split(":", 1)[1]
+            if CUSTOM_AVATAR_ID_RE.fullmatch(cid):
+                return f"custom:{cid}"
+
+        if raw.startswith("preset:"):
+            pid = raw.split(":", 1)[1]
+            if pid in PRESET_AVATAR_IDS:
+                if pid in taken:
+                    if strict:
+                        raise EngineError(
+                            "avatar_taken",
+                            "That SVG avatar is already taken by another player. Please choose another or upload your own photo.",
+                            extra={"taken_presets": sorted(taken)},
+                            status_code=409,
+                        )
+                else:
+                    return f"preset:{pid}"
+
+        # Auto-pick first unclaimed preset avatar
+        for item in PRESET_AVATARS:
+            if item["id"] not in taken:
+                return f"preset:{item['id']}"
+        return f"preset:{PRESET_AVATARS[0]['id']}"
+
     def _hosted_room_for_session(self, session_token: str) -> Room | None:
         for room in self.rooms.values():
             if room.host_session_token == session_token:
@@ -253,6 +308,7 @@ class QuizEngine:
         *,
         host_session_token: str | None,
         host_nickname: str,
+        host_avatar: str | None = None,
         room_name: str | None = None,
         pack_ids: list[str] | None = None,
         round_count: int | None = None,
@@ -301,6 +357,7 @@ class QuizEngine:
         )
 
         now = self._now()
+        resolved_avatar = self._resolve_avatar(host_avatar, session_token=session_token, strict=True)
         host_token = secrets.token_urlsafe(24)
         room = Room(
             code=code,
@@ -316,6 +373,7 @@ class QuizEngine:
         room.players[session_token] = Player(
             session_token=session_token,
             nickname=nickname,
+            avatar=resolved_avatar,
             is_host=True,
             connected=True,
             joined_at=now,
@@ -382,6 +440,7 @@ class QuizEngine:
         *,
         session_token: str | None,
         nickname: str | None = None,
+        avatar: str | None = None,
     ) -> tuple[Room, Player, str]:
         """Join a room or reconnect an existing player by session_token."""
         room = self._require_room(code)
@@ -394,6 +453,8 @@ class QuizEngine:
             existing.connected = True
             if nickname and nickname.strip() and room.status == ROOM_STATUS_LOBBY:
                 existing.nickname = self._clean_nickname(nickname)
+            if avatar and avatar.strip():
+                existing.avatar = self._resolve_avatar(avatar, session_token=token, strict=False)
             room.last_activity = now
             return room, existing, token
 
@@ -406,6 +467,7 @@ class QuizEngine:
             )
 
         clean_name = self._clean_nickname(nickname or "")
+        resolved_avatar = self._resolve_avatar(avatar, session_token=token, strict=True)
         # Deduplicate visible nickname cleanly if taken
         taken_names = {p.nickname.casefold() for p in room.players.values()}
         candidate = clean_name
@@ -417,6 +479,7 @@ class QuizEngine:
         player = Player(
             session_token=token,
             nickname=candidate,
+            avatar=resolved_avatar,
             is_host=(token == room.host_session_token),
             connected=True,
             score=0,
@@ -429,6 +492,22 @@ class QuizEngine:
         room.players[token] = player
         room.last_activity = now
         return room, player, token
+
+    def update_player_avatar(
+        self,
+        code: str,
+        *,
+        session_token: str,
+        avatar: str,
+    ) -> tuple[Room, Player]:
+        """Update a player's avatar (enforcing global uniqueness for presets)."""
+        room = self._require_room(code)
+        player = room.players.get(session_token)
+        if player is None:
+            raise EngineError("not_in_room", "Join the room before updating your avatar.")
+        player.avatar = self._resolve_avatar(avatar, session_token=session_token, strict=True)
+        room.last_activity = self._now()
+        return room, player
 
     def set_player_connected(self, code: str, session_token: str, connected: bool) -> Room | None:
         room = self.get_room(code)
@@ -659,6 +738,8 @@ class QuizEngine:
                 {
                     "session_token": token,
                     "nickname": player.nickname,
+                    "avatar": player.avatar,
+                    "avatar_url": avatar_to_url(player.avatar),
                     "answer": sub.answer,
                     "wager": sub.wager,
                     "is_correct": sub.is_correct,
@@ -906,6 +987,8 @@ class QuizEngine:
                 "rank": idx,
                 "session_token": p.session_token,
                 "nickname": p.nickname,
+                "avatar": p.avatar,
+                "avatar_url": avatar_to_url(p.avatar),
                 "score": p.score,
                 "streak": p.streak,
                 "max_streak": p.max_streak,
@@ -939,6 +1022,7 @@ class QuizEngine:
                     "title": "High Roller",
                     "subtitle": f"Avg wager {avg_high} pts",
                     "nickname": high_roller.nickname,
+                    "avatar_url": avatar_to_url(high_roller.avatar),
                 }
             )
 
@@ -954,6 +1038,7 @@ class QuizEngine:
                     "title": "Safe Player",
                     "subtitle": f"Avg wager {avg_safe} pts",
                     "nickname": safe_player.nickname,
+                    "avatar_url": avatar_to_url(safe_player.avatar),
                 }
             )
 
@@ -966,6 +1051,7 @@ class QuizEngine:
                     "title": "Streak Master",
                     "subtitle": f"{streak_master.max_streak} in a row",
                     "nickname": streak_master.nickname,
+                    "avatar_url": avatar_to_url(streak_master.avatar),
                 }
             )
 
@@ -981,13 +1067,14 @@ class QuizEngine:
                     "title": "Sharpest Mind",
                     "subtitle": f"{acc}% accuracy",
                     "nickname": sharpest.nickname,
+                    "avatar_url": avatar_to_url(sharpest.avatar),
                 }
             )
 
         return awards
 
     def serialize_public_lobby(self) -> dict[str, Any]:
-        """Serialize open public rooms and room-creation capacity for /quizrooms/play and TV."""
+        """Serialize open public rooms, capacity, and taken global avatars."""
         public_rooms: list[dict[str, Any]] = []
         for room in sorted(self.rooms.values(), key=lambda r: r.created_at, reverse=True):
             if room.settings.visibility != VISIBILITY_PUBLIC:
@@ -1011,7 +1098,12 @@ class QuizEngine:
                     "answer_mode": room.settings.answer_mode,
                     "wager_mode": room.settings.wager_mode,
                     "top_players": [
-                        {"nickname": row["nickname"], "score": row["score"], "rank": row["rank"]}
+                        {
+                            "nickname": row["nickname"],
+                            "avatar_url": row["avatar_url"],
+                            "score": row["score"],
+                            "rank": row["rank"],
+                        }
                         for row in leaderboard[:3]
                     ],
                 }
@@ -1022,12 +1114,14 @@ class QuizEngine:
             "active_rooms": len(self.rooms),
             "max_rooms": self._max_rooms,
             "can_create_room": len(self.rooms) < self._max_rooms,
+            "taken_presets": sorted(self.get_taken_preset_avatars()),
         }
 
     def serialize_admin_rooms(self) -> list[dict[str, Any]]:
-        """Serialize ALL active rooms (public + private) for the HA Admin panel & sensors."""
+        """Serialize ALL active rooms (public + private) with player avatars for HA Admin."""
         result: list[dict[str, Any]] = []
         for room in sorted(self.rooms.values(), key=lambda r: r.created_at, reverse=True):
+            leaderboard = self.build_leaderboard(room)
             result.append(
                 {
                     "code": room.code,
@@ -1039,6 +1133,16 @@ class QuizEngine:
                     "pack_titles": room.pack_titles,
                     "player_count": len(room.players),
                     "connected_count": sum(1 for p in room.players.values() if p.connected),
+                    "players": [
+                        {
+                            "nickname": row["nickname"],
+                            "avatar_url": row["avatar_url"],
+                            "score": row["score"],
+                            "connected": row["connected"],
+                            "is_host": row["is_host"],
+                        }
+                        for row in leaderboard
+                    ],
                     "current_round": (room.current_index + 1) if room.current_index >= 0 else 0,
                     "total_rounds": len(room.questions) if room.questions else room.settings.round_count,
                     "answer_mode": room.settings.answer_mode,
@@ -1108,6 +1212,8 @@ class QuizEngine:
             me_payload = {
                 "session_token": me.session_token,
                 "nickname": me.nickname,
+                "avatar": me.avatar,
+                "avatar_url": avatar_to_url(me.avatar),
                 "is_host": me.is_host,
                 "score": me.score,
                 "streak": me.streak,

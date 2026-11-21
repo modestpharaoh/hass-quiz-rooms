@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Shadow Ninja">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3F3F46"/><stop offset="100%" stop-color="#18181B"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="60" cy="62" r="34" fill="#27272A"/>
+  <rect x="26" y="42" width="68" height="12" rx="4" fill="#EF4444"/>
+  <rect x="33" y="54" width="54" height="17" rx="8" fill="#FDE68A"/>
+  <circle cx="47" cy="62" r="4.5" fill="#18181B"/><circle cx="73" cy="62" r="4.5" fill="#18181B"/>
+  <polygon points="88,44 106,38 102,50 88,50" fill="#DC2626"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

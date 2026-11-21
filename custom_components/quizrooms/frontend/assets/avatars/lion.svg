@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Studio Lion">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#EAB308"/><stop offset="100%" stop-color="#CA8A04"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="60" cy="62" r="42" fill="#B45309"/>
+  <circle cx="60" cy="62" r="30" fill="#FDE047"/>
+  <circle cx="48" cy="56" r="4.5" fill="#18181B"/><circle cx="72" cy="56" r="4.5" fill="#18181B"/>
+  <polygon points="53,66 67,66 60,74" fill="#92400E"/>
+  <path d="M51,79 Q60,85 69,79" stroke="#78350F" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Zen Panda">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#BE185D"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="34" cy="34" r="13" fill="#18181B"/><circle cx="86" cy="34" r="13" fill="#18181B"/>
+  <circle cx="60" cy="64" r="34" fill="#FFFFFF"/>
+  <ellipse cx="45" cy="60" rx="10" ry="12" transform="rotate(-15 45 60)" fill="#18181B"/>
+  <ellipse cx="75" cy="60" rx="10" ry="12" transform="rotate(15 75 60)" fill="#18181B"/>
+  <circle cx="46" cy="59" r="3" fill="#FFF"/><circle cx="74" cy="59" r="3" fill="#FFF"/>
+  <ellipse cx="60" cy="72" rx="6" ry="4" fill="#18181B"/>
+  <path d="M53,80 Q60,86 67,80" stroke="#18181B" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

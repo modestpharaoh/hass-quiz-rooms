@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Trivia Monarch">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#B45309"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <path d="M24,80 L28,40 L48,58 L60,30 L72,58 L92,40 L96,80 Z" fill="#FDE047" stroke="#FEF9C3" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="24" y="78" width="72" height="12" rx="5" fill="#F59E0B"/>
+  <circle cx="60" cy="66" r="6" fill="#EF4444"/>
+  <circle cx="40" cy="68" r="4.5" fill="#2DD4BF"/><circle cx="80" cy="68" r="4.5" fill="#2DD4BF"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

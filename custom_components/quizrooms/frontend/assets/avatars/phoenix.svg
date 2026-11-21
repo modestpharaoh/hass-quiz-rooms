@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Solar Phoenix">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#EA580C"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <path d="M60,18 L72,42 L94,34 L82,58 L98,74 L74,78 L60,96 L46,78 L22,74 L38,58 L26,34 L48,42 Z" fill="#FBBF24"/>
+  <circle cx="60" cy="58" r="20" fill="#F97316"/>
+  <circle cx="52" cy="54" r="4" fill="#18181B"/><circle cx="68" cy="54" r="4" fill="#18181B"/>
+  <polygon points="54,62 66,62 60,72" fill="#FEF08A"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

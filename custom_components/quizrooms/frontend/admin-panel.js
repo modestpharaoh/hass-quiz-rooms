@@ -285,6 +285,9 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .upload-box { margin-top: 12px; padding: 12px; border-radius: 12px; border: 1px solid var(--border); background: var(--card2); }
         .upload-box.err { border-color: var(--err); color: var(--err); }
         .upload-box.ok { border-color: var(--ok); color: var(--ok); }
+        .player-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .player-pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 4px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; }
+        .player-pill img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; display: block; }
       </style>
       <div id="panel-root" data-theme="light">
         <div class="wrap">
@@ -347,6 +350,19 @@ class QuizRoomsAdminPanel extends HTMLElement {
                 ${this._esc(r.status)}${r.paused ? " (PAUSED)" : ""} · R${r.current_round}/${r.total_rounds}
               </span>
               <span class="badge">${r.connected_count}/${r.player_count} online</span>
+              ${
+                r.players && r.players.length
+                  ? `<div class="player-pills">${r.players
+                      .map(
+                        (p) => `<span class="player-pill" style="${p.connected ? "" : "opacity:0.5;"}">
+                          ${p.avatar_url ? `<img src="${this._esc(p.avatar_url)}" alt="" />` : ""}
+                          <span dir="auto">${this._esc(p.nickname)}${p.is_host ? " ★" : ""}</span>
+                          <span style="color:var(--accent);font-family:monospace;">${p.score}</span>
+                        </span>`
+                      )
+                      .join("")}</div>`
+                  : ""
+              }
             </div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
               ${r.status === "lobby" ? `<button class="btn" data-act="start" data-code="${this._esc(r.code)}">Start</button>` : ""}

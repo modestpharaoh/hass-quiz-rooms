@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.8"
+VERSION = "0.1.9"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -96,6 +96,7 @@ URL_PLAY = "/quizrooms/play"
 URL_TV = "/quizrooms/tv"
 URL_WS = "/quizrooms/ws"
 URL_MEDIA = "/quizrooms/media"
+URL_AVATAR = "/quizrooms/avatar"
 URL_ASSETS = "/quizrooms/assets"
 URL_ADMIN_PANEL_JS = "/quizrooms/admin-panel.js"
 URL_SIDEBAR_ICON_JS = "/quizrooms/sidebar-icon.js"

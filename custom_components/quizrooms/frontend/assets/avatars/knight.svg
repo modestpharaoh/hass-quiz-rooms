@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Cyber Knight">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0E7490"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <path d="M60,16 L68,32 L52,32 Z" fill="#FB7185"/>
+  <path d="M32,46 C32,32 44,28 60,28 C76,28 88,32 88,46 L84,82 L60,94 L36,82 Z" fill="#E2E8F0"/>
+  <path d="M36,56 H84 L80,68 H40 Z" fill="#18181B"/>
+  <rect x="44" y="59" width="32" height="5" rx="2.5" fill="#22D3EE"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

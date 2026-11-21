@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Cozy Koala">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#64748B"/><stop offset="100%" stop-color="#334155"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="28" cy="52" r="18" fill="#94A3B8"/><circle cx="92" cy="52" r="18" fill="#94A3B8"/>
+  <circle cx="28" cy="52" r="10" fill="#F1F5F9"/><circle cx="92" cy="52" r="10" fill="#F1F5F9"/>
+  <circle cx="60" cy="64" r="31" fill="#CBD5E1"/>
+  <circle cx="47" cy="58" r="4.5" fill="#18181B"/><circle cx="73" cy="58" r="4.5" fill="#18181B"/>
+  <ellipse cx="60" cy="68" rx="8" ry="11" fill="#1E293B"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

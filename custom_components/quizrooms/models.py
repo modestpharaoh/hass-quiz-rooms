@@ -118,6 +118,7 @@ class Player:
 
     session_token: str
     nickname: str
+    avatar: str = ""
     is_host: bool = False
     connected: bool = True
     score: int = 0

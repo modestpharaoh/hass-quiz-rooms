@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Brainy Octo">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FB7185"/><stop offset="100%" stop-color="#E11D48"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="60" cy="52" r="28" fill="#FDA4AF"/>
+  <path d="M32,72 Q26,88 38,92 M46,76 Q44,92 54,94 M74,76 Q76,92 66,94 M88,72 Q94,88 82,92" stroke="#FDA4AF" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <circle cx="49" cy="54" r="6" fill="#18181B"/><circle cx="71" cy="54" r="6" fill="#18181B"/>
+  <circle cx="51" cy="52" r="2" fill="#FFF"/><circle cx="73" cy="52" r="2" fill="#FFF"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

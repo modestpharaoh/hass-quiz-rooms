@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Emerald Dragon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#022C22"/>
+    </linearGradient>
+    <radialGradient id="ember" cx="50%" cy="62%" r="48%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scale" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="55%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="horn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="55%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#FDE047"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <circle cx="60" cy="60" r="54" fill="url(#ember)"/>
+
+  <!-- Swept-back Curved Dragon Horns -->
+  <path d="M40,42 C32,32 24,22 18,16 C28,18 40,26 49,38 Z" fill="url(#horn)"/>
+  <path d="M80,42 C88,32 96,22 102,16 C92,18 80,26 71,38 Z" fill="url(#horn)"/>
+
+  <!-- Sharp Cheek / Ear Frills -->
+  <path d="M29,56 L13,44 L23,62 L15,70 L32,71 Z" fill="#059669"/>
+  <path d="M91,56 L107,44 L97,62 L105,70 L88,71 Z" fill="#059669"/>
+  <path d="M28,57 L18,50 L25,62 Z" fill="#FBBF24" opacity="0.85"/>
+  <path d="M92,57 L102,50 L95,62 Z" fill="#FBBF24" opacity="0.85"/>
+
+  <!-- Central Crest Spikes -->
+  <polygon points="60,20 54,36 66,36" fill="url(#horn)"/>
+  <polygon points="48,28 45,39 54,37" fill="#FBBF24"/>
+  <polygon points="72,28 75,39 66,37" fill="#FBBF24"/>
+
+  <!-- Sculpted Angular Dragon Head -->
+  <path d="M60,31 L84,42 L91,60 L79,79 L68,94 L60,98 L52,94 L41,79 L29,60 L36,42 Z" fill="url(#scale)"/>
+
+  <!-- Darker Brow Plate & Snout Ridge -->
+  <path d="M60,33 L76,46 L68,58 L60,54 L52,58 L44,46 Z" fill="#047857" opacity="0.65"/>
+  <path d="M60,44 L66,68 L60,82 L54,68 Z" fill="#6EE7B7" opacity="0.45"/>
+
+  <!-- Fierce Slanted Dragon Eyes with Vertical Slit Pupils -->
+  <path d="M36,52 L53,57 L48,65 L37,61 Z" fill="#18181B"/>
+  <path d="M84,52 L67,57 L72,65 L83,61 Z" fill="#18181B"/>
+  <path d="M38,54 L51,58 L47,63 L39,60 Z" fill="#FBBF24"/>
+  <path d="M82,54 L69,58 L73,63 L81,60 Z" fill="#FBBF24"/>
+  <ellipse cx="45" cy="58.5" rx="1.6" ry="3.8" fill="#18181B"/>
+  <ellipse cx="75" cy="58.5" rx="1.6" ry="3.8" fill="#18181B"/>
+
+  <!-- Angular Snout, Nostrils & Fangs -->
+  <path d="M44,77 L60,84 L76,77 L71,90 L60,95 L49,90 Z" fill="#065F46"/>
+  <path d="M51,73 L55,76 L50,77 Z" fill="#18181B"/>
+  <path d="M69,73 L65,76 L70,77 Z" fill="#18181B"/>
+
+  <!-- Twin White Fangs -->
+  <polygon points="48,80 53,82 50,89" fill="#F8FAFC"/>
+  <polygon points="72,80 67,82 70,89" fill="#F8FAFC"/>
+
+  <!-- Glowing Fire Wisps Curling from Nostrils -->
+  <path d="M49,75 C41,72 37,67 35,72 C39,74 41,79 47,78 Z" fill="url(#flame)"/>
+  <path d="M71,75 C79,72 83,67 85,72 C81,74 79,79 73,78 Z" fill="url(#flame)"/>
+
+  <!-- Chin / Jaw Highlight -->
+  <path d="M52,91 L60,96 L68,91 L60,93 Z" fill="#A7F3D0" opacity="0.7"/>
+
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>

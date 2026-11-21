@@ -2,6 +2,7 @@
 (function () {
   const LS_SESSION = "quizrooms_session_token";
   const LS_NICK = "quizrooms_nickname";
+  const LS_AVATAR = "quizrooms_avatar";
   const LS_HOSTS = "quizrooms_host_tokens";
   const LS_ACTIVE_ROOM = "quizrooms_active_room";
 
@@ -10,10 +11,12 @@
     connected: false,
     lanBaseUrl: window.location.origin,
     packs: [],
-    lobby: { rooms: [], active_rooms: 0, max_rooms: 5, can_create_room: true },
+    avatars: [],
+    lobby: { rooms: [], active_rooms: 0, max_rooms: 5, can_create_room: true, taken_presets: [] },
     room: null,
     sessionToken: loadStr(LS_SESSION) || makeToken(),
     nickname: loadStr(LS_NICK) || "",
+    avatar: loadStr(LS_AVATAR) || "",
     hostTokens: loadJSON(LS_HOSTS, {}),
     activeRoomCode: loadStr(LS_ACTIVE_ROOM) || "",
     selectedAnswer: "",
@@ -25,6 +28,7 @@
     timerRaf: null,
     serverOffsetMs: 0,
     showCreateModal: false,
+    showAvatarModal: false,
     packsLoaded: false,
     packsError: "",
   };
@@ -116,6 +120,7 @@
           code: state.activeRoomCode,
           session_token: state.sessionToken,
           nickname: state.nickname || undefined,
+          avatar: state.avatar || undefined,
         });
       }
     };
@@ -144,6 +149,161 @@
     if (el) el.textContent = text;
   }
 
+  function avatarUrlFromRef(ref) {
+    if (!ref) return "/quizrooms/avatar/preset/fox";
+    if (ref.startsWith("preset:")) return `/quizrooms/avatar/preset/${encodeURIComponent(ref.slice(7))}`;
+    if (ref.startsWith("custom:")) return `/quizrooms/avatar/custom/${encodeURIComponent(ref.slice(7))}`;
+    return "/quizrooms/avatar/preset/fox";
+  }
+
+  function ensureAvailableAvatar() {
+    if (!state.avatars.length) return;
+    if (state.avatar && state.avatar.startsWith("custom:")) return;
+    const myCurrentRef = state.room && state.room.me ? state.room.me.avatar : "";
+    const cur = state.avatars.find((a) => a.ref === state.avatar);
+    if (cur && (!cur.taken || cur.ref === myCurrentRef)) return;
+    const free = state.avatars.find((a) => !a.taken);
+    if (free) {
+      state.avatar = free.ref;
+      saveStr(LS_AVATAR, state.avatar);
+    }
+  }
+
+  async function compressAndUploadAvatar(file) {
+    const imgUrl = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((resolve, reject) => {
+        const el = new Image();
+        el.onload = () => resolve(el);
+        el.onerror = () => reject(new Error("Invalid image file"));
+        el.src = imgUrl;
+      });
+      const size = 160;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      const minSide = Math.min(img.naturalWidth || img.width, img.naturalHeight || img.height);
+      const sx = ((img.naturalWidth || img.width) - minSide) / 2;
+      const sy = ((img.naturalHeight || img.height) - minSide) / 2;
+      ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
+      if (!blob) throw new Error("Unable to encode profile photo");
+
+      const fd = new FormData();
+      fd.append("file", blob, "avatar.jpg");
+      const resp = await fetch("/quizrooms/api/public/avatar", { method: "POST", body: fd });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) throw new Error(data.message || "Avatar upload failed");
+
+      state.avatar = data.avatar;
+      saveStr(LS_AVATAR, state.avatar);
+      if (state.room) {
+        sendWS({
+          type: "update_avatar",
+          code: state.room.code,
+          session_token: state.sessionToken,
+          avatar: state.avatar,
+        });
+      }
+      showToast("Profile photo updated!");
+      closeModal();
+      render();
+    } finally {
+      URL.revokeObjectURL(imgUrl);
+    }
+  }
+
+  function renderAvatarModalGrid() {
+    const grid = document.getElementById("avatar-modal-grid");
+    if (!grid) return;
+    const myRoomAvatar = state.room && state.room.me ? state.room.me.avatar : "";
+    grid.innerHTML = state.avatars
+      .map((a) => {
+        const isMine = a.ref === state.avatar || a.ref === myRoomAvatar;
+        const disabled = a.taken && !isMine;
+        return `
+          <button type="button" class="avatar-choice ${isMine ? "selected" : ""}" data-pick-avatar="${esc(a.ref)}" ${disabled ? "disabled" : ""} title="${esc(a.label)}">
+            ${disabled ? `<span class="avatar-taken-pill">Taken</span>` : ""}
+            <img src="${esc(a.url)}" alt="${esc(a.label)}" class="avatar-img avatar-md" />
+            <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;">${esc(a.label)}</span>
+          </button>`;
+      })
+      .join("");
+
+    grid.querySelectorAll("[data-pick-avatar]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const chosen = btn.dataset.pickAvatar;
+        state.avatar = chosen;
+        saveStr(LS_AVATAR, chosen);
+        if (state.room) {
+          sendWS({
+            type: "update_avatar",
+            code: state.room.code,
+            session_token: state.sessionToken,
+            avatar: chosen,
+          });
+        }
+        closeModal();
+        render();
+      });
+    });
+  }
+
+  function openAvatarModal() {
+    state.showAvatarModal = true;
+    state.showCreateModal = false;
+    const modalRoot = document.getElementById("modal-root");
+    modalRoot.innerHTML = `
+      <div class="modal-backdrop" id="avatar-backdrop">
+        <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Choose Profile Avatar">
+          <div class="modal-header">
+            <h2>Choose Your Profile Avatar</h2>
+            <button type="button" class="btn btn-secondary btn-sm" id="close-avatar-modal">Close</button>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:var(--radius-md);background:var(--bg-surface-2);border:1px solid var(--border-subtle);margin-block-end:14px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="${esc(avatarUrlFromRef(state.avatar))}" alt="Current avatar" class="avatar-img avatar-md" />
+              <div style="text-align:start;">
+                <div style="font-weight:800;font-size:0.92rem;">Use Your Own Photo</div>
+                <div style="font-size:0.78rem;color:var(--text-muted);">Auto-cropped square · PNG / JPG / WebP</div>
+              </div>
+            </div>
+            <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+              Upload Photo
+              <input id="avatar-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none;" />
+            </label>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:8px;">
+            <span class="field-label" style="margin:0;">Or Pick a Unique Studio SVG Character</span>
+            <span class="badge">${state.avatars.filter((a) => !a.taken).length} free</span>
+          </div>
+          <div id="avatar-modal-grid" class="avatar-grid"></div>
+        </div>
+      </div>
+    `;
+
+    renderAvatarModalGrid();
+    document.getElementById("close-avatar-modal").addEventListener("click", closeModal);
+    document.getElementById("avatar-backdrop").addEventListener("click", (e) => {
+      if (e.target.id === "avatar-backdrop") closeModal();
+    });
+    const fileInput = document.getElementById("avatar-file-input");
+    fileInput.addEventListener("change", async () => {
+      const f = fileInput.files && fileInput.files[0];
+      if (!f) return;
+      try {
+        await compressAndUploadAvatar(f);
+      } catch (err) {
+        showToast(err.message || "Could not upload photo.", true);
+      }
+      fileInput.value = "";
+    });
+  }
+
   async function fetchBootstrap() {
     try {
       const resp = await fetch("/quizrooms/api/public/bootstrap", { cache: "no-store" });
@@ -151,6 +311,10 @@
       const data = await resp.json();
       if (data.lan_base_url) state.lanBaseUrl = data.lan_base_url;
       if (data.lobby) state.lobby = data.lobby;
+      if (Array.isArray(data.avatars)) {
+        state.avatars = data.avatars;
+        ensureAvailableAvatar();
+      }
       if (Array.isArray(data.packs)) {
         state.packs = data.packs;
         state.packsLoaded = true;
@@ -158,6 +322,7 @@
       }
       if (!state.room) render();
       if (state.showCreateModal) renderModalPackList();
+      if (state.showAvatarModal) renderAvatarModalGrid();
     } catch (err) {
       state.packsError = "Unable to load trivia packs. Tap Retry.";
       if (state.showCreateModal) renderModalPackList();
@@ -169,6 +334,10 @@
       case "hello":
         if (msg.lan_base_url) state.lanBaseUrl = msg.lan_base_url;
         if (msg.lobby) state.lobby = msg.lobby;
+        if (Array.isArray(msg.avatars)) {
+          state.avatars = msg.avatars;
+          ensureAvailableAvatar();
+        }
         if (Array.isArray(msg.packs)) {
           state.packs = msg.packs;
           state.packsLoaded = true;
@@ -176,10 +345,15 @@
         }
         if (!state.room) render();
         if (state.showCreateModal) renderModalPackList();
+        if (state.showAvatarModal) renderAvatarModalGrid();
         break;
 
       case "lobby_update":
         if (msg.lobby) state.lobby = msg.lobby;
+        if (Array.isArray(msg.avatars)) {
+          state.avatars = msg.avatars;
+          ensureAvailableAvatar();
+        }
         if (Array.isArray(msg.packs)) {
           state.packs = msg.packs;
           state.packsLoaded = true;
@@ -187,6 +361,7 @@
         }
         if (!state.room) render();
         if (state.showCreateModal) renderModalPackList();
+        if (state.showAvatarModal) renderAvatarModalGrid();
         break;
 
       case "room_created":
@@ -240,6 +415,9 @@
           return;
         }
         showToast(msg.message || "Action failed.", true);
+        if (msg.code === "avatar_taken") {
+          fetchBootstrap().then(() => openAvatarModal());
+        }
         if (msg.code === "already_hosting" && msg.existing_room_code) {
           state.showCreateModal = false;
           closeModal();
@@ -429,9 +607,15 @@
       <section class="studio-card hero-card animate-in">
         <div class="hero-grid">
           <div>
-            <label class="field-label" for="lobby-nickname">Your Nickname</label>
-            <input id="lobby-nickname" class="text-input" dir="auto" maxlength="24"
-              placeholder="e.g., Alex or سارة" value="${esc(state.nickname)}" />
+            <label class="field-label" for="lobby-nickname">Your Profile &amp; Nickname</label>
+            <div class="profile-input-row">
+              <button type="button" id="open-avatar-btn" class="avatar-picker-btn" title="Change avatar or upload photo">
+                <img src="${esc(avatarUrlFromRef(state.avatar))}" alt="Your avatar" />
+                <span class="avatar-picker-tag">Edit</span>
+              </button>
+              <input id="lobby-nickname" class="text-input" dir="auto" maxlength="24"
+                placeholder="e.g., Alex or سارة" value="${esc(state.nickname)}" />
+            </div>
           </div>
           <div>
             <label class="field-label" for="join-code-input">Join Private / QR Room</label>
@@ -462,6 +646,10 @@
       ${roomsHtml}
     `;
 
+      document.getElementById("open-avatar-btn").addEventListener("click", () => {
+        openAvatarModal();
+      });
+
       const nickEl = document.getElementById("lobby-nickname");
       nickEl.addEventListener("input", () => {
         state.nickname = nickEl.value;
@@ -476,7 +664,7 @@
           showToast("Enter a 4-letter room code.", true);
           return;
         }
-        sendWS({ type: "join_room", code, session_token: state.sessionToken, nickname: nick });
+        sendWS({ type: "join_room", code, session_token: state.sessionToken, nickname: nick, avatar: state.avatar || undefined });
       });
 
       document.getElementById("open-create-btn").addEventListener("click", () => {
@@ -494,6 +682,7 @@
             code: btn.dataset.joinCode,
             session_token: state.sessionToken,
             nickname: nick,
+            avatar: state.avatar || undefined,
           });
         });
       });
@@ -659,6 +848,7 @@
           type: "create_room",
           session_token: state.sessionToken,
           nickname: state.nickname,
+          avatar: state.avatar || undefined,
           room_name: document.getElementById("cr-name").value.trim(),
           pack_ids: selectedPacks,
           round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
@@ -674,6 +864,7 @@
 
     function closeModal() {
       state.showCreateModal = false;
+      state.showAvatarModal = false;
       const modalRoot = document.getElementById("modal-root");
       if (modalRoot) modalRoot.innerHTML = "";
     }
@@ -739,11 +930,15 @@
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
 
-            <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);">Players Ready (${room.players.length})</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);">Players Ready (${room.players.length})</div>
+              <button type="button" id="room-change-avatar-btn" class="btn btn-secondary btn-sm">Change Avatar</button>
+            </div>
             <div class="player-roster">
               ${room.players
           .map(
             (p) => `<span class="player-chip ${p.connected ? "" : "offline"}" dir="auto">
+                    ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
                     ${esc(p.nickname)}${p.is_host ? " ★" : ""}
                   </span>`
           )
@@ -765,6 +960,8 @@
     `;
 
       wireLeaveButton();
+      const chAvatarBtn = document.getElementById("room-change-avatar-btn");
+      if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
       if (isHost) {
         document.getElementById("start-game-btn").addEventListener("click", () => {
           sendWS({ type: "start_game", code: room.code, host_token: hostToken });
@@ -960,11 +1157,14 @@
               : "";
           return `
           <div class="outcome-row ${esc(o.outcome)}">
-            <div style="text-align:start;min-width:0;flex:1;">
-              <div style="font-weight:800;" dir="auto">${esc(o.nickname)}</div>
-              <div style="font-size:0.84rem;color:var(--text-secondary);" dir="auto">
-                ${o.answer ? esc(o.answer) : "<em>No answer</em>"} · Wager ${o.wager}
-                ${o.overridden ? " · <em>Host override</em>" : ""}
+            <div style="display:flex;align-items:center;gap:10px;text-align:start;min-width:0;flex:1;">
+              ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+              <div style="min-width:0;">
+                <div style="font-weight:800;" dir="auto">${esc(o.nickname)}</div>
+                <div style="font-size:0.84rem;color:var(--text-secondary);" dir="auto">
+                  ${o.answer ? esc(o.answer) : "<em>No answer</em>"} · Wager ${o.wager}
+                  ${o.overridden ? " · <em>Host override</em>" : ""}
+                </div>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
@@ -1005,6 +1205,8 @@
     `;
 
       wireLeaveButton();
+      const chAvatarBtn = document.getElementById("room-change-avatar-btn");
+      if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
       if (isHost) {
         root.querySelectorAll("[data-override-token]").forEach((btn) => {
           btn.addEventListener("click", () => {
@@ -1036,6 +1238,7 @@
         .map(
           (p, idx) => `
         <div class="podium-slot rank-${idx + 1}">
+          ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${idx === 0 ? "avatar-lg" : "avatar-md"}" style="margin-bottom:6px;" />` : ""}
           <div class="podium-medal">${medals[idx] || "#" + (idx + 1)}</div>
           <div class="podium-name" dir="auto">${esc(p.nickname)}</div>
           <div class="podium-score">${p.score} pts</div>
@@ -1046,10 +1249,13 @@
       const awardsHtml = fin.awards
         .map(
           (a) => `
-        <div class="award-card">
-          <div class="award-title">${esc(a.title)}</div>
-          <div class="award-winner" dir="auto">${esc(a.nickname)}</div>
-          <div class="award-sub">${esc(a.subtitle)}</div>
+        <div class="award-card" style="display:flex;align-items:center;gap:10px;">
+          ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+          <div>
+            <div class="award-title">${esc(a.title)}</div>
+            <div class="award-winner" dir="auto">${esc(a.nickname)}</div>
+            <div class="award-sub">${esc(a.subtitle)}</div>
+          </div>
         </div>`
         )
         .join("");
@@ -1070,7 +1276,10 @@
           .map(
             (row) => `
               <div class="outcome-row">
-                <div style="font-weight:800;" dir="auto">#${row.rank} ${esc(row.nickname)}</div>
+                <div style="display:inline-flex;align-items:center;gap:8px;font-weight:800;" dir="auto">
+                  ${row.avatar_url ? `<img src="${esc(row.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+                  #${row.rank} ${esc(row.nickname)}
+                </div>
                 <div class="mono" style="font-weight:800;color:var(--accent-primary);">${row.score} pts</div>
               </div>`
           )
@@ -1088,6 +1297,8 @@
     `;
 
       wireLeaveButton();
+      const chAvatarBtn = document.getElementById("room-change-avatar-btn");
+      if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
       if (isHost) {
         document.getElementById("play-again-btn").addEventListener("click", () => {
           sendWS({ type: "play_again", code: room.code, host_token: hostToken });

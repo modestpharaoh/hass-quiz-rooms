@@ -386,6 +386,22 @@ body {
   display: none !important;
 }
 
+/* Player Avatars (Shared across Play, TV & Podiums) */
+.avatar-img {
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  background: var(--bg-surface-2);
+  border: 2px solid var(--border-strong);
+}
+
+.avatar-xs { width: 24px; height: 24px; }
+.avatar-sm { width: 30px; height: 30px; }
+.avatar-md { width: 42px; height: 42px; }
+.avatar-lg { width: 64px; height: 64px; border-width: 3px; }
+.avatar-xl { width: 84px; height: 84px; border-width: 3px; border-color: var(--accent-amber); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
+
 /* Confetti overlay canvas */
 #confetti-canvas {
   position: fixed;

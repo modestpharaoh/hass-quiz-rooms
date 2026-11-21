@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Arcade Bot">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#0F766E"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg)"/>
+  <line x1="60" y1="22" x2="60" y2="34" stroke="#E2E8F0" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="60" cy="19" r="6" fill="#FBBF24"/>
+  <rect x="28" y="34" width="64" height="54" rx="16" fill="#E4E4E7"/>
+  <rect x="36" y="44" width="48" height="24" rx="9" fill="#18181B"/>
+  <circle cx="49" cy="56" r="6" fill="#2DD4BF"/><circle cx="71" cy="56" r="6" fill="#2DD4BF"/>
+  <rect x="44" y="75" width="32" height="6" rx="3" fill="#52525B"/>
+  <circle cx="60" cy="60" r="56.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3"/>
+</svg>
