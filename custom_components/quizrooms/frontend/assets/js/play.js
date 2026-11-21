@@ -24,6 +24,8 @@
     timerRaf: null,
     serverOffsetMs: 0,
     showCreateModal: false,
+    packsLoaded: false,
+    packsError: "",
   };
 
   saveStr(LS_SESSION, state.sessionToken);
@@ -141,19 +143,49 @@
     if (el) el.textContent = text;
   }
 
+  async function fetchBootstrap() {
+    try {
+      const resp = await fetch("/quizrooms/api/public/bootstrap", { cache: "no-store" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      if (data.lan_base_url) state.lanBaseUrl = data.lan_base_url;
+      if (data.lobby) state.lobby = data.lobby;
+      if (Array.isArray(data.packs)) {
+        state.packs = data.packs;
+        state.packsLoaded = true;
+        state.packsError = "";
+      }
+      if (!state.room) render();
+      if (state.showCreateModal) renderModalPackList();
+    } catch (err) {
+      state.packsError = "Unable to load trivia packs. Tap Retry.";
+      if (state.showCreateModal) renderModalPackList();
+    }
+  }
+
   function handleWSMessage(msg) {
     switch (msg.type) {
       case "hello":
         if (msg.lan_base_url) state.lanBaseUrl = msg.lan_base_url;
         if (msg.lobby) state.lobby = msg.lobby;
-        if (msg.packs) state.packs = msg.packs;
+        if (Array.isArray(msg.packs)) {
+          state.packs = msg.packs;
+          state.packsLoaded = true;
+          state.packsError = "";
+        }
         if (!state.room) render();
+        if (state.showCreateModal) renderModalPackList();
         break;
 
       case "lobby_update":
         if (msg.lobby) state.lobby = msg.lobby;
-        if (msg.packs) state.packs = msg.packs;
+        if (Array.isArray(msg.packs)) {
+          state.packs = msg.packs;
+          state.packsLoaded = true;
+          state.packsError = "";
+        }
         if (!state.room) render();
+        if (state.showCreateModal) renderModalPackList();
         break;
 
       case "room_created":
@@ -445,22 +477,62 @@
     });
   }
 
-  function openCreateModal() {
-    const modalRoot = document.getElementById("modal-root");
-    const packChecks = state.packs
-      .map(
-        (p, idx) => `
+  function renderModalPackList() {
+    const listEl = document.getElementById("cr-pack-list");
+    const countBadge = document.getElementById("cr-pack-count");
+    if (!listEl) return;
+
+    const prevChecked = new Set(
+      Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
+    );
+
+    if (countBadge) {
+      countBadge.textContent = `${state.packs.length} available`;
+    }
+
+    if (!state.packs.length) {
+      if (state.packsError) {
+        listEl.innerHTML = `
+          <div class="pack-empty-box">
+            <span>${esc(state.packsError)}</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Retry</button>
+          </div>`;
+        const retryBtn = document.getElementById("retry-packs-btn");
+        if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
+      } else if (!state.packsLoaded) {
+        listEl.innerHTML = `<div class="pack-empty-box">Loading trivia packs…</div>`;
+      } else {
+        listEl.innerHTML = `
+          <div class="pack-empty-box">
+            <span>No trivia packs loaded on the server yet.</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Refresh</button>
+          </div>`;
+        const retryBtn = document.getElementById("retry-packs-btn");
+        if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
+      }
+      return;
+    }
+
+    listEl.innerHTML = state.packs
+      .map((p, idx) => {
+        const checked = prevChecked.size > 0 ? prevChecked.has(p.pack_id) : idx === 0;
+        return `
         <label class="pack-check-item" dir="${p.rtl ? "rtl" : "auto"}">
-          <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${idx === 0 ? "checked" : ""} />
+          <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
           <div style="flex:1;text-align:start;">
             <div style="font-weight:800;">${esc(p.title)}</div>
             <div style="font-size:0.78rem;color:var(--text-muted);">
               ${p.question_count} Qs · ${esc(p.language.toUpperCase())}${p.has_media ? " · Visual" : ""}
             </div>
           </div>
-        </label>`
-      )
+        </label>`;
+      })
       .join("");
+  }
+
+  function openCreateModal() {
+    state.showCreateModal = true;
+    const modalRoot = document.getElementById("modal-root");
 
     modalRoot.innerHTML = `
       <div class="modal-backdrop" id="create-backdrop">
@@ -476,8 +548,11 @@
             </div>
 
             <div>
-              <label class="field-label">Trivia Pack(s)</label>
-              <div class="pack-checklist">${packChecks}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:6px;">
+                <label class="field-label" style="margin:0;">Trivia Pack(s)</label>
+                <span class="badge" id="cr-pack-count">${state.packs.length} available</span>
+              </div>
+              <div id="cr-pack-list" class="pack-checklist"></div>
             </div>
 
             <div class="form-row-2">
@@ -534,6 +609,11 @@
       </div>
     `;
 
+    renderModalPackList();
+    if (!state.packs.length) {
+      fetchBootstrap();
+    }
+
     document.getElementById("close-modal-btn").addEventListener("click", closeModal);
     document.getElementById("create-backdrop").addEventListener("click", (e) => {
       if (e.target.id === "create-backdrop") closeModal();
@@ -565,6 +645,7 @@
   }
 
   function closeModal() {
+    state.showCreateModal = false;
     const modalRoot = document.getElementById("modal-root");
     if (modalRoot) modalRoot.innerHTML = "";
   }
@@ -1004,6 +1085,7 @@
       window.QuizRoomsTheme.mountPill(document.getElementById("theme-pill-mount"));
     }
     render();
+    fetchBootstrap();
     connectWS();
   });
 })();

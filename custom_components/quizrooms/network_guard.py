@@ -61,11 +61,11 @@ FORBIDDEN_HTML = """<!DOCTYPE html>
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0b1020;
-        --card: #131b30;
-        --text: #f3f6ff;
-        --muted: #9aa7c7;
-        --accent: #22d3ee;
+        --bg: #121214;
+        --card: #1c1c1f;
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --accent: #2dd4bf;
         --border: rgba(255, 255, 255, 0.12);
       }
     }

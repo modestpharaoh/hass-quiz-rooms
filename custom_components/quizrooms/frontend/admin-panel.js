@@ -247,8 +247,8 @@ class QuizRoomsAdminPanel extends HTMLElement {
           min-height: 100vh; padding: 22px; background: var(--bg); color: var(--text); box-sizing: border-box;
         }
         #panel-root[data-theme="dark"] {
-          --bg: #0b1020; --card: #131b30; --card2: #1b2642; --text: #f3f6ff; --muted: #9aa7c7;
-          --border: rgba(148,163,184,0.18); --accent: #22d3ee; --accent-ink: #07131e;
+          --bg: #121214; --card: #1c1c1f; --card2: #26262a; --text: #f4f4f5; --muted: #a1a1aa;
+          --border: rgba(255,255,255,0.12); --accent: #2dd4bf; --accent-ink: #0f1212;
           --ok: #34d399; --warn: #fbbf24; --err: #fb7185;
         }
         .wrap { max-width: 1120px; margin-inline: auto; }

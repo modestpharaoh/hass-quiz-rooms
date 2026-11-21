@@ -424,6 +424,22 @@
       </div>`;
   }
 
+  async function fetchBootstrap() {
+    try {
+      const resp = await fetch("/quizrooms/api/public/bootstrap", { cache: "no-store" });
+      if (!resp.ok) return;
+      const data = await resp.json();
+      if (data.lan_base_url) {
+        state.lanBaseUrl = data.lan_base_url;
+        const el = document.getElementById("tv-join-url");
+        if (el) el.textContent = joinUrl();
+      }
+      if (data.lobby) state.lobby = data.lobby;
+      if (data.tv) applyTVConfig(data.tv);
+      render();
+    } catch (_) {}
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     if (window.QuizRoomsTheme) {
       window.QuizRoomsTheme.mountPill(document.getElementById("tv-theme-mount"));
@@ -442,6 +458,7 @@
     });
 
     render();
+    fetchBootstrap();
     connectWS();
   });
 })();

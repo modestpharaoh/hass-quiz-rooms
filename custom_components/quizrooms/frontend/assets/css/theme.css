@@ -87,38 +87,38 @@
 }
 
 :root[data-theme="dark"] {
-  /* Dark Mode — Deep Midnight-Indigo Arcade Lounge */
-  --bg-canvas: #0b1020;
-  --bg-glow-1: rgba(34, 211, 238, 0.14);
-  --bg-glow-2: rgba(251, 113, 133, 0.12);
-  --bg-surface: #131b30;
-  --bg-surface-2: #1b2642;
-  --bg-surface-glass: rgba(19, 27, 48, 0.84);
-  --border-subtle: rgba(148, 163, 184, 0.16);
-  --border-strong: rgba(148, 163, 184, 0.30);
+  /* Dark Mode — Neutral Charcoal / Graphite Dark Grey Studio */
+  --bg-canvas: #121214;
+  --bg-glow-1: rgba(255, 255, 255, 0.045);
+  --bg-glow-2: rgba(245, 158, 11, 0.055);
+  --bg-surface: #1c1c1f;
+  --bg-surface-2: #26262a;
+  --bg-surface-glass: rgba(28, 28, 31, 0.92);
+  --border-subtle: rgba(255, 255, 255, 0.11);
+  --border-strong: rgba(255, 255, 255, 0.24);
 
-  --text-primary: #f3f6ff;
-  --text-secondary: #b4c0dc;
-  --text-muted: #7f8fb3;
+  --text-primary: #f4f4f5;
+  --text-secondary: #b8b8be;
+  --text-muted: #8a8a93;
 
-  --accent-primary: #22d3ee;
-  --accent-primary-ink: #07131e;
+  --accent-primary: #2dd4bf;
+  --accent-primary-ink: #0f1212;
   --accent-secondary: #34d399;
   --accent-amber: #fbbf24;
   --accent-coral: #fb7185;
-  --accent-cyan: #38bdf8;
+  --accent-cyan: #5eead4;
 
-  --accent-primary-soft: rgba(34, 211, 238, 0.15);
+  --accent-primary-soft: rgba(45, 212, 191, 0.15);
   --accent-secondary-soft: rgba(52, 211, 153, 0.16);
   --accent-amber-soft: rgba(251, 191, 36, 0.16);
   --accent-coral-soft: rgba(251, 113, 133, 0.16);
 
-  --media-frame-bg: #232d48;
-  --media-frame-border: rgba(255, 255, 255, 0.22);
+  --media-frame-bg: #2c2c30;
+  --media-frame-border: rgba(255, 255, 255, 0.20);
 
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
-  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.42);
-  --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.56);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.34);
+  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.48);
+  --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.62);
 }
 
 *, *::before, *::after {
