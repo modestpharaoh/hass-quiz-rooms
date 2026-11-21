@@ -1,0 +1,3097 @@
+{
+  "pack_id": "world_capitals",
+  "title": "World Countries & Capitals",
+  "description": "Test your geography across all 197 world countries and their capital cities in Multiple Choice or Free-Text mode.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "questions": [
+    {
+      "id": "cap_ad",
+      "prompt": "What is the capital city of Andorra?",
+      "choices": [
+        "Minsk",
+        "Bern",
+        "Skopje",
+        "Andorra la Vella"
+      ],
+      "answer": "Andorra la Vella",
+      "aliases": [],
+      "explanation": "Andorra la Vella is the capital of Andorra (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ae",
+      "prompt": "What is the capital city of United Arab Emirates?",
+      "choices": [
+        "Dili",
+        "Naypyidaw",
+        "Abu Dhabi",
+        "New Delhi"
+      ],
+      "answer": "Abu Dhabi",
+      "aliases": [
+        "أبوظبي",
+        "ابو ظبي",
+        "Abudhabi"
+      ],
+      "explanation": "Abu Dhabi is the capital of United Arab Emirates (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_af",
+      "prompt": "What is the capital city of Afghanistan?",
+      "choices": [
+        "Bangkok",
+        "Kabul",
+        "Phnom Penh",
+        "New Delhi"
+      ],
+      "answer": "Kabul",
+      "aliases": [],
+      "explanation": "Kabul is the capital of Afghanistan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ag",
+      "prompt": "What is the capital city of Antigua and Barbuda?",
+      "choices": [
+        "Guatemala City",
+        "Tegucigalpa",
+        "Kingstown",
+        "St. John's"
+      ],
+      "answer": "St. John's",
+      "aliases": [],
+      "explanation": "St. John's is the capital of Antigua and Barbuda (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_al",
+      "prompt": "What is the capital city of Albania?",
+      "choices": [
+        "Tirana",
+        "Paris",
+        "Oslo",
+        "Chișinău"
+      ],
+      "answer": "Tirana",
+      "aliases": [
+        "Tiranë"
+      ],
+      "explanation": "Tirana is the capital of Albania (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_am",
+      "prompt": "What is the capital city of Armenia?",
+      "choices": [
+        "Amman",
+        "Yerevan",
+        "Vientiane",
+        "Naypyidaw"
+      ],
+      "answer": "Yerevan",
+      "aliases": [],
+      "explanation": "Yerevan is the capital of Armenia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ao",
+      "prompt": "What is the capital city of Angola?",
+      "choices": [
+        "Pretoria",
+        "Luanda",
+        "Monrovia",
+        "Nouakchott"
+      ],
+      "answer": "Luanda",
+      "aliases": [],
+      "explanation": "Luanda is the capital of Angola (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ar",
+      "prompt": "What is the capital city of Argentina?",
+      "choices": [
+        "Sucre",
+        "Buenos Aires",
+        "Bogotá",
+        "Georgetown"
+      ],
+      "answer": "Buenos Aires",
+      "aliases": [],
+      "explanation": "Buenos Aires is the capital of Argentina (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_at",
+      "prompt": "What is the capital city of Austria?",
+      "choices": [
+        "Monaco",
+        "Zagreb",
+        "Luxembourg City",
+        "Vienna"
+      ],
+      "answer": "Vienna",
+      "aliases": [
+        "Wien"
+      ],
+      "explanation": "Vienna is the capital of Austria (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_au",
+      "prompt": "What is the capital city of Australia?",
+      "choices": [
+        "Palikir",
+        "Nukuʻalofa",
+        "Canberra",
+        "Port Vila"
+      ],
+      "answer": "Canberra",
+      "aliases": [],
+      "explanation": "Canberra is the capital of Australia (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_az",
+      "prompt": "What is the capital city of Azerbaijan?",
+      "choices": [
+        "Tehran",
+        "Yerevan",
+        "Amman",
+        "Baku"
+      ],
+      "answer": "Baku",
+      "aliases": [],
+      "explanation": "Baku is the capital of Azerbaijan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ba",
+      "prompt": "What is the capital city of Bosnia and Herzegovina?",
+      "choices": [
+        "Lisbon",
+        "Moscow",
+        "Tirana",
+        "Sarajevo"
+      ],
+      "answer": "Sarajevo",
+      "aliases": [],
+      "explanation": "Sarajevo is the capital of Bosnia and Herzegovina (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bb",
+      "prompt": "What is the capital city of Barbados?",
+      "choices": [
+        "St. John's",
+        "Castries",
+        "Bridgetown",
+        "Tegucigalpa"
+      ],
+      "answer": "Bridgetown",
+      "aliases": [],
+      "explanation": "Bridgetown is the capital of Barbados (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bd",
+      "prompt": "What is the capital city of Bangladesh?",
+      "choices": [
+        "Dhaka",
+        "Dili",
+        "Beirut",
+        "Astana"
+      ],
+      "answer": "Dhaka",
+      "aliases": [],
+      "explanation": "Dhaka is the capital of Bangladesh (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_be",
+      "prompt": "What is the capital city of Belgium?",
+      "choices": [
+        "Skopje",
+        "Brussels",
+        "Valletta",
+        "Helsinki"
+      ],
+      "answer": "Brussels",
+      "aliases": [
+        "Bruxelles",
+        "Brussel"
+      ],
+      "explanation": "Brussels is the capital of Belgium (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bf",
+      "prompt": "What is the capital city of Burkina Faso?",
+      "choices": [
+        "Libreville",
+        "Banjul",
+        "Port Louis",
+        "Ouagadougou"
+      ],
+      "answer": "Ouagadougou",
+      "aliases": [],
+      "explanation": "Ouagadougou is the capital of Burkina Faso (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bg",
+      "prompt": "What is the capital city of Bulgaria?",
+      "choices": [
+        "Kiev",
+        "Moscow",
+        "Sofia",
+        "Bratislava"
+      ],
+      "answer": "Sofia",
+      "aliases": [
+        "Sofiya"
+      ],
+      "explanation": "Sofia is the capital of Bulgaria (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bh",
+      "prompt": "What is the capital city of Bahrain?",
+      "choices": [
+        "Thimphu",
+        "Amman",
+        "Ankara",
+        "Manama"
+      ],
+      "answer": "Manama",
+      "aliases": [
+        "المنامة",
+        "Al-Manamah"
+      ],
+      "explanation": "Manama is the capital of Bahrain (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bi",
+      "prompt": "What is the capital city of Burundi?",
+      "choices": [
+        "Juba",
+        "Bujumbura",
+        "Antananarivo",
+        "Yaoundé"
+      ],
+      "answer": "Bujumbura",
+      "aliases": [],
+      "explanation": "Bujumbura is the capital of Burundi (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bj",
+      "prompt": "What is the capital city of Benin?",
+      "choices": [
+        "Porto-Novo",
+        "N'Djamena",
+        "Accra",
+        "Khartoum"
+      ],
+      "answer": "Porto-Novo",
+      "aliases": [],
+      "explanation": "Porto-Novo is the capital of Benin (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bn",
+      "prompt": "What is the capital city of Brunei?",
+      "choices": [
+        "Tokyo",
+        "Bandar Seri Begawan",
+        "Singapore",
+        "Ramallah"
+      ],
+      "answer": "Bandar Seri Begawan",
+      "aliases": [
+        "BSB"
+      ],
+      "explanation": "Bandar Seri Begawan is the capital of Brunei (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bo",
+      "prompt": "What is the capital city of Bolivia?",
+      "choices": [
+        "Sucre",
+        "Asunción",
+        "Bogotá",
+        "Caracas"
+      ],
+      "answer": "Sucre",
+      "aliases": [
+        "La Paz"
+      ],
+      "explanation": "Sucre is the capital of Bolivia (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_br",
+      "prompt": "What is the capital city of Brazil?",
+      "choices": [
+        "Lima",
+        "Santiago",
+        "Brasília",
+        "Caracas"
+      ],
+      "answer": "Brasília",
+      "aliases": [
+        "Brasilia"
+      ],
+      "explanation": "Brasília is the capital of Brazil (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bs",
+      "prompt": "What is the capital city of Bahamas?",
+      "choices": [
+        "Nassau",
+        "San Salvador",
+        "Port-au-Prince",
+        "Roseau"
+      ],
+      "answer": "Nassau",
+      "aliases": [],
+      "explanation": "Nassau is the capital of Bahamas (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bt",
+      "prompt": "What is the capital city of Bhutan?",
+      "choices": [
+        "Baghdad",
+        "Phnom Penh",
+        "Bandar Seri Begawan",
+        "Thimphu"
+      ],
+      "answer": "Thimphu",
+      "aliases": [],
+      "explanation": "Thimphu is the capital of Bhutan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bw",
+      "prompt": "What is the capital city of Botswana?",
+      "choices": [
+        "Rabat",
+        "Bangui",
+        "Gaborone",
+        "Luanda"
+      ],
+      "answer": "Gaborone",
+      "aliases": [],
+      "explanation": "Gaborone is the capital of Botswana (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_by",
+      "prompt": "What is the capital city of Belarus?",
+      "choices": [
+        "Minsk",
+        "Riga",
+        "Kiev",
+        "Andorra la Vella"
+      ],
+      "answer": "Minsk",
+      "aliases": [],
+      "explanation": "Minsk is the capital of Belarus (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_bz",
+      "prompt": "What is the capital city of Belize?",
+      "choices": [
+        "Ottawa",
+        "Panama City",
+        "Kingston",
+        "Belmopan"
+      ],
+      "answer": "Belmopan",
+      "aliases": [],
+      "explanation": "Belmopan is the capital of Belize (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ca",
+      "prompt": "What is the capital city of Canada?",
+      "choices": [
+        "Ottawa",
+        "St. George's",
+        "Nassau",
+        "Roseau"
+      ],
+      "answer": "Ottawa",
+      "aliases": [],
+      "explanation": "Ottawa is the capital of Canada (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cd",
+      "prompt": "What is the capital city of Democratic Republic of the Congo?",
+      "choices": [
+        "Mogadishu",
+        "Praia",
+        "Cairo",
+        "Kinshasa"
+      ],
+      "answer": "Kinshasa",
+      "aliases": [],
+      "explanation": "Kinshasa is the capital of Democratic Republic of the Congo (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cf",
+      "prompt": "What is the capital city of Central African Republic?",
+      "choices": [
+        "Mogadishu",
+        "Bangui",
+        "Nairobi",
+        "Rabat"
+      ],
+      "answer": "Bangui",
+      "aliases": [],
+      "explanation": "Bangui is the capital of Central African Republic (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cg",
+      "prompt": "What is the capital city of Republic of the Congo?",
+      "choices": [
+        "Algiers",
+        "Lobamba, Mbabane",
+        "Porto-Novo",
+        "Brazzaville"
+      ],
+      "answer": "Brazzaville",
+      "aliases": [],
+      "explanation": "Brazzaville is the capital of Republic of the Congo (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ch",
+      "prompt": "What is the capital city of Switzerland?",
+      "choices": [
+        "Rome",
+        "Bern",
+        "Madrid",
+        "Oslo"
+      ],
+      "answer": "Bern",
+      "aliases": [
+        "Berne"
+      ],
+      "explanation": "Bern is the capital of Switzerland (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ci",
+      "prompt": "What is the capital city of Ivory Coast?",
+      "choices": [
+        "Nouakchott",
+        "Cairo",
+        "Yamoussoukro",
+        "Asmara"
+      ],
+      "answer": "Yamoussoukro",
+      "aliases": [
+        "Abidjan"
+      ],
+      "explanation": "Yamoussoukro is the capital of Ivory Coast (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cl",
+      "prompt": "What is the capital city of Chile?",
+      "choices": [
+        "Bogotá",
+        "Santiago",
+        "Sucre",
+        "Brasília"
+      ],
+      "answer": "Santiago",
+      "aliases": [],
+      "explanation": "Santiago is the capital of Chile (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cm",
+      "prompt": "What is the capital city of Cameroon?",
+      "choices": [
+        "N'Djamena",
+        "Yaoundé",
+        "Windhoek",
+        "Pretoria"
+      ],
+      "answer": "Yaoundé",
+      "aliases": [],
+      "explanation": "Yaoundé is the capital of Cameroon (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cn",
+      "prompt": "What is the capital city of China?",
+      "choices": [
+        "Tokyo",
+        "Islamabad",
+        "Sri Jayawardenepura Kotte, Colombo",
+        "Beijing"
+      ],
+      "answer": "Beijing",
+      "aliases": [
+        "Peking"
+      ],
+      "explanation": "Beijing is the capital of China (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_co",
+      "prompt": "What is the capital city of Colombia?",
+      "choices": [
+        "Montevideo",
+        "Bogotá",
+        "Asunción",
+        "Brasília"
+      ],
+      "answer": "Bogotá",
+      "aliases": [],
+      "explanation": "Bogotá is the capital of Colombia (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cr",
+      "prompt": "What is the capital city of Costa Rica?",
+      "choices": [
+        "Roseau",
+        "San Salvador",
+        "Guatemala City",
+        "San José"
+      ],
+      "answer": "San José",
+      "aliases": [],
+      "explanation": "San José is the capital of Costa Rica (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cu",
+      "prompt": "What is the capital city of Cuba?",
+      "choices": [
+        "Havana",
+        "Castries",
+        "St. John's",
+        "San Salvador"
+      ],
+      "answer": "Havana",
+      "aliases": [],
+      "explanation": "Havana is the capital of Cuba (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cv",
+      "prompt": "What is the capital city of Cabo Verde?",
+      "choices": [
+        "Dodoma",
+        "Praia",
+        "Porto-Novo",
+        "Bamako"
+      ],
+      "answer": "Praia",
+      "aliases": [],
+      "explanation": "Praia is the capital of Cabo Verde (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cy",
+      "prompt": "What is the capital city of Cyprus?",
+      "choices": [
+        "Madrid",
+        "Belgrade",
+        "Nicosia",
+        "Moscow"
+      ],
+      "answer": "Nicosia",
+      "aliases": [],
+      "explanation": "Nicosia is the capital of Cyprus (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_cz",
+      "prompt": "What is the capital city of Czechia?",
+      "choices": [
+        "Prague",
+        "Berlin",
+        "Vienna",
+        "Chișinău"
+      ],
+      "answer": "Prague",
+      "aliases": [
+        "Praha"
+      ],
+      "explanation": "Prague is the capital of Czechia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_de",
+      "prompt": "What is the capital city of Germany?",
+      "choices": [
+        "Budapest",
+        "Valletta",
+        "Berlin",
+        "San Marino"
+      ],
+      "answer": "Berlin",
+      "aliases": [],
+      "explanation": "Berlin is the capital of Germany (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_dj",
+      "prompt": "What is the capital city of Djibouti?",
+      "choices": [
+        "Juba",
+        "Dakar",
+        "São Tomé",
+        "Djibouti"
+      ],
+      "answer": "Djibouti",
+      "aliases": [],
+      "explanation": "Djibouti is the capital of Djibouti (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_dk",
+      "prompt": "What is the capital city of Denmark?",
+      "choices": [
+        "Berlin",
+        "Bratislava",
+        "Pristina",
+        "Copenhagen"
+      ],
+      "answer": "Copenhagen",
+      "aliases": [
+        "København",
+        "Kobenhavn"
+      ],
+      "explanation": "Copenhagen is the capital of Denmark (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_dm",
+      "prompt": "What is the capital city of Dominica?",
+      "choices": [
+        "Mexico City",
+        "Roseau",
+        "St. George's",
+        "San José"
+      ],
+      "answer": "Roseau",
+      "aliases": [],
+      "explanation": "Roseau is the capital of Dominica (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_do",
+      "prompt": "What is the capital city of Dominican Republic?",
+      "choices": [
+        "San José",
+        "Santo Domingo",
+        "Tegucigalpa",
+        "Guatemala City"
+      ],
+      "answer": "Santo Domingo",
+      "aliases": [],
+      "explanation": "Santo Domingo is the capital of Dominican Republic (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_dz",
+      "prompt": "What is the capital city of Algeria?",
+      "choices": [
+        "Algiers",
+        "Moroni",
+        "Gaborone",
+        "Accra"
+      ],
+      "answer": "Algiers",
+      "aliases": [
+        "الجزائر",
+        "El Djazair"
+      ],
+      "explanation": "Algiers is the capital of Algeria (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ec",
+      "prompt": "What is the capital city of Ecuador?",
+      "choices": [
+        "Buenos Aires",
+        "Quito",
+        "Georgetown",
+        "Brasília"
+      ],
+      "answer": "Quito",
+      "aliases": [],
+      "explanation": "Quito is the capital of Ecuador (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ee",
+      "prompt": "What is the capital city of Estonia?",
+      "choices": [
+        "Tallinn",
+        "Skopje",
+        "Stockholm",
+        "Bratislava"
+      ],
+      "answer": "Tallinn",
+      "aliases": [],
+      "explanation": "Tallinn is the capital of Estonia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_eg",
+      "prompt": "What is the capital city of Egypt?",
+      "choices": [
+        "Juba",
+        "Cairo",
+        "Bamako",
+        "Banjul"
+      ],
+      "answer": "Cairo",
+      "aliases": [
+        "Al-Qahirah",
+        "القاهرة"
+      ],
+      "explanation": "Cairo is the capital of Egypt (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_er",
+      "prompt": "What is the capital city of Eritrea?",
+      "choices": [
+        "Kinshasa",
+        "São Tomé",
+        "Bujumbura",
+        "Asmara"
+      ],
+      "answer": "Asmara",
+      "aliases": [],
+      "explanation": "Asmara is the capital of Eritrea (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_es",
+      "prompt": "What is the capital city of Spain?",
+      "choices": [
+        "Madrid",
+        "Sofia",
+        "Kiev",
+        "Podgorica"
+      ],
+      "answer": "Madrid",
+      "aliases": [],
+      "explanation": "Madrid is the capital of Spain (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_et",
+      "prompt": "What is the capital city of Ethiopia?",
+      "choices": [
+        "Addis Ababa",
+        "Luanda",
+        "Gaborone",
+        "São Tomé"
+      ],
+      "answer": "Addis Ababa",
+      "aliases": [],
+      "explanation": "Addis Ababa is the capital of Ethiopia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_fi",
+      "prompt": "What is the capital city of Finland?",
+      "choices": [
+        "Luxembourg City",
+        "Dublin",
+        "Riga",
+        "Helsinki"
+      ],
+      "answer": "Helsinki",
+      "aliases": [],
+      "explanation": "Helsinki is the capital of Finland (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_fj",
+      "prompt": "What is the capital city of Fiji?",
+      "choices": [
+        "Wellington",
+        "Port Vila",
+        "Suva",
+        "Port Moresby"
+      ],
+      "answer": "Suva",
+      "aliases": [],
+      "explanation": "Suva is the capital of Fiji (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_fm",
+      "prompt": "What is the capital city of Micronesia?",
+      "choices": [
+        "Wellington",
+        "Funafuti",
+        "Ngerulmud",
+        "Palikir"
+      ],
+      "answer": "Palikir",
+      "aliases": [],
+      "explanation": "Palikir is the capital of Micronesia (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_fr",
+      "prompt": "What is the capital city of France?",
+      "choices": [
+        "Chișinău",
+        "Kiev",
+        "Paris",
+        "Oslo"
+      ],
+      "answer": "Paris",
+      "aliases": [],
+      "explanation": "Paris is the capital of France (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ga",
+      "prompt": "What is the capital city of Gabon?",
+      "choices": [
+        "Windhoek",
+        "Bangui",
+        "Libreville",
+        "Juba"
+      ],
+      "answer": "Libreville",
+      "aliases": [],
+      "explanation": "Libreville is the capital of Gabon (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gb",
+      "prompt": "What is the capital city of United Kingdom?",
+      "choices": [
+        "Vatican City",
+        "Bratislava",
+        "Amsterdam",
+        "London"
+      ],
+      "answer": "London",
+      "aliases": [],
+      "explanation": "London is the capital of United Kingdom (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gd",
+      "prompt": "What is the capital city of Grenada?",
+      "choices": [
+        "Port-au-Prince",
+        "St. George's",
+        "Washington, D.C.",
+        "St. John's"
+      ],
+      "answer": "St. George's",
+      "aliases": [],
+      "explanation": "St. George's is the capital of Grenada (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ge",
+      "prompt": "What is the capital city of Georgia?",
+      "choices": [
+        "Jerusalem",
+        "Tbilisi",
+        "Manila",
+        "Vientiane"
+      ],
+      "answer": "Tbilisi",
+      "aliases": [],
+      "explanation": "Tbilisi is the capital of Georgia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gh",
+      "prompt": "What is the capital city of Ghana?",
+      "choices": [
+        "Khartoum",
+        "Accra",
+        "Maputo",
+        "Port Louis"
+      ],
+      "answer": "Accra",
+      "aliases": [],
+      "explanation": "Accra is the capital of Ghana (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gm",
+      "prompt": "What is the capital city of Gambia?",
+      "choices": [
+        "Antananarivo",
+        "Abuja",
+        "Mogadishu",
+        "Banjul"
+      ],
+      "answer": "Banjul",
+      "aliases": [],
+      "explanation": "Banjul is the capital of Gambia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gn",
+      "prompt": "What is the capital city of Guinea?",
+      "choices": [
+        "Conakry",
+        "Nouakchott",
+        "Windhoek",
+        "Tunis"
+      ],
+      "answer": "Conakry",
+      "aliases": [],
+      "explanation": "Conakry is the capital of Guinea (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gq",
+      "prompt": "What is the capital city of Equatorial Guinea?",
+      "choices": [
+        "Malabo",
+        "Tripoli",
+        "Maseru",
+        "Lilongwe"
+      ],
+      "answer": "Malabo",
+      "aliases": [],
+      "explanation": "Malabo is the capital of Equatorial Guinea (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gr",
+      "prompt": "What is the capital city of Greece?",
+      "choices": [
+        "Bucharest",
+        "Vienna",
+        "Athens",
+        "Tirana"
+      ],
+      "answer": "Athens",
+      "aliases": [
+        "Athina"
+      ],
+      "explanation": "Athens is the capital of Greece (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gt",
+      "prompt": "What is the capital city of Guatemala?",
+      "choices": [
+        "Guatemala City",
+        "Havana",
+        "Roseau",
+        "Bridgetown"
+      ],
+      "answer": "Guatemala City",
+      "aliases": [],
+      "explanation": "Guatemala City is the capital of Guatemala (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gw",
+      "prompt": "What is the capital city of Guinea-Bissau?",
+      "choices": [
+        "Port Louis",
+        "Tunis",
+        "Bissau",
+        "Lilongwe"
+      ],
+      "answer": "Bissau",
+      "aliases": [],
+      "explanation": "Bissau is the capital of Guinea-Bissau (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_gy",
+      "prompt": "What is the capital city of Guyana?",
+      "choices": [
+        "Montevideo",
+        "Georgetown",
+        "Port of Spain",
+        "Asunción"
+      ],
+      "answer": "Georgetown",
+      "aliases": [],
+      "explanation": "Georgetown is the capital of Guyana (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_hn",
+      "prompt": "What is the capital city of Honduras?",
+      "choices": [
+        "Managua",
+        "Kingston",
+        "St. John's",
+        "Tegucigalpa"
+      ],
+      "answer": "Tegucigalpa",
+      "aliases": [],
+      "explanation": "Tegucigalpa is the capital of Honduras (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_hr",
+      "prompt": "What is the capital city of Croatia?",
+      "choices": [
+        "Nicosia",
+        "Budapest",
+        "Zagreb",
+        "Oslo"
+      ],
+      "answer": "Zagreb",
+      "aliases": [],
+      "explanation": "Zagreb is the capital of Croatia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ht",
+      "prompt": "What is the capital city of Haiti?",
+      "choices": [
+        "Ottawa",
+        "Port-au-Prince",
+        "Castries",
+        "Roseau"
+      ],
+      "answer": "Port-au-Prince",
+      "aliases": [],
+      "explanation": "Port-au-Prince is the capital of Haiti (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_hu",
+      "prompt": "What is the capital city of Hungary?",
+      "choices": [
+        "Tallinn",
+        "Vilnius",
+        "Helsinki",
+        "Budapest"
+      ],
+      "answer": "Budapest",
+      "aliases": [],
+      "explanation": "Budapest is the capital of Hungary (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_id",
+      "prompt": "What is the capital city of Indonesia?",
+      "choices": [
+        "Jakarta",
+        "Naypyidaw",
+        "Kabul",
+        "Malé"
+      ],
+      "answer": "Jakarta",
+      "aliases": [],
+      "explanation": "Jakarta is the capital of Indonesia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ie",
+      "prompt": "What is the capital city of Ireland?",
+      "choices": [
+        "Warsaw",
+        "Dublin",
+        "Zagreb",
+        "Reykjavik"
+      ],
+      "answer": "Dublin",
+      "aliases": [],
+      "explanation": "Dublin is the capital of Ireland (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_il",
+      "prompt": "What is the capital city of Israel?",
+      "choices": [
+        "Jerusalem",
+        "Ankara",
+        "Malé",
+        "Sana'a"
+      ],
+      "answer": "Jerusalem",
+      "aliases": [],
+      "explanation": "Jerusalem is the capital of Israel (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_in",
+      "prompt": "What is the capital city of India?",
+      "choices": [
+        "New Delhi",
+        "Ramallah",
+        "Seoul",
+        "Kabul"
+      ],
+      "answer": "New Delhi",
+      "aliases": [
+        "Delhi"
+      ],
+      "explanation": "New Delhi is the capital of India (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_iq",
+      "prompt": "What is the capital city of Iraq?",
+      "choices": [
+        "Naypyidaw",
+        "Ankara",
+        "Baghdad",
+        "Beijing"
+      ],
+      "answer": "Baghdad",
+      "aliases": [
+        "بغداد"
+      ],
+      "explanation": "Baghdad is the capital of Iraq (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ir",
+      "prompt": "What is the capital city of Iran?",
+      "choices": [
+        "Pyongyang",
+        "Damascus",
+        "Tehran",
+        "Beijing"
+      ],
+      "answer": "Tehran",
+      "aliases": [
+        "Teheran"
+      ],
+      "explanation": "Tehran is the capital of Iran (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_is",
+      "prompt": "What is the capital city of Iceland?",
+      "choices": [
+        "Budapest",
+        "Stockholm",
+        "Madrid",
+        "Reykjavik"
+      ],
+      "answer": "Reykjavik",
+      "aliases": [],
+      "explanation": "Reykjavik is the capital of Iceland (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_it",
+      "prompt": "What is the capital city of Italy?",
+      "choices": [
+        "Paris",
+        "Stockholm",
+        "Vilnius",
+        "Rome"
+      ],
+      "answer": "Rome",
+      "aliases": [
+        "Roma"
+      ],
+      "explanation": "Rome is the capital of Italy (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_jm",
+      "prompt": "What is the capital city of Jamaica?",
+      "choices": [
+        "Kingston",
+        "Bridgetown",
+        "Panama City",
+        "Nassau"
+      ],
+      "answer": "Kingston",
+      "aliases": [],
+      "explanation": "Kingston is the capital of Jamaica (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_jo",
+      "prompt": "What is the capital city of Jordan?",
+      "choices": [
+        "Amman",
+        "Kuwait City",
+        "Seoul",
+        "Tehran"
+      ],
+      "answer": "Amman",
+      "aliases": [
+        "عمان",
+        "عمّان"
+      ],
+      "explanation": "Amman is the capital of Jordan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_jp",
+      "prompt": "What is the capital city of Japan?",
+      "choices": [
+        "Tokyo",
+        "Manama",
+        "Yerevan",
+        "Pyongyang"
+      ],
+      "answer": "Tokyo",
+      "aliases": [
+        "Tōkyō",
+        "Tokio"
+      ],
+      "explanation": "Tokyo is the capital of Japan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ke",
+      "prompt": "What is the capital city of Kenya?",
+      "choices": [
+        "Nairobi",
+        "Nouakchott",
+        "Addis Ababa",
+        "Tunis"
+      ],
+      "answer": "Nairobi",
+      "aliases": [],
+      "explanation": "Nairobi is the capital of Kenya (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kg",
+      "prompt": "What is the capital city of Kyrgyzstan?",
+      "choices": [
+        "Naypyidaw",
+        "Sana'a",
+        "Bishkek",
+        "Singapore"
+      ],
+      "answer": "Bishkek",
+      "aliases": [],
+      "explanation": "Bishkek is the capital of Kyrgyzstan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kh",
+      "prompt": "What is the capital city of Cambodia?",
+      "choices": [
+        "Hanoi",
+        "Kuwait City",
+        "Phnom Penh",
+        "Dushanbe"
+      ],
+      "answer": "Phnom Penh",
+      "aliases": [],
+      "explanation": "Phnom Penh is the capital of Cambodia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ki",
+      "prompt": "What is the capital city of Kiribati?",
+      "choices": [
+        "Honiara",
+        "South Tarawa",
+        "Palikir",
+        "Nukuʻalofa"
+      ],
+      "answer": "South Tarawa",
+      "aliases": [],
+      "explanation": "South Tarawa is the capital of Kiribati (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_km",
+      "prompt": "What is the capital city of Comoros?",
+      "choices": [
+        "Juba",
+        "Ouagadougou",
+        "Malabo",
+        "Moroni"
+      ],
+      "answer": "Moroni",
+      "aliases": [],
+      "explanation": "Moroni is the capital of Comoros (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kn",
+      "prompt": "What is the capital city of Saint Kitts and Nevis?",
+      "choices": [
+        "Nassau",
+        "Basseterre",
+        "Havana",
+        "San José"
+      ],
+      "answer": "Basseterre",
+      "aliases": [],
+      "explanation": "Basseterre is the capital of Saint Kitts and Nevis (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kp",
+      "prompt": "What is the capital city of North Korea?",
+      "choices": [
+        "Dhaka",
+        "Islamabad",
+        "Tashkent",
+        "Pyongyang"
+      ],
+      "answer": "Pyongyang",
+      "aliases": [],
+      "explanation": "Pyongyang is the capital of North Korea (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kr",
+      "prompt": "What is the capital city of South Korea?",
+      "choices": [
+        "Dhaka",
+        "Kuwait City",
+        "Jakarta",
+        "Seoul"
+      ],
+      "answer": "Seoul",
+      "aliases": [],
+      "explanation": "Seoul is the capital of South Korea (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kw",
+      "prompt": "What is the capital city of Kuwait?",
+      "choices": [
+        "Manila",
+        "Vientiane",
+        "Kuwait City",
+        "Muscat"
+      ],
+      "answer": "Kuwait City",
+      "aliases": [
+        "Kuwait",
+        "مدينة الكويت",
+        "الكويت"
+      ],
+      "explanation": "Kuwait City is the capital of Kuwait (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_kz",
+      "prompt": "What is the capital city of Kazakhstan?",
+      "choices": [
+        "Astana",
+        "Ankara",
+        "Bishkek",
+        "Seoul"
+      ],
+      "answer": "Astana",
+      "aliases": [
+        "Nur-Sultan",
+        "Nursultan"
+      ],
+      "explanation": "Astana is the capital of Kazakhstan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_la",
+      "prompt": "What is the capital city of Laos?",
+      "choices": [
+        "Pyongyang",
+        "Vientiane",
+        "Kabul",
+        "Ulaanbaatar"
+      ],
+      "answer": "Vientiane",
+      "aliases": [],
+      "explanation": "Vientiane is the capital of Laos (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lb",
+      "prompt": "What is the capital city of Lebanon?",
+      "choices": [
+        "Beirut",
+        "Amman",
+        "Tashkent",
+        "Tehran"
+      ],
+      "answer": "Beirut",
+      "aliases": [
+        "بيروت"
+      ],
+      "explanation": "Beirut is the capital of Lebanon (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lc",
+      "prompt": "What is the capital city of Saint Lucia?",
+      "choices": [
+        "Managua",
+        "Guatemala City",
+        "Castries",
+        "Roseau"
+      ],
+      "answer": "Castries",
+      "aliases": [],
+      "explanation": "Castries is the capital of Saint Lucia (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_li",
+      "prompt": "What is the capital city of Liechtenstein?",
+      "choices": [
+        "Kiev",
+        "Tallinn",
+        "Skopje",
+        "Vaduz"
+      ],
+      "answer": "Vaduz",
+      "aliases": [],
+      "explanation": "Vaduz is the capital of Liechtenstein (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lk",
+      "prompt": "What is the capital city of Sri Lanka?",
+      "choices": [
+        "Kuwait City",
+        "Muscat",
+        "Sri Jayawardenepura Kotte, Colombo",
+        "Tbilisi"
+      ],
+      "answer": "Sri Jayawardenepura Kotte, Colombo",
+      "aliases": [
+        "Colombo",
+        "Kotte",
+        "Sri Jayawardenepura"
+      ],
+      "explanation": "Sri Jayawardenepura Kotte, Colombo is the capital of Sri Lanka (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lr",
+      "prompt": "What is the capital city of Liberia?",
+      "choices": [
+        "Dakar",
+        "Windhoek",
+        "Monrovia",
+        "Lusaka"
+      ],
+      "answer": "Monrovia",
+      "aliases": [],
+      "explanation": "Monrovia is the capital of Liberia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ls",
+      "prompt": "What is the capital city of Lesotho?",
+      "choices": [
+        "Maseru",
+        "Monrovia",
+        "Niamey",
+        "Pretoria"
+      ],
+      "answer": "Maseru",
+      "aliases": [],
+      "explanation": "Maseru is the capital of Lesotho (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lt",
+      "prompt": "What is the capital city of Lithuania?",
+      "choices": [
+        "Valletta",
+        "Vilnius",
+        "Pristina",
+        "Luxembourg City"
+      ],
+      "answer": "Vilnius",
+      "aliases": [],
+      "explanation": "Vilnius is the capital of Lithuania (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lu",
+      "prompt": "What is the capital city of Luxembourg?",
+      "choices": [
+        "Stockholm",
+        "Luxembourg City",
+        "Valletta",
+        "Amsterdam"
+      ],
+      "answer": "Luxembourg City",
+      "aliases": [],
+      "explanation": "Luxembourg City is the capital of Luxembourg (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_lv",
+      "prompt": "What is the capital city of Latvia?",
+      "choices": [
+        "Minsk",
+        "Lisbon",
+        "Oslo",
+        "Riga"
+      ],
+      "answer": "Riga",
+      "aliases": [],
+      "explanation": "Riga is the capital of Latvia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ly",
+      "prompt": "What is the capital city of Libya?",
+      "choices": [
+        "Tripoli",
+        "Abuja",
+        "Accra",
+        "Mogadishu"
+      ],
+      "answer": "Tripoli",
+      "aliases": [
+        "طرابلس"
+      ],
+      "explanation": "Tripoli is the capital of Libya (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ma",
+      "prompt": "What is the capital city of Morocco?",
+      "choices": [
+        "Tripoli",
+        "Kigali",
+        "Dakar",
+        "Rabat"
+      ],
+      "answer": "Rabat",
+      "aliases": [
+        "الرباط"
+      ],
+      "explanation": "Rabat is the capital of Morocco (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mc",
+      "prompt": "What is the capital city of Monaco?",
+      "choices": [
+        "Paris",
+        "San Marino",
+        "Monaco",
+        "Oslo"
+      ],
+      "answer": "Monaco",
+      "aliases": [],
+      "explanation": "Monaco is the capital of Monaco (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_md",
+      "prompt": "What is the capital city of Moldova?",
+      "choices": [
+        "Chișinău",
+        "Podgorica",
+        "Luxembourg City",
+        "Sofia"
+      ],
+      "answer": "Chișinău",
+      "aliases": [],
+      "explanation": "Chișinău is the capital of Moldova (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_me",
+      "prompt": "What is the capital city of Montenegro?",
+      "choices": [
+        "Kiev",
+        "Podgorica",
+        "Moscow",
+        "Paris"
+      ],
+      "answer": "Podgorica",
+      "aliases": [],
+      "explanation": "Podgorica is the capital of Montenegro (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mg",
+      "prompt": "What is the capital city of Madagascar?",
+      "choices": [
+        "Antananarivo",
+        "Nairobi",
+        "Malabo",
+        "Libreville"
+      ],
+      "answer": "Antananarivo",
+      "aliases": [],
+      "explanation": "Antananarivo is the capital of Madagascar (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mh",
+      "prompt": "What is the capital city of Marshall Islands?",
+      "choices": [
+        "Majuro",
+        "Suva",
+        "South Tarawa",
+        "Yaren District"
+      ],
+      "answer": "Majuro",
+      "aliases": [],
+      "explanation": "Majuro is the capital of Marshall Islands (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mk",
+      "prompt": "What is the capital city of North Macedonia?",
+      "choices": [
+        "Rome",
+        "Copenhagen",
+        "Skopje",
+        "Chișinău"
+      ],
+      "answer": "Skopje",
+      "aliases": [],
+      "explanation": "Skopje is the capital of North Macedonia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ml",
+      "prompt": "What is the capital city of Mali?",
+      "choices": [
+        "Cairo",
+        "Bamako",
+        "Tunis",
+        "Monrovia"
+      ],
+      "answer": "Bamako",
+      "aliases": [],
+      "explanation": "Bamako is the capital of Mali (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mm",
+      "prompt": "What is the capital city of Myanmar?",
+      "choices": [
+        "Bangkok",
+        "Sri Jayawardenepura Kotte, Colombo",
+        "Manama",
+        "Naypyidaw"
+      ],
+      "answer": "Naypyidaw",
+      "aliases": [
+        "Nay Pyi Taw",
+        "Naypyitaw"
+      ],
+      "explanation": "Naypyidaw is the capital of Myanmar (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mn",
+      "prompt": "What is the capital city of Mongolia?",
+      "choices": [
+        "Amman",
+        "Riyadh",
+        "Ulaanbaatar",
+        "Ashgabat"
+      ],
+      "answer": "Ulaanbaatar",
+      "aliases": [],
+      "explanation": "Ulaanbaatar is the capital of Mongolia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mr",
+      "prompt": "What is the capital city of Mauritania?",
+      "choices": [
+        "Bangui",
+        "Kigali",
+        "Nouakchott",
+        "Niamey"
+      ],
+      "answer": "Nouakchott",
+      "aliases": [],
+      "explanation": "Nouakchott is the capital of Mauritania (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mt",
+      "prompt": "What is the capital city of Malta?",
+      "choices": [
+        "Valletta",
+        "Amsterdam",
+        "Belgrade",
+        "Tirana"
+      ],
+      "answer": "Valletta",
+      "aliases": [],
+      "explanation": "Valletta is the capital of Malta (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mu",
+      "prompt": "What is the capital city of Mauritius?",
+      "choices": [
+        "Port Louis",
+        "Rabat",
+        "Kampala",
+        "Libreville"
+      ],
+      "answer": "Port Louis",
+      "aliases": [],
+      "explanation": "Port Louis is the capital of Mauritius (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mv",
+      "prompt": "What is the capital city of Maldives?",
+      "choices": [
+        "Astana",
+        "Malé",
+        "Sri Jayawardenepura Kotte, Colombo",
+        "Ramallah"
+      ],
+      "answer": "Malé",
+      "aliases": [
+        "Male"
+      ],
+      "explanation": "Malé is the capital of Maldives (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mw",
+      "prompt": "What is the capital city of Malawi?",
+      "choices": [
+        "Antananarivo",
+        "Tunis",
+        "Lilongwe",
+        "Yaoundé"
+      ],
+      "answer": "Lilongwe",
+      "aliases": [],
+      "explanation": "Lilongwe is the capital of Malawi (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mx",
+      "prompt": "What is the capital city of Mexico?",
+      "choices": [
+        "Washington, D.C.",
+        "Panama City",
+        "Port-au-Prince",
+        "Mexico City"
+      ],
+      "answer": "Mexico City",
+      "aliases": [
+        "Mexico",
+        "CDMX",
+        "Ciudad de Mexico"
+      ],
+      "explanation": "Mexico City is the capital of Mexico (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_my",
+      "prompt": "What is the capital city of Malaysia?",
+      "choices": [
+        "Ulaanbaatar",
+        "Tashkent",
+        "Pyongyang",
+        "Kuala Lumpur"
+      ],
+      "answer": "Kuala Lumpur",
+      "aliases": [],
+      "explanation": "Kuala Lumpur is the capital of Malaysia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_mz",
+      "prompt": "What is the capital city of Mozambique?",
+      "choices": [
+        "Maputo",
+        "Accra",
+        "Abuja",
+        "Kampala"
+      ],
+      "answer": "Maputo",
+      "aliases": [],
+      "explanation": "Maputo is the capital of Mozambique (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_na",
+      "prompt": "What is the capital city of Namibia?",
+      "choices": [
+        "Maseru",
+        "Windhoek",
+        "Bamako",
+        "Accra"
+      ],
+      "answer": "Windhoek",
+      "aliases": [],
+      "explanation": "Windhoek is the capital of Namibia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ne",
+      "prompt": "What is the capital city of Niger?",
+      "choices": [
+        "Addis Ababa",
+        "Lusaka",
+        "Niamey",
+        "Tunis"
+      ],
+      "answer": "Niamey",
+      "aliases": [],
+      "explanation": "Niamey is the capital of Niger (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ng",
+      "prompt": "What is the capital city of Nigeria?",
+      "choices": [
+        "Abuja",
+        "Conakry",
+        "Algiers",
+        "Praia"
+      ],
+      "answer": "Abuja",
+      "aliases": [],
+      "explanation": "Abuja is the capital of Nigeria (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ni",
+      "prompt": "What is the capital city of Nicaragua?",
+      "choices": [
+        "Roseau",
+        "Guatemala City",
+        "St. John's",
+        "Managua"
+      ],
+      "answer": "Managua",
+      "aliases": [],
+      "explanation": "Managua is the capital of Nicaragua (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_nl",
+      "prompt": "What is the capital city of Netherlands?",
+      "choices": [
+        "Amsterdam",
+        "Vatican City",
+        "Prague",
+        "Bern"
+      ],
+      "answer": "Amsterdam",
+      "aliases": [
+        "The Hague"
+      ],
+      "explanation": "Amsterdam is the capital of Netherlands (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_no",
+      "prompt": "What is the capital city of Norway?",
+      "choices": [
+        "Vienna",
+        "Oslo",
+        "Sofia",
+        "Helsinki"
+      ],
+      "answer": "Oslo",
+      "aliases": [],
+      "explanation": "Oslo is the capital of Norway (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_np",
+      "prompt": "What is the capital city of Nepal?",
+      "choices": [
+        "Ulaanbaatar",
+        "Muscat",
+        "Kathmandu",
+        "New Delhi"
+      ],
+      "answer": "Kathmandu",
+      "aliases": [],
+      "explanation": "Kathmandu is the capital of Nepal (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_nr",
+      "prompt": "What is the capital city of Nauru?",
+      "choices": [
+        "Apia",
+        "Yaren District",
+        "Wellington",
+        "Port Vila"
+      ],
+      "answer": "Yaren District",
+      "aliases": [],
+      "explanation": "Yaren District is the capital of Nauru (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_nz",
+      "prompt": "What is the capital city of New Zealand?",
+      "choices": [
+        "Wellington",
+        "Nukuʻalofa",
+        "Port Vila",
+        "Port Moresby"
+      ],
+      "answer": "Wellington",
+      "aliases": [],
+      "explanation": "Wellington is the capital of New Zealand (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_om",
+      "prompt": "What is the capital city of Oman?",
+      "choices": [
+        "Muscat",
+        "New Delhi",
+        "Sana'a",
+        "Ashgabat"
+      ],
+      "answer": "Muscat",
+      "aliases": [
+        "مسقط"
+      ],
+      "explanation": "Muscat is the capital of Oman (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pa",
+      "prompt": "What is the capital city of Panama?",
+      "choices": [
+        "Santo Domingo",
+        "Panama City",
+        "San José",
+        "Basseterre"
+      ],
+      "answer": "Panama City",
+      "aliases": [
+        "Panama"
+      ],
+      "explanation": "Panama City is the capital of Panama (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pe",
+      "prompt": "What is the capital city of Peru?",
+      "choices": [
+        "Quito",
+        "Georgetown",
+        "Lima",
+        "Bogotá"
+      ],
+      "answer": "Lima",
+      "aliases": [],
+      "explanation": "Lima is the capital of Peru (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pg",
+      "prompt": "What is the capital city of Papua New Guinea?",
+      "choices": [
+        "Port Moresby",
+        "Apia",
+        "Majuro",
+        "Yaren District"
+      ],
+      "answer": "Port Moresby",
+      "aliases": [],
+      "explanation": "Port Moresby is the capital of Papua New Guinea (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ph",
+      "prompt": "What is the capital city of Philippines?",
+      "choices": [
+        "Amman",
+        "Phnom Penh",
+        "Ramallah",
+        "Manila"
+      ],
+      "answer": "Manila",
+      "aliases": [],
+      "explanation": "Manila is the capital of Philippines (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pk",
+      "prompt": "What is the capital city of Pakistan?",
+      "choices": [
+        "Sana'a",
+        "Hanoi",
+        "Manila",
+        "Islamabad"
+      ],
+      "answer": "Islamabad",
+      "aliases": [],
+      "explanation": "Islamabad is the capital of Pakistan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pl",
+      "prompt": "What is the capital city of Poland?",
+      "choices": [
+        "Chișinău",
+        "Tallinn",
+        "Warsaw",
+        "Prague"
+      ],
+      "answer": "Warsaw",
+      "aliases": [
+        "Warszawa"
+      ],
+      "explanation": "Warsaw is the capital of Poland (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ps",
+      "prompt": "What is the capital city of Palestine?",
+      "choices": [
+        "Baghdad",
+        "Ramallah",
+        "Riyadh",
+        "Abu Dhabi"
+      ],
+      "answer": "Ramallah",
+      "aliases": [
+        "Jerusalem",
+        "East Jerusalem",
+        "القدس"
+      ],
+      "explanation": "Ramallah is the capital of Palestine (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pt",
+      "prompt": "What is the capital city of Portugal?",
+      "choices": [
+        "Vaduz",
+        "Lisbon",
+        "Stockholm",
+        "Kiev"
+      ],
+      "answer": "Lisbon",
+      "aliases": [
+        "Lisboa"
+      ],
+      "explanation": "Lisbon is the capital of Portugal (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_pw",
+      "prompt": "What is the capital city of Palau?",
+      "choices": [
+        "Ngerulmud",
+        "Port Vila",
+        "Port Moresby",
+        "Wellington"
+      ],
+      "answer": "Ngerulmud",
+      "aliases": [],
+      "explanation": "Ngerulmud is the capital of Palau (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_py",
+      "prompt": "What is the capital city of Paraguay?",
+      "choices": [
+        "Buenos Aires",
+        "Quito",
+        "Asunción",
+        "Port of Spain"
+      ],
+      "answer": "Asunción",
+      "aliases": [],
+      "explanation": "Asunción is the capital of Paraguay (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_qa",
+      "prompt": "What is the capital city of Qatar?",
+      "choices": [
+        "Manila",
+        "Dushanbe",
+        "Doha",
+        "Kuala Lumpur"
+      ],
+      "answer": "Doha",
+      "aliases": [
+        "الدوحة",
+        "Ad-Dawhah"
+      ],
+      "explanation": "Doha is the capital of Qatar (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ro",
+      "prompt": "What is the capital city of Romania?",
+      "choices": [
+        "Bucharest",
+        "Lisbon",
+        "Tallinn",
+        "London"
+      ],
+      "answer": "Bucharest",
+      "aliases": [
+        "București",
+        "Bucuresti"
+      ],
+      "explanation": "Bucharest is the capital of Romania (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_rs",
+      "prompt": "What is the capital city of Serbia?",
+      "choices": [
+        "Belgrade",
+        "Riga",
+        "Kiev",
+        "Berlin"
+      ],
+      "answer": "Belgrade",
+      "aliases": [],
+      "explanation": "Belgrade is the capital of Serbia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ru",
+      "prompt": "What is the capital city of Russia?",
+      "choices": [
+        "Sofia",
+        "Bern",
+        "Oslo",
+        "Moscow"
+      ],
+      "answer": "Moscow",
+      "aliases": [
+        "Moskva"
+      ],
+      "explanation": "Moscow is the capital of Russia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_rw",
+      "prompt": "What is the capital city of Rwanda?",
+      "choices": [
+        "Kampala",
+        "Maputo",
+        "Lusaka",
+        "Kigali"
+      ],
+      "answer": "Kigali",
+      "aliases": [],
+      "explanation": "Kigali is the capital of Rwanda (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sa",
+      "prompt": "What is the capital city of Saudi Arabia?",
+      "choices": [
+        "Riyadh",
+        "Jerusalem",
+        "Singapore",
+        "Tbilisi"
+      ],
+      "answer": "Riyadh",
+      "aliases": [
+        "الرياض",
+        "Ar-Riyad"
+      ],
+      "explanation": "Riyadh is the capital of Saudi Arabia (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sb",
+      "prompt": "What is the capital city of Solomon Islands?",
+      "choices": [
+        "Palikir",
+        "Yaren District",
+        "Honiara",
+        "Ngerulmud"
+      ],
+      "answer": "Honiara",
+      "aliases": [],
+      "explanation": "Honiara is the capital of Solomon Islands (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sc",
+      "prompt": "What is the capital city of Seychelles?",
+      "choices": [
+        "Tripoli",
+        "Victoria",
+        "Yaoundé",
+        "Tunis"
+      ],
+      "answer": "Victoria",
+      "aliases": [],
+      "explanation": "Victoria is the capital of Seychelles (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sd",
+      "prompt": "What is the capital city of Sudan?",
+      "choices": [
+        "Conakry",
+        "Gaborone",
+        "Khartoum",
+        "Djibouti"
+      ],
+      "answer": "Khartoum",
+      "aliases": [
+        "الخرطوم"
+      ],
+      "explanation": "Khartoum is the capital of Sudan (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_se",
+      "prompt": "What is the capital city of Sweden?",
+      "choices": [
+        "Bratislava",
+        "Kiev",
+        "Stockholm",
+        "Vaduz"
+      ],
+      "answer": "Stockholm",
+      "aliases": [],
+      "explanation": "Stockholm is the capital of Sweden (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sg",
+      "prompt": "What is the capital city of Singapore?",
+      "choices": [
+        "Ashgabat",
+        "Singapore",
+        "Amman",
+        "Kathmandu"
+      ],
+      "answer": "Singapore",
+      "aliases": [],
+      "explanation": "Singapore is the capital of Singapore (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_si",
+      "prompt": "What is the capital city of Slovenia?",
+      "choices": [
+        "Brussels",
+        "Ljubljana",
+        "Helsinki",
+        "Riga"
+      ],
+      "answer": "Ljubljana",
+      "aliases": [],
+      "explanation": "Ljubljana is the capital of Slovenia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sk",
+      "prompt": "What is the capital city of Slovakia?",
+      "choices": [
+        "Bratislava",
+        "Vatican City",
+        "Belgrade",
+        "Sarajevo"
+      ],
+      "answer": "Bratislava",
+      "aliases": [],
+      "explanation": "Bratislava is the capital of Slovakia (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sl",
+      "prompt": "What is the capital city of Sierra Leone?",
+      "choices": [
+        "Moroni",
+        "Lusaka",
+        "Maputo",
+        "Freetown"
+      ],
+      "answer": "Freetown",
+      "aliases": [],
+      "explanation": "Freetown is the capital of Sierra Leone (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sm",
+      "prompt": "What is the capital city of San Marino?",
+      "choices": [
+        "Chișinău",
+        "San Marino",
+        "Vilnius",
+        "Reykjavik"
+      ],
+      "answer": "San Marino",
+      "aliases": [],
+      "explanation": "San Marino is the capital of San Marino (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sn",
+      "prompt": "What is the capital city of Senegal?",
+      "choices": [
+        "Dakar",
+        "Niamey",
+        "Antananarivo",
+        "Maputo"
+      ],
+      "answer": "Dakar",
+      "aliases": [],
+      "explanation": "Dakar is the capital of Senegal (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_so",
+      "prompt": "What is the capital city of Somalia?",
+      "choices": [
+        "Juba",
+        "Khartoum",
+        "Mogadishu",
+        "Port Louis"
+      ],
+      "answer": "Mogadishu",
+      "aliases": [],
+      "explanation": "Mogadishu is the capital of Somalia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sr",
+      "prompt": "What is the capital city of Suriname?",
+      "choices": [
+        "Quito",
+        "Brasília",
+        "Caracas",
+        "Paramaribo"
+      ],
+      "answer": "Paramaribo",
+      "aliases": [],
+      "explanation": "Paramaribo is the capital of Suriname (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ss",
+      "prompt": "What is the capital city of South Sudan?",
+      "choices": [
+        "Juba",
+        "Yaoundé",
+        "Harare",
+        "Praia"
+      ],
+      "answer": "Juba",
+      "aliases": [],
+      "explanation": "Juba is the capital of South Sudan (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_st",
+      "prompt": "What is the capital city of Sao Tome and Principe?",
+      "choices": [
+        "São Tomé",
+        "Bujumbura",
+        "Bissau",
+        "Porto-Novo"
+      ],
+      "answer": "São Tomé",
+      "aliases": [],
+      "explanation": "São Tomé is the capital of Sao Tome and Principe (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sv",
+      "prompt": "What is the capital city of El Salvador?",
+      "choices": [
+        "Basseterre",
+        "Kingstown",
+        "Managua",
+        "San Salvador"
+      ],
+      "answer": "San Salvador",
+      "aliases": [],
+      "explanation": "San Salvador is the capital of El Salvador (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sy",
+      "prompt": "What is the capital city of Syria?",
+      "choices": [
+        "Ramallah",
+        "Tehran",
+        "Astana",
+        "Damascus"
+      ],
+      "answer": "Damascus",
+      "aliases": [
+        "دمشق",
+        "Dimashq"
+      ],
+      "explanation": "Damascus is the capital of Syria (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_sz",
+      "prompt": "What is the capital city of Eswatini?",
+      "choices": [
+        "Nairobi",
+        "Lilongwe",
+        "Victoria",
+        "Lobamba, Mbabane"
+      ],
+      "answer": "Lobamba, Mbabane",
+      "aliases": [],
+      "explanation": "Lobamba, Mbabane is the capital of Eswatini (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_td",
+      "prompt": "What is the capital city of Chad?",
+      "choices": [
+        "Moroni",
+        "Victoria",
+        "N'Djamena",
+        "Nouakchott"
+      ],
+      "answer": "N'Djamena",
+      "aliases": [],
+      "explanation": "N'Djamena is the capital of Chad (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tg",
+      "prompt": "What is the capital city of Togo?",
+      "choices": [
+        "Port Louis",
+        "Lomé",
+        "Nairobi",
+        "Asmara"
+      ],
+      "answer": "Lomé",
+      "aliases": [],
+      "explanation": "Lomé is the capital of Togo (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_th",
+      "prompt": "What is the capital city of Thailand?",
+      "choices": [
+        "Naypyidaw",
+        "Bangkok",
+        "Singapore",
+        "Ulaanbaatar"
+      ],
+      "answer": "Bangkok",
+      "aliases": [
+        "Krung Thep"
+      ],
+      "explanation": "Bangkok is the capital of Thailand (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tj",
+      "prompt": "What is the capital city of Tajikistan?",
+      "choices": [
+        "Dushanbe",
+        "Pyongyang",
+        "Islamabad",
+        "Jerusalem"
+      ],
+      "answer": "Dushanbe",
+      "aliases": [],
+      "explanation": "Dushanbe is the capital of Tajikistan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tl",
+      "prompt": "What is the capital city of Timor-Leste?",
+      "choices": [
+        "Astana",
+        "Dushanbe",
+        "Dili",
+        "Abu Dhabi"
+      ],
+      "answer": "Dili",
+      "aliases": [],
+      "explanation": "Dili is the capital of Timor-Leste (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tm",
+      "prompt": "What is the capital city of Turkmenistan?",
+      "choices": [
+        "Riyadh",
+        "Manama",
+        "Baghdad",
+        "Ashgabat"
+      ],
+      "answer": "Ashgabat",
+      "aliases": [],
+      "explanation": "Ashgabat is the capital of Turkmenistan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tn",
+      "prompt": "What is the capital city of Tunisia?",
+      "choices": [
+        "Tunis",
+        "Bujumbura",
+        "Abuja",
+        "Praia"
+      ],
+      "answer": "Tunis",
+      "aliases": [
+        "تونس"
+      ],
+      "explanation": "Tunis is the capital of Tunisia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_to",
+      "prompt": "What is the capital city of Tonga?",
+      "choices": [
+        "Nukuʻalofa",
+        "South Tarawa",
+        "Palikir",
+        "Funafuti"
+      ],
+      "answer": "Nukuʻalofa",
+      "aliases": [],
+      "explanation": "Nukuʻalofa is the capital of Tonga (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tr",
+      "prompt": "What is the capital city of Türkiye?",
+      "choices": [
+        "Ankara",
+        "Seoul",
+        "Thimphu",
+        "Riyadh"
+      ],
+      "answer": "Ankara",
+      "aliases": [],
+      "explanation": "Ankara is the capital of Türkiye (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tt",
+      "prompt": "What is the capital city of Trinidad and Tobago?",
+      "choices": [
+        "Port of Spain",
+        "Lima",
+        "Buenos Aires",
+        "Georgetown"
+      ],
+      "answer": "Port of Spain",
+      "aliases": [],
+      "explanation": "Port of Spain is the capital of Trinidad and Tobago (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tv",
+      "prompt": "What is the capital city of Tuvalu?",
+      "choices": [
+        "Funafuti",
+        "Port Moresby",
+        "Canberra",
+        "South Tarawa"
+      ],
+      "answer": "Funafuti",
+      "aliases": [],
+      "explanation": "Funafuti is the capital of Tuvalu (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tw",
+      "prompt": "What is the capital city of Taiwan?",
+      "choices": [
+        "Pyongyang",
+        "Ulaanbaatar",
+        "Taipei",
+        "Yerevan"
+      ],
+      "answer": "Taipei",
+      "aliases": [],
+      "explanation": "Taipei is the capital of Taiwan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_tz",
+      "prompt": "What is the capital city of Tanzania?",
+      "choices": [
+        "Cairo",
+        "Dodoma",
+        "Harare",
+        "Malabo"
+      ],
+      "answer": "Dodoma",
+      "aliases": [],
+      "explanation": "Dodoma is the capital of Tanzania (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ua",
+      "prompt": "What is the capital city of Ukraine?",
+      "choices": [
+        "Andorra la Vella",
+        "Belgrade",
+        "Kiev",
+        "Ljubljana"
+      ],
+      "answer": "Kiev",
+      "aliases": [],
+      "explanation": "Kiev is the capital of Ukraine (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ug",
+      "prompt": "What is the capital city of Uganda?",
+      "choices": [
+        "Maputo",
+        "Conakry",
+        "Kampala",
+        "Asmara"
+      ],
+      "answer": "Kampala",
+      "aliases": [],
+      "explanation": "Kampala is the capital of Uganda (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_us",
+      "prompt": "What is the capital city of United States?",
+      "choices": [
+        "Belmopan",
+        "St. John's",
+        "Washington, D.C.",
+        "San José"
+      ],
+      "answer": "Washington, D.C.",
+      "aliases": [
+        "Washington",
+        "Washington DC",
+        "Washington, DC",
+        "DC",
+        "D.C."
+      ],
+      "explanation": "Washington, D.C. is the capital of United States (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_uy",
+      "prompt": "What is the capital city of Uruguay?",
+      "choices": [
+        "Sucre",
+        "Quito",
+        "Montevideo",
+        "Asunción"
+      ],
+      "answer": "Montevideo",
+      "aliases": [],
+      "explanation": "Montevideo is the capital of Uruguay (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_uz",
+      "prompt": "What is the capital city of Uzbekistan?",
+      "choices": [
+        "Muscat",
+        "Ramallah",
+        "Tashkent",
+        "Amman"
+      ],
+      "answer": "Tashkent",
+      "aliases": [],
+      "explanation": "Tashkent is the capital of Uzbekistan (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_va",
+      "prompt": "What is the capital city of Vatican City?",
+      "choices": [
+        "Stockholm",
+        "Vienna",
+        "Ljubljana",
+        "Vatican City"
+      ],
+      "answer": "Vatican City",
+      "aliases": [
+        "Vatican",
+        "The Vatican"
+      ],
+      "explanation": "Vatican City is the capital of Vatican City (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_vc",
+      "prompt": "What is the capital city of Saint Vincent and the Grenadines?",
+      "choices": [
+        "Port-au-Prince",
+        "Kingstown",
+        "Havana",
+        "Belmopan"
+      ],
+      "answer": "Kingstown",
+      "aliases": [],
+      "explanation": "Kingstown is the capital of Saint Vincent and the Grenadines (North America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ve",
+      "prompt": "What is the capital city of Venezuela?",
+      "choices": [
+        "Caracas",
+        "Quito",
+        "Paramaribo",
+        "Bogotá"
+      ],
+      "answer": "Caracas",
+      "aliases": [],
+      "explanation": "Caracas is the capital of Venezuela (South America).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_vn",
+      "prompt": "What is the capital city of Vietnam?",
+      "choices": [
+        "Ankara",
+        "Manila",
+        "Hanoi",
+        "Amman"
+      ],
+      "answer": "Hanoi",
+      "aliases": [],
+      "explanation": "Hanoi is the capital of Vietnam (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_vu",
+      "prompt": "What is the capital city of Vanuatu?",
+      "choices": [
+        "Port Vila",
+        "Honiara",
+        "Funafuti",
+        "Apia"
+      ],
+      "answer": "Port Vila",
+      "aliases": [],
+      "explanation": "Port Vila is the capital of Vanuatu (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ws",
+      "prompt": "What is the capital city of Samoa?",
+      "choices": [
+        "Ngerulmud",
+        "Yaren District",
+        "Apia",
+        "Port Vila"
+      ],
+      "answer": "Apia",
+      "aliases": [],
+      "explanation": "Apia is the capital of Samoa (Oceania).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_xk",
+      "prompt": "What is the capital city of Kosovo?",
+      "choices": [
+        "Lisbon",
+        "Pristina",
+        "Rome",
+        "Ljubljana"
+      ],
+      "answer": "Pristina",
+      "aliases": [],
+      "explanation": "Pristina is the capital of Kosovo (Europe).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_ye",
+      "prompt": "What is the capital city of Yemen?",
+      "choices": [
+        "Sana'a",
+        "Islamabad",
+        "Manila",
+        "Doha"
+      ],
+      "answer": "Sana'a",
+      "aliases": [
+        "صنعاء",
+        "Sanaa"
+      ],
+      "explanation": "Sana'a is the capital of Yemen (Asia).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_za",
+      "prompt": "What is the capital city of South Africa?",
+      "choices": [
+        "Lusaka",
+        "Luanda",
+        "Yaoundé",
+        "Pretoria"
+      ],
+      "answer": "Pretoria",
+      "aliases": [
+        "Cape Town",
+        "Bloemfontein"
+      ],
+      "explanation": "Pretoria is the capital of South Africa (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_zm",
+      "prompt": "What is the capital city of Zambia?",
+      "choices": [
+        "Brazzaville",
+        "Antananarivo",
+        "Lusaka",
+        "Addis Ababa"
+      ],
+      "answer": "Lusaka",
+      "aliases": [],
+      "explanation": "Lusaka is the capital of Zambia (Africa).",
+      "language": "en",
+      "rtl": false
+    },
+    {
+      "id": "cap_zw",
+      "prompt": "What is the capital city of Zimbabwe?",
+      "choices": [
+        "Harare",
+        "Maputo",
+        "Malabo",
+        "Banjul"
+      ],
+      "answer": "Harare",
+      "aliases": [],
+      "explanation": "Harare is the capital of Zimbabwe (Africa).",
+      "language": "en",
+      "rtl": false
+    }
+  ]
+}

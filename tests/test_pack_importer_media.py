@@ -28,6 +28,7 @@ def _make_zip_bytes(entries: list[tuple[str, bytes, int | None]]) -> bytes:
 
 def test_builtin_starter_packs_loaded_with_local_svg_flags(pack_registry: PackRegistry) -> None:
     flags = pack_registry.get_pack("countries_flags")
+    capitals = pack_registry.get_pack("world_capitals")
     en_gk = pack_registry.get_pack("general_knowledge_en")
     ar_gk = pack_registry.get_pack("general_knowledge_ar")
 
@@ -45,6 +46,12 @@ def test_builtin_starter_packs_loaded_with_local_svg_flags(pack_registry: PackRe
     assert b"<svg" in raw_svg
     assert b"flag-icons-" not in raw_svg
     assert len(raw_svg) > 3000  # detailed vector Eagle of Saladin emblem
+
+    assert capitals is not None and capitals.is_builtin
+    assert len(capitals.questions) == len(flags.questions)
+    egypt_cap = next(q for q in capitals.questions if q.id == "cap_eg")
+    assert egypt_cap.answer == "Cairo"
+    assert "القاهرة" in egypt_cap.aliases
 
     assert en_gk is not None and en_gk.is_builtin
     assert len(en_gk.questions) >= 25
