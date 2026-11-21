@@ -21,6 +21,8 @@ from .const import (
     SERVICE_RELOAD_PACKS,
     SERVICE_TV_SET_MODE,
     URL_ADMIN_PANEL_JS,
+    URL_SIDEBAR_ICON_JS,
+    VERSION,
 )
 from .coordinator import QuizRoomsCoordinator
 from .engine import EngineError
@@ -77,6 +79,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         register_views(hass, coordinator)
         domain_data["views_registered"] = True
 
+    # Register custom HA sidebar icon module (quizrooms:logo) once
+    if not domain_data.get("sidebar_icon_registered"):
+        add_extra_js = getattr(frontend, "add_extra_js_url", None)
+        if callable(add_extra_js):
+            add_extra_js(hass, f"{URL_SIDEBAR_ICON_JS}?v={VERSION}")
+        domain_data["sidebar_icon_registered"] = True
+
     # Register HA Admin Sidebar Panel (clean up any stale registration on reload)
     if DOMAIN in (hass.data.get("frontend_panels") or {}):
         try:
@@ -89,8 +98,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         webcomponent_name="quizrooms-admin-panel",
         frontend_url_path=DOMAIN,
         sidebar_title="QuizRooms",
-        sidebar_icon="mdi:help-box-multiple",
-        module_url=URL_ADMIN_PANEL_JS,
+        sidebar_icon="quizrooms:logo",
+        module_url=f"{URL_ADMIN_PANEL_JS}?v={VERSION}",
         require_admin=True,
         config={"domain": DOMAIN},
     )

@@ -108,6 +108,17 @@ FORBIDDEN_HTML = """<!DOCTYPE html>
 </head>
 <body>
   <main class="card" role="main">
+    <svg style="display:block;margin:0 auto 14px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="60" height="60" role="img" aria-label="QuizRooms Logo">
+      <defs>
+        <linearGradient id="qr-403-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#242428"/><stop offset="100%" stop-color="#141417"/></linearGradient>
+        <linearGradient id="qr-403-ring" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2DD4BF"/><stop offset="55%" stop-color="#34D399"/><stop offset="100%" stop-color="#FBBF24"/></linearGradient>
+      </defs>
+      <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#qr-403-bg)" stroke="url(#qr-403-ring)" stroke-width="5"/>
+      <circle cx="60" cy="60" r="29" fill="none" stroke="url(#qr-403-ring)" stroke-width="11"/>
+      <path d="M74 74 L95 95" stroke="#FBBF24" stroke-width="11.5" stroke-linecap="round"/>
+      <path d="M52 52 C52 46 56 43 61 43 C66 43 69 46 69 50 C69 54 65 56 62 58 C60.5 59 60 60.5 60 63" fill="none" stroke="#F4F4F5" stroke-width="6.5" stroke-linecap="round"/>
+      <circle cx="60" cy="72.5" r="4" fill="#FBBF24"/>
+    </svg>
     <div class="badge">403 · Local Network Only</div>
     <h1>QuizRooms is restricted to your home Wi-Fi</h1>
     <p>

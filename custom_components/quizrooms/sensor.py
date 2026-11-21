@@ -10,7 +10,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN
-from .coordinator import QuizRoomsCoordinator
+from .coordinator import QuizRoomsCoordinator, build_device_info
 
 
 async def async_setup_entry(
@@ -32,8 +32,9 @@ class _QuizRoomsBaseSensor(SensorEntity):
     _attr_has_entity_name = True
     _attr_state_class = SensorStateClass.MEASUREMENT
 
-    def __init__(self, coordinator: QuizRoomsCoordinator) -> None:
+    def __init__(self, coordinator: QuizRoomsCoordinator, entry: ConfigEntry) -> None:
         self._coordinator = coordinator
+        self._attr_device_info = build_device_info(entry.entry_id)
         self._unsub = None
 
     async def async_added_to_hass(self) -> None:
@@ -52,7 +53,7 @@ class QuizRoomsActiveGamesSensor(_QuizRoomsBaseSensor):
     _attr_icon = "mdi:gamepad-variant"
 
     def __init__(self, coordinator: QuizRoomsCoordinator, entry: ConfigEntry) -> None:
-        super().__init__(coordinator)
+        super().__init__(coordinator, entry)
         self._attr_unique_id = f"{entry.entry_id}_active_games"
         self.entity_id = "sensor.quizrooms_active_games"
 
@@ -77,7 +78,7 @@ class QuizRoomsActivePlayersSensor(_QuizRoomsBaseSensor):
     _attr_icon = "mdi:account-group"
 
     def __init__(self, coordinator: QuizRoomsCoordinator, entry: ConfigEntry) -> None:
-        super().__init__(coordinator)
+        super().__init__(coordinator, entry)
         self._attr_unique_id = f"{entry.entry_id}_active_players"
         self.entity_id = "sensor.quizrooms_active_players"
 

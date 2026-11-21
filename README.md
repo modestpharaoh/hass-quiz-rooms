@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="custom_components/quizrooms/brand/logo.png" alt="QuizRooms" width="320" />
+</p>
+
 # QuizRooms for Home Assistant
 
 **Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS, zero external CDNs or telemetry, full Arabic/RTL support, locally bundled SVG flags & fonts, Light/Dark/Auto themes, Admin pack importer (`.json` & `.zip`), and a 16:9 Studio TV Dashboard.

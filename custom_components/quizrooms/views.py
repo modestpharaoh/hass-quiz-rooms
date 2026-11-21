@@ -22,6 +22,7 @@ from .const import (
     URL_ASSETS,
     URL_MEDIA,
     URL_PLAY,
+    URL_SIDEBAR_ICON_JS,
     URL_TV,
     URL_WS,
 )
@@ -591,6 +592,23 @@ class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
         )
 
 
+class QuizRoomsSidebarIconJSView(_QuizRoomsBaseView):
+    """Serve the HA custom sidebar icon registration module (quizrooms:logo)."""
+
+    url = URL_SIDEBAR_ICON_JS
+    name = "quizrooms:sidebar_icon_js"
+    requires_auth = False  # Loaded globally by HA frontend so sidebar icon renders for all admins
+
+    async def get(self, request: web.Request) -> web.StreamResponse:
+        js_path = self.coordinator.frontend_dir / "sidebar-icon.js"
+        js_text = await self.coordinator.async_run_in_executor(_read_text_sync, js_path)
+        return web.Response(
+            text=js_text,
+            content_type="application/javascript",
+            headers={"Cache-Control": "public, max-age=3600", "X-Content-Type-Options": "nosniff"},
+        )
+
+
 class QuizRoomsAdminStateView(_QuizRoomsBaseView):
     """Return full admin state (all rooms, packs, max_rooms, TV state)."""
 
@@ -815,6 +833,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsPublicTVModeView(coordinator),
         QuizRoomsWebSocketView(coordinator),
         QuizRoomsAdminPanelJSView(coordinator),
+        QuizRoomsSidebarIconJSView(coordinator),
         QuizRoomsAdminStateView(coordinator),
         QuizRoomsAdminPackTemplateView(),
         QuizRoomsAdminPackImportView(coordinator),

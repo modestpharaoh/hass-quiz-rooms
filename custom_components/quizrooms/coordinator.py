@@ -8,6 +8,8 @@ import logging
 from pathlib import Path
 from typing import Any, Callable
 
+from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
+
 from .const import (
     ALLOWED_THEMES,
     ALLOWED_TV_MODES,
@@ -20,11 +22,27 @@ from .const import (
     DEFAULT_ALLOWED_SUBNETS,
     DEFAULT_CUSTOM_LAN_BASE_URL,
     DEFAULT_MAX_ROOMS,
+    DOMAIN,
     PHASE_QUESTION,
     THEME_AUTO,
     TV_MODE_FOLLOW,
     TV_MODE_OVERVIEW,
+    URL_PLAY,
+    VERSION,
 )
+
+
+def build_device_info(entry_id: str) -> DeviceInfo:
+    """Return shared Home Assistant Service DeviceInfo grouping all QuizRooms entities."""
+    return DeviceInfo(
+        identifiers={(DOMAIN, entry_id)},
+        name="QuizRooms",
+        manufacturer="QuizRooms",
+        model="Local-First Trivia Engine",
+        sw_version=VERSION,
+        entry_type=DeviceEntryType.SERVICE,
+        configuration_url=f"homeassistant://{DOMAIN}",
+    )
 from .engine import EngineError, QuizEngine
 from .network_guard import NetworkGuard
 from .packs import PackRegistry

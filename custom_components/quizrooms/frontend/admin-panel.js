@@ -254,7 +254,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .wrap { max-width: 1120px; margin-inline: auto; }
         .header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
         .title-row { display: flex; align-items: center; gap: 12px; }
-        .logo { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 1.3rem; background: linear-gradient(135deg, var(--accent), var(--warn)); color: #fff; }
+        .logo { width: 44px; height: 44px; display: block; flex: none; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.28)); }
         h1 { margin: 0; font-size: 1.45rem; }
         h2 { margin: 0 0 12px; font-size: 1.1rem; }
         .sub { margin: 0; font-size: 0.85rem; color: var(--muted); }
@@ -290,7 +290,19 @@ class QuizRoomsAdminPanel extends HTMLElement {
         <div class="wrap">
           <div class="header">
             <div class="title-row">
-              <div class="logo">Q</div>
+              <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="44" height="44" role="img" aria-label="QuizRooms Logo">
+                <defs>
+                  <linearGradient id="qr-admin-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#242428"/><stop offset="100%" stop-color="#141417"/></linearGradient>
+                  <linearGradient id="qr-admin-ring" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2DD4BF"/><stop offset="55%" stop-color="#34D399"/><stop offset="100%" stop-color="#FBBF24"/></linearGradient>
+                  <linearGradient id="qr-admin-spark" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FDE68A"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient>
+                </defs>
+                <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#qr-admin-bg)" stroke="url(#qr-admin-ring)" stroke-width="5"/>
+                <circle cx="60" cy="60" r="29" fill="none" stroke="url(#qr-admin-ring)" stroke-width="11"/>
+                <path d="M74 74 L95 95" stroke="url(#qr-admin-spark)" stroke-width="11.5" stroke-linecap="round"/>
+                <path d="M52 52 C52 46 56 43 61 43 C66 43 69 46 69 50 C69 54 65 56 62 58 C60.5 59 60 60.5 60 63" fill="none" stroke="#F4F4F5" stroke-width="6.5" stroke-linecap="round"/>
+                <circle cx="60" cy="72.5" r="4" fill="#FBBF24"/>
+                <path d="M97 22 L99.5 29.5 L107 32 L99.5 34.5 L97 42 L94.5 34.5 L87 32 L94.5 29.5 Z" fill="url(#qr-admin-spark)"/>
+              </svg>
               <div>
                 <h1>QuizRooms Admin</h1>
                 <p class="sub">Local-First Multi-Room Trivia Control Center</p>

@@ -88,6 +88,7 @@ def _install_test_stubs() -> None:
         ha_fe = types.ModuleType("homeassistant.components.frontend")
         ha_pc = types.ModuleType("homeassistant.components.panel_custom")
         ha_helpers = types.ModuleType("homeassistant.helpers")
+        ha_dr = types.ModuleType("homeassistant.helpers.device_registry")
         ha_ep = types.ModuleType("homeassistant.helpers.entity_platform")
         ha_rs = types.ModuleType("homeassistant.helpers.restore_state")
 
@@ -122,7 +123,28 @@ def _install_test_stubs() -> None:
         class NumberMode:
             BOX = "box"
 
+        class DeviceEntryType:
+            SERVICE = "service"
+
+        class DeviceInfo(dict):
+            def __init__(self, **kwargs: Any) -> None:
+                cfg_url = kwargs.get("configuration_url")
+                if cfg_url is not None:
+                    if not str(cfg_url).startswith(("http://", "https://", "homeassistant://")):
+                        raise ValueError(f"invalid configuration_url '{cfg_url}'")
+                super().__init__(**kwargs)
+
+        ha_dr.DeviceEntryType = DeviceEntryType
+        ha_dr.DeviceInfo = DeviceInfo
+        ha_helpers.device_registry = ha_dr
+
         class _BaseEntity:
+            _attr_device_info: Any = None
+
+            @property
+            def device_info(self) -> Any:
+                return self._attr_device_info
+
             async def async_added_to_hass(self) -> None:
                 return None
 
@@ -165,6 +187,7 @@ def _install_test_stubs() -> None:
         ha_ep.AddEntitiesCallback = Any
         ha_rs.RestoreEntity = RestoreEntity
         ha_fe.async_remove_panel = lambda hass, path: None
+        ha_fe.add_extra_js_url = lambda hass, url: hass.data.setdefault("_extra_js_urls", []).append(url)
 
         async def _noop_panel(*args, **kwargs):
             return None
@@ -188,6 +211,7 @@ def _install_test_stubs() -> None:
             ("homeassistant.components.frontend", ha_fe),
             ("homeassistant.components.panel_custom", ha_pc),
             ("homeassistant.helpers", ha_helpers),
+            ("homeassistant.helpers.device_registry", ha_dr),
             ("homeassistant.helpers.entity_platform", ha_ep),
             ("homeassistant.helpers.restore_state", ha_rs),
         ]:

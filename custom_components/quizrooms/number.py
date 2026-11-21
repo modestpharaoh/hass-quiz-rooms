@@ -14,7 +14,7 @@ from .const import (
     MAX_MAX_ROOMS,
     MIN_MAX_ROOMS,
 )
-from .coordinator import QuizRoomsCoordinator
+from .coordinator import QuizRoomsCoordinator, build_device_info
 
 
 async def async_setup_entry(
@@ -41,6 +41,7 @@ class QuizRoomsMaxRoomsNumber(NumberEntity, RestoreEntity):
     def __init__(self, coordinator: QuizRoomsCoordinator, entry: ConfigEntry) -> None:
         self._coordinator = coordinator
         self._attr_unique_id = f"{entry.entry_id}_max_rooms"
+        self._attr_device_info = build_device_info(entry.entry_id)
         self.entity_id = "number.quizrooms_max_rooms"
         self._unsub = None
 

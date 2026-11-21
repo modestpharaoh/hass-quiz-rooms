@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QuizRooms — TV Studio Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="/quizrooms/assets/img/logo.svg?v=0.1.6" />
   <script>
     (function () {
       try {
@@ -16,15 +17,15 @@
       } catch (e) { }
     })();
   </script>
-  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=0.1.4" />
-  <link rel="stylesheet" href="/quizrooms/assets/css/tv.css?v=0.1.4" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=0.1.6" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/tv.css?v=0.1.6" />
 </head>
 
 <body>
   <div class="tv-shell">
     <header class="tv-header">
       <div class="tv-brand">
-        <div class="tv-brand-mark" aria-hidden="true">Q</div>
+        <img src="/quizrooms/assets/img/logo.svg?v=0.1.6" alt="QuizRooms" class="tv-brand-logo" width="56" height="56" />
         <div>
           <h1>QuizRooms Studio</h1>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
@@ -35,8 +36,7 @@
       </div>
       <div class="tv-controls">
         <button type="button" id="tv-overview-btn" class="btn btn-secondary btn-sm hidden">All Rooms</button>
-        <button type="button" id="tv-sound-btn" class="btn btn-secondary btn-sm" aria-pressed="false">Sound:
-          Off</button>
+        <button type="button" id="tv-sound-btn" class="btn btn-secondary btn-sm" aria-pressed="false">Sound: Off</button>
         <div id="tv-theme-mount"></div>
       </div>
     </header>
@@ -44,11 +44,11 @@
     <main id="tv-main" class="tv-main" aria-live="polite"></main>
   </div>
 
-  <script src="/quizrooms/assets/js/theme.js?v=0.1.4"></script>
-  <script src="/quizrooms/assets/js/qrcode.js?v=0.1.4"></script>
-  <script src="/quizrooms/assets/js/confetti.js?v=0.1.4"></script>
-  <script src="/quizrooms/assets/js/sfx.js?v=0.1.4"></script>
-  <script src="/quizrooms/assets/js/tv.js?v=0.1.4"></script>
+  <script src="/quizrooms/assets/js/theme.js?v=0.1.6"></script>
+  <script src="/quizrooms/assets/js/qrcode.js?v=0.1.6"></script>
+  <script src="/quizrooms/assets/js/confetti.js?v=0.1.6"></script>
+  <script src="/quizrooms/assets/js/sfx.js?v=0.1.6"></script>
+  <script src="/quizrooms/assets/js/tv.js?v=0.1.6"></script>
 </body>
 
 </html>

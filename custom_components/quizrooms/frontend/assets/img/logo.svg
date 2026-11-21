@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="QuizRooms Logo">
+  <defs>
+    <linearGradient id="qr-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242428"/>
+      <stop offset="100%" stop-color="#141417"/>
+    </linearGradient>
+    <linearGradient id="qr-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="55%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="qr-spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Studio Badge -->
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#qr-bg)" stroke="url(#qr-ring)" stroke-width="5"/>
+
+  <!-- Subtle Confidence-Chip Tick Notches -->
+  <g stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="3" stroke-linecap="round">
+    <line x1="64" y1="16" x2="64" y2="21"/>
+    <line x1="64" y1="107" x2="64" y2="112"/>
+    <line x1="16" y1="64" x2="21" y2="64"/>
+    <line x1="107" y1="64" x2="112" y2="64"/>
+  </g>
+
+  <!-- Stylized Q Ring -->
+  <circle cx="60" cy="60" r="29" fill="none" stroke="url(#qr-ring)" stroke-width="11"/>
+
+  <!-- Q Diagonal Tail / Studio Accent -->
+  <path d="M74 74 L95 95" stroke="url(#qr-spark)" stroke-width="11.5" stroke-linecap="round"/>
+
+  <!-- Inner Question Mark Dot + Arcade Spark -->
+  <path d="M52 52 C52 46 56 43 61 43 C66 43 69 46 69 50 C69 54 65 56 62 58 C60.5 59 60 60.5 60 63" fill="none" stroke="#F4F4F5" stroke-width="6.5" stroke-linecap="round"/>
+  <circle cx="60" cy="72.5" r="4" fill="#FBBF24"/>
+
+  <!-- Top-Right 4-Point Spark -->
+  <path d="M97 22 L99.5 29.5 L107 32 L99.5 34.5 L97 42 L94.5 34.5 L87 32 L94.5 29.5 Z" fill="url(#qr-spark)"/>
+</svg>
