@@ -17,16 +17,19 @@ from .const import (
     DOMAIN,
     PLATFORMS,
     SERVICE_CLOSE_ROOM,
+    SERVICE_OPEN_TV_DASHBOARD,
     SERVICE_PAUSE_ROOM,
     SERVICE_RELOAD_PACKS,
     SERVICE_TV_SET_MODE,
     URL_ADMIN_PANEL_JS,
     URL_SIDEBAR_ICON_JS,
+    URL_TV,
     VERSION,
 )
 from .coordinator import QuizRoomsCoordinator
 from .engine import EngineError
 from .network_guard import create_network_guard_middleware
+from .tv_launcher import TVLaunchError, async_open_tv_dashboard_on_player
 from .views import register_views
 
 _LOGGER = logging.getLogger(__name__)
@@ -46,6 +49,12 @@ SCHEMA_PAUSE_ROOM = vol.Schema(
     }
 )
 SCHEMA_RELOAD_PACKS = vol.Schema({})
+SCHEMA_OPEN_TV_DASHBOARD = vol.Schema(
+    {
+        vol.Required("entity_id"): str,
+        vol.Optional("url"): str,
+    }
+)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
@@ -138,8 +147,25 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     async def handle_reload_packs(call: ServiceCall) -> None:
         await coordinator.async_reload_packs()
 
+    async def handle_open_tv_dashboard(call: ServiceCall) -> None:
+        target_url = call.data.get("url") or f"{coordinator.resolve_lan_base_url()}{URL_TV}"
+        try:
+            await async_open_tv_dashboard_on_player(
+                hass,
+                entity_id=call.data["entity_id"],
+                tv_url=target_url,
+            )
+        except TVLaunchError as err:
+            raise HomeAssistantError(err.message) from err
+
     hass.services.async_register(
         DOMAIN, SERVICE_TV_SET_MODE, handle_tv_set_mode, schema=SCHEMA_TV_SET_MODE
+    )
+    hass.services.async_register(
+        DOMAIN,
+        SERVICE_OPEN_TV_DASHBOARD,
+        handle_open_tv_dashboard,
+        schema=SCHEMA_OPEN_TV_DASHBOARD,
     )
     hass.services.async_register(
         DOMAIN, SERVICE_CLOSE_ROOM, handle_close_room, schema=SCHEMA_CLOSE_ROOM
@@ -176,6 +202,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     for service in (
         SERVICE_TV_SET_MODE,
+        SERVICE_OPEN_TV_DASHBOARD,
         SERVICE_CLOSE_ROOM,
         SERVICE_PAUSE_ROOM,
         SERVICE_RELOAD_PACKS,

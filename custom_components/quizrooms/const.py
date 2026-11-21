@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.11"
+VERSION = "0.1.12"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -85,6 +85,7 @@ ALLOWED_THEMES = (THEME_AUTO, THEME_LIGHT, THEME_DARK)
 
 # Services
 SERVICE_TV_SET_MODE = "tv_set_mode"
+SERVICE_OPEN_TV_DASHBOARD = "open_tv_dashboard"
 SERVICE_CLOSE_ROOM = "close_room"
 SERVICE_PAUSE_ROOM = "pause_room"
 SERVICE_RELOAD_PACKS = "reload_packs"

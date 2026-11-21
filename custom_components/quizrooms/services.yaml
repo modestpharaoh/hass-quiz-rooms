@@ -67,3 +67,22 @@ pause_room:
 reload_packs:
   name: Reload Trivia Packs
   description: Reload built-in and custom trivia packs from disk without disrupting running games.
+
+open_tv_dashboard:
+  name: Open TV Dashboard on Smart TV
+  description: Open the QuizRooms TV Studio Dashboard web page on a connected supported Smart TV media player (LG webOS, Android TV / Google TV, or Samsung Smart TV).
+  fields:
+    entity_id:
+      name: Smart TV Media Player
+      description: Supported connected Smart TV media_player entity ID.
+      required: true
+      example: "media_player.living_room_tv"
+      selector:
+        entity:
+          domain: media_player
+    url:
+      name: Dashboard URL Override
+      description: Optional custom TV URL (defaults to the local LAN QuizRooms /quizrooms/tv URL).
+      required: false
+      selector:
+        text:

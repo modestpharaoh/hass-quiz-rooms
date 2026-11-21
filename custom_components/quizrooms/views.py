@@ -32,6 +32,11 @@ from .coordinator import QuizRoomsCoordinator, WSClient
 from .engine import EngineError
 from .network_guard import build_forbidden_response
 from .packs import PackValidationError, sample_pack_template
+from .tv_launcher import (
+    TVLaunchError,
+    async_open_tv_dashboard_on_player,
+    discover_supported_tv_players,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -737,6 +742,7 @@ class QuizRoomsAdminStateView(_QuizRoomsBaseView):
                 "max_rooms": self.coordinator.engine.max_rooms,
                 "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
                 "tv": self.coordinator.tv_state.to_dict(),
+                "tv_targets": discover_supported_tv_players(self.coordinator.hass),
                 "lan_base_url": self.coordinator.resolve_lan_base_url(request),
                 "allow_external_access": self.coordinator.network_guard.allow_external_access,
             }
@@ -931,6 +937,40 @@ class QuizRoomsAdminTVView(_QuizRoomsBaseView):
         return web.json_response({"ok": True, "tv": tv})
 
 
+class QuizRoomsAdminTVOpenView(_QuizRoomsBaseView):
+    """Open the QuizRooms TV Dashboard URL on a connected supported Smart TV media player."""
+
+    url = f"{URL_API_ADMIN}/tv/open"
+    name = "quizrooms:admin_tv_open"
+    requires_auth = True
+
+    async def post(self, request: web.Request) -> web.StreamResponse:
+        if denied := _require_ha_admin(request):
+            return denied
+
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+
+        entity_id = str(body.get("entity_id") or "").strip()
+        tv_url = str(body.get("url") or "").strip() or f"{self.coordinator.resolve_lan_base_url(request)}{URL_TV}"
+
+        try:
+            result = await async_open_tv_dashboard_on_player(
+                self.coordinator.hass,
+                entity_id=entity_id,
+                tv_url=tv_url,
+            )
+        except TVLaunchError as err:
+            return web.json_response(
+                {"error": err.code, "message": err.message},
+                status=err.status_code,
+            )
+
+        return web.json_response({"ok": True, **result})
+
+
 def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
     """Register all QuizRooms HTTP and WebSocket views on Home Assistant."""
     views = [
@@ -951,6 +991,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAdminPackDeleteView(coordinator),
         QuizRoomsAdminRoomActionView(coordinator),
         QuizRoomsAdminTVView(coordinator),
+        QuizRoomsAdminTVOpenView(coordinator),
     ]
     for view in views:
         hass.http.register_view(view)

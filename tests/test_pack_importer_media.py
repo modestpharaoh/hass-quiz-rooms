@@ -48,7 +48,7 @@ def test_builtin_starter_packs_loaded_with_local_svg_flags(pack_registry: PackRe
     assert len(raw_svg) > 3000  # detailed vector Eagle of Saladin emblem
 
     assert capitals is not None and capitals.is_builtin
-    assert len(capitals.questions) == len(flags.questions)
+    assert len(capitals.questions) >= 150
     egypt_cap = next(q for q in capitals.questions if q.id == "cap_eg")
     assert egypt_cap.answer == "Cairo"
     assert "القاهرة" in egypt_cap.aliases

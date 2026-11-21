@@ -138,6 +138,24 @@ def _install_test_stubs() -> None:
         ha_dr.DeviceInfo = DeviceInfo
         ha_helpers.device_registry = ha_dr
 
+        ha_er = types.ModuleType("homeassistant.helpers.entity_registry")
+
+        class _EmptyEntityRegistry:
+            def __init__(self) -> None:
+                self.entities: dict[str, Any] = {}
+
+            def async_get(self, entity_id: str) -> Any:
+                return self.entities.get(entity_id)
+
+        def _er_async_get(hass: Any) -> Any:
+            data = getattr(hass, "data", None)
+            if isinstance(data, dict) and "entity_registry" in data:
+                return data["entity_registry"]
+            return _EmptyEntityRegistry()
+
+        ha_er.async_get = _er_async_get
+        ha_helpers.entity_registry = ha_er
+
         class _BaseEntity:
             _attr_device_info: Any = None
 
@@ -212,6 +230,7 @@ def _install_test_stubs() -> None:
             ("homeassistant.components.panel_custom", ha_pc),
             ("homeassistant.helpers", ha_helpers),
             ("homeassistant.helpers.device_registry", ha_dr),
+            ("homeassistant.helpers.entity_registry", ha_er),
             ("homeassistant.helpers.entity_platform", ha_ep),
             ("homeassistant.helpers.restore_state", ha_rs),
         ]:

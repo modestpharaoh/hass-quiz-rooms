@@ -122,6 +122,34 @@ class QuizRoomsAdminPanel extends HTMLElement {
     }
   }
 
+  async _openOnTV(entityId, btnEl = null) {
+    if (!entityId) return;
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.textContent = "Opening…";
+    }
+    try {
+      const resp = await this._hass.fetchWithAuth("/quizrooms/api/admin/tv/open", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ entity_id: entityId }),
+      });
+      const body = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        this._setBanner(body.message || `Failed to open TV dashboard on ${entityId}`, true);
+      } else {
+        this._setBanner(body.message || `Opened TV dashboard on ${entityId}.`, false);
+      }
+      await this._fetchState();
+    } catch (err) {
+      this._setBanner("Failed to open on TV: " + err.message, true);
+      if (btnEl) {
+        btnEl.disabled = false;
+        btnEl.textContent = "Open Dashboard";
+      }
+    }
+  }
+
   async _setMaxRooms(val) {
     try {
       await this._hass.callService("number", "set_value", {
@@ -402,6 +430,27 @@ class QuizRoomsAdminPanel extends HTMLElement {
       )
       .join("")}</div>`;
 
+    const tvTargets = Array.isArray(st.tv_targets) ? st.tv_targets : [];
+    const tvDashboardUrl = `${st.lan_base_url || window.location.origin}/quizrooms/tv`;
+    const tvTargetsHtml = tvTargets.length
+      ? `<div class="list" style="margin-top:10px;">${tvTargets
+          .map(
+            (t) => `
+          <div class="item">
+            <div>
+              <strong>${this._esc(t.name)}</strong>
+              <span class="badge" style="margin-inline-start:6px;">${this._esc(t.platform_label)}</span>
+              <span class="badge ${t.is_on ? "badge-ok" : ""}">${this._esc(t.state)}</span>
+              <div class="sub" style="margin-top:3px;font-family:monospace;font-size:0.76rem;">
+                ${this._esc(t.entity_id)} · ${this._esc(t.launch_method)}
+              </div>
+            </div>
+            <button class="btn btn-primary" data-open-tv="${this._esc(t.entity_id)}">Open Dashboard</button>
+          </div>`
+          )
+          .join("")}</div>`
+      : `<p class="sub" style="margin-top:8px;">No connected supported Smart TV media players detected right now. Supported Home Assistant integrations: <code>webostv</code> (LG webOS), <code>androidtv</code> / <code>androidtv_remote</code> (Android TV / Google TV with browser), and <code>samsungtv</code> / <code>samsungtv_smart</code> (Samsung Smart TV).</p>`;
+
     const roomOptions = st.rooms
       .map((r) => `<option value="${this._esc(r.code)}" ${st.tv.room_code === r.code ? "selected" : ""}>${this._esc(r.code)} — ${this._esc(r.name)}</option>`)
       .join("");
@@ -455,6 +504,17 @@ class QuizRoomsAdminPanel extends HTMLElement {
             <button class="btn" data-tv-theme="light">Light</button>
             <button class="btn" data-tv-theme="dark">Dark</button>
           </div>
+        </div>
+
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+          <div class="row">
+            <div>
+              <strong style="font-size:0.96rem;">Open TV Dashboard on Connected Smart TVs (${tvTargets.length})</strong>
+              <div class="sub">Launches <code>${this._esc(tvDashboardUrl)}</code> directly on supported LG webOS, Android TV / Google TV, and Samsung Smart TVs.</div>
+            </div>
+            <button id="refresh-tvs-btn" class="btn">Refresh TVs</button>
+          </div>
+          ${tvTargetsHtml}
         </div>
       </section>
 
@@ -549,6 +609,13 @@ class QuizRoomsAdminPanel extends HTMLElement {
         this._setTVMode(st.tv.mode, st.tv.room_code, btn.dataset.tvTheme);
       });
     });
+    body.querySelectorAll("[data-open-tv]").forEach((btn) => {
+      btn.addEventListener("click", () => this._openOnTV(btn.dataset.openTv, btn));
+    });
+    const refreshTvsBtn = this.shadowRoot.getElementById("refresh-tvs-btn");
+    if (refreshTvsBtn) {
+      refreshTvsBtn.addEventListener("click", () => this._fetchState());
+    }
 
     this.shadowRoot.getElementById("download-template-btn").addEventListener("click", () => this._downloadTemplate());
     this.shadowRoot.getElementById("reload-packs-btn").addEventListener("click", () => this._reloadPacks());
