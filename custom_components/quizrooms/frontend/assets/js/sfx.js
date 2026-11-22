@@ -43,6 +43,12 @@
       amp.gain.exponentialRampToValueAtTime(0.0001, now + duration);
       osc.connect(amp);
       amp.connect(ctx.destination);
+      osc.onended = () => {
+        try {
+          osc.disconnect();
+          amp.disconnect();
+        } catch (_) { }
+      };
       osc.start(now);
       osc.stop(now + duration + 0.025);
     }

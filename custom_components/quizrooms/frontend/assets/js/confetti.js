@@ -1,10 +1,15 @@
 /* Lightweight Canvas Celebratory Burst for QuizRooms (honors prefers-reduced-motion) */
 (function () {
   const COLORS = ["#22d3ee", "#fbbf24", "#fb7185", "#34d399", "#818cf8", "#f97316"];
+  let activeRaf = null;
 
   function burst(intensity = 1) {
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
+    }
+    if (activeRaf) {
+      cancelAnimationFrame(activeRaf);
+      activeRaf = null;
     }
     let canvas = document.getElementById("confetti-canvas");
     if (!canvas) {
@@ -63,12 +68,13 @@
         ctx.restore();
       }
       if (alive > 0 && frame < 140) {
-        requestAnimationFrame(tick);
+        activeRaf = requestAnimationFrame(tick);
       } else {
+        activeRaf = null;
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       }
     }
-    requestAnimationFrame(tick);
+    activeRaf = requestAnimationFrame(tick);
   }
 
   window.QuizRoomsConfetti = { burst };

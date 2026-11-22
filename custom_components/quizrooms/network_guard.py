@@ -10,6 +10,7 @@ from typing import Any, Awaitable, Callable, Iterable, Sequence
 from .const import (
     URL_API_PUBLIC,
     URL_ASSETS,
+    URL_AVATAR,
     URL_MEDIA,
     URL_PLAY,
     URL_TV,
@@ -39,6 +40,7 @@ GUARDED_PATH_PREFIXES: tuple[str, ...] = (
     URL_TV,
     URL_WS,
     URL_MEDIA,
+    URL_AVATAR,
     URL_ASSETS,
     URL_API_PUBLIC,
 )
@@ -438,6 +440,11 @@ def create_network_guard_middleware(
             guard = guard_or_getter
 
         if guard is not None and guard.should_guard_path(request.path):
+            # Permit authenticated HA users on /media and /avatar so remote Admin Panel renders covers/avatars
+            if request.get("hass_user") is not None and (
+                request.path.startswith(f"{URL_MEDIA}/") or request.path.startswith(f"{URL_AVATAR}/")
+            ):
+                return await handler(request)
             decision = guard.evaluate_request(request)
             if not decision.allowed:
                 _LOGGER.warning(

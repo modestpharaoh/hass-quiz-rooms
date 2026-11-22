@@ -16,6 +16,7 @@ from .avatars import AvatarError, MAX_AVATAR_UPLOAD_BYTES, list_preset_catalog
 from .const import (
     DOMAIN,
     MAX_UPLOAD_BYTES,
+    MAX_WS_MESSAGE_BYTES,
     PHASE_QUESTION,
     URL_ADMIN_PANEL_JS,
     URL_API_ADMIN,
@@ -81,6 +82,29 @@ def _require_ha_admin(request: web.Request) -> web.Response | None:
 def _read_text_sync(path: Path) -> str:
     """Read UTF-8 text file synchronously (always invoke via executor)."""
     return path.read_text(encoding="utf-8")
+
+
+async def _read_bounded_body(request: web.Request, max_bytes: int) -> bytes | None:
+    """Stream-read an HTTP request body up to max_bytes; return None if limit exceeded."""
+    content_length = getattr(request, "content_length", None)
+    if isinstance(content_length, int) and content_length > max_bytes:
+        return None
+
+    content = getattr(request, "content", None)
+    if content is not None and hasattr(content, "iter_chunked"):
+        chunks: list[bytes] = []
+        total = 0
+        async for chunk in content.iter_chunked(32768):
+            total += len(chunk)
+            if total > max_bytes:
+                return None
+            chunks.append(chunk)
+        return b"".join(chunks)
+
+    data = await request.read()
+    if len(data) > max_bytes:
+        return None
+    return data
 
 
 def _read_asset_sync(frontend_dir: Path, filepath: str) -> tuple[bytes, str] | None:
@@ -290,7 +314,16 @@ class QuizRoomsPublicAvatarUploadView(_QuizRoomsBaseView):
                         chunks.append(chunk)
                     file_bytes = b"".join(chunks)
         else:
-            file_bytes = await request.read()
+            bounded = await _read_bounded_body(request, MAX_AVATAR_UPLOAD_BYTES)
+            if bounded is None:
+                return web.json_response(
+                    {
+                        "error": "avatar_too_large",
+                        "message": f"Profile photo must be under {MAX_AVATAR_UPLOAD_BYTES // 1024} KB.",
+                    },
+                    status=413,
+                )
+            file_bytes = bounded
 
         try:
             avatar_ref, avatar_url = self.coordinator.avatar_store.store_custom_upload(file_bytes)
@@ -392,7 +425,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
 
-        ws = web.WebSocketResponse(heartbeat=25.0)
+        ws = web.WebSocketResponse(heartbeat=25.0, max_msg_size=MAX_WS_MESSAGE_BYTES)
         await ws.prepare(request)
 
         role = request.query.get("role", "lobby").strip().lower()
@@ -528,7 +561,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
 
             if msg_type == "update_avatar":
                 code = str(data.get("code") or client.room_code or "")
-                session_token = str(data.get("session_token") or client.session_token or "")
+                session_token = str(client.session_token or "")
+                if not session_token:
+                    raise EngineError("not_in_room", "Join the room before updating your avatar.")
                 room, _player = engine.update_player_avatar(
                     code,
                     session_token=session_token,
@@ -586,7 +621,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
 
             if msg_type == "submit_answer":
                 code = str(data.get("code") or client.room_code or "")
-                session_token = str(data.get("session_token") or client.session_token or "")
+                session_token = str(client.session_token or "")
+                if not session_token:
+                    raise EngineError("not_in_room", "Join the room before submitting an answer.")
                 room, _sub, all_locked = engine.submit_answer(
                     code,
                     session_token=session_token,
@@ -595,9 +632,8 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 )
                 await self.coordinator.broadcast_room_state(room.code)
                 if all_locked:
-                    # Short dramatic beat before auto-reveal when every connected player is locked in
-                    self.coordinator._cancel_room_timer(room.code)
-                    asyncio.create_task(self._auto_reveal_after_beat(room.code, room.current_index))
+                    # Short dramatic beat before auto-reveal (tracked in coordinator._room_timers)
+                    self.coordinator.schedule_auto_reveal(room.code, room.current_index, delay=1.1)
                 return
 
             if msg_type == "next_step":
@@ -637,6 +673,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 code = str(data.get("code") or client.room_code or "")
                 room = engine.play_again(code, host_token=data.get("host_token"))
                 self.coordinator._cancel_room_timer(room.code)
+                self.coordinator.prune_unused_pinned_media()
                 await self.coordinator.broadcast_room_state(room.code)
                 await self.coordinator.broadcast_lobby_and_tv()
                 self.coordinator.notify_entities()
@@ -672,16 +709,6 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
             await client.ws.send_json(
                 {"type": "error", "code": "internal_error", "message": "Unexpected server error."}
             )
-
-    async def _auto_reveal_after_beat(self, code: str, expected_index: int) -> None:
-        await asyncio.sleep(1.1)
-        room = self.coordinator.engine.get_room(code)
-        if room is None or room.phase != PHASE_QUESTION or room.current_index != expected_index:
-            return
-        self.coordinator.engine.reveal_current_question(code)
-        await self.coordinator.broadcast_room_state(code)
-        await self.coordinator.broadcast_lobby_and_tv()
-        self.coordinator.notify_entities()
 
 
 # ---------------------------------------------------------------------------
@@ -814,7 +841,17 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
                     file_bytes = b"".join(chunks)
         else:
             filename = request.headers.get("X-Pack-Filename", "pack.json")
-            file_bytes = await request.read()
+            bounded = await _read_bounded_body(request, MAX_UPLOAD_BYTES)
+            if bounded is None:
+                return web.json_response(
+                    {
+                        "error": "file_too_large",
+                        "message": f"Upload exceeds maximum size of {MAX_UPLOAD_BYTES // (1024 * 1024)} MB.",
+                        "details": [f"Upload exceeds {MAX_UPLOAD_BYTES // (1024 * 1024)} MB."],
+                    },
+                    status=413,
+                )
+            file_bytes = bounded
 
         try:
             pack = await self.coordinator.async_run_in_executor(

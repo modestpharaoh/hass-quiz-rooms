@@ -27,16 +27,26 @@ class QuizRoomsAdminPanel extends HTMLElement {
       this._renderShell();
       this._applyTheme();
       this._fetchState();
+      this._startPolling();
+    }
+  }
+
+  _startPolling() {
+    if (!this._pollTimer && this._hass) {
       this._pollTimer = setInterval(() => this._fetchState(), 4000);
     }
   }
 
   connectedCallback() {
     if (this._mql.addEventListener) this._mql.addEventListener("change", this._onMediaChange);
+    this._startPolling();
   }
 
   disconnectedCallback() {
-    if (this._pollTimer) clearInterval(this._pollTimer);
+    if (this._pollTimer) {
+      clearInterval(this._pollTimer);
+      this._pollTimer = null;
+    }
     if (this._mql.removeEventListener) this._mql.removeEventListener("change", this._onMediaChange);
   }
 

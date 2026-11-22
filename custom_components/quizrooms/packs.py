@@ -521,6 +521,13 @@ class PackRegistry:
                 self._pinned_media[mid] = snap
         return pinned
 
+    def prune_pinned_media(self, active_media_ids: set[str]) -> int:
+        """Release cached media bytes no longer referenced by any active room."""
+        stale = [mid for mid in self._pinned_media if mid not in active_media_ids]
+        for mid in stale:
+            self._pinned_media.pop(mid, None)
+        return len(stale)
+
     def resolve_media_path(self, asset: MediaAsset) -> Path | None:
         """Strictly validate a MediaAsset's path stays within allowed media roots."""
         try:

@@ -226,6 +226,14 @@ class QuizRoomsCoordinator:
             except Exception:
                 pass
         self._ws_clients.clear()
+        self.pack_registry.prune_pinned_media(set())
+
+    def prune_unused_pinned_media(self) -> int:
+        """Evict cached pinned media bytes not referenced by any active room."""
+        active_ids: set[str] = set()
+        for room in self.engine.rooms.values():
+            active_ids.update(room.pinned_media.keys())
+        return self.pack_registry.prune_pinned_media(active_ids)
 
     async def _cleanup_loop(self) -> None:
         try:
@@ -240,6 +248,7 @@ class QuizRoomsCoordinator:
                             self.tv_state.mode = TV_MODE_OVERVIEW
                             self.tv_state.room_code = None
                         await self.broadcast_room_closed(code, reason="Room expired due to inactivity.")
+                    self.prune_unused_pinned_media()
                     await self.broadcast_lobby_and_tv()
                     self.notify_entities()
         except asyncio.CancelledError:
@@ -261,6 +270,33 @@ class QuizRoomsCoordinator:
 
         delay = max(0.05, room.question_ends_at - self.engine._now())
         self._room_timers[code] = asyncio.create_task(self._timer_worker(code, delay))
+
+    def schedule_auto_reveal(self, code: str, expected_index: int, delay: float = 1.1) -> None:
+        """Schedule a tracked short beat before auto-revealing when all players lock in."""
+        self._cancel_room_timer(code)
+        self._room_timers[code] = asyncio.create_task(
+            self._auto_reveal_worker(code, expected_index, delay)
+        )
+
+    async def _auto_reveal_worker(self, code: str, expected_index: int, delay: float) -> None:
+        try:
+            await asyncio.sleep(delay)
+            room = self.engine.get_room(code)
+            if (
+                room is None
+                or room.phase != PHASE_QUESTION
+                or room.paused
+                or room.current_index != expected_index
+            ):
+                return
+            self.engine.reveal_current_question(code)
+            await self.broadcast_room_state(code)
+            await self.broadcast_lobby_and_tv()
+            self.notify_entities()
+        except asyncio.CancelledError:
+            return
+        except Exception:
+            _LOGGER.exception("Error in QuizRooms auto-reveal worker for room %s", code)
 
     async def _timer_worker(self, code: str, delay: float) -> None:
         try:
@@ -439,6 +475,7 @@ class QuizRoomsCoordinator:
         norm_code = (code or "").strip().upper()
         self.engine.close_room(norm_code, host_token=host_token, is_admin=is_admin)
         self._cancel_room_timer(norm_code)
+        self.prune_unused_pinned_media()
         if self.tv_state.room_code == norm_code:
             self.tv_state.mode = TV_MODE_OVERVIEW
             self.tv_state.room_code = None
@@ -479,9 +516,14 @@ class QuizRoomsCoordinator:
         )
         needed_media = {q.media_id for q in room.questions if q.media_id}
         if needed_media:
-            room.pinned_media = await self.async_run_in_executor(
+            pinned = await self.async_run_in_executor(
                 self.pack_registry.pin_media_for_room, needed_media
             )
+            # Room could have been closed by an admin while pinning media off-thread
+            if self.engine.get_room(room.code) is not room:
+                self.prune_unused_pinned_media()
+                return room
+            room.pinned_media = pinned
         self.schedule_room_timer(room.code)
         await self.broadcast_room_state(room.code)
         await self.broadcast_lobby_and_tv()

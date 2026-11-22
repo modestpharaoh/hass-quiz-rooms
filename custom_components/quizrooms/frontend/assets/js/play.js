@@ -112,6 +112,9 @@
   }
 
   function connectWS() {
+    if (state.ws && (state.ws.readyState === WebSocket.OPEN || state.ws.readyState === WebSocket.CONNECTING)) {
+      return;
+    }
     const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
     const role = state.activeRoomCode ? "room" : "lobby";
     const url = `${proto}//${window.location.host}/quizrooms/ws?role=${role}`;

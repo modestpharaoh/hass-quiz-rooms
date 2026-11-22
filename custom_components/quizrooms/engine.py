@@ -30,6 +30,7 @@ from .const import (
     DIFFICULTY_RANDOM,
     LOBBY_IDLE_TIMEOUT_SECONDS,
     MAX_MAX_ROOMS,
+    MAX_PLAYERS_PER_ROOM,
     MAX_ROUND_COUNT,
     MAX_WAGER,
     MIN_MAX_ROOMS,
@@ -506,6 +507,12 @@ class QuizEngine:
             raise EngineError(
                 "late_join_disabled",
                 "This room is already in progress and does not allow late joiners.",
+            )
+        if len(room.players) >= MAX_PLAYERS_PER_ROOM:
+            raise EngineError(
+                "room_full",
+                f"This room has reached the maximum of {MAX_PLAYERS_PER_ROOM} players.",
+                status_code=429,
             )
 
         clean_name = self._clean_nickname(nickname or "")
