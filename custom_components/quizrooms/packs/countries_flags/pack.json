@@ -1,10 +1,10 @@
 {
   "pack_id": "countries_flags",
-  "title": "World Countries & Flags",
-  "description": "Identify 197 world countries from their authentic locally bundled vector flags. Play in Multiple Choice or Free-Text mode!",
+  "title": "World Countries & Global Flags",
+  "description": "Identify 209 world countries & international organizations (EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) from locally bundled vector flags!",
   "language": "en",
   "rtl": false,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "QuizRooms (flags via lipis/flag-icons, MIT)",
   "category": "Geography",
   "questions": [
@@ -3515,6 +3515,236 @@
       "language": "en",
       "rtl": false,
       "difficulty": "medium"
+    },
+    {
+      "id": "flag_eu",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_198.svg",
+      "choices": [
+        "European Union",
+        "United Nations",
+        "NATO",
+        "Commonwealth of Nations"
+      ],
+      "answer": "European Union",
+      "aliases": [
+        "EU",
+        "Europe",
+        "الاتحاد الأوروبي"
+      ],
+      "explanation": "Adopted in 1955 by the Council of Europe and 1985 by the EU · 12 gold stars symbolize unity and harmony.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_un",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_199.svg",
+      "choices": [
+        "United Nations",
+        "European Union",
+        "NATO",
+        "ASEAN"
+      ],
+      "answer": "United Nations",
+      "aliases": [
+        "UN",
+        "الأمم المتحدة"
+      ],
+      "explanation": "Headquarters: New York City · Features a world map framed by olive branches symbolizing peace.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_arab_league",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_200.svg",
+      "choices": [
+        "Arab League",
+        "Organization of Islamic Cooperation",
+        "Gulf Cooperation Council",
+        "African Union"
+      ],
+      "answer": "Arab League",
+      "aliases": [
+        "League of Arab States",
+        "جامعة الدول العربية",
+        "الجامعة العربية"
+      ],
+      "explanation": "Headquarters: Cairo, Egypt · Founded in 1945 with 22 member states represented by the circular chain.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_nato",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_201.svg",
+      "choices": [
+        "NATO",
+        "United Nations",
+        "European Union",
+        "Commonwealth of Nations"
+      ],
+      "answer": "NATO",
+      "aliases": [
+        "North Atlantic Treaty Organization",
+        "الناتو",
+        "حلف الناتو"
+      ],
+      "explanation": "Headquarters: Brussels, Belgium · The four-pointed compass star symbolizes the shared path to peace.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_olympics",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_202.svg",
+      "choices": [
+        "Olympic Movement",
+        "United Nations",
+        "Red Cross & Red Crescent",
+        "ASEAN"
+      ],
+      "answer": "Olympic Movement",
+      "aliases": [
+        "Olympics",
+        "Olympic Flag",
+        "IOC",
+        "International Olympic Committee",
+        "الأولمبياد"
+      ],
+      "explanation": "Designed in 1913 · Five interlocking rings represent the union of the five inhabited continents.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_african_union",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_203.svg",
+      "choices": [
+        "African Union",
+        "Arab League",
+        "ASEAN",
+        "Gulf Cooperation Council"
+      ],
+      "answer": "African Union",
+      "aliases": [
+        "AU",
+        "الاتحاد الأفريقي"
+      ],
+      "explanation": "Headquarters: Addis Ababa, Ethiopia · Features a green silhouette of Africa surrounded by 55 gold stars.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "flag_asean",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_204.svg",
+      "choices": [
+        "ASEAN",
+        "Commonwealth of Nations",
+        "European Union",
+        "African Union"
+      ],
+      "answer": "ASEAN",
+      "aliases": [
+        "Association of Southeast Asian Nations",
+        "آسيان"
+      ],
+      "explanation": "Headquarters: Jakarta, Indonesia · Ten golden rice stalks represent the ten Southeast Asian member nations.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "flag_gcc",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_205.svg",
+      "choices": [
+        "Gulf Cooperation Council",
+        "Arab League",
+        "Organization of Islamic Cooperation",
+        "African Union"
+      ],
+      "answer": "Gulf Cooperation Council",
+      "aliases": [
+        "GCC",
+        "مجلس التعاون الخليجي"
+      ],
+      "explanation": "Headquarters: Riyadh, Saudi Arabia · Hexagonal emblem symbolizes its six Arabian Gulf member states.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "flag_commonwealth",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_206.svg",
+      "choices": [
+        "Commonwealth of Nations",
+        "European Union",
+        "NATO",
+        "United Nations"
+      ],
+      "answer": "Commonwealth of Nations",
+      "aliases": [
+        "The Commonwealth",
+        "Commonwealth",
+        "الكومنولث"
+      ],
+      "explanation": "Headquarters: London, UK · Golden globe encircled by radiating spearheads forming the letter C.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "flag_red_cross",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_207.svg",
+      "choices": [
+        "Red Cross & Red Crescent",
+        "United Nations",
+        "Olympic Movement",
+        "Organization of Islamic Cooperation"
+      ],
+      "answer": "Red Cross & Red Crescent",
+      "aliases": [
+        "Red Cross",
+        "Red Crescent",
+        "ICRC",
+        "الصليب الأحمر",
+        "الهلال الأحمر"
+      ],
+      "explanation": "Headquarters: Geneva, Switzerland · Global humanitarian movement recognized under the Geneva Conventions.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "flag_oic",
+      "prompt": "Which international union or organization does this flag represent?",
+      "image": "media/flag_208.svg",
+      "choices": [
+        "Organization of Islamic Cooperation",
+        "Arab League",
+        "Gulf Cooperation Council",
+        "United Nations"
+      ],
+      "answer": "Organization of Islamic Cooperation",
+      "aliases": [
+        "OIC",
+        "منظمة التعاون الإسلامي"
+      ],
+      "explanation": "Headquarters: Jeddah, Saudi Arabia · Second largest intergovernmental organization after the United Nations.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
     }
   ],
   "cover": "media/cover.svg"

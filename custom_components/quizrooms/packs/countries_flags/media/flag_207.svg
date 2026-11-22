@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Flag of the Red Cross and Red Crescent Movement">
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <rect x="155" y="130" width="70" height="220" fill="#D81E05"/>
+  <rect x="80" y="205" width="220" height="70" fill="#D81E05"/>
+  <path d="M510 155 A102 102 0 1 0 510 325 A78 78 0 1 1 510 155 Z" fill="#D81E05"/>
+</svg>

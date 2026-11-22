@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Flag of NATO">
+  <rect width="640" height="480" fill="#004990"/>
+  <circle cx="320" cy="240" r="88" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="320" y1="36" x2="320" y2="108" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="320" y1="372" x2="320" y2="444" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="88" y1="240" x2="188" y2="240" stroke="#FFFFFF" stroke-width="6"/>
+  <line x1="452" y1="240" x2="552" y2="240" stroke="#FFFFFF" stroke-width="6"/>
+  <polygon points="320,106 346,214 320,240" fill="#FFFFFF"/>
+  <polygon points="320,106 294,214 320,240" fill="#004990" stroke="#FFFFFF" stroke-width="4"/>
+  <polygon points="320,374 294,266 320,240" fill="#FFFFFF"/>
+  <polygon points="320,374 346,266 320,240" fill="#004990" stroke="#FFFFFF" stroke-width="4"/>
+  <polygon points="454,240 346,266 320,240" fill="#FFFFFF"/>
+  <polygon points="454,240 346,214 320,240" fill="#004990" stroke="#FFFFFF" stroke-width="4"/>
+  <polygon points="186,240 294,214 320,240" fill="#FFFFFF"/>
+  <polygon points="186,240 294,266 320,240" fill="#004990" stroke="#FFFFFF" stroke-width="4"/>
+</svg>

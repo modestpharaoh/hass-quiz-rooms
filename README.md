@@ -221,7 +221,7 @@ Every built-in pack includes a custom SVG cover and per-question `easy` / `mediu
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |
-| **World Countries & Flags** | EN | MC & Free-Text | 197 locally bundled authentic vector country flags |
+| **World Countries & Global Flags** | EN | MC & Free-Text | 209 locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
 | **World Countries & Capitals** | EN | MC & Free-Text | 196+ world countries & capitals with Arabic/local aliases |
 | **World Populations (2026)** | EN | MC & Free-Text | 90 countries with 2026 demographic estimates |
 | **Official Languages of the World** | EN | MC & Free-Text | 105 countries & their official national languages |

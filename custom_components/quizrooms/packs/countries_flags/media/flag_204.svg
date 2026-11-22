@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Flag of ASEAN">
+  <rect width="640" height="480" fill="#00205B"/>
+  <circle cx="320" cy="240" r="142" fill="#FFFFFF"/>
+  <circle cx="320" cy="240" r="126" fill="#DA291C"/>
+  <path d="M260.5 152 Q295.2 240 265.7 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M273.7 152 Q300.7 240 277.7 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M286.9 152 Q306.2 240 289.8 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M300.2 152 Q311.7 240 301.9 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M313.4 152 Q317.2 240 314.0 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M326.6 152 Q322.8 240 326.0 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M339.8 152 Q328.3 240 338.1 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M353.1 152 Q333.8 240 350.2 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M366.3 152 Q339.3 240 362.3 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M379.5 152 Q344.8 240 374.3 328" fill="none" stroke="#FFCD00" stroke-width="6.5" stroke-linecap="round"/>
+  <rect x="282" y="232" width="76" height="16" rx="5" fill="#FFCD00" stroke="#DA291C" stroke-width="3"/>
+</svg>
