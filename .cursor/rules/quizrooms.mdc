@@ -1,0 +1,17 @@
+---
+description: Core QuizRooms Home Assistant integration rules, async I/O safety, security, Smart TV compatibility, and testing.
+globs:
+alwaysApply: true
+---
+
+# QuizRooms Engineering Rules
+
+Refer to `AGENTS.md` for full details and `docs/ARCHITECTURE.md` / `docs/FRONTEND_DESIGN.md` for architecture diagrams.
+
+- **Zero External Dependencies:** Keep `manifest.json` `"requirements": []` and zero external URLs in `frontend/` or `packs/`.
+- **Non-Blocking HA Event Loop:** Never call blocking filesystem I/O inside `async def`; offload with `coordinator.async_run_in_executor(...)`.
+- **LAN-Only Security:** Preserve fail-closed `NetworkGuard` on all unauthenticated views and `Content-Security-Policy: default-src 'none'; sandbox` on `/media` and `/avatar`.
+- **WebOS / Smart TV Compatibility:** Every SVG must be valid XML with explicit `width` and `height` attributes matching `viewBox`; keep `/tv` viewport-fit for 720p-CSS, 1080p, and 4K.
+- **Neutral Dark Theme & Arabic RTL:** Keep dark theme neutral charcoal (`#121214` / `#1c1c1f` / `#26262a`), use logical CSS properties, and keep QR codes inside `.qr-white-frame`.
+- **Version Sync:** Update `0.1.x` together in `manifest.json`, `const.py`, `play.html`, and `tv.html`.
+- **Verification:** Run `pytest -v` and `node --check` after edits.

@@ -1,0 +1,38 @@
+# AI Assistant Context Exclusions (Gemini / Antigravity / Google AI tools)
+# Keeps context fast by excluding caches, secrets, binary assets, and bulk vector flag paths.
+
+# Version control & caches
+.git/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+.venv/
+venv/
+env/
+htmlcov/
+
+# Secrets & local runtime files
+.env
+.env.*
+secrets.yaml
+*.pem
+*.key
+*.log
+*.tmp
+
+# Binary & media assets
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.zip
+
+# Bulk generated country flag SVGs (197 files — inspect individually by path if needed)
+custom_components/quizrooms/packs/countries_flags/media/flag_*.svg

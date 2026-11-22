@@ -1,0 +1,35 @@
+# Claude Code Context Exclusions
+# Excludes caches, secrets, binary assets, and bulk vector flag paths from default context scans.
+
+.git/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+.venv/
+venv/
+env/
+htmlcov/
+
+.env
+.env.*
+secrets.yaml
+*.pem
+*.key
+*.log
+*.tmp
+
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.zip
+
+# Bulk generated country flag SVGs (197 files — read explicitly when editing flags)
+custom_components/quizrooms/packs/countries_flags/media/flag_*.svg

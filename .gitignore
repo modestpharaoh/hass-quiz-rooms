@@ -1,20 +1,59 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-.pytest_cache/
 .venv/
 venv/
 env/
-.env
 *.egg-info/
 dist/
 build/
+.eggs/
+
+# Testing, Linting & Coverage
+.pytest_cache/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+.tox/
+.nox/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.yaml
+
+# Home Assistant local runtime artifacts
+.storage/
+home-assistant.log*
+home-assistant_v2.db*
+deps/
+tts/
+
+# OS & Editors
 .DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
 .vscode/
 .idea/
+*.iml
+
+# Local-only AI agent scratch/state (shared repo rules remain tracked)
+.claude/settings.local.json
+CLAUDE.local.md
+.cursor/*.local
+.gemini/scratch/
+.agents/scratch/
+scratch/
+*.local.md
