@@ -18,6 +18,7 @@ from .const import (
     DOMAIN,
 )
 from .network_guard import parse_cidr_list
+from .tv_launcher import is_safe_http_url
 
 
 def _validate_network_options(user_input: dict[str, Any]) -> dict[str, str]:
@@ -31,7 +32,7 @@ def _validate_network_options(user_input: dict[str, Any]) -> dict[str, str]:
             errors[CONF_ALLOWED_SUBNETS] = "invalid_subnet"
 
     base_url = str(user_input.get(CONF_CUSTOM_LAN_BASE_URL, "") or "").strip()
-    if base_url and not (base_url.startswith("http://") or base_url.startswith("https://")):
+    if base_url and not is_safe_http_url(base_url):
         errors[CONF_CUSTOM_LAN_BASE_URL] = "invalid_url"
 
     return errors

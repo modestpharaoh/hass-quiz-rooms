@@ -66,6 +66,10 @@ def normalize_answer(text: str) -> str:
     if not text:
         return ""
 
+    # Cap input length to prevent algorithmic complexity DoS in fuzzy matching
+    if len(text) > 500:
+        text = text[:500]
+
     # 1. Strip Arabic Tashkeel & Tatweel before NFKD so Arabic letters stay clean
     cleaned = _ARABIC_TASHKEEL_RE.sub("", text)
     cleaned = _ARABIC_TATWEEL_RE.sub("", cleaned)

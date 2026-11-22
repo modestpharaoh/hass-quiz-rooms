@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.14"
+VERSION = "0.1.15"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -20,6 +20,8 @@ MIN_MAX_ROOMS = 1
 MAX_MAX_ROOMS = 50
 MAX_PLAYERS_PER_ROOM = 50
 MAX_WS_MESSAGE_BYTES = 64 * 1024  # 64 KB max WebSocket frame size
+MAX_ANSWER_LENGTH = 200
+MAX_SESSION_TOKEN_LENGTH = 128
 
 ALLOWED_ROUND_COUNTS = (5, 10, 15, 20, 25)
 DEFAULT_ROUND_COUNT = 10

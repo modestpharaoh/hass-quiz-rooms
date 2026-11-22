@@ -409,7 +409,11 @@ def build_forbidden_response(request: Any, decision: AccessDecision) -> Any:
             status=403,
             text=FORBIDDEN_HTML,
             content_type="text/html",
-            headers={"X-Content-Type-Options": "nosniff"},
+            headers={
+                "X-Content-Type-Options": "nosniff",
+                "X-Frame-Options": "SAMEORIGIN",
+                "Referrer-Policy": "same-origin",
+            },
         )
     return web.json_response(
         {

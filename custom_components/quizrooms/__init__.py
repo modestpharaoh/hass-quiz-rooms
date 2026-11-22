@@ -120,6 +120,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 mode=call.data["mode"],
                 room_code=call.data.get("room_code"),
                 theme=call.data.get("theme"),
+                is_admin=True,
             )
         except EngineError as err:
             raise HomeAssistantError(err.message) from err

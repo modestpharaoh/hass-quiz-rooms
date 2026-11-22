@@ -8,6 +8,7 @@ import logging
 import mimetypes
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from aiohttp import WSMsgType, web
 from homeassistant.components.http import HomeAssistantView
@@ -58,6 +59,49 @@ ASSET_MIME_OVERRIDES: dict[str, str] = {
     ".ttf": "font/ttf",
     ".json": "application/json; charset=utf-8",
 }
+
+# Hardened headers for HTML pages (prevents Clickjacking & Referer room-code leakage)
+HTML_SECURITY_HEADERS: dict[str, str] = {
+    "Cache-Control": "no-cache",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Referrer-Policy": "same-origin",
+}
+
+
+def _is_ws_origin_allowed(coordinator: QuizRoomsCoordinator, request: web.Request) -> bool:
+    """Protect /quizrooms/ws against Cross-Site WebSocket Hijacking (CSWSH) from external sites."""
+    headers = getattr(request, "headers", None) or {}
+    origin = (headers.get("Origin") or headers.get("origin") or "").strip()
+    if not origin or origin.lower() == "null":
+        return True
+    try:
+        parsed_origin = urlsplit(origin)
+    except ValueError:
+        return False
+    origin_host = (parsed_origin.netloc or "").strip().lower()
+    if not origin_host:
+        return False
+
+    allowed_hosts: set[str] = set()
+    req_host = str(getattr(request, "host", "") or headers.get("Host") or "").strip().lower()
+    if req_host:
+        allowed_hosts.add(req_host)
+        allowed_hosts.add(req_host.split(":", 1)[0])
+
+    if coordinator.custom_lan_base_url:
+        try:
+            custom_host = (urlsplit(coordinator.custom_lan_base_url).netloc or "").strip().lower()
+            if custom_host:
+                allowed_hosts.add(custom_host)
+                allowed_hosts.add(custom_host.split(":", 1)[0])
+        except ValueError:
+            pass
+
+    if not allowed_hosts:
+        return True
+
+    return origin_host in allowed_hosts or origin_host.split(":", 1)[0] in allowed_hosts
 
 
 def _check_network_guard(coordinator: QuizRoomsCoordinator, request: web.Request) -> web.Response | None:
@@ -161,7 +205,7 @@ class QuizRoomsPlayView(_QuizRoomsBaseView):
         return web.Response(
             text=html,
             content_type="text/html",
-            headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
+            headers=dict(HTML_SECURITY_HEADERS),
         )
 
 
@@ -180,7 +224,7 @@ class QuizRoomsTVView(_QuizRoomsBaseView):
         return web.Response(
             text=html,
             content_type="text/html",
-            headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
+            headers=dict(HTML_SECURITY_HEADERS),
         )
 
 
@@ -391,6 +435,7 @@ class QuizRoomsPublicTVModeView(_QuizRoomsBaseView):
                 mode=str(body.get("mode") or "overview"),
                 room_code=body.get("room_code"),
                 theme=body.get("theme"),
+                is_admin=False,
             )
         except EngineError as err:
             return web.json_response(err.to_dict(), status=err.status_code)
@@ -424,6 +469,14 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
     async def get(self, request: web.Request) -> web.StreamResponse:
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
+        if not _is_ws_origin_allowed(self.coordinator, request):
+            return web.json_response(
+                {
+                    "error": "cross_origin_ws_blocked",
+                    "message": "Cross-origin WebSocket connections are not permitted.",
+                },
+                status=403,
+            )
 
         ws = web.WebSocketResponse(heartbeat=25.0, max_msg_size=MAX_WS_MESSAGE_BYTES)
         await ws.prepare(request)
@@ -967,6 +1020,7 @@ class QuizRoomsAdminTVView(_QuizRoomsBaseView):
                 mode=str(body.get("mode") or "overview"),
                 room_code=body.get("room_code"),
                 theme=body.get("theme"),
+                is_admin=True,
             )
         except EngineError as err:
             return web.json_response(err.to_dict(), status=err.status_code)

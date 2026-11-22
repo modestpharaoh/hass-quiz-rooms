@@ -13,6 +13,7 @@ from __future__ import annotations
 import logging
 import shlex
 from typing import Any
+from urllib.parse import urlsplit
 
 from homeassistant.helpers import entity_registry as er
 
@@ -135,6 +136,19 @@ def _find_sibling_remote_entity(ent_reg: Any, entry: Any) -> str | None:
     return None
 
 
+def is_safe_http_url(url: str) -> bool:
+    """Validate an HTTP(S) URL has a hostname and zero control/shell-break characters."""
+    if not url or len(url) > 512:
+        return False
+    if any(ord(ch) < 33 or ch in ('"', "'", "<", ">", "`", "\\") for ch in url):
+        return False
+    try:
+        parsed = urlsplit(url)
+    except ValueError:
+        return False
+    return parsed.scheme in ("http", "https") and bool(parsed.netloc and parsed.hostname)
+
+
 async def async_open_tv_dashboard_on_player(
     hass: Any,
     entity_id: str,
@@ -145,8 +159,8 @@ async def async_open_tv_dashboard_on_player(
     clean_url = (tv_url or "").strip()
     if not clean_entity_id or not clean_entity_id.startswith("media_player."):
         raise TVLaunchError("invalid_entity", "A valid media_player entity_id is required.", status_code=400)
-    if not clean_url.startswith(("http://", "https://")):
-        raise TVLaunchError("invalid_url", "TV dashboard URL must start with http:// or https://.", status_code=400)
+    if not is_safe_http_url(clean_url):
+        raise TVLaunchError("invalid_url", "TV dashboard URL must be a valid http:// or https:// URL.", status_code=400)
 
     ent_reg = _get_entity_registry(hass)
     if ent_reg is None:

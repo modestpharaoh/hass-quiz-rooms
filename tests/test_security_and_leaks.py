@@ -19,7 +19,10 @@ from custom_components.quizrooms.network_guard import (
     create_network_guard_middleware,
 )
 from custom_components.quizrooms.views import (
+    QuizRoomsAdminTVView,
+    QuizRoomsPlayView,
     QuizRoomsPublicAvatarUploadView,
+    QuizRoomsPublicTVModeView,
     QuizRoomsWebSocketView,
 )
 from tests.conftest import FakeRequest
@@ -201,5 +204,133 @@ def test_tracked_auto_reveal_is_cancelled_when_host_pauses(tmp_path: Path) -> No
         assert room.phase == PHASE_QUESTION
         assert room.paused is True
         await coord.async_shutdown()
+
+    asyncio.run(run())
+
+
+def test_session_tokens_redacted_for_other_players_and_host_override_accepts_public_id(
+    tmp_path: Path,
+) -> None:
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+    room, host_sess, host_tok = coord.engine.create_room(
+        host_session_token="secret_host_tok",
+        host_nickname="Host",
+        pack_ids=["general_knowledge_en"],
+        round_count=5,
+        answer_mode="free_text",
+    )
+    _, _, guest_sess = coord.engine.join_room(
+        room.code, session_token="secret_guest_tok", nickname="Guest"
+    )
+
+    # Serialized state for Guest must NOT expose Host's secret_host_tok
+    guest_view = coord.engine.serialize_room_state(room, for_session_token=guest_sess)
+    tokens_seen_by_guest = {p["session_token"] for p in guest_view["players"]}
+    assert "secret_guest_tok" in tokens_seen_by_guest
+    assert "secret_host_tok" not in tokens_seen_by_guest
+
+    # Serialized state for TV (for_session_token=None) must redact ALL secret session tokens
+    tv_view = coord.engine.serialize_room_state(room, for_session_token=None)
+    tokens_seen_by_tv = {p["session_token"] for p in tv_view["players"]}
+    assert "secret_host_tok" not in tokens_seen_by_tv
+    assert "secret_guest_tok" not in tokens_seen_by_tv
+    assert all(tok.startswith("plr_") for tok in tokens_seen_by_tv)
+
+    # Host override works using the redacted public player_id seen in Host's reveal payload
+    coord.engine.start_game(room.code, host_token=host_tok)
+    coord.engine.submit_answer(room.code, session_token=guest_sess, answer="wrong answer", wager=2)
+    coord.engine.reveal_current_question(room.code)
+    host_view = coord.engine.serialize_room_state(room, for_session_token=host_sess)
+    guest_row_for_host = next(
+        o for o in host_view["reveal"]["outcomes"] if o["nickname"] == "Guest"
+    )
+    assert guest_row_for_host["session_token"] != "secret_guest_tok"
+    assert guest_row_for_host["session_token"].startswith("plr_")
+
+    # Host passes that redacted plr_... ID to override_free_text_answer -> succeeds!
+    coord.engine.override_free_text_answer(
+        room.code,
+        target_session_token=guest_row_for_host["session_token"],
+        approve=True,
+        host_token=host_tok,
+    )
+    assert room.players[guest_sess].score == 2
+
+
+def test_private_room_tv_follow_protection_cswsh_origin_check_and_url_hardening(
+    tmp_path: Path,
+) -> None:
+    from custom_components.quizrooms.tv_launcher import is_safe_http_url
+
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+    priv_room, _hs, _ht = coord.engine.create_room(
+        host_session_token="priv_h",
+        host_nickname="PrivHost",
+        pack_ids=["general_knowledge_en"],
+        visibility="private",
+    )
+
+    class _JsonReq(FakeRequest):
+        def __init__(self, body: dict[str, Any], **kwargs: Any) -> None:
+            super().__init__(**kwargs)
+            self._body = body
+
+        async def json(self) -> dict[str, Any]:
+            return self._body
+
+    async def run() -> None:
+        # 1. Unauthenticated LAN client cannot force TV to follow a PRIVATE room (403)
+        pub_tv_resp = await QuizRoomsPublicTVModeView(coord).post(
+            _JsonReq(
+                {"mode": "follow", "room_code": priv_room.code},
+                path="/quizrooms/api/public/tv_mode",
+                remote="192.168.1.30",
+            )
+        )
+        assert pub_tv_resp.status == 403
+
+        # 2. Authenticated HA Admin CAN follow a private room on TV (200)
+        admin_tv_resp = await QuizRoomsAdminTVView(coord).post(
+            _JsonReq(
+                {"mode": "follow", "room_code": priv_room.code},
+                path="/quizrooms/api/admin/tv",
+                hass_user=SimpleNamespace(is_admin=True),
+            )
+        )
+        assert admin_tv_resp.status == 200
+
+        # 3. Cross-Site WebSocket Hijacking (CSWSH): mismatched external Origin header blocked (403)
+        cswsh_resp = await QuizRoomsWebSocketView(coord).get(
+            FakeRequest(
+                path="/quizrooms/ws",
+                remote="192.168.1.30",
+                host="192.168.1.10:8123",
+                headers={"Origin": "https://evil.example.com"},
+            )
+        )
+        assert cswsh_resp.status == 403
+
+        # 4. HTML pages include anti-clickjacking & referrer-policy headers
+        play_resp = await QuizRoomsPlayView(coord).get(
+            FakeRequest(path="/quizrooms/play", remote="192.168.1.30")
+        )
+        assert play_resp.headers.get("X-Frame-Options") == "SAMEORIGIN"
+        assert play_resp.headers.get("Referrer-Policy") == "same-origin"
+
+        # 5. URL validator rejects control chars, quotes, and non-HTTP schemes
+        assert is_safe_http_url("http://192.168.1.50:8123/quizrooms/tv") is True
+        assert is_safe_http_url("javascript:alert(1)") is False
+        assert is_safe_http_url("http://192.168.1.50:8123/tv\nmalicious") is False
+        assert is_safe_http_url("http://192.168.1.50:8123/tv'bad") is False
 
     asyncio.run(run())

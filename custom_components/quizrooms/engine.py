@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import random
 import secrets
 import time
@@ -29,9 +30,11 @@ from .const import (
     DEFAULT_TIMER_SECONDS,
     DIFFICULTY_RANDOM,
     LOBBY_IDLE_TIMEOUT_SECONDS,
+    MAX_ANSWER_LENGTH,
     MAX_MAX_ROOMS,
     MAX_PLAYERS_PER_ROOM,
     MAX_ROUND_COUNT,
+    MAX_SESSION_TOKEN_LENGTH,
     MAX_WAGER,
     MIN_MAX_ROOMS,
     MIN_ROUND_COUNT,
@@ -145,6 +148,23 @@ class QuizEngine:
         if not cleaned:
             raise EngineError("invalid_nickname", "Please enter a nickname to join.")
         return cleaned
+
+    def _clean_session_token(self, raw_token: str | None) -> str:
+        cleaned = (raw_token or "").strip()
+        if (
+            not cleaned
+            or len(cleaned) > MAX_SESSION_TOKEN_LENGTH
+            or any(ord(ch) < 33 or ord(ch) > 126 for ch in cleaned)
+        ):
+            return secrets.token_urlsafe(18)
+        return cleaned
+
+    def _public_player_id(self, room: Room, session_token: str) -> str:
+        """Derive a non-secret per-room public player identifier from session_token."""
+        digest = hashlib.sha256(
+            f"pub:{room.code}:{room.host_token}:{session_token}".encode("utf-8")
+        ).hexdigest()
+        return f"plr_{digest[:12]}"
 
     def get_taken_preset_avatars(self, *, exclude_session_token: str | None = None) -> set[str]:
         """Return preset avatar IDs currently claimed by active players across ALL rooms."""
@@ -364,7 +384,7 @@ class QuizEngine:
                 status_code=429,
             )
 
-        session_token = (host_session_token or "").strip() or secrets.token_urlsafe(18)
+        session_token = self._clean_session_token(host_session_token)
         existing_hosted = self._hosted_room_for_session(session_token)
         if existing_hosted is not None:
             raise EngineError(
@@ -487,7 +507,7 @@ class QuizEngine:
     ) -> tuple[Room, Player, str]:
         """Join a room or reconnect an existing player by session_token."""
         room = self._require_room(code)
-        token = (session_token or "").strip() or secrets.token_urlsafe(18)
+        token = self._clean_session_token(session_token)
         now = self._now()
 
         # Reconnecting existing player always succeeds (even mid-game or finished)
@@ -703,6 +723,8 @@ class QuizEngine:
         clean_answer = (answer or "").strip()
         if not clean_answer:
             raise EngineError("empty_answer", "Please provide an answer before locking in.")
+        if len(clean_answer) > MAX_ANSWER_LENGTH:
+            clean_answer = clean_answer[:MAX_ANSWER_LENGTH]
 
         question = room.questions[room.current_index]
         if room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not question.open_ended:
@@ -896,8 +918,15 @@ class QuizEngine:
         if room.settings.answer_mode != ANSWER_MODE_FREE_TEXT and not (cur_q and cur_q.open_ended):
             raise EngineError("not_free_text", "Overrides are only applicable in Free-Text mode.")
 
-        player = room.players.get(target_session_token)
-        sub = room.current_submissions.get(target_session_token)
+        resolved_token = target_session_token
+        if resolved_token not in room.players:
+            for candidate_tok in room.players:
+                if self._public_player_id(room, candidate_tok) == target_session_token:
+                    resolved_token = candidate_tok
+                    break
+
+        player = room.players.get(resolved_token)
+        sub = room.current_submissions.get(resolved_token)
         if player is None or sub is None:
             raise EngineError("player_not_found", "Target player submission not found.")
         if sub.outcome == "timeout":
@@ -927,7 +956,7 @@ class QuizEngine:
             if room.round_history:
                 latest = room.round_history[-1]
                 for entry in latest["outcomes"]:
-                    if entry["session_token"] == target_session_token:
+                    if entry["session_token"] == resolved_token:
                         entry["is_correct"] = sub.is_correct
                         entry["outcome"] = sub.outcome
                         entry["duplicate_reason"] = sub.duplicate_reason
@@ -1084,30 +1113,44 @@ class QuizEngine:
             del self.rooms[code]
         return expired_codes
 
-    def build_leaderboard(self, room: Room) -> list[dict[str, Any]]:
-        """Return sorted player standings."""
+    def build_leaderboard(
+        self,
+        room: Room,
+        *,
+        for_session_token: str | None = None,
+    ) -> list[dict[str, Any]]:
+        """Return sorted player standings (redacting other players' secret session tokens)."""
         ordered = sorted(
             room.players.values(),
             key=lambda p: (-p.score, -p.correct_count, p.joined_at),
         )
-        return [
-            {
-                "rank": idx,
-                "session_token": p.session_token,
-                "nickname": p.nickname,
-                "avatar": p.avatar,
-                "avatar_url": avatar_to_url(p.avatar),
-                "score": p.score,
-                "streak": p.streak,
-                "max_streak": p.max_streak,
-                "correct_count": p.correct_count,
-                "answered_count": p.answered_count,
-                "connected": p.connected,
-                "is_host": p.is_host,
-                "locked_in": p.session_token in room.current_submissions,
-            }
-            for idx, p in enumerate(ordered, start=1)
-        ]
+        rows: list[dict[str, Any]] = []
+        for idx, p in enumerate(ordered, start=1):
+            pub_id = self._public_player_id(room, p.session_token)
+            visible_tok = (
+                p.session_token
+                if (for_session_token and p.session_token == for_session_token)
+                else pub_id
+            )
+            rows.append(
+                {
+                    "rank": idx,
+                    "player_id": pub_id,
+                    "session_token": visible_tok,
+                    "nickname": p.nickname,
+                    "avatar": p.avatar,
+                    "avatar_url": avatar_to_url(p.avatar),
+                    "score": p.score,
+                    "streak": p.streak,
+                    "max_streak": p.max_streak,
+                    "correct_count": p.correct_count,
+                    "answered_count": p.answered_count,
+                    "connected": p.connected,
+                    "is_host": p.is_host,
+                    "locked_in": p.session_token in room.current_submissions,
+                }
+            )
+        return rows
 
     def build_awards(self, room: Room) -> list[dict[str, Any]]:
         """Compute finale superlative awards."""
@@ -1275,7 +1318,7 @@ class QuizEngine:
     ) -> dict[str, Any]:
         """Serialize room state for a player or TV viewer WITHOUT leaking upcoming questions or answers."""
         now = self._now()
-        leaderboard = self.build_leaderboard(room)
+        leaderboard = self.build_leaderboard(room, for_session_token=for_session_token)
 
         active_question_payload: dict[str, Any] | None = None
         if room.phase in (PHASE_QUESTION, PHASE_REVEAL) and 0 <= room.current_index < len(room.questions):
@@ -1308,11 +1351,29 @@ class QuizEngine:
                 "server_now_ms": int(now * 1000),
             }
 
-        reveal_payload = (
-            room.round_history[-1]
-            if room.phase == PHASE_REVEAL and room.round_history
-            else None
-        )
+        reveal_payload = None
+        if room.phase == PHASE_REVEAL and room.round_history:
+            raw_rev = room.round_history[-1]
+            sanitized_outcomes = []
+            for entry in raw_rev.get("outcomes", []):
+                real_tok = entry.get("session_token", "")
+                pub_id = self._public_player_id(room, real_tok)
+                visible_tok = (
+                    real_tok
+                    if (for_session_token and real_tok == for_session_token)
+                    else pub_id
+                )
+                sanitized_outcomes.append(
+                    {
+                        **entry,
+                        "player_id": pub_id,
+                        "session_token": visible_tok,
+                    }
+                )
+            reveal_payload = {
+                **raw_rev,
+                "outcomes": sanitized_outcomes,
+            }
 
         finale_payload = None
         if room.phase == PHASE_FINALE:

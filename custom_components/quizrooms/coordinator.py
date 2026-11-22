@@ -30,6 +30,7 @@ from .const import (
     TV_MODE_OVERVIEW,
     URL_PLAY,
     VERSION,
+    VISIBILITY_PUBLIC,
 )
 
 
@@ -439,6 +440,7 @@ class QuizRoomsCoordinator:
         mode: str,
         room_code: str | None = None,
         theme: str | None = None,
+        is_admin: bool = False,
     ) -> dict[str, Any]:
         clean_mode = (mode or TV_MODE_OVERVIEW).strip().lower()
         if clean_mode not in ALLOWED_TV_MODES:
@@ -451,6 +453,12 @@ class QuizRoomsCoordinator:
             room = self.engine.get_room(room_code)
             if room is None:
                 raise EngineError("room_not_found", f"Room '{room_code}' was not found.", status_code=404)
+            if not is_admin and room.settings.visibility != VISIBILITY_PUBLIC:
+                raise EngineError(
+                    "forbidden",
+                    "Private rooms can only be followed on TV by a Home Assistant administrator.",
+                    status_code=403,
+                )
             target_code = room.code
 
         if theme is not None and theme != "":
