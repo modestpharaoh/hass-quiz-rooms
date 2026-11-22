@@ -16,7 +16,8 @@
 - **Open-Ended Packs & No Repeated Answers:** Supports `open_ended: true` packs with automatic starting-letter checking (`starts_with`) and a host toggle to reject duplicate answers across players in the same round or reused from earlier rounds (including Arabic spelling/article normalization).
 - **Player Avatars:** Choose from 20 globally unique studio SVG characters across all active rooms or upload a custom cropped profile photo.
 - **16:9 TV Studio Dashboard & Smart TV Launcher:** Viewport-fit layout optimized for 720p-CSS Smart TV browsers (LG webOS, Samsung Tizen), Full HD (1080p), and 4K displays, with Overview & Follow modes and one-click launch from the Admin Panel to connected LG webOS, Android TV / Google TV, and Samsung Smart TVs.
-- **Admin Sidebar Panel & Hot Pack Importer:** Monitor, start, pause, advance, or force-close any room, control the TV dashboard, adjust `max_rooms`, and drag-and-drop import custom `.json` or `.zip` packs (with Zip Slip & Zip Bomb protection) without restarting Home Assistant.
+- **Home Assistant Event Bus & TV-Synced Smart-Home Stage Effects (LAN-Only):** Emits native `quizrooms_phase_changed` (including a `T-5s` final countdown hook) and `quizrooms_finale` events for custom automations, AND includes a built-in zero-YAML **Stage Director** in the Admin Panel to sync living-room RGB lights (Teal → Amber 5s pulse → Green/Red reveal flash → Trophy Gold + auto-restore) and a local bilingual English/Arabic TTS speaker announcer with the game followed on TV — automatically disabled whenever External Access is enabled for home security.
+- **Admin Sidebar Panel & Hot Pack Importer:** Monitor, start, pause, advance, or force-close any room, control the TV dashboard, configure Smart-Home Stage Effects, adjust `max_rooms`, and drag-and-drop import custom `.json` or `.zip` packs (with Zip Slip & Zip Bomb protection) without restarting Home Assistant.
 - **Light / Dark / Auto Themes:** Zero-flash theme switcher with neutral dark-grey studio dark mode and white-framed scannable QR codes.
 
 ---
@@ -123,6 +124,80 @@ Reload built-in and custom trivia packs from disk without disrupting running gam
 
 ```yaml
 action: quizrooms.reload_packs
+```
+
+---
+
+## Home Assistant Event Bus & Smart-Home Stage Effects (LAN-Only)
+
+> **Security Note:** Native Home Assistant events (`quizrooms_phase_changed`, `quizrooms_finale`) and built-in Smart-Home Stage Effects are **strictly available in LAN-Only mode (`allow_external_access: false`)**. If External Access is enabled, all events and physical light/speaker triggers are automatically discarded so remote internet visitors cannot trigger lights or speaker announcements inside your home.
+
+### Built-In Stage Director (Zero-YAML Admin Panel Setup)
+Open **Sidebar → QuizRooms → Smart-Home Stage Effects** to pair your living-room devices with the game currently followed on your TV Dashboard:
+- **Stage Lights (`light.*`):** Multi-select RGB bulbs/strips or dimmers (with instant search filter and selected lights pinned to the top), pick a preset (**Studio Showdown**, **Subtle Cue**, or **Dramatic Pulse**), and enable **Restore pre-game light state** so lights pulse **Amber** in the final 5 seconds, flash **Emerald Green** / **Crimson Red** on reveal, shimmer **Gold** at Finale, and automatically return to their original pre-game brightness & color.
+- **Local Bilingual Speaker Announcer (`media_player.*` + `tts.*`):** Announces round winners and the grand champion with configurable **Announcement Language** (**Auto** matching Arabic/English packs, **Force English**, or **Force Arabic**) and optional **Predefined Announcement Volume** (`5%–100%` slider + quick presets, or disabled to follow your speaker's existing volume), plus nickname SSML sanitization and automatic `tts.speak` / legacy `tts.*_say` detection.
+
+### Native Home Assistant Events
+| Event Type | Triggered When | Key Payload Fields |
+| --- | --- | --- |
+| `quizrooms_phase_changed` | Round starts (`round_start`), 5 seconds left (`final_countdown`), answer revealed (`round_reveal`), paused/resumed (`paused` / `resumed`), or rematch (`play_again`) | `room_code`, `room_name`, `is_tv_followed`, `phase`, `sub_event`, `round_number`, `total_rounds`, `language`, `timer` (`duration_seconds`, `remaining_seconds`), `round_result` (`any_correct`, `majority_correct`, `none_correct`, `round_winner`, `overall_leader`) |
+| `quizrooms_finale` | Game reaches Grand Finale podium | `room_code`, `room_name`, `is_tv_followed`, `language`, `is_tie`, `winner`, `co_winners`, `podium` (top 3), `awards` |
+
+### Example YAML Automation
+```yaml
+automation:
+  - alias: "QuizRooms — Living Room TV Stage Lights & Announcer"
+    mode: restart
+    trigger:
+      - platform: event
+        event_type: quizrooms_phase_changed
+        event_data:
+          is_tv_followed: true
+        id: phase
+      - platform: event
+        event_type: quizrooms_finale
+        event_data:
+          is_tv_followed: true
+        id: finale
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: phase
+              - condition: template
+                value_template: "{{ trigger.event.data.sub_event == 'final_countdown' }}"
+            sequence:
+              - action: light.turn_on
+                target:
+                  entity_id: light.living_room_rgb
+                data:
+                  rgb_color: [245, 158, 11]
+                  brightness_pct: 95
+                  flash: short
+          - conditions:
+              - condition: trigger
+                id: phase
+              - condition: template
+                value_template: "{{ trigger.event.data.sub_event == 'round_reveal' }}"
+            sequence:
+              - action: light.turn_on
+                target:
+                  entity_id: light.living_room_rgb
+                data:
+                  rgb_color: "{{ [16, 185, 129] if trigger.event.data.round_result.any_correct else [239, 68, 68] }}"
+                  brightness_pct: 100
+          - conditions:
+              - condition: trigger
+                id: finale
+              - condition: template
+                value_template: "{{ trigger.event.data.winner is not none }}"
+            sequence:
+              - action: tts.speak
+                target:
+                  entity_id: tts.piper
+                data:
+                  media_player_entity_id: media_player.living_room_speaker
+                  message: "Congratulations to {{ trigger.event.data.winner.name }} for winning with {{ trigger.event.data.winner.score }} points!"
 ```
 
 ---

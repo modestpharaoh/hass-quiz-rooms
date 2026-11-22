@@ -25,6 +25,7 @@ flowchart TD
         NUM["number.quizrooms_max_rooms\n(RestoreEntity)"]
         SENS["sensor.quizrooms_active_games\nsensor.quizrooms_active_players"]
         SVC["HA Services\ntv_set_mode | open_tv_dashboard\nclose_room | pause_room | reload_packs"]
+        BUS["HA Event Bus (LAN-Only)\nquizrooms_phase_changed\nquizrooms_finale"]
         ER["Entity Registry & States"]
     end
 
@@ -36,6 +37,7 @@ flowchart TD
         AVT["AvatarStore\n(avatars.py)"]
         NG["NetworkGuard\n(network_guard.py)"]
         TVL["Smart TV Launcher\n(tv_launcher.py)"]
+        STAGE["StageDirector\n(stage_effects.py)"]
     end
 
     subgraph HTTP["HTTP Views & WebSocket Hub (views.py)"]
@@ -48,6 +50,7 @@ flowchart TD
         TVUI["16:9 Studio TV Dashboard\n(/quizrooms/tv)"]
         PANEL["HA Admin Sidebar Panel\n(<quizrooms-admin-panel>)"]
         SMARTTV["Connected Smart TVs\n(webOS | Android TV | Samsung)"]
+        SMARTFX["Stage Lights & TTS Speakers\n(light.* | media_player.* | tts.*)"]
     end
 
     CF --> INIT
@@ -59,6 +62,8 @@ flowchart TD
     COORD --> PACKS
     COORD --> AVT
     COORD --> NG
+    COORD --> BUS
+    COORD --> STAGE
     COORD --> NUM
     COORD --> SENS
     ENG --> NORM
@@ -66,6 +71,7 @@ flowchart TD
     ENG --> AVT
     TVL --> ER
     TVL --> SMARTTV
+    STAGE --> SMARTFX
     SVC --> COORD
     SVC --> TVL
 
@@ -94,7 +100,8 @@ flowchart TD
 | **Avatars** | `custom_components/quizrooms/avatars.py` | Serves 20 bundled studio SVG avatars and validates/stores in-memory custom user photo uploads (magic-byte check for PNG/JPEG/WebP/GIF, max 256 KB, SVG rejected on user upload). |
 | **Network Guard** | `custom_components/quizrooms/network_guard.py` | Strict fail-closed LAN access policy with trusted reverse-proxy `X-Forwarded-For` walking, Cloudflare Tunnel (`CF-Connecting-IP`) / Nabu Casa (`X-Hass-Source`) remote detection, and custom CIDR whitelist support. |
 | **Smart TV Launcher** | `custom_components/quizrooms/tv_launcher.py` | Discovers connected supported Smart TV `media_player` entities via HA Entity Registry (`webostv`, `androidtv`, `androidtv_remote`, `samsungtv`, `samsungtv_smart`, `samsungtv_tizen`) and dispatches native URL-open commands with fallbacks. |
-| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, WebSocket message routing (`WSClient`), strict sandbox CSP headers for media/avatars, and Admin APIs. |
+| **Event Bus & Stage Director** | `custom_components/quizrooms/stage_effects.py` | Builds privacy-safe `quizrooms_phase_changed` & `quizrooms_finale` event payloads, discovers connected `light.*` / `media_player.*` / `tts.*` entities, runs non-blocking RGB/dimmer light presets with pre-game scene snapshot & restoration, and dispatches sanitized bilingual (English & Arabic) TTS announcements — strictly gated on LAN-Only mode. |
+| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, WebSocket message routing (`WSClient`), strict sandbox CSP headers for media/avatars, and Admin APIs (including `/api/admin/stage`). |
 | **HA Entities** | `number.py`, `sensor.py` | Exposes `number.quizrooms_max_rooms`, `sensor.quizrooms_active_games`, and `sensor.quizrooms_active_players` grouped under a single Home Assistant `DeviceEntryType.SERVICE` device. |
 
 ---
@@ -240,3 +247,32 @@ flowchart TD
     FILTER --> SSMART["samsungtv_smart / samsungtv_tizen\n-> play_media (browser)\nfallback -> play_media (url)\nfallback -> play_media (app: org.tizen.browser)"]
     FILTER --> SSSTD["samsungtv\n-> play_media (url)\nfallback -> play_media (app: org.tizen.browser)"]
 ```
+
+---
+
+## 9. Home Assistant Event Bus & TV-Synced Smart-Home Stage Effects
+
+QuizRooms integrates directly with Home Assistant's native Event Bus and smart-home devices (`light.*`, `media_player.*`, `tts.*`) to turn the living room into a synchronized game-show studio.
+
+```mermaid
+flowchart TD
+    TRANS["Room Lifecycle Transition\n(start_game | T-5s warning | reveal | pause | finale)"] --> GATE{"LAN-Only Security Gate\nallow_external_access == False?"}
+    GATE -- "False (External Access Enabled)" --> DROP["Discard Event & Effects\n(Cancel warnings & restore lights)"]
+    GATE -- "True (LAN-Only Mode)" --> BUS["hass.bus.async_fire\n• quizrooms_phase_changed\n• quizrooms_finale"]
+    BUS --> SCOPE{"Stage Effects Enabled AND\n(is_tv_followed OR !only_tv_followed_room)?"}
+    SCOPE -- "No" --> DONE["Event available to YAML Automations only"]
+    SCOPE -- "Yes" --> SNAP["Capture Pre-Game Light Snapshot\n(state, brightness, rgb/color_temp)"]
+    SNAP --> LIGHTS["Non-Blocking Light Choreography\n• Round Start: Studio Teal\n• T-5s Warning: Amber Pulse\n• Reveal: Emerald Green / Crimson Red\n• Finale: Gold Shimmer -> Auto Restore"]
+    SNAP --> TTS["Sanitized Bilingual TTS Announcer\n(English / Arabic auto-matched to pack)\ntts.speak -> fallback tts.*_say"]
+```
+
+### Security & Reliability Invariants
+1. **Strict LAN-Only Kill Switch (`allow_external_access == False`):** If External Access is enabled in Options, `coordinator.is_stage_events_allowed()` returns `False`, immediately discarding all `quizrooms_phase_changed` / `quizrooms_finale` bus emissions and all built-in light/speaker calls, cancelling active countdown warning timers, restoring any snapshotted lights, and locking the Admin Panel Stage Effects UI (`409 stage_effects_disabled_external_mode`). This ensures remote internet visitors can never trigger physical lights or speaker announcements inside the home.
+2. **TV-Followed Room Scoping:** By default (`only_tv_followed_room = true`), built-in Stage Effects only react to the room currently followed on the TV Dashboard (`tv_state.mode == "follow"` and `tv_state.room_code == room.code`). Switching the TV back to `overview` or closing the room immediately restores snapshotted lights. Every HA Event Bus payload also carries `"is_tv_followed": true | false`.
+3. **Privacy & Anti-Cheat Payloads:** Event payloads expose non-secret `public_player_id` (`plr_<12-hex>`) rather than raw `session_token`s, and never include `correct_answer` during `phase == "question"`.
+4. **TTS Nickname Sanitization, Language Mode & Optional Predefined Volume:** `sanitize_tts_name()` strips XML/SSML tags, URLs, and punctuation abuse before calling `tts.speak` (with automatic legacy `tts.<provider>_say` fallback). Announcement language defaults to `auto` (matching the pack's `en` / `ar` language) or can be forced to `en` or `ar`. When `speaker_volume_enabled` is enabled, `StageDirector` calls `media_player.volume_set` to the configured `speaker_volume` (`0.05`–`1.0`) right before announcing; when disabled, it leaves the speaker's current volume untouched. All `hass.services.async_call(..., blocking=False)` calls run in tracked background tasks with `3.0s` timeouts so offline devices never stall game timers.
+5. **Pre-Game Light Scene Snapshot & Non-RGB Degradation:** Before modifying any selected `light.*` entity, `StageDirector` captures its initial `state`, `brightness`, and color attributes (`rgb_color` / `hs_color` / `xy_color` / `color_temp_kelvin`) and restores them after the Finale, on room close, or on TV unfollow. White-only dimmers gracefully receive `brightness_pct` without `rgb_color`.
+
+### Native HA Events Emitted (LAN-Only Mode)
+- **`quizrooms_phase_changed`**: Emitted with `sub_event` in `round_start`, `final_countdown` (scheduled via `_warning_timers[code]` at `T-5s`), `round_reveal` (includes `round_result` with `any_correct`, `majority_correct`, `all_correct`, `none_correct`, `round_winner`, `round_top_scorers`, `overall_leader`), `paused`, `resumed`, and `play_again`.
+- **`quizrooms_finale`**: Emitted on transition to `phase == "finale"` with `winner`, `co_winners`, `is_tie`, `podium` (top 3), and `awards`.

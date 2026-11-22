@@ -3,16 +3,63 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.15"
+VERSION = "0.1.18"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
 CONF_ALLOWED_SUBNETS = "allowed_subnets"
 CONF_CUSTOM_LAN_BASE_URL = "custom_lan_base_url"
+CONF_STAGE_EFFECTS = "stage_effects"
 
 DEFAULT_ALLOW_EXTERNAL_ACCESS = False
 DEFAULT_ALLOWED_SUBNETS = ""
 DEFAULT_CUSTOM_LAN_BASE_URL = ""
+
+# Home Assistant Event Bus & Smart-Home Stage Effects (strictly LAN-only)
+EVENT_PHASE_CHANGED = "quizrooms_phase_changed"
+EVENT_FINALE = "quizrooms_finale"
+COUNTDOWN_WARNING_SECONDS = 5
+
+LIGHT_PRESET_OFF = "off"
+LIGHT_PRESET_STUDIO = "studio_showdown"
+LIGHT_PRESET_SUBTLE = "subtle_cue"
+LIGHT_PRESET_DRAMATIC = "dramatic_pulse"
+ALLOWED_LIGHT_PRESETS = (
+    LIGHT_PRESET_OFF,
+    LIGHT_PRESET_STUDIO,
+    LIGHT_PRESET_SUBTLE,
+    LIGHT_PRESET_DRAMATIC,
+)
+
+REVEAL_RULE_ANY = "any_correct"
+REVEAL_RULE_MAJORITY = "majority_correct"
+REVEAL_RULE_ALL = "all_correct"
+ALLOWED_REVEAL_RULES = (
+    REVEAL_RULE_ANY,
+    REVEAL_RULE_MAJORITY,
+    REVEAL_RULE_ALL,
+)
+
+SPEAKER_PRESET_OFF = "off"
+SPEAKER_PRESET_WINNER_FINALE = "winner_and_finale"
+SPEAKER_PRESET_FINALE_ONLY = "finale_only"
+SPEAKER_PRESET_FULL_HOST = "full_show_host"
+ALLOWED_SPEAKER_PRESETS = (
+    SPEAKER_PRESET_OFF,
+    SPEAKER_PRESET_WINNER_FINALE,
+    SPEAKER_PRESET_FINALE_ONLY,
+    SPEAKER_PRESET_FULL_HOST,
+)
+
+SPEAKER_LANG_AUTO = "auto"
+SPEAKER_LANG_EN = "en"
+SPEAKER_LANG_AR = "ar"
+ALLOWED_SPEAKER_LANGUAGES = (
+    SPEAKER_LANG_AUTO,
+    SPEAKER_LANG_EN,
+    SPEAKER_LANG_AR,
+)
+DEFAULT_SPEAKER_VOLUME = 0.6
 
 # Room limits & defaults
 DEFAULT_MAX_ROOMS = 5

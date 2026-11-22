@@ -34,6 +34,11 @@ from .coordinator import QuizRoomsCoordinator, WSClient
 from .engine import EngineError
 from .network_guard import build_forbidden_response
 from .packs import PackValidationError, sample_pack_template
+from .stage_effects import (
+    StageEffectError,
+    discover_stage_lights,
+    discover_stage_speakers_and_tts,
+)
 from .tv_launcher import (
     TVLaunchError,
     async_open_tv_dashboard_on_player,
@@ -691,14 +696,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
 
             if msg_type == "next_step":
                 code = str(data.get("code") or client.room_code or "")
-                room = engine.next_step(code, host_token=data.get("host_token"))
-                if room.phase == PHASE_QUESTION:
-                    self.coordinator.schedule_room_timer(room.code)
-                else:
-                    self.coordinator._cancel_room_timer(room.code)
-                await self.coordinator.broadcast_room_state(room.code)
-                await self.coordinator.broadcast_lobby_and_tv()
-                self.coordinator.notify_entities()
+                await self.coordinator.async_next_step(code, host_token=data.get("host_token"))
                 return
 
             if msg_type == "override_answer":
@@ -724,12 +722,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
 
             if msg_type == "play_again":
                 code = str(data.get("code") or client.room_code or "")
-                room = engine.play_again(code, host_token=data.get("host_token"))
-                self.coordinator._cancel_room_timer(room.code)
-                self.coordinator.prune_unused_pinned_media()
-                await self.coordinator.broadcast_room_state(room.code)
-                await self.coordinator.broadcast_lobby_and_tv()
-                self.coordinator.notify_entities()
+                await self.coordinator.async_play_again(code, host_token=data.get("host_token"))
                 return
 
             if msg_type == "close_room":
@@ -814,6 +807,8 @@ class QuizRoomsAdminStateView(_QuizRoomsBaseView):
         if denied := _require_ha_admin(request):
             return denied
 
+        audio_targets = discover_stage_speakers_and_tts(self.coordinator.hass)
+        stage_available = self.coordinator.is_stage_events_allowed()
         return web.json_response(
             {
                 "rooms": self.coordinator.engine.serialize_admin_rooms(),
@@ -825,6 +820,14 @@ class QuizRoomsAdminStateView(_QuizRoomsBaseView):
                 "tv_targets": discover_supported_tv_players(self.coordinator.hass),
                 "lan_base_url": self.coordinator.resolve_lan_base_url(request),
                 "allow_external_access": self.coordinator.network_guard.allow_external_access,
+                "stage_effects": {
+                    "available": stage_available,
+                    "disabled_reason": None if stage_available else "external_access_enabled",
+                    "config": self.coordinator.stage_director.config.to_dict(),
+                    "lights": discover_stage_lights(self.coordinator.hass),
+                    "speakers": audio_targets["speakers"],
+                    "tts_engines": audio_targets["tts_engines"],
+                },
             }
         )
 
@@ -978,14 +981,7 @@ class QuizRoomsAdminRoomActionView(_QuizRoomsBaseView):
             elif action == "resume":
                 await self.coordinator.async_pause_room(code, paused=False, is_admin=True)
             elif action == "next":
-                room = self.coordinator.engine.next_step(code, is_admin=True)
-                if room.phase == PHASE_QUESTION:
-                    self.coordinator.schedule_room_timer(room.code)
-                else:
-                    self.coordinator._cancel_room_timer(room.code)
-                await self.coordinator.broadcast_room_state(room.code)
-                await self.coordinator.broadcast_lobby_and_tv()
-                self.coordinator.notify_entities()
+                await self.coordinator.async_next_step(code, is_admin=True)
             elif action == "start":
                 await self.coordinator.async_start_game(code, is_admin=True)
             else:
@@ -1062,6 +1058,63 @@ class QuizRoomsAdminTVOpenView(_QuizRoomsBaseView):
         return web.json_response({"ok": True, **result})
 
 
+class QuizRoomsAdminStageView(_QuizRoomsBaseView):
+    """Configure and test TV-synced Smart-Home Stage Effects (strictly LAN-Only mode)."""
+
+    url = f"{URL_API_ADMIN}/stage"
+    name = "quizrooms:admin_stage"
+    requires_auth = True
+
+    async def post(self, request: web.Request) -> web.StreamResponse:
+        if denied := _require_ha_admin(request):
+            return denied
+
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            body = {}
+
+        action = str(body.get("action") or "save").strip().lower()
+        try:
+            if action == "test":
+                if not self.coordinator.is_stage_events_allowed():
+                    raise StageEffectError(
+                        "stage_effects_disabled_external_mode",
+                        "Smart-Home Stage Effects & HA Events are disabled while External Access is enabled.",
+                        status_code=409,
+                    )
+                if isinstance(body.get("config"), dict):
+                    await self.coordinator.async_update_stage_config(body["config"])
+                effect = str(body.get("effect") or "").strip()
+                raw_lang = body.get("language")
+                language = str(raw_lang).strip() if raw_lang else None
+                result = await self.coordinator.async_run_stage_test(effect, language=language)
+                return web.json_response(
+                    {
+                        "ok": True,
+                        "config": self.coordinator.stage_director.config.to_dict(),
+                        **result,
+                    }
+                )
+
+            raw_cfg = body.get("config") if isinstance(body.get("config"), dict) else body
+            updated = await self.coordinator.async_update_stage_config(raw_cfg)
+            return web.json_response(
+                {
+                    "ok": True,
+                    "config": updated,
+                    "message": "Smart-Home Stage Effects settings saved.",
+                }
+            )
+        except StageEffectError as err:
+            return web.json_response(
+                {"error": err.code, "message": err.message},
+                status=err.status_code,
+            )
+
+
 def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
     """Register all QuizRooms HTTP and WebSocket views on Home Assistant."""
     views = [
@@ -1083,6 +1136,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAdminRoomActionView(coordinator),
         QuizRoomsAdminTVView(coordinator),
         QuizRoomsAdminTVOpenView(coordinator),
+        QuizRoomsAdminStageView(coordinator),
     ]
     for view in views:
         hass.http.register_view(view)

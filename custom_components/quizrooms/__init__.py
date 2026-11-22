@@ -60,7 +60,7 @@ SCHEMA_OPEN_TV_DASHBOARD = vol.Schema(
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up QuizRooms from a config entry."""
     domain_data = hass.data.setdefault(DOMAIN, {})
-    coordinator = QuizRoomsCoordinator.from_hass(hass, options=dict(entry.options))
+    coordinator = QuizRoomsCoordinator.from_hass(hass, options=dict(entry.options), entry=entry)
     await coordinator.async_initialize()
     domain_data["coordinator"] = coordinator
     domain_data["entry_id"] = entry.entry_id

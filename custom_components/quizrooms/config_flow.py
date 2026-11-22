@@ -12,6 +12,7 @@ from .const import (
     CONF_ALLOW_EXTERNAL_ACCESS,
     CONF_ALLOWED_SUBNETS,
     CONF_CUSTOM_LAN_BASE_URL,
+    CONF_STAGE_EFFECTS,
     DEFAULT_ALLOW_EXTERNAL_ACCESS,
     DEFAULT_ALLOWED_SUBNETS,
     DEFAULT_CUSTOM_LAN_BASE_URL,
@@ -137,19 +138,22 @@ class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
         if user_input is not None:
             errors = _validate_network_options(user_input)
             if not errors:
+                new_options = {
+                    CONF_ALLOW_EXTERNAL_ACCESS: bool(
+                        user_input.get(CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS)
+                    ),
+                    CONF_ALLOWED_SUBNETS: str(
+                        user_input.get(CONF_ALLOWED_SUBNETS, DEFAULT_ALLOWED_SUBNETS) or ""
+                    ).strip(),
+                    CONF_CUSTOM_LAN_BASE_URL: str(
+                        user_input.get(CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL) or ""
+                    ).strip().rstrip("/"),
+                }
+                if CONF_STAGE_EFFECTS in options:
+                    new_options[CONF_STAGE_EFFECTS] = options[CONF_STAGE_EFFECTS]
                 return self.async_create_entry(
                     title="",
-                    data={
-                        CONF_ALLOW_EXTERNAL_ACCESS: bool(
-                            user_input.get(CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS)
-                        ),
-                        CONF_ALLOWED_SUBNETS: str(
-                            user_input.get(CONF_ALLOWED_SUBNETS, DEFAULT_ALLOWED_SUBNETS) or ""
-                        ).strip(),
-                        CONF_CUSTOM_LAN_BASE_URL: str(
-                            user_input.get(CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL) or ""
-                        ).strip().rstrip("/"),
-                    },
+                    data=new_options,
                 )
             current.update(user_input)
 

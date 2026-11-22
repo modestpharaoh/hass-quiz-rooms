@@ -18,19 +18,35 @@ from .const import (
     CONF_ALLOW_EXTERNAL_ACCESS,
     CONF_ALLOWED_SUBNETS,
     CONF_CUSTOM_LAN_BASE_URL,
+    CONF_STAGE_EFFECTS,
+    COUNTDOWN_WARNING_SECONDS,
     CUSTOM_PACKS_REL_DIR,
     DEFAULT_ALLOW_EXTERNAL_ACCESS,
     DEFAULT_ALLOWED_SUBNETS,
     DEFAULT_CUSTOM_LAN_BASE_URL,
     DEFAULT_MAX_ROOMS,
     DOMAIN,
+    EVENT_FINALE,
+    EVENT_PHASE_CHANGED,
+    PHASE_FINALE,
+    PHASE_LOBBY,
     PHASE_QUESTION,
+    PHASE_REVEAL,
     THEME_AUTO,
     TV_MODE_FOLLOW,
     TV_MODE_OVERVIEW,
     URL_PLAY,
     VERSION,
     VISIBILITY_PUBLIC,
+)
+from .engine import EngineError, QuizEngine
+from .network_guard import NetworkGuard
+from .packs import PackRegistry
+from .stage_effects import (
+    StageDirector,
+    StageEffectError,
+    build_finale_payload,
+    build_phase_changed_payload,
 )
 
 
@@ -45,9 +61,6 @@ def build_device_info(entry_id: str) -> DeviceInfo:
         entry_type=DeviceEntryType.SERVICE,
         configuration_url=f"homeassistant://{DOMAIN}",
     )
-from .engine import EngineError, QuizEngine
-from .network_guard import NetworkGuard
-from .packs import PackRegistry
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -93,8 +106,10 @@ class QuizRoomsCoordinator:
         frontend_dir: Path,
         options: dict[str, Any] | None = None,
         load_packs: bool = True,
+        entry: Any | None = None,
     ) -> None:
         self.hass = hass
+        self._entry = entry
         self.frontend_dir = Path(frontend_dir)
         self.avatar_store = AvatarStore(self.frontend_dir)
         self.pack_registry = PackRegistry(builtin_packs_dir, custom_packs_dir)
@@ -105,18 +120,26 @@ class QuizRoomsCoordinator:
 
         self.engine = QuizEngine(self.pack_registry, max_rooms=DEFAULT_MAX_ROOMS)
         self.network_guard = NetworkGuard()
+        self.stage_director = StageDirector(hass)
         self.custom_lan_base_url: str = DEFAULT_CUSTOM_LAN_BASE_URL
         self.tv_state = TVState()
 
         self._ws_clients: set[WSClient] = set()
         self._room_timers: dict[str, asyncio.Task[None]] = {}
+        self._warning_timers: dict[str, asyncio.Task[None]] = {}
         self._cleanup_task: asyncio.Task[None] | None = None
         self._entity_listeners: list[Callable[[], None]] = []
 
         self.apply_options(options or {})
 
     @classmethod
-    def from_hass(cls, hass: Any, options: dict[str, Any] | None = None) -> "QuizRoomsCoordinator":
+    def from_hass(
+        cls,
+        hass: Any,
+        options: dict[str, Any] | None = None,
+        *,
+        entry: Any | None = None,
+    ) -> "QuizRoomsCoordinator":
         base_dir = Path(__file__).parent
         builtin_packs_dir = base_dir / "packs"
         frontend_dir = base_dir / "frontend"
@@ -128,6 +151,7 @@ class QuizRoomsCoordinator:
             frontend_dir=frontend_dir,
             options=options,
             load_packs=False,
+            entry=entry,
         )
 
     async def async_run_in_executor(self, func: Callable[..., Any], *args: Any) -> Any:
@@ -146,6 +170,14 @@ class QuizRoomsCoordinator:
 
         await self.async_run_in_executor(_init_sync)
 
+    def is_stage_events_allowed(self) -> bool:
+        """Hard LAN-Only security gate: discard HA events & stage effects when external access is enabled."""
+        return not bool(self.network_guard.allow_external_access)
+
+    def is_room_tv_followed(self, code: str) -> bool:
+        """Return True if the TV Dashboard is currently in Follow mode for `code`."""
+        return self.tv_state.mode == TV_MODE_FOLLOW and self.tv_state.room_code == code
+
     def apply_options(self, options: dict[str, Any]) -> None:
         """Apply ConfigEntry / OptionsFlow settings dynamically without restart."""
         http_comp = getattr(self.hass, "http", None)
@@ -162,6 +194,112 @@ class QuizRoomsCoordinator:
         )
         raw_url = str(options.get(CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL) or "").strip()
         self.custom_lan_base_url = raw_url.rstrip("/")
+
+        if CONF_STAGE_EFFECTS in options:
+            self.stage_director.update_config(options.get(CONF_STAGE_EFFECTS) or {})
+
+        # Dynamic security revocation: if External Access is enabled at runtime, immediately
+        # cancel countdown warnings & stage pulses and restore any snapshotted lights.
+        if not self.is_stage_events_allowed():
+            for task in list(self._warning_timers.values()):
+                if not task.done():
+                    task.cancel()
+            self._warning_timers.clear()
+            self.stage_director.cancel_active_effects()
+            try:
+                asyncio.get_running_loop()
+            except RuntimeError:
+                pass
+            else:
+                self.stage_director.schedule_restore_lights(0.0)
+
+    async def async_update_stage_config(self, raw_config: dict[str, Any]) -> dict[str, Any]:
+        """Validate, apply, and persist Smart-Home Stage Effects settings from Admin Panel."""
+        if not isinstance(raw_config, dict):
+            raise StageEffectError("invalid_config", "Stage settings payload must be a JSON object.")
+
+        if not self.is_stage_events_allowed() and bool(raw_config.get("enabled", False)):
+            raise StageEffectError(
+                "stage_effects_disabled_external_mode",
+                "Smart-Home Stage Effects cannot be enabled while External Access is active.",
+                status_code=409,
+            )
+
+        updated = self.stage_director.update_config(raw_config)
+        if not updated["enabled"]:
+            self.stage_director.cancel_active_effects()
+            await self.stage_director.async_restore_lights()
+
+        # Persist inside ConfigEntry options so settings survive HA restarts
+        if self._entry is not None:
+            config_entries = getattr(self.hass, "config_entries", None)
+            updater = getattr(config_entries, "async_update_entry", None) if config_entries else None
+            if callable(updater):
+                new_options = dict(getattr(self._entry, "options", {}) or {})
+                new_options[CONF_STAGE_EFFECTS] = dict(updated)
+                updater(self._entry, options=new_options)
+
+        return updated
+
+    async def async_run_stage_test(self, effect: str, *, language: str | None = None) -> dict[str, Any]:
+        """Run an admin test cue for lights/speaker (strictly blocked in External Access mode)."""
+        if not self.is_stage_events_allowed():
+            raise StageEffectError(
+                "stage_effects_disabled_external_mode",
+                "Smart-Home Stage Effects & HA Events are disabled while External Access is enabled.",
+                status_code=409,
+            )
+        return await self.stage_director.async_run_test_effect(effect, language=language)
+
+    def emit_phase_changed(
+        self,
+        room: Any,
+        *,
+        sub_event: str,
+        previous_phase: str | None = None,
+        remaining_seconds: float | None = None,
+    ) -> bool:
+        """Fire `quizrooms_phase_changed` on HA Event Bus & drive StageDirector (LAN-Only)."""
+        if not self.is_stage_events_allowed():
+            return False
+
+        payload = build_phase_changed_payload(
+            self.engine,
+            room,
+            sub_event=sub_event,
+            previous_phase=previous_phase,
+            is_tv_followed=self.is_room_tv_followed(room.code),
+            remaining_seconds=remaining_seconds,
+        )
+        bus = getattr(self.hass, "bus", None)
+        if bus is not None and hasattr(bus, "async_fire"):
+            try:
+                bus.async_fire(EVENT_PHASE_CHANGED, payload)
+            except Exception:
+                _LOGGER.exception("Failed firing %s on HA Event Bus", EVENT_PHASE_CHANGED)
+
+        self.stage_director.handle_phase_event(payload)
+        return True
+
+    def emit_finale(self, room: Any) -> bool:
+        """Fire `quizrooms_finale` on HA Event Bus & drive StageDirector (LAN-Only)."""
+        if not self.is_stage_events_allowed():
+            return False
+
+        payload = build_finale_payload(
+            self.engine,
+            room,
+            is_tv_followed=self.is_room_tv_followed(room.code),
+        )
+        bus = getattr(self.hass, "bus", None)
+        if bus is not None and hasattr(bus, "async_fire"):
+            try:
+                bus.async_fire(EVENT_FINALE, payload)
+            except Exception:
+                _LOGGER.exception("Failed firing %s on HA Event Bus", EVENT_FINALE)
+
+        self.stage_director.handle_finale_event(payload)
+        return True
 
     def resolve_lan_base_url(self, request: Any | None = None) -> str:
         """Determine the best LAN base URL for QR codes."""
@@ -221,6 +359,12 @@ class QuizRoomsCoordinator:
             task.cancel()
         self._room_timers.clear()
 
+        for task in list(self._warning_timers.values()):
+            task.cancel()
+        self._warning_timers.clear()
+
+        await self.stage_director.async_shutdown()
+
         for client in list(self._ws_clients):
             try:
                 await client.ws.close()
@@ -248,6 +392,8 @@ class QuizRoomsCoordinator:
                         if self.tv_state.room_code == code:
                             self.tv_state.mode = TV_MODE_OVERVIEW
                             self.tv_state.room_code = None
+                            self.stage_director.cancel_active_effects()
+                            self.stage_director.schedule_restore_lights(0.0)
                         await self.broadcast_room_closed(code, reason="Room expired due to inactivity.")
                     self.prune_unused_pinned_media()
                     await self.broadcast_lobby_and_tv()
@@ -261,9 +407,12 @@ class QuizRoomsCoordinator:
         task = self._room_timers.pop(code, None)
         if task is not None and not task.done():
             task.cancel()
+        warn_task = self._warning_timers.pop(code, None)
+        if warn_task is not None and not warn_task.done():
+            warn_task.cancel()
 
     def schedule_room_timer(self, code: str) -> None:
-        """Schedule automatic reveal when the active room's question timer expires."""
+        """Schedule automatic reveal and T-5s countdown warning for the active question."""
         self._cancel_room_timer(code)
         room = self.engine.get_room(code)
         if room is None or room.phase != PHASE_QUESTION or room.paused or room.question_ends_at is None:
@@ -271,6 +420,46 @@ class QuizRoomsCoordinator:
 
         delay = max(0.05, room.question_ends_at - self.engine._now())
         self._room_timers[code] = asyncio.create_task(self._timer_worker(code, delay))
+
+        # Schedule T-minus 5s warning event (LAN-only) if more than 5s remain & not already fired
+        if (
+            self.is_stage_events_allowed()
+            and room.countdown_warning_fired_for_index != room.current_index
+            and delay > (COUNTDOWN_WARNING_SECONDS + 0.05)
+        ):
+            warn_delay = delay - COUNTDOWN_WARNING_SECONDS
+            self._warning_timers[code] = asyncio.create_task(
+                self._countdown_warning_worker(code, room.current_index, warn_delay)
+            )
+
+    async def _countdown_warning_worker(
+        self, code: str, expected_index: int, warn_delay: float
+    ) -> None:
+        try:
+            await asyncio.sleep(warn_delay)
+            room = self.engine.get_room(code)
+            if (
+                room is None
+                or room.phase != PHASE_QUESTION
+                or room.paused
+                or room.current_index != expected_index
+                or room.countdown_warning_fired_for_index == expected_index
+            ):
+                return
+            room.countdown_warning_fired_for_index = expected_index
+            self.emit_phase_changed(
+                room,
+                sub_event="final_countdown",
+                previous_phase=PHASE_QUESTION,
+                remaining_seconds=float(COUNTDOWN_WARNING_SECONDS),
+            )
+        except asyncio.CancelledError:
+            return
+        except Exception:
+            _LOGGER.exception("Error in QuizRooms countdown warning worker for room %s", code)
+        finally:
+            if self._warning_timers.get(code) is asyncio.current_task():
+                self._warning_timers.pop(code, None)
 
     def schedule_auto_reveal(self, code: str, expected_index: int, delay: float = 1.1) -> None:
         """Schedule a tracked short beat before auto-revealing when all players lock in."""
@@ -290,14 +479,21 @@ class QuizRoomsCoordinator:
                 or room.current_index != expected_index
             ):
                 return
-            self.engine.reveal_current_question(code)
+            warn_task = self._warning_timers.pop(code, None)
+            if warn_task is not None and not warn_task.done():
+                warn_task.cancel()
+            room, _summary = self.engine.reveal_current_question(code)
             await self.broadcast_room_state(code)
             await self.broadcast_lobby_and_tv()
             self.notify_entities()
+            self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=PHASE_QUESTION)
         except asyncio.CancelledError:
             return
         except Exception:
             _LOGGER.exception("Error in QuizRooms auto-reveal worker for room %s", code)
+        finally:
+            if self._room_timers.get(code) is asyncio.current_task():
+                self._room_timers.pop(code, None)
 
     async def _timer_worker(self, code: str, delay: float) -> None:
         try:
@@ -305,14 +501,21 @@ class QuizRoomsCoordinator:
             room = self.engine.get_room(code)
             if room is None or room.phase != PHASE_QUESTION or room.paused:
                 return
-            self.engine.reveal_current_question(code)
+            warn_task = self._warning_timers.pop(code, None)
+            if warn_task is not None and not warn_task.done():
+                warn_task.cancel()
+            room, _summary = self.engine.reveal_current_question(code)
             await self.broadcast_room_state(code)
             await self.broadcast_lobby_and_tv()
             self.notify_entities()
+            self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=PHASE_QUESTION)
         except asyncio.CancelledError:
             return
         except Exception:
             _LOGGER.exception("Error in QuizRooms timer worker for room %s", code)
+        finally:
+            if self._room_timers.get(code) is asyncio.current_task():
+                self._room_timers.pop(code, None)
 
     # --- WebSocket registration & broadcasting ---
 
@@ -467,8 +670,14 @@ class QuizRoomsCoordinator:
                 raise EngineError("invalid_theme", f"Theme must be one of {ALLOWED_THEMES}.")
             self.tv_state.theme = clean_theme
 
+        prev_mode = self.tv_state.mode
+        prev_code = self.tv_state.room_code
+
         self.tv_state.mode = clean_mode
         self.tv_state.room_code = target_code
+        if prev_mode == TV_MODE_FOLLOW and (clean_mode != TV_MODE_FOLLOW or target_code != prev_code):
+            self.stage_director.cancel_active_effects()
+            self.stage_director.schedule_restore_lights(0.0)
         await self.broadcast_tv_mode()
         return self.tv_state.to_dict()
 
@@ -481,12 +690,15 @@ class QuizRoomsCoordinator:
         reason: str = "Room was closed.",
     ) -> None:
         norm_code = (code or "").strip().upper()
+        was_followed = self.tv_state.room_code == norm_code
         self.engine.close_room(norm_code, host_token=host_token, is_admin=is_admin)
         self._cancel_room_timer(norm_code)
         self.prune_unused_pinned_media()
-        if self.tv_state.room_code == norm_code:
+        if was_followed:
             self.tv_state.mode = TV_MODE_OVERVIEW
             self.tv_state.room_code = None
+            self.stage_director.cancel_active_effects()
+            self.stage_director.schedule_restore_lights(0.0)
             await self.broadcast_tv_mode()
         await self.broadcast_room_closed(norm_code, reason=reason)
         await self.broadcast_lobby_and_tv()
@@ -510,6 +722,11 @@ class QuizRoomsCoordinator:
         await self.broadcast_room_state(room.code)
         await self.broadcast_lobby_and_tv()
         self.notify_entities()
+        self.emit_phase_changed(
+            room,
+            sub_event="paused" if room.paused else "resumed",
+            previous_phase=room.phase,
+        )
 
     async def async_start_game(
         self,
@@ -536,6 +753,53 @@ class QuizRoomsCoordinator:
         await self.broadcast_room_state(room.code)
         await self.broadcast_lobby_and_tv()
         self.notify_entities()
+        self.emit_phase_changed(room, sub_event="round_start", previous_phase=PHASE_LOBBY)
+        return room
+
+    async def async_next_step(
+        self,
+        code: str,
+        *,
+        host_token: str | None = None,
+        is_admin: bool = False,
+    ) -> Any:
+        """Advance Question -> Reveal, or Reveal -> Next Question / Finale, and emit HA events."""
+        existing = self.engine.get_room(code)
+        prev_phase = existing.phase if existing is not None else None
+        room = self.engine.next_step(code, host_token=host_token, is_admin=is_admin)
+        if room.phase == PHASE_QUESTION:
+            self.schedule_room_timer(room.code)
+        else:
+            self._cancel_room_timer(room.code)
+        await self.broadcast_room_state(room.code)
+        await self.broadcast_lobby_and_tv()
+        self.notify_entities()
+
+        if room.phase == PHASE_REVEAL:
+            self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=prev_phase)
+        elif room.phase == PHASE_QUESTION:
+            self.emit_phase_changed(room, sub_event="round_start", previous_phase=prev_phase)
+        elif room.phase == PHASE_FINALE:
+            self.emit_finale(room)
+        return room
+
+    async def async_play_again(
+        self,
+        code: str,
+        *,
+        host_token: str | None = None,
+        is_admin: bool = False,
+    ) -> Any:
+        """Reset a finished room back to Lobby, cancel timers, and notify HA Event Bus."""
+        existing = self.engine.get_room(code)
+        prev_phase = existing.phase if existing is not None else None
+        room = self.engine.play_again(code, host_token=host_token, is_admin=is_admin)
+        self._cancel_room_timer(room.code)
+        self.prune_unused_pinned_media()
+        await self.broadcast_room_state(room.code)
+        await self.broadcast_lobby_and_tv()
+        self.notify_entities()
+        self.emit_phase_changed(room, sub_event="play_again", previous_phase=prev_phase)
         return room
 
     async def async_reload_packs(self) -> list[dict[str, Any]]:

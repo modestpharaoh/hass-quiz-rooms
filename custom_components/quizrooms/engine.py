@@ -676,6 +676,7 @@ class QuizEngine:
         room.status = ROOM_STATUS_IN_PROGRESS
         room.paused = False
         room.remaining_when_paused = None
+        room.countdown_warning_fired_for_index = -1
         room.current_index = 0
         self._begin_current_question(room)
         return room
@@ -1058,6 +1059,7 @@ class QuizEngine:
         room.question_started_at = None
         room.question_ends_at = None
         room.remaining_when_paused = None
+        room.countdown_warning_fired_for_index = -1
         room.last_activity = self._now()
         for player in room.players.values():
             player.score = 0

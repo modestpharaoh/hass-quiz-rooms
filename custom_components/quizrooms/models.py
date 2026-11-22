@@ -199,5 +199,6 @@ class Room:
     question_started_at: float | None = None
     question_ends_at: float | None = None
     remaining_when_paused: float | None = None
+    countdown_warning_fired_for_index: int = -1
     # Pinned media bytes for snapshot isolation across pack deletions
     pinned_media: dict[str, MediaAsset] = field(default_factory=dict)
