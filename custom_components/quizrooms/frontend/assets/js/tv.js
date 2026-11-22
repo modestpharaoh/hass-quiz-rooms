@@ -110,8 +110,6 @@
   function handleMessage(msg) {
     if (msg.lan_base_url) {
       state.lanBaseUrl = msg.lan_base_url;
-      const urlEl = document.getElementById("tv-join-url");
-      if (urlEl) urlEl.textContent = joinUrl();
     }
 
     switch (msg.type) {
@@ -252,8 +250,6 @@
 
       function render() {
         const main = document.getElementById("tv-main");
-        const urlEl = document.getElementById("tv-join-url");
-        if (urlEl) urlEl.textContent = joinUrl();
         const overviewBtn = document.getElementById("tv-overview-btn");
         if (overviewBtn) {
           overviewBtn.classList.toggle("hidden", !(state.tv.mode === "follow" && state.room));
@@ -279,7 +275,7 @@
             <div>
               <span class="badge badge-accent">Local-First Party Trivia</span>
               <h2>Scan to Host or Join a Room</h2>
-              <p>Open <strong class="mono">${esc(joinUrl())}</strong> on your phone to create a room, pick a pack, and wager on your confidence.</p>
+              <p>Scan the QR code with your phone to create a room, pick a trivia pack, and wager on your confidence.</p>
               <span class="badge">Active Rooms: ${state.lobby.active_rooms} / ${state.lobby.max_rooms}</span>
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
@@ -408,13 +404,13 @@
             </div>
             <div id="tv-timer-num" class="tv-timer-big">${Math.ceil(q.remaining_seconds || 0)}s</div>
           </div>
-          <div class="timer-track" style="height:14px;margin-top:14px;">
+          <div class="timer-track tv-timer-bar-wrap">
             <div id="tv-timer-fill" class="timer-fill"></div>
           </div>
         </div>
 
         ${q.media_url
-              ? `<div class="tv-media-showcase"><div class="media-frame"><img src="${esc(q.media_url)}" alt="Question visual" /></div></div>`
+              ? `<div class="tv-media-showcase"><div class="media-frame"><img src="${esc(q.media_url)}" alt="Question visual" width="640" height="480" /></div></div>`
               : ""
             }
 
@@ -464,17 +460,17 @@
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
 
-        <div class="studio-card" style="padding:26px;background:var(--accent-secondary-soft);border-color:var(--accent-secondary);text-align:start;">
-          <div style="font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-secondary);">
+        <div class="studio-card tv-reveal-box">
+          <div style="font-size:0.86rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-secondary);">
             ${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}
           </div>
-          <div style="font-size:clamp(2rem,3.6vw,3.2rem);font-weight:800;margin-block:6px;" dir="auto">
+          <div class="tv-reveal-answer" dir="auto">
             ${esc(rev.correct_answer)}
           </div>
-          ${rev.explanation ? `<p style="margin:0;font-size:1.2rem;color:var(--text-secondary);" dir="auto">${esc(rev.explanation)}</p>` : ""}
+          ${rev.explanation ? `<p style="margin:0;font-size:clamp(0.95rem,1.65vh,1.2rem);color:var(--text-secondary);" dir="auto">${esc(rev.explanation)}</p>` : ""}
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+        <div class="tv-reveal-outcomes">
           ${rev.outcomes
               .slice(0, 8)
               .map((o) => {
@@ -544,9 +540,9 @@
             <span class="badge mono">${esc(room.code)}</span>
           </div>
           <div class="tv-leaderboard-list">${leaderboardHtml}</div>
-          <div style="margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:1px solid var(--border-subtle);">
-            <div class="qr-white-frame" style="width:152px;height:152px;padding:10px;">${qr}</div>
-            <span style="font-size:0.82rem;color:var(--text-muted);font-weight:700;">Scan to join room ${esc(room.code)}</span>
+          <div class="tv-sidebar-qr-wrap">
+            <div class="qr-white-frame">${qr}</div>
+            <span style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">Scan to join room ${esc(room.code)}</span>
           </div>
         </aside>
       </div>`;
@@ -559,8 +555,6 @@
           const data = await resp.json();
           if (data.lan_base_url) {
             state.lanBaseUrl = data.lan_base_url;
-            const el = document.getElementById("tv-join-url");
-            if (el) el.textContent = joinUrl();
           }
           if (data.lobby) state.lobby = data.lobby;
           if (data.tv) applyTVConfig(data.tv);

@@ -46,6 +46,12 @@ def test_builtin_starter_packs_loaded_with_local_svg_flags(pack_registry: PackRe
     assert b"<svg" in raw_svg
     assert b"flag-icons-" not in raw_svg
     assert len(raw_svg) > 3000  # detailed vector Eagle of Saladin emblem
+    # Every flag SVG must declare explicit width/height so LG webOS TV Chromium never collapses it to 0px
+    for fq in flags.questions:
+        assert fq.media_id is not None
+        f_bytes, _ = pack_registry.get_media_bytes(fq.media_id) or (b"", "")
+        first_tag = f_bytes[: f_bytes.find(b">") + 1]
+        assert b"width=" in first_tag and b"height=" in first_tag
 
     assert capitals is not None and capitals.is_builtin
     assert len(capitals.questions) >= 150
