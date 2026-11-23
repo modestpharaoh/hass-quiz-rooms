@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="World General Geography Cover">
+  <defs>
+    <linearGradient id="geobg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="geoglobe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#geobg)"/>
+  <circle cx="80" cy="78" r="46" fill="url(#geoglobe)" stroke="#E0F2FE" stroke-width="3"/>
+  <ellipse cx="80" cy="78" rx="22" ry="46" fill="none" stroke="#E0F2FE" stroke-opacity="0.45" stroke-width="2"/>
+  <line x1="34" y1="78" x2="126" y2="78" stroke="#E0F2FE" stroke-opacity="0.45" stroke-width="2"/>
+  <line x1="40" y1="56" x2="120" y2="56" stroke="#E0F2FE" stroke-opacity="0.35" stroke-width="1.8"/>
+  <line x1="40" y1="100" x2="120" y2="100" stroke="#E0F2FE" stroke-opacity="0.35" stroke-width="1.8"/>
+  <path d="M46,84 L64,58 L78,76 L94,50 L114,84 Z" fill="#10B981" stroke="#ECFDF5" stroke-width="2" stroke-linejoin="round"/>
+  <polygon points="94,50 88,61 94,58 100,61" fill="#F8FAFC"/>
+  <polygon points="64,58 59,66 64,64 69,66" fill="#F8FAFC"/>
+  <polygon points="122,26 126,38 138,42 126,46 122,58 118,46 106,42 118,38" fill="#FBBF24"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

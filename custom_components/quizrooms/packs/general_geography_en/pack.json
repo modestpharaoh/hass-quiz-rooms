@@ -1,0 +1,5686 @@
+{
+  "pack_id": "general_geography_en",
+  "title": "World General Geography",
+  "description": "330 original geography questions covering world rivers, mountains, deserts, oceans, straits, islands, borders, landmarks, and currencies.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "geo_en_001",
+      "prompt": "Which river is the longest in Africa and flows northward into the Mediterranean Sea?",
+      "choices": [
+        "Zambezi",
+        "Niger",
+        "Congo",
+        "Nile"
+      ],
+      "answer": "Nile",
+      "aliases": [
+        "Nile River",
+        "The Nile"
+      ],
+      "explanation": "The Nile stretches roughly 6,650 km from East Africa through Sudan and Egypt to the Mediterranean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_002",
+      "prompt": "Which river carries the largest volume of water discharge on Earth?",
+      "choices": [
+        "Nile",
+        "Yangtze",
+        "Amazon",
+        "Mississippi"
+      ],
+      "answer": "Amazon",
+      "aliases": [
+        "Amazon River",
+        "The Amazon"
+      ],
+      "explanation": "The Amazon discharges about 209,000 cubic meters of water per second into the Atlantic Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_003",
+      "prompt": "Which is the longest river in Asia?",
+      "choices": [
+        "Yangtze",
+        "Ganges",
+        "Mekong",
+        "Yellow River"
+      ],
+      "answer": "Yangtze",
+      "aliases": [
+        "Yangtze River",
+        "Chang Jiang"
+      ],
+      "explanation": "The Yangtze River in China is approximately 6,300 km long.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_004",
+      "prompt": "Which river flows through London?",
+      "choices": [
+        "Seine",
+        "Thames",
+        "Severn",
+        "Mersey"
+      ],
+      "answer": "Thames",
+      "aliases": [
+        "River Thames",
+        "The Thames"
+      ],
+      "explanation": "The River Thames runs for 346 km through southern England and central London.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_005",
+      "prompt": "Which river runs through Paris?",
+      "choices": [
+        "Seine",
+        "Rhone",
+        "Loire",
+        "Rhine"
+      ],
+      "answer": "Seine",
+      "aliases": [
+        "River Seine",
+        "The Seine"
+      ],
+      "explanation": "The Seine flows 777 km through northern France, including the heart of Paris.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_006",
+      "prompt": "Which river forms much of the border between the United States and Mexico?",
+      "choices": [
+        "Colorado River",
+        "Rio Grande",
+        "Mississippi River",
+        "Missouri River"
+      ],
+      "answer": "Rio Grande",
+      "aliases": [
+        "Rio Bravo"
+      ],
+      "explanation": "Known as the Rio Bravo in Mexico, the Rio Grande defines the Texas–Mexico border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_007",
+      "prompt": "Which waterfall on the border of Zambia and Zimbabwe is locally known as Mosi-oa-Tunya?",
+      "choices": [
+        "Niagara Falls",
+        "Victoria Falls",
+        "Iguazu Falls",
+        "Angel Falls"
+      ],
+      "answer": "Victoria Falls",
+      "aliases": [],
+      "explanation": "Mosi-oa-Tunya means 'The Smoke That Thunders' in the Lozi language.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_008",
+      "prompt": "Which country is home to Angel Falls, the world's highest uninterrupted waterfall?",
+      "choices": [
+        "Peru",
+        "Venezuela",
+        "Colombia",
+        "Brazil"
+      ],
+      "answer": "Venezuela",
+      "aliases": [],
+      "explanation": "Angel Falls plunges 979 meters from Auyán-tepui in Venezuela's Canaima National Park.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_009",
+      "prompt": "Which man-made waterway connects the Mediterranean Sea directly to the Red Sea?",
+      "choices": [
+        "Kiel Canal",
+        "Panama Canal",
+        "Corinth Canal",
+        "Suez Canal"
+      ],
+      "answer": "Suez Canal",
+      "aliases": [],
+      "explanation": "Opened in 1869, the Suez Canal in Egypt is one of the world's busiest maritime trade routes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_010",
+      "prompt": "Which man-made canal connects the Atlantic Ocean to the Pacific Ocean across Central America?",
+      "choices": [
+        "Suez Canal",
+        "Erie Canal",
+        "Panama Canal",
+        "Grand Canal"
+      ],
+      "answer": "Panama Canal",
+      "aliases": [],
+      "explanation": "Completed in 1914, the Panama Canal uses lock systems to lift ships across the Isthmus of Panama.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_011",
+      "prompt": "Which is the largest freshwater lake in the world by surface area?",
+      "choices": [
+        "Lake Superior",
+        "Lake Huron",
+        "Lake Michigan",
+        "Lake Victoria"
+      ],
+      "answer": "Lake Superior",
+      "aliases": [
+        "Superior"
+      ],
+      "explanation": "Lake Superior covers about 82,100 sq km on the Canada–United States border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_012",
+      "prompt": "Which is the deepest lake in the world?",
+      "choices": [
+        "Lake Baikal",
+        "Caspian Sea",
+        "Lake Superior",
+        "Lake Tanganyika"
+      ],
+      "answer": "Lake Baikal",
+      "aliases": [
+        "Baikal"
+      ],
+      "explanation": "Located in Siberia, Russia, Lake Baikal reaches a maximum depth of 1,642 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_013",
+      "prompt": "Which saltwater body is the largest enclosed inland body of water on Earth?",
+      "choices": [
+        "Lake Victoria",
+        "Caspian Sea",
+        "Aral Sea",
+        "Dead Sea"
+      ],
+      "answer": "Caspian Sea",
+      "aliases": [],
+      "explanation": "Despite its name, the Caspian Sea is an endorheic basin covering about 371,000 sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_014",
+      "prompt": "Which hypersaline salt lake in northern Utah is the largest saltwater lake in the Western Hemisphere?",
+      "choices": [
+        "Crater Lake",
+        "Great Salt Lake",
+        "Lake Mead",
+        "Lake Tahoe"
+      ],
+      "answer": "Great Salt Lake",
+      "aliases": [],
+      "explanation": "The Great Salt Lake is a remnant of prehistoric Lake Bonneville and is far saltier than the ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_015",
+      "prompt": "Which river is the longest in Europe?",
+      "choices": [
+        "Dnieper",
+        "Danube",
+        "Volga",
+        "Rhine"
+      ],
+      "answer": "Volga",
+      "aliases": [
+        "Volga River"
+      ],
+      "explanation": "The Volga flows about 3,530 km through western Russia into the Caspian Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_016",
+      "prompt": "Which European river flows through more countries (ten) than any other river in the world?",
+      "choices": [
+        "Volga",
+        "Elbe",
+        "Rhine",
+        "Danube"
+      ],
+      "answer": "Danube",
+      "aliases": [
+        "Danube River"
+      ],
+      "explanation": "The Danube passes through or borders 10 countries from Germany to the Black Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_017",
+      "prompt": "Which river flows through the Grand Canyon in Arizona?",
+      "choices": [
+        "Rio Grande",
+        "Snake River",
+        "Columbia River",
+        "Colorado River"
+      ],
+      "answer": "Colorado River",
+      "aliases": [
+        "Colorado"
+      ],
+      "explanation": "Over millions of years, the Colorado River carved the Grand Canyon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_018",
+      "prompt": "Which is the largest lake in Africa by surface area?",
+      "choices": [
+        "Lake Tanganyika",
+        "Lake Chad",
+        "Lake Victoria",
+        "Lake Malawi"
+      ],
+      "answer": "Lake Victoria",
+      "aliases": [
+        "Victoria"
+      ],
+      "explanation": "Lake Victoria is shared by Tanzania, Uganda, and Kenya and is a primary source of the White Nile.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_019",
+      "prompt": "Niagara Falls lies on the border between the United States and which other country?",
+      "choices": [
+        "Iceland",
+        "Greenland",
+        "Canada",
+        "Mexico"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Niagara Falls separates Ontario, Canada, from New York State, USA.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_020",
+      "prompt": "Which river flows through Baghdad, Iraq?",
+      "choices": [
+        "Euphrates",
+        "Jordan",
+        "Tigris",
+        "Indus"
+      ],
+      "answer": "Tigris",
+      "aliases": [
+        "Tigris River"
+      ],
+      "explanation": "Together with the Euphrates, the Tigris formed ancient Mesopotamia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_021",
+      "prompt": "Which river flows through Cairo, Egypt?",
+      "choices": [
+        "Jordan",
+        "Nile",
+        "Niger",
+        "Euphrates"
+      ],
+      "answer": "Nile",
+      "aliases": [
+        "Nile River"
+      ],
+      "explanation": "Cairo sits near the apex of the fertile Nile Delta.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_022",
+      "prompt": "Which South American waterfall system straddles the border of Argentina and Brazil?",
+      "choices": [
+        "Angel Falls",
+        "Victoria Falls",
+        "Iguazu Falls",
+        "Kaieteur Falls"
+      ],
+      "answer": "Iguazu Falls",
+      "aliases": [
+        "Iguassu Falls"
+      ],
+      "explanation": "Iguazu Falls consists of about 275 individual drops along the Iguazu River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_023",
+      "prompt": "Which is the highest navigable lake in the world, located in the Andes?",
+      "choices": [
+        "Lake Poopo",
+        "Lake Maracaibo",
+        "Lake Titicaca",
+        "Lake Atitlan"
+      ],
+      "answer": "Lake Titicaca",
+      "aliases": [
+        "Titicaca"
+      ],
+      "explanation": "Lake Titicaca sits at 3,812 meters above sea level on the Peru–Bolivia border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_024",
+      "prompt": "Which river is the longest in the United States?",
+      "choices": [
+        "Yukon River",
+        "Mississippi River",
+        "Missouri River",
+        "Ohio River"
+      ],
+      "answer": "Missouri River",
+      "aliases": [
+        "Missouri"
+      ],
+      "explanation": "At about 3,767 km, the Missouri River is slightly longer than the Mississippi River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_025",
+      "prompt": "Which river is sacred in Hinduism and flows through northern India and Bangladesh?",
+      "choices": [
+        "Ganges",
+        "Indus",
+        "Brahmaputra",
+        "Godavari"
+      ],
+      "answer": "Ganges",
+      "aliases": [
+        "Ganga",
+        "Ganges River"
+      ],
+      "explanation": "The Ganges rises in the western Himalayas and empties into the Bay of Bengal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_026",
+      "prompt": "Which major river flows through Vienna, Budapest, and Belgrade?",
+      "choices": [
+        "Po",
+        "Danube",
+        "Vistula",
+        "Rhine"
+      ],
+      "answer": "Danube",
+      "aliases": [
+        "Danube River"
+      ],
+      "explanation": "The Danube passes through four national capitals: Vienna, Bratislava, Budapest, and Belgrade.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_027",
+      "prompt": "Which is the second-deepest lake in the world, located in East Africa's Rift Valley?",
+      "choices": [
+        "Lake Victoria",
+        "Lake Malawi",
+        "Lake Turkana",
+        "Lake Tanganyika"
+      ],
+      "answer": "Lake Tanganyika",
+      "aliases": [
+        "Tanganyika"
+      ],
+      "explanation": "Lake Tanganyika reaches a depth of 1,470 meters and is the world's longest freshwater lake.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_028",
+      "prompt": "Which river is the only major river in the world to cross the Equator twice?",
+      "choices": [
+        "Nile River",
+        "Congo River",
+        "Niger River",
+        "Amazon River"
+      ],
+      "answer": "Congo River",
+      "aliases": [
+        "Congo"
+      ],
+      "explanation": "The Congo River arches north of the Equator before curving back south to the Atlantic.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_029",
+      "prompt": "Which river forms the iconic horseshoe-shaped 'Horseshoe Bend' and feeds Lake Mead?",
+      "choices": [
+        "Colorado River",
+        "Missouri River",
+        "Arkansas River",
+        "Rio Grande"
+      ],
+      "answer": "Colorado River",
+      "aliases": [
+        "Colorado"
+      ],
+      "explanation": "Hoover Dam impounds the Colorado River to create Lake Mead.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_030",
+      "prompt": "Which river is the longest in Australia?",
+      "choices": [
+        "Brisbane River",
+        "Darling River",
+        "Murray River",
+        "Swan River"
+      ],
+      "answer": "Murray River",
+      "aliases": [
+        "Murray"
+      ],
+      "explanation": "The Murray River runs about 2,508 km from the Australian Alps to the Southern Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_031",
+      "prompt": "Which Asian river is nicknamed 'China's Sorrow' due to its historic devastating floods?",
+      "choices": [
+        "Yellow River",
+        "Amur River",
+        "Pearl River",
+        "Yangtze River"
+      ],
+      "answer": "Yellow River",
+      "aliases": [
+        "Huang He"
+      ],
+      "explanation": "The Yellow River (Huang He) carries massive amounts of yellow loess silt.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_032",
+      "prompt": "Which river flows through six Southeast Asian countries before emptying into the South China Sea?",
+      "choices": [
+        "Red River",
+        "Mekong",
+        "Irrawaddy",
+        "Salween"
+      ],
+      "answer": "Mekong",
+      "aliases": [
+        "Mekong River"
+      ],
+      "explanation": "The Mekong runs through China, Myanmar, Laos, Thailand, Cambodia, and Vietnam.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_033",
+      "prompt": "Which European river flows through Cologne, Basel, and Rotterdam?",
+      "choices": [
+        "Loire",
+        "Elbe",
+        "Danube",
+        "Rhine"
+      ],
+      "answer": "Rhine",
+      "aliases": [
+        "Rhine River"
+      ],
+      "explanation": "The Rhine is one of Europe's most vital industrial shipping corridors.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_034",
+      "prompt": "Which is the only Great Lake located entirely within the United States?",
+      "choices": [
+        "Lake Michigan",
+        "Lake Erie",
+        "Lake Superior",
+        "Lake Ontario"
+      ],
+      "answer": "Lake Michigan",
+      "aliases": [
+        "Michigan"
+      ],
+      "explanation": "The other four Great Lakes all straddle the US–Canada border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_035",
+      "prompt": "Which river flows through Rome?",
+      "choices": [
+        "Po",
+        "Tiber",
+        "Arno",
+        "Adige"
+      ],
+      "answer": "Tiber",
+      "aliases": [
+        "Tiber River"
+      ],
+      "explanation": "Ancient Rome was founded on the banks of the Tiber River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_036",
+      "prompt": "Which is the longest river in Italy?",
+      "choices": [
+        "Arno",
+        "Tiber",
+        "Po",
+        "Adige"
+      ],
+      "answer": "Po",
+      "aliases": [
+        "Po River"
+      ],
+      "explanation": "The Po runs 652 km eastward across northern Italy into the Adriatic Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_037",
+      "prompt": "Which canal in northern Germany links the North Sea to the Baltic Sea?",
+      "choices": [
+        "Corinth Canal",
+        "Caledonian Canal",
+        "Danube–Black Sea Canal",
+        "Kiel Canal"
+      ],
+      "answer": "Kiel Canal",
+      "aliases": [],
+      "explanation": "The Kiel Canal saves ships hundreds of nautical miles around the Jutland Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_038",
+      "prompt": "Which Canadian river is the longest in Canada?",
+      "choices": [
+        "Mackenzie River",
+        "Saskatchewan River",
+        "Yukon River",
+        "Saint Lawrence River"
+      ],
+      "answer": "Mackenzie River",
+      "aliases": [
+        "Mackenzie"
+      ],
+      "explanation": "The Mackenzie River flows northward for 1,738 km (4,241 km with tributaries) into the Beaufort Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_039",
+      "prompt": "Which river flows through Florence, Italy?",
+      "choices": [
+        "Po",
+        "Rubicon",
+        "Tiber",
+        "Arno"
+      ],
+      "answer": "Arno",
+      "aliases": [
+        "Arno River"
+      ],
+      "explanation": "The Ponte Vecchio spans the Arno River in Florence.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_040",
+      "prompt": "Which river empties into the Persian Gulf after the Tigris and Euphrates join?",
+      "choices": [
+        "Indus",
+        "Shatt al-Arab",
+        "Jordan River",
+        "Karun"
+      ],
+      "answer": "Shatt al-Arab",
+      "aliases": [
+        "Arvand Rud"
+      ],
+      "explanation": "The Shatt al-Arab is formed by the confluence of the Tigris and Euphrates in southern Iraq.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_041",
+      "prompt": "Which lake in Kazakhstan is split into a freshwater western half and a saltwater eastern half?",
+      "choices": [
+        "Lake Balkhash",
+        "Aral Sea",
+        "Issyk-Kul",
+        "Lake Zaysan"
+      ],
+      "answer": "Lake Balkhash",
+      "aliases": [
+        "Balkhash"
+      ],
+      "explanation": "A narrow strait separates Lake Balkhash's fresh western basin from its saline eastern basin.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_042",
+      "prompt": "Which river forms the border between much of Thailand and Laos?",
+      "choices": [
+        "Mekong",
+        "Irrawaddy",
+        "Chao Phraya",
+        "Salween"
+      ],
+      "answer": "Mekong",
+      "aliases": [
+        "Mekong River"
+      ],
+      "explanation": "The Mekong forms most of the natural boundary between Laos and Thailand.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_043",
+      "prompt": "Which major river flows through Bangkok?",
+      "choices": [
+        "Red River",
+        "Irrawaddy",
+        "Chao Phraya",
+        "Mekong"
+      ],
+      "answer": "Chao Phraya",
+      "aliases": [
+        "Chao Phraya River"
+      ],
+      "explanation": "The Chao Phraya flows south through central Thailand into the Gulf of Thailand.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_044",
+      "prompt": "Which river in South Africa forms part of the border with Namibia?",
+      "choices": [
+        "Vaal River",
+        "Zambezi River",
+        "Orange River",
+        "Limpopo River"
+      ],
+      "answer": "Orange River",
+      "aliases": [
+        "Orange"
+      ],
+      "explanation": "The Orange River is South Africa's longest river, flowing west to the Atlantic Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_045",
+      "prompt": "Which lake in Scotland is the largest by water volume in the British Isles?",
+      "choices": [
+        "Windermere",
+        "Loch Ness",
+        "Loch Lomond",
+        "Lough Neagh"
+      ],
+      "answer": "Loch Ness",
+      "aliases": [],
+      "explanation": "Because of its great depth (230 m), Loch Ness holds more water than all lakes in England and Wales combined.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_046",
+      "prompt": "Which is the largest lake by surface area in the United Kingdom?",
+      "choices": [
+        "Lough Neagh",
+        "Loch Lomond",
+        "Windermere",
+        "Loch Ness"
+      ],
+      "answer": "Lough Neagh",
+      "aliases": [],
+      "explanation": "Lough Neagh in Northern Ireland covers about 392 sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_047",
+      "prompt": "Which river flows through the city of Prague?",
+      "choices": [
+        "Elbe",
+        "Oder",
+        "Danube",
+        "Vltava"
+      ],
+      "answer": "Vltava",
+      "aliases": [
+        "Vltava River"
+      ],
+      "explanation": "The famous Charles Bridge crosses the Vltava River in Prague.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_048",
+      "prompt": "Which river is the longest in the Iberian Peninsula?",
+      "choices": [
+        "Ebro",
+        "Guadalquivir",
+        "Tagus",
+        "Douro"
+      ],
+      "answer": "Tagus",
+      "aliases": [
+        "Tajo",
+        "Tejo"
+      ],
+      "explanation": "The Tagus runs 1,007 km through Spain and Portugal, reaching the Atlantic at Lisbon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_049",
+      "prompt": "Which waterfall in Guyana is one of the world's largest single-drop waterfalls by volume?",
+      "choices": [
+        "Tugela Falls",
+        "Angel Falls",
+        "Kaieteur Falls",
+        "Iguazu Falls"
+      ],
+      "answer": "Kaieteur Falls",
+      "aliases": [],
+      "explanation": "Kaieteur Falls drops 226 meters in a single sheer plunge on the Potaro River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_050",
+      "prompt": "Which lake in Central Asia has shrunk by over 80% since the 1960s due to river diversion?",
+      "choices": [
+        "Lake Balkhash",
+        "Caspian Sea",
+        "Aral Sea",
+        "Issyk-Kul"
+      ],
+      "answer": "Aral Sea",
+      "aliases": [],
+      "explanation": "Diversion of the Amu Darya and Syr Darya for irrigation caused one of the worst environmental disasters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_051",
+      "prompt": "Which river flows through Pakistan and gave India its name?",
+      "choices": [
+        "Indus",
+        "Brahmaputra",
+        "Sutlej",
+        "Ganges"
+      ],
+      "answer": "Indus",
+      "aliases": [
+        "Indus River"
+      ],
+      "explanation": "The Indus flows from Tibet through Jammu & Kashmir and Pakistan into the Arabian Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_052",
+      "prompt": "Which river forms the dramatic 'Three Gorges' in China?",
+      "choices": [
+        "Yangtze",
+        "Yellow River",
+        "Mekong",
+        "Salween"
+      ],
+      "answer": "Yangtze",
+      "aliases": [
+        "Yangtze River"
+      ],
+      "explanation": "The Three Gorges Dam on the Yangtze is the world's largest hydroelectric power station by capacity.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_053",
+      "prompt": "Which narrow Greek canal cuts through the Isthmus of Corinth?",
+      "choices": [
+        "Suez Canal",
+        "Corinth Canal",
+        "Bosphorus",
+        "Kiel Canal"
+      ],
+      "answer": "Corinth Canal",
+      "aliases": [],
+      "explanation": "Completed in 1893, the Corinth Canal separates the Peloponnese from mainland Greece.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_054",
+      "prompt": "Which is the largest lake in Central America?",
+      "choices": [
+        "Lake Nicaragua",
+        "Lake Atitlan",
+        "Gatun Lake",
+        "Lake Managua"
+      ],
+      "answer": "Lake Nicaragua",
+      "aliases": [
+        "Cocibolca"
+      ],
+      "explanation": "Lake Nicaragua is famous for containing freshwater bull sharks.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_055",
+      "prompt": "Which river flows through Warsaw, Poland?",
+      "choices": [
+        "Vistula",
+        "Dnieper",
+        "Oder",
+        "Elbe"
+      ],
+      "answer": "Vistula",
+      "aliases": [
+        "Vistula River",
+        "Wisla"
+      ],
+      "explanation": "The Vistula is Poland's longest river at 1,047 km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_056",
+      "prompt": "What is the highest mountain on Earth above sea level?",
+      "choices": [
+        "Kangchenjunga",
+        "K2",
+        "Mount Everest",
+        "Lhotse"
+      ],
+      "answer": "Mount Everest",
+      "aliases": [
+        "Everest",
+        "Sagarmatha",
+        "Chomolungma"
+      ],
+      "explanation": "Mount Everest stands 8,848.86 meters above sea level on the Nepal–Tibet border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_057",
+      "prompt": "Which mountain range separates Europe from Asia?",
+      "choices": [
+        "Carpathians",
+        "Ural Mountains",
+        "Pyrenees",
+        "Alps"
+      ],
+      "answer": "Ural Mountains",
+      "aliases": [
+        "Urals"
+      ],
+      "explanation": "The Ural Mountains run roughly north–south through western Russia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_058",
+      "prompt": "What is the longest continental mountain range in the world?",
+      "choices": [
+        "Rocky Mountains",
+        "Andes",
+        "Alps",
+        "Himalayas"
+      ],
+      "answer": "Andes",
+      "aliases": [
+        "Andes Mountains"
+      ],
+      "explanation": "The Andes extend about 7,000 km along the western coast of South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_059",
+      "prompt": "What is the highest mountain in Africa?",
+      "choices": [
+        "Mount Stanley",
+        "Mount Kenya",
+        "Mount Meru",
+        "Mount Kilimanjaro"
+      ],
+      "answer": "Mount Kilimanjaro",
+      "aliases": [
+        "Kilimanjaro"
+      ],
+      "explanation": "Kilimanjaro in Tanzania is a dormant stratovolcano standing 5,895 meters high.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_060",
+      "prompt": "Which iconic snow-capped stratovolcano is the highest mountain in Japan?",
+      "choices": [
+        "Mount Fuji",
+        "Mount Tate",
+        "Mount Aso",
+        "Mount Kita"
+      ],
+      "answer": "Mount Fuji",
+      "aliases": [
+        "Fuji",
+        "Fujiyama"
+      ],
+      "explanation": "Mount Fuji rises 3,776 meters on the island of Honshu, southwest of Tokyo.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_061",
+      "prompt": "Which is the second-highest mountain on Earth above sea level?",
+      "choices": [
+        "Lhotse",
+        "K2",
+        "Makalu",
+        "Kangchenjunga"
+      ],
+      "answer": "K2",
+      "aliases": [
+        "Mount Godwin-Austen"
+      ],
+      "explanation": "Located in the Karakoram range on the Pakistan–China border, K2 reaches 8,611 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_062",
+      "prompt": "Which mountain range forms the natural border between France and Spain?",
+      "choices": [
+        "Apennines",
+        "Pyrenees",
+        "Alps",
+        "Carpathians"
+      ],
+      "answer": "Pyrenees",
+      "aliases": [],
+      "explanation": "The Pyrenees stretch from the Bay of Biscay to the Mediterranean Sea, containing Andorra.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_063",
+      "prompt": "What is the highest mountain in North America?",
+      "choices": [
+        "Mount Rainier",
+        "Mount Logan",
+        "Denali",
+        "Pico de Orizaba"
+      ],
+      "answer": "Denali",
+      "aliases": [
+        "Mount McKinley"
+      ],
+      "explanation": "Denali in Alaska reaches 6,190 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_064",
+      "prompt": "Which famous volcano destroyed Pompeii and Herculaneum in 79 AD?",
+      "choices": [
+        "Stromboli",
+        "Santorini",
+        "Mount Vesuvius",
+        "Mount Etna"
+      ],
+      "answer": "Mount Vesuvius",
+      "aliases": [
+        "Vesuvius"
+      ],
+      "explanation": "Mount Vesuvius overlooks the Bay of Naples in southern Italy.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_065",
+      "prompt": "Which is Europe's tallest active volcano, located on the island of Sicily?",
+      "choices": [
+        "Mount Teide",
+        "Mount Etna",
+        "Mount Vesuvius",
+        "Stromboli"
+      ],
+      "answer": "Mount Etna",
+      "aliases": [
+        "Etna"
+      ],
+      "explanation": "Mount Etna stands over 3,350 meters tall and erupts frequently.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_066",
+      "prompt": "What is the highest mountain in the Alps?",
+      "choices": [
+        "Matterhorn",
+        "Mont Blanc",
+        "Monte Rosa",
+        "Eiger"
+      ],
+      "answer": "Mont Blanc",
+      "aliases": [],
+      "explanation": "Mont Blanc rises 4,808 meters on the French–Italian border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_067",
+      "prompt": "Which mountain range runs down the spine of Italy?",
+      "choices": [
+        "Alps",
+        "Pyrenees",
+        "Apennines",
+        "Dolomites"
+      ],
+      "answer": "Apennines",
+      "aliases": [
+        "Apennine Mountains"
+      ],
+      "explanation": "The Apennines stretch about 1,200 km from northern to southern Italy.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_068",
+      "prompt": "What is the highest mountain in South America?",
+      "choices": [
+        "Ojos del Salado",
+        "Chimborazo",
+        "Aconcagua",
+        "Huascaran"
+      ],
+      "answer": "Aconcagua",
+      "aliases": [
+        "Mount Aconcagua"
+      ],
+      "explanation": "Located in Argentina, Aconcagua reaches 6,961 meters — the highest peak outside Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_069",
+      "prompt": "Which mountain in Ecuador has the summit farthest from the center of the Earth?",
+      "choices": [
+        "Mount Chimborazo",
+        "Cotopaxi",
+        "Aconcagua",
+        "Mount Everest"
+      ],
+      "answer": "Mount Chimborazo",
+      "aliases": [
+        "Chimborazo"
+      ],
+      "explanation": "Because Earth bulges at the Equator, Chimborazo's peak is farther from Earth's center than Everest.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_070",
+      "prompt": "Measured from its oceanic base to its summit, which Hawaiian volcano is the tallest mountain on Earth?",
+      "choices": [
+        "Kilauea",
+        "Mauna Loa",
+        "Mauna Kea",
+        "Haleakala"
+      ],
+      "answer": "Mauna Kea",
+      "aliases": [],
+      "explanation": "Mauna Kea rises over 10,200 meters from the Pacific Ocean floor.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_071",
+      "prompt": "What is the highest mountain in Europe (when including the Caucasus)?",
+      "choices": [
+        "Mount Kazbek",
+        "Mount Elbrus",
+        "Matterhorn",
+        "Mont Blanc"
+      ],
+      "answer": "Mount Elbrus",
+      "aliases": [
+        "Elbrus"
+      ],
+      "explanation": "Mount Elbrus in southern Russia stands 5,642 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_072",
+      "prompt": "What is the highest mountain on mainland Australia?",
+      "choices": [
+        "Mount Townsend",
+        "Mount Kosciuszko",
+        "Uluru",
+        "Mount Ossa"
+      ],
+      "answer": "Mount Kosciuszko",
+      "aliases": [
+        "Kosciuszko"
+      ],
+      "explanation": "Mount Kosciuszko in the Snowy Mountains of New South Wales reaches 2,228 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_073",
+      "prompt": "Which mountain range stretches across Morocco, Algeria, and Tunisia?",
+      "choices": [
+        "Drakensberg",
+        "Tibesti Mountains",
+        "Atlas Mountains",
+        "Zagros Mountains"
+      ],
+      "answer": "Atlas Mountains",
+      "aliases": [
+        "Atlas"
+      ],
+      "explanation": "Mount Toubkal (4,167 m) in Morocco is the highest peak of the Atlas Mountains.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_074",
+      "prompt": "What is the highest mountain in Antarctica?",
+      "choices": [
+        "Vinson Massif",
+        "Mount Erebus",
+        "Mount Kirkpatrick",
+        "Mount Sidley"
+      ],
+      "answer": "Vinson Massif",
+      "aliases": [
+        "Mount Vinson"
+      ],
+      "explanation": "Vinson Massif in the Sentinel Range stands 4,892 meters high.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_075",
+      "prompt": "Which famous pyramid-shaped Alpine peak sits on the border between Switzerland and Italy?",
+      "choices": [
+        "Eiger",
+        "Matterhorn",
+        "Mont Blanc",
+        "Jungfrau"
+      ],
+      "answer": "Matterhorn",
+      "aliases": [
+        "Cervino"
+      ],
+      "explanation": "The Matterhorn rises 4,478 meters above Zermatt and Breuil-Cervinia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_076",
+      "prompt": "Which plateau in Central Asia is known as the 'Roof of the World'?",
+      "choices": [
+        "Colorado Plateau",
+        "Anatolian Plateau",
+        "Tibetan Plateau",
+        "Deccan Plateau"
+      ],
+      "answer": "Tibetan Plateau",
+      "aliases": [
+        "Qinghai-Tibet Plateau"
+      ],
+      "explanation": "Averaging over 4,500 meters in elevation, the Tibetan Plateau is the world's highest and largest plateau.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_077",
+      "prompt": "What is the highest mountain in Canada?",
+      "choices": [
+        "Mount Logan",
+        "Denali",
+        "Mount Saint Elias",
+        "Mount Robson"
+      ],
+      "answer": "Mount Logan",
+      "aliases": [
+        "Logan"
+      ],
+      "explanation": "Located in Yukon's Kluane National Park, Mount Logan reaches 5,959 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_078",
+      "prompt": "Which Indonesian volcano erupted catastrophically in 1883, creating one of the loudest sounds in recorded history?",
+      "choices": [
+        "Mount Tambora",
+        "Mount Merapi",
+        "Mount Agung",
+        "Krakatoa"
+      ],
+      "answer": "Krakatoa",
+      "aliases": [
+        "Krakatau"
+      ],
+      "explanation": "The 1883 Krakatoa eruption triggered massive tsunamis in the Sunda Strait.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_079",
+      "prompt": "Which Indonesian volcano's 1815 eruption caused the 'Year Without a Summer' in 1816?",
+      "choices": [
+        "Mount Tambora",
+        "Mount Bromo",
+        "Mount Merapi",
+        "Krakatoa"
+      ],
+      "answer": "Mount Tambora",
+      "aliases": [
+        "Tambora"
+      ],
+      "explanation": "Tambora's VEI-7 eruption on Sumbawa is the largest volcanic eruption in recorded history.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_080",
+      "prompt": "What is the third-highest mountain in the world?",
+      "choices": [
+        "Annapurna",
+        "Lhotse",
+        "Kangchenjunga",
+        "Makalu"
+      ],
+      "answer": "Kangchenjunga",
+      "aliases": [
+        "Kanchenjunga"
+      ],
+      "explanation": "Kangchenjunga rises 8,586 meters on the border of Nepal and Sikkim, India.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_081",
+      "prompt": "Which mountain range forms the main highland spine of Iran?",
+      "choices": [
+        "Zagros Mountains",
+        "Caucasus",
+        "Taurus Mountains",
+        "Hindu Kush"
+      ],
+      "answer": "Zagros Mountains",
+      "aliases": [
+        "Zagros"
+      ],
+      "explanation": "The Zagros Mountains stretch about 1,600 km across western Iran into Iraq and Turkey.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_082",
+      "prompt": "What is the highest mountain in the United Kingdom?",
+      "choices": [
+        "Ben Macdui",
+        "Ben Nevis",
+        "Snowdon",
+        "Scafell Pike"
+      ],
+      "answer": "Ben Nevis",
+      "aliases": [],
+      "explanation": "Ben Nevis in the Scottish Highlands stands 1,345 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_083",
+      "prompt": "What is the highest peak in Spain, located on the Canary island of Tenerife?",
+      "choices": [
+        "Mulhacen",
+        "Aneto",
+        "Mount Teide",
+        "Veleta"
+      ],
+      "answer": "Mount Teide",
+      "aliases": [
+        "Teide"
+      ],
+      "explanation": "Mount Teide is a volcano rising 3,715 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_084",
+      "prompt": "Which active volcano is the southernmost active volcano on Earth, located in Antarctica?",
+      "choices": [
+        "Mount Melbourne",
+        "Mount Terror",
+        "Mount Erebus",
+        "Mount Sidley"
+      ],
+      "answer": "Mount Erebus",
+      "aliases": [
+        "Erebus"
+      ],
+      "explanation": "Mount Erebus on Ross Island features a persistent convecting lava lake.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_085",
+      "prompt": "Which mountain range runs across Central and Eastern Europe through Romania, Slovakia, Poland, and Ukraine?",
+      "choices": [
+        "Carpathian Mountains",
+        "Apennines",
+        "Balkan Mountains",
+        "Dinaric Alps"
+      ],
+      "answer": "Carpathian Mountains",
+      "aliases": [
+        "Carpathians"
+      ],
+      "explanation": "The Carpathians form a 1,500 km arc across Central and Eastern Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_086",
+      "prompt": "Which mountain in Turkey is traditionally associated with Noah's Ark?",
+      "choices": [
+        "Mount Ararat",
+        "Mount Olympus",
+        "Mount Nemrut",
+        "Mount Erciyes"
+      ],
+      "answer": "Mount Ararat",
+      "aliases": [
+        "Ararat"
+      ],
+      "explanation": "Mount Ararat is Turkey's highest peak at 5,137 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_087",
+      "prompt": "What is the highest peak in Greece, famous in ancient mythology as the home of the gods?",
+      "choices": [
+        "Mount Olympus",
+        "Mount Parnassus",
+        "Mount Ida",
+        "Mount Athos"
+      ],
+      "answer": "Mount Olympus",
+      "aliases": [
+        "Olympus"
+      ],
+      "explanation": "Mount Olympus rises 2,917 meters near the Aegean coast.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_088",
+      "prompt": "Which mountain range runs along eastern North America from Alabama to Newfoundland?",
+      "choices": [
+        "Rocky Mountains",
+        "Sierra Nevada",
+        "Appalachian Mountains",
+        "Cascade Range"
+      ],
+      "answer": "Appalachian Mountains",
+      "aliases": [
+        "Appalachians"
+      ],
+      "explanation": "The Appalachians are among the oldest mountain ranges on Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_089",
+      "prompt": "Which is the highest active volcano in the world, located on the Argentina–Chile border?",
+      "choices": [
+        "Ojos del Salado",
+        "Llullaillaco",
+        "Cotopaxi",
+        "Popocatepetl"
+      ],
+      "answer": "Ojos del Salado",
+      "aliases": [],
+      "explanation": "Ojos del Salado reaches 6,893 meters in the Andes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_090",
+      "prompt": "What is the highest mountain in Mexico?",
+      "choices": [
+        "Iztaccihuatl",
+        "Popocatepetl",
+        "Nevado de Toluca",
+        "Pico de Orizaba"
+      ],
+      "answer": "Pico de Orizaba",
+      "aliases": [
+        "Citlaltepetl"
+      ],
+      "explanation": "Pico de Orizaba (Citlaltépetl) is a 5,636-meter stratovolcano.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_091",
+      "prompt": "Which mountain range in South Africa is known as 'uKhahlamba' in Zulu?",
+      "choices": [
+        "Atlas Mountains",
+        "Ethiopian Highlands",
+        "Rwenzori Mountains",
+        "Drakensberg"
+      ],
+      "answer": "Drakensberg",
+      "aliases": [],
+      "explanation": "The Drakensberg forms the eastern escarpment of southern Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_092",
+      "prompt": "Which large volcanic plateau covers much of central and southern India?",
+      "choices": [
+        "Tibetan Plateau",
+        "Deccan Plateau",
+        "Iranian Plateau",
+        "Chota Nagpur Plateau"
+      ],
+      "answer": "Deccan Plateau",
+      "aliases": [
+        "Deccan"
+      ],
+      "explanation": "The Deccan Traps were formed by colossal volcanic eruptions about 66 million years ago.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_093",
+      "prompt": "What is the highest mountain in New Zealand?",
+      "choices": [
+        "Mount Tasman",
+        "Aoraki / Mount Cook",
+        "Mount Ruapehu",
+        "Mount Aspiring"
+      ],
+      "answer": "Aoraki / Mount Cook",
+      "aliases": [
+        "Mount Cook",
+        "Aoraki"
+      ],
+      "explanation": "Aoraki / Mount Cook stands 3,724 meters in the Southern Alps of South Island.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_094",
+      "prompt": "Which US volcano in Washington State erupted explosively on May 18, 1980?",
+      "choices": [
+        "Mount St. Helens",
+        "Mount Hood",
+        "Mount Shasta",
+        "Mount Rainier"
+      ],
+      "answer": "Mount St. Helens",
+      "aliases": [
+        "Mount Saint Helens"
+      ],
+      "explanation": "The 1980 eruption blew off the top 400 meters of Mount St. Helens.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_095",
+      "prompt": "Which mountain range separates the Indian subcontinent from the Tibetan Plateau?",
+      "choices": [
+        "Himalayas",
+        "Tian Shan",
+        "Karakoram",
+        "Kunlun Mountains"
+      ],
+      "answer": "Himalayas",
+      "aliases": [
+        "Himalaya"
+      ],
+      "explanation": "The Himalayas contain most of Earth's peaks exceeding 8,000 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_096",
+      "prompt": "Which peak in the Karakoram is nicknamed 'Killer Mountain' for its historically high fatality rate?",
+      "choices": [
+        "K2",
+        "Annapurna",
+        "Broad Peak",
+        "Nanga Parbat"
+      ],
+      "answer": "Nanga Parbat",
+      "aliases": [],
+      "explanation": "Nanga Parbat (8,126 m) in Pakistan is the ninth-highest mountain in the world.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_097",
+      "prompt": "Which mountain range forms the spine of Scandinavia between Norway and Sweden?",
+      "choices": [
+        "Grampian Mountains",
+        "Carpathians",
+        "Scandinavian Mountains",
+        "Ural Mountains"
+      ],
+      "answer": "Scandinavian Mountains",
+      "aliases": [
+        "Scandes",
+        "Kjolen"
+      ],
+      "explanation": "Also called the Scandes, they run 1,700 km along the Scandinavian Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_098",
+      "prompt": "What is the highest peak in the Rocky Mountains?",
+      "choices": [
+        "Mount Whitney",
+        "Pikes Peak",
+        "Mount Elbert",
+        "Mount Robson"
+      ],
+      "answer": "Mount Elbert",
+      "aliases": [
+        "Elbert"
+      ],
+      "explanation": "Mount Elbert in Colorado stands 4,401 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_099",
+      "prompt": "What is the highest mountain in the contiguous United States?",
+      "choices": [
+        "Mount Elbert",
+        "Mount Whitney",
+        "Mount Shasta",
+        "Mount Rainier"
+      ],
+      "answer": "Mount Whitney",
+      "aliases": [
+        "Whitney"
+      ],
+      "explanation": "Mount Whitney in California's Sierra Nevada reaches 4,421 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_100",
+      "prompt": "Which mountain range in Central Asia stretches across Afghanistan and northern Pakistan?",
+      "choices": [
+        "Hindu Kush",
+        "Pamir Mountains",
+        "Tian Shan",
+        "Altai Mountains"
+      ],
+      "answer": "Hindu Kush",
+      "aliases": [],
+      "explanation": "The Hindu Kush forms a western extension of the Himalayan mountain system.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_101",
+      "prompt": "What is the largest hot desert in the world?",
+      "choices": [
+        "Sahara",
+        "Arabian Desert",
+        "Gobi Desert",
+        "Kalahari Desert"
+      ],
+      "answer": "Sahara",
+      "aliases": [
+        "Sahara Desert"
+      ],
+      "explanation": "The Sahara covers roughly 9.2 million sq km across North Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_102",
+      "prompt": "What is the largest desert overall on Earth when including polar deserts?",
+      "choices": [
+        "Arctic Desert",
+        "Antarctic Desert",
+        "Sahara",
+        "Gobi Desert"
+      ],
+      "answer": "Antarctic Desert",
+      "aliases": [
+        "Antarctica"
+      ],
+      "explanation": "Antarctica receives very little precipitation and spans about 14.2 million sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_103",
+      "prompt": "Which desert in northern Chile is the driest non-polar desert on Earth?",
+      "choices": [
+        "Mojave Desert",
+        "Atacama Desert",
+        "Namib Desert",
+        "Sonoran Desert"
+      ],
+      "answer": "Atacama Desert",
+      "aliases": [
+        "Atacama"
+      ],
+      "explanation": "Parts of the Atacama sit in a double rain shadow between the Andes and Chilean Coast Range.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_104",
+      "prompt": "Which vast cold desert spans southern Mongolia and northern China?",
+      "choices": [
+        "Gobi Desert",
+        "Kyzylkum Desert",
+        "Taklamakan Desert",
+        "Karakum Desert"
+      ],
+      "answer": "Gobi Desert",
+      "aliases": [
+        "Gobi"
+      ],
+      "explanation": "The Gobi is a rain-shadow desert created by the Tibetan Plateau blocking Indian Ocean moisture.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_105",
+      "prompt": "Which desert covers much of southern Africa, including most of Botswana?",
+      "choices": [
+        "Kalahari Desert",
+        "Namib Desert",
+        "Karoo",
+        "Sahara"
+      ],
+      "answer": "Kalahari Desert",
+      "aliases": [
+        "Kalahari"
+      ],
+      "explanation": "The Kalahari is a semi-arid sandy savanna spanning about 900,000 sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_106",
+      "prompt": "Which ancient coastal desert along the Atlantic is located primarily in Namibia?",
+      "choices": [
+        "Kalahari Desert",
+        "Namib Desert",
+        "Sahara",
+        "Atacama Desert"
+      ],
+      "answer": "Namib Desert",
+      "aliases": [
+        "Namib"
+      ],
+      "explanation": "The Namib is considered the world's oldest desert and is famous for towering red sand dunes at Sossusvlei.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_107",
+      "prompt": "What is the largest tropical rainforest on Earth?",
+      "choices": [
+        "Congo Rainforest",
+        "Borneo Rainforest",
+        "Daintree Rainforest",
+        "Amazon Rainforest"
+      ],
+      "answer": "Amazon Rainforest",
+      "aliases": [
+        "Amazon"
+      ],
+      "explanation": "The Amazon spans nine South American nations, with about 60% inside Brazil.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_108",
+      "prompt": "Which biome, also known as the boreal forest, is the world's largest terrestrial biome?",
+      "choices": [
+        "Temperate Rainforest",
+        "Taiga",
+        "Tundra",
+        "Savanna"
+      ],
+      "answer": "Taiga",
+      "aliases": [
+        "Boreal Forest"
+      ],
+      "explanation": "The taiga forms a circumpolar belt of coniferous forest across Canada, Alaska, Scandinavia, and Russia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_109",
+      "prompt": "What is the imaginary line of latitude at 0 degrees that divides Earth into Northern and Southern Hemispheres?",
+      "choices": [
+        "Prime Meridian",
+        "Tropic of Cancer",
+        "Equator",
+        "Tropic of Capricorn"
+      ],
+      "answer": "Equator",
+      "aliases": [],
+      "explanation": "The Equator passes through 13 countries across South America, Africa, and Asia-Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_110",
+      "prompt": "Through which London district does the Prime Meridian (0° longitude) pass?",
+      "choices": [
+        "Camden",
+        "Kensington",
+        "Greenwich",
+        "Westminster"
+      ],
+      "answer": "Greenwich",
+      "aliases": [
+        "Royal Observatory Greenwich"
+      ],
+      "explanation": "The Royal Observatory in Greenwich established the international Prime Meridian in 1884.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_111",
+      "prompt": "At roughly what latitude is the Tropic of Cancer located?",
+      "choices": [
+        "45 degrees North",
+        "66.5 degrees North",
+        "23.5 degrees North",
+        "23.5 degrees South"
+      ],
+      "answer": "23.5 degrees North",
+      "aliases": [
+        "23.5° N",
+        "23.5 N"
+      ],
+      "explanation": "The Tropic of Cancer marks the northernmost latitude where the sun can appear directly overhead.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_112",
+      "prompt": "What is the world's largest sand desert (erg), located in the southern Arabian Peninsula?",
+      "choices": [
+        "Sahara",
+        "Thar Desert",
+        "Nefud",
+        "Rub' al Khali"
+      ],
+      "answer": "Rub' al Khali",
+      "aliases": [
+        "Empty Quarter",
+        "Rub al Khali"
+      ],
+      "explanation": "The Empty Quarter spans parts of Saudi Arabia, Oman, the UAE, and Yemen.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_113",
+      "prompt": "Which desert straddles the border between northwestern India and eastern Pakistan?",
+      "choices": [
+        "Thar Desert",
+        "Dasht-e Kavir",
+        "Gobi Desert",
+        "Taklamakan Desert"
+      ],
+      "answer": "Thar Desert",
+      "aliases": [
+        "Great Indian Desert",
+        "Thar"
+      ],
+      "explanation": "The Thar Desert is the world's most densely populated desert.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_114",
+      "prompt": "Which US desert is home to Death Valley, the lowest point in North America?",
+      "choices": [
+        "Great Basin Desert",
+        "Sonoran Desert",
+        "Chihuahuan Desert",
+        "Mojave Desert"
+      ],
+      "answer": "Mojave Desert",
+      "aliases": [
+        "Mojave"
+      ],
+      "explanation": "Badwater Basin in Death Valley sits 86 meters below sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_115",
+      "prompt": "Which desert in northwestern China sits inside the Tarim Basin?",
+      "choices": [
+        "Gobi Desert",
+        "Kyzylkum Desert",
+        "Karakum Desert",
+        "Taklamakan Desert"
+      ],
+      "answer": "Taklamakan Desert",
+      "aliases": [
+        "Taklamakan"
+      ],
+      "explanation": "The Silk Road skirted the northern and southern edges of the shifting dunes of the Taklamakan.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_116",
+      "prompt": "What is the world's second-largest tropical rainforest after the Amazon?",
+      "choices": [
+        "Valdivian Rainforest",
+        "Daintree Rainforest",
+        "Congo Basin",
+        "Borneo Rainforest"
+      ],
+      "answer": "Congo Basin",
+      "aliases": [
+        "Congo Rainforest"
+      ],
+      "explanation": "The Congo Basin rainforest spans six Central African nations.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_117",
+      "prompt": "What is the name of the horseshoe-shaped zone around the Pacific Ocean known for frequent earthquakes and volcanoes?",
+      "choices": [
+        "Rift Valley",
+        "Alpine Belt",
+        "Ring of Fire",
+        "Mid-Atlantic Ridge"
+      ],
+      "answer": "Ring of Fire",
+      "aliases": [
+        "Pacific Ring of Fire"
+      ],
+      "explanation": "Roughly 75% of the world's active volcanoes and 90% of earthquakes occur along the Ring of Fire.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_118",
+      "prompt": "What geological phenomenon causes the eastern side of a mountain range to be much drier than the windward side?",
+      "choices": [
+        "Thermohaline circulation",
+        "Monsoon",
+        "Rain shadow",
+        "Coriolis effect"
+      ],
+      "answer": "Rain shadow",
+      "aliases": [
+        "Rain shadow effect"
+      ],
+      "explanation": "Moist air cools and precipitates as it rises over mountains, leaving dry descending air on the leeward side.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_119",
+      "prompt": "Which warm Atlantic ocean current keeps Western Europe significantly milder than similar latitudes in Canada?",
+      "choices": [
+        "Kuroshio Current",
+        "Gulf Stream",
+        "Humboldt Current",
+        "Benguela Current"
+      ],
+      "answer": "Gulf Stream",
+      "aliases": [
+        "North Atlantic Drift"
+      ],
+      "explanation": "The Gulf Stream transports warm tropical water northeastward across the Atlantic.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_120",
+      "prompt": "Which cold ocean current flows northward along the western coast of South America?",
+      "choices": [
+        "Agulhas Current",
+        "Humboldt Current",
+        "Gulf Stream",
+        "Labrador Current"
+      ],
+      "answer": "Humboldt Current",
+      "aliases": [
+        "Peru Current"
+      ],
+      "explanation": "The Humboldt Current creates rich marine fisheries and contributes to the dryness of the Atacama.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_121",
+      "prompt": "Which Australian desert is the largest desert on the Australian continent?",
+      "choices": [
+        "Tanami Desert",
+        "Simpson Desert",
+        "Gibson Desert",
+        "Great Victoria Desert"
+      ],
+      "answer": "Great Victoria Desert",
+      "aliases": [],
+      "explanation": "The Great Victoria Desert covers about 348,750 sq km across Western and South Australia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_122",
+      "prompt": "What is the name of the permanently frozen subsoil found across Arctic tundra regions?",
+      "choices": [
+        "Loess",
+        "Glacier",
+        "Moraine",
+        "Permafrost"
+      ],
+      "answer": "Permafrost",
+      "aliases": [],
+      "explanation": "Permafrost remains at or below 0°C for at least two consecutive years.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_123",
+      "prompt": "Which huge salt flat in southwestern Bolivia is the world's largest salt flat?",
+      "choices": [
+        "Bonneville Salt Flats",
+        "Salar de Uyuni",
+        "Makgadikgadi Pan",
+        "Etosha Pan"
+      ],
+      "answer": "Salar de Uyuni",
+      "aliases": [
+        "Uyuni"
+      ],
+      "explanation": "Salar de Uyuni spans over 10,000 sq km and turns into a giant mirror after rain.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_124",
+      "prompt": "Which desert in southwestern United States and northwestern Mexico is the only natural habitat of the saguaro cactus?",
+      "choices": [
+        "Sonoran Desert",
+        "Chihuahuan Desert",
+        "Mojave Desert",
+        "Great Basin Desert"
+      ],
+      "answer": "Sonoran Desert",
+      "aliases": [
+        "Sonoran"
+      ],
+      "explanation": "The Sonoran Desert covers parts of Arizona, California, and Sonora, Mexico.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_125",
+      "prompt": "What is the name of the seasonal wind shift that brings heavy summer rains to South and Southeast Asia?",
+      "choices": [
+        "Trade wind",
+        "Monsoon",
+        "Chinook",
+        "Mistral"
+      ],
+      "answer": "Monsoon",
+      "aliases": [],
+      "explanation": "The summer monsoon is driven by differential heating between the Asian landmass and the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_126",
+      "prompt": "Which massive coral reef system off the northeast coast of Australia is the largest on Earth?",
+      "choices": [
+        "Red Sea Coral Reef",
+        "New Caledonia Barrier Reef",
+        "Belize Barrier Reef",
+        "Great Barrier Reef"
+      ],
+      "answer": "Great Barrier Reef",
+      "aliases": [],
+      "explanation": "The Great Barrier Reef stretches over 2,300 km in the Coral Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_127",
+      "prompt": "Which rainforest in Queensland, Australia, is one of the oldest surviving tropical rainforests on Earth?",
+      "choices": [
+        "Congo Rainforest",
+        "Daintree Rainforest",
+        "Tarkine",
+        "Amazon Rainforest"
+      ],
+      "answer": "Daintree Rainforest",
+      "aliases": [
+        "Daintree"
+      ],
+      "explanation": "The Daintree is estimated to be over 135 million years old.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_128",
+      "prompt": "What is the name of the treeless, vast flat plains region of Argentina and Uruguay?",
+      "choices": [
+        "Pampas",
+        "Prairie",
+        "Steppe",
+        "Llanos"
+      ],
+      "answer": "Pampas",
+      "aliases": [
+        "The Pampas"
+      ],
+      "explanation": "The fertile Pampas are a major center for agriculture and cattle ranching.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_129",
+      "prompt": "Which famous African savanna ecosystem in northern Tanzania hosts the annual Great Migration of wildebeest?",
+      "choices": [
+        "Kalahari",
+        "Sahel",
+        "Serengeti",
+        "Okavango Delta"
+      ],
+      "answer": "Serengeti",
+      "aliases": [
+        "Serengeti National Park"
+      ],
+      "explanation": "Over a million wildebeest migrate cyclically between Tanzania's Serengeti and Kenya's Maasai Mara.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_130",
+      "prompt": "What is the name of the semi-arid transition belt stretching across Africa just south of the Sahara?",
+      "choices": [
+        "Sahel",
+        "Maghreb",
+        "Horn of Africa",
+        "Rift Valley"
+      ],
+      "answer": "Sahel",
+      "aliases": [],
+      "explanation": "The Sahel runs from Senegal on the Atlantic to Eritrea on the Red Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_131",
+      "prompt": "Which tectonic boundary runs down the center of the Atlantic Ocean and surfaces on land in Iceland?",
+      "choices": [
+        "Mid-Atlantic Ridge",
+        "San Andreas Fault",
+        "Mariana Trench",
+        "East African Rift"
+      ],
+      "answer": "Mid-Atlantic Ridge",
+      "aliases": [],
+      "explanation": "Iceland straddles the divergent boundary between the North American and Eurasian plates.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_132",
+      "prompt": "What is the name of the periodic warming of eastern Pacific equatorial waters that alters global weather patterns?",
+      "choices": [
+        "La Nina",
+        "Monsoon",
+        "Polar Vortex",
+        "El Nino"
+      ],
+      "answer": "El Nino",
+      "aliases": [
+        "El Niño"
+      ],
+      "explanation": "El Niño weakens Pacific trade winds, causing droughts in some regions and heavy rainfall in others.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_133",
+      "prompt": "Which vast inland delta in Botswana empties into the Kalahari Desert instead of the sea?",
+      "choices": [
+        "Niger Delta",
+        "Danube Delta",
+        "Nile Delta",
+        "Okavango Delta"
+      ],
+      "answer": "Okavango Delta",
+      "aliases": [
+        "Okavango"
+      ],
+      "explanation": "The Okavango River fans out into a seasonal wetland oasis in northern Botswana.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_134",
+      "prompt": "Which huge desert in Turkmenistan covers about 70% of the country?",
+      "choices": [
+        "Kyzylkum Desert",
+        "Karakum Desert",
+        "Dasht-e Lut",
+        "Gobi Desert"
+      ],
+      "answer": "Karakum Desert",
+      "aliases": [
+        "Karakum"
+      ],
+      "explanation": "The Karakum contains the burning Darvaza gas crater, nicknamed the 'Door to Hell'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_135",
+      "prompt": "Which desert in eastern Iran has recorded some of the highest land surface temperatures on Earth?",
+      "choices": [
+        "Dasht-e Kavir",
+        "Rub' al Khali",
+        "Dasht-e Lut",
+        "Thar Desert"
+      ],
+      "answer": "Dasht-e Lut",
+      "aliases": [
+        "Lut Desert"
+      ],
+      "explanation": "Satellite measurements in the Dasht-e Lut have exceeded 70°C on bare dark rock surfaces.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_136",
+      "prompt": "Which famous geological valley stretches over 6,000 km from Lebanon through East Africa to Mozambique?",
+      "choices": [
+        "Loire Valley",
+        "Great Rift Valley",
+        "Grand Canyon",
+        "Indus Valley"
+      ],
+      "answer": "Great Rift Valley",
+      "aliases": [
+        "East African Rift"
+      ],
+      "explanation": "Tectonic plates pulling apart created the Great Rift Valley's chain of lakes and volcanoes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_137",
+      "prompt": "What term describes a funnel-shaped coastal estuary drowned by rising sea levels, as seen at the mouth of the Amazon?",
+      "choices": [
+        "Estuary",
+        "Delta",
+        "Fjord",
+        "Atoll"
+      ],
+      "answer": "Estuary",
+      "aliases": [],
+      "explanation": "An estuary is a partially enclosed coastal body where freshwater rivers meet ocean tides.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_138",
+      "prompt": "What term describes a long, narrow, deep sea inlet carved by ancient glaciers, common in Norway?",
+      "choices": [
+        "Atoll",
+        "Lagoon",
+        "Peninsula",
+        "Fjord"
+      ],
+      "answer": "Fjord",
+      "aliases": [
+        "Fiord"
+      ],
+      "explanation": "Norway's Sognefjord is over 200 km long and more than 1,300 meters deep.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_139",
+      "prompt": "What is the name of the dry, warm downslope wind that descends the eastern side of the Rocky Mountains?",
+      "choices": [
+        "Sirocco",
+        "Harmattan",
+        "Chinook",
+        "Mistral"
+      ],
+      "answer": "Chinook",
+      "aliases": [
+        "Chinook wind"
+      ],
+      "explanation": "Chinook winds can raise winter temperatures by 20°C or more in a single day.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_140",
+      "prompt": "Which line of longitude at roughly 180° marks where the calendar date changes by one day?",
+      "choices": [
+        "International Date Line",
+        "Prime Meridian",
+        "Arctic Circle",
+        "Tropic of Capricorn"
+      ],
+      "answer": "International Date Line",
+      "aliases": [],
+      "explanation": "The International Date Line zigzags through the Pacific Ocean to keep island nations on the same day.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_141",
+      "prompt": "Which is the largest and deepest ocean on Earth?",
+      "choices": [
+        "Indian Ocean",
+        "Southern Ocean",
+        "Atlantic Ocean",
+        "Pacific Ocean"
+      ],
+      "answer": "Pacific Ocean",
+      "aliases": [
+        "Pacific"
+      ],
+      "explanation": "The Pacific covers about one-third of Earth's total surface area.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_142",
+      "prompt": "Which is the smallest and shallowest of the world's five major oceans?",
+      "choices": [
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Southern Ocean",
+        "Atlantic Ocean"
+      ],
+      "answer": "Arctic Ocean",
+      "aliases": [
+        "Arctic"
+      ],
+      "explanation": "The Arctic Ocean surrounds the North Pole and is partly covered by sea ice year-round.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_143",
+      "prompt": "What is the deepest known point in Earth's oceans?",
+      "choices": [
+        "Puerto Rico Trench",
+        "Tonga Trench",
+        "Java Trench",
+        "Challenger Deep"
+      ],
+      "answer": "Challenger Deep",
+      "aliases": [
+        "Mariana Trench"
+      ],
+      "explanation": "Challenger Deep in the Mariana Trench plunges nearly 10,935 meters below sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_144",
+      "prompt": "Which narrow strait separates Spain from Morocco and connects the Atlantic Ocean to the Mediterranean Sea?",
+      "choices": [
+        "Strait of Malacca",
+        "Bosphorus",
+        "Strait of Gibraltar",
+        "Strait of Hormuz"
+      ],
+      "answer": "Strait of Gibraltar",
+      "aliases": [
+        "Gibraltar"
+      ],
+      "explanation": "At its narrowest point, the Strait of Gibraltar is only about 14 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_145",
+      "prompt": "Which Turkish strait divides Istanbul between Europe and Asia and links the Black Sea to the Sea of Marmara?",
+      "choices": [
+        "Dardanelles",
+        "Bosphorus",
+        "Kerch Strait",
+        "Strait of Gibraltar"
+      ],
+      "answer": "Bosphorus",
+      "aliases": [
+        "Bosporus",
+        "Bosphorus Strait"
+      ],
+      "explanation": "The Bosphorus is one of the world's narrowest strategic waterways for international shipping.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_146",
+      "prompt": "Which strategic strait connects the Persian Gulf to the Gulf of Oman?",
+      "choices": [
+        "Strait of Gibraltar",
+        "Strait of Hormuz",
+        "Bab-el-Mandeb",
+        "Strait of Malacca"
+      ],
+      "answer": "Strait of Hormuz",
+      "aliases": [
+        "Hormuz"
+      ],
+      "explanation": "A major share of the world's seaborne petroleum passes through the Strait of Hormuz.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_147",
+      "prompt": "Which waterway separates England from France at its narrowest point?",
+      "choices": [
+        "North Sea",
+        "English Channel",
+        "Irish Sea",
+        "Bay of Biscay"
+      ],
+      "answer": "English Channel",
+      "aliases": [
+        "Strait of Dover",
+        "La Manche"
+      ],
+      "explanation": "The Strait of Dover within the English Channel is roughly 34 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_148",
+      "prompt": "Which strait separates Russia from Alaska?",
+      "choices": [
+        "Davis Strait",
+        "Denmark Strait",
+        "Strait of Tartary",
+        "Bering Strait"
+      ],
+      "answer": "Bering Strait",
+      "aliases": [],
+      "explanation": "At its narrowest, the Bering Strait is about 85 km wide between Siberia and Alaska.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_149",
+      "prompt": "Which sea lies between the Arabian Peninsula and northeastern Africa?",
+      "choices": [
+        "Caspian Sea",
+        "Arabian Sea",
+        "Red Sea",
+        "Mediterranean Sea"
+      ],
+      "answer": "Red Sea",
+      "aliases": [],
+      "explanation": "The Red Sea is linked to the Mediterranean by the Suez Canal and to the Indian Ocean by Bab-el-Mandeb.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_150",
+      "prompt": "Which sea has no land boundaries and is defined entirely by four Atlantic ocean currents?",
+      "choices": [
+        "Coral Sea",
+        "Tasman Sea",
+        "Sargasso Sea",
+        "Caribbean Sea"
+      ],
+      "answer": "Sargasso Sea",
+      "aliases": [],
+      "explanation": "The Sargasso Sea is named for the free-floating Sargassum seaweed that gathers in its gyre.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_151",
+      "prompt": "Which strait between the Malay Peninsula and Sumatra is one of the busiest shipping lanes in the world?",
+      "choices": [
+        "Sunda Strait",
+        "Taiwan Strait",
+        "Torres Strait",
+        "Strait of Malacca"
+      ],
+      "answer": "Strait of Malacca",
+      "aliases": [
+        "Malacca Strait"
+      ],
+      "explanation": "The Strait of Malacca connects the Indian Ocean to the South China Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_152",
+      "prompt": "Which sea lies between Italy and the Balkan Peninsula?",
+      "choices": [
+        "Adriatic Sea",
+        "Tyrrhenian Sea",
+        "Ionian Sea",
+        "Aegean Sea"
+      ],
+      "answer": "Adriatic Sea",
+      "aliases": [],
+      "explanation": "Venice, Dubrovnik, and Split all sit along the Adriatic coast.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_153",
+      "prompt": "Which sea lies between Greece and Turkey and contains thousands of islands?",
+      "choices": [
+        "Ionian Sea",
+        "Adriatic Sea",
+        "Black Sea",
+        "Aegean Sea"
+      ],
+      "answer": "Aegean Sea",
+      "aliases": [],
+      "explanation": "The Aegean Sea is an arm of the Mediterranean dotted with the Cyclades and Dodecanese.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_154",
+      "prompt": "Which is the largest bay in the world by surface area?",
+      "choices": [
+        "Bay of Bengal",
+        "Gulf of Mexico",
+        "Bay of Biscay",
+        "Hudson Bay"
+      ],
+      "answer": "Bay of Bengal",
+      "aliases": [],
+      "explanation": "The Bay of Bengal covers about 2.17 million sq km in the northeastern Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_155",
+      "prompt": "Which bay in eastern Canada is famous for having the highest tidal range in the world?",
+      "choices": [
+        "Hudson Bay",
+        "Baffin Bay",
+        "Bay of Fundy",
+        "Chesapeake Bay"
+      ],
+      "answer": "Bay of Fundy",
+      "aliases": [
+        "Fundy"
+      ],
+      "explanation": "Tides in the Bay of Fundy can rise and fall by up to 16 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_156",
+      "prompt": "Which strait at the southern tip of South America was first navigated by Ferdinand Magellan in 1520?",
+      "choices": [
+        "Beagle Channel",
+        "Drake Passage",
+        "Strait of Magellan",
+        "Torres Strait"
+      ],
+      "answer": "Strait of Magellan",
+      "aliases": [],
+      "explanation": "The Strait of Magellan separates mainland South America from Tierra del Fuego.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_157",
+      "prompt": "Which stormy body of water lies between South America's Cape Horn and Antarctica?",
+      "choices": [
+        "Tasman Sea",
+        "Bering Sea",
+        "Drake Passage",
+        "Strait of Magellan"
+      ],
+      "answer": "Drake Passage",
+      "aliases": [],
+      "explanation": "The Drake Passage is notorious for fierce winds and massive waves in the Southern Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_158",
+      "prompt": "Which strait separates Yemen on the Arabian Peninsula from Djibouti and Eritrea in Africa?",
+      "choices": [
+        "Mozambique Channel",
+        "Strait of Hormuz",
+        "Strait of Tiran",
+        "Bab-el-Mandeb"
+      ],
+      "answer": "Bab-el-Mandeb",
+      "aliases": [
+        "Bab al-Mandab"
+      ],
+      "explanation": "Bab-el-Mandeb translates roughly to 'Gate of Grief' and links the Red Sea to the Gulf of Aden.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_159",
+      "prompt": "Which sea separates Australia from New Zealand?",
+      "choices": [
+        "Timor Sea",
+        "Tasman Sea",
+        "Arafura Sea",
+        "Coral Sea"
+      ],
+      "answer": "Tasman Sea",
+      "aliases": [],
+      "explanation": "Named after Dutch explorer Abel Tasman, the Tasman Sea is about 2,000 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_160",
+      "prompt": "Which strait separates the North Island and South Island of New Zealand?",
+      "choices": [
+        "Foveaux Strait",
+        "Cook Strait",
+        "Bass Strait",
+        "Torres Strait"
+      ],
+      "answer": "Cook Strait",
+      "aliases": [],
+      "explanation": "Cook Strait is about 22 km wide at its narrowest point.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_161",
+      "prompt": "Which strait separates mainland Australia from Tasmania?",
+      "choices": [
+        "Torres Strait",
+        "Sunda Strait",
+        "Cook Strait",
+        "Bass Strait"
+      ],
+      "answer": "Bass Strait",
+      "aliases": [],
+      "explanation": "Bass Strait connects the Indian Ocean's Great Australian Bight to the Tasman Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_162",
+      "prompt": "Which sea lies between the Korean Peninsula and mainland China?",
+      "choices": [
+        "Yellow Sea",
+        "Philippine Sea",
+        "Sea of Japan",
+        "South China Sea"
+      ],
+      "answer": "Yellow Sea",
+      "aliases": [],
+      "explanation": "Silt from the Yellow River gives the shallow Yellow Sea its golden hue.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_163",
+      "prompt": "Which sea borders Ukraine, Romania, Bulgaria, Turkey, Georgia, and Russia?",
+      "choices": [
+        "Caspian Sea",
+        "Black Sea",
+        "Adriatic Sea",
+        "Baltic Sea"
+      ],
+      "answer": "Black Sea",
+      "aliases": [],
+      "explanation": "The Black Sea connects to the Mediterranean via the Bosphorus and Dardanelles.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_164",
+      "prompt": "Which sea in northern Europe is bordered by Sweden, Finland, Estonia, Latvia, Lithuania, Poland, Germany, and Denmark?",
+      "choices": [
+        "Baltic Sea",
+        "Norwegian Sea",
+        "White Sea",
+        "North Sea"
+      ],
+      "answer": "Baltic Sea",
+      "aliases": [],
+      "explanation": "The Baltic Sea is one of the world's largest brackish inland seas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_165",
+      "prompt": "What is the deepest trench in the Atlantic Ocean?",
+      "choices": [
+        "Java Trench",
+        "South Sandwich Trench",
+        "Puerto Rico Trench",
+        "Cayman Trench"
+      ],
+      "answer": "Puerto Rico Trench",
+      "aliases": [],
+      "explanation": "The Milwaukee Deep in the Puerto Rico Trench reaches about 8,376 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_166",
+      "prompt": "What is the deepest trench in the Indian Ocean?",
+      "choices": [
+        "Java Trench",
+        "Kermadec Trench",
+        "Tonga Trench",
+        "Mariana Trench"
+      ],
+      "answer": "Java Trench",
+      "aliases": [
+        "Sunda Trench"
+      ],
+      "explanation": "Also known as the Sunda Trench, it plunges over 7,290 meters south of Indonesia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_167",
+      "prompt": "Which strait connects the Sea of Marmara to the Aegean Sea?",
+      "choices": [
+        "Bosphorus",
+        "Strait of Otranto",
+        "Dardanelles",
+        "Strait of Messina"
+      ],
+      "answer": "Dardanelles",
+      "aliases": [
+        "Hellespont"
+      ],
+      "explanation": "Known in antiquity as the Hellespont, the Dardanelles lies along the Gallipoli Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_168",
+      "prompt": "Which narrow strait separates Sicily from mainland Italy?",
+      "choices": [
+        "Strait of Otranto",
+        "Strait of Messina",
+        "Strait of Sicily",
+        "Strait of Bonifacio"
+      ],
+      "answer": "Strait of Messina",
+      "aliases": [
+        "Messina Strait"
+      ],
+      "explanation": "The Strait of Messina is just 3.1 km wide at its narrowest point.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_169",
+      "prompt": "Which strait separates Papua New Guinea from northern Australia?",
+      "choices": [
+        "Torres Strait",
+        "Sunda Strait",
+        "Bass Strait",
+        "Malacca Strait"
+      ],
+      "answer": "Torres Strait",
+      "aliases": [],
+      "explanation": "Torres Strait is about 150 km wide and dotted with coral reefs and islands.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_170",
+      "prompt": "Which body of water separates Iran from the Arabian Peninsula?",
+      "choices": [
+        "Red Sea",
+        "Gulf of Aqaba",
+        "Persian Gulf",
+        "Gulf of Aden"
+      ],
+      "answer": "Persian Gulf",
+      "aliases": [
+        "Arabian Gulf"
+      ],
+      "explanation": "The Persian Gulf is a shallow extension of the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_171",
+      "prompt": "Which gulf lies between Sweden and Finland?",
+      "choices": [
+        "Skagerrak",
+        "Gulf of Riga",
+        "Gulf of Bothnia",
+        "Gulf of Finland"
+      ],
+      "answer": "Gulf of Bothnia",
+      "aliases": [],
+      "explanation": "The Gulf of Bothnia is the northernmost arm of the Baltic Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_172",
+      "prompt": "Which huge inland sea in northeastern Canada is frozen for much of the year?",
+      "choices": [
+        "Beaufort Sea",
+        "Labrador Sea",
+        "Baffin Bay",
+        "Hudson Bay"
+      ],
+      "answer": "Hudson Bay",
+      "aliases": [],
+      "explanation": "Hudson Bay is the second-largest bay in the world after the Bay of Bengal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_173",
+      "prompt": "Which sea lies between the United Kingdom, Norway, Denmark, Germany, and the Netherlands?",
+      "choices": [
+        "Irish Sea",
+        "Celtic Sea",
+        "Baltic Sea",
+        "North Sea"
+      ],
+      "answer": "North Sea",
+      "aliases": [],
+      "explanation": "The North Sea is rich in offshore wind farms and oil/gas fields.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_174",
+      "prompt": "Which sea surrounds the Caribbean islands between North and South America?",
+      "choices": [
+        "Gulf of Mexico",
+        "Sargasso Sea",
+        "Caribbean Sea",
+        "Coral Sea"
+      ],
+      "answer": "Caribbean Sea",
+      "aliases": [],
+      "explanation": "The Caribbean Sea covers roughly 2.75 million sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_175",
+      "prompt": "Which strait separates Greenland from Iceland?",
+      "choices": [
+        "Denmark Strait",
+        "Hudson Strait",
+        "Bering Strait",
+        "Davis Strait"
+      ],
+      "answer": "Denmark Strait",
+      "aliases": [],
+      "explanation": "The Denmark Strait contains the world's largest underwater waterfall of cold dense water.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_176",
+      "prompt": "Which strait separates the Indonesian islands of Java and Sumatra?",
+      "choices": [
+        "Lombok Strait",
+        "Strait of Malacca",
+        "Makassar Strait",
+        "Sunda Strait"
+      ],
+      "answer": "Sunda Strait",
+      "aliases": [],
+      "explanation": "Krakatoa sits right inside the Sunda Strait.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_177",
+      "prompt": "Which bay borders western France and northern Spain?",
+      "choices": [
+        "Celtic Sea",
+        "English Channel",
+        "Gulf of Lion",
+        "Bay of Biscay"
+      ],
+      "answer": "Bay of Biscay",
+      "aliases": [],
+      "explanation": "The Bay of Biscay is famous for strong Atlantic swells and deep continental drop-offs.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_178",
+      "prompt": "Which sea separates the Arabian Peninsula from the Indian subcontinent?",
+      "choices": [
+        "Arabian Sea",
+        "Caspian Sea",
+        "Red Sea",
+        "Black Sea"
+      ],
+      "answer": "Arabian Sea",
+      "aliases": [],
+      "explanation": "The Arabian Sea is a northwestern region of the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_179",
+      "prompt": "Which body of water separates Madagascar from mainland Africa?",
+      "choices": [
+        "Gulf of Aden",
+        "Strait of Hormuz",
+        "Mozambique Channel",
+        "Bab-el-Mandeb"
+      ],
+      "answer": "Mozambique Channel",
+      "aliases": [],
+      "explanation": "The Mozambique Channel is roughly 1,600 km long in the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_180",
+      "prompt": "Which gulf separates the Baja California Peninsula from mainland Mexico?",
+      "choices": [
+        "Gulf of Panama",
+        "Gulf of Tehuantepec",
+        "Gulf of California",
+        "Gulf of Mexico"
+      ],
+      "answer": "Gulf of California",
+      "aliases": [
+        "Sea of Cortez"
+      ],
+      "explanation": "Also called the Sea of Cortez, Jacques Cousteau dubbed it 'the world's aquarium'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_181",
+      "prompt": "Which sea lies between Japan and the Asian mainland (Korea and Russia)?",
+      "choices": [
+        "Sea of Japan",
+        "Yellow Sea",
+        "East China Sea",
+        "Sea of Okhotsk"
+      ],
+      "answer": "Sea of Japan",
+      "aliases": [
+        "East Sea"
+      ],
+      "explanation": "The Sea of Japan is almost completely enclosed by the Japanese archipelago, Sakhalin, and the Korean Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_182",
+      "prompt": "Which strait separates Taiwan from mainland China?",
+      "choices": [
+        "Luzon Strait",
+        "Korea Strait",
+        "Taiwan Strait",
+        "Strait of Malacca"
+      ],
+      "answer": "Taiwan Strait",
+      "aliases": [
+        "Formosa Strait"
+      ],
+      "explanation": "The Taiwan Strait is about 180 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_183",
+      "prompt": "Which sea lies off northeastern Australia and contains the Great Barrier Reef?",
+      "choices": [
+        "Tasman Sea",
+        "Coral Sea",
+        "Arafura Sea",
+        "Timor Sea"
+      ],
+      "answer": "Coral Sea",
+      "aliases": [],
+      "explanation": "The Coral Sea was also the site of a pivotal 1942 naval battle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_184",
+      "prompt": "Which ocean was officially recognized by the National Geographic Society in 2021 as Earth's fifth ocean?",
+      "choices": [
+        "Antarctic Ocean",
+        "Southern Ocean",
+        "Arctic Ocean",
+        "Indian Ocean"
+      ],
+      "answer": "Southern Ocean",
+      "aliases": [
+        "Antarctic Ocean"
+      ],
+      "explanation": "Defined by the Antarctic Circumpolar Current, the Southern Ocean encircles Antarctica.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_185",
+      "prompt": "Which trench in the southwestern Pacific is the second-deepest ocean trench on Earth?",
+      "choices": [
+        "Puerto Rico Trench",
+        "Kuril-Kamchatka Trench",
+        "Tonga Trench",
+        "Java Trench"
+      ],
+      "answer": "Tonga Trench",
+      "aliases": [],
+      "explanation": "Horizon Deep in the Tonga Trench reaches roughly 10,882 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_186",
+      "prompt": "What is the largest island in the world (not counting continental Australia)?",
+      "choices": [
+        "Greenland",
+        "New Guinea",
+        "Madagascar",
+        "Borneo"
+      ],
+      "answer": "Greenland",
+      "aliases": [],
+      "explanation": "Greenland covers roughly 2.16 million sq km, mostly capped by an ice sheet.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_187",
+      "prompt": "What is the second-largest island in the world?",
+      "choices": [
+        "Madagascar",
+        "Baffin Island",
+        "Borneo",
+        "New Guinea"
+      ],
+      "answer": "New Guinea",
+      "aliases": [],
+      "explanation": "New Guinea is split between Indonesia (west) and Papua New Guinea (east).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_188",
+      "prompt": "Which island is shared by three sovereign countries: Indonesia, Malaysia, and Brunei?",
+      "choices": [
+        "Cyprus",
+        "Hispaniola",
+        "Borneo",
+        "New Guinea"
+      ],
+      "answer": "Borneo",
+      "aliases": [],
+      "explanation": "Borneo is the third-largest island on Earth and the only one divided among three nations.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_189",
+      "prompt": "What is the fourth-largest island in the world, located off southeastern Africa?",
+      "choices": [
+        "Honshu",
+        "Sumatra",
+        "Great Britain",
+        "Madagascar"
+      ],
+      "answer": "Madagascar",
+      "aliases": [],
+      "explanation": "Over 80% of Madagascar's plant and animal species are found nowhere else on Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_190",
+      "prompt": "Which country consists of more than 17,000 islands, making it the world's largest archipelagic state by area?",
+      "choices": [
+        "Indonesia",
+        "Philippines",
+        "Maldives",
+        "Japan"
+      ],
+      "answer": "Indonesia",
+      "aliases": [],
+      "explanation": "Indonesia stretches over 5,100 km across Southeast Asia and Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_191",
+      "prompt": "Which country has the highest total number of islands in the world (over 260,000)?",
+      "choices": [
+        "Norway",
+        "Finland",
+        "Sweden",
+        "Indonesia"
+      ],
+      "answer": "Sweden",
+      "aliases": [],
+      "explanation": "Sweden's vast coastal and lake archipelagos total roughly 267,570 islands.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_192",
+      "prompt": "What is the largest of Japan's four main islands?",
+      "choices": [
+        "Honshu",
+        "Shikoku",
+        "Hokkaido",
+        "Kyushu"
+      ],
+      "answer": "Honshu",
+      "aliases": [],
+      "explanation": "Honshu is home to Tokyo, Osaka, Kyoto, and Mount Fuji.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_193",
+      "prompt": "Which peninsula contains both Spain and Portugal?",
+      "choices": [
+        "Scandinavian Peninsula",
+        "Balkan Peninsula",
+        "Iberian Peninsula",
+        "Italian Peninsula"
+      ],
+      "answer": "Iberian Peninsula",
+      "aliases": [
+        "Iberia"
+      ],
+      "explanation": "The Iberian Peninsula also includes Andorra and Gibraltar.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_194",
+      "prompt": "What is the largest peninsula in the world?",
+      "choices": [
+        "Arabian Peninsula",
+        "Malay Peninsula",
+        "Scandinavian Peninsula",
+        "Indian Peninsula"
+      ],
+      "answer": "Arabian Peninsula",
+      "aliases": [
+        "Arabia"
+      ],
+      "explanation": "The Arabian Peninsula covers roughly 3.2 million sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_195",
+      "prompt": "Which European peninsula includes Norway and Sweden?",
+      "choices": [
+        "Kola Peninsula",
+        "Jutland Peninsula",
+        "Scandinavian Peninsula",
+        "Iberian Peninsula"
+      ],
+      "answer": "Scandinavian Peninsula",
+      "aliases": [
+        "Scandinavia"
+      ],
+      "explanation": "The Scandinavian Peninsula is the largest peninsula in Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_196",
+      "prompt": "Which Caribbean island is shared by Haiti and the Dominican Republic?",
+      "choices": [
+        "Puerto Rico",
+        "Jamaica",
+        "Hispaniola",
+        "Cuba"
+      ],
+      "answer": "Hispaniola",
+      "aliases": [],
+      "explanation": "Hispaniola is the second-largest island in the Caribbean after Cuba.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_197",
+      "prompt": "What is the largest island in the Mediterranean Sea?",
+      "choices": [
+        "Sardinia",
+        "Cyprus",
+        "Crete",
+        "Sicily"
+      ],
+      "answer": "Sicily",
+      "aliases": [],
+      "explanation": "Sicily covers about 25,711 sq km off the toe of Italy.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_198",
+      "prompt": "What is the second-largest island in the Mediterranean Sea?",
+      "choices": [
+        "Corsica",
+        "Cyprus",
+        "Sardinia",
+        "Sicily"
+      ],
+      "answer": "Sardinia",
+      "aliases": [],
+      "explanation": "Sardinia is an autonomous region of Italy located west of the Italian Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_199",
+      "prompt": "What is the largest island in Canada?",
+      "choices": [
+        "Victoria Island",
+        "Ellesmere Island",
+        "Baffin Island",
+        "Newfoundland"
+      ],
+      "answer": "Baffin Island",
+      "aliases": [],
+      "explanation": "Baffin Island in Nunavut is the fifth-largest island in the world.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_200",
+      "prompt": "Which Mediterranean island is the birthplace of Napoleon Bonaparte and belongs to France?",
+      "choices": [
+        "Corsica",
+        "Sicily",
+        "Elba",
+        "Sardinia"
+      ],
+      "answer": "Corsica",
+      "aliases": [],
+      "explanation": "Corsica lies just north of Sardinia across the Strait of Bonifacio.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_201",
+      "prompt": "Which island off the coast of Ecuador inspired Charles Darwin's theory of evolution?",
+      "choices": [
+        "Falkland Islands",
+        "Galapagos Islands",
+        "Canary Islands",
+        "Easter Island"
+      ],
+      "answer": "Galapagos Islands",
+      "aliases": [
+        "Galapagos",
+        "Galápagos Islands"
+      ],
+      "explanation": "The Galápagos archipelago sits straddling the Equator about 1,000 km west of mainland Ecuador.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_202",
+      "prompt": "Which remote Pacific island belonging to Chile is famous for its giant stone moai statues?",
+      "choices": [
+        "Easter Island",
+        "Tahiti",
+        "Pitcairn Island",
+        "Galapagos"
+      ],
+      "answer": "Easter Island",
+      "aliases": [
+        "Rapa Nui"
+      ],
+      "explanation": "Locally called Rapa Nui, it is one of the most isolated inhabited islands on Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_203",
+      "prompt": "Which peninsula forms mainland Denmark?",
+      "choices": [
+        "Jutland",
+        "Crimean Peninsula",
+        "Scandinavian Peninsula",
+        "Kola Peninsula"
+      ],
+      "answer": "Jutland",
+      "aliases": [
+        "Jutland Peninsula"
+      ],
+      "explanation": "Jutland separates the North Sea from the Baltic Sea's Kattegat.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_204",
+      "prompt": "Which peninsula in southeastern Mexico separates the Gulf of Mexico from the Caribbean Sea?",
+      "choices": [
+        "Nicoya Peninsula",
+        "Baja California Peninsula",
+        "Florida Peninsula",
+        "Yucatan Peninsula"
+      ],
+      "answer": "Yucatan Peninsula",
+      "aliases": [
+        "Yucatán",
+        "Yucatan"
+      ],
+      "explanation": "The Yucatán Peninsula is home to the Mayan ruins of Chichén Itzá and the Chicxulub crater.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_205",
+      "prompt": "Which is the largest island in the Caribbean?",
+      "choices": [
+        "Hispaniola",
+        "Puerto Rico",
+        "Cuba",
+        "Jamaica"
+      ],
+      "answer": "Cuba",
+      "aliases": [],
+      "explanation": "Cuba covers roughly 109,884 sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_206",
+      "prompt": "Which island is the largest in Greece?",
+      "choices": [
+        "Crete",
+        "Rhodes",
+        "Euboea",
+        "Corfu"
+      ],
+      "answer": "Crete",
+      "aliases": [],
+      "explanation": "Crete was the center of the ancient Minoan civilization.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_207",
+      "prompt": "Which country owns the Canary Islands off the northwest coast of Africa?",
+      "choices": [
+        "Morocco",
+        "Spain",
+        "France",
+        "Portugal"
+      ],
+      "answer": "Spain",
+      "aliases": [],
+      "explanation": "The Canary Islands are an autonomous community of Spain.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_208",
+      "prompt": "Which country owns the Azores and Madeira archipelagos in the Atlantic Ocean?",
+      "choices": [
+        "Spain",
+        "United Kingdom",
+        "France",
+        "Portugal"
+      ],
+      "answer": "Portugal",
+      "aliases": [],
+      "explanation": "Both the Azores and Madeira are autonomous regions of Portugal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_209",
+      "prompt": "Which large island off the southeast coast of India was formerly known as Ceylon?",
+      "choices": [
+        "Maldives",
+        "Sri Lanka",
+        "Sumatra",
+        "Socotra"
+      ],
+      "answer": "Sri Lanka",
+      "aliases": [],
+      "explanation": "Sri Lanka is separated from India by the shallow Palk Strait.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_210",
+      "prompt": "Which Indonesian island is famous for its Hindu culture, rice terraces, and resorts like Ubud?",
+      "choices": [
+        "Sumatra",
+        "Bali",
+        "Java",
+        "Sulawesi"
+      ],
+      "answer": "Bali",
+      "aliases": [],
+      "explanation": "Bali lies immediately east of Java across the Bali Strait.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_211",
+      "prompt": "Which is the world's most populous island, home to over 150 million people?",
+      "choices": [
+        "Honshu",
+        "Java",
+        "Luzon",
+        "Great Britain"
+      ],
+      "answer": "Java",
+      "aliases": [],
+      "explanation": "Java in Indonesia holds more than half of the country's population.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_212",
+      "prompt": "What is the largest island of the Philippines?",
+      "choices": [
+        "Luzon",
+        "Mindanao",
+        "Palawan",
+        "Cebu"
+      ],
+      "answer": "Luzon",
+      "aliases": [],
+      "explanation": "Luzon is home to the Philippine capital, Manila.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_213",
+      "prompt": "Which peninsula connects Egypt in Africa to Asia?",
+      "choices": [
+        "Anatolian Peninsula",
+        "Arabian Peninsula",
+        "Sinai Peninsula",
+        "Horn of Africa"
+      ],
+      "answer": "Sinai Peninsula",
+      "aliases": [
+        "Sinai"
+      ],
+      "explanation": "The triangular Sinai Peninsula sits between the Red Sea and the Mediterranean Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_214",
+      "prompt": "Which volcanic island nation sits directly atop the Mid-Atlantic Ridge in the North Atlantic?",
+      "choices": [
+        "Greenland",
+        "Ireland",
+        "Iceland",
+        "Faroe Islands"
+      ],
+      "answer": "Iceland",
+      "aliases": [],
+      "explanation": "Iceland harnesses abundant geothermal energy from its volcanic geology.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_215",
+      "prompt": "Which archipelago of 26 ring-shaped atolls in the Indian Ocean is the world's lowest-lying country?",
+      "choices": [
+        "Mauritius",
+        "Maldives",
+        "Seychelles",
+        "Comoros"
+      ],
+      "answer": "Maldives",
+      "aliases": [],
+      "explanation": "The Maldives has an average natural ground level of just 1.5 meters above sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_216",
+      "prompt": "Which Russian peninsula in the Far East is renowned for its dense concentration of active volcanoes and geysers?",
+      "choices": [
+        "Kola Peninsula",
+        "Kamchatka Peninsula",
+        "Chukchi Peninsula",
+        "Yamal Peninsula"
+      ],
+      "answer": "Kamchatka Peninsula",
+      "aliases": [
+        "Kamchatka"
+      ],
+      "explanation": "Kamchatka lies between the Sea of Okhotsk and the Pacific Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_217",
+      "prompt": "Which island in the Indian Ocean belonging to Yemen is famous for its alien-looking Dragon's Blood trees?",
+      "choices": [
+        "Zanzibar",
+        "Socotra",
+        "Mauritius",
+        "Reunion"
+      ],
+      "answer": "Socotra",
+      "aliases": [],
+      "explanation": "More than a third of Socotra's plant life is endemic to the island.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_218",
+      "prompt": "What is the largest island in the British Isles?",
+      "choices": [
+        "Great Britain",
+        "Isle of Man",
+        "Isle of Skye",
+        "Ireland"
+      ],
+      "answer": "Great Britain",
+      "aliases": [],
+      "explanation": "Great Britain encompasses England, Scotland, and Wales.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_219",
+      "prompt": "Which island off Tanzania is historically famous for its spice trade and Stone Town?",
+      "choices": [
+        "Zanzibar",
+        "Comoros",
+        "Madagascar",
+        "Pemba"
+      ],
+      "answer": "Zanzibar",
+      "aliases": [
+        "Unguja"
+      ],
+      "explanation": "Zanzibar is a semi-autonomous archipelago of Tanzania in the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_220",
+      "prompt": "Which peninsula in southeastern Europe includes Greece, Albania, Bulgaria, and Serbia?",
+      "choices": [
+        "Iberian Peninsula",
+        "Anatolian Peninsula",
+        "Apennine Peninsula",
+        "Balkan Peninsula"
+      ],
+      "answer": "Balkan Peninsula",
+      "aliases": [
+        "The Balkans",
+        "Balkans"
+      ],
+      "explanation": "Named after the Balkan Mountains, the peninsula is bordered by the Adriatic, Ionian, Aegean, and Black Seas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_221",
+      "prompt": "Which island in the North Atlantic is a self-governing archipelago within the Kingdom of Denmark, situated between Iceland and Scotland?",
+      "choices": [
+        "Orkney Islands",
+        "Faroe Islands",
+        "Shetland Islands",
+        "Aland Islands"
+      ],
+      "answer": "Faroe Islands",
+      "aliases": [
+        "Faroes"
+      ],
+      "explanation": "The Faroe Islands comprise 18 rocky volcanic islands.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_222",
+      "prompt": "What is the largest island of the Hawaiian archipelago?",
+      "choices": [
+        "Oahu",
+        "Kauai",
+        "Hawaii",
+        "Maui"
+      ],
+      "answer": "Hawaii",
+      "aliases": [
+        "Big Island",
+        "Island of Hawaii"
+      ],
+      "explanation": "Often called the Big Island, Hawaii is larger than all the other Hawaiian islands combined.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_223",
+      "prompt": "Which island in the South Atlantic is one of the most remote inhabited archipelagos on Earth?",
+      "choices": [
+        "Falkland Islands",
+        "South Georgia",
+        "Tristan da Cunha",
+        "Saint Helena"
+      ],
+      "answer": "Tristan da Cunha",
+      "aliases": [],
+      "explanation": "Tristan da Cunha is over 2,400 km from the nearest inhabited land (Saint Helena).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_224",
+      "prompt": "Which peninsula in Greece is connected to the mainland by the Isthmus of Corinth?",
+      "choices": [
+        "Peloponnese",
+        "Chalkidiki",
+        "Gallipoli",
+        "Attica"
+      ],
+      "answer": "Peloponnese",
+      "aliases": [
+        "Peloponnesus"
+      ],
+      "explanation": "Ancient Sparta, Olympia, and Mycenae were all located on the Peloponnese.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_225",
+      "prompt": "Which peninsula in eastern Asia is divided along the 38th parallel into two sovereign states?",
+      "choices": [
+        "Malay Peninsula",
+        "Shandong Peninsula",
+        "Liaodong Peninsula",
+        "Korean Peninsula"
+      ],
+      "answer": "Korean Peninsula",
+      "aliases": [
+        "Korea"
+      ],
+      "explanation": "North Korea and South Korea occupy the Korean Peninsula.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_226",
+      "prompt": "What is the largest country in the world by land area?",
+      "choices": [
+        "Canada",
+        "China",
+        "Russia",
+        "United States"
+      ],
+      "answer": "Russia",
+      "aliases": [
+        "Russian Federation"
+      ],
+      "explanation": "Russia spans roughly 17.1 million sq km across Europe and Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_227",
+      "prompt": "What is the smallest independent country in the world by land area?",
+      "choices": [
+        "Vatican City",
+        "Monaco",
+        "Nauru",
+        "San Marino"
+      ],
+      "answer": "Vatican City",
+      "aliases": [
+        "The Vatican",
+        "Holy See"
+      ],
+      "explanation": "Vatican City covers just 0.49 sq km enclaved within Rome.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_228",
+      "prompt": "What is the second-largest country in the world by total area?",
+      "choices": [
+        "Brazil",
+        "Canada",
+        "China",
+        "United States"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Canada covers nearly 9.98 million sq km and has the world's longest coastline.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_229",
+      "prompt": "Which country has the longest coastline in the world?",
+      "choices": [
+        "Russia",
+        "Canada",
+        "Australia",
+        "Indonesia"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Canada's intricate Arctic and ocean coastlines total over 202,000 km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_230",
+      "prompt": "Which two countries share the longest continuous international land border in the world?",
+      "choices": [
+        "Argentina and Chile",
+        "Canada and the United States",
+        "Russia and Kazakhstan",
+        "China and Mongolia"
+      ],
+      "answer": "Canada and the United States",
+      "aliases": [
+        "US and Canada",
+        "USA and Canada"
+      ],
+      "explanation": "The Canada–US border stretches 8,891 km including Alaska.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_231",
+      "prompt": "What is the largest landlocked country in the world?",
+      "choices": [
+        "Mongolia",
+        "Chad",
+        "Bolivia",
+        "Kazakhstan"
+      ],
+      "answer": "Kazakhstan",
+      "aliases": [],
+      "explanation": "Kazakhstan covers 2.72 million sq km in Central Asia (the Caspian Sea is an inland basin).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_232",
+      "prompt": "Which two countries are the only doubly landlocked countries in the world?",
+      "choices": [
+        "Bolivia and Paraguay",
+        "Liechtenstein and Uzbekistan",
+        "Andorra and Mongolia",
+        "Lesotho and Eswatini"
+      ],
+      "answer": "Liechtenstein and Uzbekistan",
+      "aliases": [
+        "Uzbekistan and Liechtenstein"
+      ],
+      "explanation": "A doubly landlocked country is surrounded entirely by other landlocked countries.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_233",
+      "prompt": "Which two countries in South America are completely landlocked?",
+      "choices": [
+        "Paraguay and Guyana",
+        "Ecuador and Uruguay",
+        "Peru and Bolivia",
+        "Bolivia and Paraguay"
+      ],
+      "answer": "Bolivia and Paraguay",
+      "aliases": [
+        "Paraguay and Bolivia"
+      ],
+      "explanation": "Bolivia lost its Pacific coastline to Chile in the War of the Pacific (1879–1884).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_234",
+      "prompt": "Which African country is completely surrounded by South Africa?",
+      "choices": [
+        "Lesotho",
+        "Botswana",
+        "Eswatini",
+        "Malawi"
+      ],
+      "answer": "Lesotho",
+      "aliases": [],
+      "explanation": "Lesotho is an enclave entirely enclosed within South Africa and is nicknamed the 'Kingdom in the Sky'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_235",
+      "prompt": "Which European microstate is completely surrounded by Italy and is one of the world's oldest republics?",
+      "choices": [
+        "Liechtenstein",
+        "Andorra",
+        "Monaco",
+        "San Marino"
+      ],
+      "answer": "San Marino",
+      "aliases": [],
+      "explanation": "San Marino sits atop Mount Titano in north-central Italy.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_236",
+      "prompt": "Which country spans the most time zones when including its overseas territories?",
+      "choices": [
+        "France",
+        "Russia",
+        "United States",
+        "United Kingdom"
+      ],
+      "answer": "France",
+      "aliases": [],
+      "explanation": "Including territories from French Polynesia to New Caledonia, France spans 12 time zones.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_237",
+      "prompt": "Which country spans the most contiguous time zones across a single landmass (11)?",
+      "choices": [
+        "Canada",
+        "China",
+        "United States",
+        "Russia"
+      ],
+      "answer": "Russia",
+      "aliases": [],
+      "explanation": "Russia stretches across 11 time zones from Kaliningrad to Kamchatka.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_238",
+      "prompt": "Despite spanning five geographical time zones, which major country uses a single official national time zone?",
+      "choices": [
+        "China",
+        "Russia",
+        "Brazil",
+        "India"
+      ],
+      "answer": "China",
+      "aliases": [],
+      "explanation": "All of China officially follows China Standard Time (UTC+8, Beijing Time).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_239",
+      "prompt": "Which country borders the most other sovereign countries (14, tied with Russia)?",
+      "choices": [
+        "India",
+        "China",
+        "Brazil",
+        "Germany"
+      ],
+      "answer": "China",
+      "aliases": [],
+      "explanation": "Both China and Russia share land borders with 14 sovereign nations.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_240",
+      "prompt": "Which South American country borders every other South American country except Chile and Ecuador?",
+      "choices": [
+        "Brazil",
+        "Argentina",
+        "Peru",
+        "Colombia"
+      ],
+      "answer": "Brazil",
+      "aliases": [],
+      "explanation": "Brazil borders 10 South American countries and territories (including French Guiana).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_241",
+      "prompt": "Which African country is the largest by land area?",
+      "choices": [
+        "Democratic Republic of the Congo",
+        "Algeria",
+        "Libya",
+        "Sudan"
+      ],
+      "answer": "Algeria",
+      "aliases": [],
+      "explanation": "Since South Sudan's independence in 2011, Algeria has been Africa's largest country.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_242",
+      "prompt": "Which is the smallest country in Africa by land area?",
+      "choices": [
+        "Seychelles",
+        "Mauritius",
+        "Comoros",
+        "Gambia"
+      ],
+      "answer": "Seychelles",
+      "aliases": [],
+      "explanation": "The Seychelles archipelago covers about 459 sq km in the Indian Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_243",
+      "prompt": "Which is the smallest country on mainland Africa?",
+      "choices": [
+        "Togo",
+        "Djibouti",
+        "Eswatini",
+        "The Gambia"
+      ],
+      "answer": "The Gambia",
+      "aliases": [
+        "Gambia"
+      ],
+      "explanation": "The Gambia is a narrow country following the Gambia River, almost surrounded by Senegal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_244",
+      "prompt": "Which country is the most populous in Africa?",
+      "choices": [
+        "Nigeria",
+        "Ethiopia",
+        "South Africa",
+        "Egypt"
+      ],
+      "answer": "Nigeria",
+      "aliases": [],
+      "explanation": "Nigeria has over 230 million residents, the largest population on the African continent.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_245",
+      "prompt": "Which European country borders nine other countries, the most of any country in Europe?",
+      "choices": [
+        "France",
+        "Austria",
+        "Poland",
+        "Germany"
+      ],
+      "answer": "Germany",
+      "aliases": [],
+      "explanation": "Germany borders Denmark, Poland, Czechia, Austria, Switzerland, France, Luxembourg, Belgium, and the Netherlands.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_246",
+      "prompt": "Which country is famously transcontinental, straddling Eastern Europe and Western Asia across the Bosphorus?",
+      "choices": [
+        "Georgia",
+        "Cyprus",
+        "Greece",
+        "Turkey"
+      ],
+      "answer": "Turkey",
+      "aliases": [
+        "Türkiye",
+        "Turkiye"
+      ],
+      "explanation": "About 3% of Turkey's landmass (East Thrace) lies in Europe and 97% (Anatolia) in Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_247",
+      "prompt": "Which African country is also transcontinental because its Sinai Peninsula lies in Asia?",
+      "choices": [
+        "Tunisia",
+        "Sudan",
+        "Morocco",
+        "Egypt"
+      ],
+      "answer": "Egypt",
+      "aliases": [],
+      "explanation": "The Suez Canal separates African Egypt from Asian Sinai.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_248",
+      "prompt": "Which country has the highest average elevation above sea level in the world?",
+      "choices": [
+        "Switzerland",
+        "Bolivia",
+        "Bhutan",
+        "Nepal"
+      ],
+      "answer": "Bhutan",
+      "aliases": [],
+      "explanation": "Bhutan averages about 3,280 meters in elevation across the eastern Himalayas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_249",
+      "prompt": "Which South American country is the longest from north to south relative to its narrow width?",
+      "choices": [
+        "Argentina",
+        "Chile",
+        "Colombia",
+        "Peru"
+      ],
+      "answer": "Chile",
+      "aliases": [],
+      "explanation": "Chile stretches over 4,300 km north-to-south while averaging only 177 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_250",
+      "prompt": "Which country has the most lakes in the world (over 60% of all natural lakes on Earth)?",
+      "choices": [
+        "Canada",
+        "Russia",
+        "United States",
+        "Finland"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Canada contains more than 879,000 lakes larger than 10 hectares.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_251",
+      "prompt": "Which Nordic country is nicknamed 'The Land of a Thousand Lakes' (actually having ~188,000)?",
+      "choices": [
+        "Finland",
+        "Sweden",
+        "Norway",
+        "Iceland"
+      ],
+      "answer": "Finland",
+      "aliases": [],
+      "explanation": "Finland's lakeland covers roughly 10% of the country's total area.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_252",
+      "prompt": "Which country sits on both the Equator and the Prime Meridian? (Trick: no land does — which country is closest to Null Island 0°N, 0°E?)",
+      "choices": [
+        "Ghana",
+        "Gabon",
+        "Cameroon",
+        "Nigeria"
+      ],
+      "answer": "Ghana",
+      "aliases": [],
+      "explanation": "Accra, Ghana, is the closest major mainland point to 0°N, 0°E in the Gulf of Guinea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_253",
+      "prompt": "Which country has the highest number of UNESCO World Heritage Sites?",
+      "choices": [
+        "China",
+        "Germany",
+        "Italy",
+        "France"
+      ],
+      "answer": "Italy",
+      "aliases": [],
+      "explanation": "Italy leads the world with 60 UNESCO World Heritage Sites.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_254",
+      "prompt": "Which country is the world's largest island nation that is also a continent?",
+      "choices": [
+        "Greenland",
+        "Australia",
+        "New Zealand",
+        "Indonesia"
+      ],
+      "answer": "Australia",
+      "aliases": [],
+      "explanation": "Australia is the smallest continent and the sixth-largest country by area.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_255",
+      "prompt": "Which country's national capital, La Paz (seat of government), is the highest administrative capital in the world?",
+      "choices": [
+        "Colombia",
+        "Peru",
+        "Ecuador",
+        "Bolivia"
+      ],
+      "answer": "Bolivia",
+      "aliases": [],
+      "explanation": "La Paz sits at roughly 3,650 meters above sea level (Sucre is the constitutional capital).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_256",
+      "prompt": "Which South American country's capital, Quito, is the highest official constitutional capital in the world?",
+      "choices": [
+        "Bolivia",
+        "Ecuador",
+        "Colombia",
+        "Peru"
+      ],
+      "answer": "Ecuador",
+      "aliases": [],
+      "explanation": "Quito lies at 2,850 meters elevation just south of the Equator.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_257",
+      "prompt": "Which European country is completely landlocked between Belgium, Germany, and France?",
+      "choices": [
+        "Switzerland",
+        "Liechtenstein",
+        "Luxembourg",
+        "Andorra"
+      ],
+      "answer": "Luxembourg",
+      "aliases": [],
+      "explanation": "Luxembourg is one of Europe's smallest sovereign states and a founding member of the European Union.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_258",
+      "prompt": "Which tiny European principality lies between Switzerland and Austria?",
+      "choices": [
+        "Liechtenstein",
+        "Andorra",
+        "Monaco",
+        "Luxembourg"
+      ],
+      "answer": "Liechtenstein",
+      "aliases": [],
+      "explanation": "Liechtenstein's capital is Vaduz and it uses the Swiss franc.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_259",
+      "prompt": "Which European microstate sits high in the Pyrenees between France and Spain?",
+      "choices": [
+        "Andorra",
+        "Liechtenstein",
+        "Monaco",
+        "San Marino"
+      ],
+      "answer": "Andorra",
+      "aliases": [],
+      "explanation": "Andorra's official language is Catalan.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_260",
+      "prompt": "Which is the second-smallest sovereign country in the world after Vatican City?",
+      "choices": [
+        "Nauru",
+        "Monaco",
+        "Tuvalu",
+        "San Marino"
+      ],
+      "answer": "Monaco",
+      "aliases": [],
+      "explanation": "Monaco covers about 2.02 sq km along the French Riviera.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_261",
+      "prompt": "Which Pacific island nation is the smallest republic in the world by land area?",
+      "choices": [
+        "Palau",
+        "Nauru",
+        "Marshall Islands",
+        "Tuvalu"
+      ],
+      "answer": "Nauru",
+      "aliases": [],
+      "explanation": "Nauru is a single raised coral island covering just 21 sq km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_262",
+      "prompt": "Which country has the most volcanoes on Earth?",
+      "choices": [
+        "Chile",
+        "United States",
+        "Indonesia",
+        "Japan"
+      ],
+      "answer": "United States",
+      "aliases": [
+        "USA",
+        "US"
+      ],
+      "explanation": "Including Alaska, Hawaii, and the Pacific Northwest, the US has over 160 active or potentially active volcanoes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_263",
+      "prompt": "Which country is the world's northernmost sovereign capital located in?",
+      "choices": [
+        "Norway",
+        "Iceland",
+        "Russia",
+        "Finland"
+      ],
+      "answer": "Iceland",
+      "aliases": [],
+      "explanation": "Reykjavik sits at 64°08'N latitude.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_264",
+      "prompt": "Which country has the world's southernmost sovereign capital?",
+      "choices": [
+        "Chile",
+        "New Zealand",
+        "Australia",
+        "Argentina"
+      ],
+      "answer": "New Zealand",
+      "aliases": [],
+      "explanation": "Wellington sits at 41°17'S latitude.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_265",
+      "prompt": "Which country has three official capital cities: Pretoria, Cape Town, and Bloemfontein?",
+      "choices": [
+        "Netherlands",
+        "South Africa",
+        "Bolivia",
+        "Switzerland"
+      ],
+      "answer": "South Africa",
+      "aliases": [],
+      "explanation": "Pretoria is executive, Cape Town is legislative, and Bloemfontein is judicial.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_266",
+      "prompt": "Which South Caucasus country borders both the Black Sea and Russia?",
+      "choices": [
+        "Azerbaijan",
+        "Kazakhstan",
+        "Armenia",
+        "Georgia"
+      ],
+      "answer": "Georgia",
+      "aliases": [],
+      "explanation": "Georgia lies in the South Caucasus between the Greater Caucasus Mountains and the Black Sea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_267",
+      "prompt": "Which country is completely surrounded by Senegal except for its short Atlantic coast?",
+      "choices": [
+        "Sierra Leone",
+        "The Gambia",
+        "Guinea-Bissau",
+        "Mauritania"
+      ],
+      "answer": "The Gambia",
+      "aliases": [
+        "Gambia"
+      ],
+      "explanation": "The Gambia is mainland Africa's smallest nation.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_268",
+      "prompt": "Which country was the first in the world to see the sunrise each new day after shifting across the International Date Line?",
+      "choices": [
+        "New Zealand",
+        "Fiji",
+        "Kiribati",
+        "Japan"
+      ],
+      "answer": "Kiribati",
+      "aliases": [],
+      "explanation": "Kiribati's Line Islands sit in UTC+14, the earliest time zone on Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_269",
+      "prompt": "Which country has the longest east-to-west span on Earth?",
+      "choices": [
+        "Russia",
+        "China",
+        "Canada",
+        "United States"
+      ],
+      "answer": "Russia",
+      "aliases": [],
+      "explanation": "Russia spans roughly 9,000 km from the Baltic Sea to the Bering Strait.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_270",
+      "prompt": "Which country is known as the 'Land of Fire and Ice'?",
+      "choices": [
+        "Norway",
+        "New Zealand",
+        "Iceland",
+        "Chile"
+      ],
+      "answer": "Iceland",
+      "aliases": [],
+      "explanation": "Iceland combines active volcanoes and lava fields with massive glaciers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_271",
+      "prompt": "Which city is the only major metropolis in the world spanning both Europe and Asia?",
+      "choices": [
+        "Istanbul",
+        "Baku",
+        "Cairo",
+        "Athens"
+      ],
+      "answer": "Istanbul",
+      "aliases": [],
+      "explanation": "The Bosphorus Strait splits Istanbul into a European side and an Asian side.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_272",
+      "prompt": "In which country is the ancient Inca citadel of Machu Picchu located?",
+      "choices": [
+        "Peru",
+        "Chile",
+        "Ecuador",
+        "Bolivia"
+      ],
+      "answer": "Peru",
+      "aliases": [],
+      "explanation": "Machu Picchu sits high in the Peruvian Andes above the Urubamba River valley.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_273",
+      "prompt": "In which country is the rose-red rock-cut ancient city of Petra located?",
+      "choices": [
+        "Egypt",
+        "Jordan",
+        "Oman",
+        "Lebanon"
+      ],
+      "answer": "Jordan",
+      "aliases": [],
+      "explanation": "Petra was the capital of the ancient Nabataean Kingdom.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_274",
+      "prompt": "In which country is the vast temple complex of Angkor Wat located?",
+      "choices": [
+        "Cambodia",
+        "Laos",
+        "Thailand",
+        "Vietnam"
+      ],
+      "answer": "Cambodia",
+      "aliases": [],
+      "explanation": "Angkor Wat is the largest religious monument in the world and appears on Cambodia's flag.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_275",
+      "prompt": "Which Australian city is home to the iconic sail-shaped Opera House?",
+      "choices": [
+        "Canberra",
+        "Melbourne",
+        "Sydney",
+        "Brisbane"
+      ],
+      "answer": "Sydney",
+      "aliases": [],
+      "explanation": "The Sydney Opera House sits on Bennelong Point in Sydney Harbour.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_276",
+      "prompt": "Which Brazilian city is overlooked by the Christ the Redeemer statue atop Mount Corcovado?",
+      "choices": [
+        "Sao Paulo",
+        "Salvador",
+        "Brasilia",
+        "Rio de Janeiro"
+      ],
+      "answer": "Rio de Janeiro",
+      "aliases": [
+        "Rio"
+      ],
+      "explanation": "Christ the Redeemer has overlooked Rio de Janeiro since 1931.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_277",
+      "prompt": "Which Italian city is built on more than 100 small islands in a lagoon and famous for its canals?",
+      "choices": [
+        "Naples",
+        "Venice",
+        "Florence",
+        "Genoa"
+      ],
+      "answer": "Venice",
+      "aliases": [],
+      "explanation": "Venice's Grand Canal is navigated by vaporetti and gondolas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_278",
+      "prompt": "What is the official currency of Japan?",
+      "choices": [
+        "Baht",
+        "Japanese Yen",
+        "Yuan",
+        "Won"
+      ],
+      "answer": "Japanese Yen",
+      "aliases": [
+        "Yen"
+      ],
+      "explanation": "The yen (JPY) is one of the world's most heavily traded currencies.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_279",
+      "prompt": "What is the official currency of Switzerland?",
+      "choices": [
+        "Swiss Franc",
+        "Euro",
+        "Krone",
+        "Mark"
+      ],
+      "answer": "Swiss Franc",
+      "aliases": [
+        "Franc"
+      ],
+      "explanation": "Switzerland is not a member of the Eurozone and uses the Swiss franc (CHF).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_280",
+      "prompt": "What is the official currency of India?",
+      "choices": [
+        "Indian Rupee",
+        "Rial",
+        "Ringgit",
+        "Taka"
+      ],
+      "answer": "Indian Rupee",
+      "aliases": [
+        "Rupee"
+      ],
+      "explanation": "The Indian rupee (INR) is subdivided into 100 paise.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_281",
+      "prompt": "What is the official currency of Brazil?",
+      "choices": [
+        "Brazilian Real",
+        "Peso",
+        "Bolivar",
+        "Sol"
+      ],
+      "answer": "Brazilian Real",
+      "aliases": [
+        "Real"
+      ],
+      "explanation": "The Brazilian real (BRL) was introduced in 1994.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_282",
+      "prompt": "What is the official currency of South Africa?",
+      "choices": [
+        "South African Rand",
+        "Shilling",
+        "Pula",
+        "Kwacha"
+      ],
+      "answer": "South African Rand",
+      "aliases": [
+        "Rand"
+      ],
+      "explanation": "The rand (ZAR) takes its name from the Witwatersrand ridge where most of South Africa's gold was found.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_283",
+      "prompt": "What is the official currency of Thailand?",
+      "choices": [
+        "Ringgit",
+        "Rupiah",
+        "Dong",
+        "Thai Baht"
+      ],
+      "answer": "Thai Baht",
+      "aliases": [
+        "Baht"
+      ],
+      "explanation": "The Thai baht (THB) is issued by the Bank of Thailand.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_284",
+      "prompt": "What is the official currency of Turkey?",
+      "choices": [
+        "Euro",
+        "Turkish Lira",
+        "Dinar",
+        "Dirham"
+      ],
+      "answer": "Turkish Lira",
+      "aliases": [
+        "Lira"
+      ],
+      "explanation": "The Turkish lira (TRY) is used across Turkey.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_285",
+      "prompt": "What is the official currency of South Korea?",
+      "choices": [
+        "Yen",
+        "South Korean Won",
+        "Ringgit",
+        "Yuan"
+      ],
+      "answer": "South Korean Won",
+      "aliases": [
+        "Won"
+      ],
+      "explanation": "The South Korean won (KRW) is issued by the Bank of Korea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_286",
+      "prompt": "What is the official currency of Poland?",
+      "choices": [
+        "Forint",
+        "Koruna",
+        "Euro",
+        "Polish Zloty"
+      ],
+      "answer": "Polish Zloty",
+      "aliases": [
+        "Zloty",
+        "Złoty"
+      ],
+      "explanation": "Although an EU member, Poland uses the złoty (PLN).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_287",
+      "prompt": "What is the official currency of Hungary?",
+      "choices": [
+        "Zloty",
+        "Hungarian Forint",
+        "Koruna",
+        "Euro"
+      ],
+      "answer": "Hungarian Forint",
+      "aliases": [
+        "Forint"
+      ],
+      "explanation": "Hungary uses the forint (HUF) rather than the euro.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_288",
+      "prompt": "Which city in the United Arab Emirates is home to the Burj Khalifa, the world's tallest building?",
+      "choices": [
+        "Doha",
+        "Sharjah",
+        "Abu Dhabi",
+        "Dubai"
+      ],
+      "answer": "Dubai",
+      "aliases": [],
+      "explanation": "The Burj Khalifa stands 828 meters tall in downtown Dubai.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_289",
+      "prompt": "Which ancient city in Morocco is nicknamed the 'Red City' for its sandstone walls?",
+      "choices": [
+        "Casablanca",
+        "Tangier",
+        "Marrakech",
+        "Fez"
+      ],
+      "answer": "Marrakech",
+      "aliases": [
+        "Marrakesh"
+      ],
+      "explanation": "Marrakech's historic medina is a UNESCO World Heritage Site.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_290",
+      "prompt": "Which historic trading city in Mali became a legendary center of Islamic scholarship on the edge of the Sahara?",
+      "choices": [
+        "Timbuktu",
+        "Bamako",
+        "Djenne",
+        "Gao"
+      ],
+      "answer": "Timbuktu",
+      "aliases": [],
+      "explanation": "Timbuktu thrived during the Mali and Songhai Empires near the Niger River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_291",
+      "prompt": "Which US city is nicknamed the 'Windy City' and sits on the southwestern shore of Lake Michigan?",
+      "choices": [
+        "Detroit",
+        "Cleveland",
+        "Chicago",
+        "Milwaukee"
+      ],
+      "answer": "Chicago",
+      "aliases": [],
+      "explanation": "Chicago is the third-most populous city in the United States.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_292",
+      "prompt": "Which Canadian city is the largest French-speaking city in North America?",
+      "choices": [
+        "Toronto",
+        "Quebec City",
+        "Montreal",
+        "Ottawa"
+      ],
+      "answer": "Montreal",
+      "aliases": [
+        "Montréal"
+      ],
+      "explanation": "Montreal is built on an island in the Saint Lawrence River.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_293",
+      "prompt": "Which region in southern Argentina and Chile is famous for glaciers, rugged peaks, and windswept steppes?",
+      "choices": [
+        "Pampas",
+        "Atacama",
+        "Patagonia",
+        "Gran Chaco"
+      ],
+      "answer": "Patagonia",
+      "aliases": [],
+      "explanation": "Patagonia includes Torres del Paine and Perito Moreno Glacier.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_294",
+      "prompt": "Which region in northern Europe spans parts of Norway, Sweden, Finland, and Russia and is home to the Sámi people?",
+      "choices": [
+        "Karelia",
+        "Jutland",
+        "Flanders",
+        "Lapland"
+      ],
+      "answer": "Lapland",
+      "aliases": [
+        "Sapmi",
+        "Sápmi"
+      ],
+      "explanation": "Lapland lies largely north of the Arctic Circle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_295",
+      "prompt": "Which Chinese city is home to the Terracotta Army?",
+      "choices": [
+        "Chengdu",
+        "Xi'an",
+        "Shanghai",
+        "Beijing"
+      ],
+      "answer": "Xi'an",
+      "aliases": [
+        "Xian"
+      ],
+      "explanation": "Xi'an was the eastern terminus of the ancient Silk Road.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_296",
+      "prompt": "Which Indian city is home to the Taj Mahal?",
+      "choices": [
+        "Mumbai",
+        "New Delhi",
+        "Agra",
+        "Jaipur"
+      ],
+      "answer": "Agra",
+      "aliases": [],
+      "explanation": "The Taj Mahal sits on the southern bank of the Yamuna River in Agra.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_297",
+      "prompt": "Which Indian city in Rajasthan is famous as the 'Pink City'?",
+      "choices": [
+        "Jodhpur",
+        "Varanasi",
+        "Jaipur",
+        "Udaipur"
+      ],
+      "answer": "Jaipur",
+      "aliases": [],
+      "explanation": "Jaipur's buildings were painted terracotta pink in 1876 to welcome royal visitors.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_298",
+      "prompt": "Which region of northwestern Africa encompasses Morocco, Algeria, Tunisia, Libya, and Mauritania?",
+      "choices": [
+        "Sahel",
+        "Levant",
+        "Horn of Africa",
+        "Maghreb"
+      ],
+      "answer": "Maghreb",
+      "aliases": [
+        "The Maghreb"
+      ],
+      "explanation": "In Arabic, Al-Maghrib means 'the west' or 'where the sun sets'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_299",
+      "prompt": "Which historic region between the Tigris and Euphrates rivers is known as the 'Cradle of Civilization'?",
+      "choices": [
+        "Caucasus",
+        "Maghreb",
+        "Mesopotamia",
+        "Anatolia"
+      ],
+      "answer": "Mesopotamia",
+      "aliases": [],
+      "explanation": "Mesopotamia corresponds largely to modern-day Iraq and parts of neighboring Syria and Turkey.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_300",
+      "prompt": "Which northeastern African peninsula includes Somalia, Ethiopia, Eritrea, and Djibouti?",
+      "choices": [
+        "Sahel",
+        "Sinai Peninsula",
+        "Horn of Africa",
+        "Arabian Peninsula"
+      ],
+      "answer": "Horn of Africa",
+      "aliases": [],
+      "explanation": "Its rhino-horn shape juts into the Arabian Sea and Gulf of Aden.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_301",
+      "prompt": "Which German state in the south is famous for Munich, the Alps, and Neuschwanstein Castle?",
+      "choices": [
+        "Brandenburg",
+        "Saxony",
+        "Hesse",
+        "Bavaria"
+      ],
+      "answer": "Bavaria",
+      "aliases": [
+        "Bayern"
+      ],
+      "explanation": "Bavaria is Germany's largest state by land area.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_302",
+      "prompt": "Which region in northern Spain has Barcelona as its capital?",
+      "choices": [
+        "Andalusia",
+        "Catalonia",
+        "Galicia",
+        "Basque Country"
+      ],
+      "answer": "Catalonia",
+      "aliases": [
+        "Catalunya"
+      ],
+      "explanation": "Catalonia borders France and Andorra along the northeastern Mediterranean coast.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_303",
+      "prompt": "Which autonomous region in southern Spain is home to Seville, Granada, and Córdoba?",
+      "choices": [
+        "Andalusia",
+        "Valencia",
+        "Aragon",
+        "Catalonia"
+      ],
+      "answer": "Andalusia",
+      "aliases": [
+        "Andalucía"
+      ],
+      "explanation": "Andalusia is renowned for Moorish landmarks like the Alhambra.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_304",
+      "prompt": "Which region of Belgium is predominantly Dutch-speaking?",
+      "choices": [
+        "Brabant",
+        "Alsace",
+        "Wallonia",
+        "Flanders"
+      ],
+      "answer": "Flanders",
+      "aliases": [],
+      "explanation": "Flanders forms the northern half of Belgium, while Wallonia in the south is predominantly French-speaking.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_305",
+      "prompt": "Which city in Kazakhstan replaced Almaty as the nation's capital in 1997?",
+      "choices": [
+        "Tashkent",
+        "Bishkek",
+        "Astana",
+        "Shymkent"
+      ],
+      "answer": "Astana",
+      "aliases": [
+        "Nur-Sultan"
+      ],
+      "explanation": "Astana is famous for its futuristic skyline on the Kazakh steppe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_306",
+      "prompt": "Which planned city became the capital of Brazil in 1960, replacing Rio de Janeiro?",
+      "choices": [
+        "Curitiba",
+        "Brasilia",
+        "Sao Paulo",
+        "Belo Horizonte"
+      ],
+      "answer": "Brasilia",
+      "aliases": [
+        "Brasília"
+      ],
+      "explanation": "Designed by Lúcio Costa and Oscar Niemeyer, Brasília's layout resembles an airplane.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_307",
+      "prompt": "Which planned city became the capital of Nigeria in 1991, replacing Lagos?",
+      "choices": [
+        "Ibadan",
+        "Port Harcourt",
+        "Abuja",
+        "Kano"
+      ],
+      "answer": "Abuja",
+      "aliases": [],
+      "explanation": "Abuja was built in the geographic center of Nigeria.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_308",
+      "prompt": "Which planned city became the capital of Myanmar in 2005, replacing Yangon?",
+      "choices": [
+        "Mandalay",
+        "Naypyidaw",
+        "Taunggyi",
+        "Bago"
+      ],
+      "answer": "Naypyidaw",
+      "aliases": [
+        "Nay Pyi Taw"
+      ],
+      "explanation": "Naypyidaw was constructed in central Myanmar.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_309",
+      "prompt": "Which city in New Zealand is the most populous city in the country (though not the capital)?",
+      "choices": [
+        "Queenstown",
+        "Wellington",
+        "Christchurch",
+        "Auckland"
+      ],
+      "answer": "Auckland",
+      "aliases": [],
+      "explanation": "Auckland sits on a volcanic isthmus between two harbors on the North Island.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_310",
+      "prompt": "Which city in Switzerland is the largest by population (though Bern is the de facto capital)?",
+      "choices": [
+        "Lausanne",
+        "Basel",
+        "Geneva",
+        "Zurich"
+      ],
+      "answer": "Zurich",
+      "aliases": [
+        "Zürich"
+      ],
+      "explanation": "Zurich lies at the northern tip of Lake Zurich.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_311",
+      "prompt": "Which city in the Netherlands is home to the International Court of Justice?",
+      "choices": [
+        "Rotterdam",
+        "Amsterdam",
+        "Utrecht",
+        "The Hague"
+      ],
+      "answer": "The Hague",
+      "aliases": [
+        "Den Haag"
+      ],
+      "explanation": "While Amsterdam is the constitutional capital, The Hague is the seat of government and international courts.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_312",
+      "prompt": "Which European port city in the Netherlands is the largest seaport in Europe?",
+      "choices": [
+        "Marseille",
+        "Hamburg",
+        "Rotterdam",
+        "Antwerp"
+      ],
+      "answer": "Rotterdam",
+      "aliases": [],
+      "explanation": "Rotterdam sits at the mouth of the Rhine–Meuse–Scheldt delta.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_313",
+      "prompt": "Which city in Egypt is famous for its ancient Great Library and Lighthouse?",
+      "choices": [
+        "Aswan",
+        "Alexandria",
+        "Luxor",
+        "Giza"
+      ],
+      "answer": "Alexandria",
+      "aliases": [],
+      "explanation": "Founded by Alexander the Great in 331 BC, Alexandria sits on the Mediterranean coast.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_314",
+      "prompt": "Which city in southern Egypt is built on the site of ancient Thebes, near the Valley of the Kings?",
+      "choices": [
+        "Luxor",
+        "Aswan",
+        "Alexandria",
+        "Port Said"
+      ],
+      "answer": "Luxor",
+      "aliases": [],
+      "explanation": "Luxor's Karnak and Luxor temples sit along the east bank of the Nile.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_315",
+      "prompt": "Which city in Saudi Arabia is the holiest city in Islam?",
+      "choices": [
+        "Riyadh",
+        "Jeddah",
+        "Mecca",
+        "Medina"
+      ],
+      "answer": "Mecca",
+      "aliases": [
+        "Makkah"
+      ],
+      "explanation": "Mecca lies in the Hejaz region of western Saudi Arabia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_316",
+      "prompt": "Which ancient Anatolian region in central Turkey is famous for its 'fairy chimney' rock formations and hot-air balloons?",
+      "choices": [
+        "Ephesus",
+        "Pamukkale",
+        "Cappadocia",
+        "Antalya"
+      ],
+      "answer": "Cappadocia",
+      "aliases": [],
+      "explanation": "Volcanic ash eroded over millennia to create Cappadocia's dramatic valleys.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_317",
+      "prompt": "Which city in Japan was the imperial capital for over a thousand years before Tokyo?",
+      "choices": [
+        "Osaka",
+        "Hiroshima",
+        "Kyoto",
+        "Nara"
+      ],
+      "answer": "Kyoto",
+      "aliases": [],
+      "explanation": "Kyoto is renowned for its classical Buddhist temples, shrines, and wooden machiya houses.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_318",
+      "prompt": "Which city in Canada is the capital of British Columbia, located on Vancouver Island?",
+      "choices": [
+        "Prince George",
+        "Victoria",
+        "Vancouver",
+        "Kelowna"
+      ],
+      "answer": "Victoria",
+      "aliases": [],
+      "explanation": "Victoria sits at the southern tip of Vancouver Island.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_319",
+      "prompt": "Which US state is the only one composed entirely of islands?",
+      "choices": [
+        "Alaska",
+        "Hawaii",
+        "Florida",
+        "Rhode Island"
+      ],
+      "answer": "Hawaii",
+      "aliases": [],
+      "explanation": "Hawaii is an archipelago of volcanic islands in the central Pacific.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_320",
+      "prompt": "Which is the largest US state by land area?",
+      "choices": [
+        "Texas",
+        "Montana",
+        "Alaska",
+        "California"
+      ],
+      "answer": "Alaska",
+      "aliases": [],
+      "explanation": "Alaska is more than twice the size of Texas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_321",
+      "prompt": "Which is the smallest US state by land area?",
+      "choices": [
+        "Hawaii",
+        "Connecticut",
+        "Delaware",
+        "Rhode Island"
+      ],
+      "answer": "Rhode Island",
+      "aliases": [],
+      "explanation": "Rhode Island covers just 3,144 sq km in New England.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_322",
+      "prompt": "Which US state has the longest coastline?",
+      "choices": [
+        "Alaska",
+        "Florida",
+        "Hawaii",
+        "California"
+      ],
+      "answer": "Alaska",
+      "aliases": [],
+      "explanation": "Alaska's coastline is longer than the coastlines of all other US states combined.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_323",
+      "prompt": "Which European country is known as the 'Low Countries' along with Belgium and Luxembourg?",
+      "choices": [
+        "Germany",
+        "Switzerland",
+        "Netherlands",
+        "Denmark"
+      ],
+      "answer": "Netherlands",
+      "aliases": [
+        "The Netherlands",
+        "Holland"
+      ],
+      "explanation": "Roughly one-third of the Netherlands lies below sea level.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_324",
+      "prompt": "Which region in northeastern Italy is famous for its pale limestone peaks in the Alps?",
+      "choices": [
+        "Piedmont",
+        "Apennines",
+        "Tuscany",
+        "Dolomites"
+      ],
+      "answer": "Dolomites",
+      "aliases": [],
+      "explanation": "The Dolomites are a UNESCO World Heritage mountain range.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_325",
+      "prompt": "Which iconic sandstone monolith rises dramatically in central Australia's Northern Territory?",
+      "choices": [
+        "Kata Tjuta",
+        "Mount Augustus",
+        "Uluru",
+        "Wave Rock"
+      ],
+      "answer": "Uluru",
+      "aliases": [
+        "Ayers Rock"
+      ],
+      "explanation": "Uluru is sacred to the local Anangu Aboriginal people.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_326",
+      "prompt": "Which famous rock formation on the coast of Northern Ireland consists of ~40,000 interlocking basalt columns?",
+      "choices": [
+        "Cliffs of Moher",
+        "Giant's Causeway",
+        "White Cliffs of Dover",
+        "Fingal's Cave"
+      ],
+      "answer": "Giant's Causeway",
+      "aliases": [
+        "Giants Causeway"
+      ],
+      "explanation": "The hexagonal columns formed from rapidly cooling ancient volcanic lava.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_327",
+      "prompt": "Which sheer coastal sea cliffs in County Clare are one of Ireland's most visited natural landmarks?",
+      "choices": [
+        "Cliffs of Moher",
+        "Slieve League",
+        "Seven Sisters",
+        "Giant's Causeway"
+      ],
+      "answer": "Cliffs of Moher",
+      "aliases": [],
+      "explanation": "The Cliffs of Moher rise up to 214 meters above the Atlantic Ocean.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "geo_en_328",
+      "prompt": "Which massive crater in northern Tanzania is the world's largest intact inactive volcanic caldera?",
+      "choices": [
+        "Caldera de Taburiente",
+        "Crater Lake",
+        "Ngorongoro Crater",
+        "Kilimanjaro Crater"
+      ],
+      "answer": "Ngorongoro Crater",
+      "aliases": [
+        "Ngorongoro"
+      ],
+      "explanation": "Ngorongoro supports a dense wildlife population inside its 260 sq km bowl.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "geo_en_329",
+      "prompt": "Which deep blue volcanic caldera lake in Oregon is the deepest lake in the United States?",
+      "choices": [
+        "Lake Superior",
+        "Crater Lake",
+        "Mono Lake",
+        "Lake Tahoe"
+      ],
+      "answer": "Crater Lake",
+      "aliases": [],
+      "explanation": "Crater Lake reaches a depth of 594 meters inside collapsed Mount Mazama.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "geo_en_330",
+      "prompt": "Which national park spanning Wyoming, Montana, and Idaho was the world's first national park (1872)?",
+      "choices": [
+        "Grand Canyon",
+        "Yellowstone",
+        "Banff",
+        "Yosemite"
+      ],
+      "answer": "Yellowstone",
+      "aliases": [
+        "Yellowstone National Park"
+      ],
+      "explanation": "Yellowstone sits atop a supervolcano and contains over half of the world's geysers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    }
+  ]
+}

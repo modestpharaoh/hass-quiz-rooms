@@ -4,7 +4,7 @@
 
 # QuizRooms for Home Assistant
 
-**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **17 built-in packs (1,849+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
+**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **19 built-in packs (2,414+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
 
 ---
 
@@ -215,12 +215,14 @@ automation:
 
 ---
 
-## Built-In Trivia Packs (17 Packs)
+## Built-In Trivia Packs (19 Packs)
 
 Every built-in pack includes a custom SVG cover and per-question `easy` / `medium` / `hard` difficulty tags:
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |
+| **World General Geography** | EN | MC & Free-Text | 330 original questions on rivers, mountains, deserts, oceans, straits, islands, borders & landmarks |
+| **FIFA World Cup Trivia** | EN | MC & Free-Text | 235 original questions on champions, finals (1930–2022), hosts, stadiums, Golden Boot winners, records & 2026 |
 | **World Countries & Global Flags** | EN | MC & Free-Text | 209 locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
 | **Guess the Country on the Map** | EN | MC & Free-Text | 169 locally bundled country map silhouette SVGs (derived from Public Domain Natural Earth 1:50m vectors) |
 | **Famous World Logos** | EN | MC & Free-Text | 110 locally bundled vector brand/app/gaming/auto/smart-home logo SVGs (via CC0 Simple Icons) |

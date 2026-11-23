@@ -15,7 +15,7 @@ QuizRooms is designed as a **local-first, zero-CDN** Home Assistant integration.
 | Arabic & Latin UI Fonts | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-regular.woff`<br>`custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-bold.woff` | DejaVu Sans (Bitstream Vera derivative) | Bitstream Vera / DejaVu Fonts License |
 | Monospace Numerals Font | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-mono.woff` | Google Noto Sans Mono | SIL Open Font License 1.1 (OFL-1.1) |
 
-> **Original Content Note:** All trivia questions across the 17 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
+> **Original Content Note:** All trivia questions across the 19 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, sports, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
 
 ---
 
