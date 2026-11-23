@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.27"
+VERSION = "0.1.28"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -84,7 +84,7 @@ MIN_ROUND_COUNT = 5
 MAX_ROUND_COUNT = 25
 ROUND_COUNT_STEP = 5
 
-ALLOWED_TIMERS = (20, 30, 45)
+ALLOWED_TIMERS = (20, 30, 45, 60)
 DEFAULT_TIMER_SECONDS = 30
 
 # Difficulty levels

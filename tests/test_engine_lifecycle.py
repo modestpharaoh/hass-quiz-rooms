@@ -306,8 +306,10 @@ def test_final_bonus_question_wager_scoring_and_override(pack_registry, fake_clo
         host_nickname="Host10",
         pack_ids=["general_knowledge_en"],
         round_count=10,
+        timer_seconds=60,
         bonus_round=True,
     )
+    assert room10.settings.timer_seconds == 60
     assert engine.serialize_room_state(room10)["settings"]["bonus_wager_options"] == [5, 10, 15, 20, 25, 30]
 
     # 2. Verify 5-round game (max regular score = 15) scales bonus stakes to [5, 10, 15]
