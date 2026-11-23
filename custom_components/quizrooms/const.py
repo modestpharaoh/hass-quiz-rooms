@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.25"
+VERSION = "0.1.27"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -111,6 +111,8 @@ WAGER_MODE_POOL = "pool"
 ALLOWED_WAGER_MODES = (WAGER_MODE_FREE, WAGER_MODE_POOL)
 MIN_WAGER = 1
 MAX_WAGER = 25
+BONUS_WAGER_OPTIONS = (5, 10, 15, 20, 25, 30)
+DEFAULT_BONUS_ROUND = False
 
 # Visibility
 VISIBILITY_PUBLIC = "public"
@@ -124,6 +126,7 @@ ROOM_STATUS_FINISHED = "finished"
 
 PHASE_LOBBY = "lobby"
 PHASE_QUESTION = "question"
+PHASE_BONUS_WAGER = "bonus_wager"
 PHASE_REVEAL = "reveal"
 PHASE_FINALE = "finale"
 

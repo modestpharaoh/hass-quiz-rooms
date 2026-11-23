@@ -450,6 +450,16 @@
       state.serverOffsetMs = room.question.server_now_ms - Date.now();
     }
 
+    if (room.phase === "bonus_wager" && room.bonus_wager) {
+      const bwKey = `${room.code}:bonus_wager`;
+      if (state.lastRoundKey !== bwKey) {
+        state.lastRoundKey = bwKey;
+        const opts = room.bonus_wager.options || [5, 10, 15, 20, 25, 30];
+        state.selectedWager = opts[0] || 5;
+        if (window.QuizRoomsSFX) window.QuizRoomsSFX.roundStart();
+      }
+    }
+
     // Reset local answer/wager selection when moving to a new question (default to lowest available number)
     if (room.phase === "question" && room.question) {
       const roundKey = `${room.code}:${room.question.index}`;
@@ -569,6 +579,8 @@
         renderOpenLobby(root);
       } else if (state.room.phase === "lobby") {
         renderRoomLobby(root, state.room);
+      } else if (state.room.phase === "bonus_wager") {
+        renderBonusWagerPhase(root, state.room);
       } else if (state.room.phase === "question") {
         renderQuestionPhase(root, state.room);
       } else if (state.room.phase === "reveal") {
@@ -875,6 +887,13 @@
               </label>
             </div>
 
+            <div>
+              <label class="toggle-line" style="width:100%;cursor:pointer;" title="Adds one high-stakes blind-wager bonus question at the end. Players choose their points before seeing the question (+score if correct, −score if wrong).">
+                <span id="cr-bonus-label" style="font-size:0.86rem;font-weight:700;">★ Final Bonus Question (blind wager ±5–30 pts)</span>
+                <input id="cr-bonus-round" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-amber);" />
+              </label>
+            </div>
+
             <button type="submit" class="btn btn-primary" style="width:100%;">Create &amp; Open Lobby</button>
           </form>
         </div>
@@ -886,6 +905,19 @@
         uniqueEl.addEventListener("change", () => {
           uniqueEl.dataset.userTouched = "true";
         });
+      }
+
+      const roundsEl = document.getElementById("cr-rounds");
+      const bonusLabelEl = document.getElementById("cr-bonus-label");
+      function syncBonusLabel() {
+        if (!roundsEl || !bonusLabelEl) return;
+        const r = parseInt(roundsEl.value, 10) || 10;
+        const maxBonus = r <= 5 ? 15 : 30;
+        bonusLabelEl.textContent = `★ Final Bonus Question (blind wager ±5–${maxBonus} pts)`;
+      }
+      if (roundsEl) {
+        roundsEl.addEventListener("change", syncBonusLabel);
+        syncBonusLabel();
       }
 
       renderModalPackList();
@@ -923,6 +955,7 @@
           difficulty: document.getElementById("cr-difficulty").value,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
+          bonus_round: document.getElementById("cr-bonus-round").checked,
         });
       });
     }
@@ -998,6 +1031,12 @@
               ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
               <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
               <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
+              ${room.settings.bonus_round ? (() => {
+                const opts = room.settings.bonus_wager_options || [5, 10, 15, 20, 25, 30];
+                const lo = opts[0] || 5;
+                const hi = opts[opts.length - 1] || 30;
+                return `<span class="badge badge-accent">★ Final Bonus (±${lo}–${hi})</span>`;
+              })() : ""}
               ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
@@ -1044,18 +1083,145 @@
       }
     }
 
+    function renderBonusWagerPhase(root, room) {
+      const bw = room.bonus_wager || {};
+      const me = room.me;
+      const hostToken = getHostToken(room.code);
+      const isHost = Boolean(hostToken);
+      const options = bw.options || (me && me.available_wagers) || [5, 10, 15, 20, 25, 30];
+      const lockedWager = me && typeof me.bonus_wager === "number" ? me.bonus_wager : null;
+      if (!options.includes(state.selectedWager)) {
+        state.selectedWager = lockedWager && options.includes(lockedWager) ? lockedWager : options[0];
+      }
+
+      const standingsHtml = (room.players || [])
+        .map(
+          (p) => `
+          <div class="outcome-row">
+            <div style="display:inline-flex;align-items:center;gap:8px;font-weight:800;" dir="auto">
+              ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+              #${p.rank} ${esc(p.nickname)}
+              ${p.locked_in ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">✓ Ready</span>` : ""}
+            </div>
+            <div class="mono" style="font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
+          </div>`
+        )
+        .join("");
+
+      const wagerControlsHtml =
+        lockedWager === null
+          ? `<div class="wager-section">
+              <div class="wager-header">
+                <span>★ Choose Your Blind Bonus Stake (+score if right · −score if wrong)</span>
+                <span class="badge badge-accent mono">±${state.selectedWager} pts</span>
+              </div>
+              <div class="wager-chips">
+                ${options
+                  .map(
+                    (val) => `<button type="button" class="wager-chip ${state.selectedWager === val ? "selected" : ""}" data-bonus-wager="${val}">${val}</button>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <button id="lock-bonus-wager-btn" class="btn btn-primary" style="width:100%;">
+              Lock In Bonus Wager (±${state.selectedWager} pts)
+            </button>`
+          : `<div class="locked-banner">
+              ★ Bonus Wager Locked In: <strong>±${lockedWager} pts</strong>
+              <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
+                ${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} players ready · Waiting for host to reveal the bonus question…
+              </div>
+            </div>`;
+
+      root.innerHTML = `
+      ${renderRoomHeader(room)}
+      <section class="studio-card question-card animate-in">
+        <div class="question-top">
+          <span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS WAGER</span>
+          <span class="badge mono">${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} ready</span>
+        </div>
+
+        <h2 class="question-prompt" style="margin-block:6px 4px;">Place Your Secret Bonus Wager!</h2>
+        <p style="margin:0 0 14px;color:var(--text-secondary);font-size:0.94rem;">
+          Pick how many points to risk <strong>before</strong> seeing the final question. Answer right to gain <strong>+Wager</strong>, or miss it to lose <strong>−Wager</strong>.
+        </p>
+
+        ${wagerControlsHtml}
+
+        <div style="margin-top:18px;">
+          <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px;">Current Standings</div>
+          <div class="outcomes-list">${standingsHtml}</div>
+        </div>
+
+        ${isHost
+          ? `<div class="host-bar">
+                <button id="host-start-bonus-q-btn" class="btn btn-primary" style="flex:1;">
+                  Reveal Bonus Question ★
+                </button>
+                <button id="host-close-btn" class="btn btn-danger">Close Room</button>
+              </div>`
+          : ""
+        }
+      </section>
+    `;
+
+      wireLeaveButton();
+
+      if (lockedWager === null) {
+        root.querySelectorAll("[data-bonus-wager]").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            state.selectedWager = parseInt(chip.dataset.bonusWager, 10);
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
+            root.querySelectorAll("[data-bonus-wager]").forEach((c) => c.classList.remove("selected"));
+            chip.classList.add("selected");
+            const btn = document.getElementById("lock-bonus-wager-btn");
+            if (btn) btn.textContent = `Lock In Bonus Wager (±${state.selectedWager} pts)`;
+            const badge = root.querySelector(".wager-header .badge");
+            if (badge) badge.textContent = `±${state.selectedWager} pts`;
+          });
+        });
+
+        const lockBtn = document.getElementById("lock-bonus-wager-btn");
+        if (lockBtn) {
+          lockBtn.addEventListener("click", () => {
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+            sendWS({
+              type: "submit_bonus_wager",
+              code: room.code,
+              session_token: state.sessionToken,
+              wager: state.selectedWager,
+            });
+          });
+        }
+      }
+
+      if (isHost) {
+        document.getElementById("host-start-bonus-q-btn").addEventListener("click", () => {
+          sendWS({ type: "next_step", code: room.code, host_token: hostToken });
+        });
+        document.getElementById("host-close-btn").addEventListener("click", () => {
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
+    }
+
     function renderQuestionPhase(root, room) {
       const q = room.question;
       const me = room.me;
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
       const locked = Boolean(me && me.submitted);
-      const poolSize = (me && me.wager_pool_size) || q.total_rounds || room.settings.round_count || 10;
-      const availWagers = (me && me.available_wagers) || Array.from({ length: poolSize }, (_, i) => i + 1);
-      if (!availWagers.includes(state.selectedWager)) {
-        state.selectedWager = availWagers.length ? Math.min(...availWagers) : 1;
+      const isBonus = Boolean(q.is_bonus);
+      const bonusOptions = q.bonus_wager_options || [5, 10, 15, 20, 25, 30];
+      const lockedBonusWager = isBonus && me && typeof me.bonus_wager === "number" ? me.bonus_wager : null;
+      const poolSize = (me && me.wager_pool_size) || q.regular_rounds || room.settings.round_count || 10;
+      const allChips = isBonus ? bonusOptions : Array.from({ length: poolSize }, (_, i) => i + 1);
+      const availWagers = isBonus ? bonusOptions : ((me && me.available_wagers) || allChips);
+      if (lockedBonusWager !== null) {
+        state.selectedWager = lockedBonusWager;
+      } else if (!availWagers.includes(state.selectedWager)) {
+        state.selectedWager = availWagers.length ? Math.min(...availWagers) : (isBonus ? bonusOptions[0] : 1);
       }
-      const allChips = Array.from({ length: poolSize }, (_, i) => i + 1);
       const letters = ["A", "B", "C", "D", "E", "F"];
       const dir = q.rtl ? "rtl" : "auto";
 
@@ -1100,11 +1266,28 @@
         }
       }
 
+      const wagerHeaderLabel = isBonus
+        ? "★ Bonus Score Wager (+score if right · −score if wrong)"
+        : `Confidence Wager (1–${poolSize} · use each once · ${room.settings.deduct_wrong_wager === false ? "no minus if wrong" : "−wager if wrong"})`;
+      const lockInLabel = isBonus
+        ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
+        : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+
       const wagerHtml = !locked
-        ? `<div class="wager-section">
+        ? isBonus && lockedBonusWager !== null
+          ? `<div class="wager-section" style="border-color:var(--accent-amber);background:var(--accent-amber-soft);">
+              <div class="wager-header" style="margin:0;">
+                <span>★ Your Locked Bonus Wager (+${lockedBonusWager} if right · −${lockedBonusWager} if wrong)</span>
+                <span class="badge mono" style="background:var(--accent-amber);color:#120d02;font-weight:900;">±${lockedBonusWager} pts</span>
+              </div>
+            </div>
+            <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
+              ${lockInLabel}
+            </button>`
+          : `<div class="wager-section">
           <div class="wager-header">
-            <span>Confidence Wager (1–${poolSize} · use each once · ${room.settings.deduct_wrong_wager === false ? "no minus if wrong" : "−wager if wrong"})</span>
-            <span class="badge badge-accent mono">${state.selectedWager} pts</span>
+            <span>${wagerHeaderLabel}</span>
+            <span class="badge badge-accent mono">${isBonus ? "±" : ""}${state.selectedWager} pts</span>
           </div>
           <div class="wager-chips">
             ${allChips
@@ -1118,21 +1301,25 @@
           </div>
         </div>
         <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
-          Lock In Answer &amp; Wager (${state.selectedWager} pts)
+          ${lockInLabel}
         </button>`
         : `<div class="locked-banner">
-          Locked in: <span dir="auto">${esc(me.my_submission.answer)}</span> · Wager ${me.my_submission.wager} pts
+          Locked in: <span dir="auto">${esc(me.my_submission.answer)}</span> · ${isBonus ? `Bonus Wager ±${me.my_submission.wager} pts` : `Wager ${me.my_submission.wager} pts`}
           <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
             ${room.locked_in_count} / ${room.connected_count} players locked in
           </div>
         </div>`;
+
+      const roundBadgeHtml = isBonus
+        ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION</span>`
+        : `<span class="badge badge-live">Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`;
 
       root.innerHTML = `
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${dir}">
         <div class="question-top">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <span class="badge badge-live">Round ${q.round_number} / ${q.total_rounds}</span>
+            ${roundBadgeHtml}
             ${diffBadgeHtml(q.difficulty)}
             ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
           </div>
@@ -1186,9 +1373,13 @@
             root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
             chip.classList.add("selected");
             const lockBtn = document.getElementById("lock-in-btn");
-            if (lockBtn) lockBtn.textContent = `Lock In Answer & Wager (${state.selectedWager} pts)`;
+            if (lockBtn) {
+              lockBtn.textContent = isBonus
+                ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
+                : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+            }
             const badge = root.querySelector(".wager-header .badge");
-            if (badge) badge.textContent = `${state.selectedWager} pts`;
+            if (badge) badge.textContent = `${isBonus ? "±" : ""}${state.selectedWager} pts`;
           });
         });
 
@@ -1227,6 +1418,7 @@
       const isHost = Boolean(hostToken);
       const isFreeText = room.settings.answer_mode === "free_text" || Boolean(rev.open_ended);
       const isLast = rev.round_index + 1 >= rev.total_rounds;
+      const nextIsBonus = !isLast && Boolean(room.settings.bonus_round) && (rev.round_index + 2 === rev.total_rounds);
 
       const outcomesHtml = rev.outcomes
         .map((o) => {
@@ -1269,7 +1461,9 @@
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in" dir="${rev.rtl ? "rtl" : "auto"}">
         <div class="question-top">
-          <span class="badge badge-lobby">Answer Reveal · Round ${rev.round_index + 1}/${rev.total_rounds}</span>
+          ${rev.is_bonus
+            ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ Final Bonus Reveal</span>`
+            : `<span class="badge badge-lobby">Answer Reveal · Round ${rev.round_index + 1}/${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
         </div>
         <div class="reveal-answer-box">
           <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}</div>
@@ -1282,7 +1476,7 @@
         ${isHost
           ? `<div class="host-bar">
                 <button id="host-next-btn" class="btn btn-primary" style="flex:1;">
-                  ${isLast ? "Show Finale Podium" : "Next Question"}
+                  ${isLast ? "Show Finale Podium" : nextIsBonus ? "Place Final Bonus Wagers ★" : "Next Question"}
                 </button>
                 <button id="host-close-btn" class="btn btn-danger">Close Room</button>
               </div>`

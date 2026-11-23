@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 import hashlib
 import random
 import secrets
@@ -24,6 +25,8 @@ from .const import (
     ALLOWED_WAGER_MODES,
     ANSWER_MODE_FREE_TEXT,
     ANSWER_MODE_MULTIPLE_CHOICE,
+    BONUS_WAGER_OPTIONS,
+    DEFAULT_BONUS_ROUND,
     DEFAULT_DIFFICULTY,
     DEFAULT_MAX_ROOMS,
     DEFAULT_ROUND_COUNT,
@@ -39,6 +42,7 @@ from .const import (
     MIN_MAX_ROOMS,
     MIN_ROUND_COUNT,
     MIN_WAGER,
+    PHASE_BONUS_WAGER,
     PHASE_FINALE,
     PHASE_LOBBY,
     PHASE_QUESTION,
@@ -256,6 +260,7 @@ class QuizEngine:
         difficulty: str | None = None,
         visibility: str | None,
         allow_late_join: bool | None,
+        bonus_round: bool | None = None,
         fallback_code: str,
     ) -> tuple[RoomSettings, list[str], str, bool, str | None]:
         all_packs = self.pack_registry.list_packs()
@@ -324,6 +329,7 @@ class QuizEngine:
             raise EngineError("invalid_visibility", f"Invalid visibility '{vis}'.")
 
         late_join = True if allow_late_join is None else bool(allow_late_join)
+        enable_bonus = DEFAULT_BONUS_ROUND if bonus_round is None else bool(bonus_round)
 
         pack_titles = [p.title for p in selected_packs]
         default_name = pack_titles[0] if len(pack_titles) == 1 else f"Mix ({len(pack_titles)} Packs)"
@@ -351,6 +357,7 @@ class QuizEngine:
             difficulty=diff,
             visibility=vis,
             allow_late_join=late_join,
+            bonus_round=enable_bonus,
         )
         return settings, pack_titles, primary_lang, primary_rtl, cover_url
 
@@ -371,6 +378,7 @@ class QuizEngine:
         difficulty: str | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
+        bonus_round: bool | None = None,
     ) -> tuple[Room, str, str]:
         """Create a new room if under max_rooms and session isn't already hosting.
 
@@ -408,6 +416,7 @@ class QuizEngine:
             difficulty=difficulty,
             visibility=visibility,
             allow_late_join=allow_late_join,
+            bonus_round=bonus_round,
             fallback_code=code,
         )
 
@@ -438,6 +447,18 @@ class QuizEngine:
         self.rooms[code] = room
         return room, session_token, host_token
 
+    def _regular_round_count(self, room: Room) -> int:
+        if room.questions:
+            return sum(1 for q in room.questions if not q.is_bonus)
+        return room.settings.round_count
+
+    def _bonus_wager_options(self, room: Room) -> tuple[int, ...]:
+        """Return bonus wager options capped to the maximum possible regular-round score."""
+        regular = self._regular_round_count(room)
+        max_regular_score = regular * (regular + 1) // 2
+        opts = tuple(v for v in BONUS_WAGER_OPTIONS if v <= max_regular_score)
+        return opts if opts else (BONUS_WAGER_OPTIONS[0],)
+
     def _initial_wagers_for_room(
         self, settings: RoomSettings, *, total_rounds: int | None = None
     ) -> list[int]:
@@ -461,6 +482,7 @@ class QuizEngine:
         difficulty: str | None = None,
         visibility: str | None = None,
         allow_late_join: bool | None = None,
+        bonus_round: bool | None = None,
     ) -> Room:
         """Update settings while the room is in Lobby."""
         room = self._require_room(code)
@@ -485,6 +507,7 @@ class QuizEngine:
             difficulty=difficulty if difficulty is not None else cur.difficulty,
             visibility=visibility if visibility is not None else cur.visibility,
             allow_late_join=allow_late_join if allow_late_join is not None else cur.allow_late_join,
+            bonus_round=bonus_round if bonus_round is not None else cur.bonus_round,
             fallback_code=room.code,
         )
         room.settings = settings
@@ -555,10 +578,17 @@ class QuizEngine:
             joined_at=now,
             available_wagers=self._initial_wagers_for_room(
                 room.settings,
-                total_rounds=len(room.questions) if room.questions else room.settings.round_count,
+                total_rounds=self._regular_round_count(room),
             ),
         )
         room.players[token] = player
+        if (
+            room.phase == PHASE_QUESTION
+            and 0 <= room.current_index < len(room.questions)
+            and room.questions[room.current_index].is_bonus
+        ):
+            bonus_opts = self._bonus_wager_options(room)
+            room.bonus_wagers.setdefault(token, bonus_opts[0])
         room.last_activity = now
         return room, player, token
 
@@ -649,7 +679,10 @@ class QuizEngine:
 
         self._rng.shuffle(pool)
         count = max(1, min(room.settings.round_count, len(pool)))
-        room.questions = pool[:count]
+        selected_questions = list(pool[:count])
+        if room.settings.bonus_round and len(pool) > count:
+            selected_questions.append(replace(pool[count], is_bonus=True))
+        room.questions = selected_questions
         room.pack_titles = pack_titles or room.pack_titles
 
         # Pin snapshot media bytes so active games survive admin pack deletion
@@ -659,7 +692,8 @@ class QuizEngine:
         else:
             room.pinned_media = {}
 
-        # Reset player stats cleanly with 1..N one-time confidence wager pool
+        # Reset player stats cleanly with 1..N one-time confidence wager pool (regular rounds only)
+        regular_count = self._regular_round_count(room)
         for player in room.players.values():
             player.score = 0
             player.streak = 0
@@ -668,11 +702,12 @@ class QuizEngine:
             player.answered_count = 0
             player.total_wagered = 0
             player.available_wagers = self._initial_wagers_for_room(
-                room.settings, total_rounds=len(room.questions)
+                room.settings, total_rounds=regular_count
             )
 
         room.round_history.clear()
         room.used_answers.clear()
+        room.bonus_wagers.clear()
         room.status = ROOM_STATUS_IN_PROGRESS
         room.paused = False
         room.remaining_when_paused = None
@@ -691,12 +726,55 @@ class QuizEngine:
         room.paused = False
         room.last_activity = now
 
-        # Defensive refill only if somehow depleted mid-game
-        remaining_rounds = len(room.questions) - room.current_index
-        for player in room.players.values():
-            if not player.available_wagers:
-                refill_size = max(MIN_WAGER, remaining_rounds)
-                player.available_wagers = list(range(MIN_WAGER, refill_size + 1))
+        # Defensive refill only if somehow depleted mid-game during regular rounds
+        current_q = room.questions[room.current_index] if 0 <= room.current_index < len(room.questions) else None
+        if current_q is None or not current_q.is_bonus:
+            remaining_regular = sum(
+                1 for q in room.questions[room.current_index:] if not q.is_bonus
+            )
+            for player in room.players.values():
+                if not player.available_wagers:
+                    refill_size = max(MIN_WAGER, remaining_regular)
+                    player.available_wagers = list(range(MIN_WAGER, refill_size + 1))
+
+    def submit_bonus_wager(
+        self,
+        code: str,
+        *,
+        session_token: str,
+        wager: int | None,
+    ) -> tuple[Room, int]:
+        """Lock in a player's blind bonus wager before the bonus question is revealed."""
+        room = self._require_room(code)
+        if room.phase != PHASE_BONUS_WAGER:
+            raise EngineError("not_bonus_wager_phase", "Bonus wagers can only be placed before the bonus question starts.")
+
+        player = room.players.get(session_token)
+        if player is None:
+            raise EngineError("not_in_room", "Join the room before placing a bonus wager.")
+
+        if session_token in room.bonus_wagers:
+            raise EngineError("already_submitted", "Your bonus wager is already locked in.")
+
+        bonus_opts = self._bonus_wager_options(room)
+        if wager is None:
+            chosen_wager = bonus_opts[0]
+        else:
+            if isinstance(wager, bool):
+                raise EngineError("invalid_wager", "Wager must be an integer.")
+            try:
+                chosen_wager = int(wager)
+            except (TypeError, ValueError) as err:
+                raise EngineError("invalid_wager", "Wager must be an integer.") from err
+            if chosen_wager not in bonus_opts:
+                raise EngineError(
+                    "wager_unavailable",
+                    f"Bonus wager must be one of {', '.join(str(x) for x in bonus_opts)}.",
+                )
+
+        room.bonus_wagers[session_token] = chosen_wager
+        room.last_activity = self._now()
+        return room, chosen_wager
 
     def submit_answer(
         self,
@@ -732,10 +810,15 @@ class QuizEngine:
             if clean_answer not in question.choices:
                 raise EngineError("invalid_choice", "Submitted choice is not valid for this question.")
 
-        # Validate wager against player's remaining 1..N chips; default to lowest available
-        if wager is None:
+        # Validate wager: bonus round strictly enforces pre-locked blind wager (or min option for late joiners)
+        if question.is_bonus:
+            bonus_opts = self._bonus_wager_options(room)
+            chosen_wager = room.bonus_wagers.setdefault(session_token, bonus_opts[0])
+        elif wager is None:
             chosen_wager = min(player.available_wagers) if player.available_wagers else MIN_WAGER
         else:
+            if isinstance(wager, bool):
+                raise EngineError("invalid_wager", "Wager must be an integer.")
             try:
                 chosen_wager = int(wager)
             except (TypeError, ValueError) as err:
@@ -786,9 +869,14 @@ class QuizEngine:
         for token, player in room.players.items():
             sub = room.current_submissions.get(token)
             if sub is None:
-                # Timer expired without answer -> consume lowest available confidence number
-                default_wager = min(player.available_wagers) if player.available_wagers else MIN_WAGER
-                timeout_delta = -default_wager if room.settings.deduct_wrong_wager else 0
+                # Timer expired without answer -> consume lowest available chip (or min bonus wager)
+                if question.is_bonus:
+                    bonus_opts = self._bonus_wager_options(room)
+                    default_wager = room.bonus_wagers.get(token, bonus_opts[0])
+                    timeout_delta = -default_wager
+                else:
+                    default_wager = min(player.available_wagers) if player.available_wagers else MIN_WAGER
+                    timeout_delta = -default_wager if room.settings.deduct_wrong_wager else 0
                 sub = PlayerSubmission(
                     answer="",
                     wager=default_wager,
@@ -800,7 +888,7 @@ class QuizEngine:
                 room.current_submissions[token] = sub
                 player.score += timeout_delta
                 player.streak = 0
-                if default_wager in player.available_wagers:
+                if not question.is_bonus and default_wager in player.available_wagers:
                     player.available_wagers.remove(default_wager)
             else:
                 dup_key = canonical_duplicate_key(sub.answer)
@@ -834,7 +922,8 @@ class QuizEngine:
                     sub.outcome = "correct" if correct else "wrong"
                     sub.duplicate_reason = ""
 
-                wrong_delta = -sub.wager if room.settings.deduct_wrong_wager else 0
+                deduct_wrong = True if question.is_bonus else room.settings.deduct_wrong_wager
+                wrong_delta = -sub.wager if deduct_wrong else 0
                 sub.delta = sub.wager if correct else wrong_delta
                 player.score += sub.delta
                 player.answered_count += 1
@@ -847,7 +936,7 @@ class QuizEngine:
                 else:
                     player.streak = 0
 
-                if sub.wager in player.available_wagers:
+                if not question.is_bonus and sub.wager in player.available_wagers:
                     player.available_wagers.remove(sub.wager)
 
             outcomes.append(
@@ -886,6 +975,7 @@ class QuizEngine:
             "open_ended": question.open_ended,
             "starts_with": question.starts_with,
             "difficulty": question.difficulty,
+            "is_bonus": question.is_bonus,
             "outcomes": outcomes,
         }
 
@@ -936,7 +1026,8 @@ class QuizEngine:
         desired_correct = bool(approve)
         if sub.is_correct != desired_correct:
             old_delta = sub.delta
-            wrong_delta = -sub.wager if room.settings.deduct_wrong_wager else 0
+            deduct_wrong = True if (cur_q and cur_q.is_bonus) else room.settings.deduct_wrong_wager
+            wrong_delta = -sub.wager if deduct_wrong else 0
             new_delta = sub.wager if desired_correct else wrong_delta
             player.score += new_delta - old_delta
             sub.is_correct = desired_correct
@@ -983,6 +1074,13 @@ class QuizEngine:
         room = self._require_room(code)
         self._require_host_or_admin(room, host_token=host_token, is_admin=is_admin)
 
+        if room.phase == PHASE_BONUS_WAGER:
+            bonus_opts = self._bonus_wager_options(room)
+            for token in room.players:
+                room.bonus_wagers.setdefault(token, bonus_opts[0])
+            self._begin_current_question(room)
+            return room
+
         if room.phase == PHASE_QUESTION:
             self.reveal_current_question(code)
             return room
@@ -990,6 +1088,17 @@ class QuizEngine:
         if room.phase == PHASE_REVEAL:
             if room.current_index + 1 < len(room.questions):
                 room.current_index += 1
+                next_q = room.questions[room.current_index]
+                if next_q.is_bonus:
+                    room.phase = PHASE_BONUS_WAGER
+                    room.bonus_wagers.clear()
+                    room.current_submissions = {}
+                    room.question_started_at = None
+                    room.question_ends_at = None
+                    room.paused = False
+                    room.remaining_when_paused = None
+                    room.last_activity = self._now()
+                    return room
                 self._begin_current_question(room)
                 return room
 
@@ -1054,6 +1163,7 @@ class QuizEngine:
         room.pinned_media = {}
         room.current_index = -1
         room.current_submissions = {}
+        room.bonus_wagers.clear()
         room.used_answers.clear()
         room.round_history = []
         room.question_started_at = None
@@ -1149,7 +1259,11 @@ class QuizEngine:
                     "answered_count": p.answered_count,
                     "connected": p.connected,
                     "is_host": p.is_host,
-                    "locked_in": p.session_token in room.current_submissions,
+                    "locked_in": (
+                        p.session_token in room.bonus_wagers
+                        if room.phase == PHASE_BONUS_WAGER
+                        else p.session_token in room.current_submissions
+                    ),
                 }
             )
         return rows
@@ -1253,6 +1367,7 @@ class QuizEngine:
                     "wager_mode": room.settings.wager_mode,
                     "unique_answers_only": room.settings.unique_answers_only,
                     "difficulty": room.settings.difficulty,
+                    "bonus_round": room.settings.bonus_round,
                     "top_players": [
                         {
                             "nickname": row["nickname"],
@@ -1290,6 +1405,7 @@ class QuizEngine:
                     "cover_url": room.cover_url,
                     "unique_answers_only": room.settings.unique_answers_only,
                     "difficulty": room.settings.difficulty,
+                    "bonus_round": room.settings.bonus_round,
                     "player_count": len(room.players),
                     "connected_count": sum(1 for p in room.players.values() if p.connected),
                     "players": [
@@ -1321,6 +1437,8 @@ class QuizEngine:
         """Serialize room state for a player or TV viewer WITHOUT leaking upcoming questions or answers."""
         now = self._now()
         leaderboard = self.build_leaderboard(room, for_session_token=for_session_token)
+        regular_count = self._regular_round_count(room)
+        bonus_opts = self._bonus_wager_options(room)
 
         active_question_payload: dict[str, Any] | None = None
         if room.phase in (PHASE_QUESTION, PHASE_REVEAL) and 0 <= room.current_index < len(room.questions):
@@ -1336,6 +1454,9 @@ class QuizEngine:
                 "index": room.current_index,
                 "round_number": room.current_index + 1,
                 "total_rounds": len(room.questions),
+                "regular_rounds": regular_count,
+                "is_bonus": q.is_bonus,
+                "bonus_wager_options": list(bonus_opts),
                 "id": q.id,
                 "prompt": q.prompt,
                 "choices": list(q.choices)
@@ -1385,10 +1506,27 @@ class QuizEngine:
                 "awards": self.build_awards(room),
             }
 
+        bonus_wager_payload: dict[str, Any] | None = None
+        if room.phase == PHASE_BONUS_WAGER:
+            bonus_wager_payload = {
+                "options": list(bonus_opts),
+                "locked_count": len(room.bonus_wagers),
+                "connected_count": sum(1 for p in room.players.values() if p.connected),
+                "regular_rounds": regular_count,
+            }
+
         me_payload: dict[str, Any] | None = None
         if for_session_token and for_session_token in room.players:
             me = room.players[for_session_token]
             my_sub = room.current_submissions.get(for_session_token)
+            is_active_bonus_q = bool(
+                active_question_payload and active_question_payload.get("is_bonus")
+            )
+            is_active_bonus = room.phase == PHASE_BONUS_WAGER or is_active_bonus_q
+            my_bonus_wager = room.bonus_wagers.get(
+                for_session_token,
+                bonus_opts[0] if is_active_bonus_q else None,
+            )
             me_payload = {
                 "session_token": me.session_token,
                 "nickname": me.nickname,
@@ -1397,8 +1535,11 @@ class QuizEngine:
                 "is_host": me.is_host,
                 "score": me.score,
                 "streak": me.streak,
-                "available_wagers": list(me.available_wagers),
-                "wager_pool_size": len(room.questions) if room.questions else room.settings.round_count,
+                "available_wagers": (
+                    list(bonus_opts) if is_active_bonus else list(me.available_wagers)
+                ),
+                "bonus_wager": my_bonus_wager,
+                "wager_pool_size": regular_count,
                 "submitted": my_sub is not None,
                 "my_submission": (
                     {
@@ -1430,13 +1571,20 @@ class QuizEngine:
                 "difficulty": room.settings.difficulty,
                 "visibility": room.settings.visibility,
                 "allow_late_join": room.settings.allow_late_join,
+                "bonus_round": room.settings.bonus_round,
+                "bonus_wager_options": list(bonus_opts),
             },
             "cover_url": room.cover_url,
             "language": room.pack_language,
             "rtl": room.pack_rtl,
             "players": leaderboard,
-            "locked_in_count": len(room.current_submissions),
+            "locked_in_count": (
+                len(room.bonus_wagers)
+                if room.phase == PHASE_BONUS_WAGER
+                else len(room.current_submissions)
+            ),
             "connected_count": sum(1 for p in room.players.values() if p.connected),
+            "bonus_wager": bonus_wager_payload,
             "question": active_question_payload,
             "reveal": reveal_payload,
             "finale": finale_payload,

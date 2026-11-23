@@ -51,6 +51,7 @@ class Question:
     open_ended: bool = False
     starts_with: str | None = None
     difficulty: str = DIFFICULTY_MEDIUM
+    is_bonus: bool = False
 
 
 @dataclass(frozen=True)
@@ -116,6 +117,7 @@ class SnapshotQuestion:
     open_ended: bool = False
     starts_with: str | None = None
     difficulty: str = DIFFICULTY_MEDIUM
+    is_bonus: bool = False
 
 
 @dataclass
@@ -166,6 +168,7 @@ class RoomSettings:
     difficulty: str = DEFAULT_DIFFICULTY
     visibility: str = VISIBILITY_PUBLIC
     allow_late_join: bool = True
+    bonus_round: bool = False
 
 
 @dataclass
@@ -191,6 +194,8 @@ class Room:
     current_index: int = -1
     # Per-round submissions keyed by player session_token
     current_submissions: dict[str, PlayerSubmission] = field(default_factory=dict)
+    # Blind wagers locked in during PHASE_BONUS_WAGER (session_token -> wager)
+    bonus_wagers: dict[str, int] = field(default_factory=dict)
     # Normalized answers already used in earlier rounds when unique_answers_only is enabled
     used_answers: set[str] = field(default_factory=set)
     # Historical reveal summaries per round

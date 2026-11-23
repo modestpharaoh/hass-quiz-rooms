@@ -576,6 +576,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     difficulty=data.get("difficulty"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
+                    bonus_round=data.get("bonus_round"),
                 )
                 client.role = "room"
                 client.room_code = room.code
@@ -666,6 +667,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     difficulty=data.get("difficulty"),
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
+                    bonus_round=data.get("bonus_round"),
                 )
                 await self.coordinator.broadcast_room_state(room.code)
                 await self.coordinator.broadcast_lobby_and_tv()
@@ -675,6 +677,19 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
             if msg_type == "start_game":
                 code = str(data.get("code") or client.room_code or "")
                 await self.coordinator.async_start_game(code, host_token=data.get("host_token"))
+                return
+
+            if msg_type == "submit_bonus_wager":
+                code = str(data.get("code") or client.room_code or "")
+                session_token = str(client.session_token or "")
+                if not session_token:
+                    raise EngineError("not_in_room", "Join the room before placing a bonus wager.")
+                room, _chosen = engine.submit_bonus_wager(
+                    code,
+                    session_token=session_token,
+                    wager=data.get("wager"),
+                )
+                await self.coordinator.broadcast_room_state(room.code)
                 return
 
             if msg_type == "submit_answer":

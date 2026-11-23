@@ -189,7 +189,7 @@
       state.lastPhaseKey = phaseKey;
       state.lastCountdownSec = -1;
       state.lastLockedCount = room.locked_in_count || 0;
-        if (hadPrev && room.phase === "question" && window.QuizRoomsSFX) {
+        if (hadPrev && (room.phase === "question" || room.phase === "bonus_wager") && window.QuizRoomsSFX) {
           window.QuizRoomsSFX.roundStart();
         } else if (room.phase === "reveal" && window.QuizRoomsSFX) {
           window.QuizRoomsSFX.reveal();
@@ -197,7 +197,7 @@
           if (window.QuizRoomsSFX) window.QuizRoomsSFX.finale();
           if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(1.8);
         }
-      } else if (room.phase === "question" && (room.locked_in_count || 0) > state.lastLockedCount) {
+      } else if ((room.phase === "question" || room.phase === "bonus_wager") && (room.locked_in_count || 0) > state.lastLockedCount) {
         state.lastLockedCount = room.locked_in_count;
         if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
       }
@@ -329,6 +329,7 @@
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} Player${r.player_count === 1 ? "" : "s"}</span>
                     ${diffBadgeHtml(r.difficulty)}
+                    ${r.bonus_round ? `<span class="badge badge-accent">★ Bonus</span>` : ""}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
                     <button type="button" class="btn btn-primary btn-sm" data-follow-code="${esc(r.code)}">Follow</button>
                   </div>
@@ -377,7 +378,7 @@
           <div>
             <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
             <p style="font-size:1.3rem;color:var(--text-secondary);margin-top:6px;" dir="auto">
-              ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds · ${room.settings.timer_seconds}s · ${room.settings.difficulty && room.settings.difficulty !== "random" ? esc(room.settings.difficulty.toUpperCase()) : "All Levels"}${room.settings.unique_answers_only ? " · No Repeated Answers" : ""}
+              ${esc(room.settings.pack_titles.join(" · "))} · ${room.settings.round_count} Rounds${room.settings.bonus_round ? " + ★ Bonus" : ""} · ${room.settings.timer_seconds}s · ${room.settings.difficulty && room.settings.difficulty !== "random" ? esc(room.settings.difficulty.toUpperCase()) : "All Levels"}${room.settings.unique_answers_only ? " · No Repeated Answers" : ""}
             </p>
           </div>
         </div>
@@ -389,6 +390,41 @@
               </span>`)
               .join("")}
         </div>`;
+        } else if (room.phase === "bonus_wager" && room.bonus_wager) {
+          const bw = room.bonus_wager;
+          const opts = bw.options || [5, 10, 15, 20, 25, 30];
+          const lo = opts[0] || 5;
+          const hi = opts[opts.length - 1] || 30;
+          stageHtml = `
+        <div class="tv-stage-meta">
+          <span class="badge" style="font-size:1.05rem;padding:8px 18px;background:var(--accent-amber);color:#120d02;font-weight:900;">
+            ★ FINAL BONUS ROUND · PLACE YOUR WAGERS
+          </span>
+          <span class="tv-room-code">${esc(room.code)}</span>
+        </div>
+
+        <div class="studio-card tv-reveal-box" style="border-color:var(--accent-amber);">
+          <div style="font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-amber);">
+            Blind High-Stakes Wager · ±${lo} to ±${hi} Points
+          </div>
+          <div class="tv-reveal-answer" style="font-size:clamp(1.6rem,3.4vh,2.6rem);">
+            Choose Your Points on Your Phone!
+          </div>
+          <p style="margin:0;font-size:clamp(1rem,1.8vh,1.25rem);color:var(--text-secondary);">
+            Stakes: <strong class="mono">${opts.map((v) => `±${v}`).join(" · ")}</strong> — Correct gains <strong>+Wager</strong>, wrong loses <strong>−Wager</strong>.
+          </p>
+        </div>
+
+        <div class="tv-lock-grid">
+          ${room.players
+              .map(
+                (p) => `<span class="tv-lock-badge ${p.locked_in ? "locked" : ""}" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
+                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+                ${p.locked_in ? "✓ " : ""}${esc(p.nickname)}
+              </span>`
+              )
+              .join("")}
+        </div>`;
         } else if (room.phase === "question" && room.question) {
           const q = room.question;
           const letters = ["A", "B", "C", "D", "E", "F"];
@@ -396,9 +432,14 @@
         <div>
           <div class="tv-stage-meta">
             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-              <span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">
-                Round ${q.round_number} / ${q.total_rounds}
-              </span>
+              ${q.is_bonus
+                ? (() => {
+                  const opts = q.bonus_wager_options || [5, 10, 15, 20, 25, 30];
+                  const lo = opts[0] || 5;
+                  const hi = opts[opts.length - 1] || 30;
+                  return `<span class="badge" style="font-size:1rem;padding:8px 16px;background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION · ±${lo}–${hi} PTS</span>`;
+                })()
+                : `<span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`}
               ${diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
@@ -454,9 +495,9 @@
           const rev = room.reveal;
           stageHtml = `
         <div class="tv-stage-meta">
-          <span class="badge badge-lobby" style="font-size:1rem;padding:8px 16px;">
-            Answer Reveal · Round ${rev.round_index + 1} / ${rev.total_rounds}
-          </span>
+          ${rev.is_bonus
+            ? `<span class="badge" style="font-size:1rem;padding:8px 16px;background:var(--accent-amber);color:#120d02;font-weight:900;">★ Final Bonus Reveal</span>`
+            : `<span class="badge badge-lobby" style="font-size:1rem;padding:8px 16px;">Answer Reveal · Round ${rev.round_index + 1} / ${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
 

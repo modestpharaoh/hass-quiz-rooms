@@ -292,3 +292,122 @@ def test_lobby_and_active_room_ttl_cleanup(pack_registry, fake_clock) -> None:
     expired2 = engine.cleanup_expired_rooms()
     assert expired2 == [active_room.code]
     assert engine.active_room_count == 0
+
+
+def test_final_bonus_question_wager_scoring_and_override(pack_registry, fake_clock) -> None:
+    """Verify blind Final Bonus Wager phase, round-scaled options (5..15 vs 5..30), and scoring."""
+    from custom_components.quizrooms.const import PHASE_BONUS_WAGER, PHASE_QUESTION
+
+    engine = QuizEngine(pack_registry, clock=fake_clock, rng=random.Random(13))
+
+    # 1. Verify 10-round game gets full [5, 10, 15, 20, 25, 30] bonus stakes
+    room10, _h10, _ht10 = engine.create_room(
+        host_session_token="bonus_host_10",
+        host_nickname="Host10",
+        pack_ids=["general_knowledge_en"],
+        round_count=10,
+        bonus_round=True,
+    )
+    assert engine.serialize_room_state(room10)["settings"]["bonus_wager_options"] == [5, 10, 15, 20, 25, 30]
+
+    # 2. Verify 5-round game (max regular score = 15) scales bonus stakes to [5, 10, 15]
+    room, host_sess, host_tok = engine.create_room(
+        host_session_token="bonus_host",
+        host_nickname="Host",
+        pack_ids=["general_knowledge_en"],
+        round_count=5,
+        answer_mode=ANSWER_MODE_FREE_TEXT,
+        deduct_wrong_wager=False,  # Even with regular deduction OFF, bonus always deducts -wager!
+        bonus_round=True,
+    )
+    engine.join_room(room.code, session_token="p2", nickname="RiskTaker")
+    engine.join_room(room.code, session_token="p3", nickname="Sleeper")
+
+    assert room.settings.bonus_round is True
+    engine.start_game(room.code, host_token=host_tok)
+
+    # 5 regular rounds + 1 bonus question = 6 total; regular pool stays 1..5
+    assert len(room.questions) == 6
+    assert all(not q.is_bonus for q in room.questions[:5])
+    assert room.questions[5].is_bonus is True
+    assert room.players[host_sess].available_wagers == [1, 2, 3, 4, 5]
+
+    # Play through all 5 regular rounds (all 3 players answer correctly with lowest chip)
+    for idx in range(5):
+        q = room.questions[idx]
+        engine.submit_answer(room.code, session_token=host_sess, answer=q.answer, wager=None)
+        engine.submit_answer(room.code, session_token="p2", answer=q.answer, wager=None)
+        engine.submit_answer(room.code, session_token="p3", answer=q.answer, wager=None)
+        engine.next_step(room.code, host_token=host_tok)  # reveal
+        assert room.round_history[-1]["is_bonus"] is False
+        engine.next_step(room.code, host_token=host_tok)  # advance
+
+    # After Round 5 reveal, advancing enters PHASE_BONUS_WAGER (blind wager BEFORE question!)
+    assert room.current_index == 5
+    assert room.phase == PHASE_BONUS_WAGER
+    bw_state = engine.serialize_room_state(room, for_session_token=host_sess)
+    assert bw_state["question"] is None  # Bonus question is NOT leaked before players wager!
+    assert bw_state["bonus_wager"]["options"] == [5, 10, 15]
+    assert bw_state["me"]["available_wagers"] == [5, 10, 15]
+
+    # Regular score after 1+2+3+4+5 = 15 for all three players
+    assert room.players[host_sess].score == 15
+    assert room.players["p2"].score == 15
+    assert room.players["p3"].score == 15
+
+    # Out-of-range wager (20 > max regular score 15) and boolean wager rejected
+    with pytest.raises(EngineError) as exc_info:
+        engine.submit_bonus_wager(room.code, session_token=host_sess, wager=20)
+    assert exc_info.value.code == "wager_unavailable"
+
+    with pytest.raises(EngineError) as exc_info:
+        engine.submit_bonus_wager(room.code, session_token=host_sess, wager=True)
+    assert exc_info.value.code == "invalid_wager"
+
+    # Host locks 15 blindly, p2 locks 10 blindly, p3 does not wager (defaults to 5 when host starts)
+    engine.submit_bonus_wager(room.code, session_token=host_sess, wager=15)
+    # Re-submitting after locking in is rejected
+    with pytest.raises(EngineError) as exc_info:
+        engine.submit_bonus_wager(room.code, session_token=host_sess, wager=5)
+    assert exc_info.value.code == "already_submitted"
+
+    engine.submit_bonus_wager(room.code, session_token="p2", wager=10)
+    assert engine.serialize_room_state(room, for_session_token=host_sess)["me"]["bonus_wager"] == 15
+
+    # Host advances -> reveals the actual Bonus Question!
+    engine.next_step(room.code, host_token=host_tok)
+    assert room.phase == PHASE_QUESTION
+
+    # Late joiner joining AFTER bonus question is visible cannot pick a high wager (pinned to min 5)
+    engine.join_room(room.code, session_token="p_late", nickname="LateJoiner")
+    engine.submit_answer(room.code, session_token="p_late", answer=room.questions[5].answer, wager=15)
+    assert room.current_submissions["p_late"].wager == 5
+    q_state = engine.serialize_room_state(room, for_session_token=host_sess)
+    assert q_state["question"]["is_bonus"] is True
+    assert q_state["question"]["bonus_wager_options"] == [5, 10, 15]
+    assert q_state["me"]["bonus_wager"] == 15
+
+    # Host answers right (even passing wager=5 is ignored — locked blind wager 15 is enforced!)
+    engine.submit_answer(room.code, session_token=host_sess, answer=room.questions[5].answer, wager=5)
+    # p2 answers wrong (locked wager 10 -> -10); p3 times out (default wager 5 -> -5)
+    engine.submit_answer(room.code, session_token="p2", answer="totally wrong bonus answer", wager=5)
+    engine.next_step(room.code, host_token=host_tok)  # reveal bonus
+
+    assert room.phase == PHASE_REVEAL
+    assert room.round_history[-1]["is_bonus"] is True
+    assert room.players[host_sess].score == 15 + 15
+    assert room.players["p2"].score == 15 - 10
+    assert room.players["p3"].score == 15 - 5
+
+    # Host override on p2 approves answer -> flips from -10 to +10 (+20 swing)
+    engine.override_free_text_answer(
+        room.code,
+        target_session_token="p2",
+        approve=True,
+        host_token=host_tok,
+    )
+    assert room.players["p2"].score == 15 + 10
+
+    # Advancing after bonus reveal enters Finale
+    engine.next_step(room.code, host_token=host_tok)
+    assert room.phase == PHASE_FINALE
