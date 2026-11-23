@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Country Map Outline #86">
+  <defs>
+    <linearGradient id="bg-86" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131720"/>
+      <stop offset="100%" stop-color="#1B2230"/>
+    </linearGradient>
+    <linearGradient id="land-86" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg-86)"/>
+  <g stroke="#2A3446" stroke-width="1.2" opacity="0.55">
+    <line x1="0" y1="120" x2="640" y2="120"/>
+    <line x1="0" y1="240" x2="640" y2="240"/>
+    <line x1="0" y1="360" x2="640" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="480"/>
+    <line x1="480" y1="0" x2="480" y2="480"/>
+  </g>
+  <g transform="translate(580, 56)" opacity="0.45" stroke="#94A3B8" stroke-width="1.8" fill="none">
+    <circle cx="0" cy="0" r="20"/>
+    <polygon points="0,-24 5,-5 0,-9 -5,-5" fill="#FBBF24" stroke="none"/>
+    <line x1="-16" y1="0" x2="16" y2="0"/>
+    <line x1="0" y1="-16" x2="0" y2="16"/>
+  </g>
+  <path d="M344.1,71.1 L376.7,71.3 L397.7,70.3 L403.8,60.0 L420.1,64.7 L429.3,74.6 L421.0,85.1 L409.4,97.1 L410.1,100.2 L418.8,101.2 L433.5,107.7 L442.6,115.3 L457.6,162.7 L448.3,182.3 L433.9,199.7 L427.4,201.2 L414.7,209.9 L404.1,221.7 L400.4,229.2 L401.2,236.2 L416.2,245.0 L416.6,248.5 L413.6,251.3 L401.4,249.3 L385.7,248.5 L376.5,248.5 L365.8,250.2 L352.1,260.9 L346.0,268.0 L342.7,272.5 L337.8,287.1 L343.3,297.1 L353.5,302.7 L355.0,305.6 L352.7,310.7 L342.5,316.9 L334.9,324.6 L332.7,332.5 L324.2,340.0 L318.9,343.6 L308.9,354.0 L299.1,362.3 L279.1,375.2 L274.5,383.0 L270.1,376.0 L261.4,380.7 L254.1,410.2 L238.8,420.0 L219.7,419.1 L203.8,416.3 L182.4,418.2 L191.0,401.1 L200.1,378.8 L209.0,348.8 L224.7,323.9 L257.4,239.4 L276.2,205.2 L282.9,156.7 L312.1,114.2 L333.9,101.6 L344.5,89.5 L344.1,71.1 Z" fill="url(#land-86)" stroke="#FBBF24" stroke-width="2.6" stroke-linejoin="round" fill-rule="evenodd"/>
+</svg>

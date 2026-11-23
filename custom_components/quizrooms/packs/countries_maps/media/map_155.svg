@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Country Map Outline #155">
+  <defs>
+    <linearGradient id="bg-155" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131720"/>
+      <stop offset="100%" stop-color="#1B2230"/>
+    </linearGradient>
+    <linearGradient id="land-155" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg-155)"/>
+  <g stroke="#2A3446" stroke-width="1.2" opacity="0.55">
+    <line x1="0" y1="120" x2="640" y2="120"/>
+    <line x1="0" y1="240" x2="640" y2="240"/>
+    <line x1="0" y1="360" x2="640" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="480"/>
+    <line x1="480" y1="0" x2="480" y2="480"/>
+  </g>
+  <g transform="translate(580, 56)" opacity="0.45" stroke="#94A3B8" stroke-width="1.8" fill="none">
+    <circle cx="0" cy="0" r="20"/>
+    <polygon points="0,-24 5,-5 0,-9 -5,-5" fill="#FBBF24" stroke="none"/>
+    <line x1="-16" y1="0" x2="16" y2="0"/>
+    <line x1="0" y1="-16" x2="0" y2="16"/>
+  </g>
+  <path d="M320.8,345.3 L314.7,357.9 L309.8,371.2 L307.9,383.8 L308.0,396.7 L306.6,408.4 L304.2,420.0 L294.6,416.7 L289.4,408.4 L288.2,394.8 L281.3,378.4 L278.7,373.7 L268.7,364.5 L259.7,359.9 L252.6,353.1 L248.4,344.6 L244.4,334.8 L236.3,307.2 L233.5,300.6 L229.7,294.5 L228.6,288.5 L229.9,281.8 L233.4,271.8 L235.6,261.7 L233.9,248.0 L234.5,234.4 L237.2,228.4 L283.5,145.7 L296.1,128.2 L303.8,119.5 L310.2,109.8 L316.4,97.5 L323.9,86.2 L329.3,82.7 L355.9,72.6 L364.2,63.0 L370.8,60.0 L378.4,60.2 L383.2,64.8 L387.6,70.2 L392.1,73.2 L403.9,78.5 L409.0,83.7 L411.4,92.6 L404.2,101.0 L400.6,108.6 L400.0,117.0 L401.3,128.3 L401.4,139.7 L392.5,166.5 L382.9,183.2 L380.3,191.5 L377.3,212.1 L371.7,232.8 L366.9,259.0 L359.0,286.0 L354.6,297.3 L349.0,308.1 L335.8,328.6 L320.8,345.3 Z" fill="url(#land-155)" stroke="#FBBF24" stroke-width="2.6" stroke-linejoin="round" fill-rule="evenodd"/>
+</svg>

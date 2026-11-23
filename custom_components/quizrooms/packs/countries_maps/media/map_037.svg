@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Country Map Outline #37">
+  <defs>
+    <linearGradient id="bg-37" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131720"/>
+      <stop offset="100%" stop-color="#1B2230"/>
+    </linearGradient>
+    <linearGradient id="land-37" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg-37)"/>
+  <g stroke="#2A3446" stroke-width="1.2" opacity="0.55">
+    <line x1="0" y1="120" x2="640" y2="120"/>
+    <line x1="0" y1="240" x2="640" y2="240"/>
+    <line x1="0" y1="360" x2="640" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="480"/>
+    <line x1="480" y1="0" x2="480" y2="480"/>
+  </g>
+  <g transform="translate(580, 56)" opacity="0.45" stroke="#94A3B8" stroke-width="1.8" fill="none">
+    <circle cx="0" cy="0" r="20"/>
+    <polygon points="0,-24 5,-5 0,-9 -5,-5" fill="#FBBF24" stroke="none"/>
+    <line x1="-16" y1="0" x2="16" y2="0"/>
+    <line x1="0" y1="-16" x2="0" y2="16"/>
+  </g>
+  <path d="M182.4,133.1 L184.6,142.4 L203.6,153.2 L229.0,162.7 L243.9,163.3 L263.6,152.9 L290.9,142.1 L324.6,132.4 L341.6,138.2 L364.6,139.4 L381.9,136.2 L393.9,144.0 L403.3,158.4 L405.7,193.3 L409.2,195.0 L424.1,181.1 L450.5,186.9 L468.6,188.6 L483.6,181.6 L492.8,180.7 L503.3,177.6 L515.1,170.8 L525.4,161.2 L536.3,164.1 L554.9,174.5 L566.4,171.5 L572.1,178.6 L580.0,199.3 L546.2,205.4 L512.3,207.5 L493.4,204.8 L475.7,206.0 L420.7,265.2 L391.2,285.4 L356.0,297.4 L320.1,304.5 L302.1,305.4 L286.3,312.9 L275.2,326.7 L274.9,340.1 L270.2,351.1 L250.5,348.8 L242.3,327.2 L228.3,317.9 L193.5,322.7 L176.5,322.2 L120.8,301.6 L104.0,293.2 L93.5,275.5 L64.8,212.0 L60.0,165.1 L86.7,177.1 L111.7,162.5 L135.8,138.7 L164.5,128.9 L182.4,133.1 Z" fill="url(#land-37)" stroke="#FBBF24" stroke-width="2.6" stroke-linejoin="round" fill-rule="evenodd"/>
+</svg>

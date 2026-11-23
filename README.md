@@ -4,7 +4,7 @@
 
 # QuizRooms for Home Assistant
 
-**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **15 built-in packs (1,558+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
+**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **16 built-in packs (1,739+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
 
 ---
 
@@ -215,13 +215,14 @@ automation:
 
 ---
 
-## Built-In Trivia Packs (15 Packs)
+## Built-In Trivia Packs (16 Packs)
 
 Every built-in pack includes a custom SVG cover and per-question `easy` / `medium` / `hard` difficulty tags:
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |
 | **World Countries & Global Flags** | EN | MC & Free-Text | 209 locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
+| **Guess the Country on the Map** | EN | MC & Free-Text | 169 locally bundled country map silhouette SVGs (derived from Public Domain Natural Earth 1:50m vectors) |
 | **World Countries & Capitals** | EN | MC & Free-Text | 196+ world countries & capitals with Arabic/local aliases |
 | **World Populations (2026)** | EN | MC & Free-Text | 90 countries with 2026 demographic estimates |
 | **Official Languages of the World** | EN | MC & Free-Text | 105 countries & their official national languages |

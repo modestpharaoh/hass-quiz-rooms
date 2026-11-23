@@ -1,0 +1,3020 @@
+{
+  "pack_id": "countries_maps",
+  "title": "Guess the Country on the Map",
+  "description": "Identify 169 world countries from their cartographic map silhouettes! Play in Multiple Choice or Free-Text mode.",
+  "cover": "media/cover.svg",
+  "open_ended": false,
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms (outlines derived from Natural Earth 1:50m, Public Domain / CC0)",
+  "category": "Geography",
+  "questions": [
+    {
+      "id": "map_ae",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_001.svg",
+      "choices": [
+        "United Arab Emirates",
+        "Qatar",
+        "Timor-Leste",
+        "Vietnam"
+      ],
+      "answer": "United Arab Emirates",
+      "aliases": [
+        "UAE",
+        "Emirates",
+        "U.A.E.",
+        "الإمارات"
+      ],
+      "explanation": "Capital: Abu Dhabi · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_af",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_002.svg",
+      "choices": [
+        "Mongolia",
+        "Afghanistan",
+        "Iran",
+        "Thailand"
+      ],
+      "answer": "Afghanistan",
+      "aliases": [],
+      "explanation": "Capital: Kabul · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_al",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_003.svg",
+      "choices": [
+        "Netherlands",
+        "Albania",
+        "Hungary",
+        "Cyprus"
+      ],
+      "answer": "Albania",
+      "aliases": [],
+      "explanation": "Capital: Tirana · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_am",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_004.svg",
+      "choices": [
+        "Lebanon",
+        "Armenia",
+        "Kuwait",
+        "Pakistan"
+      ],
+      "answer": "Armenia",
+      "aliases": [],
+      "explanation": "Capital: Yerevan · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ao",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_005.svg",
+      "choices": [
+        "Guinea",
+        "Zimbabwe",
+        "Botswana",
+        "Angola"
+      ],
+      "answer": "Angola",
+      "aliases": [],
+      "explanation": "Capital: Luanda · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ar",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_006.svg",
+      "choices": [
+        "Argentina",
+        "Paraguay",
+        "Trinidad and Tobago",
+        "Colombia"
+      ],
+      "answer": "Argentina",
+      "aliases": [],
+      "explanation": "Capital: Buenos Aires · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_at",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_007.svg",
+      "choices": [
+        "North Macedonia",
+        "Montenegro",
+        "Austria",
+        "Russia"
+      ],
+      "answer": "Austria",
+      "aliases": [
+        "Österreich",
+        "Osterreich"
+      ],
+      "explanation": "Capital: Vienna · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_au",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_008.svg",
+      "choices": [
+        "Australia",
+        "Solomon Islands",
+        "Fiji",
+        "Papua New Guinea"
+      ],
+      "answer": "Australia",
+      "aliases": [],
+      "explanation": "Capital: Canberra · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_az",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_009.svg",
+      "choices": [
+        "Lebanon",
+        "Bangladesh",
+        "Malaysia",
+        "Azerbaijan"
+      ],
+      "answer": "Azerbaijan",
+      "aliases": [],
+      "explanation": "Capital: Baku · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ba",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_010.svg",
+      "choices": [
+        "Hungary",
+        "Albania",
+        "Netherlands",
+        "Bosnia and Herzegovina"
+      ],
+      "answer": "Bosnia and Herzegovina",
+      "aliases": [
+        "Bosnia",
+        "Bosnia & Herzegovina"
+      ],
+      "explanation": "Capital: Sarajevo · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bd",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_011.svg",
+      "choices": [
+        "Uzbekistan",
+        "Iran",
+        "Jordan",
+        "Bangladesh"
+      ],
+      "answer": "Bangladesh",
+      "aliases": [],
+      "explanation": "Capital: Dhaka · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_be",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_012.svg",
+      "choices": [
+        "Bosnia and Herzegovina",
+        "North Macedonia",
+        "Belgium",
+        "Germany"
+      ],
+      "answer": "Belgium",
+      "aliases": [
+        "België",
+        "Belgique"
+      ],
+      "explanation": "Capital: Brussels · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_bf",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_013.svg",
+      "choices": [
+        "Nigeria",
+        "Tanzania",
+        "Burkina Faso",
+        "Mauritania"
+      ],
+      "answer": "Burkina Faso",
+      "aliases": [],
+      "explanation": "Capital: Ouagadougou · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_bg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_014.svg",
+      "choices": [
+        "Bulgaria",
+        "Ireland",
+        "Croatia",
+        "Russia"
+      ],
+      "answer": "Bulgaria",
+      "aliases": [],
+      "explanation": "Capital: Sofia · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bi",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_015.svg",
+      "choices": [
+        "Burundi",
+        "Rwanda",
+        "Guinea-Bissau",
+        "Mauritania"
+      ],
+      "answer": "Burundi",
+      "aliases": [],
+      "explanation": "Capital: Bujumbura · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_bj",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_016.svg",
+      "choices": [
+        "Gabon",
+        "Burundi",
+        "Madagascar",
+        "Benin"
+      ],
+      "answer": "Benin",
+      "aliases": [],
+      "explanation": "Capital: Porto-Novo · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_017.svg",
+      "choices": [
+        "Brunei",
+        "Lebanon",
+        "Azerbaijan",
+        "China"
+      ],
+      "answer": "Brunei",
+      "aliases": [],
+      "explanation": "Capital: Bandar Seri Begawan · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bo",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_018.svg",
+      "choices": [
+        "Bolivia",
+        "Colombia",
+        "Paraguay",
+        "Venezuela"
+      ],
+      "answer": "Bolivia",
+      "aliases": [],
+      "explanation": "Capital: Sucre · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_br",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_019.svg",
+      "choices": [
+        "Brazil",
+        "Peru",
+        "Guyana",
+        "Ecuador"
+      ],
+      "answer": "Brazil",
+      "aliases": [
+        "Brasil"
+      ],
+      "explanation": "Capital: Brasília · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_bs",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_020.svg",
+      "choices": [
+        "Bahamas",
+        "Guatemala",
+        "United States",
+        "El Salvador"
+      ],
+      "answer": "Bahamas",
+      "aliases": [],
+      "explanation": "Capital: Nassau · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bt",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_021.svg",
+      "choices": [
+        "Bhutan",
+        "Pakistan",
+        "Türkiye",
+        "India"
+      ],
+      "answer": "Bhutan",
+      "aliases": [],
+      "explanation": "Capital: Thimphu · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_022.svg",
+      "choices": [
+        "Mali",
+        "Botswana",
+        "Uganda",
+        "Republic of the Congo"
+      ],
+      "answer": "Botswana",
+      "aliases": [],
+      "explanation": "Capital: Gaborone · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_by",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_023.svg",
+      "choices": [
+        "Czechia",
+        "Lithuania",
+        "Belarus",
+        "Finland"
+      ],
+      "answer": "Belarus",
+      "aliases": [],
+      "explanation": "Capital: Minsk · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_bz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_024.svg",
+      "choices": [
+        "Belize",
+        "Guatemala",
+        "Canada",
+        "El Salvador"
+      ],
+      "answer": "Belize",
+      "aliases": [],
+      "explanation": "Capital: Belmopan · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ca",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_025.svg",
+      "choices": [
+        "Nicaragua",
+        "Canada",
+        "Dominican Republic",
+        "Cuba"
+      ],
+      "answer": "Canada",
+      "aliases": [],
+      "explanation": "Capital: Ottawa · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_cd",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_026.svg",
+      "choices": [
+        "Ethiopia",
+        "Democratic Republic of the Congo",
+        "Mauritania",
+        "Guinea"
+      ],
+      "answer": "Democratic Republic of the Congo",
+      "aliases": [
+        "DRC",
+        "DR Congo",
+        "Congo-Kinshasa"
+      ],
+      "explanation": "Capital: Kinshasa · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_cf",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_027.svg",
+      "choices": [
+        "Morocco",
+        "Central African Republic",
+        "Chad",
+        "Mauritania"
+      ],
+      "answer": "Central African Republic",
+      "aliases": [],
+      "explanation": "Capital: Bangui · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_cg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_028.svg",
+      "choices": [
+        "Zimbabwe",
+        "Burkina Faso",
+        "Equatorial Guinea",
+        "Republic of the Congo"
+      ],
+      "answer": "Republic of the Congo",
+      "aliases": [
+        "Congo",
+        "Congo-Brazzaville"
+      ],
+      "explanation": "Capital: Brazzaville · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_ch",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_029.svg",
+      "choices": [
+        "Spain",
+        "Switzerland",
+        "Hungary",
+        "Slovakia"
+      ],
+      "answer": "Switzerland",
+      "aliases": [
+        "Swiss Confederation",
+        "Helvetia"
+      ],
+      "explanation": "Capital: Bern · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ci",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_030.svg",
+      "choices": [
+        "Ivory Coast",
+        "Rwanda",
+        "Djibouti",
+        "Eswatini"
+      ],
+      "answer": "Ivory Coast",
+      "aliases": [
+        "Côte d'Ivoire",
+        "Cote d'Ivoire"
+      ],
+      "explanation": "Capital: Yamoussoukro · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_cl",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_031.svg",
+      "choices": [
+        "Chile",
+        "Venezuela",
+        "Paraguay",
+        "Ecuador"
+      ],
+      "answer": "Chile",
+      "aliases": [],
+      "explanation": "Capital: Santiago · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_cm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_032.svg",
+      "choices": [
+        "Kenya",
+        "Chad",
+        "Madagascar",
+        "Cameroon"
+      ],
+      "answer": "Cameroon",
+      "aliases": [],
+      "explanation": "Capital: Yaoundé · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_cn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_033.svg",
+      "choices": [
+        "North Korea",
+        "Cambodia",
+        "China",
+        "Armenia"
+      ],
+      "answer": "China",
+      "aliases": [
+        "PRC",
+        "People's Republic of China"
+      ],
+      "explanation": "Capital: Beijing · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_co",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_034.svg",
+      "choices": [
+        "Brazil",
+        "Chile",
+        "Colombia",
+        "Venezuela"
+      ],
+      "answer": "Colombia",
+      "aliases": [],
+      "explanation": "Capital: Bogotá · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_cr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_035.svg",
+      "choices": [
+        "Nicaragua",
+        "El Salvador",
+        "Panama",
+        "Costa Rica"
+      ],
+      "answer": "Costa Rica",
+      "aliases": [],
+      "explanation": "Capital: San José · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_cu",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_036.svg",
+      "choices": [
+        "Cuba",
+        "Honduras",
+        "Panama",
+        "Belize"
+      ],
+      "answer": "Cuba",
+      "aliases": [],
+      "explanation": "Capital: Havana · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_cy",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_037.svg",
+      "choices": [
+        "Latvia",
+        "Cyprus",
+        "Estonia",
+        "Norway"
+      ],
+      "answer": "Cyprus",
+      "aliases": [],
+      "explanation": "Capital: Nicosia · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_cz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_038.svg",
+      "choices": [
+        "Austria",
+        "Russia",
+        "Czechia",
+        "Romania"
+      ],
+      "answer": "Czechia",
+      "aliases": [
+        "Czech Republic"
+      ],
+      "explanation": "Capital: Prague · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_de",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_039.svg",
+      "choices": [
+        "Iceland",
+        "Germany",
+        "Bosnia and Herzegovina",
+        "Slovenia"
+      ],
+      "answer": "Germany",
+      "aliases": [
+        "Deutschland"
+      ],
+      "explanation": "Capital: Berlin · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_dj",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_040.svg",
+      "choices": [
+        "Mauritius",
+        "Algeria",
+        "Burundi",
+        "Djibouti"
+      ],
+      "answer": "Djibouti",
+      "aliases": [],
+      "explanation": "Capital: Djibouti · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_dk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_041.svg",
+      "choices": [
+        "Czechia",
+        "Croatia",
+        "Denmark",
+        "North Macedonia"
+      ],
+      "answer": "Denmark",
+      "aliases": [
+        "Danmark"
+      ],
+      "explanation": "Capital: Copenhagen · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_do",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_042.svg",
+      "choices": [
+        "Bahamas",
+        "Dominican Republic",
+        "Honduras",
+        "El Salvador"
+      ],
+      "answer": "Dominican Republic",
+      "aliases": [],
+      "explanation": "Capital: Santo Domingo · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_dz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_043.svg",
+      "choices": [
+        "Sudan",
+        "Algeria",
+        "Tunisia",
+        "Lesotho"
+      ],
+      "answer": "Algeria",
+      "aliases": [
+        "الجزائر"
+      ],
+      "explanation": "Capital: Algiers · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ec",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_044.svg",
+      "choices": [
+        "Ecuador",
+        "Peru",
+        "Uruguay",
+        "Suriname"
+      ],
+      "answer": "Ecuador",
+      "aliases": [],
+      "explanation": "Capital: Quito · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ee",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_045.svg",
+      "choices": [
+        "Sweden",
+        "Slovakia",
+        "Luxembourg",
+        "Estonia"
+      ],
+      "answer": "Estonia",
+      "aliases": [],
+      "explanation": "Capital: Tallinn · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_eg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_046.svg",
+      "choices": [
+        "Egypt",
+        "Zambia",
+        "Namibia",
+        "Eswatini"
+      ],
+      "answer": "Egypt",
+      "aliases": [
+        "Misr",
+        "Arab Republic of Egypt",
+        "مصر"
+      ],
+      "explanation": "Capital: Cairo · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_er",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_047.svg",
+      "choices": [
+        "Eritrea",
+        "Benin",
+        "Burundi",
+        "Algeria"
+      ],
+      "answer": "Eritrea",
+      "aliases": [],
+      "explanation": "Capital: Asmara · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_es",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_048.svg",
+      "choices": [
+        "Ireland",
+        "Belgium",
+        "Bulgaria",
+        "Spain"
+      ],
+      "answer": "Spain",
+      "aliases": [
+        "España",
+        "Espana"
+      ],
+      "explanation": "Capital: Madrid · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_et",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_049.svg",
+      "choices": [
+        "Ethiopia",
+        "Benin",
+        "Central African Republic",
+        "Botswana"
+      ],
+      "answer": "Ethiopia",
+      "aliases": [],
+      "explanation": "Capital: Addis Ababa · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_fi",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_050.svg",
+      "choices": [
+        "France",
+        "Hungary",
+        "Finland",
+        "Slovakia"
+      ],
+      "answer": "Finland",
+      "aliases": [
+        "Suomi"
+      ],
+      "explanation": "Capital: Helsinki · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_fj",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_051.svg",
+      "choices": [
+        "Fiji",
+        "Tonga",
+        "Papua New Guinea",
+        "Solomon Islands"
+      ],
+      "answer": "Fiji",
+      "aliases": [],
+      "explanation": "Capital: Suva · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_fr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_052.svg",
+      "choices": [
+        "Moldova",
+        "France",
+        "Greece",
+        "Switzerland"
+      ],
+      "answer": "France",
+      "aliases": [
+        "French Republic"
+      ],
+      "explanation": "Capital: Paris · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ga",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_053.svg",
+      "choices": [
+        "Egypt",
+        "South Sudan",
+        "Gabon",
+        "Zimbabwe"
+      ],
+      "answer": "Gabon",
+      "aliases": [],
+      "explanation": "Capital: Libreville · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_gb",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_054.svg",
+      "choices": [
+        "Belarus",
+        "United Kingdom",
+        "Slovakia",
+        "Iceland"
+      ],
+      "answer": "United Kingdom",
+      "aliases": [
+        "UK",
+        "Britain",
+        "Great Britain",
+        "U.K."
+      ],
+      "explanation": "Capital: London · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ge",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_055.svg",
+      "choices": [
+        "Afghanistan",
+        "Iraq",
+        "Georgia",
+        "Sri Lanka"
+      ],
+      "answer": "Georgia",
+      "aliases": [],
+      "explanation": "Capital: Tbilisi · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_gh",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_056.svg",
+      "choices": [
+        "Namibia",
+        "Morocco",
+        "Somalia",
+        "Ghana"
+      ],
+      "answer": "Ghana",
+      "aliases": [],
+      "explanation": "Capital: Accra · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_gm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_057.svg",
+      "choices": [
+        "Malawi",
+        "Eritrea",
+        "Burundi",
+        "Gambia"
+      ],
+      "answer": "Gambia",
+      "aliases": [],
+      "explanation": "Capital: Banjul · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_gn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_058.svg",
+      "choices": [
+        "Guinea",
+        "Mozambique",
+        "Ivory Coast",
+        "Gabon"
+      ],
+      "answer": "Guinea",
+      "aliases": [],
+      "explanation": "Capital: Conakry · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_gq",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_059.svg",
+      "choices": [
+        "Equatorial Guinea",
+        "Zimbabwe",
+        "Kenya",
+        "Nigeria"
+      ],
+      "answer": "Equatorial Guinea",
+      "aliases": [],
+      "explanation": "Capital: Malabo · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_gr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_060.svg",
+      "choices": [
+        "Slovakia",
+        "Greece",
+        "Russia",
+        "Switzerland"
+      ],
+      "answer": "Greece",
+      "aliases": [
+        "Hellas"
+      ],
+      "explanation": "Capital: Athens · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_gt",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_061.svg",
+      "choices": [
+        "Guatemala",
+        "Dominican Republic",
+        "Bahamas",
+        "Jamaica"
+      ],
+      "answer": "Guatemala",
+      "aliases": [],
+      "explanation": "Capital: Guatemala City · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_gw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_062.svg",
+      "choices": [
+        "Tunisia",
+        "Senegal",
+        "Guinea",
+        "Guinea-Bissau"
+      ],
+      "answer": "Guinea-Bissau",
+      "aliases": [],
+      "explanation": "Capital: Bissau · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_gy",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_063.svg",
+      "choices": [
+        "Guyana",
+        "Venezuela",
+        "Uruguay",
+        "Argentina"
+      ],
+      "answer": "Guyana",
+      "aliases": [],
+      "explanation": "Capital: Georgetown · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_hn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_064.svg",
+      "choices": [
+        "Haiti",
+        "Bahamas",
+        "Honduras",
+        "Panama"
+      ],
+      "answer": "Honduras",
+      "aliases": [],
+      "explanation": "Capital: Tegucigalpa · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_hr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_065.svg",
+      "choices": [
+        "Sweden",
+        "Italy",
+        "Croatia",
+        "Spain"
+      ],
+      "answer": "Croatia",
+      "aliases": [
+        "Hrvatska"
+      ],
+      "explanation": "Capital: Zagreb · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ht",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_066.svg",
+      "choices": [
+        "Haiti",
+        "Belize",
+        "Honduras",
+        "United States"
+      ],
+      "answer": "Haiti",
+      "aliases": [],
+      "explanation": "Capital: Port-au-Prince · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_hu",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_067.svg",
+      "choices": [
+        "Spain",
+        "France",
+        "Hungary",
+        "Montenegro"
+      ],
+      "answer": "Hungary",
+      "aliases": [
+        "Magyarország"
+      ],
+      "explanation": "Capital: Budapest · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_id",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_068.svg",
+      "choices": [
+        "South Korea",
+        "North Korea",
+        "Indonesia",
+        "Qatar"
+      ],
+      "answer": "Indonesia",
+      "aliases": [],
+      "explanation": "Capital: Jakarta · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ie",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_069.svg",
+      "choices": [
+        "Ireland",
+        "Kosovo",
+        "France",
+        "Italy"
+      ],
+      "answer": "Ireland",
+      "aliases": [
+        "Republic of Ireland",
+        "Éire",
+        "Eire"
+      ],
+      "explanation": "Capital: Dublin · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_in",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_070.svg",
+      "choices": [
+        "India",
+        "Brunei",
+        "Georgia",
+        "Azerbaijan"
+      ],
+      "answer": "India",
+      "aliases": [
+        "Bharat"
+      ],
+      "explanation": "Capital: New Delhi · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_iq",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_071.svg",
+      "choices": [
+        "Afghanistan",
+        "Oman",
+        "Iraq",
+        "Iran"
+      ],
+      "answer": "Iraq",
+      "aliases": [
+        "العراق"
+      ],
+      "explanation": "Capital: Baghdad · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ir",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_072.svg",
+      "choices": [
+        "Iran",
+        "Japan",
+        "Taiwan",
+        "Iraq"
+      ],
+      "answer": "Iran",
+      "aliases": [],
+      "explanation": "Capital: Tehran · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_is",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_073.svg",
+      "choices": [
+        "Sweden",
+        "Iceland",
+        "North Macedonia",
+        "France"
+      ],
+      "answer": "Iceland",
+      "aliases": [
+        "Ísland"
+      ],
+      "explanation": "Capital: Reykjavik · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_it",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_074.svg",
+      "choices": [
+        "Switzerland",
+        "Slovakia",
+        "Italy",
+        "Montenegro"
+      ],
+      "answer": "Italy",
+      "aliases": [
+        "Italia"
+      ],
+      "explanation": "Capital: Rome · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_jm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_075.svg",
+      "choices": [
+        "Panama",
+        "Mexico",
+        "Costa Rica",
+        "Jamaica"
+      ],
+      "answer": "Jamaica",
+      "aliases": [],
+      "explanation": "Capital: Kingston · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_jo",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_076.svg",
+      "choices": [
+        "Oman",
+        "Georgia",
+        "Lebanon",
+        "Jordan"
+      ],
+      "answer": "Jordan",
+      "aliases": [
+        "الأردن"
+      ],
+      "explanation": "Capital: Amman · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_jp",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_077.svg",
+      "choices": [
+        "South Korea",
+        "Japan",
+        "United Arab Emirates",
+        "Mongolia"
+      ],
+      "answer": "Japan",
+      "aliases": [
+        "Nippon",
+        "Nihon"
+      ],
+      "explanation": "Capital: Tokyo · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ke",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_078.svg",
+      "choices": [
+        "Kenya",
+        "Rwanda",
+        "Burkina Faso",
+        "Chad"
+      ],
+      "answer": "Kenya",
+      "aliases": [],
+      "explanation": "Capital: Nairobi · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_kg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_079.svg",
+      "choices": [
+        "Nepal",
+        "Kyrgyzstan",
+        "South Korea",
+        "Philippines"
+      ],
+      "answer": "Kyrgyzstan",
+      "aliases": [],
+      "explanation": "Capital: Bishkek · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_kh",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_080.svg",
+      "choices": [
+        "Yemen",
+        "Sri Lanka",
+        "Timor-Leste",
+        "Cambodia"
+      ],
+      "answer": "Cambodia",
+      "aliases": [],
+      "explanation": "Capital: Phnom Penh · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_kp",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_081.svg",
+      "choices": [
+        "South Korea",
+        "North Korea",
+        "Azerbaijan",
+        "United Arab Emirates"
+      ],
+      "answer": "North Korea",
+      "aliases": [
+        "DPRK"
+      ],
+      "explanation": "Capital: Pyongyang · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_kr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_082.svg",
+      "choices": [
+        "Turkmenistan",
+        "South Korea",
+        "Iraq",
+        "Lebanon"
+      ],
+      "answer": "South Korea",
+      "aliases": [
+        "ROK",
+        "Korea",
+        "Republic of Korea"
+      ],
+      "explanation": "Capital: Seoul · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_kw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_083.svg",
+      "choices": [
+        "Jordan",
+        "Afghanistan",
+        "Kuwait",
+        "Armenia"
+      ],
+      "answer": "Kuwait",
+      "aliases": [
+        "الكويت"
+      ],
+      "explanation": "Capital: Kuwait City · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_kz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_084.svg",
+      "choices": [
+        "Indonesia",
+        "Kazakhstan",
+        "Vietnam",
+        "Yemen"
+      ],
+      "answer": "Kazakhstan",
+      "aliases": [],
+      "explanation": "Capital: Astana · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_la",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_085.svg",
+      "choices": [
+        "Laos",
+        "Malaysia",
+        "Tajikistan",
+        "Brunei"
+      ],
+      "answer": "Laos",
+      "aliases": [],
+      "explanation": "Capital: Vientiane · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_lb",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_086.svg",
+      "choices": [
+        "Brunei",
+        "Lebanon",
+        "Palestine",
+        "Iran"
+      ],
+      "answer": "Lebanon",
+      "aliases": [
+        "لبنان"
+      ],
+      "explanation": "Capital: Beirut · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_lk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_087.svg",
+      "choices": [
+        "Bhutan",
+        "Laos",
+        "Nepal",
+        "Sri Lanka"
+      ],
+      "answer": "Sri Lanka",
+      "aliases": [],
+      "explanation": "Capital: Sri Jayawardenepura Kotte, Colombo · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_lr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_088.svg",
+      "choices": [
+        "Gambia",
+        "Malawi",
+        "Democratic Republic of the Congo",
+        "Liberia"
+      ],
+      "answer": "Liberia",
+      "aliases": [],
+      "explanation": "Capital: Monrovia · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ls",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_089.svg",
+      "choices": [
+        "Benin",
+        "Togo",
+        "Lesotho",
+        "Chad"
+      ],
+      "answer": "Lesotho",
+      "aliases": [],
+      "explanation": "Capital: Maseru · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_lt",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_090.svg",
+      "choices": [
+        "Lithuania",
+        "Norway",
+        "France",
+        "Montenegro"
+      ],
+      "answer": "Lithuania",
+      "aliases": [],
+      "explanation": "Capital: Vilnius · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_lu",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_091.svg",
+      "choices": [
+        "Luxembourg",
+        "United Kingdom",
+        "Hungary",
+        "Netherlands"
+      ],
+      "answer": "Luxembourg",
+      "aliases": [],
+      "explanation": "Capital: Luxembourg City · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_lv",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_092.svg",
+      "choices": [
+        "Ireland",
+        "Luxembourg",
+        "Latvia",
+        "Sweden"
+      ],
+      "answer": "Latvia",
+      "aliases": [],
+      "explanation": "Capital: Riga · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ly",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_093.svg",
+      "choices": [
+        "Libya",
+        "Burundi",
+        "Mozambique",
+        "Botswana"
+      ],
+      "answer": "Libya",
+      "aliases": [
+        "ليبيا"
+      ],
+      "explanation": "Capital: Tripoli · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ma",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_094.svg",
+      "choices": [
+        "Senegal",
+        "Morocco",
+        "South Sudan",
+        "Tanzania"
+      ],
+      "answer": "Morocco",
+      "aliases": [
+        "المغرب"
+      ],
+      "explanation": "Capital: Rabat · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_md",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_095.svg",
+      "choices": [
+        "Moldova",
+        "Belgium",
+        "Netherlands",
+        "Belarus"
+      ],
+      "answer": "Moldova",
+      "aliases": [],
+      "explanation": "Capital: Chișinău · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_me",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_096.svg",
+      "choices": [
+        "Germany",
+        "Lithuania",
+        "Montenegro",
+        "Slovakia"
+      ],
+      "answer": "Montenegro",
+      "aliases": [],
+      "explanation": "Capital: Podgorica · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_097.svg",
+      "choices": [
+        "Mozambique",
+        "Guinea-Bissau",
+        "Madagascar",
+        "Mauritania"
+      ],
+      "answer": "Madagascar",
+      "aliases": [],
+      "explanation": "Capital: Antananarivo · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_098.svg",
+      "choices": [
+        "Croatia",
+        "Cyprus",
+        "North Macedonia",
+        "Kosovo"
+      ],
+      "answer": "North Macedonia",
+      "aliases": [
+        "Macedonia"
+      ],
+      "explanation": "Capital: Skopje · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ml",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_099.svg",
+      "choices": [
+        "Mali",
+        "Kenya",
+        "Ethiopia",
+        "Zambia"
+      ],
+      "answer": "Mali",
+      "aliases": [],
+      "explanation": "Capital: Bamako · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_100.svg",
+      "choices": [
+        "India",
+        "Myanmar",
+        "Japan",
+        "China"
+      ],
+      "answer": "Myanmar",
+      "aliases": [
+        "Burma"
+      ],
+      "explanation": "Capital: Naypyidaw · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_101.svg",
+      "choices": [
+        "Azerbaijan",
+        "United Arab Emirates",
+        "Mongolia",
+        "Iraq"
+      ],
+      "answer": "Mongolia",
+      "aliases": [],
+      "explanation": "Capital: Ulaanbaatar · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_102.svg",
+      "choices": [
+        "Sudan",
+        "Mauritania",
+        "South Africa",
+        "Eritrea"
+      ],
+      "answer": "Mauritania",
+      "aliases": [],
+      "explanation": "Capital: Nouakchott · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mu",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_103.svg",
+      "choices": [
+        "Ethiopia",
+        "Mauritius",
+        "Mozambique",
+        "Libya"
+      ],
+      "answer": "Mauritius",
+      "aliases": [],
+      "explanation": "Capital: Port Louis · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_mw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_104.svg",
+      "choices": [
+        "Tanzania",
+        "Niger",
+        "Algeria",
+        "Malawi"
+      ],
+      "answer": "Malawi",
+      "aliases": [],
+      "explanation": "Capital: Lilongwe · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_mx",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_105.svg",
+      "choices": [
+        "Haiti",
+        "United States",
+        "Mexico",
+        "Guatemala"
+      ],
+      "answer": "Mexico",
+      "aliases": [],
+      "explanation": "Capital: Mexico City · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_my",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_106.svg",
+      "choices": [
+        "Jordan",
+        "Yemen",
+        "Malaysia",
+        "Azerbaijan"
+      ],
+      "answer": "Malaysia",
+      "aliases": [],
+      "explanation": "Capital: Kuala Lumpur · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_mz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_107.svg",
+      "choices": [
+        "Mozambique",
+        "Tanzania",
+        "Algeria",
+        "South Sudan"
+      ],
+      "answer": "Mozambique",
+      "aliases": [],
+      "explanation": "Capital: Maputo · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_na",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_108.svg",
+      "choices": [
+        "Eritrea",
+        "Sierra Leone",
+        "Djibouti",
+        "Namibia"
+      ],
+      "answer": "Namibia",
+      "aliases": [],
+      "explanation": "Capital: Windhoek · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ne",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_109.svg",
+      "choices": [
+        "Mauritania",
+        "Niger",
+        "Equatorial Guinea",
+        "Chad"
+      ],
+      "answer": "Niger",
+      "aliases": [],
+      "explanation": "Capital: Niamey · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ng",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_110.svg",
+      "choices": [
+        "Nigeria",
+        "Chad",
+        "Eswatini",
+        "Madagascar"
+      ],
+      "answer": "Nigeria",
+      "aliases": [],
+      "explanation": "Capital: Abuja · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ni",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_111.svg",
+      "choices": [
+        "United States",
+        "Cuba",
+        "Nicaragua",
+        "Haiti"
+      ],
+      "answer": "Nicaragua",
+      "aliases": [],
+      "explanation": "Capital: Managua · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_nl",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_112.svg",
+      "choices": [
+        "Ireland",
+        "Netherlands",
+        "Germany",
+        "North Macedonia"
+      ],
+      "answer": "Netherlands",
+      "aliases": [
+        "Holland",
+        "The Netherlands"
+      ],
+      "explanation": "Capital: Amsterdam · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_no",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_113.svg",
+      "choices": [
+        "Albania",
+        "Serbia",
+        "Norway",
+        "France"
+      ],
+      "answer": "Norway",
+      "aliases": [
+        "Norge"
+      ],
+      "explanation": "Capital: Oslo · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_np",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_114.svg",
+      "choices": [
+        "Mongolia",
+        "Nepal",
+        "Pakistan",
+        "Qatar"
+      ],
+      "answer": "Nepal",
+      "aliases": [],
+      "explanation": "Capital: Kathmandu · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_nz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_115.svg",
+      "choices": [
+        "Tonga",
+        "Australia",
+        "New Zealand",
+        "Vanuatu"
+      ],
+      "answer": "New Zealand",
+      "aliases": [
+        "Aotearoa"
+      ],
+      "explanation": "Capital: Wellington · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_om",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_116.svg",
+      "choices": [
+        "Oman",
+        "Palestine",
+        "Kuwait",
+        "Indonesia"
+      ],
+      "answer": "Oman",
+      "aliases": [
+        "عمان",
+        "عُمان"
+      ],
+      "explanation": "Capital: Muscat · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_pa",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_117.svg",
+      "choices": [
+        "Panama",
+        "Cuba",
+        "Belize",
+        "Honduras"
+      ],
+      "answer": "Panama",
+      "aliases": [],
+      "explanation": "Capital: Panama City · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_pe",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_118.svg",
+      "choices": [
+        "Trinidad and Tobago",
+        "Brazil",
+        "Guyana",
+        "Peru"
+      ],
+      "answer": "Peru",
+      "aliases": [],
+      "explanation": "Capital: Lima · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_pg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_119.svg",
+      "choices": [
+        "Fiji",
+        "Australia",
+        "Vanuatu",
+        "Papua New Guinea"
+      ],
+      "answer": "Papua New Guinea",
+      "aliases": [],
+      "explanation": "Capital: Port Moresby · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ph",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_120.svg",
+      "choices": [
+        "Cambodia",
+        "Malaysia",
+        "Laos",
+        "Philippines"
+      ],
+      "answer": "Philippines",
+      "aliases": [],
+      "explanation": "Capital: Manila · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_pk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_121.svg",
+      "choices": [
+        "Japan",
+        "Pakistan",
+        "Palestine",
+        "Armenia"
+      ],
+      "answer": "Pakistan",
+      "aliases": [],
+      "explanation": "Capital: Islamabad · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_pl",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_122.svg",
+      "choices": [
+        "Poland",
+        "Belarus",
+        "Estonia",
+        "Bosnia and Herzegovina"
+      ],
+      "answer": "Poland",
+      "aliases": [
+        "Polska"
+      ],
+      "explanation": "Capital: Warsaw · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_pt",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_124.svg",
+      "choices": [
+        "Finland",
+        "North Macedonia",
+        "Portugal",
+        "Bosnia and Herzegovina"
+      ],
+      "answer": "Portugal",
+      "aliases": [],
+      "explanation": "Capital: Lisbon · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_py",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_125.svg",
+      "choices": [
+        "Colombia",
+        "Paraguay",
+        "Brazil",
+        "Ecuador"
+      ],
+      "answer": "Paraguay",
+      "aliases": [],
+      "explanation": "Capital: Asunción · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_qa",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_126.svg",
+      "choices": [
+        "Cambodia",
+        "Armenia",
+        "Timor-Leste",
+        "Qatar"
+      ],
+      "answer": "Qatar",
+      "aliases": [
+        "قطر"
+      ],
+      "explanation": "Capital: Doha · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ro",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_127.svg",
+      "choices": [
+        "France",
+        "Iceland",
+        "Bosnia and Herzegovina",
+        "Romania"
+      ],
+      "answer": "Romania",
+      "aliases": [],
+      "explanation": "Capital: Bucharest · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_rs",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_128.svg",
+      "choices": [
+        "Montenegro",
+        "Czechia",
+        "Serbia",
+        "Poland"
+      ],
+      "answer": "Serbia",
+      "aliases": [],
+      "explanation": "Capital: Belgrade · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ru",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_129.svg",
+      "choices": [
+        "Luxembourg",
+        "Norway",
+        "Germany",
+        "Russia"
+      ],
+      "answer": "Russia",
+      "aliases": [
+        "Russian Federation"
+      ],
+      "explanation": "Capital: Moscow · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_rw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_130.svg",
+      "choices": [
+        "Sierra Leone",
+        "Burkina Faso",
+        "Rwanda",
+        "Mauritania"
+      ],
+      "answer": "Rwanda",
+      "aliases": [],
+      "explanation": "Capital: Kigali · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sa",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_131.svg",
+      "choices": [
+        "Myanmar",
+        "Saudi Arabia",
+        "Uzbekistan",
+        "Indonesia"
+      ],
+      "answer": "Saudi Arabia",
+      "aliases": [
+        "KSA",
+        "Kingdom of Saudi Arabia",
+        "السعودية"
+      ],
+      "explanation": "Capital: Riyadh · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_sb",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_132.svg",
+      "choices": [
+        "Vanuatu",
+        "Tonga",
+        "Solomon Islands",
+        "Papua New Guinea"
+      ],
+      "answer": "Solomon Islands",
+      "aliases": [],
+      "explanation": "Capital: Honiara · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_sd",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_133.svg",
+      "choices": [
+        "Kenya",
+        "Mali",
+        "Sudan",
+        "Tunisia"
+      ],
+      "answer": "Sudan",
+      "aliases": [
+        "السودان"
+      ],
+      "explanation": "Capital: Khartoum · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_se",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_134.svg",
+      "choices": [
+        "Sweden",
+        "Croatia",
+        "Italy",
+        "Belgium"
+      ],
+      "answer": "Sweden",
+      "aliases": [
+        "Sverige"
+      ],
+      "explanation": "Capital: Stockholm · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_si",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_135.svg",
+      "choices": [
+        "United Kingdom",
+        "Denmark",
+        "Lithuania",
+        "Slovenia"
+      ],
+      "answer": "Slovenia",
+      "aliases": [],
+      "explanation": "Capital: Ljubljana · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_136.svg",
+      "choices": [
+        "Moldova",
+        "Romania",
+        "Slovakia",
+        "Montenegro"
+      ],
+      "answer": "Slovakia",
+      "aliases": [],
+      "explanation": "Capital: Bratislava · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sl",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_137.svg",
+      "choices": [
+        "Sierra Leone",
+        "Burkina Faso",
+        "Somalia",
+        "Botswana"
+      ],
+      "answer": "Sierra Leone",
+      "aliases": [],
+      "explanation": "Capital: Freetown · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_138.svg",
+      "choices": [
+        "Burundi",
+        "Senegal",
+        "Sierra Leone",
+        "Central African Republic"
+      ],
+      "answer": "Senegal",
+      "aliases": [],
+      "explanation": "Capital: Dakar · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_so",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_139.svg",
+      "choices": [
+        "Somalia",
+        "Cameroon",
+        "Sudan",
+        "Liberia"
+      ],
+      "answer": "Somalia",
+      "aliases": [],
+      "explanation": "Capital: Mogadishu · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_140.svg",
+      "choices": [
+        "Suriname",
+        "Brazil",
+        "Ecuador",
+        "Colombia"
+      ],
+      "answer": "Suriname",
+      "aliases": [],
+      "explanation": "Capital: Paramaribo · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ss",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_141.svg",
+      "choices": [
+        "Democratic Republic of the Congo",
+        "Uganda",
+        "South Sudan",
+        "Malawi"
+      ],
+      "answer": "South Sudan",
+      "aliases": [],
+      "explanation": "Capital: Juba · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_sv",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_142.svg",
+      "choices": [
+        "El Salvador",
+        "Panama",
+        "Cuba",
+        "Haiti"
+      ],
+      "answer": "El Salvador",
+      "aliases": [],
+      "explanation": "Capital: San Salvador · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_sy",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_143.svg",
+      "choices": [
+        "Uzbekistan",
+        "Brunei",
+        "United Arab Emirates",
+        "Syria"
+      ],
+      "answer": "Syria",
+      "aliases": [
+        "سوريا"
+      ],
+      "explanation": "Capital: Damascus · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_sz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_144.svg",
+      "choices": [
+        "Namibia",
+        "Botswana",
+        "Eswatini",
+        "Senegal"
+      ],
+      "answer": "Eswatini",
+      "aliases": [
+        "Swaziland"
+      ],
+      "explanation": "Capital: Lobamba, Mbabane · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_td",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_145.svg",
+      "choices": [
+        "Ivory Coast",
+        "Ghana",
+        "Chad",
+        "Namibia"
+      ],
+      "answer": "Chad",
+      "aliases": [],
+      "explanation": "Capital: N'Djamena · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_tg",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_146.svg",
+      "choices": [
+        "Burundi",
+        "Kenya",
+        "Tunisia",
+        "Togo"
+      ],
+      "answer": "Togo",
+      "aliases": [],
+      "explanation": "Capital: Lomé · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_th",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_147.svg",
+      "choices": [
+        "Iraq",
+        "Palestine",
+        "Thailand",
+        "Qatar"
+      ],
+      "answer": "Thailand",
+      "aliases": [],
+      "explanation": "Capital: Bangkok · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_tj",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_148.svg",
+      "choices": [
+        "Lebanon",
+        "Cambodia",
+        "Tajikistan",
+        "Saudi Arabia"
+      ],
+      "answer": "Tajikistan",
+      "aliases": [],
+      "explanation": "Capital: Dushanbe · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_tl",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_149.svg",
+      "choices": [
+        "Timor-Leste",
+        "Bhutan",
+        "Brunei",
+        "Iraq"
+      ],
+      "answer": "Timor-Leste",
+      "aliases": [
+        "East Timor"
+      ],
+      "explanation": "Capital: Dili · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_tm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_150.svg",
+      "choices": [
+        "Turkmenistan",
+        "Yemen",
+        "Saudi Arabia",
+        "Nepal"
+      ],
+      "answer": "Turkmenistan",
+      "aliases": [],
+      "explanation": "Capital: Ashgabat · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_tn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_151.svg",
+      "choices": [
+        "Eswatini",
+        "Ethiopia",
+        "Togo",
+        "Tunisia"
+      ],
+      "answer": "Tunisia",
+      "aliases": [
+        "تونس"
+      ],
+      "explanation": "Capital: Tunis · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_to",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_152.svg",
+      "choices": [
+        "Papua New Guinea",
+        "Tonga",
+        "New Zealand",
+        "Solomon Islands"
+      ],
+      "answer": "Tonga",
+      "aliases": [],
+      "explanation": "Capital: Nukuʻalofa · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_tr",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_153.svg",
+      "choices": [
+        "Georgia",
+        "Türkiye",
+        "Palestine",
+        "South Korea"
+      ],
+      "answer": "Türkiye",
+      "aliases": [
+        "Türkiye",
+        "Turkiye",
+        "Republic of Turkey"
+      ],
+      "explanation": "Capital: Ankara · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_tt",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_154.svg",
+      "choices": [
+        "Paraguay",
+        "Colombia",
+        "Trinidad and Tobago",
+        "Uruguay"
+      ],
+      "answer": "Trinidad and Tobago",
+      "aliases": [],
+      "explanation": "Capital: Port of Spain · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_tw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_155.svg",
+      "choices": [
+        "Georgia",
+        "Tajikistan",
+        "Taiwan",
+        "Palestine"
+      ],
+      "answer": "Taiwan",
+      "aliases": [
+        "Republic of China"
+      ],
+      "explanation": "Capital: Taipei · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_tz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_156.svg",
+      "choices": [
+        "Togo",
+        "Tanzania",
+        "Cameroon",
+        "Ghana"
+      ],
+      "answer": "Tanzania",
+      "aliases": [],
+      "explanation": "Capital: Dodoma · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ua",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_157.svg",
+      "choices": [
+        "Finland",
+        "Ukraine",
+        "Netherlands",
+        "Slovenia"
+      ],
+      "answer": "Ukraine",
+      "aliases": [
+        "Україна"
+      ],
+      "explanation": "Capital: Kiev · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_ug",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_158.svg",
+      "choices": [
+        "Botswana",
+        "Ethiopia",
+        "Egypt",
+        "Uganda"
+      ],
+      "answer": "Uganda",
+      "aliases": [],
+      "explanation": "Capital: Kampala · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_us",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_159.svg",
+      "choices": [
+        "Nicaragua",
+        "United States",
+        "Honduras",
+        "Belize"
+      ],
+      "answer": "United States",
+      "aliases": [
+        "USA",
+        "US",
+        "U.S.",
+        "U.S.A.",
+        "America",
+        "United States of America"
+      ],
+      "explanation": "Capital: Washington, D.C. · Region: North America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_uy",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_160.svg",
+      "choices": [
+        "Venezuela",
+        "Argentina",
+        "Uruguay",
+        "Peru"
+      ],
+      "answer": "Uruguay",
+      "aliases": [],
+      "explanation": "Capital: Montevideo · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_uz",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_161.svg",
+      "choices": [
+        "Myanmar",
+        "India",
+        "Palestine",
+        "Uzbekistan"
+      ],
+      "answer": "Uzbekistan",
+      "aliases": [],
+      "explanation": "Capital: Tashkent · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_ve",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_162.svg",
+      "choices": [
+        "Venezuela",
+        "Peru",
+        "Trinidad and Tobago",
+        "Argentina"
+      ],
+      "answer": "Venezuela",
+      "aliases": [],
+      "explanation": "Capital: Caracas · Region: South America.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_vn",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_163.svg",
+      "choices": [
+        "Saudi Arabia",
+        "Vietnam",
+        "Syria",
+        "Nepal"
+      ],
+      "answer": "Vietnam",
+      "aliases": [
+        "Viet Nam"
+      ],
+      "explanation": "Capital: Hanoi · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_vu",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_164.svg",
+      "choices": [
+        "Fiji",
+        "Papua New Guinea",
+        "Solomon Islands",
+        "Vanuatu"
+      ],
+      "answer": "Vanuatu",
+      "aliases": [],
+      "explanation": "Capital: Port Vila · Region: Oceania.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_xk",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_165.svg",
+      "choices": [
+        "Romania",
+        "Kosovo",
+        "Greece",
+        "Ireland"
+      ],
+      "answer": "Kosovo",
+      "aliases": [],
+      "explanation": "Capital: Pristina · Region: Europe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "map_ye",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_166.svg",
+      "choices": [
+        "Sri Lanka",
+        "Yemen",
+        "South Korea",
+        "Bhutan"
+      ],
+      "answer": "Yemen",
+      "aliases": [
+        "اليمن"
+      ],
+      "explanation": "Capital: Sana'a · Region: Asia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_za",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_167.svg",
+      "choices": [
+        "Ghana",
+        "Equatorial Guinea",
+        "South Africa",
+        "Guinea"
+      ],
+      "answer": "South Africa",
+      "aliases": [
+        "RSA"
+      ],
+      "explanation": "Capital: Pretoria · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "map_zm",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_168.svg",
+      "choices": [
+        "Gambia",
+        "Equatorial Guinea",
+        "Algeria",
+        "Zambia"
+      ],
+      "answer": "Zambia",
+      "aliases": [],
+      "explanation": "Capital: Lusaka · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "map_zw",
+      "prompt": "Which country is shown by this map outline?",
+      "image": "media/map_169.svg",
+      "choices": [
+        "Uganda",
+        "Zimbabwe",
+        "Nigeria",
+        "Burundi"
+      ],
+      "answer": "Zimbabwe",
+      "aliases": [],
+      "explanation": "Capital: Harare · Region: Africa.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    }
+  ]
+}

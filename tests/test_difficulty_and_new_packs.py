@@ -40,6 +40,7 @@ EXPECTED_PACK_IDS = {
     "asia_gk_en",
     "south_america_gk_en",
     "country_official_languages",
+    "countries_maps",
 }
 
 
@@ -86,9 +87,11 @@ def test_all_15_builtin_packs_load_with_valid_covers_and_balanced_difficulties(t
         assert by_id[dm_id].open_ended is False
         assert all(len(q.choices) >= 2 and q.answer in q.choices for q in by_id[dm_id].questions)
 
-    # Verify populations & official languages scale
+    # Verify populations, official languages, and country map outlines scale
     assert len(by_id["countries_populations_2026"].questions) >= 90
     assert len(by_id["country_official_languages"].questions) >= 100
+    assert len(by_id["countries_maps"].questions) >= 150
+    assert by_id["countries_maps"].to_summary()["has_media"] is True
 
 
 def test_room_difficulty_filter_random_easy_medium_hard(tmp_path: Path) -> None:

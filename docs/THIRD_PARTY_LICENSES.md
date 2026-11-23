@@ -8,12 +8,13 @@ QuizRooms is designed as a **local-first, zero-CDN** Home Assistant integration.
 
 | Component | Path in Repository | Upstream Project | License |
 | --- | --- | --- | --- |
-| World Country Flag SVGs (197 files) | `custom_components/quizrooms/packs/countries_flags/media/flag_*.svg` | [lipis/flag-icons](https://github.com/lipis/flag-icons) | MIT License |
+| World Country Flag SVGs | `custom_components/quizrooms/packs/countries_flags/media/flag_*.svg` | [lipis/flag-icons](https://github.com/lipis/flag-icons) | MIT License |
+| World Country Map Silhouette SVGs (169 files) | `custom_components/quizrooms/packs/countries_maps/media/map_*.svg` | [Natural Earth 1:50m Cultural Vectors](https://github.com/nvkelso/natural-earth-vector) | Public Domain (CC0) |
 | Latin UI/Display Font | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-latin.woff` | Ubuntu Font Family | Ubuntu Font Licence 1.0 |
 | Arabic & Latin UI Fonts | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-regular.woff`<br>`custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-bold.woff` | DejaVu Sans (Bitstream Vera derivative) | Bitstream Vera / DejaVu Fonts License |
 | Monospace Numerals Font | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-mono.woff` | Google Noto Sans Mono | SIL Open Font License 1.1 (OFL-1.1) |
 
-> **Original Content Note:** All trivia questions across the 15 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
+> **Original Content Note:** All trivia questions across the 16 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
 
 ---
 
@@ -151,4 +152,23 @@ THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS
 FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR
 OTHER RIGHT.
+```
+
+---
+
+## 5. Natural Earth Vector Data — Public Domain (CC0)
+
+Applies to the country map outline paths in `custom_components/quizrooms/packs/countries_maps/media/map_*.svg` (projected and simplified from `ne_50m_admin_0_countries.geojson`).
+
+```text
+Natural Earth — Free vector and raster map data at 1:10m, 1:50m, and 1:110m scales
+https://www.naturalearthdata.com/ · https://github.com/nvkelso/natural-earth-vector
+
+Made with Natural Earth.
+All versions of Natural Earth raster + vector map data found on this website are
+in the public domain (CC0 1.0 Universal). You may use the maps in any manner,
+including modifying the content and design, electronic dissemination, and offset
+printing. The primary authors, Tom Patterson and Nathaniel Vaughn Kelso, and all
+other contributors renounce all financial claim to the maps and invites you to
+use them for personal, educational, and commercial purposes.
 ```

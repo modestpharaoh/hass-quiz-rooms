@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Country Map Outline #123">
+  <defs>
+    <linearGradient id="bg-123" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131720"/>
+      <stop offset="100%" stop-color="#1B2230"/>
+    </linearGradient>
+    <linearGradient id="land-123" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg-123)"/>
+  <g stroke="#2A3446" stroke-width="1.2" opacity="0.55">
+    <line x1="0" y1="120" x2="640" y2="120"/>
+    <line x1="0" y1="240" x2="640" y2="240"/>
+    <line x1="0" y1="360" x2="640" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="480"/>
+    <line x1="480" y1="0" x2="480" y2="480"/>
+  </g>
+  <g transform="translate(580, 56)" opacity="0.45" stroke="#94A3B8" stroke-width="1.8" fill="none">
+    <circle cx="0" cy="0" r="20"/>
+    <polygon points="0,-24 5,-5 0,-9 -5,-5" fill="#FBBF24" stroke="none"/>
+    <line x1="-16" y1="0" x2="16" y2="0"/>
+    <line x1="0" y1="-16" x2="0" y2="16"/>
+  </g>
+  <path d="M473.6,97.7 L478.4,140.5 L469.8,177.1 L469.0,209.2 L475.4,268.7 L461.6,294.0 L453.8,323.9 L450.4,346.4 L440.7,345.5 L410.3,361.8 L369.8,377.1 L325.2,381.2 L318.9,376.6 L317.2,368.8 L330.2,330.9 L335.2,313.0 L354.5,293.8 L381.9,277.2 L393.5,272.9 L392.1,265.8 L375.8,254.8 L358.8,249.1 L342.6,254.8 L337.5,253.0 L335.8,248.2 L341.5,241.3 L344.1,228.6 L341.6,207.4 L339.9,181.4 L336.3,161.4 L346.4,128.8 L348.9,113.3 L361.5,80.1 L391.0,60.0 L416.5,65.8 L430.0,67.3 L435.6,71.2 L439.3,82.7 L458.2,96.0 L473.6,97.7 Z M226.0,317.8 L236.8,329.5 L237.1,333.9 L196.7,378.1 L196.3,397.0 L172.5,420.0 L164.9,397.2 L161.6,389.0 L205.2,345.2 L226.0,317.8 Z" fill="url(#land-123)" stroke="#FBBF24" stroke-width="2.6" stroke-linejoin="round" fill-rule="evenodd"/>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Guess the Country on the Map">
+  <defs>
+    <linearGradient id="cm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141820"/>
+      <stop offset="100%" stop-color="#1C222D"/>
+    </linearGradient>
+    <linearGradient id="cm-land" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="cm-pin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="28" fill="url(#cm-bg)"/>
+  <g stroke="#2D3748" stroke-width="1.5" opacity="0.65">
+    <line x1="0" y1="120" x2="640" y2="120"/>
+    <line x1="0" y1="240" x2="640" y2="240"/>
+    <line x1="0" y1="360" x2="640" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="480"/>
+    <line x1="480" y1="0" x2="480" y2="480"/>
+  </g>
+  <circle cx="320" cy="240" r="172" fill="none" stroke="#2DD4BF" stroke-width="3" stroke-dasharray="10 8" opacity="0.45"/>
+  <path d="M210 155 L268 135 L330 148 L385 128 L430 168 L412 228 L442 276 L396 338 L334 352 L286 318 L235 332 L192 278 L215 218 Z" fill="url(#cm-land)" stroke="#FBBF24" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M452 315 L485 304 L504 335 L476 362 L448 345 Z" fill="url(#cm-land)" stroke="#FBBF24" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M320 112 C284 112 256 140 256 176 C256 222 320 282 320 282 C320 282 384 222 384 176 C384 140 356 112 320 112 Z" fill="url(#cm-pin)" stroke="#141820" stroke-width="6"/>
+  <circle cx="320" cy="174" r="24" fill="#141820"/>
+  <text x="320" y="183" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="800" fill="#FBBF24">?</text>
+</svg>
