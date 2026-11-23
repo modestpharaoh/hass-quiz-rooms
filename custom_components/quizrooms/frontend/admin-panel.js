@@ -862,7 +862,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
           </div>
 
           <div class="stage-box">
-            <strong>Local Speaker Announcer (EN &amp; AR)</strong>
+            <strong>Local Speaker Announcer (Multilingual)</strong>
             <label class="field-lbl">
               <span>Speaker Media Player</span>
               <select id="stage-speaker-select" class="input">
@@ -889,9 +889,13 @@ class QuizRoomsAdminPanel extends HTMLElement {
             <label class="field-lbl">
               <span>Announcement Language</span>
               <select id="stage-speaker-language" class="input">
-                <option value="auto" ${draft.speaker_language === "auto" ? "selected" : ""}>Auto (Match Pack: Arabic / English)</option>
+                <option value="auto" ${draft.speaker_language === "auto" ? "selected" : ""}>Auto (Match Pack Language)</option>
                 <option value="en" ${draft.speaker_language === "en" ? "selected" : ""}>Force English</option>
                 <option value="ar" ${draft.speaker_language === "ar" ? "selected" : ""}>Force Arabic (العربية)</option>
+                <option value="de" ${draft.speaker_language === "de" ? "selected" : ""}>Force German (Deutsch)</option>
+                <option value="fr" ${draft.speaker_language === "fr" ? "selected" : ""}>Force French (Français)</option>
+                <option value="es" ${draft.speaker_language === "es" ? "selected" : ""}>Force Spanish (Español)</option>
+                <option value="pt" ${draft.speaker_language === "pt" ? "selected" : ""}>Force Portuguese (Português)</option>
               </select>
             </label>
 

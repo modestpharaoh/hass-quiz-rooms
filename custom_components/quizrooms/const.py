@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.18"
+VERSION = "0.1.20"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -54,10 +54,18 @@ ALLOWED_SPEAKER_PRESETS = (
 SPEAKER_LANG_AUTO = "auto"
 SPEAKER_LANG_EN = "en"
 SPEAKER_LANG_AR = "ar"
+SPEAKER_LANG_DE = "de"
+SPEAKER_LANG_FR = "fr"
+SPEAKER_LANG_ES = "es"
+SPEAKER_LANG_PT = "pt"
 ALLOWED_SPEAKER_LANGUAGES = (
     SPEAKER_LANG_AUTO,
     SPEAKER_LANG_EN,
     SPEAKER_LANG_AR,
+    SPEAKER_LANG_DE,
+    SPEAKER_LANG_FR,
+    SPEAKER_LANG_ES,
+    SPEAKER_LANG_PT,
 )
 DEFAULT_SPEAKER_VOLUME = 0.6
 

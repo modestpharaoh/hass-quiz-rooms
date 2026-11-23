@@ -740,26 +740,44 @@ def test_tts_discovery_includes_unknown_google_translate_and_piper_locale_fallba
     )
 
     async def _scenario() -> None:
-        # 1. Piper without exposed supported_languages: first call with language='en' raises -> auto-retries without language!
+        # 1. Piper without exposed supported_languages: first call with language='en' raises -> retries with 'en_US' and succeeds!
         res = await coord.async_run_stage_test("test_speaker", language="en")
         assert res["effect"] == "test_speaker"
         assert len(hass.services.calls) == 2
         assert hass.services.calls[0][2].get("language") == "en"
-        assert "language" not in hass.services.calls[1][2]
+        assert hass.services.calls[1][2].get("language") == "en_US"
 
-        # 2. Piper WITH entity_components supported_languages=['en_US', 'ar_JO'] -> maps directly to 'en_US' on 1st call!
+        # 2. Piper via real HA hass.data['tts'] EntityComponent with supported_languages + voices -> passes en_US + English voice!
+        class _FakeVoice:
+            def __init__(self, voice_id: str) -> None:
+                self.voice_id = voice_id
+
         class _FakePiperEntity:
-            supported_languages = ["en_US", "ar_JO"]
+            supported_languages = ["ar_JO", "en_US"]
+
+            def async_get_supported_voices(self, lang: str) -> list[_FakeVoice]:
+                if lang == "en_US":
+                    return [_FakeVoice("en_US-lessac-medium")]
+                if lang == "ar_JO":
+                    return [_FakeVoice("ar_JO-kareem-medium")]
+                return []
 
         class _FakeTTSComp:
             def get_entity(self, eid: str) -> Any:
                 return _FakePiperEntity() if eid == "tts.piper" else None
 
-        hass.data["entity_components"] = {"tts": _FakeTTSComp()}
+        hass.data["tts"] = _FakeTTSComp()
         hass.services.calls.clear()
         await coord.async_run_stage_test("test_speaker", language="en")
         assert len(hass.services.calls) == 1
         assert hass.services.calls[0][2]["language"] == "en_US"
+        assert hass.services.calls[0][2]["options"] == {"voice": "en_US-lessac-medium"}
+
+        hass.services.calls.clear()
+        await coord.async_run_stage_test("test_speaker", language="ar")
+        assert len(hass.services.calls) == 1
+        assert hass.services.calls[0][2]["language"] == "ar_JO"
+        assert hass.services.calls[0][2]["options"] == {"voice": "ar_JO-kareem-medium"}
 
         # 3. Selecting legacy service:tts.google_translate_say dispatches to tts.google_translate_say
         hass.services.calls.clear()
@@ -778,3 +796,47 @@ def test_tts_discovery_includes_unknown_google_translate_and_piper_locale_fallba
         await coord.async_shutdown()
 
     asyncio.run(_scenario())
+
+
+def test_multilingual_tts_german_french_spanish_portuguese_and_piper_locales(
+    tmp_path: Path, builtin_packs_dir: Path
+) -> None:
+    """TTS supports German, French, Spanish, and Portuguese scripts and maps Piper regional locales."""
+    from custom_components.quizrooms.stage_effects import (
+        _match_tts_language,
+        build_finale_tts_message,
+        build_phase_tts_message,
+    )
+
+    piper_langs = ["de_DE", "fr_FR", "es_ES", "pt_BR", "en_US", "ar_JO"]
+    assert _match_tts_language("de", piper_langs) == "de_DE"
+    assert _match_tts_language("fr", piper_langs) == "fr_FR"
+    assert _match_tts_language("es", piper_langs) == "es_ES"
+    assert _match_tts_language("pt", piper_langs) == "pt_BR"
+
+    reveal_ev = {
+        "sub_event": "round_reveal",
+        "language": "en",
+        "round_result": {
+            "round_top_scorers": [{"name": "Lucas", "points_delta": 10}],
+            "overall_leader": {"name": "Lucas", "score": 30},
+        },
+    }
+    finale_ev = {
+        "language": "en",
+        "co_winners": [{"name": "Lucas", "score": 50}],
+    }
+    for code, expected_word in (
+        ("de", "gewinnt"),
+        ("fr", "remporte"),
+        ("es", "gana"),
+        ("pt", "vence"),
+    ):
+        msg, lang = build_phase_tts_message(reveal_ev, SPEAKER_PRESET_WINNER_FINALE, speaker_language=code)
+        assert lang == code and expected_word in msg and "Lucas" in msg
+        f_msg, f_lang = build_finale_tts_message(finale_ev, SPEAKER_PRESET_WINNER_FINALE, speaker_language=code)
+        assert f_lang == code and "Lucas" in f_msg and "50" in f_msg
+
+    # Verify auto-matching custom pack language (e.g. a German custom pack)
+    auto_msg, auto_lang = build_phase_tts_message({**reveal_ev, "language": "de"}, SPEAKER_PRESET_WINNER_FINALE)
+    assert auto_lang == "de" and "gewinnt" in auto_msg

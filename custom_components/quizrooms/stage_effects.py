@@ -39,7 +39,11 @@ from .const import (
     REVEAL_RULE_MAJORITY,
     SPEAKER_LANG_AR,
     SPEAKER_LANG_AUTO,
+    SPEAKER_LANG_DE,
     SPEAKER_LANG_EN,
+    SPEAKER_LANG_ES,
+    SPEAKER_LANG_FR,
+    SPEAKER_LANG_PT,
     SPEAKER_PRESET_FINALE_ONLY,
     SPEAKER_PRESET_FULL_HOST,
     SPEAKER_PRESET_OFF,
@@ -84,9 +88,38 @@ def _is_valid_tts_target(target: str) -> bool:
     return _is_valid_entity_id(clean, "tts") or bool(_LEGACY_TTS_SERVICE_RE.fullmatch(clean))
 
 
+_PLAYER_FALLBACK_NAMES: dict[str, str] = {
+    SPEAKER_LANG_EN: "Player",
+    SPEAKER_LANG_AR: "لاعب",
+    SPEAKER_LANG_DE: "Spieler",
+    SPEAKER_LANG_FR: "Joueur",
+    SPEAKER_LANG_ES: "Jugador",
+    SPEAKER_LANG_PT: "Jogador",
+}
+
+_PREFERRED_LOCALES: dict[str, tuple[str, ...]] = {
+    SPEAKER_LANG_EN: ("en_us", "en-us", "en_gb", "en-gb"),
+    SPEAKER_LANG_AR: ("ar_jo", "ar-jo", "ar_sa", "ar-sa", "ar_eg", "ar-eg"),
+    SPEAKER_LANG_DE: ("de_de", "de-de", "de_at", "de-at", "de_ch", "de-ch"),
+    SPEAKER_LANG_FR: ("fr_fr", "fr-fr", "fr_ca", "fr-ca", "fr_be", "fr-be"),
+    SPEAKER_LANG_ES: ("es_es", "es-es", "es_mx", "es-mx", "es_ar", "es-ar"),
+    SPEAKER_LANG_PT: ("pt_br", "pt-br", "pt_pt", "pt-pt"),
+}
+
+_REGIONAL_DEFAULTS: dict[str, str] = {
+    SPEAKER_LANG_EN: "en_US",
+    SPEAKER_LANG_AR: "ar_JO",
+    SPEAKER_LANG_DE: "de_DE",
+    SPEAKER_LANG_FR: "fr_FR",
+    SPEAKER_LANG_ES: "es_ES",
+    SPEAKER_LANG_PT: "pt_BR",
+}
+
+
 def sanitize_tts_name(raw_name: str | None, *, language: str = "en") -> str:
     """Sanitize a player nickname before sending to any TTS service (anti-SSML / abuse)."""
-    fallback = "لاعب" if (language or "").lower().startswith("ar") else "Player"
+    short = (language or "en").strip().lower()[:2]
+    fallback = _PLAYER_FALLBACK_NAMES.get(short, "Player")
     text = str(raw_name or "")
     text = _TAG_RE.sub(" ", text)
     text = _URL_RE.sub(" ", text)
@@ -349,26 +382,45 @@ def discover_stage_speakers_and_tts(hass: Any) -> dict[str, list[dict[str, Any]]
     return {"speakers": speakers, "tts_engines": tts_engines}
 
 
+def _get_tts_entity_instance(hass: Any, tts_entity_id: str) -> Any | None:
+    """Locate the live Home Assistant TextToSpeechEntity instance for `tts_entity_id`."""
+    if hass is None or not tts_entity_id.startswith("tts."):
+        return None
+
+    hass_data = getattr(hass, "data", None)
+    if isinstance(hass_data, dict):
+        # HA Core stores the TTS EntityComponent at hass.data["tts"] (DATA_COMPONENT)
+        # or under hass.data["entity_components"]["tts"].
+        candidates = [hass_data.get("tts")]
+        components = hass_data.get("entity_components")
+        if isinstance(components, dict):
+            candidates.append(components.get("tts"))
+        for comp in candidates:
+            if comp is not None and hasattr(comp, "get_entity"):
+                try:
+                    ent = comp.get_entity(tts_entity_id)
+                    if ent is not None:
+                        return ent
+                except Exception:
+                    pass
+    return None
+
+
 def _get_tts_supported_languages(hass: Any, tts_entity_id: str) -> list[str]:
     """Read supported_languages for a HA tts.* entity if available (e.g., Piper en_US / ar_JO)."""
     if hass is None or not tts_entity_id.startswith("tts."):
         return []
 
-    # 1. Inspect HA entity component instance (`hass.data["entity_components"]["tts"]`)
-    hass_data = getattr(hass, "data", None)
-    if isinstance(hass_data, dict):
-        components = hass_data.get("entity_components")
-        tts_comp = components.get("tts") if isinstance(components, dict) else None
-        if tts_comp is not None and hasattr(tts_comp, "get_entity"):
-            try:
-                ent = tts_comp.get_entity(tts_entity_id)
-                langs = getattr(ent, "supported_languages", None)
-                if langs:
-                    return [str(lang) for lang in langs if lang]
-            except Exception:
-                pass
+    ent = _get_tts_entity_instance(hass, tts_entity_id)
+    if ent is not None:
+        try:
+            langs = getattr(ent, "supported_languages", None)
+            if langs:
+                return [str(lang) for lang in langs if lang]
+        except Exception:
+            pass
 
-    # 2. Fallback: check state attributes if exposed
+    # Fallback: check state attributes if exposed
     states = getattr(hass, "states", None)
     st = states.get(tts_entity_id) if states is not None else None
     if st is not None:
@@ -377,6 +429,29 @@ def _get_tts_supported_languages(hass: Any, tts_entity_id: str) -> list[str]:
         if langs:
             return [str(lang) for lang in langs if lang]
     return []
+
+
+def _get_tts_voice_for_language(hass: Any, tts_entity_id: str, matched_lang: str) -> str | None:
+    """Pick a valid voice_id for `matched_lang` on multi-voice TTS entities like Wyoming Piper."""
+    ent = _get_tts_entity_instance(hass, tts_entity_id)
+    if ent is None or not matched_lang:
+        return None
+    getter = getattr(ent, "async_get_supported_voices", None)
+    if not callable(getter):
+        return None
+    try:
+        voices = getter(matched_lang)
+        if not voices:
+            return None
+        for voice in voices:
+            vid = getattr(voice, "voice_id", None) or (voice.get("voice_id") if isinstance(voice, dict) else None)
+            if vid:
+                clean_vid = str(vid).strip()[:128]
+                if clean_vid and all(32 <= ord(ch) <= 126 for ch in clean_vid):
+                    return clean_vid
+    except Exception:
+        pass
+    return None
 
 
 def _match_tts_language(desired_lang: str, supported_languages: list[str]) -> str | None:
@@ -406,7 +481,7 @@ def _match_tts_language(desired_lang: str, supported_languages: list[str]) -> st
         if cand.strip().lower().startswith((f"{short}_", f"{short}-"))
     ]
     if matches:
-        preferred = ("en_us", "en-us", "en_gb", "en-gb") if short == "en" else ("ar_jo", "ar-jo", "ar_sa", "ar-sa", "ar_eg", "ar-eg")
+        preferred = _PREFERRED_LOCALES.get(short, ())
         for pref in preferred:
             for cand in matches:
                 if cand.strip().lower() == pref:
@@ -607,29 +682,109 @@ def build_finale_payload(
 # ---------------------------------------------------------------------------
 
 
-def _join_names(names: list[str], *, is_arabic: bool) -> str:
+_TTS_CONJUNCTIONS: dict[str, str] = {
+    SPEAKER_LANG_EN: " and ",
+    SPEAKER_LANG_AR: " و",
+    SPEAKER_LANG_DE: " und ",
+    SPEAKER_LANG_FR: " et ",
+    SPEAKER_LANG_ES: " y ",
+    SPEAKER_LANG_PT: " e ",
+}
+
+_TTS_SCRIPTS: dict[str, dict[str, str]] = {
+    SPEAKER_LANG_EN: {
+        "round_start": "Round {r_num} of {total}. Place your wagers!",
+        "final_countdown": "Five seconds left!",
+        "none_correct": "Tough question! Nobody got that one right.",
+        "round_win_leader": "{name} takes the round with plus {delta} points! {leader} leads with {leader_score}.",
+        "round_win": "{name} takes the round with plus {delta} points!",
+        "round_tie": "{joined} tied for the top of the round with plus {delta} points!",
+        "finale_win": "Game over! Congratulations to our champion {name} with {score} points!",
+        "finale_tie": "Game over! It is a tie for first place between {joined} with {score} points!",
+        "test_speaker": "Welcome to QuizRooms! Your living-room announcer is ready.",
+    },
+    SPEAKER_LANG_AR: {
+        "round_start": "الجولة {r_num} من {total}. استعدوا للسؤال!",
+        "final_countdown": "باقي خمس ثوانٍ!",
+        "none_correct": "سؤال صعب! لم يتمكن أحد من الإجابة الصحيحة.",
+        "round_win_leader": "{name} يتصدر الجولة بـ {delta} نقطة! الصدارة الآن لـ {leader} برصيد {leader_score}.",
+        "round_win": "{name} يتصدر الجولة بـ {delta} نقطة!",
+        "round_tie": "تعادل في صدارة الجولة بين {joined} بـ {delta} نقطة!",
+        "finale_win": "انتهت اللعبة! مبروك للبطل {name} الفوز بالمركز الأول برصيد {score} نقطة!",
+        "finale_tie": "انتهت اللعبة! تعادل في المركز الأول بين {joined} برصيد {score} نقطة!",
+        "test_speaker": "أهلاً بكم في كويز رومز! الصوت جاهز لإعلان الفائزين.",
+    },
+    SPEAKER_LANG_DE: {
+        "round_start": "Runde {r_num} von {total}. Setzt eure Einsätze!",
+        "final_countdown": "Noch fünf Sekunden!",
+        "none_correct": "Schwere Frage! Niemand hatte die richtige Antwort.",
+        "round_win_leader": "{name} gewinnt die Runde mit plus {delta} Punkten! {leader} führt mit {leader_score}.",
+        "round_win": "{name} gewinnt die Runde mit plus {delta} Punkten!",
+        "round_tie": "{joined} teilen sich den Rundensieg mit plus {delta} Punkten!",
+        "finale_win": "Spiel beendet! Herzlichen Glückwunsch an {name} zum Sieg mit {score} Punkten!",
+        "finale_tie": "Spiel beendet! Gleichstand auf Platz eins zwischen {joined} mit {score} Punkten!",
+        "test_speaker": "Willkommen bei QuizRooms! Dein Wohnzimmer-Sprecher ist bereit.",
+    },
+    SPEAKER_LANG_FR: {
+        "round_start": "Manche {r_num} sur {total}. Faites vos mises !",
+        "final_countdown": "Plus que cinq secondes !",
+        "none_correct": "Question difficile ! Personne n'a trouvé la bonne réponse.",
+        "round_win_leader": "{name} remporte la manche avec plus {delta} points ! {leader} mène avec {leader_score}.",
+        "round_win": "{name} remporte la manche avec plus {delta} points !",
+        "round_tie": "{joined} sont à égalité en tête de la manche avec plus {delta} points !",
+        "finale_win": "Partie terminée ! Félicitations à notre champion {name} avec {score} points !",
+        "finale_tie": "Partie terminée ! Égalité en première place entre {joined} avec {score} points !",
+        "test_speaker": "Bienvenue dans QuizRooms ! Votre présentateur vocal est prêt.",
+    },
+    SPEAKER_LANG_ES: {
+        "round_start": "Ronda {r_num} de {total}. ¡Hagan sus apuestas!",
+        "final_countdown": "¡Quedan cinco segundos!",
+        "none_correct": "¡Pregunta difícil! Nadie acertó esta vez.",
+        "round_win_leader": "¡{name} gana la ronda con más {delta} puntos! {leader} lidera con {leader_score}.",
+        "round_win": "¡{name} gana la ronda con más {delta} puntos!",
+        "round_tie": "¡{joined} empataron en la cima de la ronda con más {delta} puntos!",
+        "finale_win": "¡Fin del juego! ¡Felicidades a nuestro campeón {name} con {score} puntos!",
+        "finale_tie": "¡Fin del juego! ¡Empate en el primer lugar entre {joined} con {score} puntos!",
+        "test_speaker": "¡Bienvenidos a QuizRooms! El locutor de tu sala está listo.",
+    },
+    SPEAKER_LANG_PT: {
+        "round_start": "Rodada {r_num} de {total}. Façam suas apostas!",
+        "final_countdown": "Faltam cinco segundos!",
+        "none_correct": "Pergunta difícil! Ninguém acertou dessa vez.",
+        "round_win_leader": "{name} vence a rodada com mais {delta} pontos! {leader} lidera com {leader_score}.",
+        "round_win": "{name} vence a rodada com mais {delta} pontos!",
+        "round_tie": "{joined} empataram no topo da rodada com mais {delta} pontos!",
+        "finale_win": "Fim de jogo! Parabéns ao campeão {name} com {score} pontos!",
+        "finale_tie": "Fim de jogo! Empate em primeiro lugar entre {joined} com {score} pontos!",
+        "test_speaker": "Bem-vindo ao QuizRooms! Seu narrador está pronto.",
+    },
+}
+
+
+def _join_names(names: list[str], *, language: str = "en") -> str:
+    short = (language or "en").strip().lower()[:2]
     if not names:
-        return "لاعب" if is_arabic else "Player"
+        return _PLAYER_FALLBACK_NAMES.get(short, "Player")
     if len(names) == 1:
         return names[0]
-    if is_arabic:
-        return " و".join(names[:3])
+    conj = _TTS_CONJUNCTIONS.get(short, " and ")
+    if short == SPEAKER_LANG_AR:
+        return conj.join(names[:3])
     if len(names) == 2:
-        return f"{names[0]} and {names[1]}"
-    return f"{', '.join(names[:-1])}, and {names[-1]}"
+        return f"{names[0]}{conj}{names[1]}"
+    return f"{', '.join(names[:-1])}{conj}{names[-1]}"
 
 
 def _resolve_announcement_language(
     event_language: str | None,
     speaker_language: str = SPEAKER_LANG_AUTO,
 ) -> str:
-    """Resolve announcement language ('en' or 'ar') honoring forced override or auto pack match."""
+    """Resolve announcement language ('en'/'ar'/'de'/'fr'/'es'/'pt') honoring override or pack match."""
     pref = (speaker_language or SPEAKER_LANG_AUTO).strip().lower()
-    if pref == SPEAKER_LANG_AR:
-        return SPEAKER_LANG_AR
-    if pref == SPEAKER_LANG_EN:
-        return SPEAKER_LANG_EN
-    return SPEAKER_LANG_AR if str(event_language or "en").strip().lower().startswith("ar") else SPEAKER_LANG_EN
+    if pref in _TTS_SCRIPTS:
+        return pref
+    ev_short = str(event_language or "en").strip().lower()[:2]
+    return ev_short if ev_short in _TTS_SCRIPTS else SPEAKER_LANG_EN
 
 
 def build_phase_tts_message(
@@ -643,20 +798,16 @@ def build_phase_tts_message(
         return None
 
     lang = _resolve_announcement_language(event_data.get("language"), speaker_language)
-    is_ar = lang == SPEAKER_LANG_AR
+    tpl = _TTS_SCRIPTS[lang]
     sub_event = str(event_data.get("sub_event") or "")
 
     if sub_event == "round_start" and speaker_preset == SPEAKER_PRESET_FULL_HOST:
         r_num = int(event_data.get("round_number") or 1)
         total = int(event_data.get("total_rounds") or 10)
-        if is_ar:
-            return f"الجولة {r_num} من {total}. استعدوا للسؤال!", lang
-        return f"Round {r_num} of {total}. Place your wagers!", lang
+        return tpl["round_start"].format(r_num=r_num, total=total), lang
 
     if sub_event == "final_countdown" and speaker_preset == SPEAKER_PRESET_FULL_HOST:
-        if is_ar:
-            return "باقي خمس ثوانٍ!", lang
-        return "Five seconds left!", lang
+        return tpl["final_countdown"], lang
 
     if sub_event == "round_reveal" and speaker_preset in (
         SPEAKER_PRESET_WINNER_FINALE,
@@ -665,9 +816,7 @@ def build_phase_tts_message(
         res = event_data.get("round_result") or {}
         top_scorers = res.get("round_top_scorers") or []
         if not top_scorers:
-            if is_ar:
-                return "سؤال صعب! لم يتمكن أحد من الإجابة الصحيحة.", lang
-            return "Tough question! Nobody got that one right.", lang
+            return tpl["none_correct"], lang
 
         names = [sanitize_tts_name(s.get("name"), language=lang) for s in top_scorers]
         delta = int(top_scorers[0].get("points_delta") or 0)
@@ -676,26 +825,17 @@ def build_phase_tts_message(
         leader_score = int(leader.get("score") or 0) if leader else 0
 
         if len(names) == 1:
-            if is_ar:
-                if leader_name:
-                    return (
-                        f"{names[0]} يتصدر الجولة بـ {delta} نقطة! "
-                        f"الصدارة الآن لـ {leader_name} برصيد {leader_score}.",
-                        lang,
-                    )
-                return f"{names[0]} يتصدر الجولة بـ {delta} نقطة!", lang
             if leader_name:
                 return (
-                    f"{names[0]} takes the round with plus {delta} points! "
-                    f"{leader_name} leads with {leader_score}.",
+                    tpl["round_win_leader"].format(
+                        name=names[0], delta=delta, leader=leader_name, leader_score=leader_score
+                    ),
                     lang,
                 )
-            return f"{names[0]} takes the round with plus {delta} points!", lang
+            return tpl["round_win"].format(name=names[0], delta=delta), lang
 
-        joined = _join_names(names, is_arabic=is_ar)
-        if is_ar:
-            return f"تعادل في صدارة الجولة بين {joined} بـ {delta} نقطة!", lang
-        return f"{joined} tied for the top of the round with plus {delta} points!", lang
+        joined = _join_names(names, language=lang)
+        return tpl["round_tie"].format(joined=joined, delta=delta), lang
 
     return None
 
@@ -711,7 +851,7 @@ def build_finale_tts_message(
         return None
 
     lang = _resolve_announcement_language(event_data.get("language"), speaker_language)
-    is_ar = lang == SPEAKER_LANG_AR
+    tpl = _TTS_SCRIPTS[lang]
 
     co_winners = event_data.get("co_winners") or []
     if not co_winners:
@@ -725,14 +865,10 @@ def build_finale_tts_message(
     score = int(co_winners[0].get("score") or 0)
 
     if len(names) == 1:
-        if is_ar:
-            return f"انتهت اللعبة! مبروك للبطل {names[0]} الفوز بالمركز الأول برصيد {score} نقطة!", lang
-        return f"Game over! Congratulations to our champion {names[0]} with {score} points!", lang
+        return tpl["finale_win"].format(name=names[0], score=score), lang
 
-    joined = _join_names(names, is_arabic=is_ar)
-    if is_ar:
-        return f"انتهت اللعبة! تعادل في المركز الأول بين {joined} برصيد {score} نقطة!", lang
-    return f"Game over! It is a tie for first place between {joined} with {score} points!", lang
+    joined = _join_names(names, language=lang)
+    return tpl["finale_tie"].format(joined=joined, score=score), lang
 
 
 # ---------------------------------------------------------------------------
@@ -890,6 +1026,9 @@ class StageDirector:
                 return
             except Exception:
                 _LOGGER.debug("StageDirector light restore failed", exc_info=True)
+            finally:
+                if self._restore_task is asyncio.current_task():
+                    self._restore_task = None
 
         self._restore_task = asyncio.create_task(_worker())
 
@@ -916,7 +1055,9 @@ class StageDirector:
         except asyncio.CancelledError:
             raise
         except Exception as err:
-            self._last_tts_error = str(err) if domain == "tts" else self._last_tts_error
+            if domain == "tts":
+                sanitized_err = _URL_RE.sub("[redacted-url]", str(err)).strip()[:160]
+                self._last_tts_error = sanitized_err or "TTS service error"
             _LOGGER.debug("StageDirector service %s.%s failed: %s", domain, service, err)
             return False
 
@@ -972,6 +1113,9 @@ class StageDirector:
                 return
             except Exception:
                 _LOGGER.debug("StageDirector light sequence error", exc_info=True)
+            finally:
+                if self._active_light_task is asyncio.current_task():
+                    self._active_light_task = None
 
         self._active_light_task = asyncio.create_task(_runner())
 
@@ -1119,42 +1263,52 @@ class StageDirector:
         if mode == "speak":
             supported_langs = _get_tts_supported_languages(self.hass, target)
             matched_lang = _match_tts_language(language, supported_langs)
-            payload: dict[str, Any] = {
+            voice_id = (
+                _get_tts_voice_for_language(self.hass, target, matched_lang)
+                if matched_lang
+                else None
+            )
+
+            # Build ordered candidate payloads from most specific (locale + voice) to safe default:
+            # 1. Matched language + matching voice (switches Piper between e.g. en_US & ar_JO cleanly)
+            # 2. Matched language without voice option (for engines that don't accept `options.voice`)
+            # 3. Common regional locale fallback ('en_US' / 'ar_JO') when supported_languages was unknown
+            # 4. Default engine voice (no language) as final fallback
+            base_payload: dict[str, Any] = {
                 "entity_id": target,
                 "media_player_entity_id": self.config.speaker_entity,
                 "message": message,
             }
+            attempts: list[dict[str, Any]] = []
+            if matched_lang and voice_id:
+                attempts.append({**base_payload, "language": matched_lang, "options": {"voice": voice_id}})
             if matched_lang:
-                payload["language"] = matched_lang
+                attempts.append({**base_payload, "language": matched_lang})
+            if not supported_langs:
+                regional = _REGIONAL_DEFAULTS.get(str(language).strip().lower()[:2], "en_US")
+                if regional != matched_lang:
+                    attempts.append({**base_payload, "language": regional})
+            attempts.append(dict(base_payload))
 
-            # Use blocking=True inside our bounded async call so language errors (e.g., Piper
-            # expecting 'en_US' or default voice instead of bare 'en'/'ar') are caught and retried.
-            ok = await self._safe_service_call(
-                "tts",
-                "speak",
-                payload,
-                blocking=True,
-                timeout=TTS_CALL_TIMEOUT_SECONDS,
-            )
-            if not ok and "language" in payload:
-                _LOGGER.debug(
-                    "tts.speak failed on %s with language=%s (%s); retrying with engine default voice",
-                    target,
-                    payload["language"],
-                    self._last_tts_error,
-                )
-                self._last_tts_error = None
-                fallback_payload = {
-                    "entity_id": target,
-                    "media_player_entity_id": self.config.speaker_entity,
-                    "message": message,
-                }
+            ok = False
+            for idx, attempt_payload in enumerate(attempts):
+                if idx > 0:
+                    self._last_tts_error = None
                 ok = await self._safe_service_call(
                     "tts",
                     "speak",
-                    fallback_payload,
+                    attempt_payload,
                     blocking=True,
                     timeout=TTS_CALL_TIMEOUT_SECONDS,
+                )
+                if ok:
+                    break
+                _LOGGER.debug(
+                    "tts.speak attempt %d/%d failed on %s (%s)",
+                    idx + 1,
+                    len(attempts),
+                    target,
+                    self._last_tts_error,
                 )
             if not ok:
                 _LOGGER.warning(
@@ -1277,7 +1431,6 @@ class StageDirector:
         """Run an immediate admin test cue (lights or speaker) from the Admin Panel."""
         clean_effect = (effect or "").strip().lower()
         resolved_lang = _resolve_announcement_language(language or "en", self.config.speaker_language)
-        is_ar = resolved_lang == SPEAKER_LANG_AR
 
         if clean_effect == "restore_lights":
             self.cancel_active_effects()
@@ -1303,14 +1456,12 @@ class StageDirector:
         if clean_effect == "test_speaker":
             if not self.config.speaker_entity:
                 raise StageEffectError("no_speaker_selected", "Select a speaker media_player entity first.", status_code=400)
-            msg = (
-                "أهلاً بكم في كويز رومز! الصوت جاهز لإعلان الفائزين."
-                if is_ar
-                else "Welcome to QuizRooms! Your living-room announcer is ready."
-            )
-            ok = await self._async_speak(msg, "ar" if is_ar else "en")
+            msg = _TTS_SCRIPTS.get(resolved_lang, _TTS_SCRIPTS[SPEAKER_LANG_EN])["test_speaker"]
+            ok = await self._async_speak(msg, resolved_lang)
+            err_text = self._last_tts_error
+            self._last_tts_error = None
             if not ok:
-                detail = f" ({self._last_tts_error})" if self._last_tts_error else ""
+                detail = f" ({err_text})" if err_text else ""
                 raise StageEffectError(
                     "tts_unavailable",
                     f"Could not dispatch TTS{detail}. Check your TTS engine and speaker in Home Assistant.",
