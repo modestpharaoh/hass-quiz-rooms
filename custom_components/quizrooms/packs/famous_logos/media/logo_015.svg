@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Famous Logo #15">
+  <defs>
+    <linearGradient id="lbg-15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#11131A"/>
+      <stop offset="100%" stop-color="#191D28"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#lbg-15)"/>
+  <rect x="148" y="68" width="344" height="344" rx="72" fill="#1A1E29" stroke="#E50914" stroke-width="5" stroke-opacity="0.7"/>
+  <g transform="translate(200, 120) scale(10)">
+    <path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L18.6 22.951c-.043-7.86-.004-15.913.002-22.95zM5.398 1.05V24c1.873-.225 2.81-.312 4.715-.398v-9.22z" fill="#E50914"/>
+  </g>
+</svg>

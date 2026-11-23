@@ -124,7 +124,7 @@ def test_setup_entry_handles_frozen_app_and_offloads_all_file_io(tmp_path: Path)
         assert len(hass.executor_calls) >= 1
 
         coord = hass.data[DOMAIN]["coordinator"]
-        assert len(coord.pack_registry.list_packs()) == 16
+        assert len(coord.pack_registry.list_packs()) == 17
 
         # 2. All file-serving views offload reads to hass.async_add_executor_job
         before = len(hass.executor_calls)
@@ -246,7 +246,7 @@ def test_websocket_lifecycle_create_and_start_room(tmp_path: Path, monkeypatch) 
         assert "hello" in types_sent
         assert "room_created" in types_sent
         hello_msg = next(m for m in ws_instance.sent if m["type"] == "hello")
-        assert len(hello_msg["packs"]) == 16
+        assert len(hello_msg["packs"]) == 17
         created_msg = next(m for m in ws_instance.sent if m["type"] == "room_created")
         assert created_msg["code"] in coord.engine.rooms
         assert created_msg["host_token"]

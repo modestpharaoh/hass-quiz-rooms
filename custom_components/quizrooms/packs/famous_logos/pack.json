@@ -1,0 +1,2148 @@
+{
+  "pack_id": "famous_logos",
+  "title": "Famous World Logos",
+  "description": "Identify 110 iconic logos across technology, social apps, gaming, automotive, smart home, and global brands! Play in Multiple Choice or Free-Text mode.",
+  "cover": "media/cover.svg",
+  "open_ended": false,
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms (vector glyphs via Simple Icons, CC0 / Public Domain)",
+  "category": "Brands & Logos",
+  "questions": [
+    {
+      "id": "logo_apple",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_001.svg",
+      "choices": [
+        "Fedora",
+        "Apple",
+        "Android",
+        "Bluetooth"
+      ],
+      "answer": "Apple",
+      "aliases": [
+        "Apple Inc",
+        "أبل"
+      ],
+      "explanation": "Category: Tech & Devices · Founded in 1976 in Cupertino · Iconic bitten apple silhouette.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_android",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_002.svg",
+      "choices": [
+        "Arch Linux",
+        "Fedora",
+        "Android",
+        "Nvidia"
+      ],
+      "answer": "Android",
+      "aliases": [
+        "أندرويد"
+      ],
+      "explanation": "Category: Tech & Devices · Mobile operating system featuring the green robot bugdroid mascot.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_windows",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_003.svg",
+      "choices": [
+        "Linux",
+        "Windows",
+        "Android",
+        "Arch Linux"
+      ],
+      "answer": "Windows",
+      "aliases": [
+        "Microsoft Windows",
+        "ويندوز"
+      ],
+      "explanation": "Category: Tech & Devices · Microsoft's flagship desktop operating system four-pane window mark.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_google",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_004.svg",
+      "choices": [
+        "Google",
+        "Trello",
+        "Wikipedia",
+        "Gmail"
+      ],
+      "answer": "Google",
+      "aliases": [
+        "جوجل"
+      ],
+      "explanation": "Category: Internet & Apps · Uppercase 'G' emblem of Google Search and Alphabet.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_googlechrome",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_005.svg",
+      "choices": [
+        "Google Chrome",
+        "Safari",
+        "Amazon",
+        "Slack"
+      ],
+      "answer": "Google Chrome",
+      "aliases": [
+        "Chrome",
+        "كروم"
+      ],
+      "explanation": "Category: Internet & Apps · Circular browser emblem introduced by Google in 2008.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_youtube",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_006.svg",
+      "choices": [
+        "X",
+        "Twitch",
+        "YouTube",
+        "Threads"
+      ],
+      "answer": "YouTube",
+      "aliases": [
+        "يوتيوب"
+      ],
+      "explanation": "Category: Media & Social · Rounded red play-button screen icon of the global video platform.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_tiktok",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_007.svg",
+      "choices": [
+        "TikTok",
+        "Reddit",
+        "Netflix",
+        "Telegram"
+      ],
+      "answer": "TikTok",
+      "aliases": [
+        "تيك توك"
+      ],
+      "explanation": "Category: Media & Social · Stylized musical eighth-note emblem of the short-form video app.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_instagram",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_008.svg",
+      "choices": [
+        "TikTok",
+        "Telegram",
+        "Instagram",
+        "YouTube"
+      ],
+      "answer": "Instagram",
+      "aliases": [
+        "إنستغرام",
+        "انستقرام"
+      ],
+      "explanation": "Category: Media & Social · Rounded retro camera outline of the photo & reels platform.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_whatsapp",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_009.svg",
+      "choices": [
+        "Bluesky",
+        "Signal",
+        "Pinterest",
+        "WhatsApp"
+      ],
+      "answer": "WhatsApp",
+      "aliases": [
+        "واتساب"
+      ],
+      "explanation": "Category: Media & Social · Speech bubble containing a telephone receiver.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_snapchat",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_010.svg",
+      "choices": [
+        "Facebook",
+        "WhatsApp",
+        "Snapchat",
+        "X"
+      ],
+      "answer": "Snapchat",
+      "aliases": [
+        "سناب شات"
+      ],
+      "explanation": "Category: Media & Social · Ghostly 'Ghostface Chillah' silhouette on a yellow badge.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_telegram",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_011.svg",
+      "choices": [
+        "Facebook",
+        "Telegram",
+        "Shazam",
+        "Instagram"
+      ],
+      "answer": "Telegram",
+      "aliases": [
+        "تيليجرام",
+        "تلقرام"
+      ],
+      "explanation": "Category: Media & Social · Paper airplane inside a blue circle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_x",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_012.svg",
+      "choices": [
+        "WhatsApp",
+        "Signal",
+        "Pinterest",
+        "X"
+      ],
+      "answer": "X",
+      "aliases": [
+        "Twitter",
+        "X Corp",
+        "تويتر"
+      ],
+      "explanation": "Category: Media & Social · Double-stroke X emblem replacing the classic blue bird in 2023.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_facebook",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_013.svg",
+      "choices": [
+        "TikTok",
+        "WhatsApp",
+        "Shazam",
+        "Facebook"
+      ],
+      "answer": "Facebook",
+      "aliases": [
+        "فيسبوك"
+      ],
+      "explanation": "Category: Media & Social · Lowercase 'f' monogram of Meta's flagship social network.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_spotify",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_014.svg",
+      "choices": [
+        "Signal",
+        "Telegram",
+        "Snapchat",
+        "Spotify"
+      ],
+      "answer": "Spotify",
+      "aliases": [
+        "سبوتيفاي"
+      ],
+      "explanation": "Category: Media & Social · Three curved sound-wave arcs inside a green circle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_netflix",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_015.svg",
+      "choices": [
+        "TikTok",
+        "Pinterest",
+        "Spotify",
+        "Netflix"
+      ],
+      "answer": "Netflix",
+      "aliases": [
+        "نتفليكس"
+      ],
+      "explanation": "Category: Media & Social · Red ribbon 'N' monogram of the streaming service.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_discord",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_016.svg",
+      "choices": [
+        "Instagram",
+        "Discord",
+        "Bluesky",
+        "YouTube"
+      ],
+      "answer": "Discord",
+      "aliases": [
+        "ديسكورد"
+      ],
+      "explanation": "Category: Media & Social · Smiling game-controller mascot named 'Clyde'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_playstation",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_017.svg",
+      "choices": [
+        "Steam",
+        "Atari",
+        "PlayStation",
+        "Nintendo Switch"
+      ],
+      "answer": "PlayStation",
+      "aliases": [
+        "Sony PlayStation",
+        "PS5",
+        "بلايستيشن"
+      ],
+      "explanation": "Category: Gaming · Upright 'P' with an angled 'S' shadow designed by Manabu Sakamoto.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_xbox",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_018.svg",
+      "choices": [
+        "Atari",
+        "Xbox",
+        "PlayStation",
+        "Steam"
+      ],
+      "answer": "Xbox",
+      "aliases": [
+        "Microsoft Xbox",
+        "إكس بوكس"
+      ],
+      "explanation": "Category: Gaming · Sphere cleft by a glowing X mark.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_nintendoswitch",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_019.svg",
+      "choices": [
+        "Xbox",
+        "PlayStation",
+        "Atari",
+        "Nintendo Switch"
+      ],
+      "answer": "Nintendo Switch",
+      "aliases": [
+        "Nintendo",
+        "نينتندو سويتش"
+      ],
+      "explanation": "Category: Gaming · Asymmetrical left and right Joy-Con controllers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_steam",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_020.svg",
+      "choices": [
+        "Atari",
+        "Steam",
+        "Xbox",
+        "PlayStation"
+      ],
+      "answer": "Steam",
+      "aliases": [
+        "Valve Steam",
+        "ستيم"
+      ],
+      "explanation": "Category: Gaming · Locomotive crank-arm and pivot wheel icon of Valve's PC gaming platform.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_twitch",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_021.svg",
+      "choices": [
+        "YouTube",
+        "Bluesky",
+        "Reddit",
+        "Twitch"
+      ],
+      "answer": "Twitch",
+      "aliases": [
+        "تويتش"
+      ],
+      "explanation": "Category: Media & Social · Blocky speech-bubble mascot with two eyes for live streaming.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_reddit",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_022.svg",
+      "choices": [
+        "X",
+        "Reddit",
+        "YouTube",
+        "Snapchat"
+      ],
+      "answer": "Reddit",
+      "aliases": [
+        "ريديت"
+      ],
+      "explanation": "Category: Media & Social · Alien mascot 'Snoo' with a bent antenna.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_pinterest",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_023.svg",
+      "choices": [
+        "Pinterest",
+        "TikTok",
+        "X",
+        "Snapchat"
+      ],
+      "answer": "Pinterest",
+      "aliases": [
+        "بينتريست"
+      ],
+      "explanation": "Category: Media & Social · Stylized script 'P' shaped like a map pushpin.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_mcdonalds",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_024.svg",
+      "choices": [
+        "Starbucks",
+        "Shell",
+        "McDonald's",
+        "Airbnb"
+      ],
+      "answer": "McDonald's",
+      "aliases": [
+        "McDonalds",
+        "ماكدونالدز"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Famous Golden Arches 'M' emblem.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_starbucks",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_025.svg",
+      "choices": [
+        "Nike",
+        "Starbucks",
+        "Airbnb",
+        "Adidas"
+      ],
+      "answer": "Starbucks",
+      "aliases": [
+        "ستاربكس"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Twin-tailed siren (mermaid) wearing a crown.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_nike",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_026.svg",
+      "choices": [
+        "Shell",
+        "Nike",
+        "Adidas",
+        "Air Jordan"
+      ],
+      "answer": "Nike",
+      "aliases": [
+        "نايكي",
+        "نايك"
+      ],
+      "explanation": "Category: Brands & Lifestyle · The 'Swoosh' wing check mark designed by Carolyn Davidson in 1971.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_adidas",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_027.svg",
+      "choices": [
+        "McDonald's",
+        "Shell",
+        "Airbnb",
+        "Adidas"
+      ],
+      "answer": "Adidas",
+      "aliases": [
+        "أديداس"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Three slanted parallel bars forming a mountain triangle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_volkswagen",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_028.svg",
+      "choices": [
+        "Peugeot",
+        "Tesla",
+        "Porsche",
+        "Volkswagen"
+      ],
+      "answer": "Volkswagen",
+      "aliases": [
+        "VW",
+        "فولكس فاجن"
+      ],
+      "explanation": "Category: Automotive · Stacked 'V' over 'W' enclosed within a circle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_bmw",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_029.svg",
+      "choices": [
+        "Mazda",
+        "BMW",
+        "Toyota",
+        "Volkswagen"
+      ],
+      "answer": "BMW",
+      "aliases": [
+        "بي إم دبليو"
+      ],
+      "explanation": "Category: Automotive · Bavarian Motor Works roundel with four quadrants.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_audi",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_030.svg",
+      "choices": [
+        "Mitsubishi",
+        "Toyota",
+        "Audi",
+        "Citroën"
+      ],
+      "answer": "Audi",
+      "aliases": [
+        "أودي"
+      ],
+      "explanation": "Category: Automotive · Four overlapping rings representing the 1932 Auto Union merger.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_mercedes",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_031.svg",
+      "choices": [
+        "Mercedes-Benz",
+        "Peugeot",
+        "Lamborghini",
+        "Renault"
+      ],
+      "answer": "Mercedes-Benz",
+      "aliases": [
+        "Mercedes",
+        "مرسيدس"
+      ],
+      "explanation": "Category: Automotive · Three-pointed star symbolizing land, sea, and air transport.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_ferrari",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_032.svg",
+      "choices": [
+        "Mitsubishi",
+        "Lamborghini",
+        "Ferrari",
+        "Citroën"
+      ],
+      "answer": "Ferrari",
+      "aliases": [
+        "فيراري"
+      ],
+      "explanation": "Category: Automotive · Cavallino Rampante — the Maranello Prancing Horse.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_tesla",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_033.svg",
+      "choices": [
+        "Tesla",
+        "Renault",
+        "Mitsubishi",
+        "BMW"
+      ],
+      "answer": "Tesla",
+      "aliases": [
+        "تسلا"
+      ],
+      "explanation": "Category: Automotive · Stylized 'T' representing a cross-section of an electric motor rotor.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_toyota",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_034.svg",
+      "choices": [
+        "Toyota",
+        "Maserati",
+        "Mitsubishi",
+        "Porsche"
+      ],
+      "answer": "Toyota",
+      "aliases": [
+        "تويوتا"
+      ],
+      "explanation": "Category: Automotive · Three overlapping ellipses forming a 'T' and a steering wheel.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_bitcoin",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_035.svg",
+      "choices": [
+        "Ethereum",
+        "Mastercard",
+        "Bitcoin",
+        "PayPal"
+      ],
+      "answer": "Bitcoin",
+      "aliases": [
+        "BTC",
+        "بيتكوين"
+      ],
+      "explanation": "Category: Finance & Web · Capital 'B' pierced by two vertical currency strokes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_paypal",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_036.svg",
+      "choices": [
+        "Bitcoin",
+        "PayPal",
+        "Ethereum",
+        "Mastercard"
+      ],
+      "answer": "PayPal",
+      "aliases": [
+        "باي بال"
+      ],
+      "explanation": "Category: Finance & Web · Overlapping double-'P' monogram for online payments.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_mastercard",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_037.svg",
+      "choices": [
+        "PayPal",
+        "Mastercard",
+        "Bitcoin",
+        "Ethereum"
+      ],
+      "answer": "Mastercard",
+      "aliases": [
+        "ماستركارد"
+      ],
+      "explanation": "Category: Finance & Web · Two interlocking circles (Venn diagram).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_bluetooth",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_038.svg",
+      "choices": [
+        "Ubuntu",
+        "Bluetooth",
+        "Fedora",
+        "VLC Media Player"
+      ],
+      "answer": "Bluetooth",
+      "aliases": [
+        "بلوتوث"
+      ],
+      "explanation": "Category: Tech & Devices · Nordic bind-rune combining the initials of King Harald Bluetooth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_amazon",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_039.svg",
+      "choices": [
+        "Safari",
+        "Duolingo",
+        "Amazon",
+        "Brave"
+      ],
+      "answer": "Amazon",
+      "aliases": [
+        "أمازون"
+      ],
+      "explanation": "Category: Internet & Apps · Lowercase 'a' with a curved smile arrow from A to Z.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_wikipedia",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_040.svg",
+      "choices": [
+        "Slack",
+        "Gmail",
+        "Google",
+        "Wikipedia"
+      ],
+      "answer": "Wikipedia",
+      "aliases": [
+        "ويكيبيديا"
+      ],
+      "explanation": "Category: Internet & Apps · Unfinished globe constructed from multilingual jigsaw puzzle pieces.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "logo_homeassistant",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_041.svg",
+      "choices": [
+        "Raspberry Pi",
+        "Zigbee",
+        "Home Assistant",
+        "Jellyfin"
+      ],
+      "answer": "Home Assistant",
+      "aliases": [
+        "HA",
+        "هوم أسيستنت"
+      ],
+      "explanation": "Category: Smart Home & IoT · Smart-home house outline with circuit-tree nodes inside.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_github",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_042.svg",
+      "choices": [
+        "Kotlin",
+        "WireGuard",
+        "Kubernetes",
+        "GitHub"
+      ],
+      "answer": "GitHub",
+      "aliases": [
+        "جيت هاب"
+      ],
+      "explanation": "Category: Developer & Cloud · Octocat silhouette — a cat head with an octopus tentacle tail.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_docker",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_043.svg",
+      "choices": [
+        "Docker",
+        "Tailscale",
+        "Stack Overflow",
+        "Swift"
+      ],
+      "answer": "Docker",
+      "aliases": [
+        "دوكر"
+      ],
+      "explanation": "Category: Developer & Cloud · Moby Dock the whale carrying a stack of shipping containers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_python",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_044.svg",
+      "choices": [
+        "Vue.js",
+        "Python",
+        "GitLab",
+        "Blender"
+      ],
+      "answer": "Python",
+      "aliases": [
+        "بايثون"
+      ],
+      "explanation": "Category: Developer & Cloud · Two interlocking snakes forming a plus shape.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_linux",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_045.svg",
+      "choices": [
+        "VLC Media Player",
+        "Apple",
+        "OpenAI",
+        "Linux"
+      ],
+      "answer": "Linux",
+      "aliases": [
+        "Tux",
+        "لينكس"
+      ],
+      "explanation": "Category: Tech & Devices · Tux the sitting penguin mascot created by Larry Ewing in 1996.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_ubuntu",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_046.svg",
+      "choices": [
+        "Windows",
+        "OpenAI",
+        "Ubuntu",
+        "Anthropic"
+      ],
+      "answer": "Ubuntu",
+      "aliases": [
+        "أوبونتو"
+      ],
+      "explanation": "Category: Tech & Devices · Circle of Friends — three people holding hands viewed from above.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_firefox",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_047.svg",
+      "choices": [
+        "Firefox",
+        "Google Maps",
+        "Amazon",
+        "Trello"
+      ],
+      "answer": "Firefox",
+      "aliases": [
+        "Mozilla Firefox",
+        "فايرفوكس"
+      ],
+      "explanation": "Category: Internet & Apps · Fiery fox/red panda curving around a globe.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_safari",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_048.svg",
+      "choices": [
+        "Google Drive",
+        "Safari",
+        "Gmail",
+        "Tor"
+      ],
+      "answer": "Safari",
+      "aliases": [
+        "Apple Safari",
+        "سفاري"
+      ],
+      "explanation": "Category: Internet & Apps · Magnetic compass dial with tick marks and a tilted needle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_googledrive",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_049.svg",
+      "choices": [
+        "Wikipedia",
+        "Tor",
+        "Google",
+        "Google Drive"
+      ],
+      "answer": "Google Drive",
+      "aliases": [
+        "Drive",
+        "جوجل درايف"
+      ],
+      "explanation": "Category: Internet & Apps · Triangular Mobius ribbon folded from three bars.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_googlemaps",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_050.svg",
+      "choices": [
+        "Brave",
+        "Slack",
+        "Gmail",
+        "Google Maps"
+      ],
+      "answer": "Google Maps",
+      "aliases": [
+        "Maps",
+        "خرائط جوجل"
+      ],
+      "explanation": "Category: Internet & Apps · Teardrop location pin icon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_gmail",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_051.svg",
+      "choices": [
+        "Firefox",
+        "Gmail",
+        "Brave",
+        "Tor"
+      ],
+      "answer": "Gmail",
+      "aliases": [
+        "Google Mail",
+        "جيميل"
+      ],
+      "explanation": "Category: Internet & Apps · Envelope folded into a bold letter 'M'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_openai",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_052.svg",
+      "choices": [
+        "Linux",
+        "Android",
+        "Ubuntu",
+        "OpenAI"
+      ],
+      "answer": "OpenAI",
+      "aliases": [
+        "ChatGPT",
+        "أوبن إيه آي"
+      ],
+      "explanation": "Category: Tech & Devices · Six-fold interlocking blossom knot used by ChatGPT.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_shazam",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_053.svg",
+      "choices": [
+        "Shazam",
+        "Facebook",
+        "Twitch",
+        "Discord"
+      ],
+      "answer": "Shazam",
+      "aliases": [
+        "شازام"
+      ],
+      "explanation": "Category: Media & Social · Two interlocking tilted U-links inside a circle for music recognition.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_duolingo",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_054.svg",
+      "choices": [
+        "Wikipedia",
+        "Slack",
+        "Amazon",
+        "Duolingo"
+      ],
+      "answer": "Duolingo",
+      "aliases": [
+        "Duo",
+        "دولينجو"
+      ],
+      "explanation": "Category: Internet & Apps · Wide-eyed green owl mascot 'Duo'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_airbnb",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_055.svg",
+      "choices": [
+        "Puma",
+        "Airbnb",
+        "McDonald's",
+        "Nike"
+      ],
+      "answer": "Airbnb",
+      "aliases": [
+        "إير بي إن بي"
+      ],
+      "explanation": "Category: Brands & Lifestyle · The 'Bélo' loop combining a person, location pin, heart, and letter A.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_slack",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_056.svg",
+      "choices": [
+        "Slack",
+        "Google Drive",
+        "Amazon",
+        "Wikipedia"
+      ],
+      "answer": "Slack",
+      "aliases": [
+        "سلاك"
+      ],
+      "explanation": "Category: Internet & Apps · Octothorpe pinwheel made of four speech bubbles and four lozenges.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_trello",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_057.svg",
+      "choices": [
+        "Trello",
+        "Google Maps",
+        "Slack",
+        "Google Drive"
+      ],
+      "answer": "Trello",
+      "aliases": [
+        "تريلو"
+      ],
+      "explanation": "Category: Internet & Apps · Rounded square containing two uneven vertical Kanban board columns.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_figma",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_058.svg",
+      "choices": [
+        "React",
+        "Figma",
+        "Kubernetes",
+        "Python"
+      ],
+      "answer": "Figma",
+      "aliases": [
+        "فيجما"
+      ],
+      "explanation": "Category: Developer & Cloud · Five geometric pill and circle shapes forming a lowercase 'f'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_blender",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_059.svg",
+      "choices": [
+        "GitLab",
+        "Blender",
+        "WireGuard",
+        "Kotlin"
+      ],
+      "answer": "Blender",
+      "aliases": [
+        "بلندر"
+      ],
+      "explanation": "Category: Developer & Cloud · Circle with three radiating tangent lines and an inner ring.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_vlcmediaplayer",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_060.svg",
+      "choices": [
+        "Ubuntu",
+        "Fedora",
+        "Apple",
+        "VLC Media Player"
+      ],
+      "answer": "VLC Media Player",
+      "aliases": [
+        "VLC",
+        "VideoLAN"
+      ],
+      "explanation": "Category: Tech & Devices · Striped road traffic cone.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_raspberrypi",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_061.svg",
+      "choices": [
+        "Home Assistant",
+        "Raspberry Pi",
+        "Jellyfin",
+        "Nextcloud"
+      ],
+      "answer": "Raspberry Pi",
+      "aliases": [
+        "راسبيري باي"
+      ],
+      "explanation": "Category: Smart Home & IoT · Geometric raspberry fruit with two leaves at the top.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_arduino",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_062.svg",
+      "choices": [
+        "ESPHome",
+        "Arduino",
+        "Home Assistant",
+        "Nextcloud"
+      ],
+      "answer": "Arduino",
+      "aliases": [
+        "أردوينو"
+      ],
+      "explanation": "Category: Smart Home & IoT · Infinity loop containing a minus sign on the left and a plus sign on the right.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_porsche",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_063.svg",
+      "choices": [
+        "Ferrari",
+        "BMW",
+        "Toyota",
+        "Porsche"
+      ],
+      "answer": "Porsche",
+      "aliases": [
+        "بورش"
+      ],
+      "explanation": "Category: Automotive · Stuttgart coat of arms with a rearing horse and antlers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_lamborghini",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_064.svg",
+      "choices": [
+        "Porsche",
+        "Lamborghini",
+        "Audi",
+        "Citroën"
+      ],
+      "answer": "Lamborghini",
+      "aliases": [
+        "لامبورغيني"
+      ],
+      "explanation": "Category: Automotive · Charging golden bull on a heraldic shield.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_peugeot",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_065.svg",
+      "choices": [
+        "Volkswagen",
+        "BMW",
+        "Porsche",
+        "Peugeot"
+      ],
+      "answer": "Peugeot",
+      "aliases": [
+        "بيجو"
+      ],
+      "explanation": "Category: Automotive · Heraldic roaring lion profile inside a shield.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_renault",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_066.svg",
+      "choices": [
+        "Tesla",
+        "Renault",
+        "Volkswagen",
+        "Mitsubishi"
+      ],
+      "answer": "Renault",
+      "aliases": [
+        "رينو"
+      ],
+      "explanation": "Category: Automotive · Interlocking geometric diamond lozenge.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_mitsubishi",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_067.svg",
+      "choices": [
+        "Hyundai",
+        "Mitsubishi",
+        "Ferrari",
+        "Maserati"
+      ],
+      "answer": "Mitsubishi",
+      "aliases": [
+        "ميتسوبيشي"
+      ],
+      "explanation": "Category: Automotive · Three diamonds radiating from a common center ('Mitsubish').",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_hyundai",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_068.svg",
+      "choices": [
+        "Hyundai",
+        "Ferrari",
+        "Maserati",
+        "Honda"
+      ],
+      "answer": "Hyundai",
+      "aliases": [
+        "هيونداي"
+      ],
+      "explanation": "Category: Automotive · Italicized 'H' inside an oval representing two people shaking hands.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_honda",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_069.svg",
+      "choices": [
+        "Hyundai",
+        "Alfa Romeo",
+        "Honda",
+        "BMW"
+      ],
+      "answer": "Honda",
+      "aliases": [
+        "هوندا"
+      ],
+      "explanation": "Category: Automotive · Broad-top capital 'H' enclosed in a rounded trapezoid.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_mazda",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_070.svg",
+      "choices": [
+        "Renault",
+        "Mazda",
+        "Mitsubishi",
+        "BMW"
+      ],
+      "answer": "Mazda",
+      "aliases": [
+        "مازدا"
+      ],
+      "explanation": "Category: Automotive · Outstretched wings forming a 'V' and 'M' inside an oval.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_puma",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_071.svg",
+      "choices": [
+        "Air Jordan",
+        "Puma",
+        "Starbucks",
+        "Nike"
+      ],
+      "answer": "Puma",
+      "aliases": [
+        "بوما"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Leaping cougar silhouette.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_jordan",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_072.svg",
+      "choices": [
+        "Airbnb",
+        "Nike",
+        "McDonald's",
+        "Air Jordan"
+      ],
+      "answer": "Air Jordan",
+      "aliases": [
+        "Jordan",
+        "Jumpman",
+        "جوردن"
+      ],
+      "explanation": "Category: Brands & Lifestyle · The 'Jumpman' silhouette of Michael Jordan dunking a basketball.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_shell",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_073.svg",
+      "choices": [
+        "Nike",
+        "McDonald's",
+        "Shell",
+        "Lufthansa"
+      ],
+      "answer": "Shell",
+      "aliases": [
+        "شل"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Stylized pecten scallop seashell.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_lufthansa",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_074.svg",
+      "choices": [
+        "Nike",
+        "Airbnb",
+        "Shell",
+        "Lufthansa"
+      ],
+      "answer": "Lufthansa",
+      "aliases": [
+        "لوفتهانزا"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Soaring crane bird encircled within a ring.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_ethereum",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_075.svg",
+      "choices": [
+        "Mastercard",
+        "Bitcoin",
+        "Ethereum",
+        "PayPal"
+      ],
+      "answer": "Ethereum",
+      "aliases": [
+        "ETH",
+        "إيثيريوم"
+      ],
+      "explanation": "Category: Finance & Web · Octahedron crystal diamond split into upper and lower pyramids.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_cloudflare",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_076.svg",
+      "choices": [
+        "Docker",
+        "Python",
+        "Node.js",
+        "Cloudflare"
+      ],
+      "answer": "Cloudflare",
+      "aliases": [
+        "كلاود فلير"
+      ],
+      "explanation": "Category: Developer & Cloud · Cumulus cloud silhouette with rising sun rays on the right.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_gitlab",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_077.svg",
+      "choices": [
+        "Python",
+        "GitLab",
+        "GitHub",
+        "Kubernetes"
+      ],
+      "answer": "GitLab",
+      "aliases": [
+        "جيت لاب"
+      ],
+      "explanation": "Category: Developer & Cloud · Origami-style tanuki (Japanese raccoon dog) face made of triangles.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_stackoverflow",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_078.svg",
+      "choices": [
+        "WireGuard",
+        "Node.js",
+        "React",
+        "Stack Overflow"
+      ],
+      "answer": "Stack Overflow",
+      "aliases": [
+        "ستاك أوفرفلو"
+      ],
+      "explanation": "Category: Developer & Cloud · Open tray with five tilting horizontal bars overflowing out the top.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_react",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_079.svg",
+      "choices": [
+        "Blender",
+        "React",
+        "Tailscale",
+        "GitLab"
+      ],
+      "answer": "React",
+      "aliases": [
+        "ReactJS",
+        "ريأكت"
+      ],
+      "explanation": "Category: Developer & Cloud · Atomic nucleus surrounded by three intersecting elliptical electron orbits.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_nodedotjs",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_080.svg",
+      "choices": [
+        "Stack Overflow",
+        "Svelte",
+        "Swift",
+        "Node.js"
+      ],
+      "answer": "Node.js",
+      "aliases": [
+        "Node",
+        "نود جي إس"
+      ],
+      "explanation": "Category: Developer & Cloud · Green hexagon emblem of the JavaScript server runtime.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_nvidia",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_081.svg",
+      "choices": [
+        "Nvidia",
+        "Apple",
+        "Debian",
+        "Bluetooth"
+      ],
+      "answer": "Nvidia",
+      "aliases": [
+        "إنفيديا"
+      ],
+      "explanation": "Category: Tech & Devices · Swirling spiral green eye symbol on a split rectangle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_threads",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_082.svg",
+      "choices": [
+        "Threads",
+        "Reddit",
+        "Snapchat",
+        "Twitch"
+      ],
+      "answer": "Threads",
+      "aliases": [
+        "Meta Threads",
+        "ثريدز"
+      ],
+      "explanation": "Category: Media & Social · Continuous looping ribbon forming an '@' and lowercase 'a'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "logo_kubernetes",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_083.svg",
+      "choices": [
+        "React",
+        "Kubernetes",
+        "Vue.js",
+        "Blender"
+      ],
+      "answer": "Kubernetes",
+      "aliases": [
+        "K8s",
+        "كوبرنيتس"
+      ],
+      "explanation": "Category: Developer & Cloud · Seven-spoked ship's helm (steering wheel) inside a heptagon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_rust",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_084.svg",
+      "choices": [
+        "React",
+        "Svelte",
+        "Rust",
+        "Blender"
+      ],
+      "answer": "Rust",
+      "aliases": [
+        "Rustlang",
+        "رست"
+      ],
+      "explanation": "Category: Developer & Cloud · Toothed mechanical cogwheel surrounding a capital 'R'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_swift",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_085.svg",
+      "choices": [
+        "Blender",
+        "Docker",
+        "Tailscale",
+        "Swift"
+      ],
+      "answer": "Swift",
+      "aliases": [
+        "Apple Swift",
+        "سويفت"
+      ],
+      "explanation": "Category: Developer & Cloud · Soaring swift bird silhouette.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_kotlin",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_086.svg",
+      "choices": [
+        "GitLab",
+        "Cloudflare",
+        "Swift",
+        "Kotlin"
+      ],
+      "answer": "Kotlin",
+      "aliases": [
+        "كوتلن"
+      ],
+      "explanation": "Category: Developer & Cloud · Geometric square with a triangular notch cut out of the right side.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_vuedotjs",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_087.svg",
+      "choices": [
+        "Rust",
+        "Vue.js",
+        "Kubernetes",
+        "GitHub"
+      ],
+      "answer": "Vue.js",
+      "aliases": [
+        "Vue",
+        "فيو"
+      ],
+      "explanation": "Category: Developer & Cloud · Nested chevron 'V' triangles.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_angular",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_088.svg",
+      "choices": [
+        "Blender",
+        "Python",
+        "React",
+        "Angular"
+      ],
+      "answer": "Angular",
+      "aliases": [
+        "أنجولار"
+      ],
+      "explanation": "Category: Developer & Cloud · Heraldic shield framing a bold capital 'A'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_svelte",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_089.svg",
+      "choices": [
+        "Node.js",
+        "Blender",
+        "GitLab",
+        "Svelte"
+      ],
+      "answer": "Svelte",
+      "aliases": [
+        "سفيلت"
+      ],
+      "explanation": "Category: Developer & Cloud · Tilted double-loop 'S' chain link.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_debian",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_090.svg",
+      "choices": [
+        "OpenAI",
+        "Anthropic",
+        "Nvidia",
+        "Debian"
+      ],
+      "answer": "Debian",
+      "aliases": [
+        "ديبيان"
+      ],
+      "explanation": "Category: Tech & Devices · Open brushstroke spiral swirl.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_archlinux",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_091.svg",
+      "choices": [
+        "Arch Linux",
+        "Fedora",
+        "VLC Media Player",
+        "Windows"
+      ],
+      "answer": "Arch Linux",
+      "aliases": [
+        "Arch",
+        "آرتش لينكس"
+      ],
+      "explanation": "Category: Tech & Devices · Sharp A-frame mountain peak with an arched cutout at the base.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_fedora",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_092.svg",
+      "choices": [
+        "Ubuntu",
+        "Android",
+        "Nvidia",
+        "Fedora"
+      ],
+      "answer": "Fedora",
+      "aliases": [
+        "فيدورا"
+      ],
+      "explanation": "Category: Tech & Devices · Speech bubble containing an infinity loop forming a lowercase 'f'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_brave",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_093.svg",
+      "choices": [
+        "Brave",
+        "Safari",
+        "Google Chrome",
+        "Google Drive"
+      ],
+      "answer": "Brave",
+      "aliases": [
+        "Brave Browser",
+        "بريف"
+      ],
+      "explanation": "Category: Internet & Apps · Geometric lion face emblem of the privacy web browser.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_torbrowser",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_094.svg",
+      "choices": [
+        "Firefox",
+        "Google Chrome",
+        "Trello",
+        "Tor"
+      ],
+      "answer": "Tor",
+      "aliases": [
+        "Tor Browser",
+        "تور"
+      ],
+      "explanation": "Category: Internet & Apps · Concentric layered onion globe symbolizing onion routing.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_signal",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_095.svg",
+      "choices": [
+        "Mastodon",
+        "Discord",
+        "Signal",
+        "Bluesky"
+      ],
+      "answer": "Signal",
+      "aliases": [
+        "Signal Messenger",
+        "سيجنال"
+      ],
+      "explanation": "Category: Media & Social · Solid speech bubble surrounded by a dashed outer border.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_mastodon",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_096.svg",
+      "choices": [
+        "Reddit",
+        "Twitch",
+        "Instagram",
+        "Mastodon"
+      ],
+      "answer": "Mastodon",
+      "aliases": [
+        "ماستودون"
+      ],
+      "explanation": "Category: Media & Social · Rounded speech bubble containing a bold 'M' with a trunk curl.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_bluesky",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_097.svg",
+      "choices": [
+        "Bluesky",
+        "WhatsApp",
+        "TikTok",
+        "Reddit"
+      ],
+      "answer": "Bluesky",
+      "aliases": [
+        "BSky",
+        "بلوسكاي"
+      ],
+      "explanation": "Category: Media & Social · Symmetrical blue butterfly wings.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_anthropic",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_098.svg",
+      "choices": [
+        "Arch Linux",
+        "Android",
+        "Apple",
+        "Anthropic"
+      ],
+      "answer": "Anthropic",
+      "aliases": [
+        "Claude",
+        "أنثروبيك"
+      ],
+      "explanation": "Category: Tech & Devices · Minimalist 'A' paired with an angled slash 'I'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_zigbee",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_099.svg",
+      "choices": [
+        "ESPHome",
+        "Raspberry Pi",
+        "Zigbee",
+        "Nextcloud"
+      ],
+      "answer": "Zigbee",
+      "aliases": [
+        "زيجبي"
+      ],
+      "explanation": "Category: Smart Home & IoT · Circular badge slashed by a sharp stylized letter 'Z'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_esphome",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_100.svg",
+      "choices": [
+        "Arduino",
+        "Jellyfin",
+        "Nextcloud",
+        "ESPHome"
+      ],
+      "answer": "ESPHome",
+      "aliases": [
+        "إي إس بي هوم"
+      ],
+      "explanation": "Category: Smart Home & IoT · Smart-home house roof over a microcontroller chip outline.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_wireguard",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_101.svg",
+      "choices": [
+        "Cloudflare",
+        "React",
+        "Swift",
+        "WireGuard"
+      ],
+      "answer": "WireGuard",
+      "aliases": [
+        "واير جارد"
+      ],
+      "explanation": "Category: Developer & Cloud · Coiled horned dragon/serpent medallion for the modern VPN protocol.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_tailscale",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_102.svg",
+      "choices": [
+        "Node.js",
+        "Tailscale",
+        "React",
+        "WireGuard"
+      ],
+      "answer": "Tailscale",
+      "aliases": [
+        "تيل سكيل"
+      ],
+      "explanation": "Category: Developer & Cloud · 3x3 grid of nine dots with a highlighted T-pattern.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_nextcloud",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_103.svg",
+      "choices": [
+        "Nextcloud",
+        "Raspberry Pi",
+        "Home Assistant",
+        "ESPHome"
+      ],
+      "answer": "Nextcloud",
+      "aliases": [
+        "نكست كلاود"
+      ],
+      "explanation": "Category: Smart Home & IoT · Three linked circles forming a horizontal cloud chain.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_jellyfin",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_104.svg",
+      "choices": [
+        "Zigbee",
+        "Jellyfin",
+        "Arduino",
+        "Plex"
+      ],
+      "answer": "Jellyfin",
+      "aliases": [
+        "جيلي فين"
+      ],
+      "explanation": "Category: Smart Home & IoT · Rounded triangle dome enclosing an inner floating triangle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_plex",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_105.svg",
+      "choices": [
+        "ESPHome",
+        "Nextcloud",
+        "Plex",
+        "Jellyfin"
+      ],
+      "answer": "Plex",
+      "aliases": [
+        "بليكس"
+      ],
+      "explanation": "Category: Smart Home & IoT · Golden right-pointing chevron arrow.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_maserati",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_106.svg",
+      "choices": [
+        "Ferrari",
+        "Peugeot",
+        "Renault",
+        "Maserati"
+      ],
+      "answer": "Maserati",
+      "aliases": [
+        "مازيراتي"
+      ],
+      "explanation": "Category: Automotive · Three-pronged Neptune trident inspired by Bologna's Piazza Maggiore.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_alfaromeo",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_107.svg",
+      "choices": [
+        "Mazda",
+        "Alfa Romeo",
+        "Renault",
+        "Peugeot"
+      ],
+      "answer": "Alfa Romeo",
+      "aliases": [
+        "ألفا روميو"
+      ],
+      "explanation": "Category: Automotive · Milanese cross paired with the Visconti crowned serpent.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_citroen",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_108.svg",
+      "choices": [
+        "Volkswagen",
+        "Citroën",
+        "Mercedes-Benz",
+        "Hyundai"
+      ],
+      "answer": "Citroën",
+      "aliases": [
+        "Citroen",
+        "سيتروين"
+      ],
+      "explanation": "Category: Automotive · Double stacked upward chevrons representing herringbone gears.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_yamahacorporation",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_109.svg",
+      "choices": [
+        "Shell",
+        "Airbnb",
+        "Yamaha",
+        "Starbucks"
+      ],
+      "answer": "Yamaha",
+      "aliases": [
+        "ياماها"
+      ],
+      "explanation": "Category: Brands & Lifestyle · Three intersecting musical tuning forks inside a circle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "logo_atari",
+      "prompt": "Which famous brand, app, or platform does this logo belong to?",
+      "image": "media/logo_110.svg",
+      "choices": [
+        "Nintendo Switch",
+        "Atari",
+        "Steam",
+        "Xbox"
+      ],
+      "answer": "Atari",
+      "aliases": [
+        "أتاري"
+      ],
+      "explanation": "Category: Gaming · The 'Fuji' three-pronged pillar symbol flanked by two curved lines.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -41,6 +41,7 @@ EXPECTED_PACK_IDS = {
     "south_america_gk_en",
     "country_official_languages",
     "countries_maps",
+    "famous_logos",
 }
 
 
@@ -92,6 +93,8 @@ def test_all_15_builtin_packs_load_with_valid_covers_and_balanced_difficulties(t
     assert len(by_id["country_official_languages"].questions) >= 100
     assert len(by_id["countries_maps"].questions) >= 150
     assert by_id["countries_maps"].to_summary()["has_media"] is True
+    assert len(by_id["famous_logos"].questions) >= 100
+    assert by_id["famous_logos"].to_summary()["has_media"] is True
 
 
 def test_room_difficulty_filter_random_easy_medium_hard(tmp_path: Path) -> None:

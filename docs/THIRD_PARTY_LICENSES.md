@@ -10,11 +10,12 @@ QuizRooms is designed as a **local-first, zero-CDN** Home Assistant integration.
 | --- | --- | --- | --- |
 | World Country Flag SVGs | `custom_components/quizrooms/packs/countries_flags/media/flag_*.svg` | [lipis/flag-icons](https://github.com/lipis/flag-icons) | MIT License |
 | World Country Map Silhouette SVGs (169 files) | `custom_components/quizrooms/packs/countries_maps/media/map_*.svg` | [Natural Earth 1:50m Cultural Vectors](https://github.com/nvkelso/natural-earth-vector) | Public Domain (CC0) |
+| Famous Brand Logo Glyph SVGs (110 files) | `custom_components/quizrooms/packs/famous_logos/media/logo_*.svg` | [Simple Icons](https://github.com/simple-icons/simple-icons) | CC0 1.0 Universal |
 | Latin UI/Display Font | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-latin.woff` | Ubuntu Font Family | Ubuntu Font Licence 1.0 |
 | Arabic & Latin UI Fonts | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-regular.woff`<br>`custom_components/quizrooms/frontend/assets/fonts/quizrooms-arabic-bold.woff` | DejaVu Sans (Bitstream Vera derivative) | Bitstream Vera / DejaVu Fonts License |
 | Monospace Numerals Font | `custom_components/quizrooms/frontend/assets/fonts/quizrooms-mono.woff` | Google Noto Sans Mono | SIL Open Font License 1.1 (OFL-1.1) |
 
-> **Original Content Note:** All trivia questions across the 16 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
+> **Original Content Note:** All trivia questions across the 17 built-in packs were freshly authored from public-domain factual geographic, demographic (UN World Population Prospects projections), linguistic, scientific, and historical knowledge. No copyrighted third-party trivia databases or licensed question sets are included.
 
 ---
 
@@ -171,4 +172,21 @@ including modifying the content and design, electronic dissemination, and offset
 printing. The primary authors, Tom Patterson and Nathaniel Vaughn Kelso, and all
 other contributors renounce all financial claim to the maps and invites you to
 use them for personal, educational, and commercial purposes.
+```
+
+---
+
+## 6. Simple Icons — CC0 1.0 Universal (Public Domain)
+
+Applies to the vector logo paths in `custom_components/quizrooms/packs/famous_logos/media/logo_*.svg` (adapted with neutral opaque filenames and `640×480` studio card framing).
+
+```text
+Simple Icons — https://simpleicons.org/ · https://github.com/simple-icons/simple-icons
+
+Creative Commons Zero v1.0 Universal (CC0 1.0)
+The Simple Icons contributors have dedicated the SVG icon dataset and software
+to the public domain by waiving all of their rights to the work worldwide under
+copyright law, including all related and neighboring rights, to the extent
+allowed by law. All brand icons are trademarks of their respective owners and
+are used here solely for nominative identification in an educational trivia quiz.
 ```
