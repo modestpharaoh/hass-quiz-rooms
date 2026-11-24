@@ -13,12 +13,18 @@ import secrets
 import shutil
 import stat
 from typing import Any
+import xml.etree.ElementTree as ET
 import zipfile
 
 from .const import (
     ALLOWED_MEDIA_EXTENSIONS,
     ALLOWED_QUESTION_DIFFICULTIES,
     DIFFICULTY_MEDIUM,
+    MAX_ALIASES_PER_QUESTION,
+    MAX_CHOICES_PER_QUESTION,
+    MAX_EXPLANATION_LENGTH,
+    MAX_PROMPT_LENGTH,
+    MAX_QUESTIONS_PER_PACK,
     MAX_UNCOMPRESSED_ZIP_BYTES,
     MAX_UPLOAD_BYTES,
     MAX_ZIP_FILES,
@@ -154,6 +160,13 @@ def _validate_pack_payload(
         raise PackValidationError(
             "Pack validation failed.", details=errors, code="invalid_schema"
         )
+    if len(questions_raw) > MAX_QUESTIONS_PER_PACK:
+        raise PackValidationError(
+            f"Pack exceeds maximum of {MAX_QUESTIONS_PER_PACK} questions.",
+            details=[f"questions array exceeds maximum of {MAX_QUESTIONS_PER_PACK} items."],
+            code="too_many_questions",
+            status_code=413,
+        )
 
     seen_qids: set[str] = set()
     cleaned_questions: list[dict[str, Any]] = []
@@ -172,6 +185,8 @@ def _validate_pack_payload(
         prompt = q.get("prompt")
         if not isinstance(prompt, str) or not prompt.strip():
             errors.append(f"{prefix}.prompt is required and must be a non-empty string.")
+        elif len(prompt.strip()) > MAX_PROMPT_LENGTH:
+            errors.append(f"{prefix}.prompt exceeds maximum length of {MAX_PROMPT_LENGTH} characters.")
 
         q_open_ended = q.get("open_ended", pack_open_ended)
         if not isinstance(q_open_ended, bool):
@@ -204,9 +219,12 @@ def _validate_pack_payload(
             if (
                 not isinstance(choices, list)
                 or len(choices) < 2
+                or len(choices) > MAX_CHOICES_PER_QUESTION
                 or not all(isinstance(c, str) and c.strip() for c in choices)
             ):
-                errors.append(f"{prefix}.choices must be an array of at least 2 non-empty strings.")
+                errors.append(
+                    f"{prefix}.choices must be an array of 2 to {MAX_CHOICES_PER_QUESTION} non-empty strings."
+                )
             elif isinstance(answer, str) and answer.strip():
                 stripped_choices = [c.strip() for c in choices]
                 if answer.strip() not in stripped_choices:
@@ -215,14 +233,20 @@ def _validate_pack_payload(
                     )
 
         aliases = q.get("aliases", [])
-        if not isinstance(aliases, list) or not all(isinstance(a, str) for a in aliases):
-            errors.append(f"{prefix}.aliases must be an array of strings.")
+        if (
+            not isinstance(aliases, list)
+            or len(aliases) > MAX_ALIASES_PER_QUESTION
+            or not all(isinstance(a, str) for a in aliases)
+        ):
+            errors.append(f"{prefix}.aliases must be an array of up to {MAX_ALIASES_PER_QUESTION} strings.")
             aliases = []
 
         explanation = q.get("explanation", "")
         if not isinstance(explanation, str):
             errors.append(f"{prefix}.explanation must be a string.")
             explanation = ""
+        elif len(explanation) > MAX_EXPLANATION_LENGTH:
+            explanation = explanation[:MAX_EXPLANATION_LENGTH]
 
         q_lang = q.get("language", language)
         if not isinstance(q_lang, str) or not q_lang.strip():
@@ -310,6 +334,61 @@ def _validate_pack_payload(
         "category": str(raw_data.get("category", "General")).strip() or "General",
         "questions": cleaned_questions,
     }
+
+
+_FORBIDDEN_SVG_TAGS = frozenset({"script", "foreignobject", "iframe", "object", "embed"})
+
+
+def _validate_safe_svg_bytes(data: bytes, rel_path: str) -> None:
+    """Validate uploaded custom SVG XML and block entity bombs, scripts, and active handlers."""
+    try:
+        svg_text = data.decode("utf-8")
+    except UnicodeDecodeError as err:
+        raise PackValidationError(
+            f"SVG file '{rel_path}' is not valid UTF-8.", code="invalid_svg"
+        ) from err
+
+    upper_head = svg_text[:4096].upper()
+    if "<!DOCTYPE" in upper_head or "<!ENTITY" in upper_head:
+        raise PackValidationError(
+            f"SVG file '{rel_path}' contains forbidden DOCTYPE/ENTITY declarations.",
+            code="unsafe_svg",
+        )
+
+    try:
+        root = ET.fromstring(svg_text)
+    except ET.ParseError as err:
+        raise PackValidationError(
+            f"SVG file '{rel_path}' is not well-formed XML: {err}", code="invalid_svg"
+        ) from err
+
+    root_local = root.tag.split("}", 1)[-1].lower()
+    if root_local != "svg":
+        raise PackValidationError(
+            f"SVG file '{rel_path}' must have an <svg> root element.", code="invalid_svg"
+        )
+
+    for elem in root.iter():
+        local_tag = elem.tag.split("}", 1)[-1].lower()
+        if local_tag in _FORBIDDEN_SVG_TAGS:
+            raise PackValidationError(
+                f"SVG file '{rel_path}' contains forbidden <{local_tag}> element.",
+                code="unsafe_svg",
+            )
+        for attr_key, attr_val in elem.attrib.items():
+            local_attr = attr_key.split("}", 1)[-1].lower()
+            if local_attr.startswith("on"):
+                raise PackValidationError(
+                    f"SVG file '{rel_path}' contains forbidden inline event handler '{local_attr}'.",
+                    code="unsafe_svg",
+                )
+            if local_attr in ("href", "src"):
+                val_norm = "".join(attr_val.split()).lower()
+                if val_norm.startswith(("javascript:", "vbscript:", "data:text/html")):
+                    raise PackValidationError(
+                        f"SVG file '{rel_path}' contains forbidden URI scheme in '{local_attr}'.",
+                        code="unsafe_svg",
+                    )
 
 
 def _normalize_safe_rel_path(raw_path: str) -> str | None:
@@ -784,7 +863,10 @@ class PackRegistry:
                                 status_code=413,
                             )
                         chunks.append(chunk)
-                extracted[rel_clean] = b"".join(chunks)
+                file_data = b"".join(chunks)
+                if rel_clean != "pack.json" and Path(rel_clean).suffix.lower() == ".svg":
+                    _validate_safe_svg_bytes(file_data, rel_clean)
+                extracted[rel_clean] = file_data
 
         if "pack.json" not in extracted:
             raise PackValidationError(

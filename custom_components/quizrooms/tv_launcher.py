@@ -136,14 +136,23 @@ def _find_sibling_remote_entity(ent_reg: Any, entry: Any) -> str | None:
     return None
 
 
+_FORBIDDEN_URL_CHARS = frozenset({'"', "'", "<", ">", "`", "\\", ";", "|", "$", "(", ")", "{", "}"})
+
+
 def is_safe_http_url(url: str) -> bool:
-    """Validate an HTTP(S) URL has a hostname and zero control/shell-break characters."""
+    """Validate an HTTP(S) URL has a hostname, no credentials, and zero control/shell-break chars."""
     if not url or len(url) > 512:
         return False
-    if any(ord(ch) < 33 or ch in ('"', "'", "<", ">", "`", "\\") for ch in url):
+    if any(ord(ch) < 33 or ord(ch) == 127 or ch in _FORBIDDEN_URL_CHARS for ch in url):
         return False
     try:
         parsed = urlsplit(url)
+    except ValueError:
+        return False
+    if parsed.username is not None or parsed.password is not None:
+        return False
+    try:
+        _ = parsed.port
     except ValueError:
         return False
     return parsed.scheme in ("http", "https") and bool(parsed.netloc and parsed.hostname)

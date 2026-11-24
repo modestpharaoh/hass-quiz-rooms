@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.40"
+VERSION = "0.1.41"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"
@@ -69,14 +69,26 @@ ALLOWED_SPEAKER_LANGUAGES = (
 )
 DEFAULT_SPEAKER_VOLUME = 0.6
 
-# Room limits & defaults
+# Room limits, network bounds & DoS guards
 DEFAULT_MAX_ROOMS = 5
 MIN_MAX_ROOMS = 1
 MAX_MAX_ROOMS = 50
 MAX_PLAYERS_PER_ROOM = 50
+MAX_WS_CLIENTS = 250
+MAX_WS_CLIENTS_PER_IP = 40
+WS_SEND_TIMEOUT_SECONDS = 4.0
 MAX_WS_MESSAGE_BYTES = 64 * 1024  # 64 KB max WebSocket frame size
+MAX_JSON_BODY_BYTES = 64 * 1024   # 64 KB max JSON POST body
+MAX_MULTIPART_PARTS = 8
 MAX_ANSWER_LENGTH = 200
 MAX_SESSION_TOKEN_LENGTH = 128
+
+# Pack schema complexity bounds (prevents algorithmic DoS on event loop)
+MAX_QUESTIONS_PER_PACK = 5000
+MAX_CHOICES_PER_QUESTION = 12
+MAX_ALIASES_PER_QUESTION = 50
+MAX_PROMPT_LENGTH = 1000
+MAX_EXPLANATION_LENGTH = 2000
 
 ALLOWED_ROUND_COUNTS = (5, 10, 15, 20, 25)
 DEFAULT_ROUND_COUNT = 10

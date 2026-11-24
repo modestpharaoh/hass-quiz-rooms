@@ -219,6 +219,13 @@ class QuizEngine:
                 return f"preset:{item['id']}"
         return f"preset:{PRESET_AVATARS[0]['id']}"
 
+    def _sync_session_avatar_across_rooms(self, session_token: str, avatar_ref: str) -> None:
+        """Keep a single avatar per session_token across rooms so one session cannot hoard presets."""
+        for other_room in self.rooms.values():
+            other_player = other_room.players.get(session_token)
+            if other_player is not None:
+                other_player.avatar = avatar_ref
+
     def _hosted_room_for_session(self, session_token: str) -> Room | None:
         for room in self.rooms.values():
             if room.host_session_token == session_token:
@@ -445,6 +452,7 @@ class QuizEngine:
             available_wagers=self._initial_wagers_for_room(settings),
         )
         self.rooms[code] = room
+        self._sync_session_avatar_across_rooms(session_token, resolved_avatar)
         return room, session_token, host_token
 
     def _regular_round_count(self, room: Room) -> int:
@@ -541,6 +549,7 @@ class QuizEngine:
                 existing.nickname = self._clean_nickname(nickname)
             if avatar and avatar.strip():
                 existing.avatar = self._resolve_avatar(avatar, session_token=token, strict=False)
+                self._sync_session_avatar_across_rooms(token, existing.avatar)
             room.last_activity = now
             return room, existing, token
 
@@ -582,6 +591,7 @@ class QuizEngine:
             ),
         )
         room.players[token] = player
+        self._sync_session_avatar_across_rooms(token, resolved_avatar)
         if (
             room.phase == PHASE_QUESTION
             and 0 <= room.current_index < len(room.questions)
@@ -605,8 +615,24 @@ class QuizEngine:
         if player is None:
             raise EngineError("not_in_room", "Join the room before updating your avatar.")
         player.avatar = self._resolve_avatar(avatar, session_token=session_token, strict=True)
+        self._sync_session_avatar_across_rooms(session_token, player.avatar)
         room.last_activity = self._now()
         return room, player
+
+    def leave_room(self, code: str, session_token: str) -> Room | None:
+        """Handle explicit leave_room: remove non-host guest from Lobby or mark disconnected mid-game."""
+        room = self.get_room(code)
+        if room is None:
+            return None
+        player = room.players.get(session_token)
+        if player is None:
+            return room
+        if room.status == ROOM_STATUS_LOBBY and not player.is_host:
+            del room.players[session_token]
+        else:
+            player.connected = False
+        room.last_activity = self._now()
+        return room
 
     def set_player_connected(self, code: str, session_token: str, connected: bool) -> Room | None:
         room = self.get_room(code)
@@ -636,15 +662,12 @@ class QuizEngine:
         # Build immutable question snapshot from currently loaded packs
         pool: list[SnapshotQuestion] = []
         pack_titles: list[str] = []
-        media_ids: set[str] = set()
         for pid in room.settings.pack_ids:
             pack = self.pack_registry.get_pack(pid)
             if pack is None:
                 continue
             pack_titles.append(pack.title)
             for q in pack.questions:
-                if q.media_id:
-                    media_ids.add(q.media_id)
                 choices_list = list(q.choices)
                 self._rng.shuffle(choices_list)
                 pool.append(

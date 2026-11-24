@@ -296,6 +296,11 @@ class NetworkGuard:
         if peer_ip is None and remote_ip is None:
             return AccessDecision(False, None, "missing_client_ip")
 
+        # 0. Fail closed immediately on Home Assistant Cloud (Nabu Casa snitun over 127.0.0.1)
+        hass_source = (headers.get("X-Hass-Source") or headers.get("x-hass-source") or "").strip()
+        if hass_source:
+            return AccessDecision(False, str(peer_ip or remote_ip), "nabu_casa_remote_blocked")
+
         # 1. If HA's own forwarded middleware already rewrote request.remote to a non-allowed IP,
         #    reject immediately regardless of proxy headers.
         if remote_ip is not None and not self.is_ip_allowed(remote_ip) and not self.is_trusted_proxy(remote_ip):
@@ -313,15 +318,25 @@ class NetworkGuard:
         xff_raw = headers.get("X-Forwarded-For") or headers.get("x-forwarded-for")
         xff_ips = parse_xff_header(xff_raw)
 
-        # Additional reverse-proxy / tunnel headers (Cloudflare Tunnel, NGINX, Nabu Casa)
+        # Additional reverse-proxy / tunnel headers (Cloudflare Tunnel, NGINX, Akamai)
         proxy_single_headers = (
             headers.get("CF-Connecting-IP") or headers.get("cf-connecting-ip"),
             headers.get("True-Client-IP") or headers.get("true-client-ip"),
             headers.get("X-Real-IP") or headers.get("x-real-ip"),
         )
-        proxy_single_ips = [
-            addr for raw_val in proxy_single_headers if (addr := parse_ip_address(raw_val)) is not None
-        ]
+        proxy_single_ips: list[IPAddress] = []
+        for raw_val in proxy_single_headers:
+            if raw_val is not None and str(raw_val).strip():
+                parsed_single = parse_ip_address(str(raw_val))
+                if parsed_single is None:
+                    # Malformed/unparseable proxy client IP header -> fail closed!
+                    return AccessDecision(False, str(effective_peer), "malformed_proxy_ip_header")
+                proxy_single_ips.append(parsed_single)
+
+        cf_ray = (headers.get("CF-Ray") or headers.get("cf-ray") or "").strip()
+        if cf_ray and not proxy_single_ips and not xff_ips:
+            # Cloudflare Tunnel edge request missing client IP header -> fail closed!
+            return AccessDecision(False, str(effective_peer), "cloudflare_tunnel_blocked")
 
         # 3. Trusted proxy path: resolve true client IP right-to-left across the chain.
         if peer_is_trusted:

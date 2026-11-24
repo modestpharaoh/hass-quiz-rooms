@@ -327,10 +327,281 @@ def test_private_room_tv_follow_protection_cswsh_origin_check_and_url_hardening(
         assert play_resp.headers.get("X-Frame-Options") == "SAMEORIGIN"
         assert play_resp.headers.get("Referrer-Policy") == "same-origin"
 
-        # 5. URL validator rejects control chars, quotes, and non-HTTP schemes
+        # 5. URL validator rejects control chars, quotes, shell metachars, credentials, and non-HTTP schemes
         assert is_safe_http_url("http://192.168.1.50:8123/quizrooms/tv") is True
         assert is_safe_http_url("javascript:alert(1)") is False
         assert is_safe_http_url("http://192.168.1.50:8123/tv\nmalicious") is False
         assert is_safe_http_url("http://192.168.1.50:8123/tv'bad") is False
+        assert is_safe_http_url("http://192.168.1.50:8123/tv;reboot") is False
+        assert is_safe_http_url("http://user:pass@192.168.1.50:8123/tv") is False
+
+    asyncio.run(run())
+
+
+def test_cswsh_null_origin_blocked_and_nabu_casa_x_hass_source_blocked(tmp_path: Path) -> None:
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+
+    # Nabu Casa snitun forwarding over 127.0.0.1 with X-Hass-Source MUST fail closed
+    nabu_req = FakeRequest(
+        path="/quizrooms/play",
+        remote="127.0.0.1",
+        peer_ip="127.0.0.1",
+        headers={"X-Hass-Source": "core.remote"},
+    )
+    assert not coord.network_guard.evaluate_request(nabu_req).allowed
+
+    # Malformed CF-Connecting-IP or CF-Ray without client IP over 127.0.0.1 MUST fail closed
+    cf_malformed = FakeRequest(
+        path="/quizrooms/play",
+        remote="127.0.0.1",
+        peer_ip="127.0.0.1",
+        headers={"CF-Connecting-IP": "not-an-ip"},
+    )
+    assert not coord.network_guard.evaluate_request(cf_malformed).allowed
+
+    cf_ray_only = FakeRequest(
+        path="/quizrooms/play",
+        remote="127.0.0.1",
+        peer_ip="127.0.0.1",
+        headers={"CF-Ray": "8a1b2c3d-FRA"},
+    )
+    assert not coord.network_guard.evaluate_request(cf_ray_only).allowed
+
+    async def run() -> None:
+        # Sandboxed iframe CSWSH vector sends `Origin: null` -> MUST be blocked (403)
+        null_origin_resp = await QuizRoomsWebSocketView(coord).get(
+            FakeRequest(
+                path="/quizrooms/ws",
+                remote="192.168.1.30",
+                host="192.168.1.10:8123",
+                headers={"Origin": "null"},
+            )
+        )
+        assert null_origin_resp.status == 403
+
+    asyncio.run(run())
+
+
+def test_ws_connection_limits_and_slow_consumer_eviction(tmp_path: Path) -> None:
+    from custom_components.quizrooms import coordinator as coord_mod
+    from custom_components.quizrooms.const import MAX_WS_CLIENTS_PER_IP
+
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+
+    class _DummyWS:
+        def __init__(self) -> None:
+            self.closed = False
+
+        async def close(self) -> None:
+            self.closed = True
+
+    # Fill per-IP quota
+    for _ in range(MAX_WS_CLIENTS_PER_IP):
+        coord.register_ws(WSClient(ws=_DummyWS(), role="lobby", client_ip="192.168.1.99"))
+
+    assert coord.can_accept_ws("192.168.1.99") is False
+    assert coord.can_accept_ws("192.168.1.100") is True
+
+    async def run() -> None:
+        # Excess connection from saturated IP returns 429 before upgrading WebSocket
+        over_resp = await QuizRoomsWebSocketView(coord).get(
+            FakeRequest(
+                path="/quizrooms/ws",
+                remote="192.168.1.99",
+                host="192.168.1.10:8123",
+            )
+        )
+        assert over_resp.status == 429
+
+        # Slow-consumer / stalled socket must time out and be evicted + closed without hanging broadcast
+        class _HungWS:
+            def __init__(self) -> None:
+                self.closed = False
+
+            async def send_json(self, _payload: dict[str, Any]) -> None:
+                await asyncio.sleep(30.0)
+
+            async def close(self) -> None:
+                self.closed = True
+
+        hung_ws = _HungWS()
+        hung_client = WSClient(ws=hung_ws, role="lobby", client_ip="192.168.1.101")
+        coord.register_ws(hung_client)
+
+        orig_timeout = coord_mod.WS_SEND_TIMEOUT_SECONDS
+        coord_mod.WS_SEND_TIMEOUT_SECONDS = 0.05
+        try:
+            await coord._safe_send(hung_client, {"type": "ping"})
+            await asyncio.sleep(0.01)
+            assert hung_client not in coord._ws_clients
+            assert hung_ws.closed is True
+        finally:
+            coord_mod.WS_SEND_TIMEOUT_SECONDS = orig_timeout
+            await coord.async_shutdown()
+
+    asyncio.run(run())
+
+
+def test_bounded_json_svg_xss_rejection_and_host_header_sanitization(tmp_path: Path) -> None:
+    import io
+    import zipfile
+    from custom_components.quizrooms.const import MAX_JSON_BODY_BYTES
+    from custom_components.quizrooms.packs import PackValidationError
+
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+
+    # Forged Host header must never poison resolve_lan_base_url
+    bad_host_req = FakeRequest(
+        path="/quizrooms/api/public/bootstrap",
+        remote="192.168.1.20",
+        host='evil.example"><script>alert(1)</script>',
+    )
+    assert coord.resolve_lan_base_url(bad_host_req) == ""
+    good_host_req = FakeRequest(
+        path="/quizrooms/api/public/bootstrap",
+        remote="192.168.1.20",
+        host="192.168.1.10:8123",
+    )
+    assert coord.resolve_lan_base_url(good_host_req) == "http://192.168.1.10:8123"
+
+    # Uploaded ZIP pack with <script>, inline onload=, or <!ENTITY> in SVG must be rejected
+    def _build_svg_zip(svg_body: str) -> bytes:
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w") as zf:
+            zf.writestr(
+                "pack.json",
+                json.dumps(
+                    {
+                        "pack_id": "bad_svg_pack",
+                        "title": "Bad SVG Pack",
+                        "cover": "media/cover.svg",
+                        "questions": [
+                            {
+                                "id": "q1",
+                                "prompt": "Test?",
+                                "choices": ["A", "B"],
+                                "answer": "A",
+                            }
+                        ],
+                    }
+                ),
+            )
+            zf.writestr("media/cover.svg", svg_body)
+        return buf.getvalue()
+
+    for bad_svg in (
+        '<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"></svg>',
+        '<!DOCTYPE svg [<!ENTITY lol "boom">]><svg xmlns="http://www.w3.org/2000/svg"></svg>',
+    ):
+        with pytest.raises(PackValidationError) as exc_svg:
+            coord.pack_registry.import_pack_bytes("bad.zip", _build_svg_zip(bad_svg), overwrite=True)
+        assert exc_svg.value.code == "unsafe_svg"
+
+    class _OversizedJsonReq(FakeRequest):
+        content_length = MAX_JSON_BODY_BYTES + 1024
+
+        async def read(self) -> bytes:  # pragma: no cover
+            raise AssertionError("Oversized JSON should be rejected via Content-Length")
+
+    async def run() -> None:
+        resp_pub = await QuizRoomsPublicTVModeView(coord).post(
+            _OversizedJsonReq(path="/quizrooms/api/public/tv_mode", remote="192.168.1.25")
+        )
+        assert resp_pub.status == 413
+
+        resp_adm = await QuizRoomsAdminTVView(coord).post(
+            _OversizedJsonReq(
+                path="/quizrooms/api/admin/tv",
+                hass_user=SimpleNamespace(is_admin=True),
+            )
+        )
+        assert resp_adm.status == 413
+
+    asyncio.run(run())
+
+
+def test_cross_room_ws_isolation_lobby_leave_cleanup_and_avatar_hoarding_guard(
+    tmp_path: Path,
+) -> None:
+    coord = QuizRoomsCoordinator(
+        None,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+    r1, _h1_sess, h1_tok = coord.engine.create_room(
+        host_session_token="host_r1",
+        host_nickname="HostR1",
+        host_avatar="preset:fox",
+        pack_ids=["general_knowledge_en"],
+        round_count=5,
+    )
+    r2, _h2_sess, h2_tok = coord.engine.create_room(
+        host_session_token="host_r2",
+        host_nickname="HostR2",
+        host_avatar="preset:owl",
+        pack_ids=["general_knowledge_en"],
+        round_count=5,
+    )
+
+    # Guest joins r1 with preset:astro, then joins r2 with preset:dragon using SAME session_token:
+    # preset:astro must be released rather than hoarded!
+    coord.engine.join_room(r1.code, session_token="roamer", nickname="Roamer", avatar="preset:astro")
+    assert "astro" in coord.engine.get_taken_preset_avatars()
+    coord.engine.join_room(r2.code, session_token="roamer", nickname="Roamer", avatar="preset:dragon")
+    taken = coord.engine.get_taken_preset_avatars()
+    assert "dragon" in taken
+    assert "astro" not in taken
+
+    # Leaving an unstarted Lobby removes non-host guest from room.players immediately
+    coord.engine.leave_room(r1.code, "roamer")
+    assert "roamer" not in r1.players
+
+    class _CaptureWS:
+        def __init__(self) -> None:
+            self.sent: list[dict[str, Any]] = []
+
+        async def send_json(self, payload: dict[str, Any]) -> None:
+            self.sent.append(payload)
+
+    async def run() -> None:
+        await coord.async_start_game(r1.code, host_token=h1_tok)
+        await coord.async_start_game(r2.code, host_token=h2_tok)
+        ws_view = QuizRoomsWebSocketView(coord)
+        fake_ws = _CaptureWS()
+        bound_client = WSClient(
+            ws=fake_ws, role="room", room_code=r2.code, session_token="roamer"
+        )
+        # Attempt to submit an answer into r1 while socket is bound to r2 -> room_mismatch error!
+        await ws_view._handle_message(
+            bound_client,
+            json.dumps(
+                {
+                    "type": "submit_answer",
+                    "code": r1.code,
+                    "answer": r1.questions[0].choices[0],
+                    "wager": 1,
+                }
+            ),
+        )
+        assert fake_ws.sent and fake_ws.sent[-1]["code"] == "room_mismatch"
+        assert "roamer" not in r1.current_submissions
+        await coord.async_shutdown()
 
     asyncio.run(run())

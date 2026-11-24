@@ -100,8 +100,17 @@
   function setHostToken(code, token) {
     const upper = (code || "").toUpperCase();
     if (!upper) return;
-    if (token) state.hostTokens[upper] = token;
-    else delete state.hostTokens[upper];
+    if (token) {
+      delete state.hostTokens[upper];
+      state.hostTokens[upper] = token;
+      const keys = Object.keys(state.hostTokens);
+      while (keys.length > 25) {
+        const oldest = keys.shift();
+        if (oldest) delete state.hostTokens[oldest];
+      }
+    } else {
+      delete state.hostTokens[upper];
+    }
     saveJSON(LS_HOSTS, state.hostTokens);
   }
 
@@ -114,9 +123,27 @@
     return true;
   }
 
+  let reconnectTimer = null;
+  let reconnectAttempt = 0;
+
+  function scheduleReconnect() {
+    if (reconnectTimer) return;
+    const baseDelay = Math.min(6000, 1600 * Math.pow(1.45, reconnectAttempt));
+    const jitter = Math.floor(Math.random() * 450);
+    reconnectAttempt = Math.min(reconnectAttempt + 1, 6);
+    reconnectTimer = setTimeout(() => {
+      reconnectTimer = null;
+      connectWS();
+    }, baseDelay + jitter);
+  }
+
   function connectWS() {
     if (state.ws && (state.ws.readyState === WebSocket.OPEN || state.ws.readyState === WebSocket.CONNECTING)) {
       return;
+    }
+    if (reconnectTimer) {
+      clearTimeout(reconnectTimer);
+      reconnectTimer = null;
     }
     const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
     const role = state.activeRoomCode ? "room" : "lobby";
@@ -125,6 +152,7 @@
     state.ws = ws;
 
     ws.onopen = () => {
+      reconnectAttempt = 0;
       state.connected = true;
       updateConnStatus("Live · Local Network");
       updateReconnectBanner(false);
@@ -144,7 +172,7 @@
       state.connected = false;
       updateConnStatus("Reconnecting…");
       updateReconnectBanner(true);
-      setTimeout(connectWS, 1800);
+      scheduleReconnect();
     };
 
     ws.onerror = () => {
@@ -599,7 +627,8 @@
     }
 
     function getJoinUrl(code) {
-      const base = state.lanBaseUrl || window.location.origin;
+      const rawBase = (state.lanBaseUrl || window.location.origin).replace(/\/$/, "");
+      const base = /^https?:\/\//i.test(rawBase) ? rawBase : window.location.origin;
       return `${base}/quizrooms/play?code=${encodeURIComponent(code)}`;
     }
 

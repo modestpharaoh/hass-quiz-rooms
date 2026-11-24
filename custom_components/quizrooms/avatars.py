@@ -12,7 +12,7 @@ from typing import Any
 from .const import URL_AVATAR
 
 MAX_AVATAR_UPLOAD_BYTES = 256 * 1024  # 256 KB (client compresses to ~10-20 KB 160x160 JPEG/WebP)
-MAX_CUSTOM_AVATARS = 250
+MAX_CUSTOM_AVATARS = 100
 
 PRESET_AVATARS: tuple[dict[str, str], ...] = (
     {"id": "fox", "label": "Clever Fox"},
@@ -114,6 +114,10 @@ class AvatarStore:
 
     def set_frontend_dir(self, frontend_dir: Path) -> None:
         self.frontend_dir = Path(frontend_dir)
+
+    def clear(self) -> None:
+        """Release all in-memory uploaded custom avatars (invoked on shutdown)."""
+        self._custom.clear()
 
     def store_custom_upload(self, payload: bytes) -> tuple[str, str]:
         """Validate and store a custom raster avatar; returns (avatar_ref, avatar_url)."""

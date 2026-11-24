@@ -139,7 +139,8 @@
   }
 
   function joinUrl(code) {
-    const base = state.lanBaseUrl || window.location.origin;
+    const rawBase = (state.lanBaseUrl || window.location.origin).replace(/\/$/, "");
+    const base = /^https?:\/\//i.test(rawBase) ? rawBase : window.location.origin;
     return code ? `${base}/quizrooms/play?code=${encodeURIComponent(code)}` : `${base}/quizrooms/play`;
   }
 
@@ -181,15 +182,34 @@
       }
     }
 
+    let tvReconnectTimer = null;
+    let tvReconnectAttempt = 0;
+
+    function scheduleTVReconnect() {
+      if (tvReconnectTimer) return;
+      const baseDelay = Math.min(6000, 1600 * Math.pow(1.45, tvReconnectAttempt));
+      const jitter = Math.floor(Math.random() * 450);
+      tvReconnectAttempt = Math.min(tvReconnectAttempt + 1, 6);
+      tvReconnectTimer = setTimeout(() => {
+        tvReconnectTimer = null;
+        connectWS();
+      }, baseDelay + jitter);
+    }
+
     function connectWS() {
       if (state.ws && (state.ws.readyState === WebSocket.OPEN || state.ws.readyState === WebSocket.CONNECTING)) {
         return;
+      }
+      if (tvReconnectTimer) {
+        clearTimeout(tvReconnectTimer);
+        tvReconnectTimer = null;
       }
       const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
       const ws = new WebSocket(`${proto}//${window.location.host}/quizrooms/ws?role=tv`);
       state.ws = ws;
 
       ws.onopen = () => {
+        tvReconnectAttempt = 0;
         state.wsConnected = true;
         updateConnBadge("Live", true);
       };
@@ -197,7 +217,7 @@
       ws.onclose = () => {
         state.wsConnected = false;
         updateConnBadge("Reconnecting…", false);
-        setTimeout(connectWS, 1800);
+        scheduleTVReconnect();
       };
 
       ws.onerror = (err) => {

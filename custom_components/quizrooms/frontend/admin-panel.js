@@ -446,7 +446,8 @@ class QuizRoomsAdminPanel extends HTMLElement {
       mount.innerHTML = "";
       return;
     }
-    const base = (this._state.lan_base_url || window.location.origin).replace(/\/$/, "");
+    const rawBase = (this._state.lan_base_url || window.location.origin).replace(/\/$/, "");
+    const base = /^https?:\/\//i.test(rawBase) ? rawBase : window.location.origin;
     const joinUrl = `${base}/quizrooms/play?code=${encodeURIComponent(room.code)}`;
     const qrSvg =
       window.QuizRoomsQR && typeof window.QuizRoomsQR.toSVG === "function"
@@ -573,7 +574,8 @@ class QuizRoomsAdminPanel extends HTMLElement {
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   _renderShell() {

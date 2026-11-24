@@ -6,6 +6,7 @@ import asyncio
 from dataclasses import dataclass, field
 import logging
 from pathlib import Path
+import re
 from typing import Any, Callable
 
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
@@ -28,6 +29,8 @@ from .const import (
     DOMAIN,
     EVENT_FINALE,
     EVENT_PHASE_CHANGED,
+    MAX_WS_CLIENTS,
+    MAX_WS_CLIENTS_PER_IP,
     PHASE_FINALE,
     PHASE_LOBBY,
     PHASE_QUESTION,
@@ -38,6 +41,7 @@ from .const import (
     URL_PLAY,
     VERSION,
     VISIBILITY_PUBLIC,
+    WS_SEND_TIMEOUT_SECONDS,
 )
 from .engine import EngineError, QuizEngine
 from .network_guard import NetworkGuard
@@ -48,6 +52,9 @@ from .stage_effects import (
     build_finale_payload,
     build_phase_changed_payload,
 )
+from .tv_launcher import is_safe_http_url
+
+_SAFE_HOST_RE = re.compile(r"^[A-Za-z0-9.\-:\[\]]+$")
 
 
 def build_device_info(entry_id: str) -> DeviceInfo:
@@ -76,6 +83,7 @@ class WSClient:
     role: str  # "lobby" | "room" | "tv"
     room_code: str | None = None
     session_token: str | None = None
+    client_ip: str | None = None
 
 
 @dataclass
@@ -302,24 +310,30 @@ class QuizRoomsCoordinator:
         return True
 
     def resolve_lan_base_url(self, request: Any | None = None) -> str:
-        """Determine the best LAN base URL for QR codes."""
-        if self.custom_lan_base_url:
+        """Determine the best LAN base URL for QR codes (hardened against Host header injection)."""
+        if self.custom_lan_base_url and is_safe_http_url(self.custom_lan_base_url):
             return self.custom_lan_base_url
 
         ha_config = getattr(self.hass, "config", None)
         internal_url = getattr(ha_config, "internal_url", None) if ha_config else None
         if internal_url:
-            return str(internal_url).rstrip("/")
+            clean_int = str(internal_url).strip().rstrip("/")
+            if is_safe_http_url(clean_int):
+                return clean_int
 
         if request is not None:
-            scheme = getattr(request, "scheme", "http")
-            host = getattr(request, "host", "")
-            if host:
-                return f"{scheme}://{host}".rstrip("/")
+            scheme = str(getattr(request, "scheme", "http") or "http").strip().lower()
+            host = str(getattr(request, "host", "") or "").strip()
+            if scheme in ("http", "https") and host and len(host) <= 255 and _SAFE_HOST_RE.fullmatch(host):
+                candidate = f"{scheme}://{host}".rstrip("/")
+                if is_safe_http_url(candidate):
+                    return candidate
 
         external_url = getattr(ha_config, "external_url", None) if ha_config else None
         if external_url:
-            return str(external_url).rstrip("/")
+            clean_ext = str(external_url).strip().rstrip("/")
+            if is_safe_http_url(clean_ext):
+                return clean_ext
         return ""
 
     # --- Entity listener management ---
@@ -372,6 +386,7 @@ class QuizRoomsCoordinator:
                 pass
         self._ws_clients.clear()
         self.pack_registry.prune_pinned_media(set())
+        self.avatar_store.clear()
 
     def prune_unused_pinned_media(self) -> int:
         """Evict cached pinned media bytes not referenced by any active room."""
@@ -519,6 +534,16 @@ class QuizRoomsCoordinator:
 
     # --- WebSocket registration & broadcasting ---
 
+    def can_accept_ws(self, client_ip: str | None = None) -> bool:
+        """Return True if global and per-IP WebSocket connection caps allow a new socket."""
+        if len(self._ws_clients) >= MAX_WS_CLIENTS:
+            return False
+        if client_ip:
+            same_ip = sum(1 for c in self._ws_clients if c.client_ip == client_ip)
+            if same_ip >= MAX_WS_CLIENTS_PER_IP:
+                return False
+        return True
+
     def register_ws(self, client: WSClient) -> None:
         self._ws_clients.add(client)
 
@@ -543,9 +568,19 @@ class QuizRoomsCoordinator:
 
     async def _safe_send(self, client: WSClient, payload: dict[str, Any]) -> None:
         try:
-            await client.ws.send_json(payload)
+            await asyncio.wait_for(client.ws.send_json(payload), timeout=WS_SEND_TIMEOUT_SECONDS)
+        except asyncio.CancelledError:
+            raise
         except Exception:
             self._ws_clients.discard(client)
+            close_fn = getattr(client.ws, "close", None)
+            if callable(close_fn):
+                try:
+                    res = close_fn()
+                    if asyncio.iscoroutine(res):
+                        asyncio.create_task(res)
+                except Exception:
+                    pass
 
     async def broadcast_room_state(self, code: str) -> None:
         """Push tailored room_state messages to players in room and TVs following it."""
@@ -804,5 +839,6 @@ class QuizRoomsCoordinator:
 
     async def async_reload_packs(self) -> list[dict[str, Any]]:
         packs = await self.async_run_in_executor(self.pack_registry.reload)
+        self.prune_unused_pinned_media()
         await self.broadcast_lobby_and_tv()
         return [p.to_summary() for p in packs]

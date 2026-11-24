@@ -16,6 +16,8 @@ from homeassistant.components.http import HomeAssistantView
 from .avatars import AvatarError, MAX_AVATAR_UPLOAD_BYTES, list_preset_catalog
 from .const import (
     DOMAIN,
+    MAX_JSON_BODY_BYTES,
+    MAX_MULTIPART_PARTS,
     MAX_UPLOAD_BYTES,
     MAX_WS_MESSAGE_BYTES,
     PHASE_QUESTION,
@@ -78,11 +80,16 @@ def _is_ws_origin_allowed(coordinator: QuizRoomsCoordinator, request: web.Reques
     """Protect /quizrooms/ws against Cross-Site WebSocket Hijacking (CSWSH) from external sites."""
     headers = getattr(request, "headers", None) or {}
     origin = (headers.get("Origin") or headers.get("origin") or "").strip()
-    if not origin or origin.lower() == "null":
+    if not origin:
         return True
+    # Reject sandboxed-iframe / data: opaque origins ("null") which external sites can forge
+    if origin.lower() == "null":
+        return False
     try:
         parsed_origin = urlsplit(origin)
     except ValueError:
+        return False
+    if parsed_origin.scheme not in ("http", "https", "ws", "wss"):
         return False
     origin_host = (parsed_origin.netloc or "").strip().lower()
     if not origin_host:
@@ -94,12 +101,20 @@ def _is_ws_origin_allowed(coordinator: QuizRoomsCoordinator, request: web.Reques
         allowed_hosts.add(req_host)
         allowed_hosts.add(req_host.split(":", 1)[0])
 
-    if coordinator.custom_lan_base_url:
+    extra_urls = [coordinator.custom_lan_base_url]
+    ha_config = getattr(coordinator.hass, "config", None)
+    if ha_config is not None:
+        extra_urls.append(getattr(ha_config, "internal_url", None) or "")
+        extra_urls.append(getattr(ha_config, "external_url", None) or "")
+
+    for candidate_url in extra_urls:
+        if not candidate_url:
+            continue
         try:
-            custom_host = (urlsplit(coordinator.custom_lan_base_url).netloc or "").strip().lower()
-            if custom_host:
-                allowed_hosts.add(custom_host)
-                allowed_hosts.add(custom_host.split(":", 1)[0])
+            extra_host = (urlsplit(str(candidate_url)).netloc or "").strip().lower()
+            if extra_host:
+                allowed_hosts.add(extra_host)
+                allowed_hosts.add(extra_host.split(":", 1)[0])
         except ValueError:
             pass
 
@@ -154,6 +169,42 @@ async def _read_bounded_body(request: web.Request, max_bytes: int) -> bytes | No
     if len(data) > max_bytes:
         return None
     return data
+
+
+async def _read_bounded_json(
+    request: web.Request, max_bytes: int = MAX_JSON_BODY_BYTES
+) -> tuple[dict[str, Any], web.Response | None]:
+    """Read a JSON object up to max_bytes; returns (body_dict, error_response_if_too_large)."""
+    content_length = getattr(request, "content_length", None)
+    if isinstance(content_length, int) and content_length > max_bytes:
+        return {}, web.json_response(
+            {"error": "payload_too_large", "message": "Request JSON body is too large."},
+            status=413,
+        )
+
+    has_stream = getattr(request, "content", None) is not None or (
+        "read" in type(request).__dict__
+    )
+    if has_stream:
+        raw_bytes = await _read_bounded_body(request, max_bytes)
+        if raw_bytes is None:
+            return {}, web.json_response(
+                {"error": "payload_too_large", "message": "Request JSON body is too large."},
+                status=413,
+            )
+        if not raw_bytes:
+            return {}, None
+        try:
+            parsed = json.loads(raw_bytes.decode("utf-8"))
+        except Exception:
+            return {}, None
+        return (parsed if isinstance(parsed, dict) else {}), None
+
+    try:
+        parsed = await request.json()
+    except Exception:
+        return {}, None
+    return (parsed if isinstance(parsed, dict) else {}), None
 
 
 def _read_asset_sync(frontend_dir: Path, filepath: str) -> tuple[bytes, str] | None:
@@ -342,25 +393,44 @@ class QuizRoomsPublicAvatarUploadView(_QuizRoomsBaseView):
         file_bytes = b""
         content_type = request.content_type or ""
         if content_type.startswith("multipart/"):
+            content_length = getattr(request, "content_length", None)
+            if isinstance(content_length, int) and content_length > (MAX_AVATAR_UPLOAD_BYTES + 16384):
+                return web.json_response(
+                    {
+                        "error": "avatar_too_large",
+                        "message": f"Profile photo must be under {MAX_AVATAR_UPLOAD_BYTES // 1024} KB.",
+                    },
+                    status=413,
+                )
             reader = await request.multipart()
+            part_count = 0
+            total_stream_bytes = 0
             while (part := await reader.next()) is not None:
-                if part.name == "file":
-                    chunks: list[bytes] = []
-                    total = 0
-                    while True:
-                        chunk = await part.read_chunk(32768)
-                        if not chunk:
-                            break
-                        total += len(chunk)
-                        if total > MAX_AVATAR_UPLOAD_BYTES:
-                            return web.json_response(
-                                {
-                                    "error": "avatar_too_large",
-                                    "message": f"Profile photo must be under {MAX_AVATAR_UPLOAD_BYTES // 1024} KB.",
-                                },
-                                status=413,
-                            )
+                part_count += 1
+                if part_count > MAX_MULTIPART_PARTS:
+                    return web.json_response(
+                        {"error": "too_many_parts", "message": "Too many multipart fields."},
+                        status=400,
+                    )
+                chunks: list[bytes] = []
+                part_bytes = 0
+                while True:
+                    chunk = await part.read_chunk(32768)
+                    if not chunk:
+                        break
+                    part_bytes += len(chunk)
+                    total_stream_bytes += len(chunk)
+                    if part_bytes > MAX_AVATAR_UPLOAD_BYTES or total_stream_bytes > (MAX_AVATAR_UPLOAD_BYTES + 16384):
+                        return web.json_response(
+                            {
+                                "error": "avatar_too_large",
+                                "message": f"Profile photo must be under {MAX_AVATAR_UPLOAD_BYTES // 1024} KB.",
+                            },
+                            status=413,
+                        )
+                    if part.name == "file" and not file_bytes:
                         chunks.append(chunk)
+                if part.name == "file" and not file_bytes:
                     file_bytes = b"".join(chunks)
         else:
             bounded = await _read_bounded_body(request, MAX_AVATAR_UPLOAD_BYTES)
@@ -430,10 +500,9 @@ class QuizRoomsPublicTVModeView(_QuizRoomsBaseView):
         if blocked := _check_network_guard(self.coordinator, request):
             return blocked
 
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
+        body, too_large = await _read_bounded_json(request)
+        if too_large is not None:
+            return too_large
 
         try:
             tv = await self.coordinator.async_set_tv_mode(
@@ -472,8 +541,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
     requires_auth = False
 
     async def get(self, request: web.Request) -> web.StreamResponse:
-        if blocked := _check_network_guard(self.coordinator, request):
-            return blocked
+        decision = self.coordinator.network_guard.evaluate_request(request)
+        if not decision.allowed:
+            return build_forbidden_response(request, decision)
         if not _is_ws_origin_allowed(self.coordinator, request):
             return web.json_response(
                 {
@@ -481,6 +551,14 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     "message": "Cross-origin WebSocket connections are not permitted.",
                 },
                 status=403,
+            )
+        if not self.coordinator.can_accept_ws(decision.client_ip):
+            return web.json_response(
+                {
+                    "error": "ws_limit_reached",
+                    "message": "Too many active WebSocket connections.",
+                },
+                status=429,
             )
 
         ws = web.WebSocketResponse(heartbeat=25.0, max_msg_size=MAX_WS_MESSAGE_BYTES)
@@ -490,7 +568,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
         if role not in ("lobby", "room", "tv"):
             role = "lobby"
 
-        client = WSClient(ws=ws, role=role)
+        client = WSClient(ws=ws, role=role, client_ip=decision.client_ip)
         self.coordinator.register_ws(client)
 
         try:
@@ -551,6 +629,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
             if msg_type == "subscribe_lobby":
                 client.role = "lobby"
                 client.room_code = None
+                client.session_token = None
                 await client.ws.send_json(
                     {
                         "type": "lobby_update",
@@ -619,12 +698,15 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 return
 
             if msg_type == "update_avatar":
-                code = str(data.get("code") or client.room_code or "")
+                bound_code = str(client.room_code or "")
+                req_code = str(data.get("code") or bound_code).strip().upper()
                 session_token = str(client.session_token or "")
-                if not session_token:
+                if client.role != "room" or not bound_code or not session_token:
                     raise EngineError("not_in_room", "Join the room before updating your avatar.")
+                if req_code != bound_code:
+                    raise EngineError("room_mismatch", "Socket is bound to a different room.", status_code=403)
                 room, _player = engine.update_player_avatar(
-                    code,
+                    bound_code,
                     session_token=session_token,
                     avatar=str(data.get("avatar") or ""),
                 )
@@ -637,8 +719,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 old_token = client.session_token
                 client.role = "lobby"
                 client.room_code = None
+                client.session_token = None
                 if old_code and old_token:
-                    engine.set_player_connected(old_code, old_token, False)
+                    engine.leave_room(old_code, old_token)
                     await self.coordinator.broadcast_room_state(old_code)
                     await self.coordinator.broadcast_lobby_and_tv()
                     self.coordinator.notify_entities()
@@ -680,12 +763,15 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 return
 
             if msg_type == "submit_bonus_wager":
-                code = str(data.get("code") or client.room_code or "")
+                bound_code = str(client.room_code or "")
+                req_code = str(data.get("code") or bound_code).strip().upper()
                 session_token = str(client.session_token or "")
-                if not session_token:
+                if client.role != "room" or not bound_code or not session_token:
                     raise EngineError("not_in_room", "Join the room before placing a bonus wager.")
+                if req_code != bound_code:
+                    raise EngineError("room_mismatch", "Socket is bound to a different room.", status_code=403)
                 room, _chosen = engine.submit_bonus_wager(
-                    code,
+                    bound_code,
                     session_token=session_token,
                     wager=data.get("wager"),
                 )
@@ -693,12 +779,15 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 return
 
             if msg_type == "submit_answer":
-                code = str(data.get("code") or client.room_code or "")
+                bound_code = str(client.room_code or "")
+                req_code = str(data.get("code") or bound_code).strip().upper()
                 session_token = str(client.session_token or "")
-                if not session_token:
+                if client.role != "room" or not bound_code or not session_token:
                     raise EngineError("not_in_room", "Join the room before submitting an answer.")
+                if req_code != bound_code:
+                    raise EngineError("room_mismatch", "Socket is bound to a different room.", status_code=403)
                 room, _sub, all_locked = engine.submit_answer(
-                    code,
+                    bound_code,
                     session_token=session_token,
                     answer=str(data.get("answer") or ""),
                     wager=data.get("wager"),
@@ -892,12 +981,36 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
 
         content_type = request.content_type or ""
         if content_type.startswith("multipart/"):
+            content_length = getattr(request, "content_length", None)
+            if isinstance(content_length, int) and content_length > (MAX_UPLOAD_BYTES + 65536):
+                return web.json_response(
+                    {
+                        "error": "file_too_large",
+                        "message": f"Upload exceeds maximum size of {MAX_UPLOAD_BYTES // (1024 * 1024)} MB.",
+                        "details": [f"Upload exceeds {MAX_UPLOAD_BYTES // (1024 * 1024)} MB."],
+                    },
+                    status=413,
+                )
             reader = await request.multipart()
+            part_count = 0
+            total_stream_bytes = 0
             while (part := await reader.next()) is not None:
+                part_count += 1
+                if part_count > MAX_MULTIPART_PARTS:
+                    return web.json_response(
+                        {
+                            "error": "too_many_parts",
+                            "message": "Too many multipart form fields.",
+                            "details": ["Too many multipart form fields."],
+                        },
+                        status=400,
+                    )
                 if part.name == "overwrite":
-                    val = (await part.text()).strip().lower()
+                    ov_chunk = await part.read_chunk(64)
+                    total_stream_bytes += len(ov_chunk)
+                    val = ov_chunk.decode("utf-8", errors="ignore").strip().lower()
                     overwrite = val in ("1", "true", "yes")
-                elif part.name == "file":
+                elif part.name == "file" and not file_bytes:
                     filename = part.filename or ""
                     chunks: list[bytes] = []
                     total = 0
@@ -906,7 +1019,8 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
                         if not chunk:
                             break
                         total += len(chunk)
-                        if total > MAX_UPLOAD_BYTES:
+                        total_stream_bytes += len(chunk)
+                        if total > MAX_UPLOAD_BYTES or total_stream_bytes > (MAX_UPLOAD_BYTES + 65536):
                             return web.json_response(
                                 {
                                     "error": "file_too_large",
@@ -917,6 +1031,21 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
                             )
                         chunks.append(chunk)
                     file_bytes = b"".join(chunks)
+                else:
+                    while True:
+                        chunk = await part.read_chunk(65536)
+                        if not chunk:
+                            break
+                        total_stream_bytes += len(chunk)
+                        if total_stream_bytes > (MAX_UPLOAD_BYTES + 65536):
+                            return web.json_response(
+                                {
+                                    "error": "file_too_large",
+                                    "message": f"Upload exceeds maximum size of {MAX_UPLOAD_BYTES // (1024 * 1024)} MB.",
+                                    "details": [f"Upload exceeds {MAX_UPLOAD_BYTES // (1024 * 1024)} MB."],
+                                },
+                                status=413,
+                            )
         else:
             filename = request.headers.get("X-Pack-Filename", "pack.json")
             bounded = await _read_bounded_body(request, MAX_UPLOAD_BYTES)
@@ -1030,6 +1159,7 @@ class QuizRoomsAdminPackDeleteView(_QuizRoomsBaseView):
                 status=err.status_code,
             )
 
+        self.coordinator.prune_unused_pinned_media()
         await self.coordinator.broadcast_lobby_and_tv()
         return web.json_response({"ok": True, "deleted": pack_id})
 
@@ -1045,10 +1175,9 @@ class QuizRoomsAdminRoomActionView(_QuizRoomsBaseView):
         if denied := _require_ha_admin(request):
             return denied
 
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
+        body, too_large = await _read_bounded_json(request)
+        if too_large is not None:
+            return too_large
 
         action = str(body.get("action") or "").strip().lower()
         try:
@@ -1086,10 +1215,9 @@ class QuizRoomsAdminTVView(_QuizRoomsBaseView):
         if denied := _require_ha_admin(request):
             return denied
 
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
+        body, too_large = await _read_bounded_json(request)
+        if too_large is not None:
+            return too_large
 
         try:
             tv = await self.coordinator.async_set_tv_mode(
@@ -1115,10 +1243,9 @@ class QuizRoomsAdminTVOpenView(_QuizRoomsBaseView):
         if denied := _require_ha_admin(request):
             return denied
 
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
+        body, too_large = await _read_bounded_json(request)
+        if too_large is not None:
+            return too_large
 
         entity_id = str(body.get("entity_id") or "").strip()
         tv_url = str(body.get("url") or "").strip() or f"{self.coordinator.resolve_lan_base_url(request)}{URL_TV}"
@@ -1149,12 +1276,9 @@ class QuizRoomsAdminStageView(_QuizRoomsBaseView):
         if denied := _require_ha_admin(request):
             return denied
 
-        try:
-            body = await request.json()
-        except Exception:
-            body = {}
-        if not isinstance(body, dict):
-            body = {}
+        body, too_large = await _read_bounded_json(request)
+        if too_large is not None:
+            return too_large
 
         action = str(body.get("action") or "save").strip().lower()
         try:
