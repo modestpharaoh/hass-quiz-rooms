@@ -65,6 +65,14 @@
       return !muted;
     }
 
+    function vibrate(pattern) {
+      try {
+        if (navigator && typeof navigator.vibrate === "function") {
+          navigator.vibrate(pattern);
+        }
+      } catch (_) { }
+    }
+
     function savePref() {
       if (!storageKey) return;
       try {
@@ -92,14 +100,21 @@
           playTone(523.25, 0.09, { type: "triangle", gain: 0.065, delay: 0.11 });
           playTone(659.25, 0.18, { type: "triangle", gain: 0.08, delay: 0.22 });
         },
-        /* Tactile chip click pitched gently by wager (1-10) */
+        /* Tactile chip click pitched gently by wager (1-25) */
         wagerClick(wager) {
-          const w = Math.max(1, Math.min(10, Number(wager) || 5));
-          const freq = 320 + w * 38;
+          vibrate(15);
+          const w = Math.max(1, Math.min(25, Number(wager) || 5));
+          const freq = 300 + Math.min(w, 15) * 28;
           playTone(freq, 0.055, { type: "triangle", gain: 0.055 });
+        },
+        /* Subtle tap on choice selection */
+        choiceTap() {
+          vibrate(10);
+          playTone(440, 0.04, { type: "sine", gain: 0.035 });
         },
         /* Satisfying lock-in confirmation */
         lockIn() {
+          vibrate([22, 35, 22]);
           playTone(523.25, 0.08, { type: "triangle", gain: 0.065, delay: 0 });
           playTone(783.99, 0.12, { type: "triangle", gain: 0.065, delay: 0.06 });
         },
@@ -109,11 +124,13 @@
         },
         /* Crisp urgent countdown pulse for final 5..1 seconds */
         tickUrgent(secondsLeft) {
+          vibrate(secondsLeft === 5 ? [25, 45, 25] : 18);
           const freq = secondsLeft === 1 ? 988 : 784;
           playTone(freq, 0.08, { type: "square", gain: 0.032 });
         },
         /* Bright celebratory arpeggio when player answers correctly */
         correct() {
+          vibrate([18, 30, 35]);
           playTone(523.25, 0.12, { type: "triangle", gain: 0.08, delay: 0.0 });
           playTone(659.25, 0.12, { type: "triangle", gain: 0.08, delay: 0.08 });
           playTone(783.99, 0.14, { type: "triangle", gain: 0.085, delay: 0.16 });
@@ -121,6 +138,7 @@
         },
         /* Playful descending buzzer when player answers wrong */
         wrong() {
+          vibrate([45, 30, 45]);
           playTone(311.13, 0.16, { type: "sawtooth", gain: 0.045, delay: 0.0, freqEnd: 277.18 });
           playTone(233.08, 0.28, { type: "sawtooth", gain: 0.045, delay: 0.15, freqEnd: 185.0 });
         },

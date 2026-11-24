@@ -925,3 +925,170 @@
   padding-block-start: 14px;
   border-block-start: 1px solid var(--border-subtle);
 }
+
+.host-danger-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-start: 12px;
+  padding-block-start: 10px;
+  border-block-start: 1px dashed var(--border-subtle);
+}
+
+.btn-danger-subtle {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding-block: 6px;
+  padding-inline: 11px;
+}
+
+.btn-danger-subtle:hover {
+  border-color: var(--accent-coral);
+  color: var(--accent-coral);
+  background: var(--accent-coral-soft);
+}
+
+/* Sticky mobile action bar for thumb-friendly Lock In */
+.sticky-action-bar {
+  position: sticky;
+  inset-block-end: 0;
+  z-index: 40;
+  margin-inline: -16px;
+  margin-block-start: 12px;
+  padding-block-start: 12px;
+  padding-inline: 16px;
+  padding-block-end: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-block-start: 1px solid var(--border-subtle);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.sticky-risk-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-block-end: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* Tiered wager chip groups (when N >= 15) */
+.wager-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wager-tier {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-inline-start-width: 4px;
+}
+
+.wager-tier.tier-low {
+  border-inline-start-color: var(--accent-cyan);
+}
+
+.wager-tier.tier-mid {
+  border-inline-start-color: var(--accent-primary);
+}
+
+.wager-tier.tier-high {
+  border-inline-start-color: var(--accent-amber);
+}
+
+.wager-tier-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-block-end: 6px;
+}
+
+.wager-risk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+/* Non-destructive top reconnect banner */
+.reconnect-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  margin-block-end: 14px;
+  border-radius: var(--radius-md);
+  background: var(--accent-amber-soft);
+  border: 1px solid var(--accent-amber);
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.reconnect-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-amber);
+  flex: none;
+  animation: reconnectBlink 1.1s ease-in-out infinite;
+}
+
+@keyframes reconnectBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* Pack picker search + filter pills in Create Room modal */
+.pack-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block-end: 8px;
+}
+
+.pack-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pack-filter-pill {
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.pack-filter-pill.active {
+  background: var(--accent-primary);
+  color: var(--accent-primary-ink);
+  border-color: transparent;
+}

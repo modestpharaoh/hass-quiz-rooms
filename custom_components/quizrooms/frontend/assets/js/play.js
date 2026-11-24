@@ -29,6 +29,9 @@
     serverOffsetMs: 0,
     showCreateModal: false,
     showAvatarModal: false,
+    createPackFilter: "all",
+    createPackSearch: "",
+    createSelectedPacks: new Set(),
     packsLoaded: false,
     packsError: "",
   };
@@ -124,6 +127,7 @@
     ws.onopen = () => {
       state.connected = true;
       updateConnStatus("Live · Local Network");
+      updateReconnectBanner(false);
       // Auto-rejoin previous room if still active
       if (state.activeRoomCode) {
         sendWS({
@@ -139,11 +143,13 @@
     ws.onclose = () => {
       state.connected = false;
       updateConnStatus("Reconnecting…");
+      updateReconnectBanner(true);
       setTimeout(connectWS, 1800);
     };
 
     ws.onerror = () => {
       updateConnStatus("Connection interrupted");
+      updateReconnectBanner(true);
     };
 
     ws.onmessage = (evt) => {
@@ -158,6 +164,19 @@
   function updateConnStatus(text) {
     const el = document.getElementById("connection-status");
     if (el) el.textContent = text;
+  }
+
+  function updateReconnectBanner(disconnected) {
+    const el = document.getElementById("reconnect-banner");
+    if (!el) return;
+    const roomCode = (state.room && state.room.code) || state.activeRoomCode;
+    if (disconnected && roomCode) {
+      el.innerHTML = `<span class="reconnect-dot" aria-hidden="true"></span><span>Reconnecting to room <strong class="mono">${esc(roomCode)}</strong>… Your draft answer &amp; wager are preserved.</span>`;
+      el.classList.remove("hidden");
+    } else {
+      el.classList.add("hidden");
+      el.innerHTML = "";
+    }
   }
 
   function avatarUrlFromRef(ref) {
@@ -444,7 +463,22 @@
 
   function applyRoomState(room) {
     if (!room) return;
+    // Preserve active free-text input focus & cursor if user is mid-typing on the same question
+    const activeInput = document.activeElement;
+    const preserveFreeText =
+      activeInput &&
+      activeInput.id === "free-text-input" &&
+      room.phase === "question" &&
+      room.question &&
+      state.lastRoundKey === `${room.code}:${room.question.index}`;
+    const prevSelStart = preserveFreeText ? activeInput.selectionStart : null;
+    const prevSelEnd = preserveFreeText ? activeInput.selectionEnd : null;
+    if (preserveFreeText) {
+      state.selectedAnswer = activeInput.value;
+    }
+
     state.room = room;
+    if (state.connected) updateReconnectBanner(false);
 
     if (room.question && room.question.server_now_ms) {
       state.serverOffsetMs = room.question.server_now_ms - Date.now();
@@ -505,6 +539,15 @@
       }
 
       render();
+      if (preserveFreeText) {
+        const nextInput = document.getElementById("free-text-input");
+        if (nextInput) {
+          nextInput.focus();
+          if (typeof prevSelStart === "number" && typeof prevSelEnd === "number") {
+            try { nextInput.setSelectionRange(prevSelStart, prevSelEnd); } catch (_) { }
+          }
+        }
+      }
       if (room.phase === "question" && !room.paused) startTimerLoop();
       else stopTimerLoop();
     }
@@ -721,15 +764,14 @@
       const countBadge = document.getElementById("cr-pack-count");
       if (!listEl) return;
 
-      const prevChecked = new Set(
-        Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
-      );
-
-      if (countBadge) {
-        countBadge.textContent = `${state.packs.length} available`;
-      }
+      // Sync any currently rendered checkboxes into persistent Set before re-filtering
+      listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
+        if (el.checked) state.createSelectedPacks.add(el.value);
+        else state.createSelectedPacks.delete(el.value);
+      });
 
       if (!state.packs.length) {
+        if (countBadge) countBadge.textContent = "0 available";
         if (state.packsError) {
           listEl.innerHTML = `
           <div class="pack-empty-box">
@@ -752,9 +794,37 @@
         return;
       }
 
-      listEl.innerHTML = state.packs
-        .map((p, idx) => {
-          const checked = prevChecked.size > 0 ? prevChecked.has(p.pack_id) : idx === 0;
+      // Default to selecting first pack once packs arrive if nothing selected yet
+      if (state.createSelectedPacks.size === 0 && state.packs.length > 0) {
+        state.createSelectedPacks.add(state.packs[0].pack_id);
+      }
+
+      const term = (state.createPackSearch || "").trim().toLowerCase();
+      const filter = state.createPackFilter || "all";
+      const filtered = state.packs.filter((p) => {
+        if (filter === "en" && String(p.language || "").toLowerCase() !== "en") return false;
+        if (filter === "ar" && String(p.language || "").toLowerCase() !== "ar") return false;
+        if (filter === "open_ended" && !p.open_ended) return false;
+        if (!term) return true;
+        return (
+          String(p.title || "").toLowerCase().includes(term) ||
+          String(p.pack_id || "").toLowerCase().includes(term) ||
+          String(p.category || "").toLowerCase().includes(term)
+        );
+      });
+
+      if (countBadge) {
+        countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
+      }
+
+      if (!filtered.length) {
+        listEl.innerHTML = `<div class="pack-empty-box">No packs match "${esc(state.createPackSearch || filter)}".</div>`;
+        return;
+      }
+
+      listEl.innerHTML = filtered
+        .map((p) => {
+          const checked = state.createSelectedPacks.has(p.pack_id);
           return `
         <label class="pack-check-item" dir="${p.rtl ? "rtl" : "auto"}">
           <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
@@ -773,10 +843,14 @@
         .join("");
 
       function syncOpenEndedDefaults() {
-        const selectedIds = new Set(
-          Array.from(listEl.querySelectorAll('input[name="pack_id"]:checked')).map((el) => el.value)
-        );
-        const hasOpenEnded = state.packs.some((p) => selectedIds.has(p.pack_id) && p.open_ended);
+        listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
+          if (el.checked) state.createSelectedPacks.add(el.value);
+          else state.createSelectedPacks.delete(el.value);
+        });
+        if (countBadge) {
+          countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
+        }
+        const hasOpenEnded = state.packs.some((p) => state.createSelectedPacks.has(p.pack_id) && p.open_ended);
         const modeSelect = document.getElementById("cr-answer-mode");
         const uniqueCheck = document.getElementById("cr-unique-answers");
         if (hasOpenEnded) {
@@ -797,6 +871,9 @@
 
     function openCreateModal() {
       state.showCreateModal = true;
+      state.createPackFilter = "all";
+      state.createPackSearch = "";
+      state.createSelectedPacks = new Set(state.packs.length ? [state.packs[0].pack_id] : []);
       const modalRoot = document.getElementById("modal-root");
 
       modalRoot.innerHTML = `
@@ -816,6 +893,15 @@
               <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:6px;">
                 <label class="field-label" style="margin:0;">Trivia Pack(s)</label>
                 <span class="badge" id="cr-pack-count">${state.packs.length} available</span>
+              </div>
+              <div class="pack-filter-bar">
+                <input id="cr-pack-search" type="search" class="text-input" style="padding-block:8px;font-size:0.9rem;" placeholder="Search packs by title or category…" />
+                <div class="pack-filter-pills" role="group" aria-label="Filter packs by language or mode">
+                  <button type="button" class="pack-filter-pill active" data-cr-filter="all">All</button>
+                  <button type="button" class="pack-filter-pill" data-cr-filter="en">EN</button>
+                  <button type="button" class="pack-filter-pill" data-cr-filter="ar">AR (عربي)</button>
+                  <button type="button" class="pack-filter-pill" data-cr-filter="open_ended">Open-Ended</button>
+                </div>
               </div>
               <div id="cr-pack-list" class="pack-checklist"></div>
             </div>
@@ -921,6 +1007,23 @@
         syncBonusLabel();
       }
 
+      const packSearchEl = document.getElementById("cr-pack-search");
+      if (packSearchEl) {
+        packSearchEl.addEventListener("input", () => {
+          state.createPackSearch = packSearchEl.value;
+          renderModalPackList();
+        });
+      }
+      modalRoot.querySelectorAll("[data-cr-filter]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.createPackFilter = btn.dataset.crFilter;
+          modalRoot.querySelectorAll("[data-cr-filter]").forEach((b) => {
+            b.classList.toggle("active", b.dataset.crFilter === state.createPackFilter);
+          });
+          renderModalPackList();
+        });
+      });
+
       renderModalPackList();
       if (!state.packs.length) {
         fetchBootstrap();
@@ -933,9 +1036,7 @@
 
       document.getElementById("create-room-form").addEventListener("submit", (e) => {
         e.preventDefault();
-        const selectedPacks = Array.from(
-          modalRoot.querySelectorAll('input[name="pack_id"]:checked')
-        ).map((el) => el.value);
+        const selectedPacks = Array.from(state.createSelectedPacks);
         if (!selectedPacks.length) {
           showToast("Select at least one trivia pack.", true);
           return;
@@ -994,10 +1095,65 @@
           state.room = null;
           state.activeRoomCode = "";
           saveStr(LS_ACTIVE_ROOM, "");
+          updateReconnectBanner(false);
           stopTimerLoop();
           sendWS({ type: "leave_room" });
           render();
         });
+      }
+    }
+
+    function renderHostDangerFooter() {
+      return `
+        <div class="host-danger-row">
+          <button type="button" id="host-close-room-btn" class="btn btn-danger-subtle">Close Room…</button>
+        </div>
+      `;
+    }
+
+    function openCloseRoomConfirm(room, hostToken) {
+      const modalRoot = document.getElementById("modal-root");
+      if (!modalRoot) return;
+      modalRoot.innerHTML = `
+        <div class="modal-backdrop" id="confirm-close-backdrop">
+          <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Confirm Close Room" style="max-width:400px;">
+            <div class="modal-header">
+              <h2 style="margin:0;">Close Room ${esc(room.code)}?</h2>
+            </div>
+            <p style="margin:0 0 18px;color:var(--text-secondary);font-size:0.94rem;">
+              Are you sure you want to close <strong dir="auto">${esc(room.settings.room_name)}</strong>? All connected players will be disconnected and current scores will end.
+            </p>
+            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
+              <button type="button" id="cancel-close-room-btn" class="btn btn-secondary">Cancel</button>
+              <button type="button" id="confirm-close-room-btn" class="btn btn-danger">Yes, Close Room</button>
+            </div>
+          </div>
+        </div>
+      `;
+      const cancelBtn = document.getElementById("cancel-close-room-btn");
+      const confirmBtn = document.getElementById("confirm-close-room-btn");
+      const backdrop = document.getElementById("confirm-close-backdrop");
+      if (cancelBtn) {
+        cancelBtn.focus();
+        cancelBtn.addEventListener("click", closeModal);
+      }
+      if (backdrop) {
+        backdrop.addEventListener("click", (e) => {
+          if (e.target.id === "confirm-close-backdrop") closeModal();
+        });
+      }
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
+          closeModal();
+          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
+        });
+      }
+    }
+
+    function wireHostCloseButton(room, hostToken) {
+      const btn = document.getElementById("host-close-room-btn");
+      if (btn) {
+        btn.addEventListener("click", () => openCloseRoomConfirm(room, hostToken));
       }
     }
 
@@ -1062,8 +1218,8 @@
         ${isHost
           ? `<div class="host-bar">
                 <button id="start-game-btn" class="btn btn-primary" style="flex:1;">Start Game</button>
-                <button id="close-room-btn" class="btn btn-danger">Close Room</button>
-              </div>`
+              </div>
+              ${renderHostDangerFooter()}`
           : `<p style="margin-block:18px 0;text-align:center;color:var(--text-secondary);font-weight:700;">
                 Waiting for the host to start the game…
               </p>`
@@ -1078,9 +1234,7 @@
         document.getElementById("start-game-btn").addEventListener("click", () => {
           sendWS({ type: "start_game", code: room.code, host_token: hostToken });
         });
-        document.getElementById("close-room-btn").addEventListener("click", () => {
-          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-        });
+        wireHostCloseButton(room, hostToken);
       }
     }
 
@@ -1113,8 +1267,8 @@
         lockedWager === null
           ? `<div class="wager-section">
               <div class="wager-header">
-                <span>★ Choose Your Blind Bonus Stake (+score if right · −score if wrong)</span>
-                <span class="badge badge-accent mono">±${state.selectedWager} pts</span>
+                <span>★ Choose Your Blind Bonus Stake</span>
+                <span class="wager-risk-pill" id="bonus-risk-pill">Risking +${state.selectedWager} / −${state.selectedWager}</span>
               </div>
               <div class="wager-chips">
                 ${options
@@ -1123,10 +1277,15 @@
                   )
                   .join("")}
               </div>
+              <div style="font-size:0.74rem;color:var(--text-muted);margin-top:8px;text-align:center;">
+                Tip: Tap an already-selected stake again to lock in immediately.
+              </div>
             </div>
-            <button id="lock-bonus-wager-btn" class="btn btn-primary" style="width:100%;">
-              Lock In Bonus Wager (±${state.selectedWager} pts)
-            </button>`
+            <div class="sticky-action-bar">
+              <button id="lock-bonus-wager-btn" class="btn btn-primary" style="width:100%;">
+                Lock In Bonus Wager (±${state.selectedWager} pts)
+              </button>
+            </div>`
           : `<div class="locked-banner">
               ★ Bonus Wager Locked In: <strong>±${lockedWager} pts</strong>
               <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
@@ -1159,8 +1318,8 @@
                 <button id="host-start-bonus-q-btn" class="btn btn-primary" style="flex:1;">
                   Reveal Bonus Question ★
                 </button>
-                <button id="host-close-btn" class="btn btn-danger">Close Room</button>
-              </div>`
+              </div>
+              ${renderHostDangerFooter()}`
           : ""
         }
       </section>
@@ -1169,30 +1328,37 @@
       wireLeaveButton();
 
       if (lockedWager === null) {
+        function submitBonusWagerNow() {
+          if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+          sendWS({
+            type: "submit_bonus_wager",
+            code: room.code,
+            session_token: state.sessionToken,
+            wager: state.selectedWager,
+          });
+        }
+
         root.querySelectorAll("[data-bonus-wager]").forEach((chip) => {
           chip.addEventListener("click", () => {
-            state.selectedWager = parseInt(chip.dataset.bonusWager, 10);
+            const clickedVal = parseInt(chip.dataset.bonusWager, 10);
+            if (clickedVal === state.selectedWager) {
+              submitBonusWagerNow();
+              return;
+            }
+            state.selectedWager = clickedVal;
             if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
             root.querySelectorAll("[data-bonus-wager]").forEach((c) => c.classList.remove("selected"));
             chip.classList.add("selected");
             const btn = document.getElementById("lock-bonus-wager-btn");
             if (btn) btn.textContent = `Lock In Bonus Wager (±${state.selectedWager} pts)`;
-            const badge = root.querySelector(".wager-header .badge");
-            if (badge) badge.textContent = `±${state.selectedWager} pts`;
+            const pill = document.getElementById("bonus-risk-pill");
+            if (pill) pill.textContent = `Risking +${state.selectedWager} / −${state.selectedWager}`;
           });
         });
 
         const lockBtn = document.getElementById("lock-bonus-wager-btn");
         if (lockBtn) {
-          lockBtn.addEventListener("click", () => {
-            if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
-            sendWS({
-              type: "submit_bonus_wager",
-              code: room.code,
-              session_token: state.sessionToken,
-              wager: state.selectedWager,
-            });
-          });
+          lockBtn.addEventListener("click", submitBonusWagerNow);
         }
       }
 
@@ -1200,9 +1366,7 @@
         document.getElementById("host-start-bonus-q-btn").addEventListener("click", () => {
           sendWS({ type: "next_step", code: room.code, host_token: hostToken });
         });
-        document.getElementById("host-close-btn").addEventListener("click", () => {
-          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-        });
+        wireHostCloseButton(room, hostToken);
       }
     }
 
@@ -1267,12 +1431,60 @@
         }
       }
 
+      const deductsOnWrong = isBonus || room.settings.deduct_wrong_wager !== false;
+      function riskText(val) {
+        return deductsOnWrong ? `Risking +${val} / −${val}` : `Risking +${val} / 0`;
+      }
+
+      function renderChipBtn(val) {
+        const available = availWagers.includes(val);
+        const selected = state.selectedWager === val && available;
+        return `<button type="button" class="wager-chip ${selected ? "selected" : ""}"
+              data-wager="${val}" title="${esc(riskText(val))}" ${available ? "" : "disabled"}>${val}</button>`;
+      }
+
+      let chipsGridHtml = "";
+      if (!isBonus && poolSize >= 15) {
+        const lowEnd = Math.ceil(poolSize / 3);
+        const midEnd = Math.ceil((poolSize * 2) / 3);
+        const tiers = [
+          { cls: "tier-low", label: `Low · 1–${lowEnd}`, vals: allChips.filter((v) => v <= lowEnd) },
+          { cls: "tier-mid", label: `Mid · ${lowEnd + 1}–${midEnd}`, vals: allChips.filter((v) => v > lowEnd && v <= midEnd) },
+          { cls: "tier-high", label: `High · ${midEnd + 1}–${poolSize}`, vals: allChips.filter((v) => v > midEnd) },
+        ];
+        chipsGridHtml = `<div class="wager-tiers">${tiers
+          .map((t) => {
+            const left = t.vals.filter((v) => availWagers.includes(v)).length;
+            return `<div class="wager-tier ${t.cls}">
+              <div class="wager-tier-head">
+                <span>${t.label}</span>
+                <span>${left} left</span>
+              </div>
+              <div class="wager-chips">${t.vals.map(renderChipBtn).join("")}</div>
+            </div>`;
+          })
+          .join("")}</div>`;
+      } else {
+        chipsGridHtml = `<div class="wager-chips">${allChips.map(renderChipBtn).join("")}</div>`;
+      }
+
       const wagerHeaderLabel = isBonus
-        ? "★ Bonus Score Wager (+score if right · −score if wrong)"
-        : `Confidence Wager (1–${poolSize} · use each once · ${room.settings.deduct_wrong_wager === false ? "no minus if wrong" : "−wager if wrong"})`;
+        ? "★ Bonus Score Wager"
+        : `Confidence Wager (1–${poolSize} · use each once)`;
       const lockInLabel = isBonus
         ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
         : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+
+      const stickySubmitBar = `
+        <div class="sticky-action-bar">
+          <div class="sticky-risk-row">
+            <span id="sticky-risk-pill" class="wager-risk-pill">${riskText(state.selectedWager)}</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">Tap selected choice/chip again for instant lock-in</span>
+          </div>
+          <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
+            ${lockInLabel}
+          </button>
+        </div>`;
 
       const wagerHtml = !locked
         ? isBonus && lockedBonusWager !== null
@@ -1282,28 +1494,15 @@
                 <span class="badge mono" style="background:var(--accent-amber);color:#120d02;font-weight:900;">±${lockedBonusWager} pts</span>
               </div>
             </div>
-            <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
-              ${lockInLabel}
-            </button>`
+            ${stickySubmitBar}`
           : `<div class="wager-section">
           <div class="wager-header">
             <span>${wagerHeaderLabel}</span>
-            <span class="badge badge-accent mono">${isBonus ? "±" : ""}${state.selectedWager} pts</span>
+            <span id="wager-risk-badge" class="wager-risk-pill">${riskText(state.selectedWager)}</span>
           </div>
-          <div class="wager-chips">
-            ${allChips
-          .map((val) => {
-            const available = availWagers.includes(val);
-            const selected = state.selectedWager === val && available;
-            return `<button type="button" class="wager-chip ${selected ? "selected" : ""}"
-                  data-wager="${val}" ${available ? "" : "disabled"}>${val}</button>`;
-          })
-          .join("")}
-          </div>
+          ${chipsGridHtml}
         </div>
-        <button id="lock-in-btn" class="btn btn-primary" style="width:100%;">
-          ${lockInLabel}
-        </button>`
+        ${stickySubmitBar}`
         : `<div class="locked-banner">
           Locked in: <span dir="auto">${esc(me.my_submission.answer)}</span> · ${isBonus ? `Bonus Wager ±${me.my_submission.wager} pts` : `Wager ${me.my_submission.wager} pts`}
           <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
@@ -1335,10 +1534,10 @@
 
         ${isHost
           ? `<div class="host-bar">
-                <button id="host-pause-btn" class="btn btn-secondary btn-sm">${room.paused ? "Resume Timer" : "Pause Timer"}</button>
-                <button id="host-reveal-btn" class="btn btn-secondary btn-sm">Reveal Now</button>
-                <button id="host-close-btn" class="btn btn-danger btn-sm">Close Room</button>
-              </div>`
+                <button id="host-pause-btn" class="btn btn-secondary btn-sm" style="flex:1;">${room.paused ? "Resume Timer" : "Pause Timer"}</button>
+                <button id="host-reveal-btn" class="btn btn-secondary btn-sm" style="flex:1;">Reveal Now</button>
+              </div>
+              ${renderHostDangerFooter()}`
           : ""
         }
       </section>
@@ -1352,39 +1551,7 @@
       }
 
       if (!locked) {
-        root.querySelectorAll("[data-choice-idx]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.selectedAnswer = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
-            root.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
-            btn.classList.add("selected");
-          });
-        });
-
-        const freeInput = document.getElementById("free-text-input");
-        if (freeInput) {
-          freeInput.addEventListener("input", () => {
-            state.selectedAnswer = freeInput.value;
-          });
-        }
-
-        root.querySelectorAll("[data-wager]").forEach((chip) => {
-          chip.addEventListener("click", () => {
-            state.selectedWager = parseInt(chip.dataset.wager, 10);
-            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
-            root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
-            chip.classList.add("selected");
-            const lockBtn = document.getElementById("lock-in-btn");
-            if (lockBtn) {
-              lockBtn.textContent = isBonus
-                ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
-                : `Lock In Answer & Wager (${state.selectedWager} pts)`;
-            }
-            const badge = root.querySelector(".wager-header .badge");
-            if (badge) badge.textContent = `${isBonus ? "±" : ""}${state.selectedWager} pts`;
-          });
-        });
-
-        document.getElementById("lock-in-btn").addEventListener("click", () => {
+        function submitAnswerNow() {
           if (!state.selectedAnswer.trim()) {
             showToast("Choose or enter an answer before locking in!", true);
             return;
@@ -1397,7 +1564,61 @@
             answer: state.selectedAnswer,
             wager: state.selectedWager,
           });
+        }
+
+        root.querySelectorAll("[data-choice-idx]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const picked = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
+            if (state.selectedAnswer === picked) {
+              submitAnswerNow();
+              return;
+            }
+            state.selectedAnswer = picked;
+            if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+            root.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+          });
         });
+
+        const freeInput = document.getElementById("free-text-input");
+        if (freeInput) {
+          freeInput.addEventListener("input", () => {
+            state.selectedAnswer = freeInput.value;
+          });
+          freeInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              submitAnswerNow();
+            }
+          });
+        }
+
+        root.querySelectorAll("[data-wager]").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            const pickedVal = parseInt(chip.dataset.wager, 10);
+            if (pickedVal === state.selectedWager && state.selectedAnswer.trim()) {
+              submitAnswerNow();
+              return;
+            }
+            state.selectedWager = pickedVal;
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
+            root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
+            chip.classList.add("selected");
+            const lockBtn = document.getElementById("lock-in-btn");
+            if (lockBtn) {
+              lockBtn.textContent = isBonus
+                ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
+                : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+            }
+            const riskLabel = riskText(state.selectedWager);
+            const riskBadge = document.getElementById("wager-risk-badge");
+            if (riskBadge) riskBadge.textContent = riskLabel;
+            const stickyRisk = document.getElementById("sticky-risk-pill");
+            if (stickyRisk) stickyRisk.textContent = riskLabel;
+          });
+        });
+
+        document.getElementById("lock-in-btn").addEventListener("click", submitAnswerNow);
       }
 
       if (isHost) {
@@ -1407,9 +1628,7 @@
         document.getElementById("host-reveal-btn").addEventListener("click", () => {
           sendWS({ type: "next_step", code: room.code, host_token: hostToken });
         });
-        document.getElementById("host-close-btn").addEventListener("click", () => {
-          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-        });
+        wireHostCloseButton(room, hostToken);
       }
     }
 
@@ -1479,8 +1698,8 @@
                 <button id="host-next-btn" class="btn btn-primary" style="flex:1;">
                   ${isLast ? "Show Finale Podium" : nextIsBonus ? "Place Final Bonus Wagers ★" : "Next Question"}
                 </button>
-                <button id="host-close-btn" class="btn btn-danger">Close Room</button>
-              </div>`
+              </div>
+              ${renderHostDangerFooter()}`
           : `<p style="margin:0;text-align:center;color:var(--text-muted);font-weight:700;">
                 Waiting for host to continue…
               </p>`
@@ -1506,9 +1725,7 @@
         document.getElementById("host-next-btn").addEventListener("click", () => {
           sendWS({ type: "next_step", code: room.code, host_token: hostToken });
         });
-        document.getElementById("host-close-btn").addEventListener("click", () => {
-          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-        });
+        wireHostCloseButton(room, hostToken);
       }
     }
 
@@ -1573,8 +1790,8 @@
         ${isHost
           ? `<div class="host-bar">
                 <button id="play-again-btn" class="btn btn-primary" style="flex:1;">Play Again</button>
-                <button id="close-room-btn" class="btn btn-danger">Close Room</button>
-              </div>`
+              </div>
+              ${renderHostDangerFooter()}`
           : ""
         }
       </section>
@@ -1587,9 +1804,7 @@
         document.getElementById("play-again-btn").addEventListener("click", () => {
           sendWS({ type: "play_again", code: room.code, host_token: hostToken });
         });
-        document.getElementById("close-room-btn").addEventListener("click", () => {
-          sendWS({ type: "close_room", code: room.code, host_token: hostToken });
-        });
+        wireHostCloseButton(room, hostToken);
       }
     }
 
