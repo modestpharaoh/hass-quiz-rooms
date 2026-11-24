@@ -759,16 +759,135 @@
       });
     }
 
-    function renderModalPackList() {
+    function isLanguagePackFilter(filter) {
+      return Boolean(filter && filter !== "all" && filter !== "open_ended");
+    }
+
+    function syncRandomPacksButton() {
+      const randomBtn = document.getElementById("cr-random-packs-btn");
+      if (!randomBtn) return;
+      const filter = state.createPackFilter || "all";
+      const show = isLanguagePackFilter(filter);
+      randomBtn.classList.toggle("hidden", !show);
+      if (show) {
+        const langLabel = filter.toUpperCase();
+        randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
+        randomBtn.setAttribute("aria-label", `Select random ${langLabel} packs`);
+      }
+    }
+
+    function renderSelectedPacksSummary() {
+      const summaryEl = document.getElementById("cr-selected-summary");
+      if (!summaryEl) return;
+      const selectedList = state.packs.filter((p) => state.createSelectedPacks.has(p.pack_id));
+      if (!selectedList.length) {
+        summaryEl.classList.add("hidden");
+        summaryEl.innerHTML = "";
+        return;
+      }
+      summaryEl.classList.remove("hidden");
+      summaryEl.innerHTML = `
+        ${selectedList
+          .map(
+            (p) => `
+          <span class="pack-selected-chip animate-in" dir="${p.rtl ? "rtl" : "auto"}">
+            ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" width="18" height="18" />` : ""}
+            <span class="pack-selected-chip-title" title="${esc(p.title)}">${esc(p.title)}</span>
+            <button type="button" class="pack-selected-chip-remove" data-unselect-pack="${esc(p.pack_id)}" aria-label="Remove ${esc(p.title)}">×</button>
+          </span>`
+          )
+          .join("")}
+        <button type="button" id="cr-clear-packs-btn" class="pack-clear-btn">Clear all</button>
+      `;
+
+      summaryEl.querySelectorAll("[data-unselect-pack]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-unselect-pack");
+          if (id) state.createSelectedPacks.delete(id);
+          renderModalPackList({ syncFromDom: false });
+        });
+      });
+      const clearBtn = document.getElementById("cr-clear-packs-btn");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          state.createSelectedPacks.clear();
+          renderModalPackList({ syncFromDom: false });
+        });
+      }
+    }
+
+    function selectRandomPacksForActiveLanguage() {
+      const filter = state.createPackFilter || "all";
+      if (!isLanguagePackFilter(filter)) return;
+
+      const langPacks = state.packs.filter(
+        (p) => String(p.language || "").toLowerCase() === filter
+      );
+      if (!langPacks.length) {
+        showToast(`No ${filter.toUpperCase()} packs available.`, true);
+        return;
+      }
+
+      // Prefer standard (non-open-ended) packs for balanced random trivia mixes
+      const standardPacks = langPacks.filter((p) => !p.open_ended);
+      const pool = standardPacks.length ? standardPacks : langPacks;
+      const pickCount = Math.min(3, pool.length);
+
+      function shuffle(arr) {
+        const copy = arr.slice();
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const tmp = copy[i];
+          copy[i] = copy[j];
+          copy[j] = tmp;
+        }
+        return copy;
+      }
+
+      // Always deselect all previously selected packs first, then draw fresh random ones
+      const prevIds = new Set(state.createSelectedPacks);
+      state.createSelectedPacks.clear();
+
+      const unseenPool = pool.filter((p) => !prevIds.has(p.pack_id));
+      let picked = [];
+      if (unseenPool.length >= pickCount) {
+        picked = shuffle(unseenPool).slice(0, pickCount);
+      } else {
+        const seenPool = pool.filter((p) => prevIds.has(p.pack_id));
+        picked = shuffle(unseenPool).concat(shuffle(seenPool)).slice(0, pickCount);
+      }
+
+      picked.forEach((p) => state.createSelectedPacks.add(p.pack_id));
+      state.createPackSearch = "";
+      const searchEl = document.getElementById("cr-pack-search");
+      if (searchEl) searchEl.value = "";
+      if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+      renderModalPackList({ syncFromDom: false, sortSelectedFirst: true });
+
+      const listEl = document.getElementById("cr-pack-list");
+      if (listEl) listEl.scrollTop = 0;
+
+      const titles = picked.map((p) => p.title).join(", ");
+      showToast(`Selected ${picked.length} random ${filter.toUpperCase()} pack${picked.length === 1 ? "" : "s"}: ${titles}`);
+    }
+
+    function renderModalPackList(opts) {
+      const syncFromDom = !opts || opts.syncFromDom !== false;
+      const sortSelectedFirst = Boolean(opts && opts.sortSelectedFirst);
       const listEl = document.getElementById("cr-pack-list");
       const countBadge = document.getElementById("cr-pack-count");
       if (!listEl) return;
 
       // Sync any currently rendered checkboxes into persistent Set before re-filtering
-      listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
-        if (el.checked) state.createSelectedPacks.add(el.value);
-        else state.createSelectedPacks.delete(el.value);
-      });
+      if (syncFromDom) {
+        listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
+          if (el.checked) state.createSelectedPacks.add(el.value);
+          else state.createSelectedPacks.delete(el.value);
+        });
+      }
+
+      syncRandomPacksButton();
+      renderSelectedPacksSummary();
 
       if (!state.packs.length) {
         if (countBadge) countBadge.textContent = "0 available";
@@ -794,17 +913,14 @@
         return;
       }
 
-      // Default to selecting first pack once packs arrive if nothing selected yet
-      if (state.createSelectedPacks.size === 0 && state.packs.length > 0) {
-        state.createSelectedPacks.add(state.packs[0].pack_id);
-      }
-
       const term = (state.createPackSearch || "").trim().toLowerCase();
       const filter = state.createPackFilter || "all";
       const filtered = state.packs.filter((p) => {
-        if (filter === "en" && String(p.language || "").toLowerCase() !== "en") return false;
-        if (filter === "ar" && String(p.language || "").toLowerCase() !== "ar") return false;
-        if (filter === "open_ended" && !p.open_ended) return false;
+        if (filter === "open_ended") {
+          if (!p.open_ended) return false;
+        } else if (filter !== "all") {
+          if (String(p.language || "").toLowerCase() !== filter) return false;
+        }
         if (!term) return true;
         return (
           String(p.title || "").toLowerCase().includes(term) ||
@@ -813,20 +929,26 @@
         );
       });
 
+      const ordered = sortSelectedFirst
+        ? filtered
+            .filter((p) => state.createSelectedPacks.has(p.pack_id))
+            .concat(filtered.filter((p) => !state.createSelectedPacks.has(p.pack_id)))
+        : filtered;
+
       if (countBadge) {
         countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
       }
 
-      if (!filtered.length) {
+      if (!ordered.length) {
         listEl.innerHTML = `<div class="pack-empty-box">No packs match "${esc(state.createPackSearch || filter)}".</div>`;
         return;
       }
 
-      listEl.innerHTML = filtered
+      listEl.innerHTML = ordered
         .map((p) => {
           const checked = state.createSelectedPacks.has(p.pack_id);
           return `
-        <label class="pack-check-item" dir="${p.rtl ? "rtl" : "auto"}">
+        <label class="pack-check-item ${checked ? "is-selected" : ""}" dir="${p.rtl ? "rtl" : "auto"}">
           <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
           ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="pack-cover-thumb" />` : ""}
           <div style="flex:1;min-width:0;text-align:start;">
@@ -846,10 +968,13 @@
         listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
           if (el.checked) state.createSelectedPacks.add(el.value);
           else state.createSelectedPacks.delete(el.value);
+          const row = el.closest(".pack-check-item");
+          if (row) row.classList.toggle("is-selected", el.checked);
         });
         if (countBadge) {
           countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
         }
+        renderSelectedPacksSummary();
         const hasOpenEnded = state.packs.some((p) => state.createSelectedPacks.has(p.pack_id) && p.open_ended);
         const modeSelect = document.getElementById("cr-answer-mode");
         const uniqueCheck = document.getElementById("cr-unique-answers");
@@ -873,8 +998,17 @@
       state.showCreateModal = true;
       state.createPackFilter = "all";
       state.createPackSearch = "";
-      state.createSelectedPacks = new Set(state.packs.length ? [state.packs[0].pack_id] : []);
+      state.createSelectedPacks = new Set();
       const modalRoot = document.getElementById("modal-root");
+
+      // Collect any additional custom pack languages beyond EN / AR
+      const extraLangs = Array.from(
+        new Set(
+          state.packs
+            .map((p) => String(p.language || "").trim().toLowerCase())
+            .filter((lang) => lang && lang !== "en" && lang !== "ar")
+        )
+      ).sort();
 
       modalRoot.innerHTML = `
       <div class="modal-backdrop" id="create-backdrop">
@@ -892,7 +1026,7 @@
             <div>
               <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:6px;">
                 <label class="field-label" style="margin:0;">Trivia Pack(s)</label>
-                <span class="badge" id="cr-pack-count">${state.packs.length} available</span>
+                <span class="badge" id="cr-pack-count">0 selected · ${state.packs.length} available</span>
               </div>
               <div class="pack-filter-bar">
                 <input id="cr-pack-search" type="search" class="text-input" style="padding-block:8px;font-size:0.9rem;" placeholder="Search packs by title or category…" />
@@ -900,9 +1034,12 @@
                   <button type="button" class="pack-filter-pill active" data-cr-filter="all">All</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="en">EN</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="ar">AR (عربي)</button>
+                  ${extraLangs.map((lang) => `<button type="button" class="pack-filter-pill" data-cr-filter="${esc(lang)}">${esc(lang.toUpperCase())}</button>`).join("")}
                   <button type="button" class="pack-filter-pill" data-cr-filter="open_ended">Open-Ended</button>
+                  <button type="button" id="cr-random-packs-btn" class="pack-random-btn hidden">🎲 Random Packs</button>
                 </div>
               </div>
+              <div id="cr-selected-summary" class="pack-selected-summary hidden" aria-live="polite"></div>
               <div id="cr-pack-list" class="pack-checklist"></div>
             </div>
 
@@ -1020,9 +1157,15 @@
           modalRoot.querySelectorAll("[data-cr-filter]").forEach((b) => {
             b.classList.toggle("active", b.dataset.crFilter === state.createPackFilter);
           });
+          syncRandomPacksButton();
           renderModalPackList();
         });
       });
+
+      const randomPacksBtn = document.getElementById("cr-random-packs-btn");
+      if (randomPacksBtn) {
+        randomPacksBtn.addEventListener("click", selectRandomPacksForActiveLanguage);
+      }
 
       renderModalPackList();
       if (!state.packs.length) {

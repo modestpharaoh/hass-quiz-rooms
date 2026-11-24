@@ -1072,6 +1072,7 @@
 .pack-filter-pills {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
@@ -1091,4 +1092,108 @@
   background: var(--accent-primary);
   color: var(--accent-primary-ink);
   border-color: transparent;
+}
+
+.pack-random-btn {
+  margin-inline-start: auto;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-amber);
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+.pack-random-btn:hover,
+.pack-random-btn:active {
+  transform: translateY(-1px);
+  background: var(--accent-amber);
+  color: #120d02;
+}
+
+/* Selected packs chip strip in Create Room modal */
+.pack-selected-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  margin-block-end: 8px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--accent-primary);
+}
+
+.pack-selected-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 3px 8px 3px 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-primary-soft);
+  border: 1px solid var(--accent-primary);
+  color: var(--text-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pack-selected-chip img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex: none;
+}
+
+.pack-selected-chip-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
+}
+
+.pack-selected-chip-remove {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.pack-selected-chip-remove:hover {
+  color: var(--accent-coral);
+}
+
+.pack-clear-btn {
+  margin-inline-start: auto;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.pack-clear-btn:hover {
+  color: var(--accent-coral);
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.pack-check-item.is-selected {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-soft);
 }

@@ -64,11 +64,13 @@
           : String(p.language || "EN").toUpperCase();
         return `
           <div class="tv-attract-tile animate-in" dir="${p.rtl ? "rtl" : "auto"}">
-            ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="tv-attract-cover" width="240" height="150" />` : ""}
-            <div class="tv-attract-title" dir="auto">${esc(p.title)}</div>
-            <div class="tv-attract-meta">
-              <span>${p.question_count || 0} Qs</span>
-              <span class="badge" style="font-size:0.7rem;padding:2px 7px;">${esc(lang)}</span>
+            ${p.cover_url ? `<div class="tv-attract-cover-wrap"><img src="${esc(p.cover_url)}" alt="${esc(p.title)}" class="tv-attract-cover" width="160" height="160" /></div>` : ""}
+            <div class="tv-attract-body">
+              <div class="tv-attract-title" dir="auto">${esc(p.title)}</div>
+              <div class="tv-attract-meta">
+                <span>${p.question_count || 0} Qs</span>
+                <span class="badge" style="font-size:0.7rem;padding:2px 7px;">${esc(lang)}</span>
+              </div>
             </div>
           </div>`;
       })
