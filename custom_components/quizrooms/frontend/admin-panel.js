@@ -3,6 +3,7 @@
    Includes Live Room Monitor, TV Remote Control, Pack Importer (.json/.zip), and Light/Dark/Auto theme pill. */
 
 const THEME_KEY = "quizrooms_theme";
+const ADMIN_TAB_KEY = "quizrooms_admin_tab";
 
 class QuizRoomsAdminPanel extends HTMLElement {
   constructor() {
@@ -12,6 +13,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
     this._state = null;
     this._pollTimer = null;
     this._themeMode = this._loadThemeMode();
+    this._activeTab = this._loadActiveTab();
     this._uploadStatus = null;
     this._pendingFile = null;
     this._overwrite = false;
@@ -22,6 +24,12 @@ class QuizRoomsAdminPanel extends HTMLElement {
     this._lastStageSig = null;
     this._lastPacksSig = null;
     this._lightFilter = "";
+    this._packSearch = "";
+    this._packFilter = "all";
+    this._expandedPackId = null;
+    this._loadingPreviewId = null;
+    this._packPreviewCache = {};
+    this._qrRoomCode = null;
     this._mql = window.matchMedia("(prefers-color-scheme: dark)");
     this._onMediaChange = () => this._applyTheme();
   }
@@ -67,6 +75,39 @@ class QuizRoomsAdminPanel extends HTMLElement {
     } catch (_) {
       return "auto";
     }
+  }
+
+  _loadActiveTab() {
+    try {
+      const saved = localStorage.getItem(ADMIN_TAB_KEY);
+      return ["live", "stage", "packs"].includes(saved) ? saved : "live";
+    } catch (_) {
+      return "live";
+    }
+  }
+
+  _setActiveTab(tab) {
+    if (!["live", "stage", "packs"].includes(tab)) return;
+    this._activeTab = tab;
+    try { localStorage.setItem(ADMIN_TAB_KEY, tab); } catch (_) {}
+    this._applyActiveTab();
+  }
+
+  _applyActiveTab() {
+    if (!this.shadowRoot) return;
+    const panels = {
+      live: this.shadowRoot.getElementById("admin-live-mount"),
+      stage: this.shadowRoot.getElementById("admin-stage-mount"),
+      packs: this.shadowRoot.getElementById("admin-packs-mount"),
+    };
+    Object.entries(panels).forEach(([key, el]) => {
+      if (el) el.classList.toggle("hidden", key !== this._activeTab);
+    });
+    this.shadowRoot.querySelectorAll(".tab-btn").forEach((btn) => {
+      const active = btn.dataset.tab === this._activeTab;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-selected", String(active));
+    });
   }
 
   _setThemeMode(mode) {
@@ -131,13 +172,41 @@ class QuizRoomsAdminPanel extends HTMLElement {
     return tag === "SELECT" || tag === "INPUT" || tag === "TEXTAREA";
   }
 
+  _syncDirtyUI() {
+    if (!this.shadowRoot) return;
+    const dirty = Boolean(this._stageDirty);
+    const badge = this.shadowRoot.getElementById("stage-sync-badge");
+    if (badge) {
+      badge.textContent = dirty ? "Unsaved Changes" : "Synced";
+      badge.className = dirty ? "badge badge-warn" : "badge badge-ok";
+    }
+    const saveBtn = this.shadowRoot.getElementById("stage-save-btn");
+    if (saveBtn) {
+      saveBtn.classList.toggle("btn-dirty-pulse", dirty);
+    }
+    const discardBtn = this.shadowRoot.getElementById("stage-discard-btn");
+    if (discardBtn) {
+      discardBtn.disabled = !dirty;
+      discardBtn.classList.toggle("hidden", !dirty);
+    }
+    const tabDot = this.shadowRoot.getElementById("tab-stage-dirty-dot");
+    if (tabDot) {
+      tabDot.classList.toggle("hidden", !dirty);
+    }
+  }
+
   _markStageDirty() {
     this._stageDirty = true;
-    const badge = this.shadowRoot && this.shadowRoot.getElementById("stage-sync-badge");
-    if (badge) {
-      badge.textContent = "Unsaved Changes";
-      badge.className = "badge badge-warn";
-    }
+    this._syncDirtyUI();
+  }
+
+  _discardStageChanges() {
+    const stage = this._getStageData();
+    this._stageDraft = JSON.parse(JSON.stringify(stage.config));
+    this._stageDirty = false;
+    this._syncDirtyUI();
+    this._renderStageSection(true);
+    this._setBanner("Discarded unsaved Stage Effects changes.", false);
   }
 
   async _saveStageConfig(btnEl = null) {
@@ -162,6 +231,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
       } else {
         this._stageDirty = false;
         if (body.config) this._stageDraft = JSON.parse(JSON.stringify(body.config));
+        this._syncDirtyUI();
         this._setBanner(body.message || "Smart-Home Stage Effects settings saved.", false);
       }
       await this._fetchState({ forceStage: true, fromSave: true });
@@ -197,11 +267,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
       } else {
         this._stageDirty = false;
         if (body.config) this._stageDraft = JSON.parse(JSON.stringify(body.config));
-        const badge = this.shadowRoot && this.shadowRoot.getElementById("stage-sync-badge");
-        if (badge) {
-          badge.textContent = "Synced";
-          badge.className = "badge badge-ok";
-        }
+        this._syncDirtyUI();
         this._setBanner(body.message || `Triggered stage effect: ${effect}`, false);
       }
     } catch (err) {
@@ -299,8 +365,9 @@ class QuizRoomsAdminPanel extends HTMLElement {
   async _reloadPacks() {
     try {
       await this._hass.callService("quizrooms", "reload_packs", {});
+      this._packPreviewCache = {};
       this._setBanner("Trivia packs reloaded from disk.", false);
-      await this._fetchState();
+      await this._fetchState({ forcePacks: true });
     } catch (err) {
       this._setBanner("Reload failed: " + err.message, true);
     }
@@ -316,11 +383,122 @@ class QuizRoomsAdminPanel extends HTMLElement {
       if (!resp.ok) {
         this._setBanner(body.message || "Delete failed", true);
       } else {
+        delete this._packPreviewCache[packId];
+        if (this._expandedPackId === packId) this._expandedPackId = null;
         this._setBanner(`Deleted pack "${packId}".`, false);
       }
-      await this._fetchState();
+      await this._fetchState({ forcePacks: true });
     } catch (err) {
       this._setBanner(String(err), true);
+    }
+  }
+
+  async _togglePackPreview(packId) {
+    if (!packId) return;
+    if (this._expandedPackId === packId) {
+      this._expandedPackId = null;
+      this._renderInstalledPacksList();
+      return;
+    }
+    this._expandedPackId = packId;
+    if (!this._packPreviewCache[packId]) {
+      this._loadingPreviewId = packId;
+      this._renderInstalledPacksList();
+      try {
+        const resp = await this._hass.fetchWithAuth(
+          `/quizrooms/api/admin/packs/${encodeURIComponent(packId)}/preview`
+        );
+        const body = await resp.json().catch(() => ({}));
+        if (!resp.ok) {
+          this._packPreviewCache[packId] = { error: body.message || "Failed to load preview." };
+        } else {
+          this._packPreviewCache[packId] = body;
+        }
+      } catch (err) {
+        this._packPreviewCache[packId] = { error: String(err) };
+      } finally {
+        if (this._loadingPreviewId === packId) this._loadingPreviewId = null;
+      }
+    }
+    this._renderInstalledPacksList();
+  }
+
+  _openQrModal(roomCode) {
+    this._qrRoomCode = roomCode;
+    this._renderQrModal();
+  }
+
+  _closeQrModal() {
+    this._qrRoomCode = null;
+    this._renderQrModal();
+  }
+
+  _renderQrModal() {
+    const mount = this.shadowRoot && this.shadowRoot.getElementById("admin-qr-modal-mount");
+    if (!mount) return;
+    if (!this._qrRoomCode || !this._state) {
+      mount.innerHTML = "";
+      return;
+    }
+    const room = (this._state.rooms || []).find((r) => r.code === this._qrRoomCode);
+    if (!room) {
+      this._qrRoomCode = null;
+      mount.innerHTML = "";
+      return;
+    }
+    const base = (this._state.lan_base_url || window.location.origin).replace(/\/$/, "");
+    const joinUrl = `${base}/quizrooms/play?code=${encodeURIComponent(room.code)}`;
+    const qrSvg =
+      window.QuizRoomsQR && typeof window.QuizRoomsQR.toSVG === "function"
+        ? window.QuizRoomsQR.toSVG(joinUrl)
+        : "";
+
+    mount.innerHTML = `
+      <div class="qr-backdrop" id="qr-modal-backdrop" role="dialog" aria-modal="true" aria-label="Room Join QR Code">
+        <div class="qr-dialog">
+          <div class="row" style="margin-bottom:10px;">
+            <div>
+              <span class="badge" style="font-family:monospace;font-size:0.9rem;color:var(--accent);">${this._esc(room.code)}</span>
+              <strong style="margin-inline-start:8px;font-size:1.05rem;" dir="auto">${this._esc(room.name)}</strong>
+            </div>
+            <button type="button" class="btn" id="qr-modal-close">Close</button>
+          </div>
+          <div class="qr-frame-center">
+            <div class="qr-white-frame">${qrSvg || `<span style="color:#141926;font-weight:700;">QR unavailable</span>`}</div>
+          </div>
+          <p class="sub" style="text-align:center;margin-top:10px;word-break:break-all;">
+            <code>${this._esc(joinUrl)}</code>
+          </p>
+          <div class="row" style="margin-top:12px;justify-content:center;">
+            <button type="button" class="btn btn-primary" id="qr-copy-link-btn">Copy Join Link</button>
+            <a class="btn" href="${this._esc(joinUrl)}" target="_blank" rel="noopener">Open in New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const backdrop = mount.querySelector("#qr-modal-backdrop");
+    const closeBtn = mount.querySelector("#qr-modal-close");
+    const copyBtn = mount.querySelector("#qr-copy-link-btn");
+    if (closeBtn) closeBtn.addEventListener("click", () => this._closeQrModal());
+    if (backdrop) {
+      backdrop.addEventListener("click", (e) => {
+        if (e.target === backdrop) this._closeQrModal();
+      });
+    }
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(joinUrl);
+            this._setBanner(`Copied join link for room ${room.code}.`, false);
+          } else {
+            this._setBanner(joinUrl, false);
+          }
+        } catch (_) {
+          this._setBanner(joinUrl, false);
+        }
+      });
     }
   }
 
@@ -366,12 +544,13 @@ class QuizRoomsAdminPanel extends HTMLElement {
         };
       } else {
         this._pendingFile = null;
+        this._packPreviewCache = {};
         this._uploadStatus = {
           ok: true,
           message: `Imported "${body.pack.title}" (${body.pack.question_count} questions) and registered live!`,
           details: [],
         };
-        await this._fetchState();
+        await this._fetchState({ forcePacks: true });
       }
     } catch (err) {
       this._uploadStatus = { ok: false, message: String(err), details: [] };
@@ -472,6 +651,37 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .vol-presets { display: flex; gap: 5px; flex-wrap: wrap; }
         .vol-preset-btn { padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); background: var(--card2); color: var(--text); font-size: 0.72rem; font-weight: 700; cursor: pointer; }
         .vol-preset-btn.active { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+        .hidden { display: none !important; }
+        .tabs-bar { display: flex; gap: 8px; flex-wrap: wrap; padding: 6px; border-radius: 14px; background: var(--card); border: 1px solid var(--border); margin-bottom: 16px; }
+        .tab-btn { flex: 1 1 150px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--muted); font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: background 0.14s, color 0.14s; }
+        .tab-btn:hover { background: var(--card2); color: var(--text); }
+        .tab-btn.active { background: var(--accent); color: var(--accent-ink); }
+        .tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 20px; padding: 0 6px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; background: var(--card2); color: var(--text); }
+        .tab-btn.active .tab-count { background: rgba(0,0,0,0.22); color: var(--accent-ink); }
+        .tab-dirty-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); display: inline-block; flex: none; box-shadow: 0 0 0 2px rgba(251,191,36,0.35); }
+        @keyframes qrDirtyPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
+          50% { box-shadow: 0 0 0 7px rgba(251, 191, 36, 0); }
+        }
+        .btn-dirty-pulse { animation: qrDirtyPulse 1.5s infinite; outline: 2px solid var(--warn); outline-offset: 1px; }
+        .qr-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.62); display: flex; align-items: center; justify-content: center; padding: 18px; z-index: 9999; }
+        .qr-dialog { width: 100%; max-width: 380px; background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
+        .qr-frame-center { display: flex; justify-content: center; margin-top: 8px; }
+        .qr-white-frame { background: #ffffff; padding: 12px; border-radius: 14px; border: 1px solid rgba(20,25,38,0.14); display: inline-flex; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+        .qr-white-frame svg { width: 210px; height: 210px; display: block; }
+        .pack-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+        .filter-pills { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--card2); border: 1px solid var(--border); gap: 3px; flex-wrap: wrap; }
+        .filter-pill { border: none; background: transparent; color: var(--muted); font-weight: 700; font-size: 0.78rem; padding: 6px 11px; border-radius: 8px; cursor: pointer; }
+        .filter-pill.active { background: var(--accent); color: var(--accent-ink); }
+        .pack-card { padding: 12px 14px; border-radius: 12px; background: var(--card2); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+        .pack-card-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .pack-preview-drawer { padding: 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+        .preview-q-item { padding: 9px 11px; border-radius: 8px; background: var(--card2); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; font-size: 0.84rem; }
+        .preview-thumb { width: 54px; height: 40px; object-fit: contain; border-radius: 6px; background: var(--card); border: 1px solid var(--border); flex: none; }
+        .diff-pill { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; }
+        .diff-easy { background: rgba(5,150,105,0.14); color: var(--ok); }
+        .diff-medium { background: rgba(217,119,6,0.16); color: var(--warn); }
+        .diff-hard { background: rgba(225,29,72,0.15); color: var(--err); }
       </style>
       <div id="panel-root" data-theme="light">
         <div class="wrap">
@@ -506,23 +716,79 @@ class QuizRoomsAdminPanel extends HTMLElement {
             </div>
           </div>
           <div id="admin-banner" class="banner"></div>
-          <div id="admin-live-mount"><div class="card">Loading QuizRooms state…</div></div>
-          <div id="admin-stage-mount"></div>
-          <div id="admin-packs-mount"></div>
+          <div id="admin-kpi-mount"></div>
+          <nav id="admin-tabs-bar" class="tabs-bar" role="tablist" aria-label="Admin Sections">
+            <button type="button" class="tab-btn" role="tab" data-tab="live" aria-selected="true">
+              <span>Live Rooms &amp; TV</span>
+              <span id="tab-live-count" class="tab-count">0</span>
+            </button>
+            <button type="button" class="tab-btn" role="tab" data-tab="stage" aria-selected="false">
+              <span>Stage Effects</span>
+              <span id="tab-stage-dirty-dot" class="tab-dirty-dot hidden" title="Unsaved changes"></span>
+            </button>
+            <button type="button" class="tab-btn" role="tab" data-tab="packs" aria-selected="false">
+              <span>Packs &amp; Import</span>
+              <span id="tab-packs-count" class="tab-count">0</span>
+            </button>
+          </nav>
+          <div id="admin-live-mount" class="tab-panel"><div class="card">Loading QuizRooms state…</div></div>
+          <div id="admin-stage-mount" class="tab-panel"></div>
+          <div id="admin-packs-mount" class="tab-panel"></div>
         </div>
+        <div id="admin-qr-modal-mount"></div>
       </div>
     `;
 
     this.shadowRoot.querySelectorAll(".theme-pill button").forEach((btn) => {
       btn.addEventListener("click", () => this._setThemeMode(btn.dataset.mode));
     });
+    this.shadowRoot.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => this._setActiveTab(btn.dataset.tab));
+    });
+    this._applyActiveTab();
   }
 
   _renderContent(opts = {}) {
     if (!this._state) return;
+    this._renderKpis();
     this._renderLiveSection(Boolean(opts.forceLive));
     this._renderStageSection(Boolean(opts.forceStage));
     this._renderPacksSection(Boolean(opts.forcePacks));
+    this._renderQrModal();
+    this._syncDirtyUI();
+    this._applyActiveTab();
+  }
+
+  _renderKpis() {
+    const mount = this.shadowRoot && this.shadowRoot.getElementById("admin-kpi-mount");
+    const st = this._state;
+    if (!mount || !st) return;
+
+    const liveCountEl = this.shadowRoot.getElementById("tab-live-count");
+    if (liveCountEl) liveCountEl.textContent = String(st.active_rooms || 0);
+    const packsCountEl = this.shadowRoot.getElementById("tab-packs-count");
+    if (packsCountEl) packsCountEl.textContent = String((st.packs || []).length);
+
+    mount.innerHTML = `
+      <div class="grid-kpi">
+        <div class="card" style="margin-bottom:0;">
+          <div class="kpi-val">${st.active_rooms} / ${st.max_rooms}</div>
+          <div class="kpi-lbl">Active Rooms / Max Limit</div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="kpi-val">${st.active_players}</div>
+          <div class="kpi-lbl">Connected Players</div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="kpi-val">${(st.packs || []).length}</div>
+          <div class="kpi-lbl">Loaded Trivia Packs</div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="kpi-val" style="font-size:1.2rem;">${st.allow_external_access ? "External Allowed" : "LAN Only"}</div>
+          <div class="kpi-lbl">Network Guard Policy</div>
+        </div>
+      </div>
+    `;
   }
 
   _renderLiveSection(force = false) {
@@ -566,6 +832,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
               ${r.status === "lobby" ? `<button class="btn" data-act="start" data-code="${this._esc(r.code)}">Start</button>` : ""}
               ${r.status === "in_progress" ? `<button class="btn" data-act="${r.paused ? "resume" : "pause"}" data-code="${this._esc(r.code)}">${r.paused ? "Resume" : "Pause"}</button>` : ""}
               ${r.status === "in_progress" ? `<button class="btn" data-act="next" data-code="${this._esc(r.code)}">Advance</button>` : ""}
+              <button class="btn" data-qr-room="${this._esc(r.code)}">Show Join QR</button>
               <button class="btn" data-tv-follow="${this._esc(r.code)}">Follow on TV</button>
               <button class="btn btn-danger" data-act="close" data-code="${this._esc(r.code)}">Force Close</button>
             </div>
@@ -600,25 +867,6 @@ class QuizRoomsAdminPanel extends HTMLElement {
       .join("");
 
     mount.innerHTML = `
-      <div class="grid-kpi">
-        <div class="card">
-          <div class="kpi-val">${st.active_rooms} / ${st.max_rooms}</div>
-          <div class="kpi-lbl">Active Rooms / Max Limit</div>
-        </div>
-        <div class="card">
-          <div class="kpi-val">${st.active_players}</div>
-          <div class="kpi-lbl">Connected Players</div>
-        </div>
-        <div class="card">
-          <div class="kpi-val">${st.packs.length}</div>
-          <div class="kpi-lbl">Loaded Trivia Packs</div>
-        </div>
-        <div class="card">
-          <div class="kpi-val" style="font-size:1.2rem;">${st.allow_external_access ? "External Allowed" : "LAN Only"}</div>
-          <div class="kpi-lbl">Network Guard Policy</div>
-        </div>
-      </div>
-
       <section class="card">
         <div class="row" style="margin-bottom:12px;">
           <h2 style="margin:0;">Active Rooms</h2>
@@ -665,6 +913,9 @@ class QuizRoomsAdminPanel extends HTMLElement {
 
     mount.querySelectorAll("[data-act]").forEach((btn) => {
       btn.addEventListener("click", () => this._roomAction(btn.dataset.code, btn.dataset.act));
+    });
+    mount.querySelectorAll("[data-qr-room]").forEach((btn) => {
+      btn.addEventListener("click", () => this._openQrModal(btn.dataset.qrRoom));
     });
     mount.querySelectorAll("[data-tv-follow]").forEach((btn) => {
       btn.addEventListener("click", () => this._setTVMode("follow", btn.dataset.tvFollow));
@@ -961,7 +1212,10 @@ class QuizRoomsAdminPanel extends HTMLElement {
         </div>
 
         <div class="row" style="margin-top:14px;">
-          <button id="stage-save-btn" class="btn btn-primary">Save Stage Settings</button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <button id="stage-save-btn" class="btn btn-primary ${this._stageDirty ? "btn-dirty-pulse" : ""}">Save Stage Settings</button>
+            <button id="stage-discard-btn" type="button" class="btn btn-danger ${this._stageDirty ? "" : "hidden"}" ${this._stageDirty ? "" : "disabled"}>Discard / Reset</button>
+          </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
             <button class="btn" data-stage-test="amber_countdown">Test Amber 5s</button>
             <button class="btn" data-stage-test="reveal_green">Test Green</button>
@@ -1051,6 +1305,15 @@ class QuizRoomsAdminPanel extends HTMLElement {
       });
     }
 
+    const discardStageBtn = mount.querySelector("#stage-discard-btn");
+    if (discardStageBtn) {
+      discardStageBtn.addEventListener("click", () => {
+        this._discardStageChanges();
+      });
+    }
+
+    this._syncDirtyUI();
+
     mount.querySelectorAll("[data-stage-test]").forEach((btn) => {
       btn.addEventListener("click", () => {
         this._testStageEffect(btn.dataset.stageTest, btn);
@@ -1063,30 +1326,13 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const st = this._state;
     if (!mount || !st) return;
 
-    const packsSig = JSON.stringify((st.packs || []).map((p) => [p.pack_id, p.question_count, p.title])) + `|docs:${this._showDocs}`;
+    const packsSig = JSON.stringify((st.packs || []).map((p) => [p.pack_id, p.question_count, p.title, p.is_builtin])) + `|docs:${this._showDocs}`;
     if (!force && packsSig === this._lastPacksSig) return;
     this._lastPacksSig = packsSig;
 
-    const packsHtml = `<div class="list">${st.packs
-      .map(
-        (p) => `
-      <div class="item">
-        <div style="display:flex;align-items:center;gap:12px;">
-          ${p.cover_url ? `<img src="${this._esc(p.cover_url)}" alt="" class="pack-thumb" />` : ""}
-          <div>
-            <strong dir="auto">${this._esc(p.title)}</strong>
-            <span class="badge" style="margin-inline-start:6px;">${this._esc(p.pack_id)}</span>
-            <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
-            ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
-            <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
-          </div>
-        </div>
-        <div>
-          ${p.is_builtin ? `<span class="sub">Protected</span>` : `<button class="btn btn-danger" data-del-pack="${this._esc(p.pack_id)}">Delete</button>`}
-        </div>
-      </div>`
-      )
-      .join("")}</div>`;
+    const allPacks = Array.isArray(st.packs) ? st.packs : [];
+    const builtinCount = allPacks.filter((p) => p.is_builtin).length;
+    const customCount = allPacks.length - builtinCount;
 
     mount.innerHTML = `
       <section class="card">
@@ -1144,21 +1390,47 @@ class QuizRoomsAdminPanel extends HTMLElement {
       </section>
 
       <section class="card">
-        <h2>Installed Trivia Packs (${st.packs.length})</h2>
-        ${packsHtml}
+        <div class="pack-toolbar">
+          <h2 style="margin:0;">Installed Trivia Packs (<span id="packs-visible-count">${allPacks.length}</span> / ${allPacks.length})</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1;justify-content:flex-end;">
+            <input id="packs-search-input" type="search" class="light-filter-input" style="max-width:280px;" placeholder="Search packs by title, ID, or category…" value="${this._esc(this._packSearch)}" />
+            <div class="filter-pills" role="group" aria-label="Filter Packs">
+              <button type="button" class="filter-pill ${this._packFilter === "all" ? "active" : ""}" data-pack-filter="all">All (${allPacks.length})</button>
+              <button type="button" class="filter-pill ${this._packFilter === "builtin" ? "active" : ""}" data-pack-filter="builtin">Built-in (${builtinCount})</button>
+              <button type="button" class="filter-pill ${this._packFilter === "custom" ? "active" : ""}" data-pack-filter="custom">Custom (${customCount})</button>
+            </div>
+          </div>
+        </div>
+        <div id="admin-packs-list-mount"></div>
       </section>
     `;
 
     this._renderUploadStatus();
+    this._renderInstalledPacksList();
 
-    mount.querySelectorAll("[data-del-pack]").forEach((btn) => {
-      btn.addEventListener("click", () => this._deletePack(btn.dataset.delPack));
-    });
     mount.querySelector("#download-template-btn").addEventListener("click", () => this._downloadTemplate());
     mount.querySelector("#reload-packs-btn").addEventListener("click", () => this._reloadPacks());
     mount.querySelector("#toggle-docs-btn").addEventListener("click", () => {
       this._showDocs = !this._showDocs;
       this._renderPacksSection(true);
+    });
+
+    const searchInput = mount.querySelector("#packs-search-input");
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        this._packSearch = searchInput.value;
+        this._renderInstalledPacksList();
+      });
+    }
+
+    mount.querySelectorAll("[data-pack-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        this._packFilter = btn.dataset.packFilter;
+        mount.querySelectorAll("[data-pack-filter]").forEach((b) => {
+          b.classList.toggle("active", b.dataset.packFilter === this._packFilter);
+        });
+        this._renderInstalledPacksList();
+      });
     });
 
     const overwriteEl = mount.querySelector("#overwrite-check");
@@ -1179,6 +1451,122 @@ class QuizRoomsAdminPanel extends HTMLElement {
       const file = fileInput.files && fileInput.files[0];
       if (file) this._uploadPack(file, this._overwrite);
       fileInput.value = "";
+    });
+  }
+
+  _renderInstalledPacksList() {
+    const listMount = this.shadowRoot && this.shadowRoot.getElementById("admin-packs-list-mount");
+    const countEl = this.shadowRoot && this.shadowRoot.getElementById("packs-visible-count");
+    const st = this._state;
+    if (!listMount || !st) return;
+
+    const term = (this._packSearch || "").trim().toLowerCase();
+    const filtered = (st.packs || []).filter((p) => {
+      if (this._packFilter === "builtin" && !p.is_builtin) return false;
+      if (this._packFilter === "custom" && p.is_builtin) return false;
+      if (!term) return true;
+      return (
+        String(p.title || "").toLowerCase().includes(term) ||
+        String(p.pack_id || "").toLowerCase().includes(term) ||
+        String(p.category || "").toLowerCase().includes(term) ||
+        String(p.language || "").toLowerCase().includes(term)
+      );
+    });
+
+    if (countEl) countEl.textContent = String(filtered.length);
+
+    if (!filtered.length) {
+      listMount.innerHTML = `<p class="sub">No trivia packs match your current filter.</p>`;
+      return;
+    }
+
+    listMount.innerHTML = `<div class="list">${filtered
+      .map((p) => {
+        const d = p.difficulties || { easy: 0, medium: 0, hard: 0 };
+        const isExpanded = this._expandedPackId === p.pack_id;
+        let previewHtml = "";
+        if (isExpanded) {
+          if (this._loadingPreviewId === p.pack_id) {
+            previewHtml = `<div class="pack-preview-drawer"><span class="sub">Loading sample questions…</span></div>`;
+          } else {
+            const cached = this._packPreviewCache[p.pack_id];
+            if (!cached || cached.error) {
+              previewHtml = `<div class="pack-preview-drawer"><span class="sub" style="color:var(--err);">${this._esc((cached && cached.error) || "Unable to load preview.")}</span></div>`;
+            } else {
+              const samples = Array.isArray(cached.sample_questions) ? cached.sample_questions : [];
+              previewHtml = `
+                <div class="pack-preview-drawer">
+                  <div class="row">
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+                      <strong style="font-size:0.84rem;">Difficulty Breakdown:</strong>
+                      <span class="diff-pill diff-easy">Easy: ${d.easy || 0}</span>
+                      <span class="diff-pill diff-medium">Medium: ${d.medium || 0}</span>
+                      <span class="diff-pill diff-hard">Hard: ${d.hard || 0}</span>
+                    </div>
+                    <span class="sub">Showing ${samples.length} of ${cached.total_questions || p.question_count} questions</span>
+                  </div>
+                  ${samples
+                    .map((q) => {
+                      const diffCls = q.difficulty === "easy" ? "diff-easy" : q.difficulty === "hard" ? "diff-hard" : "diff-medium";
+                      return `
+                      <div class="preview-q-item" dir="${q.rtl ? "rtl" : "auto"}">
+                        <div style="display:flex;align-items:flex-start;gap:10px;">
+                          ${q.media_url ? `<img src="${this._esc(q.media_url)}" alt="" class="preview-thumb" />` : ""}
+                          <div style="flex:1;min-width:0;">
+                            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px;">
+                              <span class="diff-pill ${diffCls}">${this._esc(q.difficulty || "medium")}</span>
+                              ${q.starts_with ? `<span class="badge">Starts with: ${this._esc(q.starts_with)}</span>` : ""}
+                              <strong>${this._esc(q.prompt)}</strong>
+                            </div>
+                            <div class="sub">
+                              ${q.open_ended ? "Rule:" : "Answer:"} <strong style="color:var(--ok);">${this._esc(q.answer)}</strong>
+                              ${q.choices && q.choices.length ? ` · Choices: ${q.choices.map((c) => this._esc(c)).join(" | ")}` : ""}
+                            </div>
+                          </div>
+                        </div>
+                      </div>`;
+                    })
+                    .join("")}
+                </div>`;
+            }
+          }
+        }
+
+        return `
+          <div class="pack-card">
+            <div class="pack-card-top">
+              <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+                ${p.cover_url ? `<img src="${this._esc(p.cover_url)}" alt="" class="pack-thumb" />` : ""}
+                <div style="min-width:0;">
+                  <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                    <strong dir="auto">${this._esc(p.title)}</strong>
+                    <span class="badge">${this._esc(p.pack_id)}</span>
+                    <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
+                    ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
+                    <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
+                  </div>
+                  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;">
+                    <span class="diff-pill diff-easy">E ${d.easy || 0}</span>
+                    <span class="diff-pill diff-medium">M ${d.medium || 0}</span>
+                    <span class="diff-pill diff-hard">H ${d.hard || 0}</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+                <button type="button" class="btn" data-preview-pack="${this._esc(p.pack_id)}">${isExpanded ? "Hide Preview" : "Preview Questions"}</button>
+                ${p.is_builtin ? `<span class="sub">Protected</span>` : `<button class="btn btn-danger" data-del-pack="${this._esc(p.pack_id)}">Delete</button>`}
+              </div>
+            </div>
+            ${previewHtml}
+          </div>`;
+      })
+      .join("")}</div>`;
+
+    listMount.querySelectorAll("[data-preview-pack]").forEach((btn) => {
+      btn.addEventListener("click", () => this._togglePackPreview(btn.dataset.previewPack));
+    });
+    listMount.querySelectorAll("[data-del-pack]").forEach((btn) => {
+      btn.addEventListener("click", () => this._deletePack(btn.dataset.delPack));
     });
   }
 

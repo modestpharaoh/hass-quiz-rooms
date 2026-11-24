@@ -217,3 +217,64 @@ def test_english_autobus_complete_open_ended_and_pack_difficulty_validation(tmp_
     with pytest.raises(PackValidationError) as exc:
         registry.import_pack_bytes("bad.json", json.dumps(bad_pack).encode("utf-8"))
     assert "difficulty" in exc.value.message.lower()
+
+
+def test_admin_pack_preview_endpoint_and_admin_panel_qr_bundle(tmp_path: Path) -> None:
+    import asyncio
+    from conftest import FakeRequest
+    from custom_components.quizrooms.coordinator import QuizRoomsCoordinator
+    from custom_components.quizrooms.views import QuizRoomsAdminPackPreviewView, QuizRoomsAdminPanelJSView
+
+    class _MinHass:
+        def __init__(self, cfg: Path) -> None:
+            self.config = type(
+                "Cfg",
+                (),
+                {"config_dir": str(cfg), "internal_url": "http://192.168.1.50:8123", "external_url": None},
+            )()
+            self.data = {}
+
+        async def async_add_executor_job(self, func, *args):
+            return func(*args)
+
+    async def run() -> None:
+        hass = _MinHass(tmp_path)
+        coord = QuizRoomsCoordinator(
+            hass,
+            builtin_packs_dir=BUILTIN_PACKS_DIR,
+            custom_packs_dir=tmp_path / "custom",
+            frontend_dir=BUILTIN_PACKS_DIR.parent / "frontend",
+        )
+        coord.pack_registry.reload()
+
+        preview_view = QuizRoomsAdminPackPreviewView(coord)
+        denied_resp = await preview_view.get(
+            FakeRequest(path="/quizrooms/api/admin/packs/space_astronomy_en/preview"),
+            "space_astronomy_en",
+        )
+        assert denied_resp.status == 403
+
+        admin_user = type("Admin", (), {"is_admin": True})()
+        not_found = await preview_view.get(
+            FakeRequest(path="/quizrooms/api/admin/packs/no_such_pack/preview", hass_user=admin_user),
+            "no_such_pack",
+        )
+        assert not_found.status == 404
+
+        ok_resp = await preview_view.get(
+            FakeRequest(path="/quizrooms/api/admin/packs/space_astronomy_en/preview", hass_user=admin_user),
+            "space_astronomy_en",
+        )
+        assert ok_resp.status == 200
+        body = json.loads(ok_resp.text)
+        assert body["ok"] is True
+        assert body["total_questions"] == 36
+        assert len(body["sample_questions"]) == 6
+        assert {q["difficulty"] for q in body["sample_questions"]} == {"easy", "medium", "hard"}
+
+        js_resp = await QuizRoomsAdminPanelJSView(coord).get(FakeRequest(path="/quizrooms/admin-panel.js"))
+        assert js_resp.status == 200
+        assert "QuizRoomsQR" in (js_resp.text or "")
+        assert "quizrooms-admin-panel" in (js_resp.text or "")
+
+    asyncio.run(run())

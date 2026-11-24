@@ -777,6 +777,12 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
 # ---------------------------------------------------------------------------
 
 
+def _read_admin_panel_bundle_sync(frontend_dir: Path) -> str:
+    qr_js = (frontend_dir / "assets" / "js" / "qrcode.js").read_text(encoding="utf-8")
+    panel_js = (frontend_dir / "admin-panel.js").read_text(encoding="utf-8")
+    return f"{qr_js}\n;\n{panel_js}"
+
+
 class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
     """Serve the HA Sidebar Admin Panel JS module."""
 
@@ -785,8 +791,9 @@ class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
     requires_auth = False  # Browser module import from HA sidebar; all data APIs require HA admin auth
 
     async def get(self, request: web.Request) -> web.StreamResponse:
-        js_path = self.coordinator.frontend_dir / "admin-panel.js"
-        js_text = await self.coordinator.async_run_in_executor(_read_text_sync, js_path)
+        js_text = await self.coordinator.async_run_in_executor(
+            _read_admin_panel_bundle_sync, self.coordinator.frontend_dir
+        )
         return web.Response(
             text=js_text,
             content_type="application/javascript",
@@ -942,6 +949,64 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
 
         await self.coordinator.broadcast_lobby_and_tv()
         return web.json_response({"ok": True, "pack": pack.to_summary()}, status=201)
+
+
+class QuizRoomsAdminPackPreviewView(_QuizRoomsBaseView):
+    """Return difficulty breakdown and sample questions for a trivia pack (HA Admin only)."""
+
+    url = f"{URL_API_ADMIN}/packs/{{pack_id}}/preview"
+    name = "quizrooms:admin_pack_preview"
+    requires_auth = True
+
+    async def get(self, request: web.Request, pack_id: str) -> web.StreamResponse:
+        if denied := _require_ha_admin(request):
+            return denied
+
+        pack = self.coordinator.pack_registry.get_pack(pack_id)
+        if pack is None:
+            return web.json_response(
+                {"error": "pack_not_found", "message": f"Pack '{pack_id}' was not found."},
+                status=404,
+            )
+
+        # Pick balanced sample questions across easy / medium / hard tiers (up to 6)
+        samples = []
+        seen_ids: set[str] = set()
+        for tier in ("easy", "medium", "hard"):
+            tier_qs = [q for q in pack.questions if q.difficulty == tier]
+            for q in tier_qs[:2]:
+                if q.id not in seen_ids:
+                    samples.append(q)
+                    seen_ids.add(q.id)
+        if len(samples) < 6:
+            for q in pack.questions:
+                if q.id not in seen_ids:
+                    samples.append(q)
+                    seen_ids.add(q.id)
+                if len(samples) >= 6:
+                    break
+
+        return web.json_response(
+            {
+                "ok": True,
+                "pack": pack.to_summary(),
+                "total_questions": len(pack.questions),
+                "sample_questions": [
+                    {
+                        "id": q.id,
+                        "prompt": q.prompt,
+                        "answer": q.answer,
+                        "choices": list(q.choices),
+                        "difficulty": q.difficulty,
+                        "open_ended": q.open_ended,
+                        "starts_with": q.starts_with,
+                        "rtl": q.rtl,
+                        "media_url": f"{URL_MEDIA}/{q.media_id}" if q.media_id else None,
+                    }
+                    for q in samples
+                ],
+            }
+        )
 
 
 class QuizRoomsAdminPackDeleteView(_QuizRoomsBaseView):
@@ -1147,6 +1212,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAdminStateView(coordinator),
         QuizRoomsAdminPackTemplateView(),
         QuizRoomsAdminPackImportView(coordinator),
+        QuizRoomsAdminPackPreviewView(coordinator),
         QuizRoomsAdminPackDeleteView(coordinator),
         QuizRoomsAdminRoomActionView(coordinator),
         QuizRoomsAdminTVView(coordinator),
