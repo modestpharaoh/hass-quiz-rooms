@@ -634,10 +634,17 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .stage-lock { padding: 14px; border-radius: 12px; border: 1px solid var(--warn); background: rgba(217,119,6,0.12); color: var(--text); font-size: 0.88rem; line-height: 1.5; }
         .light-filter-row { display: flex; gap: 6px; align-items: center; }
         .light-filter-input { flex: 1; padding: 7px 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 0.82rem; font-weight: 600; }
+        .light-selected-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 10px; background: var(--card); border: 1px solid var(--accent); }
+        .light-selected-summary.hidden { display: none; }
+        .light-selected-chip { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; padding: 3px 8px 3px 9px; border-radius: 999px; background: rgba(45,212,191,0.16); border: 1px solid var(--accent); color: var(--text); font-size: 0.76rem; font-weight: 700; line-height: 1.2; }
+        .light-selected-chip-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 190px; }
+        .light-selected-chip-remove { appearance: none; border: none; background: transparent; color: var(--muted); font-size: 0.94rem; font-weight: 900; line-height: 1; padding: 0 2px; cursor: pointer; }
+        .light-selected-chip-remove:hover { color: var(--err); }
+        .light-clear-btn { margin-inline-start: auto; appearance: none; border: none; background: transparent; color: var(--muted); font-family: inherit; font-size: 0.74rem; font-weight: 800; cursor: pointer; padding: 3px 6px; border-radius: 6px; }
+        .light-clear-btn:hover { color: var(--err); background: rgba(244,63,94,0.12); }
         .chip-list { display: flex; flex-wrap: wrap; gap: 6px; max-height: 210px; overflow-y: auto; padding: 4px 2px; overscroll-behavior: contain; }
         .light-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 0.78rem; font-weight: 700; cursor: pointer; user-select: none; transition: border-color 0.12s, background 0.12s; }
         .light-chip.selected { border-color: var(--accent); background: rgba(45,212,191,0.16); box-shadow: inset 0 0 0 1px rgba(45,212,191,0.22); }
-        .light-chip .pin-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
         .field-lbl { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
         .check-lbl { display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; }
         .vol-card { padding: 10px 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 9px; }
@@ -964,6 +971,59 @@ class QuizRoomsAdminPanel extends HTMLElement {
     };
   }
 
+  _renderStageLightsSelectedSummary(allLights, selectedLights) {
+    const summaryEl = this.shadowRoot && this.shadowRoot.getElementById("stage-lights-selected-summary");
+    if (!summaryEl) return;
+
+    const selectedIds = Array.from(selectedLights);
+    if (!selectedIds.length) {
+      summaryEl.classList.add("hidden");
+      summaryEl.innerHTML = "";
+      return;
+    }
+
+    const byId = new Map((allLights || []).map((l) => [l.entity_id, l]));
+    summaryEl.classList.remove("hidden");
+    summaryEl.innerHTML = `
+      ${selectedIds
+        .map((eid) => {
+          const info = byId.get(eid);
+          const label = info ? info.name : eid;
+          const cap = info ? (info.supports_color ? "RGB" : (info.supports_brightness ? "Dimmer" : "Switch")) : "Offline";
+          return `
+            <span class="light-selected-chip" title="${this._esc(eid)}">
+              <span class="light-selected-chip-title">${this._esc(label)}</span>
+              <span class="badge" style="padding:1px 5px;font-size:0.64rem;">${cap}</span>
+              <button type="button" class="light-selected-chip-remove" data-unselect-light="${this._esc(eid)}" aria-label="Remove ${this._esc(label)}">×</button>
+            </span>`;
+        })
+        .join("")}
+      <button type="button" id="stage-lights-clear-btn" class="light-clear-btn">Clear all</button>
+    `;
+
+    summaryEl.querySelectorAll("[data-unselect-light]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const eid = btn.dataset.unselectLight;
+        const liveDraft = this._getOrInitStageDraft();
+        const nextSet = new Set(Array.isArray(liveDraft.light_entities) ? liveDraft.light_entities : []);
+        nextSet.delete(eid);
+        liveDraft.light_entities = Array.from(nextSet);
+        this._markStageDirty();
+        this._renderStageLightsList();
+      });
+    });
+
+    const clearBtn = this.shadowRoot.getElementById("stage-lights-clear-btn");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        const liveDraft = this._getOrInitStageDraft();
+        liveDraft.light_entities = [];
+        this._markStageDirty();
+        this._renderStageLightsList();
+      });
+    }
+  }
+
   _renderStageLightsList() {
     const container = this.shadowRoot && this.shadowRoot.getElementById("stage-lights-list");
     const countEl = this.shadowRoot && this.shadowRoot.getElementById("stage-lights-count");
@@ -978,36 +1038,33 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const filterTerm = (this._lightFilter || "").trim().toLowerCase();
 
     const allLights = Array.isArray(stage.lights) ? stage.lights : [];
-    // Sort selected lights to the top, then preserve RGB -> Dimmer -> alphabetical order
-    const ordered = allLights
-      .map((item, idx) => ({ item, idx, selected: selectedLights.has(item.entity_id) }))
+    this._renderStageLightsSelectedSummary(allLights, selectedLights);
+
+    // Keep natural stable order (do not jump selected lights to the top)
+    const filtered = allLights
+      .map((item) => ({ item, selected: selectedLights.has(item.entity_id) }))
       .filter(({ item }) => {
         if (!filterTerm) return true;
         return (
           String(item.name || "").toLowerCase().includes(filterTerm) ||
           String(item.entity_id || "").toLowerCase().includes(filterTerm)
         );
-      })
-      .sort((a, b) => {
-        if (a.selected !== b.selected) return a.selected ? -1 : 1;
-        return a.idx - b.idx;
       });
 
     if (!allLights.length) {
       container.innerHTML = `<p class="sub">No connected <code>light.*</code> entities detected in Home Assistant.</p>`;
       return;
     }
-    if (!ordered.length) {
+    if (!filtered.length) {
       container.innerHTML = `<p class="sub">No lights match "${this._esc(this._lightFilter)}".</p>`;
       return;
     }
 
-    container.innerHTML = ordered
+    container.innerHTML = filtered
       .map(({ item: l, selected }) => {
         const cap = l.supports_color ? "RGB" : (l.supports_brightness ? "Dimmer" : "Switch");
         return `<label class="light-chip ${selected ? "selected" : ""}" title="${this._esc(l.entity_id)}">
           <input type="checkbox" data-stage-light="${this._esc(l.entity_id)}" ${selected ? "checked" : ""} />
-          ${selected ? `<span class="pin-dot" aria-hidden="true"></span>` : ""}
           <span>${this._esc(l.name)}</span>
           <span class="badge" style="padding:1px 6px;font-size:0.68rem;">${cap}</span>
         </label>`;
@@ -1114,8 +1171,8 @@ class QuizRoomsAdminPanel extends HTMLElement {
           <div class="stage-box">
             <div class="row">
               <strong>Stage Lights (<span id="stage-lights-count">${(draft.light_entities || []).length}</span> selected)</strong>
-              <span class="sub" style="font-size:0.74rem;">Selected pinned to top</span>
             </div>
+            <div id="stage-lights-selected-summary" class="light-selected-summary hidden" aria-live="polite"></div>
             <div class="light-filter-row">
               <input id="stage-light-filter" type="search" class="light-filter-input" placeholder="Filter lights by name or entity…" value="${this._esc(this._lightFilter)}" />
             </div>
