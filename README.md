@@ -21,6 +21,69 @@ If **QuizRooms** brings fun to your family game nights, living room TV, or Home 
 
 ---
 
+## Screenshots
+
+The same local UI your household actually uses: a phone in hand, a 16:9 TV on the wall, and the Home Assistant sidebar.
+
+<p align="center">
+  <img src="docs/screenshots/tv-studio.png" alt="QuizRooms TV Studio following a live flag round, with answer tiles, a leaderboard, player lock-in status, and a join QR code" width="920" />
+</p>
+<p align="center"><sub><strong>TV Studio</strong> — follow the live round, leaderboard, and join QR on the living-room display</sub></p>
+
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/tv-idle.png" alt="QuizRooms TV idle screen with a scannable join QR code and a gallery of featured trivia pack covers" width="100%" />
+      <br /><sub><strong>Idle screen</strong> — scan to host, with featured packs ready offline</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/tv-finale.png" alt="QuizRooms TV finale podium with confetti, top-three scores, superlative awards, and the room leaderboard" width="100%" />
+      <br /><sub><strong>Finale</strong> — podium, awards, and the room QR still on screen</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center"><strong>Play</strong> — open lobby, confidence wager, and room setup on a phone</p>
+
+<table>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/play-lobby.png" alt="QuizRooms phone lobby with a nickname, avatar, and open public rooms in English and Arabic" width="100%" />
+      <br /><sub><strong>Open lobby</strong> — profile, public rooms, English and Arabic</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/play-question.png" alt="QuizRooms phone question with a flag, multiple-choice answers, confidence wager chips, and a lock-in button" width="100%" />
+      <br /><sub><strong>Lock in</strong> — pick an answer and wager the points you still have</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/play-create.png" alt="QuizRooms create-room sheet with pack search, selected packs, rounds, timer, difficulty, and a final bonus question" width="100%" />
+      <br /><sub><strong>Create a room</strong> — search packs, set the rules, add a bonus round</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center"><strong>Admin</strong> — Home Assistant sidebar panel</p>
+
+<p align="center">
+  <img src="docs/screenshots/admin-live.png" alt="QuizRooms admin Live Rooms and TV tab with active rooms, player scores, and smart TV launch buttons" width="780" />
+</p>
+<p align="center"><sub><strong>Live Rooms &amp; TV</strong> — rooms, join QR, follow mode, and one-click launch on LG webOS and Samsung TVs</sub></p>
+
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/admin-stage.png" alt="QuizRooms admin Stage Effects tab with selected RGB lights, a studio preset, and a multilingual speaker announcer" width="100%" />
+      <br /><sub><strong>Stage Effects</strong> — living-room lights and a local TTS announcer, LAN only</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/admin-packs.png" alt="QuizRooms admin Packs and Import tab with a drag-and-drop importer and installed trivia packs" width="100%" />
+      <br /><sub><strong>Packs &amp; Import</strong> — built-in library plus drag-and-drop custom packs</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## Key Features
 
 - **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 37 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
