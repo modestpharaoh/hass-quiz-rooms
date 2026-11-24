@@ -44,6 +44,24 @@ EXPECTED_PACK_IDS = {
     "famous_logos",
     "general_geography_en",
     "world_cup_en",
+    "space_astronomy_en",
+    "space_astronomy_ar",
+    "world_cuisines_en",
+    "world_cuisines_ar",
+    "human_body_en",
+    "human_body_ar",
+    "wildlife_animals_en",
+    "wildlife_animals_ar",
+    "inventions_discoveries_en",
+    "inventions_discoveries_ar",
+    "world_currencies_en",
+    "world_landmarks_en",
+    "world_landmarks_ar",
+    "sports_olympics_en",
+    "sports_olympics_ar",
+    "math_logic_riddles_en",
+    "math_logic_riddles_ar",
+    "arabic_proverbs_ar",
 }
 
 
@@ -74,7 +92,21 @@ def test_all_15_builtin_packs_load_with_valid_covers_and_balanced_difficulties(t
             assert q.difficulty in ALLOWED_QUESTION_DIFFICULTIES
 
     # Verify Arabic RTL packs
-    for ar_id in ("general_knowledge_ar", "autobus_complete_ar", "general_tech_ar", "arab_world_gk_ar"):
+    for ar_id in (
+        "general_knowledge_ar",
+        "autobus_complete_ar",
+        "general_tech_ar",
+        "arab_world_gk_ar",
+        "space_astronomy_ar",
+        "world_cuisines_ar",
+        "human_body_ar",
+        "wildlife_animals_ar",
+        "inventions_discoveries_ar",
+        "world_landmarks_ar",
+        "sports_olympics_ar",
+        "math_logic_riddles_ar",
+        "arabic_proverbs_ar",
+    ):
         assert by_id[ar_id].rtl is True
         assert by_id[ar_id].language == "ar"
 

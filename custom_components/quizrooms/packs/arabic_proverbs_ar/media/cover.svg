@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Arabic Proverbs and Eloquence Cover">
+  <defs>
+    <linearGradient id="prbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#451A03"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#prbg)"/>
+  <path d="M40,42 C58,36 74,40 80,48 C86,40 102,36 120,42 L120,114 C102,108 86,112 80,120 C74,112 58,108 40,114 Z" fill="#FEF3C7" stroke="#F59E0B" stroke-width="3"/>
+  <line x1="80" y1="48" x2="80" y2="120" stroke="#D97706" stroke-width="3"/>
+  <line x1="50" y1="64" x2="72" y2="64" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <line x1="50" y1="78" x2="72" y2="78" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <line x1="88" y1="64" x2="110" y2="64" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <line x1="88" y1="78" x2="110" y2="78" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M108,26 L128,46 L112,62 L92,42 Z" fill="#FBBF24"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

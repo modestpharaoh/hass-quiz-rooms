@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Ancient desert pyramids silhouette">
+  <rect width="640" height="480" rx="24" fill="#FEF3C7"/>
+  <circle cx="515" cy="105" r="46" fill="#F59E0B"/>
+  <rect x="0" y="365" width="640" height="115" fill="#D97706"/>
+  <polygon points="70,368 235,140 400,368" fill="#B45309"/>
+  <polygon points="235,140 400,368 285,368" fill="#78350F"/>
+  <polygon points="310,368 445,195 580,368" fill="#92400E"/>
+  <polygon points="445,195 580,368 485,368" fill="#451A03"/>
+</svg>

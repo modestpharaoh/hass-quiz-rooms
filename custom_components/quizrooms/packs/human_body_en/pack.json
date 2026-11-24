@@ -1,0 +1,635 @@
+{
+  "pack_id": "human_body_en",
+  "title": "Human Body & Medicine",
+  "description": "36 original questions on organs, bones, blood types, senses, and medical milestones with vector anatomy SVGs.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Science",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "human_body_en_001",
+      "prompt": "Which twisted ladder-shaped molecule carries genetic instructions in living organisms, as illustrated here?",
+      "choices": [
+        "RNA",
+        "DNA",
+        "ATP",
+        "Hemoglobin"
+      ],
+      "answer": "DNA",
+      "aliases": [
+        "Deoxyribonucleic acid"
+      ],
+      "explanation": "DNA's double-helix structure was famously modeled in 1953 using Rosalind Franklin's X-ray data.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/dna.svg"
+    },
+    {
+      "id": "human_body_en_002",
+      "prompt": "Which pair of spongy respiratory organs illustrated here exchanges oxygen and carbon dioxide with the blood?",
+      "choices": [
+        "Kidneys",
+        "Thyroid",
+        "Liver lobes",
+        "Lungs"
+      ],
+      "answer": "Lungs",
+      "aliases": [
+        "Human lungs"
+      ],
+      "explanation": "The lungs contain hundreds of millions of tiny air sacs called alveoli.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/lungs.svg"
+    },
+    {
+      "id": "human_body_en_003",
+      "prompt": "Which colored ring-shaped muscle in the eye illustrated here controls the size of the pupil?",
+      "choices": [
+        "Iris",
+        "Retina",
+        "Cornea",
+        "Optic nerve"
+      ],
+      "answer": "Iris",
+      "aliases": [],
+      "explanation": "The iris expands or contracts to regulate how much light enters the pupil.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/eye.svg"
+    },
+    {
+      "id": "human_body_en_004",
+      "prompt": "Which central organ illustrated here serves as the control center of the human nervous system?",
+      "choices": [
+        "Pancreas",
+        "Spleen",
+        "Heart",
+        "Brain"
+      ],
+      "answer": "Brain",
+      "aliases": [
+        "Human brain"
+      ],
+      "explanation": "The adult human brain contains roughly 86 billion neurons.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/brain.svg"
+    },
+    {
+      "id": "human_body_en_005",
+      "prompt": "How many bones are in a typical adult human skeleton?",
+      "choices": [
+        "300",
+        "256",
+        "206",
+        "186"
+      ],
+      "answer": "206",
+      "aliases": [],
+      "explanation": "Babies are born with about 270 bones, many of which fuse together by adulthood.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_006",
+      "prompt": "What is the largest internal organ in the human body?",
+      "choices": [
+        "Heart",
+        "Stomach",
+        "Kidney",
+        "Liver"
+      ],
+      "answer": "Liver",
+      "aliases": [],
+      "explanation": "The liver weighs about 1.5 kg and performs over 500 metabolic functions.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_007",
+      "prompt": "What is the largest organ of the human body overall?",
+      "choices": [
+        "Skin",
+        "Small intestine",
+        "Lungs",
+        "Liver"
+      ],
+      "answer": "Skin",
+      "aliases": [],
+      "explanation": "Skin accounts for roughly 15% of total adult body weight.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_008",
+      "prompt": "Which blood type is known as the universal red blood cell donor?",
+      "choices": [
+        "O negative",
+        "B negative",
+        "A positive",
+        "AB positive"
+      ],
+      "answer": "O negative",
+      "aliases": [
+        "O-",
+        "Type O negative"
+      ],
+      "explanation": "O-negative red cells lack A, B, and Rh antigens, minimizing transfusion reactions.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_009",
+      "prompt": "Which blood type is known as the universal red blood cell recipient?",
+      "choices": [
+        "O negative",
+        "O positive",
+        "AB positive",
+        "A negative"
+      ],
+      "answer": "AB positive",
+      "aliases": [
+        "AB+"
+      ],
+      "explanation": "AB-positive individuals have no anti-A, anti-B, or anti-Rh antibodies.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_010",
+      "prompt": "What is the longest and strongest bone in the human body?",
+      "choices": [
+        "Humerus",
+        "Pelvis",
+        "Tibia",
+        "Femur"
+      ],
+      "answer": "Femur",
+      "aliases": [
+        "Thigh bone"
+      ],
+      "explanation": "The femur (thigh bone) supports the weight of the body during standing and walking.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_011",
+      "prompt": "Where are the three smallest bones in the human body located?",
+      "choices": [
+        "Middle ear",
+        "Toes",
+        "Nose",
+        "Fingertips"
+      ],
+      "answer": "Middle ear",
+      "aliases": [
+        "Ear"
+      ],
+      "explanation": "The malleus, incus, and stapes (ossicles) transmit sound vibrations in the middle ear.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_012",
+      "prompt": "How many chambers does the human heart have?",
+      "choices": [
+        "4",
+        "2",
+        "6",
+        "3"
+      ],
+      "answer": "4",
+      "aliases": [
+        "Four"
+      ],
+      "explanation": "Two upper atria receive blood and two lower ventricles pump blood out.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_013",
+      "prompt": "Which protein in red blood cells binds oxygen and gives blood its red color?",
+      "choices": [
+        "Hemoglobin",
+        "Collagen",
+        "Keratin",
+        "Insulin"
+      ],
+      "answer": "Hemoglobin",
+      "aliases": [
+        "Haemoglobin"
+      ],
+      "explanation": "Hemoglobin contains iron atoms that reversibly bind oxygen in the lungs.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_014",
+      "prompt": "Which organ produces insulin to regulate blood sugar levels?",
+      "choices": [
+        "Pancreas",
+        "Kidney",
+        "Gallbladder",
+        "Liver"
+      ],
+      "answer": "Pancreas",
+      "aliases": [],
+      "explanation": "Beta cells in the pancreatic islets of Langerhans secrete insulin.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_015",
+      "prompt": "Which vitamin is primarily produced when human skin is exposed to UVB sunlight?",
+      "choices": [
+        "Vitamin B12",
+        "Vitamin K",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "answer": "Vitamin D",
+      "aliases": [],
+      "explanation": "Vitamin D is essential for calcium absorption and bone health.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_016",
+      "prompt": "Who discovered penicillin, the world's first widely used antibiotic, in 1928?",
+      "choices": [
+        "Alexander Fleming",
+        "Edward Jenner",
+        "Robert Koch",
+        "Louis Pasteur"
+      ],
+      "answer": "Alexander Fleming",
+      "aliases": [
+        "Fleming"
+      ],
+      "explanation": "Fleming noticed a Penicillium mold killing Staphylococcus bacteria on a petri dish.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_017",
+      "prompt": "Which part of the brain is primarily responsible for balance and coordinating smooth movement?",
+      "choices": [
+        "Medulla",
+        "Amygdala",
+        "Hippocampus",
+        "Cerebellum"
+      ],
+      "answer": "Cerebellum",
+      "aliases": [],
+      "explanation": "The cerebellum sits at the back of the skull beneath the cerebral hemispheres.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_018",
+      "prompt": "Which blood vessels carry blood AWAY from the heart?",
+      "choices": [
+        "Veins",
+        "Lymphatics",
+        "Capillaries",
+        "Arteries"
+      ],
+      "answer": "Arteries",
+      "aliases": [],
+      "explanation": "Most arteries carry oxygen-rich blood (except the pulmonary artery).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_019",
+      "prompt": "What is the normal resting body temperature of a healthy human in Celsius?",
+      "choices": [
+        "40°C",
+        "37°C",
+        "35°C",
+        "39°C"
+      ],
+      "answer": "37°C",
+      "aliases": [
+        "37",
+        "37 degrees"
+      ],
+      "explanation": "Normal human core temperature averages around 36.5°C–37.2°C (98.6°F).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_020",
+      "prompt": "Which hard outer layer of human teeth is the hardest substance in the human body?",
+      "choices": [
+        "Keratin",
+        "Dentin",
+        "Cartilage",
+        "Enamel"
+      ],
+      "answer": "Enamel",
+      "aliases": [
+        "Tooth enamel"
+      ],
+      "explanation": "Tooth enamel is over 95% mineral (hydroxyapatite).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_021",
+      "prompt": "Which doctor pioneered the smallpox vaccine in 1796 using cowpox?",
+      "choices": [
+        "Jonas Salk",
+        "Louis Pasteur",
+        "Edward Jenner",
+        "Joseph Lister"
+      ],
+      "answer": "Edward Jenner",
+      "aliases": [
+        "Jenner"
+      ],
+      "explanation": "The word 'vaccine' derives from the Latin 'vacca' (cow).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_022",
+      "prompt": "Which cells in the human immune system are primarily responsible for fighting infections?",
+      "choices": [
+        "White blood cells",
+        "Platelets",
+        "Red blood cells",
+        "Osteocytes"
+      ],
+      "answer": "White blood cells",
+      "aliases": [
+        "Leukocytes"
+      ],
+      "explanation": "Leukocytes include neutrophils, lymphocytes, and macrophages.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_023",
+      "prompt": "Which blood components help blood clot to stop bleeding?",
+      "choices": [
+        "Red blood cells",
+        "Platelets",
+        "Neurons",
+        "Plasma proteins"
+      ],
+      "answer": "Platelets",
+      "aliases": [
+        "Thrombocytes"
+      ],
+      "explanation": "Platelets clump together at wound sites to form a protective plug.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_024",
+      "prompt": "What is the medical name for the collarbone?",
+      "choices": [
+        "Sternum",
+        "Clavicle",
+        "Patella",
+        "Scapula"
+      ],
+      "answer": "Clavicle",
+      "aliases": [],
+      "explanation": "The clavicle connects the sternum (breastbone) to the shoulder blade.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_025",
+      "prompt": "What is the medical name for the kneecap?",
+      "choices": [
+        "Patella",
+        "Tibia",
+        "Radius",
+        "Fibula"
+      ],
+      "answer": "Patella",
+      "aliases": [],
+      "explanation": "The patella is the largest sesamoid bone in the human body.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_026",
+      "prompt": "Which organ filters waste products from the blood to produce urine?",
+      "choices": [
+        "Liver",
+        "Pancreas",
+        "Spleen",
+        "Kidneys"
+      ],
+      "answer": "Kidneys",
+      "aliases": [
+        "Kidney"
+      ],
+      "explanation": "Each kidney contains about one million tiny filtering units called nephrons.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_027",
+      "prompt": "Which deficiency causes scurvy, historically common among sailors on long voyages?",
+      "choices": [
+        "Calcium deficiency",
+        "Vitamin C deficiency",
+        "Vitamin A deficiency",
+        "Iron deficiency"
+      ],
+      "answer": "Vitamin C deficiency",
+      "aliases": [
+        "Vitamin C"
+      ],
+      "explanation": "Vitamin C (ascorbic acid) is required for collagen synthesis.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_028",
+      "prompt": "Which structure in the brain plays a vital role in forming new long-term memories?",
+      "choices": [
+        "Pons",
+        "Hippocampus",
+        "Thalamus",
+        "Cerebellum"
+      ],
+      "answer": "Hippocampus",
+      "aliases": [],
+      "explanation": "Named for its seahorse shape, the hippocampus consolidates short-term into long-term memory.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "human_body_en_029",
+      "prompt": "Which scientist developed the first successful inactivated polio vaccine in 1955?",
+      "choices": [
+        "Louis Pasteur",
+        "Alexander Fleming",
+        "Albert Sabin",
+        "Jonas Salk"
+      ],
+      "answer": "Jonas Salk",
+      "aliases": [
+        "Salk"
+      ],
+      "explanation": "Salk famously chose not to patent the polio vaccine so it could be distributed worldwide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_030",
+      "prompt": "Which valve separates the left atrium from the left ventricle of the heart?",
+      "choices": [
+        "Aortic valve",
+        "Pulmonary valve",
+        "Tricuspid valve",
+        "Mitral valve"
+      ],
+      "answer": "Mitral valve",
+      "aliases": [
+        "Bicuspid valve"
+      ],
+      "explanation": "Also called the bicuspid valve, it prevents backflow into the left atrium.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "human_body_en_031",
+      "prompt": "What is the name of the wave-like muscle contractions that move food down the esophagus?",
+      "choices": [
+        "Osmosis",
+        "Homeostasis",
+        "Peristalsis",
+        "Mitosis"
+      ],
+      "answer": "Peristalsis",
+      "aliases": [],
+      "explanation": "Peristalsis pushes food along the digestive tract even if you swallow upside down.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_032",
+      "prompt": "Which hormone is commonly known as the 'fight-or-flight' hormone released by the adrenal glands?",
+      "choices": [
+        "Estrogen",
+        "Insulin",
+        "Melatonin",
+        "Adrenaline"
+      ],
+      "answer": "Adrenaline",
+      "aliases": [
+        "Epinephrine"
+      ],
+      "explanation": "Adrenaline increases heart rate, blood flow to muscles, and alertness.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_033",
+      "prompt": "Which hormone secreted by the pineal gland regulates the body's sleep-wake cycle?",
+      "choices": [
+        "Thyroxine",
+        "Melatonin",
+        "Cortisol",
+        "Dopamine"
+      ],
+      "answer": "Melatonin",
+      "aliases": [],
+      "explanation": "Melatonin levels rise in darkness to signal the body that it is time to sleep.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "human_body_en_034",
+      "prompt": "What is the name of the tiny finger-like projections in the small intestine that absorb nutrients?",
+      "choices": [
+        "Villi",
+        "Nephrons",
+        "Alveoli",
+        "Cilia"
+      ],
+      "answer": "Villi",
+      "aliases": [],
+      "explanation": "Villi dramatically increase the internal surface area of the small intestine.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "human_body_en_035",
+      "prompt": "Which nerve transmits visual information from the retina to the brain?",
+      "choices": [
+        "Sciatic nerve",
+        "Auditory nerve",
+        "Optic nerve",
+        "Vagus nerve"
+      ],
+      "answer": "Optic nerve",
+      "aliases": [],
+      "explanation": "The optic nerve consists of over a million nerve fibers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "human_body_en_036",
+      "prompt": "What is the longest and thickest nerve in the human body, running from the lower back down each leg?",
+      "choices": [
+        "Vagus nerve",
+        "Sciatic nerve",
+        "Median nerve",
+        "Optic nerve"
+      ],
+      "answer": "Sciatic nerve",
+      "aliases": [],
+      "explanation": "Compression of the sciatic nerve causes the radiating pain known as sciatica.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    }
+  ]
+}

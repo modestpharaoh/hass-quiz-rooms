@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Large trunked mammal silhouette">
+  <rect width="640" height="480" rx="24" fill="#ECFDF5"/>
+  <path d="M160,400 L160,285 C140,210 200,145 305,145 C390,145 450,185 462,250 C495,250 515,280 515,325 C515,355 495,372 475,365 C485,345 486,320 472,300 L452,300 L452,400 L404,400 L404,325 L292,325 L292,400 L246,400 L246,325 L208,325 L208,400 Z" fill="#475569"/>
+  <ellipse cx="375" cy="220" rx="52" ry="64" fill="#64748B"/>
+  <path d="M452,295 Q495,315 510,290" fill="none" stroke="#FEF9C3" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="430" cy="212" r="7" fill="#0F172A"/>
+</svg>

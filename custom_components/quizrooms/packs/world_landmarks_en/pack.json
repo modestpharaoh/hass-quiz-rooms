@@ -1,0 +1,621 @@
+{
+  "pack_id": "world_landmarks_en",
+  "title": "Iconic World Landmarks & Wonders",
+  "description": "36 original questions on ancient wonders, UNESCO sites, bridges, towers, and mosques with vector silhouettes.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "world_landmarks_en_001",
+      "prompt": "Which ancient Egyptian wonder illustrated here is the oldest and only surviving Wonder of the Ancient World?",
+      "choices": [
+        "Great Pyramid of Giza",
+        "Ziggurat of Ur",
+        "Chichen Itza",
+        "Pyramids of Meroe"
+      ],
+      "answer": "Great Pyramid of Giza",
+      "aliases": [
+        "Pyramids of Giza",
+        "Great Pyramid"
+      ],
+      "explanation": "Built for Pharaoh Khufu around 2560 BC, the Great Pyramid stood as Earth's tallest structure for 3,800 years.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/pyramids.svg"
+    },
+    {
+      "id": "world_landmarks_en_002",
+      "prompt": "Which ivory-white marble mausoleum in Agra, India, is illustrated here?",
+      "choices": [
+        "Sheikh Zayed Grand Mosque",
+        "Taj Mahal",
+        "Hagia Sophia",
+        "Humayun's Tomb"
+      ],
+      "answer": "Taj Mahal",
+      "aliases": [],
+      "explanation": "Mughal Emperor Shah Jahan commissioned the Taj Mahal in 1632 for his wife Mumtaz Mahal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/tajmahal.svg"
+    },
+    {
+      "id": "world_landmarks_en_003",
+      "prompt": "Which sail-shaped architectural masterpiece in Australia is illustrated here?",
+      "choices": [
+        "Burj Al Arab",
+        "Sydney Opera House",
+        "Louvre Abu Dhabi",
+        "Guggenheim Bilbao"
+      ],
+      "answer": "Sydney Opera House",
+      "aliases": [],
+      "explanation": "Designed by Danish architect Jørn Utzon, it opened on Sydney Harbour in 1973.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/opera.svg"
+    },
+    {
+      "id": "world_landmarks_en_004",
+      "prompt": "Which iconic Roman amphitheater in Italy is illustrated here?",
+      "choices": [
+        "El Djem",
+        "Colosseum",
+        "Pantheon",
+        "Parthenon"
+      ],
+      "answer": "Colosseum",
+      "aliases": [
+        "The Colosseum"
+      ],
+      "explanation": "Completed in 80 AD, the Colosseum could hold over 50,000 spectators.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/colosseum.svg"
+    },
+    {
+      "id": "world_landmarks_en_005",
+      "prompt": "Which famous Art Deco suspension bridge spanning San Francisco Bay is illustrated here?",
+      "choices": [
+        "Bosphorus Bridge",
+        "Golden Gate Bridge",
+        "Brooklyn Bridge",
+        "Tower Bridge"
+      ],
+      "answer": "Golden Gate Bridge",
+      "aliases": [],
+      "explanation": "Opened in 1937, its signature red-orange color is officially called 'International Orange'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/bridge.svg"
+    },
+    {
+      "id": "world_landmarks_en_006",
+      "prompt": "In which country is the ancient Nabataean rock-cut city of Petra located?",
+      "choices": [
+        "Lebanon",
+        "Jordan",
+        "Oman",
+        "Egypt"
+      ],
+      "answer": "Jordan",
+      "aliases": [],
+      "explanation": "Petra's Treasury (Al-Khazneh) is carved directly into rose-red sandstone cliffs.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_007",
+      "prompt": "Which monumental fortification stretches over 21,000 km across northern China?",
+      "choices": [
+        "Western Wall",
+        "Great Wall of China",
+        "Berlin Wall",
+        "Hadrian's Wall"
+      ],
+      "answer": "Great Wall of China",
+      "aliases": [
+        "Great Wall"
+      ],
+      "explanation": "Built across multiple dynasties, the most famous stone sections date from the Ming Dynasty.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_008",
+      "prompt": "In which country is the 15th-century Inca citadel of Machu Picchu located?",
+      "choices": [
+        "Chile",
+        "Peru",
+        "Ecuador",
+        "Bolivia"
+      ],
+      "answer": "Peru",
+      "aliases": [],
+      "explanation": "Machu Picchu sits 2,430 meters above sea level in the Peruvian Andes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_009",
+      "prompt": "Which towering Art Deco statue overlooks Rio de Janeiro from Mount Corcovado?",
+      "choices": [
+        "Statue of Liberty",
+        "Spring Temple Buddha",
+        "Motherland Calls",
+        "Christ the Redeemer"
+      ],
+      "answer": "Christ the Redeemer",
+      "aliases": [],
+      "explanation": "Completed in 1931, the soapstone-clad statue stands 30 meters tall excluding its pedestal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_010",
+      "prompt": "Which country gifted the Statue of Liberty to the United States in 1886?",
+      "choices": [
+        "United Kingdom",
+        "Spain",
+        "France",
+        "Italy"
+      ],
+      "answer": "France",
+      "aliases": [],
+      "explanation": "Designed by Frédéric Auguste Bartholdi with an internal frame engineered by Gustave Eiffel.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_011",
+      "prompt": "In which city is the unfinished basilica Sagrada Família, designed by Antoni Gaudí, located?",
+      "choices": [
+        "Seville",
+        "Barcelona",
+        "Madrid",
+        "Lisbon"
+      ],
+      "answer": "Barcelona",
+      "aliases": [],
+      "explanation": "Construction began in 1882 and continues more than 140 years later.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_012",
+      "prompt": "Which ancient Greek temple dedicated to Athena crowns the Acropolis of Athens?",
+      "choices": [
+        "Parthenon",
+        "Temple of Artemis",
+        "Delphi",
+        "Pantheon"
+      ],
+      "answer": "Parthenon",
+      "aliases": [
+        "The Parthenon"
+      ],
+      "explanation": "Built in the 5th century BC, the Parthenon is a pinnacle of Doric architecture.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_013",
+      "prompt": "In which country is the vast 12th-century temple complex of Angkor Wat located?",
+      "choices": [
+        "Thailand",
+        "Vietnam",
+        "Cambodia",
+        "Laos"
+      ],
+      "answer": "Cambodia",
+      "aliases": [],
+      "explanation": "Angkor Wat is the largest religious monument in the world.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_014",
+      "prompt": "Which prehistoric ring of standing stones stands on Salisbury Plain in England?",
+      "choices": [
+        "Stonehenge",
+        "Carnac",
+        "Avebury",
+        "Newgrange"
+      ],
+      "answer": "Stonehenge",
+      "aliases": [],
+      "explanation": "Stonehenge aligns with the sunrise of the summer solstice and sunset of the winter solstice.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_015",
+      "prompt": "In which city does the historic Hagia Sophia stand?",
+      "choices": [
+        "Cairo",
+        "Athens",
+        "Istanbul",
+        "Ankara"
+      ],
+      "answer": "Istanbul",
+      "aliases": [],
+      "explanation": "Completed in 537 AD under Emperor Justinian, Hagia Sophia is famed for its massive dome.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_016",
+      "prompt": "Which Moorish palace and fortress complex overlooks Granada, Spain?",
+      "choices": [
+        "Alcazar of Seville",
+        "Escorial",
+        "Alhambra",
+        "Mezquita"
+      ],
+      "answer": "Alhambra",
+      "aliases": [
+        "The Alhambra"
+      ],
+      "explanation": "The Alhambra is celebrated for its intricate Nasrid stucco calligraphy and courtyards.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_landmarks_en_017",
+      "prompt": "Which Mayan stepped pyramid at Chichén Itzá in Mexico is dedicated to the feathered serpent god Kukulcán?",
+      "choices": [
+        "Palenque",
+        "El Castillo",
+        "Teotihuacan",
+        "Tikal"
+      ],
+      "answer": "El Castillo",
+      "aliases": [
+        "Temple of Kukulcan"
+      ],
+      "explanation": "During equinoxes, shadows cast a descending serpent down its staircase.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_landmarks_en_018",
+      "prompt": "Which fairy-tale 19th-century Bavarian castle inspired Disney's Sleeping Beauty Castle?",
+      "choices": [
+        "Hohenzollern Castle",
+        "Edinburgh Castle",
+        "Neuschwanstein Castle",
+        "Chateau de Chambord"
+      ],
+      "answer": "Neuschwanstein Castle",
+      "aliases": [
+        "Neuschwanstein"
+      ],
+      "explanation": "Commissioned by King Ludwig II of Bavaria in 1869.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_019",
+      "prompt": "Which famous leaning freestanding bell tower stands in Tuscany, Italy?",
+      "choices": [
+        "Leaning Tower of Pisa",
+        "Campanile of St. Mark",
+        "Big Ben",
+        "Giralda"
+      ],
+      "answer": "Leaning Tower of Pisa",
+      "aliases": [
+        "Tower of Pisa"
+      ],
+      "explanation": "It began leaning during construction in the 12th century due to soft clay soil.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_020",
+      "prompt": "Which ancient wonder of the world stood in Alexandria, Egypt, guiding ships with fire and mirrors?",
+      "choices": [
+        "Hanging Gardens",
+        "Lighthouse of Alexandria",
+        "Colossus of Rhodes",
+        "Temple of Artemis"
+      ],
+      "answer": "Lighthouse of Alexandria",
+      "aliases": [
+        "Pharos of Alexandria"
+      ],
+      "explanation": "Built on Pharos Island in the 3rd century BC, it stood over 100 meters tall.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_021",
+      "prompt": "In which city is the Sheikh Zayed Grand Mosque, one of the largest mosques in the world, located?",
+      "choices": [
+        "Dubai",
+        "Abu Dhabi",
+        "Doha",
+        "Riyadh"
+      ],
+      "answer": "Abu Dhabi",
+      "aliases": [],
+      "explanation": "Completed in 2007, it features 82 white marble domes and over 1,000 columns.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_022",
+      "prompt": "Which skyscraper in Dubai has been the world's tallest building since 2009 (828 meters)?",
+      "choices": [
+        "Merdeka 118",
+        "Burj Khalifa",
+        "Shanghai Tower",
+        "One World Trade Center"
+      ],
+      "answer": "Burj Khalifa",
+      "aliases": [],
+      "explanation": "Burj Khalifa has 163 habitable floors.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_023",
+      "prompt": "In which country are the colossal carved stone heads known as Moai found?",
+      "choices": [
+        "Fiji",
+        "Chile",
+        "Peru",
+        "New Zealand"
+      ],
+      "answer": "Chile",
+      "aliases": [
+        "Easter Island"
+      ],
+      "explanation": "The Moai were carved by the Rapa Nui people on Easter Island, a special territory of Chile.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_024",
+      "prompt": "Which iconic suspension bridge in London opens its bascules to let tall ships pass along the Thames?",
+      "choices": [
+        "Tower Bridge",
+        "Westminster Bridge",
+        "Millennium Bridge",
+        "London Bridge"
+      ],
+      "answer": "Tower Bridge",
+      "aliases": [],
+      "explanation": "Completed in 1894, Tower Bridge is frequently mistaken for London Bridge.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_025",
+      "prompt": "Which ancient Roman temple in Rome features the world's largest unreinforced concrete dome with a central oculus?",
+      "choices": [
+        "Pantheon",
+        "St. Peter's Basilica",
+        "Colosseum",
+        "Parthenon"
+      ],
+      "answer": "Pantheon",
+      "aliases": [
+        "The Pantheon"
+      ],
+      "explanation": "Rebuilt by Emperor Hadrian around 126 AD, its dome is 43.3 meters in diameter.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_landmarks_en_026",
+      "prompt": "In which country is the Great Mosque of Djenné, the largest mud-brick building in the world, located?",
+      "choices": [
+        "Morocco",
+        "Mali",
+        "Sudan",
+        "Niger"
+      ],
+      "answer": "Mali",
+      "aliases": [],
+      "explanation": "Every year the community gathers for the Crépissage festival to replaster its adobe walls.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_landmarks_en_027",
+      "prompt": "Which ancient city in Tunisia preserves one of the largest and best-preserved Roman amphitheaters outside Italy?",
+      "choices": [
+        "El Djem",
+        "Dougga",
+        "Carthage",
+        "Kairouan"
+      ],
+      "answer": "El Djem",
+      "aliases": [],
+      "explanation": "The Amphitheatre of El Djem could seat around 35,000 spectators.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_landmarks_en_028",
+      "prompt": "Which famous Buddhist stupa in central Java, Indonesia, is the largest Buddhist temple in the world?",
+      "choices": [
+        "Borobudur",
+        "Angkor Wat",
+        "Bagan",
+        "Prambanan"
+      ],
+      "answer": "Borobudur",
+      "aliases": [],
+      "explanation": "Built in the 9th century, Borobudur features nine stacked platforms and 504 Buddha statues.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_landmarks_en_029",
+      "prompt": "In which country are the rock-hewn monolithic churches of Lalibela carved downward from solid volcanic tuff?",
+      "choices": [
+        "Ethiopia",
+        "Egypt",
+        "Armenia",
+        "Georgia"
+      ],
+      "answer": "Ethiopia",
+      "aliases": [],
+      "explanation": "The 11 medieval churches of Lalibela include the cross-shaped Church of Saint George.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_landmarks_en_030",
+      "prompt": "Which towering twin skyscrapers in Kuala Lumpur were the world's tallest buildings from 1998 to 2004?",
+      "choices": [
+        "Marina Bay Sands",
+        "Burj Al Arab",
+        "Taipei 101",
+        "Petronas Towers"
+      ],
+      "answer": "Petronas Towers",
+      "aliases": [
+        "Petronas Twin Towers"
+      ],
+      "explanation": "They remain the tallest twin towers in the world at 451.9 meters.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_031",
+      "prompt": "Which grand imperial palace complex in central Beijing was home to Ming and Qing emperors?",
+      "choices": [
+        "Temple of Heaven",
+        "Potala Palace",
+        "Forbidden City",
+        "Summer Palace"
+      ],
+      "answer": "Forbidden City",
+      "aliases": [],
+      "explanation": "The Forbidden City contains 980 surviving buildings across 72 hectares.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_032",
+      "prompt": "Which hilltop palace in Lhasa, Tibet, served as the historic winter residence of the Dalai Lama?",
+      "choices": [
+        "Amber Fort",
+        "Topkapi Palace",
+        "Forbidden City",
+        "Potala Palace"
+      ],
+      "answer": "Potala Palace",
+      "aliases": [],
+      "explanation": "Standing at 3,700 meters elevation, Potala Palace is a UNESCO World Heritage Site.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_landmarks_en_033",
+      "prompt": "Which ancient Roman aqueduct bridge in southern France is famous for its three tiers of stone arches?",
+      "choices": [
+        "Rialto Bridge",
+        "Pont du Gard",
+        "Aqueduct of Segovia",
+        "Ponte Vecchio"
+      ],
+      "answer": "Pont du Gard",
+      "aliases": [],
+      "explanation": "Built in the 1st century AD, Pont du Gard carried water 50 km to Nîmes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_landmarks_en_034",
+      "prompt": "Which monumental mountain sculpture in South Dakota depicts four US presidents?",
+      "choices": [
+        "Crazy Horse Memorial",
+        "Stone Mountain",
+        "Mount Rushmore",
+        "Devils Tower"
+      ],
+      "answer": "Mount Rushmore",
+      "aliases": [],
+      "explanation": "Carved between 1927 and 1941, it portrays Washington, Jefferson, Roosevelt, and Lincoln.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_035",
+      "prompt": "Which iconic cathedral on Red Square in Moscow is famous for its colorful onion domes?",
+      "choices": [
+        "Cologne Cathedral",
+        "Christ the Saviour",
+        "Saint Basil's Cathedral",
+        "Notre-Dame"
+      ],
+      "answer": "Saint Basil's Cathedral",
+      "aliases": [
+        "St. Basil's Cathedral"
+      ],
+      "explanation": "Commissioned by Ivan the Terrible in the 1550s.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_landmarks_en_036",
+      "prompt": "In which country is the ancient desert oasis city of AlUla and the Nabataean site of Hegra (Madain Salih) located?",
+      "choices": [
+        "Egypt",
+        "Saudi Arabia",
+        "Jordan",
+        "Oman"
+      ],
+      "answer": "Saudi Arabia",
+      "aliases": [],
+      "explanation": "Hegra was Saudi Arabia's first UNESCO World Heritage Site.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,642 @@
+{
+  "pack_id": "sports_olympics_en",
+  "title": "Sports & Olympic Records",
+  "description": "36 original questions on Olympic history, football, tennis, athletics, rules, and all-time sporting records.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Sports",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "sports_olympics_en_001",
+      "prompt": "Which swimmer holds the all-time Olympic record with 28 medals (including 23 golds)?",
+      "choices": [
+        "Michael Phelps",
+        "Mark Spitz",
+        "Katie Ledecky",
+        "Ian Thorpe"
+      ],
+      "answer": "Michael Phelps",
+      "aliases": [
+        "Phelps"
+      ],
+      "explanation": "Phelps won 8 gold medals at the 2008 Beijing Olympics alone.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_002",
+      "prompt": "Who holds the men's 100-meter sprint world record of 9.58 seconds?",
+      "choices": [
+        "Carl Lewis",
+        "Usain Bolt",
+        "Yohan Blake",
+        "Tyson Gay"
+      ],
+      "answer": "Usain Bolt",
+      "aliases": [
+        "Bolt"
+      ],
+      "explanation": "Jamaican sprinter Usain Bolt set the 9.58s record in Berlin in 2009.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_003",
+      "prompt": "In which city were the first modern Olympic Games held in 1896?",
+      "choices": [
+        "Paris",
+        "Rome",
+        "Athens",
+        "London"
+      ],
+      "answer": "Athens",
+      "aliases": [],
+      "explanation": "241 athletes from 14 nations competed in Athens in April 1896.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_004",
+      "prompt": "How many players from one team are on the field at the start of a regulation football (soccer) match?",
+      "choices": [
+        "10",
+        "12",
+        "11",
+        "9"
+      ],
+      "answer": "11",
+      "aliases": [
+        "Eleven"
+      ],
+      "explanation": "Each team fields 10 outfield players plus 1 goalkeeper.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_005",
+      "prompt": "What is the official distance of a standard Olympic marathon?",
+      "choices": [
+        "40 km",
+        "50 km",
+        "42.195 km",
+        "45 km"
+      ],
+      "answer": "42.195 km",
+      "aliases": [
+        "26.2 miles",
+        "42.2 km"
+      ],
+      "explanation": "The exact 42.195 km (26 miles 385 yards) distance was standardized from the 1908 London Games.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_006",
+      "prompt": "What are the five colors of the Olympic rings?",
+      "choices": [
+        "Blue, yellow, black, green, and red",
+        "Blue, white, black, green, and red",
+        "Orange, yellow, black, green, and red",
+        "Blue, yellow, purple, green, and red"
+      ],
+      "answer": "Blue, yellow, black, green, and red",
+      "aliases": [],
+      "explanation": "At least one of these five colors (plus the white background) appeared on every national flag in 1913.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_007",
+      "prompt": "Which tennis player has won the most men's Grand Slam singles titles (24)?",
+      "choices": [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Novak Djokovic",
+        "Pete Sampras"
+      ],
+      "answer": "Novak Djokovic",
+      "aliases": [
+        "Djokovic"
+      ],
+      "explanation": "Djokovic captured his 24th Grand Slam title at the 2023 US Open.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_008",
+      "prompt": "Which tennis Grand Slam tournament is played on grass courts in London?",
+      "choices": [
+        "Roland-Garros",
+        "US Open",
+        "Australian Open",
+        "Wimbledon"
+      ],
+      "answer": "Wimbledon",
+      "aliases": [],
+      "explanation": "Founded in 1877, Wimbledon is the oldest tennis tournament in the world.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_009",
+      "prompt": "How many points is a shot made from behind the arc worth in standard basketball?",
+      "choices": [
+        "4 points",
+        "3 points",
+        "2 points",
+        "1 point"
+      ],
+      "answer": "3 points",
+      "aliases": [
+        "3"
+      ],
+      "explanation": "The 3-point line was adopted by the NBA in 1979 and FIBA in 1984.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_010",
+      "prompt": "How high is a standard basketball hoop rim above the court floor?",
+      "choices": [
+        "9 feet",
+        "12 feet",
+        "10 feet",
+        "11 feet"
+      ],
+      "answer": "10 feet",
+      "aliases": [
+        "3.05 meters",
+        "3.05 m"
+      ],
+      "explanation": "James Naismith nailed the first peach baskets to a 10-foot gymnasium balcony in 1891.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_011",
+      "prompt": "Which country hosted the 2024 Summer Olympic Games?",
+      "choices": [
+        "Japan",
+        "Australia",
+        "France",
+        "United States"
+      ],
+      "answer": "France",
+      "aliases": [
+        "Paris"
+      ],
+      "explanation": "Paris hosted the Summer Olympics for the third time (1900, 1924, 2024).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_012",
+      "prompt": "Which city is scheduled to host the 2028 Summer Olympic Games?",
+      "choices": [
+        "London",
+        "Brisbane",
+        "Los Angeles",
+        "Tokyo"
+      ],
+      "answer": "Los Angeles",
+      "aliases": [
+        "LA"
+      ],
+      "explanation": "Los Angeles will become the third city (after London and Paris) to host three Summer Olympics.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_013",
+      "prompt": "In boxing, what is the maximum number of rounds in a standard men's world championship bout?",
+      "choices": [
+        "15",
+        "10",
+        "8",
+        "12"
+      ],
+      "answer": "12",
+      "aliases": [
+        "Twelve"
+      ],
+      "explanation": "Championship bouts were reduced from 15 to 12 rounds in the 1980s for fighter safety.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_014",
+      "prompt": "Which country won the most gold medals in the history of the Summer Olympics?",
+      "choices": [
+        "Great Britain",
+        "United States",
+        "China",
+        "Soviet Union"
+      ],
+      "answer": "United States",
+      "aliases": [
+        "USA"
+      ],
+      "explanation": "The US leads the all-time Summer Olympics medal table with over 1,000 gold medals.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_015",
+      "prompt": "In volleyball, how many players per team are on the court at one time?",
+      "choices": [
+        "5",
+        "8",
+        "7",
+        "6"
+      ],
+      "answer": "6",
+      "aliases": [
+        "Six"
+      ],
+      "explanation": "Teams rotate clockwise each time they win back the serve.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_016",
+      "prompt": "Which Formula 1 drivers are tied for the most World Drivers' Championships (7 each)?",
+      "choices": [
+        "Juan Manuel Fangio and Niki Lauda",
+        "Michael Schumacher and Lewis Hamilton",
+        "Ayrton Senna and Alain Prost",
+        "Max Verstappen and Sebastian Vettel"
+      ],
+      "answer": "Michael Schumacher and Lewis Hamilton",
+      "aliases": [
+        "Lewis Hamilton and Michael Schumacher"
+      ],
+      "explanation": "Both Schumacher and Hamilton have won seven F1 world titles.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_017",
+      "prompt": "In golf, what is a score of two strokes under par on a single hole called?",
+      "choices": [
+        "Birdie",
+        "Eagle",
+        "Bogey",
+        "Albatross"
+      ],
+      "answer": "Eagle",
+      "aliases": [],
+      "explanation": "One under par is a birdie, two under is an eagle, and three under is an albatross.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_018",
+      "prompt": "Which country invented the modern game of badminton (formalized in England from a game played in Pune)?",
+      "choices": [
+        "India",
+        "China",
+        "Denmark",
+        "Indonesia"
+      ],
+      "answer": "India",
+      "aliases": [],
+      "explanation": "British officers in Pune (Poona), India, brought the game back to Badminton House in Gloucestershire.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_019",
+      "prompt": "Which gymnastics legend won the Olympic women's all-around gold medal in both 2016 and 2024?",
+      "choices": [
+        "Nadia Comaneci",
+        "Simone Biles",
+        "Gabby Douglas",
+        "Svetlana Khorkina"
+      ],
+      "answer": "Simone Biles",
+      "aliases": [
+        "Biles"
+      ],
+      "explanation": "Biles is the most decorated gymnast in World Championship and US Olympic history.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_020",
+      "prompt": "Who became the first gymnast to score a perfect 10.0 at the Olympic Games (Montreal 1976)?",
+      "choices": [
+        "Nadia Comaneci",
+        "Simone Biles",
+        "Larisa Latynina",
+        "Olga Korbut"
+      ],
+      "answer": "Nadia Comaneci",
+      "aliases": [
+        "Comaneci"
+      ],
+      "explanation": "The scoreboard couldn't display 10.00 and famously showed '1.00' instead.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_021",
+      "prompt": "What is the regulation length of an Olympic-size swimming pool?",
+      "choices": [
+        "75 meters",
+        "100 meters",
+        "50 meters",
+        "25 meters"
+      ],
+      "answer": "50 meters",
+      "aliases": [
+        "50 m"
+      ],
+      "explanation": "Olympic pools are 50 meters long, 25 meters wide, and have 10 lanes (8 used in finals).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_022",
+      "prompt": "In tennis, what score does 'deuce' represent?",
+      "choices": [
+        "30–30",
+        "15–15",
+        "0–0",
+        "40–40"
+      ],
+      "answer": "40–40",
+      "aliases": [
+        "40-40"
+      ],
+      "explanation": "From deuce, a player must win two consecutive points to take the game.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_023",
+      "prompt": "Which African country has dominated Olympic men's 3,000m steeplechase and marathon running, producing Eliud Kipchoge?",
+      "choices": [
+        "Uganda",
+        "Morocco",
+        "Ethiopia",
+        "Kenya"
+      ],
+      "answer": "Kenya",
+      "aliases": [],
+      "explanation": "Kipchoge won back-to-back Olympic marathon golds in 2016 and 2020.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_024",
+      "prompt": "Which Moroccan middle-distance runner still holds the men's 1,500m world record (3:26.00) and won double gold at Athens 2004?",
+      "choices": [
+        "Hicham El Guerrouj",
+        "Said Aouita",
+        "Mo Farah",
+        "Noureddine Morceli"
+      ],
+      "answer": "Hicham El Guerrouj",
+      "aliases": [
+        "El Guerrouj"
+      ],
+      "explanation": "El Guerrouj won both the 1,500m and 5,000m golds at the 2004 Olympics.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_025",
+      "prompt": "Which club has won the most UEFA Champions League titles (15 as of 2024)?",
+      "choices": [
+        "Liverpool",
+        "AC Milan",
+        "Bayern Munich",
+        "Real Madrid"
+      ],
+      "answer": "Real Madrid",
+      "aliases": [],
+      "explanation": "Real Madrid won the inaugural 1956 European Cup and claimed their 15th in 2024.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_026",
+      "prompt": "In chess, which piece can jump over other pieces and moves in an L-shape?",
+      "choices": [
+        "Queen",
+        "Knight",
+        "Bishop",
+        "Rook"
+      ],
+      "answer": "Knight",
+      "aliases": [],
+      "explanation": "The knight moves two squares in one direction and one square perpendicular.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_027",
+      "prompt": "What is the highest possible break in a single frame of snooker (without free balls)?",
+      "choices": [
+        "100",
+        "147",
+        "155",
+        "180"
+      ],
+      "answer": "147",
+      "aliases": [],
+      "explanation": "A 147 maximum break requires potting all 15 reds with 15 blacks followed by all 6 colors.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_028",
+      "prompt": "Which Swedish pole vaulter repeatedly broke the world record and won Olympic gold in Tokyo 2020 and Paris 2024?",
+      "choices": [
+        "Thiago Braz",
+        "Armand Duplantis",
+        "Sergey Bubka",
+        "Renaud Lavillenie"
+      ],
+      "answer": "Armand Duplantis",
+      "aliases": [
+        "Mondo Duplantis",
+        "Duplantis"
+      ],
+      "explanation": "Mondo Duplantis cleared 6.25m in Paris to break his own world record.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_029",
+      "prompt": "Which sport made its Olympic debut at the 2024 Paris Summer Games?",
+      "choices": [
+        "Karate",
+        "Breaking",
+        "Skateboarding",
+        "Surfing"
+      ],
+      "answer": "Breaking",
+      "aliases": [
+        "Breakdancing"
+      ],
+      "explanation": "Breaking (breakdancing) debuted in Paris 2024, while skateboarding and surfing debuted in Tokyo 2020.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_030",
+      "prompt": "How many innings are in a standard regulation baseball game?",
+      "choices": [
+        "7",
+        "10",
+        "9",
+        "12"
+      ],
+      "answer": "9",
+      "aliases": [
+        "Nine"
+      ],
+      "explanation": "Extra innings are played if the score is tied after nine innings.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_031",
+      "prompt": "In football (soccer), how far from the goal line is the penalty spot placed?",
+      "choices": [
+        "9 meters",
+        "11 meters",
+        "14 meters",
+        "16.5 meters"
+      ],
+      "answer": "11 meters",
+      "aliases": [
+        "12 yards",
+        "11 m"
+      ],
+      "explanation": "The penalty mark sits 11 meters (12 yards) directly in front of the center of the goal.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "sports_olympics_en_032",
+      "prompt": "Which Jamaican sprinter holds the women's 100m Olympic record (10.61s) and won back-to-back 100m/200m Olympic doubles?",
+      "choices": [
+        "Shelly-Ann Fraser-Pryce",
+        "Florence Griffith-Joyner",
+        "Sha'Carri Richardson",
+        "Elaine Thompson-Herah"
+      ],
+      "answer": "Elaine Thompson-Herah",
+      "aliases": [],
+      "explanation": "Thompson-Herah won both the 100m and 200m in Rio 2016 and Tokyo 2020.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "sports_olympics_en_033",
+      "prompt": "Which ancient Greek festival held every four years in Olympia inspired the modern Olympic Games?",
+      "choices": [
+        "Pythian Games",
+        "Ancient Olympic Games",
+        "Isthmian Games",
+        "Nemean Games"
+      ],
+      "answer": "Ancient Olympic Games",
+      "aliases": [
+        "Olympiad"
+      ],
+      "explanation": "First recorded in 776 BC, the ancient Games enforced an Olympic Truce across Greek city-states.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_034",
+      "prompt": "Which cycling race is the most prestigious annual three-week Grand Tour, ending traditionally in Paris?",
+      "choices": [
+        "Tour de France",
+        "Paris-Roubaix",
+        "Giro d'Italia",
+        "Vuelta a Espana"
+      ],
+      "answer": "Tour de France",
+      "aliases": [],
+      "explanation": "The race leader wears the iconic yellow jersey (maillot jaune).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_035",
+      "prompt": "Which Egyptian football star became the first African player to win three Premier League Golden Boots?",
+      "choices": [
+        "Sadio Mane",
+        "Didier Drogba",
+        "Mohamed Salah",
+        "Samuel Eto'o"
+      ],
+      "answer": "Mohamed Salah",
+      "aliases": [
+        "Salah",
+        "Mo Salah"
+      ],
+      "explanation": "Mohamed Salah won Golden Boots in 2017–18, 2018–19, and 2021–22 (plus 2024–25).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "sports_olympics_en_036",
+      "prompt": "In which sport is the Davis Cup the premier international men's team trophy?",
+      "choices": [
+        "Tennis",
+        "Cricket",
+        "Rugby",
+        "Golf"
+      ],
+      "answer": "Tennis",
+      "aliases": [],
+      "explanation": "First contested in 1900, the Davis Cup is billed as the 'World Cup of Tennis'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    }
+  ]
+}

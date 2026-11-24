@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Red suspension bridge silhouette">
+  <rect width="640" height="480" rx="24" fill="#DBEAFE"/>
+  <rect x="0" y="360" width="640" height="120" fill="#0284C7"/>
+  <path d="M40,300 Q190,110 190,110 Q320,305 450,110 Q450,110 600,300" fill="none" stroke="#DC2626" stroke-width="8"/>
+  <rect x="178" y="105" width="24" height="260" fill="#B91C1C"/>
+  <rect x="438" y="105" width="24" height="260" fill="#B91C1C"/>
+  <rect x="40" y="295" width="560" height="16" fill="#991B1B"/>
+</svg>

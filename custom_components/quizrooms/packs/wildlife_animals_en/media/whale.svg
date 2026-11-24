@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Giant marine mammal silhouette">
+  <rect width="640" height="480" rx="24" fill="#0C4A6E"/>
+  <path d="M90,260 C110,165 260,145 385,185 C455,208 495,225 535,200 C550,188 575,165 590,170 C578,196 565,215 552,228 C575,240 590,256 595,274 C570,270 546,260 526,246 C460,295 340,320 190,312 C125,308 86,290 90,260 Z" fill="#38BDF8"/>
+  <path d="M245,295 C235,340 275,355 305,305 Z" fill="#0284C7"/>
+  <circle cx="165" cy="245" r="7" fill="#0C4A6E"/>
+</svg>

@@ -4,7 +4,7 @@
 
 # QuizRooms for Home Assistant
 
-**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **19 built-in packs (2,414+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
+**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **37 built-in packs (3,066+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
 
 ---
 
@@ -215,7 +215,7 @@ automation:
 
 ---
 
-## Built-In Trivia Packs (19 Packs)
+## Built-In Trivia Packs (37 Packs)
 
 Every built-in pack includes a custom SVG cover and per-question `easy` / `medium` / `hard` difficulty tags:
 
@@ -223,6 +223,16 @@ Every built-in pack includes a custom SVG cover and per-question `easy` / `mediu
 | --- | --- | --- | --- |
 | **World General Geography** | EN | MC & Free-Text | 330 original questions on rivers, mountains, deserts, oceans, straits, islands, borders & landmarks |
 | **FIFA World Cup Trivia** | EN | MC & Free-Text | 235 original questions on champions, finals (1930–2022), hosts, stadiums, Golden Boot winners, records & 2026 |
+| **Space & Astronomy / الفضاء والفلك** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on planets, moons, constellations, telescopes & missions with local SVG diagrams |
+| **World Cuisines & Signature Dishes / مطابخ وأطباق العالم** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on iconic dishes, spices, street foods & culinary origins |
+| **Human Body & Medicine / جسم الإنسان والطب** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on organs, bones, blood types & medical breakthroughs with vector anatomy SVGs |
+| **Wildlife & Animal Kingdom / عالم الحيوان والطبيعة** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on habitats, animal records & collective nouns with local wildlife silhouettes |
+| **Inventions & Great Discoveries / الاختراعات والاكتشافات** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on historic inventors, everyday technologies & accidental breakthroughs |
+| **World Currencies & Timezones** | EN | MC & Free-Text | 40 original questions on world currencies, symbols & extreme global timezone facts |
+| **Iconic World Landmarks & Wonders / معالم وعجائب العالم** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on ancient wonders, UNESCO sites, bridges & mosques with vector silhouettes |
+| **Sports & Olympic Records / الرياضة والأولمبياد** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on Olympic history, football, tennis, rules & athletic records |
+| **Mental Math, Logic & Riddles / ألغاز ومنطق ورياضيات ذهنية** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR fast-paced sequences, geometry puzzles & classic lateral-thinking riddles |
+| **أمثال وبلاغة عربية (Arabic Proverbs & Eloquence)** | AR (RTL) | MC & Free-Text | 36 Arabic questions on completing classic proverbs, classical vocabulary, roots & rhetoric |
 | **World Countries & Global Flags** | EN | MC & Free-Text | 209 locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
 | **Guess the Country on the Map** | EN | MC & Free-Text | 169 locally bundled country map silhouette SVGs (derived from Public Domain Natural Earth 1:50m vectors) |
 | **Famous World Logos** | EN | MC & Free-Text | 110 locally bundled vector brand/app/gaming/auto/smart-home logo SVGs (via CC0 Simple Icons) |

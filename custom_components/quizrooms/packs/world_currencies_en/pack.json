@@ -1,0 +1,749 @@
+{
+  "pack_id": "world_currencies_en",
+  "title": "World Currencies & Timezones",
+  "description": "40 original questions matching countries to their currencies, symbols, and fascinating global timezone facts.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Geography",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "world_currencies_en_001",
+      "prompt": "What is the official currency of Japan (symbol ¥)?",
+      "choices": [
+        "Yuan",
+        "Japanese Yen",
+        "Won",
+        "Baht"
+      ],
+      "answer": "Japanese Yen",
+      "aliases": [
+        "Yen",
+        "JPY"
+      ],
+      "explanation": "The Japanese yen (JPY) is the third-most traded currency in the foreign exchange market.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_002",
+      "prompt": "What is the official currency of the United Kingdom (symbol £)?",
+      "choices": [
+        "Crown",
+        "Pound Sterling",
+        "Euro",
+        "Franc"
+      ],
+      "answer": "Pound Sterling",
+      "aliases": [
+        "British Pound",
+        "GBP",
+        "Pound"
+      ],
+      "explanation": "The pound sterling is the world's oldest currency still in continuous use.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_003",
+      "prompt": "What is the official currency of Switzerland and Liechtenstein?",
+      "choices": [
+        "Dinar",
+        "Krone",
+        "Swiss Franc",
+        "Euro"
+      ],
+      "answer": "Swiss Franc",
+      "aliases": [
+        "CHF",
+        "Franc"
+      ],
+      "explanation": "The Swiss franc (CHF) is widely regarded as a safe-haven currency.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_004",
+      "prompt": "What is the official currency of the United Arab Emirates?",
+      "choices": [
+        "Rial",
+        "Dinar",
+        "UAE Dirham",
+        "Riyal"
+      ],
+      "answer": "UAE Dirham",
+      "aliases": [
+        "Dirham",
+        "AED"
+      ],
+      "explanation": "The UAE dirham (AED) has been pegged to the US dollar since 1997.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_005",
+      "prompt": "What is the official currency of Saudi Arabia?",
+      "choices": [
+        "Dirham",
+        "Saudi Riyal",
+        "Pound",
+        "Dinar"
+      ],
+      "answer": "Saudi Riyal",
+      "aliases": [
+        "Riyal",
+        "SAR"
+      ],
+      "explanation": "The Saudi riyal (SAR) is subdivided into 100 halalas.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_006",
+      "prompt": "What is the official currency of Kuwait — the highest-valued currency unit per 1 unit in the world?",
+      "choices": [
+        "Kuwaiti Dinar",
+        "British Pound",
+        "Bahraini Dinar",
+        "Omani Rial"
+      ],
+      "answer": "Kuwaiti Dinar",
+      "aliases": [
+        "Dinar",
+        "KWD"
+      ],
+      "explanation": "One Kuwaiti dinar (KWD) is worth over 3 US dollars.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_007",
+      "prompt": "What is the official currency of Egypt?",
+      "choices": [
+        "Egyptian Dinar",
+        "Dirham",
+        "Egyptian Pound",
+        "Riyal"
+      ],
+      "answer": "Egyptian Pound",
+      "aliases": [
+        "EGP",
+        "Pound"
+      ],
+      "explanation": "Locally called 'gineih', the Egyptian pound is divided into 100 piastres.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_008",
+      "prompt": "What is the official currency of South Korea (symbol ₩)?",
+      "choices": [
+        "Ringgit",
+        "Yen",
+        "Yuan",
+        "South Korean Won"
+      ],
+      "answer": "South Korean Won",
+      "aliases": [
+        "Won",
+        "KRW"
+      ],
+      "explanation": "The Bank of Korea issues the won (KRW).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_009",
+      "prompt": "What is the official currency of China (officially Renminbi, symbol ¥)?",
+      "choices": [
+        "Won",
+        "Chinese Yuan",
+        "Ringgit",
+        "Yen"
+      ],
+      "answer": "Chinese Yuan",
+      "aliases": [
+        "Yuan",
+        "Renminbi",
+        "CNY"
+      ],
+      "explanation": "Renminbi ('people's currency') is the official name, while yuan is the primary unit.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_010",
+      "prompt": "What is the official currency of India (symbol ₹)?",
+      "choices": [
+        "Indian Rupee",
+        "Ringgit",
+        "Rupiah",
+        "Taka"
+      ],
+      "answer": "Indian Rupee",
+      "aliases": [
+        "Rupee",
+        "INR"
+      ],
+      "explanation": "The ₹ symbol combines the Devanagari 'र' and Latin 'R'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_011",
+      "prompt": "What is the official currency of Brazil (symbol R$)?",
+      "choices": [
+        "Escudo",
+        "Sol",
+        "Peso",
+        "Brazilian Real"
+      ],
+      "answer": "Brazilian Real",
+      "aliases": [
+        "Real",
+        "BRL"
+      ],
+      "explanation": "The real (BRL) replaced the cruzeiro real in 1994.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_012",
+      "prompt": "What is the official currency of Mexico?",
+      "choices": [
+        "Dollar",
+        "Quetzal",
+        "Mexican Peso",
+        "Real"
+      ],
+      "answer": "Mexican Peso",
+      "aliases": [
+        "Peso",
+        "MXN"
+      ],
+      "explanation": "The Mexican peso was the first currency in the world to use the '$' sign.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_013",
+      "prompt": "What is the official currency of Turkey (symbol ₺)?",
+      "choices": [
+        "Rial",
+        "Dinar",
+        "Turkish Lira",
+        "Euro"
+      ],
+      "answer": "Turkish Lira",
+      "aliases": [
+        "Lira",
+        "TRY"
+      ],
+      "explanation": "The Turkish lira (TRY) is used across Turkey and Northern Cyprus.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_014",
+      "prompt": "What is the official currency of Thailand (symbol ฿)?",
+      "choices": [
+        "Thai Baht",
+        "Ringgit",
+        "Dong",
+        "Rupiah"
+      ],
+      "answer": "Thai Baht",
+      "aliases": [
+        "Baht",
+        "THB"
+      ],
+      "explanation": "The baht is also a traditional Thai unit of mass for gold.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_015",
+      "prompt": "What is the official currency of Malaysia?",
+      "choices": [
+        "Rupiah",
+        "Baht",
+        "Malaysian Ringgit",
+        "Dollar"
+      ],
+      "answer": "Malaysian Ringgit",
+      "aliases": [
+        "Ringgit",
+        "MYR"
+      ],
+      "explanation": "Ringgit means 'jagged' in Malay, referring to the serrated edges of old Spanish silver dollars.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_016",
+      "prompt": "What is the official currency of Indonesia?",
+      "choices": [
+        "Baht",
+        "Ringgit",
+        "Indonesian Rupiah",
+        "Rupee"
+      ],
+      "answer": "Indonesian Rupiah",
+      "aliases": [
+        "Rupiah",
+        "IDR"
+      ],
+      "explanation": "The rupiah (IDR) is issued by Bank Indonesia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_017",
+      "prompt": "What is the official currency of Vietnam (symbol ₫)?",
+      "choices": [
+        "Kip",
+        "Baht",
+        "Riel",
+        "Vietnamese Dong"
+      ],
+      "answer": "Vietnamese Dong",
+      "aliases": [
+        "Dong",
+        "VND"
+      ],
+      "explanation": "The Vietnamese dong (VND) has been Vietnam's currency since 1978.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_018",
+      "prompt": "What is the official currency of South Africa?",
+      "choices": [
+        "Shilling",
+        "South African Rand",
+        "Kwacha",
+        "Pula"
+      ],
+      "answer": "South African Rand",
+      "aliases": [
+        "Rand",
+        "ZAR"
+      ],
+      "explanation": "The rand takes its name from the gold-rich Witwatersrand ridge.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_019",
+      "prompt": "What is the official currency of Poland?",
+      "choices": [
+        "Koruna",
+        "Polish Zloty",
+        "Euro",
+        "Forint"
+      ],
+      "answer": "Polish Zloty",
+      "aliases": [
+        "Zloty",
+        "PLN"
+      ],
+      "explanation": "Złoty literally means 'golden' in Polish.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_020",
+      "prompt": "What is the official currency of Sweden?",
+      "choices": [
+        "Krone",
+        "Euro",
+        "Swedish Krona",
+        "Mark"
+      ],
+      "answer": "Swedish Krona",
+      "aliases": [
+        "Krona",
+        "SEK"
+      ],
+      "explanation": "Sweden voted against adopting the euro in a 2003 referendum.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_021",
+      "prompt": "What is the official currency of Norway?",
+      "choices": [
+        "Norwegian Krone",
+        "Krona",
+        "Euro",
+        "Franc"
+      ],
+      "answer": "Norwegian Krone",
+      "aliases": [
+        "Krone",
+        "NOK"
+      ],
+      "explanation": "Norway is not an EU member and uses the krone (NOK).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_022",
+      "prompt": "What is the official currency of Czechia (Czech Republic)?",
+      "choices": [
+        "Czech Koruna",
+        "Forint",
+        "Euro",
+        "Zloty"
+      ],
+      "answer": "Czech Koruna",
+      "aliases": [
+        "Koruna",
+        "CZK"
+      ],
+      "explanation": "Koruna means 'crown' in Czech.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_023",
+      "prompt": "What is the official currency of Hungary?",
+      "choices": [
+        "Hungarian Forint",
+        "Leu",
+        "Euro",
+        "Zloty"
+      ],
+      "answer": "Hungarian Forint",
+      "aliases": [
+        "Forint",
+        "HUF"
+      ],
+      "explanation": "The forint takes its name from Florence's medieval gold florin.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_currencies_en_024",
+      "prompt": "What is the official currency of Nigeria?",
+      "choices": [
+        "Rand",
+        "Nigerian Naira",
+        "Shilling",
+        "Cedi"
+      ],
+      "answer": "Nigerian Naira",
+      "aliases": [
+        "Naira",
+        "NGN"
+      ],
+      "explanation": "Nigeria introduced the naira (NGN) in 1973 to replace the Nigerian pound.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_025",
+      "prompt": "What is the official currency of Morocco?",
+      "choices": [
+        "Dinar",
+        "Pound",
+        "Moroccan Dirham",
+        "Franc"
+      ],
+      "answer": "Moroccan Dirham",
+      "aliases": [
+        "Dirham",
+        "MAD"
+      ],
+      "explanation": "The Moroccan dirham (MAD) is issued by Bank Al-Maghrib.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_026",
+      "prompt": "What is the official currency of Peru?",
+      "choices": [
+        "Sucre",
+        "Peruvian Sol",
+        "Boliviano",
+        "Peso"
+      ],
+      "answer": "Peruvian Sol",
+      "aliases": [
+        "Sol",
+        "PEN"
+      ],
+      "explanation": "Sol means 'sun' in Spanish, honoring the Inca sun god Inti.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_currencies_en_027",
+      "prompt": "What is the official currency of Philippines (symbol ₱)?",
+      "choices": [
+        "Rupiah",
+        "Ringgit",
+        "Philippine Peso",
+        "Baht"
+      ],
+      "answer": "Philippine Peso",
+      "aliases": [
+        "Peso",
+        "PHP"
+      ],
+      "explanation": "Locally called 'piso', it reflects centuries of Spanish-Pacific trade.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_028",
+      "prompt": "What is the official currency of Botswana?",
+      "choices": [
+        "Botswana Pula",
+        "Kwacha",
+        "Shilling",
+        "Rand"
+      ],
+      "answer": "Botswana Pula",
+      "aliases": [
+        "Pula",
+        "BWP"
+      ],
+      "explanation": "Pula means 'rain' in Setswana — a blessing in the Kalahari.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_currencies_en_029",
+      "prompt": "What is the official currency of Bangladesh?",
+      "choices": [
+        "Bangladeshi Taka",
+        "Rupee",
+        "Rufiyaa",
+        "Kyat"
+      ],
+      "answer": "Bangladeshi Taka",
+      "aliases": [
+        "Taka",
+        "BDT"
+      ],
+      "explanation": "Taka (BDT) was introduced after Bangladesh's independence in 1972.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_currencies_en_030",
+      "prompt": "Which country uses the world's earliest time zone (UTC+14), making its Line Islands the first inhabited place to greet each New Year?",
+      "choices": [
+        "Japan",
+        "New Zealand",
+        "Kiribati",
+        "Fiji"
+      ],
+      "answer": "Kiribati",
+      "aliases": [],
+      "explanation": "Kiribati shifted the International Date Line eastward in 1995 so the whole nation shared one calendar day.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_031",
+      "prompt": "Which country spans the most total time zones on Earth (12) when including its overseas departments and territories?",
+      "choices": [
+        "Russia",
+        "France",
+        "United States",
+        "United Kingdom"
+      ],
+      "answer": "France",
+      "aliases": [],
+      "explanation": "From French Polynesia (UTC−10) to Wallis and Futuna (UTC+12), France spans 12 time zones.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_032",
+      "prompt": "Which country spans the most contiguous time zones across one continuous landmass (11)?",
+      "choices": [
+        "Canada",
+        "United States",
+        "China",
+        "Russia"
+      ],
+      "answer": "Russia",
+      "aliases": [],
+      "explanation": "Russia stretches from UTC+2 in Kaliningrad to UTC+12 in Kamchatka.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_033",
+      "prompt": "Which major Asian country uses a single official national time zone (UTC+8) despite spanning 5 geographical time zones?",
+      "choices": [
+        "Kazakhstan",
+        "India",
+        "Indonesia",
+        "China"
+      ],
+      "answer": "China",
+      "aliases": [],
+      "explanation": "All of China observes Beijing Time (UTC+8).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_034",
+      "prompt": "Which country famously uses a unique 45-minute timezone offset: UTC+05:45?",
+      "choices": [
+        "Nepal",
+        "Bhutan",
+        "Sri Lanka",
+        "India"
+      ],
+      "answer": "Nepal",
+      "aliases": [],
+      "explanation": "Nepal Standard Time is 15 minutes ahead of India Standard Time (UTC+05:30).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_currencies_en_035",
+      "prompt": "What is India Standard Time's offset from Coordinated Universal Time (UTC)?",
+      "choices": [
+        "UTC+05:30",
+        "UTC+05:00",
+        "UTC+04:30",
+        "UTC+06:00"
+      ],
+      "answer": "UTC+05:30",
+      "aliases": [
+        "+5:30"
+      ],
+      "explanation": "India uses a single half-hour offset across the entire country.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_036",
+      "prompt": "Which town in London defines the reference meridian for Greenwich Mean Time (GMT / UTC+0)?",
+      "choices": [
+        "Oxford",
+        "Greenwich",
+        "Westminster",
+        "Cambridge"
+      ],
+      "answer": "Greenwich",
+      "aliases": [],
+      "explanation": "The Royal Observatory Greenwich became the global zero-longitude reference in 1884.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_037",
+      "prompt": "How many degrees of longitude correspond to a 1-hour difference in solar time?",
+      "choices": [
+        "15 degrees",
+        "10 degrees",
+        "24 degrees",
+        "30 degrees"
+      ],
+      "answer": "15 degrees",
+      "aliases": [
+        "15"
+      ],
+      "explanation": "360 degrees divided by 24 hours equals 15 degrees per hour.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_currencies_en_038",
+      "prompt": "Which country adopted the Euro most recently on January 1, 2023 (becoming the 20th Eurozone member)?",
+      "choices": [
+        "Bulgaria",
+        "Romania",
+        "Poland",
+        "Croatia"
+      ],
+      "answer": "Croatia",
+      "aliases": [],
+      "explanation": "Croatia replaced the Croatian kuna with the euro in 2023.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_039",
+      "prompt": "Which US state does NOT observe Daylight Saving Time (alongside Hawaii)?",
+      "choices": [
+        "Colorado",
+        "Florida",
+        "Arizona",
+        "Texas"
+      ],
+      "answer": "Arizona",
+      "aliases": [],
+      "explanation": "Most of Arizona stays on Mountain Standard Time year-round (the Navajo Nation does observe DST).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_currencies_en_040",
+      "prompt": "What is the official currency of Romania?",
+      "choices": [
+        "Euro",
+        "Forint",
+        "Romanian Leu",
+        "Lev"
+      ],
+      "answer": "Romanian Leu",
+      "aliases": [
+        "Leu",
+        "RON"
+      ],
+      "explanation": "Leu means 'lion' in Romanian.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    }
+  ]
+}

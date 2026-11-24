@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="World Cuisines Cover">
+  <defs>
+    <linearGradient id="cubg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#9A3412"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#cubg)"/>
+  <path d="M34,92 L126,92 C124,116 106,128 80,128 C54,128 36,116 34,92 Z" fill="#FEF3C7"/>
+  <path d="M40,86 C44,58 60,46 80,46 C100,46 116,58 120,86 Z" fill="#FDE68A" stroke="#FFFBEB" stroke-width="3"/>
+  <circle cx="80" cy="40" r="8" fill="#FBBF24"/>
+  <path d="M58,28 Q62,20 58,14" fill="none" stroke="#FEF08A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M102,28 Q106,20 102,14" fill="none" stroke="#FEF08A" stroke-width="3" stroke-linecap="round"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

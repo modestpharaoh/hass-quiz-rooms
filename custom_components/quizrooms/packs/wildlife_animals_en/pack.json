@@ -1,0 +1,623 @@
+{
+  "pack_id": "wildlife_animals_en",
+  "title": "Wildlife & Animal Kingdom",
+  "description": "36 original questions on habitats, animal records, collective nouns, and wildlife silhouettes.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Nature",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "wildlife_animals_en_001",
+      "prompt": "Which marine mammal illustrated here is the largest animal ever known to have lived on Earth?",
+      "choices": [
+        "Humpback whale",
+        "Blue whale",
+        "Orca",
+        "Sperm whale"
+      ],
+      "answer": "Blue whale",
+      "aliases": [
+        "Blue Whale"
+      ],
+      "explanation": "Blue whales can reach 30 meters in length and weigh up to 180 metric tons.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/whale.svg"
+    },
+    {
+      "id": "wildlife_animals_en_002",
+      "prompt": "Which long-necked savanna mammal illustrated here is the tallest living terrestrial animal?",
+      "choices": [
+        "Ostrich",
+        "Camel",
+        "Okapi",
+        "Giraffe"
+      ],
+      "answer": "Giraffe",
+      "aliases": [],
+      "explanation": "Adult giraffes stand up to 5.5 meters tall yet have the same 7 neck vertebrae as humans.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/giraffe.svg"
+    },
+    {
+      "id": "wildlife_animals_en_003",
+      "prompt": "Which flightless bird illustrated here is the tallest and heaviest of all living penguin species?",
+      "choices": [
+        "Gentoo penguin",
+        "King penguin",
+        "Emperor penguin",
+        "Adelie penguin"
+      ],
+      "answer": "Emperor penguin",
+      "aliases": [
+        "Penguin"
+      ],
+      "explanation": "Emperor penguins breed during the harsh Antarctic winter.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/penguin.svg"
+    },
+    {
+      "id": "wildlife_animals_en_004",
+      "prompt": "Which largest living land animal illustrated here is recognizable by its huge ears shaped roughly like Africa?",
+      "choices": [
+        "Hippopotamus",
+        "White rhinoceros",
+        "African elephant",
+        "Asian elephant"
+      ],
+      "answer": "African elephant",
+      "aliases": [
+        "Elephant"
+      ],
+      "explanation": "African bush elephants can weigh over 6,000 kg.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/elephant.svg"
+    },
+    {
+      "id": "wildlife_animals_en_005",
+      "prompt": "What is the fastest land animal in the world?",
+      "choices": [
+        "Lion",
+        "Cheetah",
+        "Pronghorn",
+        "Greyhound"
+      ],
+      "answer": "Cheetah",
+      "aliases": [],
+      "explanation": "Cheetahs can accelerate from 0 to 100 km/h in about 3 seconds.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_006",
+      "prompt": "What is the fastest bird in the world during a hunting dive?",
+      "choices": [
+        "Peregrine falcon",
+        "Golden eagle",
+        "Ostrich",
+        "Albatross"
+      ],
+      "answer": "Peregrine falcon",
+      "aliases": [
+        "Falcon"
+      ],
+      "explanation": "Peregrine falcons exceed 320 km/h (200 mph) in a high-speed stoop.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_007",
+      "prompt": "What is a group of lions called?",
+      "choices": [
+        "Herd",
+        "Pride",
+        "Pack",
+        "Flock"
+      ],
+      "answer": "Pride",
+      "aliases": [],
+      "explanation": "A pride typically consists of related females, their cubs, and a small coalition of males.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_008",
+      "prompt": "What is a group of crows famously called?",
+      "choices": [
+        "Murder",
+        "Swarm",
+        "Flock",
+        "Parliament"
+      ],
+      "answer": "Murder",
+      "aliases": [],
+      "explanation": "A group of owls is a 'parliament', while a group of crows is a 'murder'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_009",
+      "prompt": "How many hearts does an octopus have?",
+      "choices": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "answer": "3",
+      "aliases": [
+        "Three"
+      ],
+      "explanation": "Two branchial hearts pump blood to the gills and one systemic heart pumps it to the body.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_010",
+      "prompt": "Which mammal is the only mammal capable of true sustained flight?",
+      "choices": [
+        "Sugar glider",
+        "Colugo",
+        "Flying squirrel",
+        "Bat"
+      ],
+      "answer": "Bat",
+      "aliases": [],
+      "explanation": "Bats make up about 20% of all classified mammal species.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_011",
+      "prompt": "Which two mammals are the only monotremes (egg-laying mammals) alive today?",
+      "choices": [
+        "Platypus and echidna",
+        "Kangaroo and koala",
+        "Armadillo and sloth",
+        "Pangolin and anteater"
+      ],
+      "answer": "Platypus and echidna",
+      "aliases": [
+        "Echidna and platypus"
+      ],
+      "explanation": "Both are native to Australia and New Guinea.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_012",
+      "prompt": "Which Australian marsupial sleeps up to 18–20 hours a day and feeds almost exclusively on eucalyptus leaves?",
+      "choices": [
+        "Koala",
+        "Wombat",
+        "Kangaroo",
+        "Quokka"
+      ],
+      "answer": "Koala",
+      "aliases": [],
+      "explanation": "Eucalyptus leaves are low in energy and toxic to most other mammals.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_013",
+      "prompt": "Which bird can fly backward as well as hover effortlessly in midair?",
+      "choices": [
+        "Swift",
+        "Kingfisher",
+        "Swallow",
+        "Hummingbird"
+      ],
+      "answer": "Hummingbird",
+      "aliases": [],
+      "explanation": "Hummingbirds beat their wings in a figure-eight pattern up to 80 times per second.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_014",
+      "prompt": "What is the largest living species of lizard?",
+      "choices": [
+        "Komodo dragon",
+        "Nile monitor",
+        "Green iguana",
+        "Gila monster"
+      ],
+      "answer": "Komodo dragon",
+      "aliases": [],
+      "explanation": "Found on Indonesian islands, Komodo dragons can grow up to 3 meters long.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_015",
+      "prompt": "Which whale is the deepest-diving mammal on Earth, hunting giant squid over 2,000 meters down?",
+      "choices": [
+        "Beluga",
+        "Narwhal",
+        "Sperm whale",
+        "Blue whale"
+      ],
+      "answer": "Sperm whale",
+      "aliases": [],
+      "explanation": "Cuvier's beaked whale and sperm whales are among Earth's deepest-diving mammals.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_016",
+      "prompt": "Which animal has the longest gestation period of any land mammal (about 22 months)?",
+      "choices": [
+        "Rhinoceros",
+        "Elephant",
+        "Giraffe",
+        "Camel"
+      ],
+      "answer": "Elephant",
+      "aliases": [
+        "African elephant"
+      ],
+      "explanation": "Elephants carry their calves for nearly two full years.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_017",
+      "prompt": "Which Arctic marine mammal is famous for its long spiral tusk (actually an elongated tooth)?",
+      "choices": [
+        "Manatee",
+        "Walrus",
+        "Narwhal",
+        "Beluga"
+      ],
+      "answer": "Narwhal",
+      "aliases": [],
+      "explanation": "The narwhal's tusk can grow up to 3 meters long and is packed with sensory nerve endings.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_018",
+      "prompt": "Which big cat is the largest feline species in the world?",
+      "choices": [
+        "Tiger",
+        "Jaguar",
+        "Leopard",
+        "Lion"
+      ],
+      "answer": "Tiger",
+      "aliases": [
+        "Siberian tiger"
+      ],
+      "explanation": "Siberian and Bengal tigers can exceed 300 kg.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_019",
+      "prompt": "Which African animal is responsible for more human fatalities in Africa than lions or crocodiles?",
+      "choices": [
+        "African buffalo",
+        "Hippopotamus",
+        "Leopard",
+        "Hyena"
+      ],
+      "answer": "Hippopotamus",
+      "aliases": [
+        "Hippo"
+      ],
+      "explanation": "Despite being herbivores, hippos are fiercely territorial in rivers and lakes.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_020",
+      "prompt": "What is the only continent on Earth with NO native land snakes?",
+      "choices": [
+        "Europe",
+        "Australia",
+        "South America",
+        "Antarctica"
+      ],
+      "answer": "Antarctica",
+      "aliases": [],
+      "explanation": "Iceland, Ireland, and New Zealand are also snake-free islands, and Antarctica is the only snake-free continent.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_021",
+      "prompt": "Which marine animal is actually the largest member of the dolphin family?",
+      "choices": [
+        "Orca",
+        "Sperm whale",
+        "Beluga",
+        "Narwhal"
+      ],
+      "answer": "Orca",
+      "aliases": [
+        "Killer whale"
+      ],
+      "explanation": "Orcas (killer whales) are apex oceanic predators belonging to Delphinidae.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_022",
+      "prompt": "Which shark is the largest living fish species on Earth (and a gentle filter feeder)?",
+      "choices": [
+        "Great white shark",
+        "Whale shark",
+        "Tiger shark",
+        "Basking shark"
+      ],
+      "answer": "Whale shark",
+      "aliases": [],
+      "explanation": "Whale sharks can exceed 12 meters in length and feed mainly on plankton.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_023",
+      "prompt": "Which African bird is the largest and heaviest living bird on Earth?",
+      "choices": [
+        "Ostrich",
+        "Albatross",
+        "Emu",
+        "Cassowary"
+      ],
+      "answer": "Ostrich",
+      "aliases": [],
+      "explanation": "Ostriches cannot fly but can sprint at up to 70 km/h.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_024",
+      "prompt": "Which mammal is the most heavily trafficked wild mammal in the world, covered in keratin scales?",
+      "choices": [
+        "Armadillo",
+        "Aardvark",
+        "Tapir",
+        "Pangolin"
+      ],
+      "answer": "Pangolin",
+      "aliases": [],
+      "explanation": "Pangolins curl into an armored ball when threatened.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_025",
+      "prompt": "Which shark species is known to live longer than any other vertebrate — estimated over 250–400 years?",
+      "choices": [
+        "Hammerhead shark",
+        "Great white shark",
+        "Greenland shark",
+        "Mako shark"
+      ],
+      "answer": "Greenland shark",
+      "aliases": [],
+      "explanation": "Living in frigid Arctic waters gives the Greenland shark an ultra-slow metabolism.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "wildlife_animals_en_026",
+      "prompt": "What is the collective noun for a group of owls?",
+      "choices": [
+        "Murder",
+        "Colony",
+        "Parliament",
+        "Flock"
+      ],
+      "answer": "Parliament",
+      "aliases": [],
+      "explanation": "Made famous by C.S. Lewis, a group of owls is called a parliament.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_027",
+      "prompt": "Which tiny, brightly colored frog family in Central and South America is among the most toxic animals on Earth?",
+      "choices": [
+        "Glass frog",
+        "Bullfrog",
+        "Tree frog",
+        "Poison dart frog"
+      ],
+      "answer": "Poison dart frog",
+      "aliases": [],
+      "explanation": "Their skin toxins come from the ants and beetles they eat in the wild.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_028",
+      "prompt": "Which animal has cube-shaped droppings that prevent them from rolling off rocks?",
+      "choices": [
+        "Platypus",
+        "Capybara",
+        "Wombat",
+        "Koala"
+      ],
+      "answer": "Wombat",
+      "aliases": [],
+      "explanation": "Wombats use their cubic droppings to mark territory.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "wildlife_animals_en_029",
+      "prompt": "What is the largest living rodent in the world, native to South America?",
+      "choices": [
+        "Mara",
+        "Capybara",
+        "Porcupine",
+        "Beaver"
+      ],
+      "answer": "Capybara",
+      "aliases": [],
+      "explanation": "Capybaras are semi-aquatic herbivores that can weigh over 60 kg.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_030",
+      "prompt": "Which migratory butterfly travels thousands of kilometers from Canada to central Mexico each autumn?",
+      "choices": [
+        "Painted lady",
+        "Monarch butterfly",
+        "Swallowtail",
+        "Blue morpho"
+      ],
+      "answer": "Monarch butterfly",
+      "aliases": [
+        "Monarch"
+      ],
+      "explanation": "The round-trip migration takes multiple generations to complete.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_031",
+      "prompt": "Which ocean creature is nicknamed the 'immortal jellyfish' because it can revert to its juvenile polyp stage?",
+      "choices": [
+        "Turritopsis dohrnii",
+        "Box jellyfish",
+        "Portuguese man o' war",
+        "Moon jelly"
+      ],
+      "answer": "Turritopsis dohrnii",
+      "aliases": [
+        "Immortal jellyfish"
+      ],
+      "explanation": "Under stress, Turritopsis dohrnii can reset its cellular life cycle.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "wildlife_animals_en_032",
+      "prompt": "Which primate is humanity's closest living genetic relative alongside the bonobo?",
+      "choices": [
+        "Gorilla",
+        "Gibbon",
+        "Orangutan",
+        "Chimpanzee"
+      ],
+      "answer": "Chimpanzee",
+      "aliases": [],
+      "explanation": "Humans share roughly 98.7% of their DNA sequence with chimpanzees and bonobos.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "wildlife_animals_en_033",
+      "prompt": "Which seabird has the largest wingspan of any living bird (up to 3.5 meters)?",
+      "choices": [
+        "Bald eagle",
+        "Pelican",
+        "Wandering albatross",
+        "Andean condor"
+      ],
+      "answer": "Wandering albatross",
+      "aliases": [
+        "Albatross"
+      ],
+      "explanation": "Albatrosses can glide for hours over the Southern Ocean without flapping their wings.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "wildlife_animals_en_034",
+      "prompt": "Which creature's blood is copper-based (hemocyanin), making it appear blue?",
+      "choices": [
+        "Komodo dragon",
+        "Horseshoe crab",
+        "Great white shark",
+        "Emperor penguin"
+      ],
+      "answer": "Horseshoe crab",
+      "aliases": [
+        "Octopus"
+      ],
+      "explanation": "Horseshoe crab blood is also widely used in medical safety testing.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "wildlife_animals_en_035",
+      "prompt": "Which marsupial is the only marsupial native to North America?",
+      "choices": [
+        "Virginia opossum",
+        "Armadillo",
+        "Raccoon",
+        "Badger"
+      ],
+      "answer": "Virginia opossum",
+      "aliases": [
+        "Opossum"
+      ],
+      "explanation": "Opossums are famous for 'playing possum' when threatened.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "wildlife_animals_en_036",
+      "prompt": "Which big cat is the only one that cannot roar (it purrs instead)?",
+      "choices": [
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Cheetah"
+      ],
+      "answer": "Cheetah",
+      "aliases": [],
+      "explanation": "Lions, tigers, jaguars, and leopards have a specialized hyoid bone that lets them roar; cheetahs do not.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    }
+  ]
+}

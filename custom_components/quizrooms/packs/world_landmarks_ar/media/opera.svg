@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Sail-shaped harbor performing arts center">
+  <rect width="640" height="480" rx="24" fill="#0F172A"/>
+  <rect x="0" y="350" width="640" height="130" fill="#0369A1"/>
+  <path d="M110,350 C125,220 210,165 270,130 C250,210 245,285 265,350 Z" fill="#F8FAFC"/>
+  <path d="M230,350 C250,205 340,140 405,105 C382,195 375,280 398,350 Z" fill="#FFFFFF"/>
+  <path d="M365,350 C385,245 450,195 510,175 C490,240 485,295 505,350 Z" fill="#E2E8F0"/>
+  <rect x="90" y="335" width="460" height="18" rx="4" fill="#CBD5E1"/>
+</svg>

@@ -1,0 +1,614 @@
+{
+  "pack_id": "world_cuisines_en",
+  "title": "World Cuisines & Signature Dishes",
+  "description": "36 original culinary questions on iconic dishes, spices, street foods, and gastronomic origins around the globe.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Culture",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "world_cuisines_en_001",
+      "prompt": "Which country is the birthplace of sushi, ramen, and tempura?",
+      "choices": [
+        "Thailand",
+        "China",
+        "South Korea",
+        "Japan"
+      ],
+      "answer": "Japan",
+      "aliases": [],
+      "explanation": "Modern nigiri sushi developed in Edo (Tokyo) in the 19th century.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_002",
+      "prompt": "Which Spanish rice dish from Valencia is traditionally cooked in a wide shallow pan with saffron?",
+      "choices": [
+        "Biryani",
+        "Risotto",
+        "Paella",
+        "Jambalaya"
+      ],
+      "answer": "Paella",
+      "aliases": [],
+      "explanation": "Traditional Valencian paella uses short-grain bomba rice, saffron, and a crispy bottom layer called socarrat.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_003",
+      "prompt": "Which Egyptian national street-food dish layers rice, lentils, macaroni, chickpeas, crispy onions, and spiced tomato sauce?",
+      "choices": [
+        "Koshary",
+        "Ful Medames",
+        "Molokhia",
+        "Falafel"
+      ],
+      "answer": "Koshary",
+      "aliases": [
+        "Koshari"
+      ],
+      "explanation": "Koshary is Egypt's beloved hearty vegan comfort dish.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_004",
+      "prompt": "Which spice, harvested from the stigmas of Crocus sativus flowers, is the world's most expensive spice by weight?",
+      "choices": [
+        "Saffron",
+        "Cloves",
+        "Cardamom",
+        "Vanilla"
+      ],
+      "answer": "Saffron",
+      "aliases": [],
+      "explanation": "Over 150,000 crocus flowers are needed to harvest just one kilogram of saffron.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_005",
+      "prompt": "Which Italian city is recognized as the birthplace of modern Pizza Margherita?",
+      "choices": [
+        "Milan",
+        "Rome",
+        "Naples",
+        "Venice"
+      ],
+      "answer": "Naples",
+      "aliases": [],
+      "explanation": "Neapolitan pizza making is listed by UNESCO as Intangible Cultural Heritage.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_006",
+      "prompt": "Which fermented napa cabbage and radish side dish is a staple of Korean cuisine?",
+      "choices": [
+        "Sauerkraut",
+        "Gochujang",
+        "Miso",
+        "Kimchi"
+      ],
+      "answer": "Kimchi",
+      "aliases": [],
+      "explanation": "Korea has hundreds of regional varieties of kimchi.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_007",
+      "prompt": "Which fragrant Vietnamese noodle soup features a slow-simmered spiced beef or chicken broth?",
+      "choices": [
+        "Tom Yum",
+        "Pho",
+        "Laksa",
+        "Ramen"
+      ],
+      "answer": "Pho",
+      "aliases": [
+        "Phở"
+      ],
+      "explanation": "Pho originated in northern Vietnam in the early 20th century.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_008",
+      "prompt": "Which classic Middle Eastern dip is made primarily from mashed chickpeas, tahini, lemon juice, and garlic?",
+      "choices": [
+        "Labneh",
+        "Tzatziki",
+        "Baba Ghanoush",
+        "Hummus"
+      ],
+      "answer": "Hummus",
+      "aliases": [],
+      "explanation": "Hummus is enjoyed across the Levant and Egypt with warm pita bread.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_009",
+      "prompt": "Which Mexican dip is made from mashed ripe avocados, lime juice, cilantro, and salt?",
+      "choices": [
+        "Guacamole",
+        "Queso",
+        "Mole",
+        "Salsa Verde"
+      ],
+      "answer": "Guacamole",
+      "aliases": [],
+      "explanation": "The word guacamole comes from the Nahuatl word 'āhuacamolli' (avocado sauce).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_010",
+      "prompt": "Which traditional Moroccan slow-cooked stew is named after the conical earthenware pot in which it is cooked?",
+      "choices": [
+        "Tagine",
+        "Pastilla",
+        "Harira",
+        "Couscous"
+      ],
+      "answer": "Tagine",
+      "aliases": [
+        "Tajine"
+      ],
+      "explanation": "The conical lid traps steam and returns moisture to the dish.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_011",
+      "prompt": "Which French pastry is famous for its flaky crescent shape made with laminated butter dough?",
+      "choices": [
+        "Brioche",
+        "Macaron",
+        "Eclair",
+        "Croissant"
+      ],
+      "answer": "Croissant",
+      "aliases": [],
+      "explanation": "Although iconic in France, its ancestor was the Austrian kipferl.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_012",
+      "prompt": "Which Thai stir-fried rice noodle dish combines tamarind, fish sauce, peanuts, egg, and bean sprouts?",
+      "choices": [
+        "Pad Thai",
+        "Pad See Ew",
+        "Green Curry",
+        "Som Tum"
+      ],
+      "answer": "Pad Thai",
+      "aliases": [],
+      "explanation": "Pad Thai became Thailand's signature street food in the mid-20th century.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_013",
+      "prompt": "Which traditional Jordanian and Palestinian dish features lamb cooked in fermented dried yogurt (jameed) served over rice?",
+      "choices": [
+        "Kabsa",
+        "Maqluba",
+        "Mansaf",
+        "Musakhan"
+      ],
+      "answer": "Mansaf",
+      "aliases": [],
+      "explanation": "Mansaf is Jordan's national dish and a symbol of hospitality.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_014",
+      "prompt": "Which fragrant spiced rice dish is considered a national staple of Saudi Arabia and the Arabian Gulf?",
+      "choices": [
+        "Kabsa",
+        "Biryani",
+        "Jollof Rice",
+        "Paella"
+      ],
+      "answer": "Kabsa",
+      "aliases": [],
+      "explanation": "Kabsa is flavored with black lime (loomi), cardamom, cloves, and cinnamon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_015",
+      "prompt": "Which beloved West African one-pot tomato-spiced rice dish sparks friendly culinary rivalry between Nigeria, Ghana, and Senegal?",
+      "choices": [
+        "Biryani",
+        "Plov",
+        "Jollof Rice",
+        "Thieboudienne"
+      ],
+      "answer": "Jollof Rice",
+      "aliases": [
+        "Jollof"
+      ],
+      "explanation": "Jollof rice traces its roots to the Wolof people of Senegal and The Gambia.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_016",
+      "prompt": "Which traditional Peruvian dish cures fresh raw fish in citrus juice (lime) with chili and red onion?",
+      "choices": [
+        "Empanada",
+        "Ceviche",
+        "Lomo Saltado",
+        "Arepas"
+      ],
+      "answer": "Ceviche",
+      "aliases": [
+        "Cebiche"
+      ],
+      "explanation": "The citric acid denatures the fish proteins without heat.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_017",
+      "prompt": "Which Italian dessert layers espresso-soaked ladyfingers with mascarpone cream and cocoa powder?",
+      "choices": [
+        "Cannoli",
+        "Tiramisu",
+        "Panna Cotta",
+        "Gelato"
+      ],
+      "answer": "Tiramisu",
+      "aliases": [],
+      "explanation": "Tiramisu literally translates to 'pick me up' in Italian.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_018",
+      "prompt": "Which Georgian boat-shaped cheese bread is traditionally topped with a runny egg yolk and butter?",
+      "choices": [
+        "Pide",
+        "Khachapuri",
+        "Naan",
+        "Burek"
+      ],
+      "answer": "Khachapuri",
+      "aliases": [
+        "Adjarian Khachapuri"
+      ],
+      "explanation": "Adjarian khachapuri is Georgia's most famous culinary export.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_cuisines_en_019",
+      "prompt": "Which Ethiopian spongy sourdough flatbread made from teff flour serves as both plate and utensil?",
+      "choices": [
+        "Arepas",
+        "Injera",
+        "Roti",
+        "Lavash"
+      ],
+      "answer": "Injera",
+      "aliases": [],
+      "explanation": "Diners tear off pieces of injera to scoop up spicy stews called wats.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_020",
+      "prompt": "Which Canadian comfort dish tops French fries with cheese curds and hot brown gravy?",
+      "choices": [
+        "Poutine",
+        "Bannock",
+        "Nanaimo Bar",
+        "Tourtiere"
+      ],
+      "answer": "Poutine",
+      "aliases": [],
+      "explanation": "Poutine originated in rural Quebec in the late 1950s.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_021",
+      "prompt": "Which smoky Levantine dip is made from roasted eggplant blended with tahini, lemon, and olive oil?",
+      "choices": [
+        "Fattoush",
+        "Hummus",
+        "Muhammara",
+        "Baba Ghanoush"
+      ],
+      "answer": "Baba Ghanoush",
+      "aliases": [
+        "Baba Ganoush"
+      ],
+      "explanation": "Charring the eggplant over an open flame gives it its signature smoky aroma.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_022",
+      "prompt": "Which crispy pastry filled with spiced potatoes or meat is an iconic snack across India and South Asia?",
+      "choices": [
+        "Vada",
+        "Pakora",
+        "Samosa",
+        "Dosa"
+      ],
+      "answer": "Samosa",
+      "aliases": [],
+      "explanation": "Samosas traveled along medieval trade routes from Central Asia and the Middle East to India.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_023",
+      "prompt": "Which creamy Greek yogurt dip is mixed with grated cucumber, garlic, dill, and olive oil?",
+      "choices": [
+        "Skordalia",
+        "Taramosalata",
+        "Hummus",
+        "Tzatziki"
+      ],
+      "answer": "Tzatziki",
+      "aliases": [],
+      "explanation": "Tzatziki is a classic pairing for gyros and souvlaki.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_024",
+      "prompt": "Which Hungarian stew is richly seasoned with sweet paprika and slow-simmered beef?",
+      "choices": [
+        "Goulash",
+        "Paprikash",
+        "Stroganoff",
+        "Bigos"
+      ],
+      "answer": "Goulash",
+      "aliases": [],
+      "explanation": "Goulash originated as a hearty meal cooked by Hungarian herdsmen (gulyás).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_025",
+      "prompt": "Which crisp, spun shredded phyllo pastry dessert soaked in sweet syrup and filled with melted cheese or cream is famous in Nablus and across the Levant?",
+      "choices": [
+        "Basbousa",
+        "Baklava",
+        "Maamoul",
+        "Knafeh"
+      ],
+      "answer": "Knafeh",
+      "aliases": [
+        "Kunafa",
+        "Kanafeh"
+      ],
+      "explanation": "Nabulsi knafeh uses white brine cheese and orange-blossom sugar syrup.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_026",
+      "prompt": "Which traditional Argentine and Uruguayan green herb sauce is made with parsley, garlic, oregano, and vinegar for grilled meats?",
+      "choices": [
+        "Harissa",
+        "Pesto",
+        "Chimichurri",
+        "Salsa Criolla"
+      ],
+      "answer": "Chimichurri",
+      "aliases": [],
+      "explanation": "Chimichurri is essential at an Argentine asado barbecue.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_027",
+      "prompt": "Which fiery Tunisian chili pepper paste is seasoned with caraway, coriander, and garlic?",
+      "choices": [
+        "Sambal",
+        "Sriracha",
+        "Gochujang",
+        "Harissa"
+      ],
+      "answer": "Harissa",
+      "aliases": [],
+      "explanation": "Tunisian harissa was added to UNESCO's Intangible Cultural Heritage list in 2022.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_028",
+      "prompt": "Which Belgian dish pairs steamed mussels with crispy twice-fried potatoes?",
+      "choices": [
+        "Waterzooi",
+        "Moules-frites",
+        "Carbonnade",
+        "Waffles"
+      ],
+      "answer": "Moules-frites",
+      "aliases": [
+        "Moules frites"
+      ],
+      "explanation": "Moules-frites is widely considered Belgium's national dish.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_029",
+      "prompt": "Which South Indian thin crispy fermented crepe is made from rice and black lentil batter?",
+      "choices": [
+        "Paratha",
+        "Naan",
+        "Chapati",
+        "Dosa"
+      ],
+      "answer": "Dosa",
+      "aliases": [
+        "Masala Dosa"
+      ],
+      "explanation": "Dosa is typically served with coconut chutney and sambar lentil stew.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_030",
+      "prompt": "Which Japanese fermented soybean paste is the base of a classic savory soup?",
+      "choices": [
+        "Miso",
+        "Tofu",
+        "Wasabi",
+        "Tamari"
+      ],
+      "answer": "Miso",
+      "aliases": [],
+      "explanation": "Miso comes in white (shiro), red (aka), and mixed varieties depending on fermentation time.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_031",
+      "prompt": "Which Turkish and Levantine spice blend typically combines dried thyme/oregano, roasted sesame seeds, and tangy sumac?",
+      "choices": [
+        "Berbere",
+        "Za'atar",
+        "Garam Masala",
+        "Ras el Hanout"
+      ],
+      "answer": "Za'atar",
+      "aliases": [
+        "Zaatar"
+      ],
+      "explanation": "Za'atar is mixed with olive oil and baked onto flatbread (manakish).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_032",
+      "prompt": "Which Italian northern rice dish is slowly stirred with warm broth until creamy?",
+      "choices": [
+        "Gnocchi",
+        "Polenta",
+        "Paella",
+        "Risotto"
+      ],
+      "answer": "Risotto",
+      "aliases": [],
+      "explanation": "Arborio and Carnaroli are prized rice varieties for risotto.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_033",
+      "prompt": "Which Polish filled dumplings can be stuffed with potato and cheese, sauerkraut, or sweet berries?",
+      "choices": [
+        "Pelmeni",
+        "Ravioli",
+        "Gyoza",
+        "Pierogi"
+      ],
+      "answer": "Pierogi",
+      "aliases": [],
+      "explanation": "Pierogi are a centerpiece of Polish home cooking and holiday tables.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "world_cuisines_en_034",
+      "prompt": "Which fragrant Southeast Asian coconut noodle soup is famous in Malaysia and Singapore?",
+      "choices": [
+        "Pad Thai",
+        "Pho",
+        "Laksa",
+        "Ramen"
+      ],
+      "answer": "Laksa",
+      "aliases": [],
+      "explanation": "Laksa combines Chinese noodles with Southeast Asian coconut, lemongrass, and chili.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "world_cuisines_en_035",
+      "prompt": "Which classic British dish consists of battered fried white fish served with thick-cut chips and mushy peas?",
+      "choices": [
+        "Shepherd's pie",
+        "Fish and chips",
+        "Bangers and mash",
+        "Beef Wellington"
+      ],
+      "answer": "Fish and chips",
+      "aliases": [],
+      "explanation": "Fish and chips shops first appeared in England in the 1860s.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "world_cuisines_en_036",
+      "prompt": "Which famous dark Mexican sauce can contain over 20 ingredients including chilies, nuts, spices, and unsweetened chocolate?",
+      "choices": [
+        "Enchilada",
+        "Salsa Roja",
+        "Adobo",
+        "Mole"
+      ],
+      "answer": "Mole",
+      "aliases": [
+        "Mole Poblano"
+      ],
+      "explanation": "Mole poblano is celebrated as a culinary symbol of Puebla and Oaxaca.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    }
+  ]
+}

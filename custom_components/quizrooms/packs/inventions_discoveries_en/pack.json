@@ -1,0 +1,660 @@
+{
+  "pack_id": "inventions_discoveries_en",
+  "title": "Inventions & Great Discoveries",
+  "description": "36 original questions on groundbreaking inventors, historic technologies, and accidental scientific breakthroughs.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "History & Science",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "inventions_discoveries_en_001",
+      "prompt": "Who invented the movable-type printing press in Europe around 1440, sparking the printing revolution?",
+      "choices": [
+        "Galileo Galilei",
+        "Leonardo da Vinci",
+        "Isaac Newton",
+        "Johannes Gutenberg"
+      ],
+      "answer": "Johannes Gutenberg",
+      "aliases": [
+        "Gutenberg"
+      ],
+      "explanation": "Gutenberg's press made books affordable and dramatically accelerated literacy and science.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_002",
+      "prompt": "Who is credited with patenting the first practical telephone in 1876?",
+      "choices": [
+        "Nikola Tesla",
+        "Guglielmo Marconi",
+        "Alexander Graham Bell",
+        "Thomas Edison"
+      ],
+      "answer": "Alexander Graham Bell",
+      "aliases": [
+        "Bell"
+      ],
+      "explanation": "Bell's famous first spoken words over the wire were to his assistant Thomas Watson.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_003",
+      "prompt": "Who invented the World Wide Web in 1989 while working at CERN?",
+      "choices": [
+        "Bill Gates",
+        "Tim Berners-Lee",
+        "Alan Turing",
+        "Vint Cerf"
+      ],
+      "answer": "Tim Berners-Lee",
+      "aliases": [
+        "Sir Tim Berners-Lee"
+      ],
+      "explanation": "Berners-Lee created HTTP, HTML, and the first web browser and released them royalty-free.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_004",
+      "prompt": "Which two brothers achieved the first powered, controlled airplane flight at Kitty Hawk in 1903?",
+      "choices": [
+        "Lumiere brothers",
+        "Orville and Wilbur Wright",
+        "Benz brothers",
+        "Montgolfier brothers"
+      ],
+      "answer": "Orville and Wilbur Wright",
+      "aliases": [
+        "Wright brothers"
+      ],
+      "explanation": "Their Flyer stayed aloft for 12 seconds and covered 36.5 meters on its first flight.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_005",
+      "prompt": "Which scientist discovered X-rays in 1895 and won the very first Nobel Prize in Physics?",
+      "choices": [
+        "Albert Einstein",
+        "Max Planck",
+        "Wilhelm Rontgen",
+        "Marie Curie"
+      ],
+      "answer": "Wilhelm Rontgen",
+      "aliases": [
+        "Wilhelm Roentgen",
+        "Rontgen"
+      ],
+      "explanation": "Röntgen took the first X-ray photograph of his wife Anna's hand.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_006",
+      "prompt": "Which pioneer discovered the radioactive elements polonium and radium and won Nobel Prizes in both Physics and Chemistry?",
+      "choices": [
+        "Marie Curie",
+        "Rosalind Franklin",
+        "Ada Lovelace",
+        "Lise Meitner"
+      ],
+      "answer": "Marie Curie",
+      "aliases": [
+        "Madame Curie"
+      ],
+      "explanation": "Marie Curie remains the only person to win Nobel Prizes in two different sciences.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_007",
+      "prompt": "Which engineer accidentally invented the microwave oven in 1945 after a radar magnetron melted a candy bar in his pocket?",
+      "choices": [
+        "Thomas Edison",
+        "Percy Spencer",
+        "Nikola Tesla",
+        "George Westinghouse"
+      ],
+      "answer": "Percy Spencer",
+      "aliases": [
+        "Spencer"
+      ],
+      "explanation": "Spencer worked at Raytheon and next tested popcorn kernels and an egg.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_008",
+      "prompt": "Which Swiss engineer invented Velcro in 1941 after noticing burdock burrs sticking to his dog's fur?",
+      "choices": [
+        "Alfred Nobel",
+        "George de Mestral",
+        "Louis Braille",
+        "Karl Benz"
+      ],
+      "answer": "George de Mestral",
+      "aliases": [
+        "de Mestral"
+      ],
+      "explanation": "Velcro combines the French words 'velours' (velvet) and 'crochet' (hook).",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_009",
+      "prompt": "Who invented the alternating current (AC) induction motor and polyphase power distribution system?",
+      "choices": [
+        "James Watt",
+        "Thomas Edison",
+        "Nikola Tesla",
+        "Michael Faraday"
+      ],
+      "answer": "Nikola Tesla",
+      "aliases": [
+        "Tesla"
+      ],
+      "explanation": "Tesla's AC system allowed electricity to be transmitted efficiently over long distances.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_010",
+      "prompt": "Which Scottish engineer's improvements to the steam engine (separate condenser) powered the Industrial Revolution?",
+      "choices": [
+        "Isambard Kingdom Brunel",
+        "James Watt",
+        "George Stephenson",
+        "Richard Arkwright"
+      ],
+      "answer": "James Watt",
+      "aliases": [
+        "Watt"
+      ],
+      "explanation": "The SI unit of power — the watt — is named in his honor.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_011",
+      "prompt": "Who invented dynamite in 1867 and later established the famous international prizes bearing his name?",
+      "choices": [
+        "Antoine Lavoisier",
+        "Fritz Haber",
+        "Robert Boyle",
+        "Alfred Nobel"
+      ],
+      "answer": "Alfred Nobel",
+      "aliases": [
+        "Nobel"
+      ],
+      "explanation": "Nobel held 355 patents during his lifetime.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_012",
+      "prompt": "Which 11th-century Arab polymath wrote the 'Book of Optics' (Kitab al-Manazir) and laid foundations for the camera obscura and scientific method?",
+      "choices": [
+        "Ibn al-Haytham",
+        "Al-Jazari",
+        "Ibn Sina",
+        "Al-Khwarizmi"
+      ],
+      "answer": "Ibn al-Haytham",
+      "aliases": [
+        "Alhazen"
+      ],
+      "explanation": "Known in Latin as Alhazen, he proved that vision occurs when light enters the eye.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_013",
+      "prompt": "Which 9th-century scholar's treatise on equations gave us the word 'algebra' and whose Latinized name gave us 'algorithm'?",
+      "choices": [
+        "Al-Biruni",
+        "Omar Khayyam",
+        "Ibn al-Haytham",
+        "Al-Khwarizmi"
+      ],
+      "answer": "Al-Khwarizmi",
+      "aliases": [
+        "Muhammad ibn Musa al-Khwarizmi"
+      ],
+      "explanation": "Al-Khwarizmi worked at the House of Wisdom in Baghdad.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_014",
+      "prompt": "Which 19th-century mathematician wrote the first published computer algorithm for Charles Babbage's Analytical Engine?",
+      "choices": [
+        "Ada Lovelace",
+        "Grace Hopper",
+        "Hedy Lamarr",
+        "Katherine Johnson"
+      ],
+      "answer": "Ada Lovelace",
+      "aliases": [
+        "Lovelace"
+      ],
+      "explanation": "Lovelace envisioned that computing machines could manipulate symbols beyond pure numbers.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_015",
+      "prompt": "Which Hollywood actress and inventor co-patented frequency-hopping spread spectrum technology, a precursor to Wi-Fi and Bluetooth?",
+      "choices": [
+        "Hedy Lamarr",
+        "Grace Hopper",
+        "Marie Curie",
+        "Margaret Hamilton"
+      ],
+      "answer": "Hedy Lamarr",
+      "aliases": [
+        "Lamarr"
+      ],
+      "explanation": "She developed the torpedo guidance concept with composer George Antheil in 1941.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_016",
+      "prompt": "Which French educator invented the raised-dot reading and writing system for blind people in 1824?",
+      "choices": [
+        "Louis Pasteur",
+        "Blaise Pascal",
+        "Joseph-Marie Jacquard",
+        "Louis Braille"
+      ],
+      "answer": "Louis Braille",
+      "aliases": [
+        "Braille"
+      ],
+      "explanation": "Braille devised his 6-dot tactile cell when he was just 15 years old.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_017",
+      "prompt": "Which ancient civilization invented paper around 105 AD, traditionally credited to Cai Lun?",
+      "choices": [
+        "Egypt",
+        "Greece",
+        "Mesopotamia",
+        "China"
+      ],
+      "answer": "China",
+      "aliases": [
+        "Han China"
+      ],
+      "explanation": "Cai Lun standardized papermaking from mulberry bark, hemp, and rags.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_018",
+      "prompt": "Which German engineer patented the first modern gasoline-powered automobile (Motorwagen) in 1886?",
+      "choices": [
+        "Henry Ford",
+        "Rudolf Diesel",
+        "Gottlieb Daimler",
+        "Karl Benz"
+      ],
+      "answer": "Karl Benz",
+      "aliases": [
+        "Carl Benz"
+      ],
+      "explanation": "His wife Bertha Benz famously completed the world's first long-distance road trip in 1888.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_019",
+      "prompt": "Who invented the Morse code telegraph system in the 1830s?",
+      "choices": [
+        "Guglielmo Marconi",
+        "Michael Faraday",
+        "Alexander Graham Bell",
+        "Samuel Morse"
+      ],
+      "answer": "Samuel Morse",
+      "aliases": [
+        "Morse"
+      ],
+      "explanation": "The first official telegraph message in 1844 read 'What hath God wrought'.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_020",
+      "prompt": "Which Italian physicist and inventor pioneered long-distance radio transmission and won the 1909 Nobel Prize?",
+      "choices": [
+        "Guglielmo Marconi",
+        "John Logie Baird",
+        "Nikola Tesla",
+        "Heinrich Hertz"
+      ],
+      "answer": "Guglielmo Marconi",
+      "aliases": [
+        "Marconi"
+      ],
+      "explanation": "Marconi sent the first transatlantic wireless radio signal in 1901.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_021",
+      "prompt": "Which chemist invented the periodic table of elements in 1869, leaving gaps for undiscovered elements?",
+      "choices": [
+        "Antoine Lavoisier",
+        "Dmitri Mendeleev",
+        "John Dalton",
+        "Niels Bohr"
+      ],
+      "answer": "Dmitri Mendeleev",
+      "aliases": [
+        "Mendeleev"
+      ],
+      "explanation": "Mendeleev accurately predicted the properties of gallium, scandium, and germanium.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_022",
+      "prompt": "Which British scientist discovered electromagnetic induction in 1831, making electric generators possible?",
+      "choices": [
+        "Alessandro Volta",
+        "James Clerk Maxwell",
+        "Andre-Marie Ampere",
+        "Michael Faraday"
+      ],
+      "answer": "Michael Faraday",
+      "aliases": [
+        "Faraday"
+      ],
+      "explanation": "Faraday's discoveries underpin nearly every electric motor and power plant today.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_023",
+      "prompt": "Which Italian physicist invented the first true electric battery (the voltaic pile) in 1800?",
+      "choices": [
+        "Michael Faraday",
+        "Georg Ohm",
+        "Luigi Galvani",
+        "Alessandro Volta"
+      ],
+      "answer": "Alessandro Volta",
+      "aliases": [
+        "Volta"
+      ],
+      "explanation": "The unit of electrical potential — the volt — is named after him.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_024",
+      "prompt": "Which American chemist accidentally created Post-it Notes' low-tack adhesive in 1968 at 3M?",
+      "choices": [
+        "Charles Goodyear",
+        "Art Fry",
+        "Spencer Silver",
+        "Roy Plunkett"
+      ],
+      "answer": "Spencer Silver",
+      "aliases": [
+        "Silver"
+      ],
+      "explanation": "His colleague Art Fry later used the adhesive to make repositionable hymnal bookmarks.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_025",
+      "prompt": "Which accidental 1938 discovery by DuPont chemist Roy Plunkett produced non-stick Teflon (PTFE)?",
+      "choices": [
+        "Nylon",
+        "Teflon",
+        "Velcro",
+        "Kevlar"
+      ],
+      "answer": "Teflon",
+      "aliases": [
+        "PTFE"
+      ],
+      "explanation": "Plunkett found that pressurized tetrafluoroethylene gas had polymerized into a slippery white wax.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_026",
+      "prompt": "Who invented vulcanized rubber in 1839, making durable tires possible?",
+      "choices": [
+        "Thomas Hancock",
+        "Charles Goodyear",
+        "Henry Ford",
+        "John Boyd Dunlop"
+      ],
+      "answer": "Charles Goodyear",
+      "aliases": [
+        "Goodyear"
+      ],
+      "explanation": "Goodyear accidentally dropped rubber mixed with sulfur onto a hot stove.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_027",
+      "prompt": "Which 12th-century mechanical engineer from Mesopotamia designed the elephant clock, crankshaft, and programmable automata?",
+      "choices": [
+        "Al-Jazari",
+        "Ibn al-Haytham",
+        "Al-Kindi",
+        "Taqi al-Din"
+      ],
+      "answer": "Al-Jazari",
+      "aliases": [
+        "Ismail al-Jazari"
+      ],
+      "explanation": "Al-Jazari's 1206 'Book of Knowledge of Ingenious Mechanical Devices' is a landmark of engineering.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_028",
+      "prompt": "Which French scientist developed the germ theory of disease and the heat-treatment process of pasteurization?",
+      "choices": [
+        "Edward Jenner",
+        "Robert Koch",
+        "Louis Pasteur",
+        "Alexander Fleming"
+      ],
+      "answer": "Louis Pasteur",
+      "aliases": [
+        "Pasteur"
+      ],
+      "explanation": "Pasteur also developed the first vaccines for rabies and anthrax.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_029",
+      "prompt": "Which Scottish inventor demonstrated the first working mechanical television system in 1926?",
+      "choices": [
+        "Philo Farnsworth",
+        "Thomas Edison",
+        "John Logie Baird",
+        "Guglielmo Marconi"
+      ],
+      "answer": "John Logie Baird",
+      "aliases": [
+        "Baird"
+      ],
+      "explanation": "Baird transmitted the first live moving television image in London in January 1926.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_030",
+      "prompt": "Which three Bell Labs physicists invented the transistor in 1947, launching the modern electronics era?",
+      "choices": [
+        "Turing, Church, and Shannon",
+        "Bardeen, Brattain, and Shockley",
+        "Jobs, Wozniak, and Wayne",
+        "Kilby, Noyce, and Moore"
+      ],
+      "answer": "Bardeen, Brattain, and Shockley",
+      "aliases": [
+        "Shockley, Bardeen, and Brattain"
+      ],
+      "explanation": "They shared the 1956 Nobel Prize in Physics for the transistor.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_031",
+      "prompt": "Which American computer scientist pioneered the first compiler and helped design the COBOL language?",
+      "choices": [
+        "Margaret Hamilton",
+        "Grace Hopper",
+        "Barbara Liskov",
+        "Ada Lovelace"
+      ],
+      "answer": "Grace Hopper",
+      "aliases": [
+        "Hopper"
+      ],
+      "explanation": "Admiral Grace Hopper popularized machine-independent programming languages.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "inventions_discoveries_en_032",
+      "prompt": "Which American inventor developed the phonograph and the first commercially practical incandescent light bulb?",
+      "choices": [
+        "Benjamin Franklin",
+        "George Westinghouse",
+        "Thomas Edison",
+        "Nikola Tesla"
+      ],
+      "answer": "Thomas Edison",
+      "aliases": [
+        "Edison"
+      ],
+      "explanation": "Edison's Menlo Park lab became the model for modern industrial R&D.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_033",
+      "prompt": "Which 17th-century Dutch microscopist was the first to observe bacteria and single-celled 'animalcules'?",
+      "choices": [
+        "Carl Linnaeus",
+        "Antonie van Leeuwenhoek",
+        "Galileo Galilei",
+        "Robert Hooke"
+      ],
+      "answer": "Antonie van Leeuwenhoek",
+      "aliases": [
+        "Leeuwenhoek"
+      ],
+      "explanation": "Van Leeuwenhoek handcrafted single-lens microscopes capable of magnifying over 200x.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "inventions_discoveries_en_034",
+      "prompt": "Which scientist formulated the three laws of motion and universal gravitation in his 1687 'Principia'?",
+      "choices": [
+        "Galileo Galilei",
+        "Albert Einstein",
+        "Johannes Kepler",
+        "Isaac Newton"
+      ],
+      "answer": "Isaac Newton",
+      "aliases": [
+        "Sir Isaac Newton"
+      ],
+      "explanation": "Newton also co-invented calculus and built the first practical reflecting telescope.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_035",
+      "prompt": "Which ancient Greek mathematician shouted 'Eureka!' upon discovering the principle of buoyancy?",
+      "choices": [
+        "Pythagoras",
+        "Euclid",
+        "Aristotle",
+        "Archimedes"
+      ],
+      "answer": "Archimedes",
+      "aliases": [],
+      "explanation": "Archimedes also designed compound pulleys and the Archimedes' screw water pump.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "inventions_discoveries_en_036",
+      "prompt": "Which German inventor created the compression-ignition engine that bears his name in the 1890s?",
+      "choices": [
+        "Gottlieb Daimler",
+        "Nikolaus Otto",
+        "Karl Benz",
+        "Rudolf Diesel"
+      ],
+      "answer": "Rudolf Diesel",
+      "aliases": [
+        "Diesel"
+      ],
+      "explanation": "Diesel engines achieve higher thermal efficiency than spark-ignition gasoline engines.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    }
+  ]
+}

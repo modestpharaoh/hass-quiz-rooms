@@ -1,0 +1,642 @@
+{
+  "pack_id": "math_logic_riddles_ar",
+  "title": "ألغاز ومنطق ورياضيات ذهنية",
+  "description": "36 سؤالاً من المتتاليات العددية والحساب الذهني والألغاز المنطقية السريعة.",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "الألغاز والمنطق",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "math_logic_riddles_ar_001",
+      "prompt": "ما العدد التالي في متتالية فيبوناتشي: 1، 1، 2، 3، 5، 8، 13، 21، ___؟",
+      "choices": [
+        "35",
+        "36",
+        "34",
+        "32"
+      ],
+      "answer": "34",
+      "aliases": [],
+      "explanation": "كل عدد يساوي مجموع العددين السابقين له: 13 + 21 = 34.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_002",
+      "prompt": "إذا تجاوزت المتسابق الذي في المركز الثاني في سباق جري، فما هو مركزك الآن؟",
+      "choices": [
+        "المركز الأول",
+        "المركز الثالث",
+        "المركز الثاني",
+        "المركز الرابع"
+      ],
+      "answer": "المركز الثاني",
+      "aliases": [
+        "الثاني"
+      ],
+      "explanation": "بمجرد تجاوزه تحل محله في المركز الثاني!",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_003",
+      "prompt": "كم يساوي 15% من العدد 200؟",
+      "choices": [
+        "25",
+        "20",
+        "30",
+        "35"
+      ],
+      "answer": "30",
+      "aliases": [],
+      "explanation": "10% من 200 يساوي 20، زائد 5% (10) يساوي 30.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_004",
+      "prompt": "ما هو العدد الأولي الزوجي الوحيد في الرياضيات؟",
+      "choices": [
+        "4",
+        "0",
+        "6",
+        "2"
+      ],
+      "answer": "2",
+      "aliases": [
+        "اثنان"
+      ],
+      "explanation": "أي عدد زوجي أكبر من 2 يقبل القسمة على 2 فلا يكون أولياً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_005",
+      "prompt": "ما هو مجموع قياسات الزوايا الداخلية لأي مثلث؟",
+      "choices": [
+        "90 درجة",
+        "180 درجة",
+        "360 درجة",
+        "270 درجة"
+      ],
+      "answer": "180 درجة",
+      "aliases": [
+        "180"
+      ],
+      "explanation": "في الهندسة الإقليدية مجموع زوايا أي مثلث يساوي دائماً 180 درجة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_006",
+      "prompt": "مضرب وكرة ثمنهما معاً 1.10 دولار، والمضرب أغلى من الكرة بدولار واحد. كم ثمن الكرة؟",
+      "choices": [
+        "0.01 دولار",
+        "0.05 دولار",
+        "0.10 دولار",
+        "0.15 دولار"
+      ],
+      "answer": "0.05 دولار",
+      "aliases": [
+        "5 سنتات",
+        "0.05"
+      ],
+      "explanation": "الكرة 0.05 والمضرب 1.05؛ مجموعهما 1.10 والفرق بينهما دولار كامل.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_007",
+      "prompt": "ما العدد التالي في النمط: 2، 6، 12، 20، 30، ___؟",
+      "choices": [
+        "42",
+        "44",
+        "38",
+        "40"
+      ],
+      "answer": "42",
+      "aliases": [],
+      "explanation": "الفرق يزيد بمقدار 2 في كل خطوة (+4، +6، +8، +10، +12): 30 + 12 = 42.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_008",
+      "prompt": "كم شهراً في السنة يحتوي على 28 يوماً؟",
+      "choices": [
+        "شهر واحد",
+        "جميع الأشهر الـ 12",
+        "6 أشهر",
+        "4 أشهر"
+      ],
+      "answer": "جميع الأشهر الـ 12",
+      "aliases": [
+        "12",
+        "كل الأشهر"
+      ],
+      "explanation": "جميع أشهر السنة تحتوي على 28 يوماً على الأقل!",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_009",
+      "prompt": "ما هو الجذر التربيعي للعدد 144؟",
+      "choices": [
+        "12",
+        "11",
+        "14",
+        "13"
+      ],
+      "answer": "12",
+      "aliases": [],
+      "explanation": "12 × 12 = 144.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_010",
+      "prompt": "إذا كانت 5 آلات تصنع 5 قطع في 5 دقائق، فكم دقيقة تحتاج 100 آلة لصنع 100 قطعة؟",
+      "choices": [
+        "100 دقيقة",
+        "دقيقة واحدة",
+        "5 دقائق",
+        "20 دقيقة"
+      ],
+      "answer": "5 دقائق",
+      "aliases": [
+        "5"
+      ],
+      "explanation": "كل آلة تصنع قطعة واحدة في 5 دقائق، فتعمل الـ 100 آلة معاً وتنجز 100 قطعة في 5 دقائق.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_011",
+      "prompt": "كم يساوي ناتج: 7 × 8 + 4؟",
+      "choices": [
+        "60",
+        "56",
+        "58",
+        "64"
+      ],
+      "answer": "60",
+      "aliases": [],
+      "explanation": "7 × 8 = 56، وبإضافة 4 يصبح الناتج 60.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_012",
+      "prompt": "كم ثانية توجد في الساعة الكاملة؟",
+      "choices": [
+        "3,600 ثانية",
+        "360 ثانية",
+        "1,800 ثانية",
+        "6,000 ثانية"
+      ],
+      "answer": "3,600 ثانية",
+      "aliases": [
+        "3600"
+      ],
+      "explanation": "60 دقيقة × 60 ثانية = 3600 ثانية.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_013",
+      "prompt": "مزارع لديه 17 خروفاً هربت كلها ما عدا 9. كم خروفاً بقي لديه؟",
+      "choices": [
+        "17",
+        "0",
+        "8",
+        "9"
+      ],
+      "answer": "9",
+      "aliases": [
+        "تسعة"
+      ],
+      "explanation": "«كلها ما عدا 9» تعني أن 9 خراف بقيت في الحظيرة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_014",
+      "prompt": "كم يساوي 2 أس 10 (2¹⁰)؟",
+      "choices": [
+        "1,000",
+        "512",
+        "1,024",
+        "2,048"
+      ],
+      "answer": "1,024",
+      "aliases": [
+        "1024"
+      ],
+      "explanation": "العدد 1024 هو الأساس الثنائي الشهير في عالم الحواسيب.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_015",
+      "prompt": "أيهما أثقل: كيلوغرام من الحديد أم كيلوغرام من الريش؟",
+      "choices": [
+        "كيلوغرام الحديد",
+        "كيلوغرام الريش",
+        "وزنهما متساوٍ",
+        "يعتمد على الحرارة"
+      ],
+      "answer": "وزنهما متساوٍ",
+      "aliases": [
+        "متساويان"
+      ],
+      "explanation": "كلاهما له الكتلة نفسها بالضبط: كيلوغرام واحد.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_016",
+      "prompt": "ما العدد التالي في متتالية المربعات: 1، 4، 9، 16، 25، 36، ___؟",
+      "choices": [
+        "64",
+        "42",
+        "48",
+        "49"
+      ],
+      "answer": "49",
+      "aliases": [],
+      "explanation": "7 × 7 = 49.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_017",
+      "prompt": "ما الشيء الذي يزداد بللاً كلما زاد تجفيفه؟",
+      "choices": [
+        "المطر",
+        "الإسفنجة",
+        "المنشفة",
+        "الثلج"
+      ],
+      "answer": "المنشفة",
+      "aliases": [
+        "الفوطة"
+      ],
+      "explanation": "تمتص المنشفة الماء كلما جفّفت به شيئاً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_018",
+      "prompt": "كم وجهاً يمتلك المكعب القياسي؟",
+      "choices": [
+        "12 وجهاً",
+        "6 أوجه",
+        "4 أوجه",
+        "8 أوجه"
+      ],
+      "answer": "6 أوجه",
+      "aliases": [
+        "6",
+        "ستة"
+      ],
+      "explanation": "للمكعب 6 أوجه و8 رؤوس و12 حرفاً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_019",
+      "prompt": "ما هو مجموع الأعداد الصحيحة من 1 إلى 10؟",
+      "choices": [
+        "50",
+        "60",
+        "55",
+        "45"
+      ],
+      "answer": "55",
+      "aliases": [],
+      "explanation": "باستخدام القانون n(n+1)/2: 10 × 11 ÷ 2 = 55.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_020",
+      "prompt": "ما هو مجموع الأعداد الصحيحة من 1 إلى 100 (مجموع غاوس الشهير)؟",
+      "choices": [
+        "5,050",
+        "4,950",
+        "5,500",
+        "5,000"
+      ],
+      "answer": "5,050",
+      "aliases": [
+        "5050"
+      ],
+      "explanation": "100 × 101 ÷ 2 = 5050.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_021",
+      "prompt": "نبتة مائية يتضاعف حجمها كل يوم، وتغطي البحيرة كاملة في 48 يوماً. في أي يوم غطّت نصف البحيرة؟",
+      "choices": [
+        "اليوم 24",
+        "اليوم 46",
+        "اليوم 36",
+        "اليوم 47"
+      ],
+      "answer": "اليوم 47",
+      "aliases": [
+        "47"
+      ],
+      "explanation": "بما أنها تتضاعف كل يوم، فهي تغطي نصف البحيرة قبل اليوم الأخير بيوم واحد فقط.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_022",
+      "prompt": "ما هو محيط مربع مساحته 64 سم²؟",
+      "choices": [
+        "64 سم",
+        "24 سم",
+        "32 سم",
+        "16 سم"
+      ],
+      "answer": "32 سم",
+      "aliases": [
+        "32"
+      ],
+      "explanation": "طول الضلع = جذر 64 = 8 سم، والمحيط = 4 × 8 = 32 سم.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_023",
+      "prompt": "ما الشيء الذي يتكلم بلا فم ويسمع بلا أذنين ويحيا مع الريح والصوت؟",
+      "choices": [
+        "السحاب",
+        "الصدى",
+        "الهمس",
+        "الظل"
+      ],
+      "answer": "الصدى",
+      "aliases": [
+        "صدى الصوت"
+      ],
+      "explanation": "الصدى هو انعكاس الموجات الصوتية عن الأسطح.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_024",
+      "prompt": "كم عدداً أولياً يوجد بين 1 و20؟",
+      "choices": [
+        "9 أعداد",
+        "7 أعداد",
+        "6 أعداد",
+        "8 أعداد"
+      ],
+      "answer": "8 أعداد",
+      "aliases": [
+        "8",
+        "ثمانية"
+      ],
+      "explanation": "الأعداد الأولية هي: 2، 3، 5، 7، 11، 13، 17، 19 (العدد 1 ليس أولياً).",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_025",
+      "prompt": "ما ناتج قسمة 1000 على 25؟",
+      "choices": [
+        "50",
+        "40",
+        "25",
+        "45"
+      ],
+      "answer": "40",
+      "aliases": [],
+      "explanation": "100 ÷ 25 = 4، إذن 1000 ÷ 25 = 40.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_026",
+      "prompt": "ما الشيء الذي يضم مدناً وجبالاً وأنهاراً لكن بلا بيوت ولا أشجار ولا ماء؟",
+      "choices": [
+        "الكتاب",
+        "اللوحة",
+        "الخريطة",
+        "الحلم"
+      ],
+      "answer": "الخريطة",
+      "aliases": [
+        "خريطة"
+      ],
+      "explanation": "تمثل الخريطة المعالم الجغرافية على الورق أو الشاشة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_027",
+      "prompt": "إذا كان 3س + 7 = 22، فما قيمة س؟",
+      "choices": [
+        "5",
+        "4",
+        "6",
+        "7"
+      ],
+      "answer": "5",
+      "aliases": [],
+      "explanation": "3س = 15، ومنه س = 5.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_028",
+      "prompt": "كم درجة يدور عقرب الدقائق خلال 20 دقيقة؟",
+      "choices": [
+        "100 درجة",
+        "150 درجة",
+        "120 درجة",
+        "90 درجة"
+      ],
+      "answer": "120 درجة",
+      "aliases": [
+        "120"
+      ],
+      "explanation": "20 دقيقة تمثل ثلث الساعة، وثلث 360 درجة يساوي 120 درجة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_029",
+      "prompt": "ما هو أصغر عدد صحيح موجب يقبل القسمة على 2 و3 و4 و5 و6 في آن واحد؟",
+      "choices": [
+        "30",
+        "120",
+        "48",
+        "60"
+      ],
+      "answer": "60",
+      "aliases": [],
+      "explanation": "المضاعف المشترك الأصغر للأعداد 2 و3 و4 و5 و6 هو 60.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math_logic_riddles_ar_030",
+      "prompt": "كم تساوي الزاوية بين عقرب الساعات وعقرب الدقائق عندما تشير الساعة إلى 3:15 تماماً؟",
+      "choices": [
+        "0 درجة",
+        "7.5 درجة",
+        "15 درجة",
+        "22.5 درجة"
+      ],
+      "answer": "7.5 درجة",
+      "aliases": [
+        "7.5"
+      ],
+      "explanation": "يتحرك عقرب الساعات ربع المسافة نحو الرابعة (7.5 درجة) بينما يكون عقرب الدقائق عند الثالثة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math_logic_riddles_ar_031",
+      "prompt": "ما ناتج 12² − 11² ذهنياً؟",
+      "choices": [
+        "1",
+        "21",
+        "25",
+        "23"
+      ],
+      "answer": "23",
+      "aliases": [],
+      "explanation": "144 − 121 = 23 (أو بفرق المربعين: 1 × 23 = 23).",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math_logic_riddles_ar_032",
+      "prompt": "ما الكسر 3/4 معبَّراً عنه كنسبة مئوية؟",
+      "choices": [
+        "80%",
+        "75%",
+        "70%",
+        "65%"
+      ],
+      "answer": "75%",
+      "aliases": [
+        "75"
+      ],
+      "explanation": "ثلاثة أرباع تساوي 0.75 أي 75%.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_033",
+      "prompt": "في غرفة تضم 23 شخصاً فقط، ما احتمال أن يشترك شخصان على الأقل في نفس يوم الميلاد؟",
+      "choices": [
+        "أكثر من 50%",
+        "أقل من 10%",
+        "نحو 6%",
+        "نحو 23%"
+      ],
+      "answer": "أكثر من 50%",
+      "aliases": [
+        "50%"
+      ],
+      "explanation": "تُعرف بمفارقة عيد الميلاد، ويصل الاحتمال إلى 50.7% عند 23 شخصاً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math_logic_riddles_ar_034",
+      "prompt": "ما الشيء الذي له مفاتيح لا تفتح أقفالاً ومساحة بلا غرفة؟",
+      "choices": [
+        "الخريطة",
+        "الساعة",
+        "البيانو",
+        "لوحة المفاتيح"
+      ],
+      "answer": "لوحة المفاتيح",
+      "aliases": [
+        "الكيبورد"
+      ],
+      "explanation": "تضم لوحة المفاتيح أزرار المفاتيح ومفتاح المسافة ومفتاح الإدخال.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_035",
+      "prompt": "ما هو الرقم الروماني الذي يمثل العدد 50؟",
+      "choices": [
+        "D",
+        "X",
+        "C",
+        "L"
+      ],
+      "answer": "L",
+      "aliases": [],
+      "explanation": "X=10، L=50، C=100، D=500، M=1000.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math_logic_riddles_ar_036",
+      "prompt": "لديك 3 تفاحات وأخذتَ منها اثنتين، فكم تفاحة لديك الآن؟",
+      "choices": [
+        "صفر",
+        "3 تفاحات",
+        "تفاحتان",
+        "تفاحة واحدة"
+      ],
+      "answer": "تفاحتان",
+      "aliases": [
+        "2",
+        "اثنتان"
+      ],
+      "explanation": "أنتَ مَن أخذ التفاحتين فأصبحتا معك!",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    }
+  ]
+}

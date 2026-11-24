@@ -1,0 +1,624 @@
+{
+  "pack_id": "arabic_proverbs_ar",
+  "title": "أمثال وبلاغة عربية",
+  "description": "36 سؤالاً في إكمال الأمثال العربية الشهيرة ومعاني المفردات الفصيحة والجذور والبلاغة.",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "اللغة والأدب",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "arabic_proverbs_ar_001",
+      "prompt": "أكمل المثل العربي الشهير: «العصفور في اليد خيرٌ من عشرةٍ على ___»",
+      "choices": [
+        "الشجرة",
+        "السحاب",
+        "السطح",
+        "الغصن"
+      ],
+      "answer": "الشجرة",
+      "aliases": [],
+      "explanation": "يُضرب المثل لتفضيل القليل المضمون على الكثير غير المحقق.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_002",
+      "prompt": "أكمل المثل العربي: «في التأني السلامة وفي العجلة ___»",
+      "choices": [
+        "الخسارة",
+        "الندامة",
+        "الحسرة",
+        "الهلاك"
+      ],
+      "answer": "الندامة",
+      "aliases": [],
+      "explanation": "يدعو المثل إلى التروي والتفكير قبل اتخاذ القرارات.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_003",
+      "prompt": "أكمل المثل العربي: «رُبَّ أخٍ لك لم تلده ___»",
+      "choices": [
+        "أرضك",
+        "قبيلتك",
+        "أمك",
+        "خالتك"
+      ],
+      "answer": "أمك",
+      "aliases": [],
+      "explanation": "يُقال في الصديق الوفي الذي يفوق إخلاصه رابطة الدم.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_004",
+      "prompt": "أكمل المثل العربي الشهير: «الصديق وقت ___»",
+      "choices": [
+        "السفر",
+        "الضيق",
+        "الطريق",
+        "الفرح"
+      ],
+      "answer": "الضيق",
+      "aliases": [],
+      "explanation": "يُقاس صدق الصداقة عند الشدائد والمحن.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_005",
+      "prompt": "أكمل المثل العربي: «من جدَّ وجد، ومن زرع ___»",
+      "choices": [
+        "ربح",
+        "نجح",
+        "حصد",
+        "نال"
+      ],
+      "answer": "حصد",
+      "aliases": [],
+      "explanation": "يؤكد المثل أن النجاح ثمرة الاجتهاد والعمل المستمر.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_006",
+      "prompt": "أكمل المثل العربي: «إذا كان الكلام من فضة فالسكوت من ___»",
+      "choices": [
+        "لؤلؤ",
+        "ألماس",
+        "ذهب",
+        "نور"
+      ],
+      "answer": "ذهب",
+      "aliases": [],
+      "explanation": "يُضرب في فضل الصمت والحكمة عند عدم الحاجة للكلام.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_007",
+      "prompt": "أكمل المثل العربي: «رجع بخفَّي ___»",
+      "choices": [
+        "عنترة",
+        "حنين",
+        "حاتم",
+        "زيد"
+      ],
+      "answer": "حنين",
+      "aliases": [],
+      "explanation": "يُضرب لمن عاد من سعيه خائباً دون أن يحقق شيئاً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_008",
+      "prompt": "أكمل المثل العربي: «وافق شنٌّ ___»",
+      "choices": [
+        "رفيقه",
+        "نجماً",
+        "طبقة",
+        "قمر"
+      ],
+      "answer": "طبقة",
+      "aliases": [],
+      "explanation": "يُضرب في التوافق التام بين شخصين في الطباع والذكاء.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_009",
+      "prompt": "أكمل المثل العربي: «الوقاية خيرٌ من ___»",
+      "choices": [
+        "العلاج",
+        "الصبر",
+        "الدواء",
+        "الشفاء"
+      ],
+      "answer": "العلاج",
+      "aliases": [],
+      "explanation": "يدل على أن الحذر المسبق أفضل من معالجة المشكلة بعد وقوعها.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_010",
+      "prompt": "أكمل المثل العربي: «لا تؤجل عمل اليوم إلى ___»",
+      "choices": [
+        "الغد",
+        "الأسبوع",
+        "الليل",
+        "المساء"
+      ],
+      "answer": "الغد",
+      "aliases": [
+        "غد"
+      ],
+      "explanation": "يحث المثل على المبادرة وتجنب التسويف.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_011",
+      "prompt": "أكمل المثل العربي: «الجار قبل ___»",
+      "choices": [
+        "البناء",
+        "الدار",
+        "الطريق",
+        "السفر"
+      ],
+      "answer": "الدار",
+      "aliases": [],
+      "explanation": "يبرز أهمية اختيار الجار الصالح قبل اختيار المسكن.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_012",
+      "prompt": "أكمل المثل العربي: «أهل مكة أدرى بـ ___»",
+      "choices": [
+        "أبوابها",
+        "رمالها",
+        "شعابها",
+        "جبالها"
+      ],
+      "answer": "شعابها",
+      "aliases": [],
+      "explanation": "يُضرب لأن صاحب المكان أو الاختصاص أعلم بتفاصيله.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_013",
+      "prompt": "أكمل المثل العربي: «سبق السيفُ ___»",
+      "choices": [
+        "العذل",
+        "الندم",
+        "اللوم",
+        "الحكم"
+      ],
+      "answer": "العذل",
+      "aliases": [],
+      "explanation": "يُضرب للأمر الذي وقع وانتهى ولا ينفع فيه اللوم بعد فوات الأوان.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_014",
+      "prompt": "أكمل المثل العربي: «أسمعُ جعجعةً ولا أرى ___»",
+      "choices": [
+        "قمحاً",
+        "دقيقاً",
+        "خبزاً",
+        "طحناً"
+      ],
+      "answer": "طحناً",
+      "aliases": [
+        "طحنا"
+      ],
+      "explanation": "يُضرب لمن يكثر الكلام والضجيج دون عمل حقيقي.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_015",
+      "prompt": "أكمل المثل العربي: «لكل جوادٍ ___»",
+      "choices": [
+        "زلة",
+        "كبوة",
+        "عثرة",
+        "سقطة"
+      ],
+      "answer": "كبوة",
+      "aliases": [],
+      "explanation": "يعني أن حتى الماهر الخبير قد يخطئ أحياناً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_016",
+      "prompt": "أكمل المثل العربي: «ربَّ رميةٍ من غير ___»",
+      "choices": [
+        "قوس",
+        "هدف",
+        "سهم",
+        "رامٍ"
+      ],
+      "answer": "رامٍ",
+      "aliases": [
+        "رام"
+      ],
+      "explanation": "يُضرب لمن يصيب الهدف بالصدفة رغم قلة خبرته.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_017",
+      "prompt": "أكمل المثل العربي: «الطيور على أشكالها ___»",
+      "choices": [
+        "تطير",
+        "تقع",
+        "تجتمع",
+        "تغرد"
+      ],
+      "answer": "تقع",
+      "aliases": [],
+      "explanation": "يدل على أن الناس يميلون إلى مصاحبة من يشبههم في الطباع.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_018",
+      "prompt": "أكمل المثل العربي: «يدٌ واحدةٌ لا ___»",
+      "choices": [
+        "تصفق",
+        "تكتب",
+        "ترفع",
+        "تبني"
+      ],
+      "answer": "تصفق",
+      "aliases": [],
+      "explanation": "يدل على أهمية التعاون والعمل الجماعي.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_019",
+      "prompt": "ما معنى كلمة «الغضنفر» في اللغة العربية الفصحى؟",
+      "choices": [
+        "الجمل",
+        "الأسد",
+        "الصقر",
+        "الذئب"
+      ],
+      "answer": "الأسد",
+      "aliases": [],
+      "explanation": "الغضنفر والليث والهزبر وأسامة كلها من أسماء الأسد في العربية.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_020",
+      "prompt": "ما معنى كلمة «المُهنَّد» في الشعر العربي القديم؟",
+      "choices": [
+        "الرمح الطويل",
+        "الفرس الأصيل",
+        "الدرع الحديدي",
+        "السيف المصنوع من حديد الهند"
+      ],
+      "answer": "السيف المصنوع من حديد الهند",
+      "aliases": [
+        "السيف"
+      ],
+      "explanation": "اشتهر حديد الهند بجودته الفائقة في صناعة السيوف العربية.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_021",
+      "prompt": "ما معنى كلمة «السَّمَيدَع» في اللغة العربية؟",
+      "choices": [
+        "الصوت المرتفع",
+        "البخيل الشديد",
+        "السيد الكريم الشجاع",
+        "المسافر التائه"
+      ],
+      "answer": "السيد الكريم الشجاع",
+      "aliases": [],
+      "explanation": "يُقال للرجل الشريف السخي الشجاع: سميدع.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "arabic_proverbs_ar_022",
+      "prompt": "ما هو جمع التكسير الصحيح لكلمة «عَندَليب»؟",
+      "choices": [
+        "عنادلون",
+        "عناديل",
+        "عندليبات",
+        "عنادل"
+      ],
+      "answer": "عنادل",
+      "aliases": [],
+      "explanation": "يُحذف الحرف الزائد عند جمع الاسم الخماسي فتصبح عنادل.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_023",
+      "prompt": "ما هو جمع كلمة «أخطبوط» في اللغة العربية الفصحى؟",
+      "choices": [
+        "خُطب",
+        "أخاطب",
+        "أخطبوطون",
+        "أخاطيب"
+      ],
+      "answer": "أخاطب",
+      "aliases": [
+        "أخطبوطات"
+      ],
+      "explanation": "تُجمع أخطبوط على أخاطب (كما يُجيز المعجم المعاصر أخطبوطات).",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "arabic_proverbs_ar_024",
+      "prompt": "ما هو جمع كلمة «دلو»؟",
+      "choices": [
+        "دَلوات",
+        "أدلاء",
+        "دَوالٍ",
+        "دِلاء"
+      ],
+      "answer": "دِلاء",
+      "aliases": [
+        "دلاء",
+        "أدلٍ"
+      ],
+      "explanation": "دلو تُجمع على دِلاء وأدلٍ ودُلِيّ.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_025",
+      "prompt": "ما اسم صغير الأسد في اللغة العربية؟",
+      "choices": [
+        "الفرخ",
+        "الشبل",
+        "الجرو",
+        "الدغفل"
+      ],
+      "answer": "الشبل",
+      "aliases": [
+        "شبل"
+      ],
+      "explanation": "يُسمى صغير الأسد شبلاً وأنثى الأسد لبؤة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_026",
+      "prompt": "ما اسم صغير الفيل في اللغة العربية الفصحى؟",
+      "choices": [
+        "الخرنق",
+        "الدغفل",
+        "الهجرس",
+        "الحوار"
+      ],
+      "answer": "الدغفل",
+      "aliases": [
+        "دغفل"
+      ],
+      "explanation": "الدغفل هو ولد الفيل، بينما الحوار هو ولد الناقة.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "arabic_proverbs_ar_027",
+      "prompt": "ما اسم صغير الأرنب في اللغة العربية؟",
+      "choices": [
+        "الدغفل",
+        "الخرنق",
+        "الفرعل",
+        "الشبل"
+      ],
+      "answer": "الخرنق",
+      "aliases": [
+        "خرنق"
+      ],
+      "explanation": "تتميز العربية بثراء أسماء صغار الحيوانات وأصواتها.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "arabic_proverbs_ar_028",
+      "prompt": "ما اسم صوت الأسد في اللغة العربية؟",
+      "choices": [
+        "الصهيل",
+        "النهيق",
+        "الزئير",
+        "العواء"
+      ],
+      "answer": "الزئير",
+      "aliases": [
+        "زئير"
+      ],
+      "explanation": "الزئير للأسد، والعواء للذئب، والصهيل للخيل.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_029",
+      "prompt": "ما اسم صوت الماء الجاري في اللغة العربية الفصحى؟",
+      "choices": [
+        "الصفير",
+        "الهدير",
+        "الحفيف",
+        "الخرير"
+      ],
+      "answer": "الخرير",
+      "aliases": [
+        "خرير"
+      ],
+      "explanation": "خرير الماء، وحفيف الشجر، وهدير البحر أو الرعد.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_030",
+      "prompt": "ما اسم صوت أوراق الشجر عندما تحركها الرياح؟",
+      "choices": [
+        "الأزيز",
+        "الخرير",
+        "الصليل",
+        "الحفيف"
+      ],
+      "answer": "الحفيف",
+      "aliases": [
+        "حفيف"
+      ],
+      "explanation": "يُقال حفيف الأوراق وصليل السيوف وصرير القلم.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_031",
+      "prompt": "ما هو الجذر الثلاثي لكلمة «استغفار»؟",
+      "choices": [
+        "غ ف ل",
+        "غ ف ر",
+        "س غ ف",
+        "ف غ ر"
+      ],
+      "answer": "غ ف ر",
+      "aliases": [
+        "غفر"
+      ],
+      "explanation": "بحذف حروف الزيادة (أ، س، ت، ا) يتبقى الجذر الثلاثي: غفر.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_032",
+      "prompt": "ما هو الجذر الثلاثي لكلمة «تاريخ» في المعاجم العربية؟",
+      "choices": [
+        "أ ر خ",
+        "ر و خ",
+        "ت ر خ",
+        "و ر خ"
+      ],
+      "answer": "أ ر خ",
+      "aliases": [
+        "أرخ"
+      ],
+      "explanation": "تاريخ مصدر للفعل أرّخ من الجذر (أ ر خ).",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_033",
+      "prompt": "من هو الشاعر العباسي الملقب بـ «مالئ الدنيا وشاغل الناس» وصاحب بيت «على قدر أهل العزم تأتي العزائم»؟",
+      "choices": [
+        "البحتري",
+        "أبو العلاء المعري",
+        "المتنبي",
+        "أبو تمام"
+      ],
+      "answer": "المتنبي",
+      "aliases": [
+        "أبو الطيب المتنبي"
+      ],
+      "explanation": "يُعد أبو الطيب المتنبي من أعظم شعراء العربية عبر العصور.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_034",
+      "prompt": "كم عدد حروف اللغة العربية؟",
+      "choices": [
+        "29 حرفاً",
+        "28 حرفاً",
+        "30 حرفاً",
+        "26 حرفاً"
+      ],
+      "answer": "28 حرفاً",
+      "aliases": [
+        "28"
+      ],
+      "explanation": "تتكون الأبجدية العربية من 28 حرفاً وتُكتب من اليمين إلى اليسار.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "arabic_proverbs_ar_035",
+      "prompt": "ما اسم المحسّن البديعي الذي يجمع بين كلمتين متضادتين في المعنى مثل «الليل والنهار»؟",
+      "choices": [
+        "الجناس",
+        "الطباق",
+        "التورية",
+        "السجع"
+      ],
+      "answer": "الطباق",
+      "aliases": [],
+      "explanation": "الطباق هو الجمع بين الشيء وضده في الكلام لإبراز المعنى.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "arabic_proverbs_ar_036",
+      "prompt": "ما اسم المحسّن البديعي حين تتشابه كلمتان في اللفظ وتختلفان في المعنى مثل «صليتُ المغرب في المغرب»؟",
+      "choices": [
+        "السجع",
+        "الطباق",
+        "الجناس التام",
+        "الاستعارة"
+      ],
+      "answer": "الجناس التام",
+      "aliases": [
+        "الجناس"
+      ],
+      "explanation": "الجناس التام يمنح الجملة إيقاعاً موسيقياً وبلاغياً مميزاً.",
+      "language": "ar",
+      "rtl": true,
+      "difficulty": "medium"
+    }
+  ]
+}

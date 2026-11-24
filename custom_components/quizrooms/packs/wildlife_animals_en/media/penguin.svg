@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Flightless Antarctic bird silhouette">
+  <rect width="640" height="480" rx="24" fill="#E0F2FE"/>
+  <ellipse cx="320" cy="265" rx="92" ry="135" fill="#0F172A"/>
+  <ellipse cx="320" cy="278" rx="60" ry="102" fill="#F8FAFC"/>
+  <circle cx="320" cy="135" r="54" fill="#0F172A"/>
+  <polygon points="355,132 410,145 355,156" fill="#F59E0B"/>
+  <circle cx="338" cy="126" r="7" fill="#FFFFFF"/>
+  <ellipse cx="285" cy="402" rx="28" ry="12" fill="#F59E0B"/>
+  <ellipse cx="355" cy="402" rx="28" ry="12" fill="#F59E0B"/>
+</svg>

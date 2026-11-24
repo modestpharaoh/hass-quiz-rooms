@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Tall savanna mammal silhouette">
+  <rect width="640" height="480" rx="24" fill="#FEF3C7"/>
+  <path d="M250,420 L250,305 L210,305 L210,420 L185,420 L185,250 C185,220 220,210 275,215 L360,85 L350,65 L365,60 L375,78 L415,85 L412,106 L378,112 L335,235 L335,420 L310,420 L310,305 L275,305 L275,420 Z" fill="#B45309"/>
+  <circle cx="255" cy="250" r="14" fill="#78350F"/>
+  <circle cx="300" cy="265" r="12" fill="#78350F"/>
+  <circle cx="325" cy="190" r="10" fill="#78350F"/>
+  <circle cx="350" cy="145" r="9" fill="#78350F"/>
+</svg>

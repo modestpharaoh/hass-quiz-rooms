@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Total solar eclipse diagram">
+  <rect width="640" height="480" rx="24" fill="#090D16"/>
+  <circle cx="320" cy="240" r="145" fill="#F59E0B" fill-opacity="0.16"/>
+  <circle cx="320" cy="240" r="118" fill="#FBBF24" fill-opacity="0.32"/>
+  <circle cx="320" cy="240" r="98" fill="#FEF08A"/>
+  <circle cx="320" cy="240" r="92" fill="#090D16"/>
+  <polygon points="320,62 332,126 308,126" fill="#FDE68A" fill-opacity="0.5"/>
+  <polygon points="320,418 332,354 308,354" fill="#FDE68A" fill-opacity="0.5"/>
+  <polygon points="142,240 206,228 206,252" fill="#FDE68A" fill-opacity="0.5"/>
+  <polygon points="498,240 434,228 434,252" fill="#FDE68A" fill-opacity="0.5"/>
+</svg>

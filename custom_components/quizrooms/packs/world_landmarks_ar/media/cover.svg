@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="World Landmarks Cover">
+  <defs>
+    <linearGradient id="lmbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#92400E"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="30" fill="url(#lmbg)"/>
+  <circle cx="116" cy="44" r="16" fill="#FEF08A"/>
+  <polygon points="20,124 68,52 116,124" fill="#FDE68A"/>
+  <polygon points="68,52 116,124 88,124" fill="#F59E0B"/>
+  <polygon points="74,124 108,76 142,124" fill="#FEF3C7"/>
+  <polygon points="108,76 142,124 122,124" fill="#D97706"/>
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3"/>
+</svg>

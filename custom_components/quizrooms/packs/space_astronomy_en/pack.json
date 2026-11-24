@@ -1,0 +1,629 @@
+{
+  "pack_id": "space_astronomy_en",
+  "title": "Space & Astronomy",
+  "description": "36 original questions on planets, moons, constellations, telescopes, and space missions with local SVG diagrams.",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms",
+  "category": "Science",
+  "cover": "media/cover.svg",
+  "questions": [
+    {
+      "id": "space_astronomy_en_001",
+      "prompt": "Which planet in our Solar System is illustrated with its iconic icy ring system?",
+      "choices": [
+        "Saturn",
+        "Neptune",
+        "Uranus",
+        "Jupiter"
+      ],
+      "answer": "Saturn",
+      "aliases": [],
+      "explanation": "Saturn's rings span up to 282,000 km across yet are often only tens of meters thick.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/saturn.svg"
+    },
+    {
+      "id": "space_astronomy_en_002",
+      "prompt": "What celestial event occurs when the Moon passes directly between the Sun and Earth, as illustrated here?",
+      "choices": [
+        "Lunar eclipse",
+        "Transit of Venus",
+        "Total solar eclipse",
+        "Equinox"
+      ],
+      "answer": "Total solar eclipse",
+      "aliases": [
+        "Solar eclipse"
+      ],
+      "explanation": "During a total solar eclipse, the Moon blocks the Sun's bright disk, revealing the solar corona.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/eclipse.svg"
+    },
+    {
+      "id": "space_astronomy_en_003",
+      "prompt": "Which famous constellation features the iconic three-star belt illustrated here?",
+      "choices": [
+        "Orion",
+        "Cassiopeia",
+        "Scorpius",
+        "Ursa Major"
+      ],
+      "answer": "Orion",
+      "aliases": [
+        "Orion the Hunter"
+      ],
+      "explanation": "Orion's Belt consists of Alnitak, Alnilam, and Mintaka, flanked by Betelgeuse and Rigel.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/orion.svg"
+    },
+    {
+      "id": "space_astronomy_en_004",
+      "prompt": "Which infrared space telescope uses the 18 hexagonal gold-coated mirror segments illustrated here?",
+      "choices": [
+        "James Webb Space Telescope",
+        "Chandra X-ray Observatory",
+        "Spitzer Space Telescope",
+        "Hubble Space Telescope"
+      ],
+      "answer": "James Webb Space Telescope",
+      "aliases": [
+        "JWST",
+        "James Webb"
+      ],
+      "explanation": "Launched in December 2021, JWST orbits the Sun-Earth L2 point 1.5 million km away.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/jwst.svg"
+    },
+    {
+      "id": "space_astronomy_en_005",
+      "prompt": "Which lunar phase is shown when less than half of the Moon's illuminated disk is visible as a curved sliver?",
+      "choices": [
+        "Full Moon",
+        "First Quarter",
+        "Gibbous Moon",
+        "Crescent Moon"
+      ],
+      "answer": "Crescent Moon",
+      "aliases": [
+        "Crescent"
+      ],
+      "explanation": "A waxing or waning crescent appears before or after the New Moon.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy",
+      "image": "media/moon_phases.svg"
+    },
+    {
+      "id": "space_astronomy_en_006",
+      "prompt": "Which planet is closest to the Sun?",
+      "choices": [
+        "Mars",
+        "Earth",
+        "Mercury",
+        "Venus"
+      ],
+      "answer": "Mercury",
+      "aliases": [],
+      "explanation": "Mercury orbits the Sun at an average distance of about 58 million km.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_007",
+      "prompt": "Which planet is the hottest in our Solar System due to its runaway greenhouse atmosphere?",
+      "choices": [
+        "Jupiter",
+        "Mercury",
+        "Venus",
+        "Mars"
+      ],
+      "answer": "Venus",
+      "aliases": [],
+      "explanation": "Venus's thick carbon dioxide atmosphere traps heat, raising surface temperatures above 460°C.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_008",
+      "prompt": "Which planet is known as the 'Red Planet' because of iron oxide dust on its surface?",
+      "choices": [
+        "Mercury",
+        "Venus",
+        "Mars",
+        "Jupiter"
+      ],
+      "answer": "Mars",
+      "aliases": [],
+      "explanation": "Rusty iron oxide minerals give Mars its signature reddish hue.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_009",
+      "prompt": "What is the largest planet in our Solar System?",
+      "choices": [
+        "Saturn",
+        "Neptune",
+        "Jupiter",
+        "Uranus"
+      ],
+      "answer": "Jupiter",
+      "aliases": [],
+      "explanation": "Jupiter is more than twice as massive as all the other Solar System planets combined.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_010",
+      "prompt": "What is the name of the galaxy that contains our Solar System?",
+      "choices": [
+        "Milky Way",
+        "Triangulum",
+        "Andromeda",
+        "Whirlpool"
+      ],
+      "answer": "Milky Way",
+      "aliases": [
+        "Milky Way Galaxy"
+      ],
+      "explanation": "The Milky Way is a barred spiral galaxy containing 100 to 400 billion stars.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_011",
+      "prompt": "Who was the first human to walk on the Moon in July 1969?",
+      "choices": [
+        "Yuri Gagarin",
+        "Michael Collins",
+        "Neil Armstrong",
+        "Buzz Aldrin"
+      ],
+      "answer": "Neil Armstrong",
+      "aliases": [
+        "Armstrong"
+      ],
+      "explanation": "Neil Armstrong stepped onto the lunar surface during NASA's Apollo 11 mission.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_012",
+      "prompt": "Who was the first human to travel into outer space (1961)?",
+      "choices": [
+        "Yuri Gagarin",
+        "Neil Armstrong",
+        "Alan Shepard",
+        "John Glenn"
+      ],
+      "answer": "Yuri Gagarin",
+      "aliases": [
+        "Gagarin"
+      ],
+      "explanation": "Soviet cosmonaut Yuri Gagarin completed one orbit of Earth aboard Vostok 1 on April 12, 1961.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_013",
+      "prompt": "What is the closest star to Earth after the Sun?",
+      "choices": [
+        "Alpha Centauri A",
+        "Proxima Centauri",
+        "Betelgeuse",
+        "Sirius"
+      ],
+      "answer": "Proxima Centauri",
+      "aliases": [],
+      "explanation": "Proxima Centauri is a red dwarf star about 4.24 light-years away.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_014",
+      "prompt": "What is the brightest star in Earth's night sky?",
+      "choices": [
+        "Sirius",
+        "Canopus",
+        "Vega",
+        "Polaris"
+      ],
+      "answer": "Sirius",
+      "aliases": [
+        "Sirius A",
+        "Dog Star"
+      ],
+      "explanation": "Sirius in Canis Major is roughly 8.6 light-years from Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_015",
+      "prompt": "Which is the largest moon in our Solar System, orbiting Jupiter?",
+      "choices": [
+        "Europa",
+        "Callisto",
+        "Titan",
+        "Ganymede"
+      ],
+      "answer": "Ganymede",
+      "aliases": [],
+      "explanation": "Ganymede is larger than the planet Mercury and has its own magnetic field.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_016",
+      "prompt": "Which moon of Saturn is the only moon in the Solar System with a dense atmosphere and liquid surface lakes?",
+      "choices": [
+        "Mimas",
+        "Rhea",
+        "Enceladus",
+        "Titan"
+      ],
+      "answer": "Titan",
+      "aliases": [],
+      "explanation": "Titan's lakes and rivers are made of liquid methane and ethane.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_017",
+      "prompt": "What is the tallest known volcano and mountain in the Solar System, located on Mars?",
+      "choices": [
+        "Olympus Mons",
+        "Mauna Kea",
+        "Valles Marineris",
+        "Maxwell Montes"
+      ],
+      "answer": "Olympus Mons",
+      "aliases": [],
+      "explanation": "Olympus Mons rises nearly 22 km above the Martian plains — nearly three times Mount Everest's height.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_018",
+      "prompt": "Which planet rotates on its side with an axial tilt of about 98 degrees?",
+      "choices": [
+        "Venus",
+        "Saturn",
+        "Neptune",
+        "Uranus"
+      ],
+      "answer": "Uranus",
+      "aliases": [],
+      "explanation": "Uranus essentially rolls around the Sun on its side, causing extreme 42-year-long polar seasons.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_019",
+      "prompt": "Which planet in our Solar System rotates backward (retrograde) relative to most other planets?",
+      "choices": [
+        "Jupiter",
+        "Mercury",
+        "Mars",
+        "Venus"
+      ],
+      "answer": "Venus",
+      "aliases": [],
+      "explanation": "On Venus, the Sun rises in the west and sets in the east.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_020",
+      "prompt": "What is the name of the massive, centuries-old anticyclonic storm on Jupiter?",
+      "choices": [
+        "Great Dark Spot",
+        "Cassini Vortex",
+        "Great Red Spot",
+        "Hexagon Storm"
+      ],
+      "answer": "Great Red Spot",
+      "aliases": [],
+      "explanation": "The Great Red Spot is larger than the entire planet Earth.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_021",
+      "prompt": "Approximately how long does sunlight take to travel from the Sun to Earth?",
+      "choices": [
+        "8 minutes",
+        "1 minute",
+        "24 minutes",
+        "1 hour"
+      ],
+      "answer": "8 minutes",
+      "aliases": [
+        "8 minutes 20 seconds"
+      ],
+      "explanation": "Light travels at ~300,000 km/s across the 150 million km Earth–Sun distance in 8 min 20 sec.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_022",
+      "prompt": "Which spacecraft, launched in 1977, became the first human-made object to enter interstellar space?",
+      "choices": [
+        "New Horizons",
+        "Pioneer 10",
+        "Voyager 1",
+        "Cassini"
+      ],
+      "answer": "Voyager 1",
+      "aliases": [
+        "Voyager"
+      ],
+      "explanation": "Voyager 1 crossed the heliopause into interstellar space in August 2012.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_023",
+      "prompt": "Which famous comet returns to the inner Solar System roughly every 75 to 76 years?",
+      "choices": [
+        "Comet Hale-Bopp",
+        "Shoemaker-Levy 9",
+        "Halley's Comet",
+        "Comet NEOWISE"
+      ],
+      "answer": "Halley's Comet",
+      "aliases": [
+        "Halleys Comet",
+        "Halley"
+      ],
+      "explanation": "Halley's Comet last appeared in 1986 and is due back in 2061.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_024",
+      "prompt": "What is the name of the major spiral galaxy closest to the Milky Way?",
+      "choices": [
+        "Triangulum Galaxy",
+        "Sombrero Galaxy",
+        "Whirlpool Galaxy",
+        "Andromeda Galaxy"
+      ],
+      "answer": "Andromeda Galaxy",
+      "aliases": [
+        "Andromeda",
+        "M31"
+      ],
+      "explanation": "Andromeda lies about 2.5 million light-years away and will merge with the Milky Way in ~4.5 billion years.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_025",
+      "prompt": "Which moon of Jupiter is considered a prime candidate for extraterrestrial life due to its subsurface saltwater ocean?",
+      "choices": [
+        "Europa",
+        "Io",
+        "Triton",
+        "Phobos"
+      ],
+      "answer": "Europa",
+      "aliases": [],
+      "explanation": "Europa's icy crust hides a global ocean warmed by tidal flexing from Jupiter.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_026",
+      "prompt": "Which is the most volcanically active body in the Solar System, orbiting Jupiter?",
+      "choices": [
+        "Triton",
+        "Europa",
+        "Titan",
+        "Io"
+      ],
+      "answer": "Io",
+      "aliases": [],
+      "explanation": "Io has over 400 active volcanoes powered by intense tidal heating.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_027",
+      "prompt": "In 2006, the International Astronomical Union reclassified Pluto as what type of object?",
+      "choices": [
+        "Kuiper comet",
+        "Dwarf planet",
+        "Exoplanet",
+        "Asteroid"
+      ],
+      "answer": "Dwarf planet",
+      "aliases": [],
+      "explanation": "Pluto shares its orbital neighborhood in the Kuiper Belt with other icy bodies.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_028",
+      "prompt": "What is the name of the boundary around a black hole beyond which nothing, not even light, can escape?",
+      "choices": [
+        "Event horizon",
+        "Roche limit",
+        "Accretion disk",
+        "Singularity"
+      ],
+      "answer": "Event horizon",
+      "aliases": [],
+      "explanation": "The event horizon marks the point of no return around a black hole.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_029",
+      "prompt": "Which giant canyon system on Mars stretches over 4,000 km, dwarfing Earth's Grand Canyon?",
+      "choices": [
+        "Gale Crater",
+        "Hellas Planitia",
+        "Valles Marineris",
+        "Olympus Rift"
+      ],
+      "answer": "Valles Marineris",
+      "aliases": [],
+      "explanation": "Valles Marineris is up to 7 km deep and 200 km wide.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "space_astronomy_en_030",
+      "prompt": "Which NASA rover landed in Jezero Crater on Mars in 2021 carrying the Ingenuity helicopter?",
+      "choices": [
+        "Perseverance",
+        "Spirit",
+        "Curiosity",
+        "Opportunity"
+      ],
+      "answer": "Perseverance",
+      "aliases": [],
+      "explanation": "Ingenuity achieved the first powered, controlled flight on another planet.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_031",
+      "prompt": "What is the name of the supermassive black hole at the center of our Milky Way galaxy?",
+      "choices": [
+        "Cygnus X-1",
+        "M87*",
+        "TON 618",
+        "Sagittarius A*"
+      ],
+      "answer": "Sagittarius A*",
+      "aliases": [
+        "Sagittarius A Star",
+        "Sgr A*"
+      ],
+      "explanation": "Sagittarius A* has a mass roughly 4 million times that of our Sun.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "space_astronomy_en_032",
+      "prompt": "What is the distance light travels in one Julian year (~9.46 trillion km) called?",
+      "choices": [
+        "Astronomical unit",
+        "Parsec",
+        "Light-year",
+        "Kiloparsec"
+      ],
+      "answer": "Light-year",
+      "aliases": [
+        "Light year"
+      ],
+      "explanation": "A light-year is a unit of distance, not time.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "space_astronomy_en_033",
+      "prompt": "What is the region of icy bodies beyond Neptune's orbit that includes Pluto called?",
+      "choices": [
+        "Kuiper Belt",
+        "Asteroid Belt",
+        "Van Allen Belt",
+        "Oort Cloud"
+      ],
+      "answer": "Kuiper Belt",
+      "aliases": [],
+      "explanation": "The Kuiper Belt extends roughly from 30 to 50 astronomical units from the Sun.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_034",
+      "prompt": "What are the two small, irregularly shaped moons of Mars named?",
+      "choices": [
+        "Titan and Rhea",
+        "Triton and Proteus",
+        "Io and Europa",
+        "Phobos and Deimos"
+      ],
+      "answer": "Phobos and Deimos",
+      "aliases": [
+        "Deimos and Phobos"
+      ],
+      "explanation": "Their names mean 'fear' and 'dread' in Greek mythology.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "space_astronomy_en_035",
+      "prompt": "Which space probe flew past Pluto in 2015, revealing its famous heart-shaped nitrogen glacier?",
+      "choices": [
+        "Juno",
+        "New Horizons",
+        "Voyager 2",
+        "Cassini"
+      ],
+      "answer": "New Horizons",
+      "aliases": [],
+      "explanation": "Tombaugh Regio is the bright heart-shaped plain on Pluto.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "hard"
+    },
+    {
+      "id": "space_astronomy_en_036",
+      "prompt": "What is the name of the phenomenon where a massive star ends its life in a colossal luminous explosion?",
+      "choices": [
+        "Pulsar",
+        "Nebula",
+        "Supernova",
+        "Quasar"
+      ],
+      "answer": "Supernova",
+      "aliases": [],
+      "explanation": "Supernovae forge and disperse heavy elements like gold and iron into space.",
+      "language": "en",
+      "rtl": false,
+      "difficulty": "easy"
+    }
+  ]
+}

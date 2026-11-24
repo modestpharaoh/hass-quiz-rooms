@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Ancient Roman arched amphitheater">
+  <rect width="640" height="480" rx="24" fill="#FFEDD5"/>
+  <path d="M110,375 L110,165 L405,165 L435,230 L530,230 L530,375 Z" fill="#B45309"/>
+  <g fill="#FFEDD5">
+    <rect x="140" y="295" width="38" height="60" rx="19"/>
+    <rect x="200" y="295" width="38" height="60" rx="19"/>
+    <rect x="260" y="295" width="38" height="60" rx="19"/>
+    <rect x="320" y="295" width="38" height="60" rx="19"/>
+    <rect x="380" y="295" width="38" height="60" rx="19"/>
+    <rect x="440" y="295" width="38" height="60" rx="19"/>
+    <rect x="140" y="205" width="38" height="55" rx="19"/>
+    <rect x="200" y="205" width="38" height="55" rx="19"/>
+    <rect x="260" y="205" width="38" height="55" rx="19"/>
+    <rect x="320" y="205" width="38" height="55" rx="19"/>
+  </g>
+</svg>
