@@ -89,15 +89,32 @@ class QuizRoomsAdminPanel extends HTMLElement {
     });
   }
 
+  _getOrInitStageDraft() {
+    if (!this._stageDraft) {
+      const stage = this._getStageData();
+      this._stageDraft = JSON.parse(JSON.stringify(stage.config));
+    }
+    return this._stageDraft;
+  }
+
   async _fetchState(opts = {}) {
     if (!this._hass) return;
+    if (this._savingStage && !opts.fromSave) return;
+    const reqSeq = (this._fetchSeq = (this._fetchSeq || 0) + 1);
     try {
       const resp = await this._hass.fetchWithAuth("/quizrooms/api/admin/state");
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      this._state = await resp.json();
+      const nextState = await resp.json();
+      // Discard stale out-of-order responses or background polls that raced with a save
+      if (reqSeq !== this._fetchSeq) return;
+      if (this._savingStage && !opts.fromSave) return;
+      this._state = nextState;
       if (this._state && this._state.stage_effects && this._state.stage_effects.config) {
-        if (!this._stageDirty || !this._stageDraft) {
-          this._stageDraft = JSON.parse(JSON.stringify(this._state.stage_effects.config));
+        const serverCfg = this._state.stage_effects.config;
+        if (!this._stageDraft) {
+          this._stageDraft = JSON.parse(JSON.stringify(serverCfg));
+        } else if (!this._stageDirty && JSON.stringify(this._stageDraft) !== JSON.stringify(serverCfg)) {
+          this._stageDraft = JSON.parse(JSON.stringify(serverCfg));
         }
       }
       this._renderContent(opts);
@@ -123,13 +140,21 @@ class QuizRoomsAdminPanel extends HTMLElement {
     }
   }
 
-  async _saveStageConfig() {
-    if (!this._stageDraft) return;
+  async _saveStageConfig(btnEl = null) {
+    const draft = this._getOrInitStageDraft();
+    if (!draft || this._savingStage) return;
+    this._savingStage = true;
+    const origLabel = btnEl ? btnEl.textContent : "";
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.textContent = "Saving…";
+    }
     try {
+      const payloadDraft = JSON.parse(JSON.stringify(draft));
       const resp = await this._hass.fetchWithAuth("/quizrooms/api/admin/stage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "save", config: this._stageDraft }),
+        body: JSON.stringify({ action: "save", config: payloadDraft }),
       });
       const body = await resp.json().catch(() => ({}));
       if (!resp.ok) {
@@ -139,9 +164,15 @@ class QuizRoomsAdminPanel extends HTMLElement {
         if (body.config) this._stageDraft = JSON.parse(JSON.stringify(body.config));
         this._setBanner(body.message || "Smart-Home Stage Effects settings saved.", false);
       }
-      await this._fetchState({ forceStage: true });
+      await this._fetchState({ forceStage: true, fromSave: true });
     } catch (err) {
       this._setBanner("Failed to save stage settings: " + err.message, true);
+    } finally {
+      this._savingStage = false;
+      if (btnEl && btnEl.isConnected) {
+        btnEl.disabled = false;
+        btnEl.textContent = origLabel || "Save Stage Settings";
+      }
     }
   }
 
@@ -688,7 +719,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
     if (!container) return;
 
     const stage = this._getStageData();
-    const draft = this._stageDraft || stage.config;
+    const draft = this._getOrInitStageDraft();
     const selectedLights = new Set(Array.isArray(draft.light_entities) ? draft.light_entities : []);
     if (countEl) countEl.textContent = String(selectedLights.size);
 
@@ -737,11 +768,11 @@ class QuizRoomsAdminPanel extends HTMLElement {
     container.querySelectorAll("[data-stage-light]").forEach((cb) => {
       cb.addEventListener("change", () => {
         const eid = cb.dataset.stageLight;
-        const nextSet = new Set(Array.isArray(draft.light_entities) ? draft.light_entities : []);
+        const liveDraft = this._getOrInitStageDraft();
+        const nextSet = new Set(Array.isArray(liveDraft.light_entities) ? liveDraft.light_entities : []);
         if (cb.checked) nextSet.add(eid);
         else nextSet.delete(eid);
-        draft.light_entities = Array.from(nextSet);
-        this._stageDraft = draft;
+        liveDraft.light_entities = Array.from(nextSet);
         this._markStageDirty();
         this._renderStageLightsList();
       });
@@ -964,15 +995,15 @@ class QuizRoomsAdminPanel extends HTMLElement {
       if (el) el.addEventListener(ev, () => fn(el));
     };
 
-    bind("stage-enabled-check", "change", (el) => { draft.enabled = el.checked; this._markStageDirty(); });
-    bind("stage-tv-only-check", "change", (el) => { draft.only_tv_followed_room = el.checked; this._markStageDirty(); });
-    bind("stage-restore-check", "change", (el) => { draft.restore_lights_on_end = el.checked; this._markStageDirty(); });
-    bind("stage-light-preset", "change", (el) => { draft.light_preset = el.value; this._markStageDirty(); });
-    bind("stage-reveal-rule", "change", (el) => { draft.reveal_green_rule = el.value; this._markStageDirty(); });
-    bind("stage-speaker-select", "change", (el) => { draft.speaker_entity = el.value; this._markStageDirty(); });
-    bind("stage-tts-select", "change", (el) => { draft.tts_entity = el.value; this._markStageDirty(); });
-    bind("stage-speaker-preset", "change", (el) => { draft.speaker_preset = el.value; this._markStageDirty(); });
-    bind("stage-speaker-language", "change", (el) => { draft.speaker_language = el.value; this._markStageDirty(); });
+    bind("stage-enabled-check", "change", (el) => { this._getOrInitStageDraft().enabled = el.checked; this._markStageDirty(); });
+    bind("stage-tv-only-check", "change", (el) => { this._getOrInitStageDraft().only_tv_followed_room = el.checked; this._markStageDirty(); });
+    bind("stage-restore-check", "change", (el) => { this._getOrInitStageDraft().restore_lights_on_end = el.checked; this._markStageDirty(); });
+    bind("stage-light-preset", "change", (el) => { this._getOrInitStageDraft().light_preset = el.value; this._markStageDirty(); });
+    bind("stage-reveal-rule", "change", (el) => { this._getOrInitStageDraft().reveal_green_rule = el.value; this._markStageDirty(); });
+    bind("stage-speaker-select", "change", (el) => { this._getOrInitStageDraft().speaker_entity = el.value; this._markStageDirty(); });
+    bind("stage-tts-select", "change", (el) => { this._getOrInitStageDraft().tts_entity = el.value; this._markStageDirty(); });
+    bind("stage-speaker-preset", "change", (el) => { this._getOrInitStageDraft().speaker_preset = el.value; this._markStageDirty(); });
+    bind("stage-speaker-language", "change", (el) => { this._getOrInitStageDraft().speaker_language = el.value; this._markStageDirty(); });
 
     bind("stage-light-filter", "input", (el) => {
       this._lightFilter = el.value;
@@ -980,24 +1011,27 @@ class QuizRoomsAdminPanel extends HTMLElement {
     });
 
     bind("stage-vol-enabled", "change", (el) => {
-      draft.speaker_volume_enabled = el.checked;
-      const curPct = Math.round(Math.max(5, Math.min(100, Number(draft.speaker_volume || 0.6) * 100)));
+      const liveDraft = this._getOrInitStageDraft();
+      liveDraft.speaker_volume_enabled = el.checked;
+      const curPct = Math.round(Math.max(5, Math.min(100, Number(liveDraft.speaker_volume || 0.6) * 100)));
       this._updateVolumeUI(curPct, el.checked);
       this._markStageDirty();
     });
 
     bind("stage-vol-slider", "input", (el) => {
+      const liveDraft = this._getOrInitStageDraft();
       const pct = Math.max(5, Math.min(100, Number(el.value) || 60));
-      draft.speaker_volume = Math.round(pct) / 100;
-      this._updateVolumeUI(pct, Boolean(draft.speaker_volume_enabled));
+      liveDraft.speaker_volume = Math.round(pct) / 100;
+      this._updateVolumeUI(pct, Boolean(liveDraft.speaker_volume_enabled));
       this._markStageDirty();
     });
 
     mount.querySelectorAll("[data-vol-preset]").forEach((btn) => {
       btn.addEventListener("click", () => {
+        const liveDraft = this._getOrInitStageDraft();
         const pct = Number(btn.dataset.volPreset) || 60;
-        draft.speaker_volume_enabled = true;
-        draft.speaker_volume = pct / 100;
+        liveDraft.speaker_volume_enabled = true;
+        liveDraft.speaker_volume = pct / 100;
         const chk = mount.querySelector("#stage-vol-enabled");
         if (chk) chk.checked = true;
         this._updateVolumeUI(pct, true);
@@ -1013,14 +1047,12 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const saveStageBtn = mount.querySelector("#stage-save-btn");
     if (saveStageBtn) {
       saveStageBtn.addEventListener("click", () => {
-        this._stageDraft = draft;
-        this._saveStageConfig();
+        this._saveStageConfig(saveStageBtn);
       });
     }
 
     mount.querySelectorAll("[data-stage-test]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        this._stageDraft = draft;
         this._testStageEffect(btn.dataset.stageTest, btn);
       });
     });
