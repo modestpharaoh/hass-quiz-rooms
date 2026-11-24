@@ -2,23 +2,46 @@
   <img src="custom_components/quizrooms/brand/logo.png" alt="QuizRooms" width="320" />
 </p>
 
-# QuizRooms for Home Assistant
+<h1 align="center">QuizRooms for Home Assistant</h1>
 
-**Local-first, multi-room confidence-wagering party trivia for Home Assistant** — installable via HACS with zero external CDNs or third-party Python dependencies, **37 built-in packs (3,066+ questions)**, full Arabic/RTL support, open-ended party games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, difficulty tiers, a Full HD & 4K 16:9 Studio TV Dashboard, Smart TV launcher, and a Home Assistant Admin Sidebar Panel.
+<p align="center">
+  <strong>Local-first, multi-room confidence-wagering party trivia for Home Assistant</strong><br/>
+  Zero external CDNs · Zero Python dependencies · 37 built-in packs (3,064 questions) · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
+</p>
+
+---
+
+## ⭐ Support & Star the Project
+
+If **QuizRooms** brings fun to your family game nights, living room TV, or Home Assistant setup, please consider **giving this repository a ⭐ Star on GitHub**!
+
+- ⭐ **Star [modestpharaoh/hass-quiz-rooms](https://github.com/modestpharaoh/hass-quiz-rooms)** — it helps other Home Assistant enthusiasts discover the project and motivates continued development and new trivia packs.
+- 💡 **Share ideas & custom packs** — open an [Issue](https://github.com/modestpharaoh/hass-quiz-rooms/issues) to suggest trivia pack themes, Smart TV improvements, or language additions.
+- 🐛 **Report bugs** — include your Home Assistant version, device/TV browser, and steps to reproduce.
 
 ---
 
 ## Key Features
 
-- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 197 vector country flags, 20 studio SVG avatars, 15 pack covers, and Latin + Arabic WOFF fonts are served directly by Home Assistant.
-- **Strict LAN-Only Security (`NetworkGuard`):** Guest, TV, WebSocket, and media routes (`/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/media/...`) allow only RFC 1918 + IPv6 ULA/link-local + configured CIDRs by default, with fail-closed reverse-proxy (`X-Forwarded-For`, Cloudflare Tunnel, Nabu Casa) protection.
-- **Multi-Room Confidence Wagering:** Concurrent Public and Private rooms, rounds in multiples of `5` (`5–25`), one-time confidence wager chips (`1..N`, defaulting to lowest remaining chip), optional wrong-wager deduction toggle, difficulty filtering (`Random`, `Easy`, `Medium`, `Hard`), snapshot isolation, and idle TTL cleanup (15 min lobbies / 2 hr games).
-- **Open-Ended Packs & No Repeated Answers:** Supports `open_ended: true` packs with automatic starting-letter checking (`starts_with`) and a host toggle to reject duplicate answers across players in the same round or reused from earlier rounds (including Arabic spelling/article normalization).
-- **Player Avatars:** Choose from 20 globally unique studio SVG characters across all active rooms or upload a custom cropped profile photo.
-- **16:9 TV Studio Dashboard & Smart TV Launcher:** Viewport-fit layout optimized for 720p-CSS Smart TV browsers (LG webOS, Samsung Tizen), Full HD (1080p), and 4K displays, with Overview & Follow modes and one-click launch from the Admin Panel to connected LG webOS, Android TV / Google TV, and Samsung Smart TVs.
-- **Home Assistant Event Bus & TV-Synced Smart-Home Stage Effects (LAN-Only):** Emits native `quizrooms_phase_changed` (including a `T-5s` final countdown hook) and `quizrooms_finale` events for custom automations, AND includes a built-in zero-YAML **Stage Director** in the Admin Panel to sync living-room RGB lights (Teal → Amber 5s pulse → Green/Red reveal flash → Trophy Gold + auto-restore) and a local bilingual English/Arabic TTS speaker announcer with the game followed on TV — automatically disabled whenever External Access is enabled for home security.
-- **Admin Sidebar Panel & Hot Pack Importer:** Monitor, start, pause, advance, or force-close any room, control the TV dashboard, configure Smart-Home Stage Effects, adjust `max_rooms`, and drag-and-drop import custom `.json` or `.zip` packs (with Zip Slip & Zip Bomb protection) without restarting Home Assistant.
-- **Light / Dark / Auto Themes:** Zero-flash theme switcher with neutral dark-grey studio dark mode and white-framed scannable QR codes.
+- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 37 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
+- **Strict LAN-Only Security (`NetworkGuard`):** Guest, TV, WebSocket, and media routes (`/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/media/...`, `/quizrooms/avatar/...`) allow only RFC 1918 + IPv6 ULA/link-local + admin-configured CIDRs by default, with fail-closed reverse-proxy (`X-Forwarded-For`, Cloudflare Tunnel, Nabu Casa) protection, WebSocket origin checks, and sandboxed SVG delivery (`CSP: default-src 'none'; sandbox`).
+- **Multi-Room Confidence Wagering & Blind Final Bonus Round:**
+  - Concurrent Public and Private rooms, rounds in multiples of `5` (`5–25`), configurable question timers (`20s / 30s / 45s / 60s`), difficulty filtering (`Random`, `Easy`, `Medium`, `Hard`), snapshot isolation, and automatic idle TTL cleanup (15 min lobbies / 2 hr games).
+  - One-time confidence wager chips (`1..N`, defaulting to lowest remaining chip) with optional wrong-wager deduction toggle.
+  - Optional **★ Final Bonus Question (`bonus_round`)**: a blind high-stakes wager phase (`±5`–`±15` pts for 5 rounds; `±5`–`±30` pts for 10–25 rounds) where players lock their wager *before* seeing the final question (`+Wager` if correct, `−Wager` if wrong).
+- **Open-Ended Party Games & No Repeated Answers:** Supports `open_ended: true` packs (**أتوبيس كومبليت** & **Autobus Complete**) with automatic starting-letter checking (`starts_with`) and a host toggle to reject duplicate answers across players in the same round or reused from earlier rounds (including Arabic spelling/diacritic/article normalization).
+- **Mobile Guest SPA (`/quizrooms/play`):**
+  - Sticky bottom Lock-In bar for one-handed phone play (`env(safe-area-inset-bottom)`), optional haptic vibration (`navigator.vibrate`) paired with Web Audio SFX, smart wager risk hints (`Risking +7 / −7` or `+7 / 0`), tiered wager grouping for `N >= 15`, tap-again fast confirm, non-destructive Reconnecting banner preserving typed drafts, and confirmation-protected room closing.
+  - Fast **Create Room** pack picker with search, language/mode filters (`All`, `EN`, `AR`, `Open-Ended`), per-language **🎲 Random Packs** picker, and a live Selected Packs chip strip.
+- **Globally Unique Player Avatars:** Choose from 20 studio SVG characters reserved uniquely across all active rooms or upload a client-cropped custom profile photo.
+- **16:9 TV Studio Dashboard (`/quizrooms/tv`) & Smart TV Launcher:**
+  - Viewport-fit (`100vh`) layout tuned for 720p-CSS Smart TV browsers (LG webOS, Samsung Tizen), Full HD (1080p), and 4K displays, with Overview & Follow modes and one-click launch from the Admin Panel to connected LG webOS, Android TV / Google TV, and Samsung Smart TVs.
+  - Native TV remote D-Pad `:focus-visible` rings & arrow-key / Back-button navigation, **Safe Zone (Overscan)** bezel-padding toggle, animated `+N`/`−N` score deltas & `▲`/`▼` rank arrows on Reveal, final-5s amber→coral urgency pulse + **"All Locked In!"** transition banner, and a rotating 1:1 square-cover **Featured Trivia Packs** showcase on the idle screen.
+- **Home Assistant Event Bus & TV-Synced Smart-Home Stage Effects (LAN-Only):**
+  - Emits native `quizrooms_phase_changed` (including a `T-5s` final countdown hook) and `quizrooms_finale` events for custom automations.
+  - Built-in zero-YAML **Stage Director** in the Admin Panel syncs living-room RGB/dimmer lights (Teal → Amber 5s pulse → Green/Red reveal flash → Trophy Gold + automatic pre-game light restore) and a local multilingual TTS speaker announcer (**Auto**, **EN**, **AR**, **DE**, **FR**, **ES**, **PT** + optional predefined volume) with the game followed on TV — automatically locked and discarded whenever External Access is enabled.
+- **Tabbed Admin Sidebar Panel & Hot Pack Importer:** Pinned KPI strip + 3 clean tabs (**Live Rooms & TV**, **Stage Effects**, **Packs & Import**), inline **Show Join QR** popovers on active rooms, Stage Effects dirty-state guard + Discard/Reset + Selected Lights chip summary, drag-and-drop `.json`/`.zip` pack importer (Zip Slip & Zip Bomb protected), and Installed Packs search, filter (`All / Built-in / Custom`), and expandable **Preview Questions** drawer.
+- **Light / Dark / Auto Themes:** Zero-flash theme switcher with neutral charcoal dark-grey studio dark mode and white-framed scannable QR codes.
 
 ---
 
@@ -32,13 +55,22 @@
 
 ---
 
+## Quick Start (Play in 60 Seconds)
+
+1. **Open the TV Studio Dashboard:** From **Sidebar → QuizRooms → Live Rooms & TV**, click **Open Dashboard** on your connected Smart TV (or open `http://<YOUR_HA_IP>:8123/quizrooms/tv` on any TV or tablet browser).
+2. **Scan to Host on Your Phone:** Scan the Join QR code on the TV (or open `http://<YOUR_HA_IP>:8123/quizrooms/play`), pick a nickname & avatar, and tap **Create Room**.
+3. **Pick Packs & Rules:** Search or filter by language (`EN`, `AR`, `Open-Ended`), tap **🎲 Random EN/AR Packs** or hand-pick packs, choose rounds (`5–25`), timer (`20–60s`), difficulty, and optional **★ Final Bonus Question**, then tap **Create & Open Lobby**.
+4. **Join & Play:** Everyone scans the room QR code on the TV, the TV switches to **Follow** mode (via remote click, Admin Panel, or service call), and the host taps **Start Game**!
+
+---
+
 ## Configuration Options
 
 Available during initial setup and anytime under **Settings → Devices & Services → QuizRooms → Configure** (applied live without restarting Home Assistant):
 
 | Option Key | UI Label | Default | Description |
 | --- | --- | --- | --- |
-| `allow_external_access` | Allow External Access | `false` | When `false` (recommended), guest, TV, WebSocket, and unauthenticated media endpoints are restricted strictly to local/allowed networks. Set `true` only if you intentionally want remote players over WAN/reverse proxy. |
+| `allow_external_access` | Allow External Access | `false` | When `false` (recommended), guest, TV, WebSocket, and unauthenticated media endpoints are restricted strictly to local/allowed networks. Set `true` only if you intentionally want remote players over WAN/reverse proxy (automatically disables Stage Effects & HA Events for home safety). |
 | `allowed_subnets` | Additional Allowed CIDRs | `""` | Optional comma-separated IPv4/IPv6 CIDR subnets (e.g., `100.64.0.0/10, 192.168.50.0/24`) allowed in addition to built-in RFC 1918, IPv6 ULA, and link-local ranges (handy for Tailscale/WireGuard VPNs or VLANs). |
 | `custom_lan_base_url` | Custom LAN Base URL | `""` | Optional override URL (e.g., `http://192.168.1.50:8123`) used for QR codes and Smart TV dashboard launching when Home Assistant's detected internal URL differs from your preferred LAN address. |
 
@@ -133,8 +165,8 @@ action: quizrooms.reload_packs
 > **Security Note:** Native Home Assistant events (`quizrooms_phase_changed`, `quizrooms_finale`) and built-in Smart-Home Stage Effects are **strictly available in LAN-Only mode (`allow_external_access: false`)**. If External Access is enabled, all events and physical light/speaker triggers are automatically discarded so remote internet visitors cannot trigger lights or speaker announcements inside your home.
 
 ### Built-In Stage Director (Zero-YAML Admin Panel Setup)
-Open **Sidebar → QuizRooms → Smart-Home Stage Effects** to pair your living-room devices with the game currently followed on your TV Dashboard:
-- **Stage Lights (`light.*`):** Multi-select RGB bulbs/strips or dimmers (with instant search filter and selected lights pinned to the top), pick a preset (**Studio Showdown**, **Subtle Cue**, or **Dramatic Pulse**), and enable **Restore pre-game light state** so lights pulse **Amber** in the final 5 seconds, flash **Emerald Green** / **Crimson Red** on reveal, shimmer **Gold** at Finale, and automatically return to their original pre-game brightness & color.
+Open **Sidebar → QuizRooms → Stage Effects** to pair your living-room devices with the game currently followed on your TV Dashboard:
+- **Stage Lights (`light.*`):** Multi-select RGB bulbs/strips or dimmers (with instant search filter and a dedicated **Selected Lights** removable chip bar), pick a preset (**Studio Showdown**, **Subtle Cue**, or **Dramatic Pulse**), and enable **Restore pre-game light state** so lights pulse **Amber** in the final 5 seconds, flash **Emerald Green** / **Crimson Red** on reveal, shimmer **Gold** at Finale, and automatically return to their original pre-game brightness & color.
 - **Local Multilingual Speaker Announcer (`media_player.*` + `tts.*`):** Announces round winners and the grand champion with configurable **Announcement Language** (**Auto** matching the pack language, or force **English**, **Arabic**, **German**, **French**, **Spanish**, or **Portuguese**) and optional **Predefined Announcement Volume** (`5%–100%` slider + quick presets, or disabled to follow your speaker's existing volume), plus nickname SSML sanitization and automatic `tts.speak` (with Piper voice/locale switching) / legacy `tts.*_say` detection.
 
 ### Native Home Assistant Events
@@ -211,13 +243,13 @@ automation:
 | `/quizrooms/ws` | LAN-only | Multiplexed WebSocket (`?role=lobby\|room\|tv`) |
 | `/quizrooms/media/{opaque_id}` | LAN or Authenticated HA User | Sandboxed pack images & covers (`CSP: default-src 'none'; sandbox`) |
 | `/quizrooms/avatar/{kind}/{id}` | LAN or Authenticated HA User | Sandboxed preset SVG avatars & uploaded player photos |
-| Sidebar → **QuizRooms** | HA Admin required | Admin Monitor, Smart TV Launcher, Pack Importer |
+| Sidebar → **QuizRooms** | HA Admin required | Tabbed Admin Monitor, Smart TV Launcher, Stage Director & Pack Importer |
 
 ---
 
-## Built-In Trivia Packs (37 Packs)
+## Built-In Trivia Packs (37 Packs · 3,064 Questions)
 
-Every built-in pack includes a custom SVG cover and per-question `easy` / `medium` / `hard` difficulty tags:
+Every built-in pack includes a custom `160×160` square SVG cover and per-question `easy` / `medium` / `hard` difficulty tags (`24` English + `13` Arabic/RTL packs):
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |
@@ -233,10 +265,10 @@ Every built-in pack includes a custom SVG cover and per-question `easy` / `mediu
 | **Sports & Olympic Records / الرياضة والأولمبياد** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR questions on Olympic history, football, tennis, rules & athletic records |
 | **Mental Math, Logic & Riddles / ألغاز ومنطق ورياضيات ذهنية** | EN & AR (RTL) | MC & Free-Text | 36 EN + 36 AR fast-paced sequences, geometry puzzles & classic lateral-thinking riddles |
 | **أمثال وبلاغة عربية (Arabic Proverbs & Eloquence)** | AR (RTL) | MC & Free-Text | 36 Arabic questions on completing classic proverbs, classical vocabulary, roots & rhetoric |
-| **World Countries & Global Flags** | EN | MC & Free-Text | 209 locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
-| **Guess the Country on the Map** | EN | MC & Free-Text | 169 locally bundled country map silhouette SVGs (derived from Public Domain Natural Earth 1:50m vectors) |
+| **World Countries & Global Flags** | EN | MC & Free-Text | 208 questions featuring locally bundled vector flags (197 countries + EU, UN, Arab League, NATO, Olympics, AU, ASEAN, GCC & more) |
+| **Guess the Country on the Map** | EN | MC & Free-Text | 168 questions featuring locally bundled country map silhouette SVGs (derived from Public Domain Natural Earth 1:50m vectors) |
 | **Famous World Logos** | EN | MC & Free-Text | 110 locally bundled vector brand/app/gaming/auto/smart-home logo SVGs (via CC0 Simple Icons) |
-| **World Countries & Capitals** | EN | MC & Free-Text | 196+ world countries & capitals with Arabic/local aliases |
+| **World Countries & Capitals** | EN | MC & Free-Text | 196 world countries & capitals with Arabic/local aliases |
 | **World Populations (2026)** | EN | MC & Free-Text | 90 countries with 2026 demographic estimates |
 | **Official Languages of the World** | EN | MC & Free-Text | 105 countries & their official national languages |
 | **أتوبيس كومبليت** | AR (RTL) | Open-Ended Only | 336 random Arabic rounds (14 categories × 24 letters) |
@@ -253,12 +285,21 @@ Every built-in pack includes a custom SVG cover and per-question `easy` / `mediu
 
 ---
 
+## Troubleshooting & Tips
+
+- **QR Codes point to the wrong IP or external domain:** Set **Custom LAN Base URL** (e.g., `http://192.168.1.50:8123`) under **Settings → Devices & Services → QuizRooms → Configure**.
+- **TV edges slightly clipped on an older TV:** Click **Safe Zone: Off → On** in the top-right header of `/quizrooms/tv` (accessible via TV remote D-Pad) to enable overscan-safe bezel margins.
+- **Guests on a guest VLAN / Tailscale get `403 local_network_only`:** Add their subnet CIDR (e.g., `192.168.50.0/24` or `100.64.0.0/10`) to **Additional Allowed CIDRs** in Configure.
+- **Stage Effects show "Disabled while External Access is enabled":** By design, smart-home light/speaker effects and HA events run strictly in LAN-Only mode (`allow_external_access: false`).
+
+---
+
 ## Documentation
 
-- **[Architecture & Design](docs/ARCHITECTURE.md)** — Backend architecture, state machines, WebSocket flows, security model, non-blocking async design, and Smart TV launcher diagrams.
-- **[Frontend UI & Design System](docs/FRONTEND_DESIGN.md)** — Mobile Player SPA, 16:9 Studio TV Dashboard (Full HD / webOS / 4K), Admin Sidebar Panel, theming, and RTL layout architecture.
+- **[Architecture & Design](docs/ARCHITECTURE.md)** — Backend architecture, state machines (including Blind Final Bonus Round), WebSocket flows, security model, non-blocking async design, Stage Director, and Smart TV launcher diagrams.
+- **[Frontend UI & Design System](docs/FRONTEND_DESIGN.md)** — Mobile Player SPA, 16:9 Studio TV Dashboard (Full HD / webOS / Tizen / 4K), Tabbed Admin Sidebar Panel, theming, and RTL layout architecture.
 - **[Custom Pack Authoring Guide](docs/PACK_AUTHORING.md)** — Complete `pack.json` schema, `.zip` media packaging, `open_ended` & `difficulty` examples, and security limits.
-- **[Third-Party Open-Source Licenses](docs/THIRD_PARTY_LICENSES.md)** — Attribution and full license notices for bundled open-source flag SVGs and fonts.
+- **[Third-Party Open-Source Licenses](docs/THIRD_PARTY_LICENSES.md)** — Attribution and full license notices for bundled open-source flags, maps, logos, and local WOFF fonts.
 
 ---
 
@@ -267,3 +308,18 @@ Every built-in pack includes a custom SVG cover and per-question `easy` / `mediu
 ```bash
 pytest -v
 ```
+
+---
+
+## Credits & Acknowledgments
+
+- **Created & Maintained by:** [@modestpharaoh](https://github.com/modestpharaoh)
+- **Built for:** The [Home Assistant](https://www.home-assistant.io/) & [HACS](https://hacs.xyz/) open-source smart-home community.
+- **Bundled Open-Source Assets (100% Local & Offline):**
+  - **[flag-icons](https://github.com/lipis/flag-icons)** (MIT License) — world country flag SVGs.
+  - **[Natural Earth](https://www.naturalearthdata.com/)** (Public Domain / CC0) — 1:50m country boundary vectors used to generate map silhouette SVGs.
+  - **[Simple Icons](https://simpleicons.org/)** (CC0 1.0 Universal) — brand vector glyphs used in the Famous World Logos trivia pack.
+  - **[Ubuntu Font Family](https://ubuntu.com/legal/font-licence)** (UFL 1.0), **[DejaVu Fonts / Bitstream Vera](https://dejavu-fonts.github.io/)** (DejaVu License), and **[Google Noto Sans Mono](https://fonts.google.com/noto)** (SIL OFL 1.1) — local offline Latin, Arabic, and tabular monospace typography.
+  - See [docs/THIRD_PARTY_LICENSES.md](docs/THIRD_PARTY_LICENSES.md) for full license texts and notices.
+
+If you enjoy **QuizRooms**, don't forget to **⭐ star the repo** on GitHub!

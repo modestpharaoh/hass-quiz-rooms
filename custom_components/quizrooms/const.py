@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 DOMAIN = "quizrooms"
-VERSION = "0.1.39"
+VERSION = "0.1.40"
 
 # Config & Options keys
 CONF_ALLOW_EXTERNAL_ACCESS = "allow_external_access"

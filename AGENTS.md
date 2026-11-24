@@ -4,13 +4,13 @@ Canonical repository instructions for AI coding agents (**Codex**, **Claude Code
 
 ## Project Overview
 
-**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia, Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard, Smart TV launching, and an Admin Sidebar Panel.
+**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia (**37 built-in packs / 3,064 original questions / 584 local SVGs**), optional **Blind Final Bonus Question (`PHASE_BONUS_WAGER`)**, full Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard with D-Pad navigation & Overscan Safe Zone, Smart TV launching, LAN-only TV-synced Smart-Home Stage Effects (`stage_effects.py`), and a tabbed Home Assistant Admin Sidebar Panel.
 
 Read these docs before making architectural changes:
-- `docs/ARCHITECTURE.md` — Backend coordinator, game state machine, WebSocket flow, `NetworkGuard`, and Smart TV launcher.
-- `docs/FRONTEND_DESIGN.md` — Mobile SPA (`/play`), 16:9 TV Dashboard (`/tv`), Admin Panel (`<quizrooms-admin-panel>`), theming, and RTL rules.
+- `docs/ARCHITECTURE.md` — Backend coordinator, game state machine (including `bonus_wager`), WebSocket flow, `NetworkGuard`, `StageDirector`, and Smart TV launcher.
+- `docs/FRONTEND_DESIGN.md` — Mobile SPA (`/play`), 16:9 TV Dashboard (`/tv`), Tabbed Admin Panel (`<quizrooms-admin-panel>`), theming, and RTL rules.
 - `docs/PACK_AUTHORING.md` — `pack.json` schema (`cover`, `open_ended`, `starts_with`, `difficulty`) and ZIP importer rules.
-- `docs/THIRD_PARTY_LICENSES.md` — Open-source licenses for bundled flag SVGs and local WOFF fonts.
+- `docs/THIRD_PARTY_LICENSES.md` — Open-source licenses for bundled flags, map silhouettes, brand logos, and local WOFF fonts.
 
 ---
 
@@ -19,23 +19,28 @@ Read these docs before making architectural changes:
 1. **Zero External Dependencies & Zero External CDNs:**
    - `custom_components/quizrooms/manifest.json` MUST keep `"requirements": []`.
    - Never reference external CDN URLs (`http://` / `https://`) in `frontend/` or `packs/` (only XML namespace URIs like `http://www.w3.org/2000/svg` are allowed in SVGs).
+   - Never reference unbundled font files (e.g. missing `.woff2` URLs) in `theme.css`; reference only the bundled `.woff` files in `frontend/assets/fonts/`.
 2. **Strict Home Assistant Non-Blocking Async I/O:**
    - Never call blocking filesystem I/O (`open`, `read_text`, `read_bytes`, `write_text`, `write_bytes`, `iterdir`, `rglob`, `glob`, `mkdir`, `rmtree`) directly inside any `async def` in `custom_components/quizrooms/`.
    - Always offload disk operations via `await coordinator.async_run_in_executor(...)`.
 3. **Frozen `hass.http.app.middlewares` Safety:**
    - Home Assistant freezes `app.middlewares` once HTTP starts. Always check `app.frozen` / `middlewares.frozen` before inserting middleware, and enforce `_check_network_guard(...)` directly inside every unauthenticated `HomeAssistantView`.
-4. **Security & Sandboxing:**
+4. **Security, Sandboxing & LAN-Only Stage Kill Switch:**
    - Keep `NetworkGuard` fail-closed for external/public IPs, untrusted `X-Forwarded-For`, Cloudflare Tunnel (`CF-Connecting-IP`), and Nabu Casa (`X-Hass-Source`).
+   - Preserve WebSocket `Origin` (CSWSH) checks, per-socket `session_token` binding, public player ID redaction (`plr_<12-hex>`), private-room TV follow protection, and bounded custom avatar upload checks.
+   - Keep `StageDirector` & HA Event Bus (`quizrooms_phase_changed`, `quizrooms_finale`) strictly disabled whenever `allow_external_access` is `True` (`coordinator.is_stage_events_allowed()`).
    - Serve pack media (`/quizrooms/media/{opaque_id}`) and avatars (`/quizrooms/avatar/{kind}/{id}`) with `Content-Security-Policy: default-src 'none'; sandbox` and `X-Content-Type-Options: nosniff`.
    - Preserve ZIP importer defenses against Zip Slip (`..`, backslashes, absolute paths), UNIX symlinks (`stat.S_IFLNK`), disallowed extensions, and streaming Zip Bombs.
-   - Never leak upcoming questions or the current question's correct answer in `serialize_room_state()` during `phase == "question"`.
+   - Never leak upcoming questions or the current question's correct answer in `serialize_room_state()` during `phase == "question"` or `phase == "bonus_wager"`.
+   - Preserve blind bonus wager invariants: reject `bool` wagers, reject repeat blind wager submissions, and pin late joiners after bonus question reveal to the minimum stake (`5`).
 5. **Smart TV & LG webOS Compatibility:**
    - Every SVG served in `packs/` or `frontend/` MUST be strictly valid XML (escape `&` as `&amp;`) and declare explicit `width` and `height` attributes matching its `viewBox` (prevents `0px` flex collapse on older LG webOS Chromium).
-   - Keep `/quizrooms/tv` viewport-fit (`100vh`) across 720p-CSS Smart TV browsers, Full HD (1080p), and 4K UHD, with CSS fallbacks before `clamp()`.
+   - Keep `/quizrooms/tv` viewport-fit (`100vh`) across 720p-CSS Smart TV browsers, Full HD (1080p), and 4K UHD (including Overscan Safe Zone mode), with CSS fallbacks before `clamp()`, visible `:focus-visible` D-Pad rings, and full `1:1` square pack covers on the idle screen.
 6. **UI Theme & Arabic/RTL Standards:**
    - Dark Mode must remain neutral charcoal dark-grey (`#121214` / `#1c1c1f` / `#26262a`), not dark blue.
    - Use CSS logical properties (`margin-inline`, `padding-block`, `border-inline-start`, `text-align: start`) and `dir="auto"` / `dir="rtl"`.
    - Always render QR codes inside `.qr-white-frame`.
+   - Preserve `QuizRoomsAdminPanelJSView` bundling `qrcode.js` with `admin-panel.js` so inline Admin QR popovers stay 100% offline.
 7. **Home Assistant Device & Entity Registry:**
    - Keep all entities grouped under the single `QuizRooms` `DeviceEntryType.SERVICE` device via `build_device_info(entry_id)` with valid `configuration_url="homeassistant://quizrooms"`.
 8. **Version & Cache-Buster Sync:**
@@ -52,7 +57,7 @@ Read these docs before making architectural changes:
 
 ## Testing & Verification Commands
 
-Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant`):
+Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant` — currently 59 tests):
 
 ```bash
 # 1. Full unit test suite

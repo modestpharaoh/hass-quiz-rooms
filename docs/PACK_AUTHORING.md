@@ -111,5 +111,6 @@ movie_night.zip
 - **Max Uncompressed ZIP Size:** 50 MB (enforced while streaming to block Zip Bombs).
 - **Max Files in ZIP:** 500 entries.
 - **Allowed Media Extensions:** `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`, `.svg`.
-- **Smart TV SVG Tip:** Always include explicit `width` and `height` attributes on `<svg>` root elements (matching `viewBox`) so older Smart TV browsers such as LG webOS render SVG visuals at full size.
+- **Smart TV SVG & Cover Art Tip:** Always include explicit `width` and `height` attributes on `<svg>` root elements (matching `viewBox`) so older Smart TV browsers such as LG webOS render SVG visuals at full size. Use a `1:1` square cover (e.g., `160×160`) so it displays cleanly in the TV idle Featured Packs gallery and mobile/admin thumbnails.
+- **Verification in Admin Panel:** After uploading a pack in **Sidebar → QuizRooms → Packs & Import**, use the expandable **Preview Questions** drawer on its card to verify difficulty distribution (`Easy / Medium / Hard`) and sample prompts without starting a test game.
 - **Storage Location:** Imported custom packs are stored under `<HA_CONFIG>/quizrooms/packs/<pack_id>/`.
