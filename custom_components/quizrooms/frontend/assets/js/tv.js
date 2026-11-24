@@ -6,13 +6,118 @@
     lanBaseUrl: window.location.origin,
     tv: { mode: "overview", room_code: null, theme: null },
     lobby: { rooms: [], active_rooms: 0, max_rooms: 5 },
+    packs: [],
     room: null,
+    overscan: false,
     serverOffsetMs: 0,
     timerRaf: null,
     lastCountdownSec: -1,
     lastPhaseKey: "",
     lastLockedCount: 0,
+    prevRanksByRoom: {},
+    revealHighlights: null,
+    lastRevealSig: "",
+    deltaFadeTimer: null,
+    deltaClearTimer: null,
+    attractPage: 0,
+    attractTimer: null,
   };
+
+  function playerKey(p) {
+    return (p && (p.player_id || p.session_token || p.nickname)) || "";
+  }
+
+  function clearDeltaTimers() {
+    if (state.deltaFadeTimer) {
+      clearTimeout(state.deltaFadeTimer);
+      state.deltaFadeTimer = null;
+    }
+    if (state.deltaClearTimer) {
+      clearTimeout(state.deltaClearTimer);
+      state.deltaClearTimer = null;
+    }
+  }
+
+  function stopAttractTimer() {
+    if (state.attractTimer) {
+      clearInterval(state.attractTimer);
+      state.attractTimer = null;
+    }
+  }
+
+  function getFeaturedPacks() {
+    const list = Array.isArray(state.packs) ? state.packs : [];
+    const withCovers = list.filter((p) => p && p.cover_url);
+    return withCovers.length ? withCovers : list;
+  }
+
+  function buildAttractTilesHtml(packs, page) {
+    const pageSize = 4;
+    const totalPages = Math.max(1, Math.ceil(packs.length / pageSize));
+    const safePage = ((page % totalPages) + totalPages) % totalPages;
+    const start = safePage * pageSize;
+    const slice = packs.slice(start, start + pageSize);
+    return slice
+      .map((p) => {
+        const lang = p.open_ended
+          ? (p.rtl ? "أتوبيس" : "Open")
+          : String(p.language || "EN").toUpperCase();
+        return `
+          <div class="tv-attract-tile animate-in" dir="${p.rtl ? "rtl" : "auto"}">
+            ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="tv-attract-cover" width="240" height="150" />` : ""}
+            <div class="tv-attract-title" dir="auto">${esc(p.title)}</div>
+            <div class="tv-attract-meta">
+              <span>${p.question_count || 0} Qs</span>
+              <span class="badge" style="font-size:0.7rem;padding:2px 7px;">${esc(lang)}</span>
+            </div>
+          </div>`;
+      })
+      .join("");
+  }
+
+  function startAttractTimer() {
+    const packs = getFeaturedPacks();
+    if (packs.length <= 4) {
+      stopAttractTimer();
+      return;
+    }
+    if (state.attractTimer) return;
+    state.attractTimer = setInterval(() => {
+      const currentPacks = getFeaturedPacks();
+      const rooms = (state.lobby && state.lobby.rooms) || [];
+      if (state.tv.mode === "follow" || rooms.length || currentPacks.length <= 4) {
+        stopAttractTimer();
+        return;
+      }
+      const totalPages = Math.max(1, Math.ceil(currentPacks.length / 4));
+      state.attractPage = (state.attractPage + 1) % totalPages;
+      const grid = document.getElementById("tv-attract-grid");
+      const pageEl = document.getElementById("tv-attract-page");
+      if (grid) {
+        grid.innerHTML = buildAttractTilesHtml(currentPacks, state.attractPage);
+      }
+      if (pageEl) {
+        pageEl.textContent = `${state.attractPage + 1} / ${totalPages}`;
+      }
+    }, 6000);
+  }
+
+  function applyOverscan(enabled, persist = true) {
+    state.overscan = Boolean(enabled);
+    document.documentElement.dataset.overscan = state.overscan ? "on" : "off";
+    const shell = document.querySelector(".tv-shell");
+    if (shell) shell.classList.toggle("overscan-safe", state.overscan);
+    const btn = document.getElementById("tv-overscan-btn");
+    if (btn) {
+      btn.textContent = state.overscan ? "Safe Zone: On" : "Safe Zone: Off";
+      btn.setAttribute("aria-pressed", String(state.overscan));
+    }
+    if (persist) {
+      try {
+        localStorage.setItem("quizrooms_tv_overscan", state.overscan ? "on" : "off");
+      } catch (_) { }
+    }
+  }
 
   function diffBadgeHtml(diff, extraStyle = "") {
     const d = String(diff || "").toLowerCase();
@@ -115,6 +220,7 @@
     switch (msg.type) {
       case "hello":
         if (msg.lobby) state.lobby = msg.lobby;
+        if (Array.isArray(msg.packs)) state.packs = msg.packs;
         if (msg.tv) applyTVConfig(msg.tv);
         state.room = msg.room || null;
         if (state.room) syncRoomEvents(state.room);
@@ -124,6 +230,7 @@
 
       case "lobby_update":
         if (msg.lobby) state.lobby = msg.lobby;
+        if (Array.isArray(msg.packs)) state.packs = msg.packs;
         // Always refresh whenever Overview is being shown (even if tv.mode had no room)
         if (state.tv.mode !== "follow" || !state.room) {
           render();
@@ -134,8 +241,14 @@
         if (msg.lobby) state.lobby = msg.lobby;
         if (msg.tv) applyTVConfig(msg.tv);
         state.room = msg.room || null;
-        if (state.room) syncRoomEvents(state.room);
-        else stopTimerLoop();
+        if (state.room) {
+          syncRoomEvents(state.room);
+        } else {
+          stopTimerLoop();
+          clearDeltaTimers();
+          state.revealHighlights = null;
+          state.lastRevealSig = "";
+        }
         render();
         break;
 
@@ -149,6 +262,7 @@
         break;
 
       case "room_closed":
+        delete state.prevRanksByRoom[msg.code];
         if (state.lobby && Array.isArray(state.lobby.rooms)) {
           state.lobby.rooms = state.lobby.rooms.filter((r) => r.code !== msg.code);
           state.lobby.active_rooms = Math.max(0, (state.lobby.active_rooms || 1) - 1);
@@ -157,6 +271,9 @@
           state.room = null;
           applyTVConfig({ mode: "overview", room_code: null, theme: state.tv.theme });
           stopTimerLoop();
+          clearDeltaTimers();
+          state.revealHighlights = null;
+          state.lastRevealSig = "";
         }
         render();
         break;
@@ -178,30 +295,96 @@
     }
   }
 
+  function scheduleRevealDeltaClear(sig) {
+    clearDeltaTimers();
+    state.deltaFadeTimer = setTimeout(() => {
+      if (!state.revealHighlights || state.revealHighlights.sig !== sig) return;
+      document.querySelectorAll(".tv-lb-delta-wrap, .tv-rank-arrow").forEach((el) => {
+        el.classList.add("fading");
+      });
+      document.querySelectorAll(".tv-lb-row.moved-up, .tv-lb-row.moved-down").forEach((el) => {
+        el.classList.remove("moved-up", "moved-down");
+      });
+    }, 3550);
+    state.deltaClearTimer = setTimeout(() => {
+      if (!state.revealHighlights || state.revealHighlights.sig !== sig) return;
+      state.revealHighlights.visible = false;
+      document.querySelectorAll(".tv-lb-delta-wrap, .tv-rank-arrow").forEach((el) => el.remove());
+    }, 4050);
+  }
+
   function syncRoomEvents(room) {
     if (!room) return;
     if (room.question && room.question.server_now_ms) {
       state.serverOffsetMs = room.question.server_now_ms - Date.now();
     }
+
+    // Track pre-reveal ranks during non-reveal phases so Reveal can show ▲/▼ rank movement
+    if (room.phase === "lobby" || room.phase === "question" || room.phase === "bonus_wager") {
+      const rankSnap = {};
+      (room.players || []).forEach((p) => {
+        const k = playerKey(p);
+        if (k) rankSnap[k] = p.rank;
+      });
+      state.prevRanksByRoom[room.code] = rankSnap;
+      if (state.revealHighlights) {
+        clearDeltaTimers();
+        state.revealHighlights = null;
+        state.lastRevealSig = "";
+      }
+    } else if (room.phase === "reveal" && room.reveal) {
+      const outcomes = room.reveal.outcomes || [];
+      const deltaMap = {};
+      outcomes.forEach((o) => {
+        const k = playerKey(o);
+        if (k) deltaMap[k] = typeof o.delta === "number" ? o.delta : 0;
+      });
+      const sig = `${room.code}:${room.reveal.round_index}:${outcomes.map((o) => `${playerKey(o)}=${o.delta}`).join(",")}`;
+      if (sig !== state.lastRevealSig) {
+        state.lastRevealSig = sig;
+        const prevRanks = state.prevRanksByRoom[room.code] || {};
+        const byPlayer = {};
+        (room.players || []).forEach((p) => {
+          const k = playerKey(p);
+          if (!k) return;
+          const delta = deltaMap[k] != null ? deltaMap[k] : 0;
+          const prevRank = prevRanks[k];
+          const rankChange = typeof prevRank === "number" ? (prevRank - p.rank) : 0;
+          byPlayer[k] = { delta, rankChange };
+        });
+        state.revealHighlights = {
+          roomCode: room.code,
+          roundIndex: room.reveal.round_index,
+          sig,
+          byPlayer,
+          visible: true,
+        };
+        scheduleRevealDeltaClear(sig);
+      }
+    } else if (room.phase === "finale") {
+      clearDeltaTimers();
+      state.revealHighlights = null;
+    }
+
     const phaseKey = `${room.code}:${room.phase}:${room.question ? room.question.index : ""}`;
     if (phaseKey !== state.lastPhaseKey) {
       const hadPrev = Boolean(state.lastPhaseKey);
       state.lastPhaseKey = phaseKey;
       state.lastCountdownSec = -1;
       state.lastLockedCount = room.locked_in_count || 0;
-        if (hadPrev && (room.phase === "question" || room.phase === "bonus_wager") && window.QuizRoomsSFX) {
-          window.QuizRoomsSFX.roundStart();
-        } else if (room.phase === "reveal" && window.QuizRoomsSFX) {
-          window.QuizRoomsSFX.reveal();
-        } else if (room.phase === "finale") {
-          if (window.QuizRoomsSFX) window.QuizRoomsSFX.finale();
-          if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(1.8);
-        }
-      } else if ((room.phase === "question" || room.phase === "bonus_wager") && (room.locked_in_count || 0) > state.lastLockedCount) {
-        state.lastLockedCount = room.locked_in_count;
-        if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+      if (hadPrev && (room.phase === "question" || room.phase === "bonus_wager") && window.QuizRoomsSFX) {
+        window.QuizRoomsSFX.roundStart();
+      } else if (room.phase === "reveal" && window.QuizRoomsSFX) {
+        window.QuizRoomsSFX.reveal();
+      } else if (room.phase === "finale") {
+        if (window.QuizRoomsSFX) window.QuizRoomsSFX.finale();
+        if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(1.8);
       }
+    } else if ((room.phase === "question" || room.phase === "bonus_wager") && (room.locked_in_count || 0) > state.lastLockedCount) {
+      state.lastLockedCount = room.locked_in_count;
+      if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
     }
+  }
 
     function stopTimerLoop() {
       if (state.timerRaf) {
@@ -218,35 +401,39 @@
         const q = room.question;
         const fill = document.getElementById("tv-timer-fill");
         const num = document.getElementById("tv-timer-num");
+        const stage = document.querySelector(".tv-stage");
         if (!fill || !num) return;
 
         let rem = q.remaining_seconds || 0;
         if (!room.paused && q.ends_at_ms) {
           rem = Math.max(0, (q.ends_at_ms - (Date.now() + state.serverOffsetMs)) / 1000);
         }
+        const allLocked = !room.paused && room.connected_count > 0 && room.locked_in_count >= room.connected_count;
         const sec = Math.ceil(rem);
         const pct = Math.max(0, Math.min(100, (rem / (q.timer_seconds || 30)) * 100));
+        const isUrgent = !room.paused && !allLocked && rem <= 5 && rem > 0;
         fill.style.width = pct.toFixed(1) + "%";
-        fill.classList.toggle("warn", rem <= 10 && rem > 5);
-        fill.classList.toggle("urgent", rem <= 5);
-        num.classList.toggle("urgent", rem <= 5);
+        fill.classList.toggle("warn", !allLocked && rem <= 10 && rem > 5);
+        fill.classList.toggle("urgent", isUrgent);
+        num.classList.toggle("urgent", isUrgent);
+        if (stage) stage.classList.toggle("tv-stage-urgent", isUrgent);
         num.textContent = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
 
-          if (!room.paused && sec > 0 && sec !== state.lastCountdownSec) {
-            state.lastCountdownSec = sec;
-            if (sec <= 5 && window.QuizRoomsSFX) {
-              window.QuizRoomsSFX.tickUrgent(sec);
-            } else if (sec <= 10 && window.QuizRoomsSFX) {
-              window.QuizRoomsSFX.tickSoft();
-            }
-          }
-
-          if (!room.paused && rem > 0) {
-            state.timerRaf = requestAnimationFrame(tick);
+        if (!room.paused && !allLocked && sec > 0 && sec !== state.lastCountdownSec) {
+          state.lastCountdownSec = sec;
+          if (sec <= 5 && window.QuizRoomsSFX) {
+            window.QuizRoomsSFX.tickUrgent(sec);
+          } else if (sec <= 10 && window.QuizRoomsSFX) {
+            window.QuizRoomsSFX.tickSoft();
           }
         }
-        state.timerRaf = requestAnimationFrame(tick);
+
+        if (!room.paused && !allLocked && rem > 0) {
+          state.timerRaf = requestAnimationFrame(tick);
+        }
       }
+      state.timerRaf = requestAnimationFrame(tick);
+    }
 
       function render() {
         const main = document.getElementById("tv-main");
@@ -255,13 +442,25 @@
           overviewBtn.classList.toggle("hidden", !(state.tv.mode === "follow" && state.room));
         }
 
+        // Preserve TV D-Pad focus on the currently focused Overview room card across refreshes
+        const activeEl = document.activeElement;
+        const focusedRoomCode =
+          activeEl && activeEl.classList && activeEl.classList.contains("tv-room-card")
+            ? activeEl.getAttribute("data-follow-code")
+            : null;
+
         if (state.tv.mode === "follow" && state.room) {
+          stopAttractTimer();
           renderFollowMode(main, state.room);
           if (state.room.phase === "question" && !state.room.paused) startTimerLoop();
           else stopTimerLoop();
         } else {
           stopTimerLoop();
           renderOverviewMode(main);
+          if (focusedRoomCode) {
+            const restored = main.querySelector(`.tv-room-card[data-follow-code="${CSS.escape ? CSS.escape(focusedRoomCode) : focusedRoomCode}"]`);
+            if (restored) restored.focus({ preventScroll: true });
+          }
         }
       }
 
@@ -269,6 +468,22 @@
         const rooms = (state.lobby && state.lobby.rooms) || [];
         if (!rooms.length) {
           const qr = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl()) : "";
+          const packs = getFeaturedPacks();
+          const totalPages = Math.max(1, Math.ceil(packs.length / 4));
+          const safePage = ((state.attractPage % totalPages) + totalPages) % totalPages;
+          const packShowcaseHtml = packs.length
+            ? `
+          <section class="tv-attract-packs" aria-label="Featured trivia packs">
+            <div class="tv-attract-header">
+              <span class="tv-attract-label">Featured Trivia Packs (${packs.length} Ready Offline)</span>
+              ${totalPages > 1 ? `<span id="tv-attract-page" class="badge mono">${safePage + 1} / ${totalPages}</span>` : ""}
+            </div>
+            <div id="tv-attract-grid" class="tv-attract-grid">
+              ${buildAttractTilesHtml(packs, safePage)}
+            </div>
+          </section>`
+            : "";
+
           main.innerHTML = `
         <div class="tv-welcome">
           <div class="studio-card tv-welcome-card animate-in">
@@ -276,17 +491,23 @@
               <span class="badge badge-accent">Local-First Party Trivia</span>
               <h2>Scan to Host or Join a Room</h2>
               <p>Scan the QR code with your phone to create a room, pick a trivia pack, and wager on your confidence.</p>
-              <span class="badge">Active Rooms: ${state.lobby.active_rooms} / ${state.lobby.max_rooms}</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <span class="badge">Active Rooms: ${state.lobby.active_rooms} / ${state.lobby.max_rooms}</span>
+                ${packs.length ? `<span class="badge badge-lobby">${packs.length} Packs Installed</span>` : ""}
+              </div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
               <div class="qr-white-frame">${qr}</div>
               <span class="badge">Scan on Wi-Fi</span>
             </div>
           </div>
+          ${packShowcaseHtml}
         </div>`;
+          startAttractTimer();
           return;
         }
 
+        stopAttractTimer();
         main.innerHTML = `
       <div class="tv-overview-grid">
         ${rooms
@@ -318,7 +539,7 @@
               <article class="studio-card tv-room-card animate-in" data-follow-code="${esc(r.code)}" tabindex="0" role="button" aria-label="Follow room ${esc(r.code)}" dir="${r.rtl ? "rtl" : "auto"}">
                 <div>
                   <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px;">
-                    ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" style="width:58px;height:58px;border-radius:14px;object-fit:cover;flex:none;border:1px solid var(--border-subtle);" />` : ""}
+                    ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" style="width:58px;height:58px;border-radius:14px;object-fit:cover;flex:none;border:1px solid var(--border-subtle);" width="58" height="58" />` : ""}
                     <div>
                       <div class="tv-room-code">${esc(r.code)}</div>
                       <h2 class="tv-room-title" dir="auto">${esc(r.name)}</h2>
@@ -331,13 +552,13 @@
                     ${diffBadgeHtml(r.difficulty)}
                     ${r.bonus_round ? `<span class="badge badge-accent">★ Bonus</span>` : ""}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
-                    <button type="button" class="btn btn-primary btn-sm" data-follow-code="${esc(r.code)}">Follow</button>
+                    <button type="button" class="btn btn-primary btn-sm" tabindex="-1" data-follow-code="${esc(r.code)}">Follow</button>
                   </div>
                   ${leaders ? `<div class="tv-mini-leaders">${leaders}</div>` : ""}
                 </div>
                 <div class="tv-room-qr">
                   <div class="qr-white-frame">${qr}</div>
-                  <span style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">Scan or click to follow</span>
+                  <span style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">Scan or select to follow</span>
                 </div>
               </article>`;
             })
@@ -347,25 +568,56 @@
 
       function renderFollowMode(main, room) {
         const qr = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl(room.code)) : "";
+        const showDeltas =
+          room.phase === "reveal" &&
+          state.revealHighlights &&
+          state.revealHighlights.visible &&
+          state.revealHighlights.roomCode === room.code;
+        const deltaByPlayer = showDeltas ? state.revealHighlights.byPlayer : null;
+
         const leaderboardHtml = room.players
           .slice(0, 10)
-          .map(
-            (p, idx) => `
-        <div class="tv-lb-row ${idx === 0 ? "top-1" : ""}">
-          <span style="display:inline-flex;align-items:center;gap:8px;min-width:0;" dir="auto">
+          .map((p, idx) => {
+            const info = deltaByPlayer ? deltaByPlayer[playerKey(p)] : null;
+            const delta = info ? info.delta : 0;
+            const rankChange = info ? info.rankChange : 0;
+            const rowMoveCls =
+              rankChange > 0 ? "moved-up" : rankChange < 0 ? "moved-down" : "";
+            const arrowHtml =
+              rankChange > 0
+                ? `<span class="tv-rank-arrow up" aria-label="Up ${rankChange}">▲${rankChange > 1 ? rankChange : ""}</span>`
+                : rankChange < 0
+                ? `<span class="tv-rank-arrow down" aria-label="Down ${Math.abs(rankChange)}">▼${Math.abs(rankChange) > 1 ? Math.abs(rankChange) : ""}</span>`
+                : "";
+            const deltaHtml =
+              delta !== 0
+                ? `<span class="tv-lb-delta-wrap"><span class="tv-lb-delta ${delta > 0 ? "pos" : "neg"}">${delta > 0 ? `+${delta}` : `−${Math.abs(delta)}`}</span></span>`
+                : "";
+            return `
+        <div class="tv-lb-row ${idx === 0 ? "top-1" : ""} ${rowMoveCls}">
+          <span class="tv-lb-name-wrap" dir="auto">
             ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
-            <span>#${p.rank} ${esc(p.nickname)}</span>
+            <span class="tv-lb-name-text">#${p.rank} ${esc(p.nickname)}</span>
+            ${arrowHtml}
           </span>
-          <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
-        </div>`
-          )
+          <span class="tv-lb-score-wrap">
+            ${deltaHtml}
+            <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
+          </span>
+        </div>`;
+          })
           .join("");
 
         let stageHtml = "";
+        let stageUrgentClass = "";
         const stageDir =
           (room.question && room.question.rtl) || (room.reveal && room.reveal.rtl) || room.rtl
             ? "rtl"
             : "auto";
+        const allLocked =
+          !room.paused &&
+          room.connected_count > 0 &&
+          room.locked_in_count >= room.connected_count;
 
         if (room.phase === "lobby") {
           stageHtml = `
@@ -374,7 +626,7 @@
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
         <div style="display:flex;align-items:center;gap:18px;text-align:start;">
-          ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" style="width:76px;height:76px;border-radius:18px;object-fit:cover;flex:none;border:2px solid var(--border-subtle);" />` : ""}
+          ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" style="width:76px;height:76px;border-radius:18px;object-fit:cover;flex:none;border:2px solid var(--border-subtle);" width="76" height="76" />` : ""}
           <div>
             <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
             <p style="font-size:1.3rem;color:var(--text-secondary);margin-top:6px;" dir="auto">
@@ -415,6 +667,8 @@
           </p>
         </div>
 
+        ${allLocked ? `<div class="tv-all-locked-banner" role="status"><span>✓</span><span>All Wagers Locked In! Revealing bonus question…</span></div>` : ""}
+
         <div class="tv-lock-grid">
           ${room.players
               .map(
@@ -428,6 +682,9 @@
         } else if (room.phase === "question" && room.question) {
           const q = room.question;
           const letters = ["A", "B", "C", "D", "E", "F"];
+          const remInit = q.remaining_seconds || 0;
+          const isUrgentInit = !room.paused && !allLocked && remInit <= 5 && remInit > 0;
+          if (isUrgentInit) stageUrgentClass = "tv-stage-urgent";
           stageHtml = `
         <div>
           <div class="tv-stage-meta">
@@ -443,10 +700,10 @@
               ${diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
-            <div id="tv-timer-num" class="tv-timer-big">${Math.ceil(q.remaining_seconds || 0)}s</div>
+            <div id="tv-timer-num" class="tv-timer-big ${isUrgentInit ? "urgent" : ""}">${Math.ceil(remInit)}s</div>
           </div>
           <div class="timer-track tv-timer-bar-wrap">
-            <div id="tv-timer-fill" class="timer-fill"></div>
+            <div id="tv-timer-fill" class="timer-fill ${isUrgentInit ? "urgent" : ""}"></div>
           </div>
         </div>
 
@@ -479,6 +736,11 @@
               : `<div class="badge badge-accent" style="font-size:1.05rem;padding:10px 18px;align-self:flex-start;">
                 ${q.open_ended ? (q.rtl ? "إجابة مفتوحة فريدة — اكتب إجابتك على هاتفك!" : "Open-Ended Mode — Submit a unique answer on your phone!") : "Free-Text Mode — Submit on your phone!"}
               </div>`
+            }
+
+        ${allLocked
+              ? `<div class="tv-all-locked-banner" role="status"><span>✓</span><span>${q.rtl ? "الجميع أكّدوا الإجابة! جاري كشف الحل…" : "All Locked In! Revealing answer…"}</span></div>`
+              : ""
             }
 
         <div class="tv-lock-grid">
@@ -572,7 +834,7 @@
 
         main.innerHTML = `
       <div class="tv-follow-layout">
-        <section class="studio-card tv-stage animate-in" dir="${stageDir}">
+        <section class="studio-card tv-stage animate-in ${stageUrgentClass}" dir="${stageDir}">
           ${stageHtml}
         </section>
         <aside class="studio-card tv-sidebar">
@@ -598,6 +860,7 @@
             state.lanBaseUrl = data.lan_base_url;
           }
           if (data.lobby) state.lobby = data.lobby;
+          if (Array.isArray(data.packs)) state.packs = data.packs;
           if (data.tv) applyTVConfig(data.tv);
           if (data.room !== undefined) {
             state.room = data.room;
@@ -612,10 +875,137 @@
         btn.setAttribute("aria-pressed", String(enabled));
       }
 
+      function getVisibleHeaderControls() {
+        return Array.from(document.querySelectorAll(".tv-controls button")).filter(
+          (el) => !el.classList.contains("hidden") && el.offsetParent !== null
+        );
+      }
+
+      function findSpatialNeighbor(currentEl, candidates, dir) {
+        const cur = currentEl.getBoundingClientRect();
+        const cx = cur.left + cur.width / 2;
+        const cy = cur.top + cur.height / 2;
+        let best = null;
+        let bestScore = Infinity;
+
+        for (const el of candidates) {
+          if (el === currentEl) continue;
+          const r = el.getBoundingClientRect();
+          const ex = r.left + r.width / 2;
+          const ey = r.top + r.height / 2;
+          const dx = ex - cx;
+          const dy = ey - cy;
+
+          if (dir === "ArrowRight" && dx <= 8) continue;
+          if (dir === "ArrowLeft" && dx >= -8) continue;
+          if (dir === "ArrowDown" && dy <= 8) continue;
+          if (dir === "ArrowUp" && dy >= -8) continue;
+
+          const primary = (dir === "ArrowLeft" || dir === "ArrowRight") ? Math.abs(dx) : Math.abs(dy);
+          const secondary = (dir === "ArrowLeft" || dir === "ArrowRight") ? Math.abs(dy) : Math.abs(dx);
+          const score = primary + secondary * 2.4;
+          if (score < bestScore) {
+            bestScore = score;
+            best = el;
+          }
+        }
+        return best;
+      }
+
+      function setupRemoteNavigation() {
+        document.addEventListener("keydown", (evt) => {
+          const tag = (evt.target && evt.target.tagName) || "";
+          if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+          // Back / Return key on Smart TV remotes (LG webOS 461, Tizen 10009, Escape, Backspace)
+          if (
+            evt.key === "Escape" ||
+            evt.key === "Backspace" ||
+            evt.keyCode === 461 ||
+            evt.keyCode === 10009
+          ) {
+            if (state.tv.mode === "follow" && state.room) {
+              evt.preventDefault();
+              setTVMode("overview");
+            }
+            return;
+          }
+
+          if (
+            evt.key !== "ArrowLeft" &&
+            evt.key !== "ArrowRight" &&
+            evt.key !== "ArrowUp" &&
+            evt.key !== "ArrowDown"
+          ) {
+            return;
+          }
+
+          const headerBtns = getVisibleHeaderControls();
+          const roomCards = Array.from(document.querySelectorAll(".tv-room-card"));
+          const allTargets = headerBtns.concat(roomCards);
+          if (!allTargets.length) return;
+
+          evt.preventDefault();
+          const active = document.activeElement;
+          const inHeader = headerBtns.indexOf(active);
+          const inCards = roomCards.indexOf(active);
+
+          // First D-Pad press: focus first room card if in Overview, else first header control
+          if (inHeader === -1 && inCards === -1) {
+            const initial = roomCards[0] || headerBtns[0];
+            if (initial) initial.focus();
+            return;
+          }
+
+          let next = null;
+          if (inHeader !== -1) {
+            if (evt.key === "ArrowRight") {
+              next = headerBtns[(inHeader + 1) % headerBtns.length];
+            } else if (evt.key === "ArrowLeft") {
+              next = headerBtns[(inHeader - 1 + headerBtns.length) % headerBtns.length];
+            } else if (evt.key === "ArrowDown" && roomCards.length) {
+              next = findSpatialNeighbor(active, roomCards, "ArrowDown") || roomCards[0];
+            }
+          } else if (inCards !== -1) {
+            next = findSpatialNeighbor(active, roomCards, evt.key);
+            if (!next && evt.key === "ArrowUp" && headerBtns.length) {
+              next = findSpatialNeighbor(active, headerBtns, "ArrowUp") || headerBtns[0];
+            } else if (!next && evt.key === "ArrowRight") {
+              next = roomCards[(inCards + 1) % roomCards.length];
+            } else if (!next && evt.key === "ArrowLeft") {
+              next = roomCards[(inCards - 1 + roomCards.length) % roomCards.length];
+            }
+          }
+
+          if (next) {
+            next.focus();
+            if (next.scrollIntoView) {
+              next.scrollIntoView({ block: "nearest", inline: "nearest" });
+            }
+          }
+        });
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         if (window.QuizRoomsTheme) {
           window.QuizRoomsTheme.mountPill(document.getElementById("tv-theme-mount"));
         }
+
+        // Restore TV overscan safe-zone setting
+        let savedOverscan = false;
+        try {
+          savedOverscan = localStorage.getItem("quizrooms_tv_overscan") === "on";
+        } catch (_) { }
+        applyOverscan(savedOverscan, false);
+
+        const overscanBtn = document.getElementById("tv-overscan-btn");
+        if (overscanBtn) {
+          overscanBtn.addEventListener("click", () => {
+            applyOverscan(!state.overscan, true);
+          });
+        }
+
+        setupRemoteNavigation();
 
         // Event delegation on #tv-main so click-to-follow works reliably across live re-renders
         const main = document.getElementById("tv-main");
