@@ -1,0 +1,198 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version / code (e.g. 0.1.0 or v0.1.0)"
+        required: true
+        type: string
+      prerelease:
+        description: "Mark as pre-release"
+        required: false
+        type: boolean
+        default: false
+  push:
+    tags:
+      - "v*"
+      - "[0-9]+.[0-9]+.[0-9]+*"
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run unit tests
+        run: pytest tests/ -q
+
+      - name: Check frontend JS syntax
+        run: |
+          for f in custom_components/quizrooms/frontend/*.js custom_components/quizrooms/frontend/assets/js/*.js; do
+            node --check "$f"
+          done
+
+      - name: Validate SVGs
+        run: |
+          python3 -c "import pathlib, xml.etree.ElementTree as ET
+          for s in pathlib.Path('custom_components/quizrooms').rglob('*.svg'):
+              ET.fromstring(s.read_text(encoding='utf-8'))
+          print('SVGs OK')"
+
+      - name: Run Hassfest
+        uses: home-assistant/actions/hassfest@master
+
+      - name: Run HACS validation
+        uses: hacs/action@main
+        with:
+          category: "integration"
+
+  release:
+    name: Publish Release & Tag
+    needs: validate
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version and Tag
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            RAW="${{ inputs.version }}"
+            IS_PRERELEASE="${{ inputs.prerelease }}"
+          else
+            RAW="${{ github.ref_name }}"
+            IS_PRERELEASE="false"
+          fi
+
+          VERSION="${RAW#v}"
+          TAG="v${VERSION}"
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "prerelease=${IS_PRERELEASE}" >> "$GITHUB_OUTPUT"
+
+      - name: Update version files
+        id: manifest
+        run: |
+          VERSION="${{ steps.vars.outputs.version }}"
+          python - "$VERSION" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version = sys.argv[1]
+          if not re.fullmatch(r"\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?", version):
+              raise SystemExit(f"Unsupported version: {version}")
+
+          updates = [
+              (
+                  Path("custom_components/quizrooms/manifest.json"),
+                  r'("version"\s*:\s*")[^"]*(")',
+                  rf"\g<1>{version}\2",
+              ),
+              (
+                  Path("custom_components/quizrooms/const.py"),
+                  r'(VERSION\s*=\s*")[^"]*(")',
+                  rf"\g<1>{version}\2",
+              ),
+              (
+                  Path("custom_components/quizrooms/frontend/play.html"),
+                  r'(\?v=)[^"\']+',
+                  rf"\g<1>{version}",
+              ),
+              (
+                  Path("custom_components/quizrooms/frontend/tv.html"),
+                  r'(\?v=)[^"\']+',
+                  rf"\g<1>{version}",
+              ),
+          ]
+
+          for path, pattern, repl in updates:
+              text = path.read_text(encoding="utf-8")
+              updated, count = re.subn(pattern, repl, text)
+              if count == 0:
+                  raise SystemExit(f"No version pattern matched in {path}")
+              if updated != text:
+                  path.write_text(updated, encoding="utf-8")
+          PY
+          if ! git diff --quiet; then
+            echo "manifest_changed=true" >> "$GITHUB_OUTPUT"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add custom_components/quizrooms/manifest.json \
+              custom_components/quizrooms/const.py \
+              custom_components/quizrooms/frontend/play.html \
+              custom_components/quizrooms/frontend/tv.html
+            git commit -m "chore(release): bump version to ${VERSION}"
+            git push origin HEAD:main
+          else
+            echo "manifest_changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create and push Git Tag
+        run: |
+          TAG="${{ steps.vars.outputs.tag }}"
+          git fetch origin
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag -a "$TAG" -m "Release ${TAG}"
+            git push origin "$TAG"
+          fi
+
+      - name: Package Integration Zip
+        run: |
+          cd custom_components
+          zip -r ../quizrooms.zip quizrooms
+          cd ..
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.vars.outputs.tag }}"
+          PRERELEASE="${{ steps.vars.outputs.prerelease }}"
+          OPTS=()
+          if [ "$PRERELEASE" = "true" ]; then
+            OPTS+=("--prerelease")
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" quizrooms.zip --clobber
+          else
+            gh release create "$TAG" quizrooms.zip \
+              --title "Release ${TAG}" \
+              --generate-notes \
+              "${OPTS[@]}"
+          fi
