@@ -296,6 +296,7 @@ Every built-in pack includes a custom `160×160` square SVG cover and per-questi
 
 ## Documentation
 
+- **[Changelog](CHANGELOG.md)** — Release history and HACS-compatible release notes.
 - **[Architecture & Design](docs/ARCHITECTURE.md)** — Backend architecture, state machines (including Blind Final Bonus Round), WebSocket flows, security model, non-blocking async design, Stage Director, and Smart TV launcher diagrams.
 - **[Frontend UI & Design System](docs/FRONTEND_DESIGN.md)** — Mobile Player SPA, 16:9 Studio TV Dashboard (Full HD / webOS / Tizen / 4K), Tabbed Admin Sidebar Panel, theming, and RTL layout architecture.
 - **[Custom Pack Authoring Guide](docs/PACK_AUTHORING.md)** — Complete `pack.json` schema, `.zip` media packaging, `open_ended` & `difficulty` examples, and security limits.
@@ -308,6 +309,14 @@ Every built-in pack includes a custom `160×160` square SVG cover and per-questi
 ```bash
 pytest -v
 ```
+
+---
+
+## License
+
+**QuizRooms** source code, original trivia packs, studio SVG avatars, pack covers, and brand artwork are licensed under the **[GNU Affero General Public License v3.0 (AGPL-3.0)](LICENSE)**.
+
+Bundled third-party open-source assets (flag SVGs, country map silhouettes, brand logo glyphs, and local WOFF fonts) remain under their own respective licenses (`MIT`, `CC0 1.0`, `Ubuntu Font Licence 1.0`, `DejaVu / Bitstream Vera`, and `SIL OFL 1.1`) as separate aggregate assets and are not relicensed under AGPL-3.0. See [docs/THIRD_PARTY_LICENSES.md](docs/THIRD_PARTY_LICENSES.md) for full notices and license texts.
 
 ---
 

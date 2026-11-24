@@ -1,6 +1,8 @@
 # Third-Party Open-Source Licenses & Attributions
 
-QuizRooms is designed as a **local-first, zero-CDN** Home Assistant integration. To operate completely offline on your local network, it bundles a small set of permissively licensed open-source visual and font assets. All original source code, SVG avatars, pack covers, brand artwork, and freshly authored trivia packs in this repository are original works created for QuizRooms.
+QuizRooms is designed as a **local-first, zero-CDN** Home Assistant integration. To operate completely offline on your local network, it bundles a small set of permissively licensed open-source visual and font assets.
+
+> **License Scope Note:** All original QuizRooms source code, SVG avatars, pack covers, brand artwork, and freshly authored trivia packs in this repository are licensed under the **GNU Affero General Public License v3.0 ([LICENSE](../LICENSE))**. The third-party assets listed below are distributed alongside QuizRooms as separate aggregate assets and **remain under their own original licenses** (they are not relicensed under AGPL-3.0).
 
 ---
 
