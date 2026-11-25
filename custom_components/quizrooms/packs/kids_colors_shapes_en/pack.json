@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_colors_shapes_en",
-  "title": "Colors & Shapes (Ages 3–4)",
+  "title": "Colors & Shapes",
   "description": "Tap bright color circles and bold geometric shapes designed for preschoolers.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "color_swatch",
   "language": "en",
   "rtl": false,

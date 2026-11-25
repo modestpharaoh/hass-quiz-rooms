@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_colors_shapes_ar",
-  "title": "الألوان والأشكال (٣–٤ سنوات)",
+  "title": "الألوان والأشكال",
   "description": "تعلّم الألوان والأشكال الهندسية البسيطة ببطاقات ملونة ممتعة للأطفال.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "color_swatch",
   "language": "ar",
   "rtl": true,

@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_fruits_food_ar",
-  "title": "الفواكه والطعام (٣–٤ سنوات)",
+  "title": "الفواكه والطعام",
   "description": "تعرّف على الفواكه والخضروات والأطعمة اليومية بالصور الملونة للأطفال.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "image_grid",
   "language": "ar",
   "rtl": true,

@@ -63,7 +63,7 @@
     return slice
       .map((p) => {
         const lang = p.audience === "kids"
-          ? "🧸 3–4"
+          ? "🧸 Early"
           : p.open_ended
           ? (p.rtl ? "أتوبيس" : "Open")
           : String(p.language || "EN").toUpperCase();
@@ -626,7 +626,7 @@
                   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} Player${r.player_count === 1 ? "" : "s"}</span>
-                    ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Kids Mode</span>` : ""}
+                    ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Early Learner</span>` : ""}
                     ${diffBadgeHtml(r.difficulty)}
                     ${r.bonus_round ? `<span class="badge badge-accent">★ Bonus</span>` : ""}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
@@ -922,7 +922,7 @@
                   return `<span class="badge" style="font-size:1rem;padding:8px 16px;background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION · ±${lo}–${hi} PTS</span>`;
                 })()
                 : `<span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">${isKidsRoom ? "🧸 " : ""}Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`}
-              ${isKidsRoom ? `<span class="badge badge-lobby" style="font-size:0.95rem;padding:8px 14px;">⭐ Kids Mode</span>` : diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
+              ${isKidsRoom ? `<span class="badge badge-lobby" style="font-size:0.95rem;padding:8px 14px;">⭐ Early Learner</span>` : diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
             ${isUntimed

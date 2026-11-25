@@ -64,9 +64,7 @@ def test_all_11_kids_packs_load_with_valid_visual_assets(tmp_path: Path) -> None
         pack = by_id[pid]
         summary = pack.to_summary()
         assert pack.audience == AUDIENCE_KIDS
-        assert pack.age_range == "3-4"
         assert summary["audience"] == AUDIENCE_KIDS
-        assert summary["age_range"] == "3-4"
         assert pack.open_ended is False
         assert len(pack.questions) >= 24
 
@@ -361,10 +359,34 @@ def test_kids_mode_auto_advance_media_pinning_and_stage_tts(tmp_path: Path, monk
         assert payload_start["spoken_prompt"] == q0.spoken_prompt
         tts_start = build_phase_tts_message(
             payload_start,
-            "full_show_host",
+            "off",
             speaker_language="auto",
+            speaker_read_qa=True,
         )
         assert tts_start == (q0.spoken_prompt, "en")
+
+        # Try Again cue in speech synthesis (independent of Announcer Preset when speaker_read_qa=True)
+        payload_try = build_phase_changed_payload(
+            coord.engine,
+            room,
+            sub_event="try_again",
+            previous_phase=PHASE_QUESTION,
+            is_tv_followed=True,
+        )
+        assert payload_try["spoken_prompt"] is None
+        assert "correct_answer" not in payload_try
+        assert build_phase_tts_message(
+            payload_try,
+            "off",
+            speaker_language="auto",
+            speaker_read_qa=True,
+        ) == ("Good try! Tap another one!", "en")
+        assert build_phase_tts_message(
+            payload_try,
+            "off",
+            speaker_language="ar",
+            speaker_read_qa=True,
+        ) == ("محاولة جميلة! جرّب خياراً آخر!", "ar")
 
         # Reveal -> schedules Kids auto-advance -> moves automatically to round 2
         coord.engine.submit_answer(room.code, session_token=host_sess, answer=q0.answer)
@@ -382,8 +404,9 @@ def test_kids_mode_auto_advance_media_pinning_and_stage_tts(tmp_path: Path, monk
         assert payload_rev["reveal_message"] == q0.reveal_message
         tts_rev = build_phase_tts_message(
             payload_rev,
-            "full_show_host",
+            "off",
             speaker_language="auto",
+            speaker_read_qa=True,
         )
         assert tts_rev == (q0.reveal_message, "en")
 
@@ -396,3 +419,101 @@ def test_kids_mode_auto_advance_media_pinning_and_stage_tts(tmp_path: Path, monk
         await coord.async_shutdown()
 
     asyncio.run(run())
+
+
+def test_stage_effects_read_qa_standard_mode_and_try_again_speaker(tmp_path: Path) -> None:
+    """Verify independent speaker_read_qa works in Standard mode and Try-Again triggers speaker TTS without lights."""
+    from custom_components.quizrooms.stage_effects import StageDirector, StageEffectsConfig
+
+    registry = PackRegistry(BUILTIN_PACKS_DIR, tmp_path / "custom")
+    registry.reload()
+    engine = QuizEngine(registry, rng=random.Random(7))
+
+    # 1. StageEffectsConfig persists speaker_read_qa cleanly
+    cfg = StageEffectsConfig.from_dict(
+        {
+            "enabled": True,
+            "speaker_entity": "media_player.living_room",
+            "tts_entity": "tts.piper",
+            "speaker_preset": "off",
+            "speaker_read_qa": True,
+        }
+    )
+    assert cfg.speaker_read_qa is True
+    assert cfg.to_dict()["speaker_read_qa"] is True
+
+    # 2. Standard (non-Early Learner) room: speaker_read_qa speaks question on start (no answer leak)
+    #    and speaks the correct answer on reveal even with speaker_preset="off"
+    room, host_sess, host_tok = engine.create_room(
+        host_session_token="std_host",
+        host_nickname="Alex",
+        pack_ids=["general_knowledge_en"],
+        round_count=5,
+        timer_seconds=30,
+        kids_mode=False,
+    )
+    engine.start_game(room.code, host_token=host_tok)
+    q0 = room.questions[room.current_index]
+
+    start_payload = build_phase_changed_payload(
+        engine,
+        room,
+        sub_event="round_start",
+        previous_phase="lobby",
+        is_tv_followed=True,
+    )
+    assert start_payload["spoken_prompt"] == q0.prompt
+    assert "correct_answer" not in start_payload  # zero answer leak during question!
+    assert build_phase_tts_message(
+        start_payload, "off", speaker_language="auto", speaker_read_qa=True
+    ) == (q0.prompt, "en")
+    # When speaker_read_qa is False and preset is off, remains silent
+    assert build_phase_tts_message(
+        start_payload, "off", speaker_language="auto", speaker_read_qa=False
+    ) is None
+
+    engine.submit_answer(room.code, session_token=host_sess, answer=q0.answer, wager=5)
+    engine.reveal_current_question(room.code)
+    rev_payload = build_phase_changed_payload(
+        engine,
+        room,
+        sub_event="round_reveal",
+        previous_phase=PHASE_QUESTION,
+        is_tv_followed=True,
+    )
+    assert rev_payload["correct_answer"] == q0.answer
+
+    # With preset="off" + speaker_read_qa=True -> speaks only the answer
+    qa_only = build_phase_tts_message(
+        rev_payload, "off", speaker_language="auto", speaker_read_qa=True
+    )
+    assert qa_only == (f"The answer is {q0.answer}.", "en")
+
+    # With preset="winner_and_finale" + speaker_read_qa=True -> combines answer + round winner
+    qa_and_winner = build_phase_tts_message(
+        rev_payload, "winner_and_finale", speaker_language="auto", speaker_read_qa=True
+    )
+    assert qa_and_winner is not None
+    assert qa_and_winner[0].startswith(f"The answer is {q0.answer}.")
+    assert "Alex" in qa_and_winner[0]
+
+    # 3. StageDirector.handle_phase_event("try_again") schedules TTS with cooldown & does not trigger lights
+    spoken: list[tuple[str, str]] = []
+    director = StageDirector(hass=None, config=cfg)
+    director.config.light_entities = ["light.living_room"]
+    director.try_again_tts_cooldown_seconds = 60.0
+    director._schedule_tts = lambda msg, lang: spoken.append((msg, lang))  # type: ignore[method-assign]
+    lights_called = []
+    director._start_light_sequence = lambda fn: lights_called.append(fn)  # type: ignore[method-assign]
+
+    try_ev = {
+        "room_code": room.code,
+        "is_tv_followed": True,
+        "kids_mode": True,
+        "language": "en",
+        "sub_event": "try_again",
+    }
+    director.handle_phase_event(try_ev)
+    director.handle_phase_event(try_ev)  # suppressed by cooldown
+    assert spoken == [("Good try! Tap another one!", "en")]
+    assert lights_called == []

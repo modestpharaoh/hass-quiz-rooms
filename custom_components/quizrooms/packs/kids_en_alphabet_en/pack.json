@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_en_alphabet_en",
-  "title": "ABC Letters (Ages 3–4)",
+  "title": "ABC Letters",
   "description": "Playful English alphabet learning for toddlers with bright picture clues and giant letters A–Z.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "large_glyph",
   "language": "en",
   "rtl": false,

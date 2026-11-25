@@ -8,4 +8,4 @@ Follow all repository engineering rules, Home Assistant async invariants, securi
 - **LAN-only security & Stage Effects kill switch:** Enforce `_check_network_guard(...)` in every unauthenticated view, keep `StageDirector` & HA events strictly disabled when `allow_external_access` is `True`, and never leak answers during `question` or `bonus_wager`.
 - **Smart TV & low-end mobile performance:** All SVGs (813+) must be strictly valid XML with explicit `width` and `height` attributes for LG webOS TV compatibility; keep `/tv` viewport-fit (`100vh`) with Overscan Safe Zone & D-Pad focus rings, and preserve persistent DOM shells, 8–10 Hz GPU `transform: scaleX()` timers, `qrcode.js` LRU caching, and `data-tv-perf="lite"` / `data-mobile-perf="lite"` across `tv.js` and `play.js`.
 - **Version sync:** Bump `1.0.x` in `manifest.json`, `const.py`, `play.html`, and `tv.html` together (plus `pyproject.toml` and `CHANGELOG.md`).
-- **Verify** with `pytest -v` (67 offline tests) and `node --check` on modified frontend JS files.
+- **Verify** with `pytest -v` (68 offline tests) and `node --check` on modified frontend JS files.

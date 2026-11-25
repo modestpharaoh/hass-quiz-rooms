@@ -818,12 +818,18 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                             "code": room.code,
                             "answer": sub.answer,
                             "rtl": is_rtl,
+                            "language": (cur_q.language if cur_q is not None else room.pack_language),
                             "message": (
                                 "محاولة جميلة! جرّب خياراً آخر!"
                                 if is_rtl
                                 else "Good try! Tap another one!"
                             ),
                         }
+                    )
+                    self.coordinator.emit_phase_changed(
+                        room,
+                        sub_event="try_again",
+                        previous_phase=PHASE_QUESTION,
                     )
                     return
                 await self.coordinator.broadcast_room_state(room.code)

@@ -559,6 +559,10 @@
         if (wrongAns) state.kidsTriedWrong.add(wrongAns);
         state.kidsTryMessage = msg.message || (msg.rtl ? "محاولة جميلة! جرّب خياراً آخر!" : "Good try! Tap another one!");
         if (window.QuizRoomsSFX && window.QuizRoomsSFX.softTry) window.QuizRoomsSFX.softTry();
+        if (state.kidsAutoRead) {
+          const tryLang = msg.language || (msg.rtl ? "ar" : (state.room && state.room.question && state.room.question.language) || "en");
+          speakKidsText(state.kidsTryMessage, tryLang);
+        }
         const banner = document.getElementById("kids-try-banner");
         if (banner) {
           banner.textContent = state.kidsTryMessage;
@@ -1031,8 +1035,8 @@
       randomBtn.classList.toggle("hidden", !show);
       if (show) {
         if (filter === "kids") {
-          randomBtn.textContent = "🎲 Random Kids Packs";
-          randomBtn.setAttribute("aria-label", "Select random Kids packs");
+          randomBtn.textContent = "🎲 Random Early Learner Packs";
+          randomBtn.setAttribute("aria-label", "Select random Early Learner packs");
         } else {
           const langLabel = filter.toUpperCase();
           randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
@@ -1160,7 +1164,7 @@
               (p) => String(p.language || "").toLowerCase() === filter && p.audience !== "kids"
             );
       if (!langPacks.length) {
-        showToast(`No ${filter === "kids" ? "Kids" : filter.toUpperCase()} packs available.`, true);
+        showToast(`No ${filter === "kids" ? "Early Learner" : filter.toUpperCase()} packs available.`, true);
         return;
       }
 
@@ -1204,7 +1208,8 @@
       if (listEl) listEl.scrollTop = 0;
 
       const titles = picked.map((p) => p.title).join(", ");
-      showToast(`Selected ${picked.length} random ${filter.toUpperCase()} pack${picked.length === 1 ? "" : "s"}: ${titles}`);
+      const filterLabel = filter === "kids" ? "Early Learner" : filter.toUpperCase();
+      showToast(`Selected ${picked.length} random ${filterLabel} pack${picked.length === 1 ? "" : "s"}: ${titles}`);
     }
 
     function renderModalPackList(opts) {
@@ -1288,7 +1293,7 @@
           <div style="flex:1;min-width:0;text-align:start;">
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;">
               <span>${esc(p.title)}</span>
-              ${p.audience === "kids" ? `<span class="badge badge-lobby" style="font-size:0.68rem;padding:2px 7px;">🧸 Ages ${esc(p.age_range || "3–4")}</span>` : ""}
+              ${p.audience === "kids" ? `<span class="badge badge-lobby" style="font-size:0.68rem;padding:2px 7px;">🧸 Early Learner</span>` : ""}
               ${p.open_ended ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">Open-Ended</span>` : ""}
             </div>
             <div style="font-size:0.78rem;color:var(--text-muted);">
@@ -1343,7 +1348,7 @@
                   <button type="button" class="pack-filter-pill" data-cr-filter="en">EN</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="ar">AR (عربي)</button>
                   ${extraLangs.map((lang) => `<button type="button" class="pack-filter-pill" data-cr-filter="${esc(lang)}">${esc(lang.toUpperCase())}</button>`).join("")}
-                  <button type="button" class="pack-filter-pill" data-cr-filter="kids">🧸 Kids (3–4)</button>
+                  <button type="button" class="pack-filter-pill" data-cr-filter="kids">🧸 Early Learner</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="open_ended">Open-Ended</button>
                   <button type="button" id="cr-random-packs-btn" class="pack-random-btn hidden">🎲 Random Packs</button>
                 </div>
@@ -1353,8 +1358,8 @@
             </div>
 
             <div>
-              <label class="toggle-line" style="width:100%;cursor:pointer;" title="Kid-friendly mode for ages 3–4: giant one-tap tiles, stars instead of wagers, no negative points, Read-Aloud audio, and optional Try Again & Auto-Next.">
-                <span style="font-size:0.88rem;font-weight:800;">🧸 Kids Mode (Ages 3–4 · One-Tap &amp; Stars)</span>
+              <label class="toggle-line" style="width:100%;cursor:pointer;" title="Early Learner mode: giant one-tap visual tiles, stars instead of wagers, no negative points, Read-Aloud audio, and optional Try Again & Auto-Next.">
+                <span style="font-size:0.88rem;font-weight:800;">🧸 Early Learner Mode (One-Tap &amp; Stars)</span>
                 <input id="cr-kids-mode" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
               </label>
               <div id="cr-kids-callout" class="kids-mode-callout hidden" style="margin-top:8px;">
@@ -1690,12 +1695,12 @@
       }
       modalRoot.innerHTML = `
         <div class="modal-backdrop" id="confirm-leave-kids-backdrop">
-          <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Leave Kids Game" style="max-width:380px;">
+          <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Leave Early Learner Game" style="max-width:380px;">
             <div class="modal-header">
               <h2 style="margin:0;">🧸 Parent Check</h2>
             </div>
             <p style="margin:0 0 18px;color:var(--text-secondary);font-size:0.94rem;">
-              Leave this Kids Mode game and return to the Lobby?
+              Leave this Early Learner game and return to the Lobby?
             </p>
             <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
               <button type="button" id="cancel-leave-kids-btn" class="btn btn-primary">Keep Playing</button>
@@ -1856,7 +1861,7 @@
               </div>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:14px;">
-              ${room.settings.kids_mode ? `<span class="badge badge-lobby">🧸 Kids Mode (Ages 3–4)</span>` : ""}
+              ${room.settings.kids_mode ? `<span class="badge badge-lobby">🧸 Early Learner Mode</span>` : ""}
               <span class="badge">${room.settings.round_count} Rounds</span>
               <span class="badge">${room.settings.timer_seconds > 0 ? `${room.settings.timer_seconds}s Timer` : "Relaxed (No Timer)"}</span>
               ${room.settings.kids_mode
@@ -2294,7 +2299,7 @@
         <div class="question-top">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             ${roundBadgeHtml}
-            ${kidsMode ? `<span class="badge badge-lobby">⭐ Kids Mode</span>` : diffBadgeHtml(q.difficulty)}
+            ${kidsMode ? `<span class="badge badge-lobby">⭐ Early Learner</span>` : diffBadgeHtml(q.difficulty)}
             ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
           </div>
           ${isUntimed ? `<span class="badge badge-accent">${q.rtl ? "وقت مفتوح" : "Relaxed"}</span>` : `<span id="timer-readout" class="timer-readout">${initReadout}</span>`}

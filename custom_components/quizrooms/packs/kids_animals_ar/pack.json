@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_animals_ar",
-  "title": "الحيوانات وأصواتها (٣–٤ سنوات)",
+  "title": "الحيوانات وأصواتها",
   "description": "تعرّف على الحيوانات اللطيفة وأصواتها بالصور الملونة للأطفال.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "image_grid",
   "language": "ar",
   "rtl": true,

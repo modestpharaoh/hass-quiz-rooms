@@ -1005,6 +1005,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
         tts_entity: "",
         speaker_preset: "winner_and_finale",
         speaker_language: "auto",
+        speaker_read_qa: false,
         speaker_volume_enabled: false,
         speaker_volume: 0.6,
       },
@@ -1177,6 +1178,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const draft = this._stageDraft || JSON.parse(JSON.stringify(stage.config));
     this._stageDraft = draft;
     if (typeof draft.speaker_language !== "string" || !draft.speaker_language) draft.speaker_language = "auto";
+    if (typeof draft.speaker_read_qa !== "boolean") draft.speaker_read_qa = false;
     if (typeof draft.speaker_volume_enabled !== "boolean") draft.speaker_volume_enabled = false;
     const volPct = Math.round(Math.max(5, Math.min(100, Number(draft.speaker_volume || 0.6) * 100)));
 
@@ -1284,6 +1286,21 @@ class QuizRoomsAdminPanel extends HTMLElement {
             <div class="vol-card">
               <div class="vol-head">
                 <label class="check-lbl" style="font-size:0.82rem;">
+                  <input id="stage-read-qa" type="checkbox" ${draft.speaker_read_qa ? "checked" : ""} />
+                  Read Questions &amp; Answers Aloud
+                </label>
+                <span class="vol-val-pill ${draft.speaker_read_qa ? "active" : ""}" id="stage-read-qa-pill">
+                  ${draft.speaker_read_qa ? "Enabled" : "Off"}
+                </span>
+              </div>
+              <p class="sub" style="font-size:0.74rem;margin:0;">
+                Separate from Announcer Preset — speaks each question on round start, the correct answer (or celebration) on reveal, and &ldquo;Good try!&rdquo; cues in both Standard and Early Learner modes.
+              </p>
+            </div>
+
+            <div class="vol-card">
+              <div class="vol-head">
+                <label class="check-lbl" style="font-size:0.82rem;">
                   <input id="stage-vol-enabled" type="checkbox" ${draft.speaker_volume_enabled ? "checked" : ""} />
                   Predefined Announcement Volume
                 </label>
@@ -1358,6 +1375,15 @@ class QuizRoomsAdminPanel extends HTMLElement {
     bind("stage-tts-select", "change", (el) => { this._getOrInitStageDraft().tts_entity = el.value; this._markStageDirty(); });
     bind("stage-speaker-preset", "change", (el) => { this._getOrInitStageDraft().speaker_preset = el.value; this._markStageDirty(); });
     bind("stage-speaker-language", "change", (el) => { this._getOrInitStageDraft().speaker_language = el.value; this._markStageDirty(); });
+    bind("stage-read-qa", "change", (el) => {
+      this._getOrInitStageDraft().speaker_read_qa = el.checked;
+      const pill = mount.querySelector("#stage-read-qa-pill");
+      if (pill) {
+        pill.textContent = el.checked ? "Enabled" : "Off";
+        pill.classList.toggle("active", el.checked);
+      }
+      this._markStageDirty();
+    });
 
     bind("stage-light-filter", "input", (el) => {
       this._lightFilter = el.value;
@@ -1499,7 +1525,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
               <button type="button" class="filter-pill ${this._packFilter === "all" ? "active" : ""}" data-pack-filter="all">All (${allPacks.length})</button>
               <button type="button" class="filter-pill ${this._packFilter === "builtin" ? "active" : ""}" data-pack-filter="builtin">Built-in (${builtinCount})</button>
               <button type="button" class="filter-pill ${this._packFilter === "custom" ? "active" : ""}" data-pack-filter="custom">Custom (${customCount})</button>
-              <button type="button" class="filter-pill ${this._packFilter === "kids" ? "active" : ""}" data-pack-filter="kids">🧸 Kids (${kidsCount})</button>
+              <button type="button" class="filter-pill ${this._packFilter === "kids" ? "active" : ""}" data-pack-filter="kids">🧸 Early Learner (${kidsCount})</button>
             </div>
           </div>
         </div>
@@ -1648,7 +1674,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
                 <div class="pack-card-title-row">
                   <strong class="pack-card-title" dir="auto">${this._esc(p.title)}</strong>
                   <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
-                  ${p.audience === "kids" ? `<span class="badge" style="color:var(--accent);border-color:var(--accent);">🧸 Ages ${this._esc(p.age_range || "3–4")}</span>` : ""}
+                  ${p.audience === "kids" ? `<span class="badge" style="color:var(--accent);border-color:var(--accent);">🧸 Early Learner</span>` : ""}
                   ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
                 </div>
                 <div class="pack-card-meta">

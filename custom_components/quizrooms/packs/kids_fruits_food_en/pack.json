@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_fruits_food_en",
   "title": "Yummy Fruits & Food",
-  "description": "Colorful fruit, veggie, and everyday food picture quizzes made for 3–4 year olds.",
+  "description": "Colorful fruit, veggie, and everyday food picture quizzes made for early learners.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "image_grid",
   "language": "en",
   "rtl": false,

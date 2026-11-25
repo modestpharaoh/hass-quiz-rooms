@@ -17,6 +17,7 @@ import asyncio
 from dataclasses import dataclass, field
 import logging
 import re
+import time
 from typing import Any
 
 from homeassistant.helpers import entity_registry as er
@@ -129,6 +130,15 @@ def sanitize_tts_name(raw_name: str | None, *, language: str = "en") -> str:
     return text or fallback
 
 
+def sanitize_tts_text(raw_text: str | None, *, max_len: int = 240) -> str:
+    """Sanitize a question prompt or answer string for safe TTS playback (anti-SSML)."""
+    text = str(raw_text or "")
+    text = _TAG_RE.sub(" ", text)
+    text = _URL_RE.sub(" ", text)
+    text = text.replace("<", " ").replace(">", " ")
+    return " ".join(text.split())[:max_len].strip()
+
+
 @dataclass
 class StageEffectsConfig:
     """Persistent configuration for QuizRooms Smart-Home Stage Effects."""
@@ -143,6 +153,7 @@ class StageEffectsConfig:
     tts_entity: str = ""
     speaker_preset: str = SPEAKER_PRESET_WINNER_FINALE
     speaker_language: str = SPEAKER_LANG_AUTO
+    speaker_read_qa: bool = False
     speaker_volume_enabled: bool = False
     speaker_volume: float = DEFAULT_SPEAKER_VOLUME
 
@@ -207,6 +218,7 @@ class StageEffectsConfig:
             tts_entity=tts_entity,
             speaker_preset=speaker_preset,
             speaker_language=speaker_language,
+            speaker_read_qa=bool(raw.get("speaker_read_qa", False)),
             speaker_volume_enabled=bool(raw.get("speaker_volume_enabled", False)),
             speaker_volume=speaker_volume,
         )
@@ -223,6 +235,7 @@ class StageEffectsConfig:
             "tts_entity": self.tts_entity,
             "speaker_preset": self.speaker_preset,
             "speaker_language": self.speaker_language,
+            "speaker_read_qa": self.speaker_read_qa,
             "speaker_volume_enabled": self.speaker_volume_enabled,
             "speaker_volume": self.speaker_volume,
         }
@@ -587,16 +600,21 @@ def build_phase_changed_payload(
     )
     spoken_prompt = (
         (active_q.spoken_prompt or active_q.prompt)
-        if (active_q is not None and room.settings.kids_mode and room.phase == PHASE_QUESTION)
+        if (active_q is not None and room.phase == PHASE_QUESTION and sub_event != "try_again")
         else None
     )
     reveal_message = (
         active_q.reveal_message
-        if (active_q is not None and room.settings.kids_mode and room.phase == PHASE_REVEAL)
+        if (active_q is not None and room.phase == PHASE_REVEAL)
+        else None
+    )
+    correct_answer = (
+        active_q.answer
+        if (active_q is not None and room.phase == PHASE_REVEAL and not active_q.open_ended)
         else None
     )
 
-    return {
+    payload: dict[str, Any] = {
         "room_code": room.code,
         "room_name": room.settings.room_name,
         "visibility": room.settings.visibility,
@@ -623,6 +641,9 @@ def build_phase_changed_payload(
         },
         "round_result": round_result,
     }
+    if correct_answer is not None:
+        payload["correct_answer"] = correct_answer
+    return payload
 
 
 def build_finale_payload(
@@ -714,7 +735,10 @@ _TTS_CONJUNCTIONS: dict[str, str] = {
 _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     SPEAKER_LANG_EN: {
         "round_start": "Round {r_num} of {total}. Place your wagers!",
+        "round_prefix": "Round {r_num} of {total}.",
         "final_countdown": "Five seconds left!",
+        "reveal_answer": "The answer is {answer}.",
+        "try_again": "Good try! Tap another one!",
         "none_correct": "Tough question! Nobody got that one right.",
         "round_win_leader": "{name} takes the round with plus {delta} points! {leader} leads with {leader_score}.",
         "round_win": "{name} takes the round with plus {delta} points!",
@@ -725,7 +749,10 @@ _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     },
     SPEAKER_LANG_AR: {
         "round_start": "الجولة {r_num} من {total}. استعدوا للسؤال!",
+        "round_prefix": "الجولة {r_num} من {total}.",
         "final_countdown": "باقي خمس ثوانٍ!",
+        "reveal_answer": "الإجابة الصحيحة هي {answer}.",
+        "try_again": "محاولة جميلة! جرّب خياراً آخر!",
         "none_correct": "سؤال صعب! لم يتمكن أحد من الإجابة الصحيحة.",
         "round_win_leader": "{name} يتصدر الجولة بـ {delta} نقطة! الصدارة الآن لـ {leader} برصيد {leader_score}.",
         "round_win": "{name} يتصدر الجولة بـ {delta} نقطة!",
@@ -736,7 +763,10 @@ _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     },
     SPEAKER_LANG_DE: {
         "round_start": "Runde {r_num} von {total}. Setzt eure Einsätze!",
+        "round_prefix": "Runde {r_num} von {total}.",
         "final_countdown": "Noch fünf Sekunden!",
+        "reveal_answer": "Die Antwort ist {answer}.",
+        "try_again": "Guter Versuch! Tippe auf ein anderes!",
         "none_correct": "Schwere Frage! Niemand hatte die richtige Antwort.",
         "round_win_leader": "{name} gewinnt die Runde mit plus {delta} Punkten! {leader} führt mit {leader_score}.",
         "round_win": "{name} gewinnt die Runde mit plus {delta} Punkten!",
@@ -747,7 +777,10 @@ _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     },
     SPEAKER_LANG_FR: {
         "round_start": "Manche {r_num} sur {total}. Faites vos mises !",
+        "round_prefix": "Manche {r_num} sur {total}.",
         "final_countdown": "Plus que cinq secondes !",
+        "reveal_answer": "La bonne réponse est {answer}.",
+        "try_again": "Bien essayé ! Essaie une autre réponse !",
         "none_correct": "Question difficile ! Personne n'a trouvé la bonne réponse.",
         "round_win_leader": "{name} remporte la manche avec plus {delta} points ! {leader} mène avec {leader_score}.",
         "round_win": "{name} remporte la manche avec plus {delta} points !",
@@ -758,7 +791,10 @@ _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     },
     SPEAKER_LANG_ES: {
         "round_start": "Ronda {r_num} de {total}. ¡Hagan sus apuestas!",
+        "round_prefix": "Ronda {r_num} de {total}.",
         "final_countdown": "¡Quedan cinco segundos!",
+        "reveal_answer": "La respuesta correcta es {answer}.",
+        "try_again": "¡Buen intento! ¡Toca otra opción!",
         "none_correct": "¡Pregunta difícil! Nadie acertó esta vez.",
         "round_win_leader": "¡{name} gana la ronda con más {delta} puntos! {leader} lidera con {leader_score}.",
         "round_win": "¡{name} gana la ronda con más {delta} puntos!",
@@ -769,7 +805,10 @@ _TTS_SCRIPTS: dict[str, dict[str, str]] = {
     },
     SPEAKER_LANG_PT: {
         "round_start": "Rodada {r_num} de {total}. Façam suas apostas!",
+        "round_prefix": "Rodada {r_num} de {total}.",
         "final_countdown": "Faltam cinco segundos!",
+        "reveal_answer": "A resposta correta é {answer}.",
+        "try_again": "Boa tentativa! Toque em outra opção!",
         "none_correct": "Pergunta difícil! Ninguém acertou dessa vez.",
         "round_win_leader": "{name} vence a rodada com mais {delta} pontos! {leader} lidera com {leader_score}.",
         "round_win": "{name} vence a rodada com mais {delta} pontos!",
@@ -812,54 +851,78 @@ def build_phase_tts_message(
     speaker_preset: str,
     *,
     speaker_language: str = SPEAKER_LANG_AUTO,
+    speaker_read_qa: bool = False,
 ) -> tuple[str, str] | None:
     """Return (message, language_code) for a phase event, or None if silent."""
-    if speaker_preset == SPEAKER_PRESET_OFF or speaker_preset == SPEAKER_PRESET_FINALE_ONLY:
+    preset_active = speaker_preset not in (SPEAKER_PRESET_OFF, SPEAKER_PRESET_FINALE_ONLY)
+    if not preset_active and not speaker_read_qa:
         return None
 
     lang = _resolve_announcement_language(event_data.get("language"), speaker_language)
     tpl = _TTS_SCRIPTS[lang]
     sub_event = str(event_data.get("sub_event") or "")
+    is_kids = bool(event_data.get("kids_mode"))
 
-    if sub_event == "round_start" and speaker_preset == SPEAKER_PRESET_FULL_HOST:
-        if event_data.get("kids_mode") and event_data.get("spoken_prompt"):
-            return str(event_data["spoken_prompt"]), lang
-        r_num = int(event_data.get("round_number") or 1)
-        total = int(event_data.get("total_rounds") or 10)
-        return tpl["round_start"].format(r_num=r_num, total=total), lang
+    if sub_event == "try_again":
+        if speaker_read_qa or speaker_preset == SPEAKER_PRESET_FULL_HOST:
+            return tpl["try_again"], lang
+        return None
+
+    if sub_event == "round_start":
+        prompt_text = sanitize_tts_text(event_data.get("spoken_prompt")) if speaker_read_qa else ""
+        if prompt_text:
+            if speaker_preset == SPEAKER_PRESET_FULL_HOST and not is_kids:
+                r_num = int(event_data.get("round_number") or 1)
+                total = int(event_data.get("total_rounds") or 10)
+                return f"{tpl['round_prefix'].format(r_num=r_num, total=total)} {prompt_text}", lang
+            return prompt_text, lang
+        if speaker_preset == SPEAKER_PRESET_FULL_HOST:
+            r_num = int(event_data.get("round_number") or 1)
+            total = int(event_data.get("total_rounds") or 10)
+            return tpl["round_start"].format(r_num=r_num, total=total), lang
+        return None
 
     if sub_event == "final_countdown" and speaker_preset == SPEAKER_PRESET_FULL_HOST:
         return tpl["final_countdown"], lang
 
-    if sub_event == "round_reveal" and speaker_preset in (
-        SPEAKER_PRESET_WINNER_FINALE,
-        SPEAKER_PRESET_FULL_HOST,
-    ):
-        if event_data.get("kids_mode") and event_data.get("reveal_message"):
-            return str(event_data["reveal_message"]), lang
-        res = event_data.get("round_result") or {}
-        top_scorers = res.get("round_top_scorers") or []
-        if not top_scorers:
-            return tpl["none_correct"], lang
+    if sub_event == "round_reveal":
+        qa_part = ""
+        if speaker_read_qa:
+            rev_msg = sanitize_tts_text(event_data.get("reveal_message"))
+            corr_ans = sanitize_tts_text(event_data.get("correct_answer"))
+            if rev_msg:
+                qa_part = rev_msg
+            elif corr_ans:
+                qa_part = tpl["reveal_answer"].format(answer=corr_ans)
 
-        names = [sanitize_tts_name(s.get("name"), language=lang) for s in top_scorers]
-        delta = int(top_scorers[0].get("points_delta") or 0)
-        leader = res.get("overall_leader") or {}
-        leader_name = sanitize_tts_name(leader.get("name"), language=lang) if leader else ""
-        leader_score = int(leader.get("score") or 0) if leader else 0
+        winner_part = ""
+        if speaker_preset in (SPEAKER_PRESET_WINNER_FINALE, SPEAKER_PRESET_FULL_HOST) and not (is_kids and qa_part):
+            res = event_data.get("round_result") or {}
+            top_scorers = res.get("round_top_scorers") or []
+            if not top_scorers:
+                winner_part = tpl["none_correct"]
+            else:
+                names = [sanitize_tts_name(s.get("name"), language=lang) for s in top_scorers]
+                delta = int(top_scorers[0].get("points_delta") or 0)
+                leader = res.get("overall_leader") or {}
+                leader_name = sanitize_tts_name(leader.get("name"), language=lang) if leader else ""
+                leader_score = int(leader.get("score") or 0) if leader else 0
 
-        if len(names) == 1:
-            if leader_name:
-                return (
-                    tpl["round_win_leader"].format(
-                        name=names[0], delta=delta, leader=leader_name, leader_score=leader_score
-                    ),
-                    lang,
-                )
-            return tpl["round_win"].format(name=names[0], delta=delta), lang
+                if len(names) == 1:
+                    if leader_name:
+                        winner_part = tpl["round_win_leader"].format(
+                            name=names[0], delta=delta, leader=leader_name, leader_score=leader_score
+                        )
+                    else:
+                        winner_part = tpl["round_win"].format(name=names[0], delta=delta)
+                else:
+                    joined = _join_names(names, language=lang)
+                    winner_part = tpl["round_tie"].format(joined=joined, delta=delta)
 
-        joined = _join_names(names, language=lang)
-        return tpl["round_tie"].format(joined=joined, delta=delta), lang
+        combined = " ".join(part for part in (qa_part, winner_part) if part).strip()
+        if combined:
+            return combined, lang
+        return None
 
     return None
 
@@ -911,10 +974,12 @@ class StageDirector:
         self._restore_task: asyncio.Task[None] | None = None
         self._active_tts_tasks: set[asyncio.Task[None]] = set()
         self._last_tts_error: str | None = None
+        self._last_try_again_tts_at: dict[str, float] = {}
         # Tunable step delay (tests can shorten pulse sleep for fast deterministic tests)
         self.pulse_beat_seconds: float = 0.85
         self.finale_restore_delay_seconds: float = 12.0
         self.volume_set_delay_seconds: float = 0.2
+        self.try_again_tts_cooldown_seconds: float = 2.0
 
     def update_config(self, raw: dict[str, Any] | StageEffectsConfig) -> dict[str, Any]:
         if isinstance(raw, StageEffectsConfig):
@@ -1407,7 +1472,7 @@ class StageDirector:
             return
 
         sub_event = str(event_data.get("sub_event") or "")
-        if self.config.light_entities and self.config.light_preset != LIGHT_PRESET_OFF:
+        if sub_event != "try_again" and self.config.light_entities and self.config.light_preset != LIGHT_PRESET_OFF:
             if sub_event == "play_again":
                 self.cancel_active_effects()
                 self.schedule_restore_lights(0.0)
@@ -1424,11 +1489,21 @@ class StageDirector:
                 elif sub_event == "paused":
                     self._start_light_sequence(self._seq_paused)
 
-        if self.config.speaker_entity and self.config.speaker_preset != SPEAKER_PRESET_OFF:
+        if self.config.speaker_entity and (
+            self.config.speaker_preset != SPEAKER_PRESET_OFF or self.config.speaker_read_qa
+        ):
+            if sub_event == "try_again":
+                room_code = str(event_data.get("room_code") or "")
+                now_mono = time.monotonic()
+                last_at = self._last_try_again_tts_at.get(room_code, 0.0)
+                if (now_mono - last_at) < self.try_again_tts_cooldown_seconds:
+                    return
+                self._last_try_again_tts_at[room_code] = now_mono
             tts_item = build_phase_tts_message(
                 event_data,
                 self.config.speaker_preset,
                 speaker_language=self.config.speaker_language,
+                speaker_read_qa=self.config.speaker_read_qa,
             )
             if tts_item is not None:
                 self._schedule_tts(tts_item[0], tts_item[1])

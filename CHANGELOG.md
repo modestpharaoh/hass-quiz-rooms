@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.6] - 2026-11-25
+
+Early Learner naming polish, independent Stage Effects Q&A Speech toggle (Standard & Early Learner modes), and spoken "Good try!" encouragement release.
+
+### Changed & Added
+- **Early Learner Mode Naming (`play.js`, `tv.js`, `admin-panel.js`, 11 built-in `packs/kids_*`, docs & README):** Renamed user-facing "Kids (3–4)" / "Ages 3–4" / "Kids Mode" labels everywhere to **Early Learner** / **Early Learner Mode** (preserving full backwards compatibility for internal `kids_mode` / `audience: "kids"` keys).
+- **Independent Stage Effects "Read Questions & Answers Aloud" (`stage_effects.py`, `admin-panel.js`):** Added a dedicated **`speaker_read_qa`** toggle under **Local Speaker Announcer (Multilingual)** separate from **Announcer Preset** — works in **both Standard and Early Learner modes** to speak questions on `round_start`, localized correct answers (or `reveal_message`) on `round_reveal` (combining cleanly with round-winner announcements when active), and localized `"Good try! Tap another one!"` prompts.
+- **Spoken "Good try! Tap another one!" (`play.js`, `views.py`, `stage_effects.py`):** Enabled speech synthesis for Try Again prompts both on the mobile browser (`window.speechSynthesis` when Auto-Read is enabled) and on LAN-only Stage Effects speakers (via `sub_event="try_again"` with a `2.0s` per-room cooldown and without disrupting lights).
+
+---
+
 ## [1.0.5] - 2026-11-25
 
 Kids Early Learning Mode (Ages 3–4) and 11 new bilingual visual learning packs release.

@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_animals_en",
   "title": "Friendly Animals & Sounds",
-  "description": "Tap cute animals and match their playful sounds (Moo, Meow, Quack, Roar) for ages 3–4.",
+  "description": "Tap cute animals and match their playful sounds (Moo, Meow, Quack, Roar) for early learners.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "image_grid",
   "language": "en",
   "rtl": false,

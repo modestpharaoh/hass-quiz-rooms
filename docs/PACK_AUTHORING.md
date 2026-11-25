@@ -18,8 +18,8 @@ QuizRooms supports hot-importing custom trivia packs directly from the **Home As
 | `description` | `string` | No | `""` | Short pack description. |
 | `cover` | `string` | No | `null` | Relative path inside ZIP to cover image/icon (e.g., `"media/cover.svg"`). Rejected in plain `.json` uploads. |
 | `open_ended` | `boolean` | No | `false` | Set `true` for open-answer-only packs (no `choices` required; forces Free-Text mode and defaults **No Repeated Answers** to on). |
-| `audience` | `string` | No | `"general"` | Target audience: `"general"` or `"kids"` (isolates early-learning packs into the `🧸 Kids (3–4)` filter and auto-enables Kids Mode defaults). |
-| `age_range` | `string` | No | `null` | Optional short age badge shown on pack cards (e.g., `"3-4"`). |
+| `audience` | `string` | No | `"general"` | Target audience: `"general"` or `"kids"` (isolates early-learning packs into the `🧸 Early Learner` filter and auto-enables Early Learner Mode defaults). |
+| `age_range` | `string` | No | `null` | Optional short age/level label (e.g., `"3-5"`). |
 | `choice_style` | `string` | No | `"default"` | Default choice tile presentation for the pack: `"default"`, `"large_glyph"` (giant letters/digits), `"color_swatch"` (colored circles), or `"image_grid"` (picture choice tiles). |
 | `language` | `string` | No | `"en"` | BCP-47 language code (e.g., `"en"`, `"ar"`, `"fr"`). |
 | `rtl` | `boolean` | No | `language == "ar"` | Enables right-to-left layout flipping. |
@@ -44,8 +44,8 @@ QuizRooms supports hot-importing custom trivia packs directly from the **Home As
 | `choice_style` | `string` | No | Pack's `choice_style` | Per-question choice tile override (`"default"`, `"large_glyph"`, `"color_swatch"`, `"image_grid"`). |
 | `choice_images` | `(string\|null)[]` | No | `[]` | Optional array (same length as `choices`) of relative media paths inside ZIP rendered inside each choice tile. Rejected in plain `.json` uploads. |
 | `choice_colors` | `(string\|null)[]` | No | `[]` | Optional array (same length as `choices`) of 6-digit hex colors (e.g., `"#EF4444"`) for `"color_swatch"` tiles. |
-| `spoken_prompt` | `string` | No | `null` | Optional child-friendly spoken cue read aloud via browser Web Speech API (`Read Aloud`) and optional Stage Effects TTS (`full_show_host`). |
-| `reveal_message` | `string` | No | `null` | Optional joyful celebration line shown & spoken during Reveal in Kids Mode (e.g., `"Yay! A is for Apple!"`). |
+| `spoken_prompt` | `string` | No | `null` | Optional spoken cue read aloud via browser Web Speech API (`Read Aloud`) and Stage Effects **Read Questions & Answers Aloud** (`speaker_read_qa`, works in Standard & Early Learner modes). |
+| `reveal_message` | `string` | No | `null` | Optional joyful celebration line shown & spoken during Reveal in Early Learner Mode (e.g., `"Yay! A is for Apple!"`). |
 | `explanation` | `string` | No | `""` | Factoid shown during the Reveal phase. |
 | `language` / `rtl` | `string` / `bool` | No | Pack defaults | Per-question language and direction overrides. |
 
@@ -113,16 +113,15 @@ movie_night.zip
 
 ---
 
-## 4. Example: Kids Early-Learning Pack (`audience: "kids"`)
+## 4. Example: Early Learner Pack (`audience: "kids"`)
 
 ```json
 {
-  "pack_id": "my_toddler_animals",
-  "title": "My Animal Friends (Ages 3–4)",
+  "pack_id": "my_early_learner_animals",
+  "title": "My Animal Friends",
   "description": "Tap the friendly animal picture!",
   "cover": "media/cover.svg",
   "audience": "kids",
-  "age_range": "3-4",
   "choice_style": "image_grid",
   "language": "en",
   "rtl": false,

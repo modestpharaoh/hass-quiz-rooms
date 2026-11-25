@@ -1,9 +1,9 @@
 {
   "pack_id": "kids_ar_alphabet_ar",
-  "title": "الحروف العربية (٣–٤ سنوات)",
+  "title": "الحروف العربية",
   "description": "تعلّم الحروف العربية من الألف إلى الياء مع صور جميلة وأزرار كبيرة مناسبة للأطفال.",
   "audience": "kids",
-  "age_range": "3-4",
+  "age_range": null,
   "choice_style": "large_glyph",
   "language": "ar",
   "rtl": true,
