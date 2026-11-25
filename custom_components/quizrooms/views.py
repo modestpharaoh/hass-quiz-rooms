@@ -302,11 +302,17 @@ class QuizRoomsAssetsView(_QuizRoomsBaseView):
             return web.Response(status=404)
 
         data, content_type = found
+        query = getattr(request, "query", None) or {}
+        cache_control = (
+            "public, max-age=31536000, immutable"
+            if query.get("v")
+            else "public, max-age=3600"
+        )
         return web.Response(
             body=data,
             headers={
                 "Content-Type": content_type,
-                "Cache-Control": "public, max-age=3600",
+                "Cache-Control": cache_control,
                 "X-Content-Type-Options": "nosniff",
             },
         )
@@ -634,7 +640,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     {
                         "type": "lobby_update",
                         "lobby": engine.serialize_public_lobby(),
-                        "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                        "avatars": list_preset_catalog(engine.get_taken_preset_avatars()),
                     }
                 )
                 return
@@ -729,7 +735,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     {
                         "type": "lobby_update",
                         "lobby": engine.serialize_public_lobby(),
-                        "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                        "avatars": list_preset_catalog(engine.get_taken_preset_avatars()),
                     }
                 )
                 return

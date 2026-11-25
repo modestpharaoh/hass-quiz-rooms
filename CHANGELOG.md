@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.2] - 2026-11-25
+
+Mobile Guest SPA (`/quizrooms/play`) performance & battery optimization release targeting low-end and older Android/iOS devices.
+
+### Changed & Optimized
+- **Persistent Screen Shells & Targeted DOM Patching (`play.js`, `play.html`):**
+  - Eliminated full-page `root.innerHTML` teardowns on opponent lock-ins and lobby broadcasts across Open Lobby, Room Lobby, Bonus Wager, and Question phases — preventing dropped taps, repeated `.animate-in` flashes, lost lobby input focus, and mobile virtual keyboard / Arabic IME flicker during Free-Text rounds.
+  - Diff-gated Reveal, Finale, and Avatar Picker renders, switched list/grid interactions to delegated event listeners, and removed `aria-live="polite"` from `<main id="app-root">` (keeping it on `#toast-root` and `#reconnect-banner`).
+- **Mobile GPU/CSS Pipeline & GPU-Composited Timer (`play.css`, `theme.css`, `play.html`, `play.js`):**
+  - Replaced the 60fps `requestAnimationFrame` + `style.width` timer loop with a throttled 8–10 Hz (`100–125ms`) GPU-composited `transform: scaleX()` loop with cached DOM refs and 1 Hz text updates; switched `@keyframes pulseUrgent` from `filter: brightness()` to compositor-only `opacity`.
+  - Removed nested `backdrop-filter: blur()` layers and `background-attachment: fixed` on touch/mobile viewports, added `touch-action: manipulation` for zero-delay taps and instant double-tap lock-in, and added automatic `data-mobile-perf="lite"` detection for low-RAM / older mobile browsers.
+- **Lazy Modals, Low-RAM Photo Uploads & Mobile Confetti Cleanup (`play.js`, `confetti.js`):**
+  - Added `loading="lazy" decoding="async"` and explicit dimensions to pack covers and avatars, debounced Create Room pack search (`120ms`) and nickname `localStorage` writes (`250ms`), and downscaled camera uploads via `createImageBitmap(..., { resizeWidth: 320 })` with canvas memory cleanup to avoid OOM spikes on 2–3 GB RAM phones.
+  - Extended lightweight confetti caps (`dpr=1`, `28` particles, `65` frames) to low-end mobile devices and removed/zeroed `#confetti-canvas` after bursts finish.
+- **Lean Startup, Font Subsetting, Caching & Instant Mobile Resume (`play.html`, `play.js`, `theme.css`, `views.py`):**
+  - Switched `/quizrooms/play` to WS-first hydration (with an 800ms HTTP bootstrap fallback), added `visibilitychange` + `online` instant-reconnect hooks, deferred `<script>` tags, added `unicode-range` to `QuizDisplay`/`QuizArabic` `@font-face` rules so English-only phones skip downloading 714 KB of Arabic fonts, omitted redundant `packs` arrays from `subscribe_lobby`/`leave_room`, and enabled immutable 1-year `Cache-Control` for `?v=` versioned assets.
+
+---
+
 ## [1.0.1] - 2026-11-25
 
 Smart TV (LG webOS / Samsung Tizen) dashboard performance release reducing question/score transition latency on older TVs from 1–3s to ~100–250ms.
