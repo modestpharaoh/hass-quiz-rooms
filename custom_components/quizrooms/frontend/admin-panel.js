@@ -661,12 +661,14 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .vol-preset-btn { padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); background: var(--card2); color: var(--text); font-size: 0.72rem; font-weight: 700; cursor: pointer; }
         .vol-preset-btn.active { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
         .hidden { display: none !important; }
-        .tabs-bar { display: flex; gap: 8px; flex-wrap: wrap; padding: 6px; border-radius: 14px; background: var(--card); border: 1px solid var(--border); margin-bottom: 16px; }
-        .tab-btn { flex: 1 1 150px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--muted); font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: background 0.14s, color 0.14s; }
-        .tab-btn:hover { background: var(--card2); color: var(--text); }
-        .tab-btn.active { background: var(--accent); color: var(--accent-ink); }
-        .tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 20px; padding: 0 6px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; background: var(--card2); color: var(--text); }
-        .tab-btn.active .tab-count { background: rgba(0,0,0,0.22); color: var(--accent-ink); }
+        .version-badge { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px; font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.74rem; font-weight: 800; color: var(--accent); background: rgba(45,212,191,0.12); border: 1px solid var(--accent); vertical-align: middle; letter-spacing: 0.02em; }
+        .tabs-bar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 5px; border-radius: 14px; background: var(--card2); border: 1px solid var(--border); margin-bottom: 16px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.06); }
+        .tab-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--text); opacity: 0.78; font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: background 0.14s, color 0.14s, opacity 0.14s, box-shadow 0.14s; white-space: nowrap; touch-action: manipulation; }
+        .tab-btn:hover { background: var(--card); opacity: 1; border-color: var(--border); }
+        .tab-btn.active { background: var(--accent); color: var(--accent-ink); opacity: 1; border-color: transparent; box-shadow: 0 3px 10px rgba(0,0,0,0.18); }
+        .tab-label-short { display: none; }
+        .tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 20px; padding: 0 6px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; background: var(--card); color: var(--text); border: 1px solid var(--border); flex: none; }
+        .tab-btn.active .tab-count { background: rgba(0,0,0,0.22); color: var(--accent-ink); border-color: transparent; }
         .tab-dirty-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); display: inline-block; flex: none; box-shadow: 0 0 0 2px rgba(251,191,36,0.35); }
         @keyframes qrDirtyPulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
@@ -678,12 +680,27 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .qr-frame-center { display: flex; justify-content: center; margin-top: 8px; }
         .qr-white-frame { background: #ffffff; padding: 12px; border-radius: 14px; border: 1px solid rgba(20,25,38,0.14); display: inline-flex; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
         .qr-white-frame svg { width: 210px; height: 210px; display: block; }
-        .pack-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-        .filter-pills { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--card2); border: 1px solid var(--border); gap: 3px; flex-wrap: wrap; }
-        .filter-pill { border: none; background: transparent; color: var(--muted); font-weight: 700; font-size: 0.78rem; padding: 6px 11px; border-radius: 8px; cursor: pointer; }
+        .pack-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+        .pack-toolbar-controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; flex: 1 1 320px; justify-content: flex-end; min-width: 0; }
+        .pack-toolbar-search { flex: 1 1 200px; max-width: 280px; min-width: 0; }
+        .filter-pills { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--card2); border: 1px solid var(--border); gap: 3px; flex: none; }
+        .filter-pill { border: none; background: transparent; color: var(--muted); font-weight: 700; font-size: 0.78rem; padding: 6px 11px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+        .filter-pill:hover { color: var(--text); }
         .filter-pill.active { background: var(--accent); color: var(--accent-ink); }
-        .pack-card { padding: 12px 14px; border-radius: 12px; background: var(--card2); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
-        .pack-card-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .packs-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        @media (min-width: 820px) {
+          .packs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+        }
+        .pack-card { padding: 14px; border-radius: 14px; background: var(--card2); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; transition: border-color 0.15s, box-shadow 0.15s; min-width: 0; }
+        .pack-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+        .pack-card.expanded { grid-column: 1 / -1; border-color: var(--accent); }
+        .pack-card-head { display: flex; align-items: flex-start; gap: 12px; min-width: 0; }
+        .pack-thumb-lg { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; flex: none; border: 1px solid var(--border); background: var(--card); display: block; }
+        .pack-card-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+        .pack-card-title-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .pack-card-title { font-size: 0.96rem; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+        .pack-card-meta { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+        .pack-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--border); margin-top: auto; }
         .pack-preview-drawer { padding: 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
         .preview-q-item { padding: 9px 11px; border-radius: 8px; background: var(--card2); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; font-size: 0.84rem; }
         .preview-thumb { width: 54px; height: 40px; object-fit: contain; border-radius: 6px; background: var(--card); border: 1px solid var(--border); flex: none; }
@@ -691,6 +708,19 @@ class QuizRoomsAdminPanel extends HTMLElement {
         .diff-easy { background: rgba(5,150,105,0.14); color: var(--ok); }
         .diff-medium { background: rgba(217,119,6,0.16); color: var(--warn); }
         .diff-hard { background: rgba(225,29,72,0.15); color: var(--err); }
+        @media (max-width: 680px) {
+          #panel-root { padding: 14px; }
+          .tabs-bar { gap: 4px; padding: 4px; }
+          .tab-btn { padding: 9px 6px; font-size: 0.78rem; gap: 5px; }
+          .tab-label-full { display: none; }
+          .tab-label-short { display: inline; }
+          .tab-count { min-width: 18px; height: 18px; padding: 0 5px; font-size: 0.68rem; }
+          .pack-toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+          .pack-toolbar-controls { flex: none; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 8px; }
+          .pack-toolbar-search { max-width: none; width: 100%; box-sizing: border-box; flex: none; }
+          .filter-pills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; box-sizing: border-box; }
+          .filter-pill { text-align: center; padding: 7px 6px; font-size: 0.74rem; }
+        }
       </style>
       <div id="panel-root" data-theme="light">
         <div class="wrap">
@@ -710,7 +740,10 @@ class QuizRoomsAdminPanel extends HTMLElement {
                 <path d="M97 22 L99.5 29.5 L107 32 L99.5 34.5 L97 42 L94.5 34.5 L87 32 L94.5 29.5 Z" fill="url(#qr-admin-spark)"/>
               </svg>
               <div>
-                <h1>QuizRooms Admin</h1>
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                  <h1>QuizRooms Admin</h1>
+                  <span id="admin-version-badge" class="version-badge hidden" title="QuizRooms Integration Version"></span>
+                </div>
                 <p class="sub">Local-First Multi-Room Trivia Control Center</p>
               </div>
             </div>
@@ -728,15 +761,18 @@ class QuizRoomsAdminPanel extends HTMLElement {
           <div id="admin-kpi-mount"></div>
           <nav id="admin-tabs-bar" class="tabs-bar" role="tablist" aria-label="Admin Sections">
             <button type="button" class="tab-btn" role="tab" data-tab="live" aria-selected="true">
-              <span>Live Rooms &amp; TV</span>
+              <span class="tab-label-full">Live Rooms &amp; TV</span>
+              <span class="tab-label-short">Live &amp; TV</span>
               <span id="tab-live-count" class="tab-count">0</span>
             </button>
             <button type="button" class="tab-btn" role="tab" data-tab="stage" aria-selected="false">
-              <span>Stage Effects</span>
+              <span class="tab-label-full">Stage Effects</span>
+              <span class="tab-label-short">Stage</span>
               <span id="tab-stage-dirty-dot" class="tab-dirty-dot hidden" title="Unsaved changes"></span>
             </button>
             <button type="button" class="tab-btn" role="tab" data-tab="packs" aria-selected="false">
-              <span>Packs &amp; Import</span>
+              <span class="tab-label-full">Packs &amp; Import</span>
+              <span class="tab-label-short">Packs</span>
               <span id="tab-packs-count" class="tab-count">0</span>
             </button>
           </nav>
@@ -773,6 +809,11 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const st = this._state;
     if (!mount || !st) return;
 
+    const versionBadge = this.shadowRoot.getElementById("admin-version-badge");
+    if (versionBadge && st.version) {
+      versionBadge.textContent = `v${st.version}`;
+      versionBadge.classList.remove("hidden");
+    }
     const liveCountEl = this.shadowRoot.getElementById("tab-live-count");
     if (liveCountEl) liveCountEl.textContent = String(st.active_rooms || 0);
     const packsCountEl = this.shadowRoot.getElementById("tab-packs-count");
@@ -1451,8 +1492,8 @@ class QuizRoomsAdminPanel extends HTMLElement {
       <section class="card">
         <div class="pack-toolbar">
           <h2 style="margin:0;">Installed Trivia Packs (<span id="packs-visible-count">${allPacks.length}</span> / ${allPacks.length})</h2>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1;justify-content:flex-end;">
-            <input id="packs-search-input" type="search" class="light-filter-input" style="max-width:280px;" placeholder="Search packs by title, ID, or category…" value="${this._esc(this._packSearch)}" />
+          <div class="pack-toolbar-controls">
+            <input id="packs-search-input" type="search" class="light-filter-input pack-toolbar-search" placeholder="Search packs by title, ID, or category…" value="${this._esc(this._packSearch)}" />
             <div class="filter-pills" role="group" aria-label="Filter Packs">
               <button type="button" class="filter-pill ${this._packFilter === "all" ? "active" : ""}" data-pack-filter="all">All (${allPacks.length})</button>
               <button type="button" class="filter-pill ${this._packFilter === "builtin" ? "active" : ""}" data-pack-filter="builtin">Built-in (${builtinCount})</button>
@@ -1539,7 +1580,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
       return;
     }
 
-    listMount.innerHTML = `<div class="list">${filtered
+    listMount.innerHTML = `<div class="packs-grid">${filtered
       .map((p) => {
         const d = p.difficulties || { easy: 0, medium: 0, hard: 0 };
         const isExpanded = this._expandedPackId === p.pack_id;
@@ -1570,7 +1611,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
                       return `
                       <div class="preview-q-item" dir="${q.rtl ? "rtl" : "auto"}">
                         <div style="display:flex;align-items:flex-start;gap:10px;">
-                          ${q.media_url ? `<img src="${this._esc(q.media_url)}" alt="" class="preview-thumb" />` : ""}
+                          ${q.media_url ? `<img src="${this._esc(q.media_url)}" alt="" class="preview-thumb" loading="lazy" decoding="async" />` : ""}
                           <div style="flex:1;min-width:0;">
                             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px;">
                               <span class="diff-pill ${diffCls}">${this._esc(q.difficulty || "medium")}</span>
@@ -1592,28 +1633,30 @@ class QuizRoomsAdminPanel extends HTMLElement {
         }
 
         return `
-          <div class="pack-card">
-            <div class="pack-card-top">
-              <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
-                ${p.cover_url ? `<img src="${this._esc(p.cover_url)}" alt="" class="pack-thumb" />` : ""}
-                <div style="min-width:0;">
-                  <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                    <strong dir="auto">${this._esc(p.title)}</strong>
-                    <span class="badge">${this._esc(p.pack_id)}</span>
-                    <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
-                    ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
-                    <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
-                  </div>
-                  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;">
-                    <span class="diff-pill diff-easy">E ${d.easy || 0}</span>
-                    <span class="diff-pill diff-medium">M ${d.medium || 0}</span>
-                    <span class="diff-pill diff-hard">H ${d.hard || 0}</span>
-                  </div>
+          <div class="pack-card ${isExpanded ? "expanded" : ""}">
+            <div class="pack-card-head">
+              ${p.cover_url ? `<img src="${this._esc(p.cover_url)}" alt="" class="pack-thumb-lg" width="52" height="52" loading="lazy" decoding="async" />` : ""}
+              <div class="pack-card-info">
+                <div class="pack-card-title-row">
+                  <strong class="pack-card-title" dir="auto">${this._esc(p.title)}</strong>
+                  <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
+                  ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
+                </div>
+                <div class="pack-card-meta">
+                  <span class="badge" style="font-family:ui-monospace,monospace;">${this._esc(p.pack_id)}</span>
+                  <span class="badge">${p.question_count} Qs · ${this._esc(p.language.toUpperCase())}${p.rtl ? " · RTL" : ""}${p.has_media ? " · Media" : ""}</span>
                 </div>
               </div>
+            </div>
+            <div class="pack-card-foot">
+              <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center;">
+                <span class="diff-pill diff-easy">E ${d.easy || 0}</span>
+                <span class="diff-pill diff-medium">M ${d.medium || 0}</span>
+                <span class="diff-pill diff-hard">H ${d.hard || 0}</span>
+              </div>
               <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
-                <button type="button" class="btn" data-preview-pack="${this._esc(p.pack_id)}">${isExpanded ? "Hide Preview" : "Preview Questions"}</button>
-                ${p.is_builtin ? `<span class="sub">Protected</span>` : `<button class="btn btn-danger" data-del-pack="${this._esc(p.pack_id)}">Delete</button>`}
+                <button type="button" class="btn" style="padding:6px 11px;font-size:0.8rem;" data-preview-pack="${this._esc(p.pack_id)}">${isExpanded ? "Hide Preview" : "Preview"}</button>
+                ${p.is_builtin ? `<span class="sub" style="font-size:0.76rem;">Protected</span>` : `<button class="btn btn-danger" style="padding:6px 11px;font-size:0.8rem;" data-del-pack="${this._esc(p.pack_id)}">Delete</button>`}
               </div>
             </div>
             ${previewHtml}

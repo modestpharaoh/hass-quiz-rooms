@@ -973,6 +973,22 @@
     let packSearchDebounceTimer = null;
     let createFilteredCount = 0;
 
+    function syncUniqueAnswersVisibility() {
+      const modeSelect = document.getElementById("cr-answer-mode");
+      const uniqueWrap = document.getElementById("cr-unique-answers-wrap");
+      const uniqueCheck = document.getElementById("cr-unique-answers");
+      const lateJoinWrap = document.getElementById("cr-late-join-wrap");
+      const isFreeText = Boolean(modeSelect && modeSelect.value === "free_text");
+      if (uniqueWrap) uniqueWrap.classList.toggle("hidden", !isFreeText);
+      if (uniqueCheck) {
+        uniqueCheck.disabled = !isFreeText;
+        if (!isFreeText) uniqueCheck.checked = false;
+      }
+      if (lateJoinWrap) {
+        lateJoinWrap.style.gridColumn = isFreeText ? "" : "1 / -1";
+      }
+    }
+
     function syncCreatePackSelectionUI() {
       const countBadge = document.getElementById("cr-pack-count");
       if (countBadge && state.packs.length) {
@@ -984,11 +1000,15 @@
       const uniqueCheck = document.getElementById("cr-unique-answers");
       if (hasOpenEnded) {
         if (modeSelect) modeSelect.value = "free_text";
+        syncUniqueAnswersVisibility();
         if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
           uniqueCheck.checked = true;
         }
-      } else if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
-        uniqueCheck.checked = false;
+      } else {
+        syncUniqueAnswersVisibility();
+        if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
+          uniqueCheck.checked = false;
+        }
       }
     }
 
@@ -1272,13 +1292,13 @@
             </div>
 
             <div class="form-row-2">
-              <label class="toggle-line" style="cursor:pointer;">
+              <label id="cr-late-join-wrap" class="toggle-line" style="cursor:pointer;">
                 <span style="font-size:0.86rem;font-weight:700;">Allow Late Joiners</span>
                 <input id="cr-late-join" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
               </label>
-              <label class="toggle-line" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
+              <label id="cr-unique-answers-wrap" class="toggle-line hidden" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
                 <span style="font-size:0.86rem;font-weight:700;">No Repeated Answers</span>
-                <input id="cr-unique-answers" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+                <input id="cr-unique-answers" type="checkbox" disabled style="width:18px;height:18px;accent-color:var(--accent-primary);" />
               </label>
             </div>
 
@@ -1301,6 +1321,14 @@
           uniqueEl.dataset.userTouched = "true";
         });
       }
+
+      const answerModeEl = document.getElementById("cr-answer-mode");
+      if (answerModeEl) {
+        answerModeEl.addEventListener("change", () => {
+          syncUniqueAnswersVisibility();
+        });
+      }
+      syncUniqueAnswersVisibility();
 
       const roundsEl = document.getElementById("cr-rounds");
       const bonusLabelEl = document.getElementById("cr-bonus-label");
@@ -1408,6 +1436,7 @@
           showToast("Select at least one trivia pack.", true);
           return;
         }
+        const answerMode = document.getElementById("cr-answer-mode").value;
         sendWS({
           type: "create_room",
           session_token: state.sessionToken,
@@ -1417,10 +1446,10 @@
           pack_ids: selectedPacks,
           round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
           timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
-          answer_mode: document.getElementById("cr-answer-mode").value,
+          answer_mode: answerMode,
           wager_mode: "pool",
           deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
-          unique_answers_only: document.getElementById("cr-unique-answers").checked,
+          unique_answers_only: answerMode === "free_text" && document.getElementById("cr-unique-answers").checked,
           difficulty: document.getElementById("cr-difficulty").value,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,

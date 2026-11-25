@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.4] - 2026-11-25
+
+Create Room & Admin Panel UX polish release.
+
+### Changed
+- **Free-Text-Only "No Repeated Answers" (`play.js`):** The **No Repeated Answers** toggle in the Create Room modal is now hidden and disabled when **Answer Mode** is set to `Multiple Choice`, appearing automatically when `Free-Text` (or an Open-Ended pack) is selected.
+- **Admin Panel Polish (`admin-panel.js`, `views.py`):**
+  - Added the live integration version badge (`v1.0.4`) in the Admin Panel header (sourced from `/quizrooms/api/admin/state`).
+  - Upgraded the 3-tab navigation bar to a high-contrast 3-column segmented grid with concise mobile labels (`Live & TV`, `Stage`, `Packs`) so all 3 tabs stay cleanly on one row without wrapping on phones.
+  - Made the Installed Packs toolbar stack cleanly on mobile (full-width search + 3-column equal-width filter pills) and upgraded pack cards to a polished **2-column responsive grid** on wide screens (`>= 820px`) with full-width expansion when previewing sample questions.
+
+---
+
 ## [1.0.3] - 2026-11-25
 
 Documentation & engineering guidelines synchronization release.

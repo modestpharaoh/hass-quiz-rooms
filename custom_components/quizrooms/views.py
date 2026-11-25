@@ -31,6 +31,7 @@ from .const import (
     URL_SIDEBAR_ICON_JS,
     URL_TV,
     URL_WS,
+    VERSION,
 )
 from .coordinator import QuizRoomsCoordinator, WSClient
 from .engine import EngineError
@@ -928,6 +929,7 @@ class QuizRoomsAdminStateView(_QuizRoomsBaseView):
         stage_available = self.coordinator.is_stage_events_allowed()
         return web.json_response(
             {
+                "version": VERSION,
                 "rooms": self.coordinator.engine.serialize_admin_rooms(),
                 "active_rooms": self.coordinator.engine.active_room_count,
                 "active_players": self.coordinator.engine.active_player_count,
