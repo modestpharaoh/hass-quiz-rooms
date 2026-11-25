@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.1] - 2026-11-25
+
+Smart TV (LG webOS / Samsung Tizen) dashboard performance release reducing question/score transition latency on older TVs from 1–3s to ~100–250ms.
+
+### Changed & Optimized
+- **Persistent Follow-Mode DOM & Granular Updates (`tv.js`):** Replaced full-page `main.innerHTML` teardowns on every `room_state` with a persistent `.tv-follow-layout` shell (keeping the sidebar and QR mounted per room), partial lock-badge updates during rounds, and diff-gated Top-10 leaderboard updates.
+- **QR Code SVG Memoization (`qrcode.js`):** Added a bounded LRU cache in `QuizRoomsQR.toSVG()` so room Join QR SVGs are computed once instead of on every WebSocket message.
+- **GPU-Composited Timer & Legacy Smart TV Lite Mode (`tv.js`, `tv.css`, `tv.html`, `confetti.js`):**
+  - Switched the TV countdown bar from 60fps `style.width` to a 10 Hz (`100–125ms`) GPU-composited `transform: scaleX()` loop with cached DOM refs and 1 Hz digit updates.
+  - Replaced `backdrop-filter: blur(14px)` cards and `background-attachment: fixed` on `/quizrooms/tv` with crisp solid surfaces, replaced heavy `box-shadow`/`text-shadow` urgency animations with lightweight opacity/color pulses, auto-detected legacy Smart TVs (`Web0S` / `Tizen` / Chrome `< 80`) for `data-tv-perf="lite"`, and capped TV confetti particles & DPR.
+- **Trimmed Redundant WebSocket Traffic & Faster Reveal Beat (`coordinator.py`, `views.py`, `tv.js`):**
+  - Omitted the ~25 KB `packs` catalog from routine `lobby_update` broadcasts (still sent on `hello`, `bootstrap`, and pack import/delete/reload) and skipped sending `lobby_update` to TVs currently in Follow mode.
+  - Trimmed the post-lock-in auto-reveal beat from `1.1s` to `0.7s`, tightened disconnected TV HTTP fallback polling from `4.5s` to `2.0s`, and added a clear `"HTTP Sync (WS Offline)"` diagnostic badge state.
+
+---
+
 ## [1.0.0] - 2026-11-24
 
 Initial stable **v1.0.0** release of **QuizRooms** — a 100% local-first, zero-dependency, multi-room confidence-wagering party trivia integration for Home Assistant (HACS-installable).

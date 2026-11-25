@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>QuizRooms — TV Studio Dashboard</title>
-  <link rel="icon" type="image/svg+xml" href="/quizrooms/assets/img/logo.svg?v=1.0.0" />
+  <link rel="icon" type="image/svg+xml" href="/quizrooms/assets/img/logo.svg?v=1.0.1" />
   <script>
     (function () {
       try {
@@ -16,18 +16,24 @@
         document.documentElement.dataset.theme = mode === "auto" ? (dark ? "dark" : "light") : mode;
         var overscan = localStorage.getItem("quizrooms_tv_overscan") === "on" ? "on" : "off";
         document.documentElement.dataset.overscan = overscan;
+        var ua = navigator.userAgent || "";
+        var chromeMatch = ua.match(/Chrome\/(\d+)/i);
+        var isLegacyTV =
+          /Web0S|webOS|Tizen|SMART-TV|SmartTV/i.test(ua) ||
+          (chromeMatch && parseInt(chromeMatch[1], 10) < 80);
+        if (isLegacyTV) document.documentElement.dataset.tvPerf = "lite";
       } catch (e) { }
     })();
   </script>
-  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=1.0.0" />
-  <link rel="stylesheet" href="/quizrooms/assets/css/tv.css?v=1.0.0" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=1.0.1" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/tv.css?v=1.0.1" />
 </head>
 
 <body>
   <div class="tv-shell">
     <header class="tv-header">
       <div class="tv-brand">
-        <img src="/quizrooms/assets/img/logo.svg?v=1.0.0" alt="QuizRooms" class="tv-brand-logo" width="48" height="48" />
+        <img src="/quizrooms/assets/img/logo.svg?v=1.0.1" alt="QuizRooms" class="tv-brand-logo" width="48" height="48" />
         <div class="tv-brand-title-row">
           <h1>QuizRooms Studio</h1>
           <span class="badge" id="tv-conn-badge">Connecting…</span>
@@ -44,11 +50,11 @@
     <main id="tv-main" class="tv-main" aria-live="polite"></main>
   </div>
 
-  <script src="/quizrooms/assets/js/theme.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/qrcode.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/confetti.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/sfx.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/tv.js?v=1.0.0"></script>
+  <script src="/quizrooms/assets/js/theme.js?v=1.0.1"></script>
+  <script src="/quizrooms/assets/js/qrcode.js?v=1.0.1"></script>
+  <script src="/quizrooms/assets/js/confetti.js?v=1.0.1"></script>
+  <script src="/quizrooms/assets/js/sfx.js?v=1.0.1"></script>
+  <script src="/quizrooms/assets/js/tv.js?v=1.0.1"></script>
 </body>
 
 </html>

@@ -794,8 +794,8 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                 )
                 await self.coordinator.broadcast_room_state(room.code)
                 if all_locked:
-                    # Short dramatic beat before auto-reveal (tracked in coordinator._room_timers)
-                    self.coordinator.schedule_auto_reveal(room.code, room.current_index, delay=1.1)
+                    # Crisp beat before auto-reveal (tracked in coordinator._room_timers)
+                    self.coordinator.schedule_auto_reveal(room.code, room.current_index, delay=0.7)
                 return
 
             if msg_type == "next_step":
@@ -1076,7 +1076,7 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
                 status=err.status_code,
             )
 
-        await self.coordinator.broadcast_lobby_and_tv()
+        await self.coordinator.broadcast_lobby_and_tv(include_packs=True)
         return web.json_response({"ok": True, "pack": pack.to_summary()}, status=201)
 
 
@@ -1160,7 +1160,7 @@ class QuizRoomsAdminPackDeleteView(_QuizRoomsBaseView):
             )
 
         self.coordinator.prune_unused_pinned_media()
-        await self.coordinator.broadcast_lobby_and_tv()
+        await self.coordinator.broadcast_lobby_and_tv(include_packs=True)
         return web.json_response({"ok": True, "deleted": pack_id})
 
 

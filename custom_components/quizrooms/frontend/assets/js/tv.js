@@ -3,17 +3,20 @@
   const state = {
     ws: null,
     wsConnected: false,
+    wsFailures: 0,
     lanBaseUrl: window.location.origin,
     tv: { mode: "overview", room_code: null, theme: null },
     lobby: { rooms: [], active_rooms: 0, max_rooms: 5 },
     packs: [],
     room: null,
     overscan: false,
+    isLiteTV: document.documentElement.dataset.tvPerf === "lite",
     serverOffsetMs: 0,
-    timerRaf: null,
+    timerId: null,
     lastCountdownSec: -1,
     lastPhaseKey: "",
     lastLockedCount: 0,
+    followDom: null,
     prevRanksByRoom: {},
     revealHighlights: null,
     lastRevealSig: "",
@@ -144,11 +147,13 @@
     return code ? `${base}/quizrooms/play?code=${encodeURIComponent(code)}` : `${base}/quizrooms/play`;
   }
 
-    function updateConnBadge(text, live) {
+    function updateConnBadge(text, live, title = "") {
       const el = document.getElementById("tv-conn-badge");
       if (!el) return;
       el.textContent = text;
       el.className = "badge " + (live ? "badge-lobby" : "badge-paused");
+      if (title) el.setAttribute("title", title);
+      else el.removeAttribute("title");
     }
 
     async function setTVMode(mode, roomCode = null, theme = null) {
@@ -210,19 +215,31 @@
 
       ws.onopen = () => {
         tvReconnectAttempt = 0;
+        state.wsFailures = 0;
         state.wsConnected = true;
         updateConnBadge("Live", true);
       };
 
       ws.onclose = () => {
         state.wsConnected = false;
-        updateConnBadge("Reconnecting…", false);
+        state.wsFailures += 1;
+        if (state.wsFailures >= 2) {
+          updateConnBadge(
+            "HTTP Sync (WS Offline)",
+            false,
+            "WebSocket offline; polling every 2s. On older Smart TVs (e.g. 2017 webOS), use plain LAN http:// for instant WebSocket updates."
+          );
+        } else {
+          updateConnBadge("Reconnecting…", false);
+        }
         scheduleTVReconnect();
       };
 
       ws.onerror = (err) => {
         console.error("QuizRooms TV WebSocket error", err);
-        updateConnBadge("Reconnecting…", false);
+        if (state.wsFailures < 2) {
+          updateConnBadge("Reconnecting…", false);
+        }
       };
 
       ws.onmessage = (evt) => {
@@ -409,37 +426,64 @@
   }
 
     function stopTimerLoop() {
-      if (state.timerRaf) {
-        cancelAnimationFrame(state.timerRaf);
-        state.timerRaf = null;
+      if (state.timerId) {
+        clearInterval(state.timerId);
+        state.timerId = null;
       }
     }
 
     function startTimerLoop() {
       stopTimerLoop();
+      // Cache DOM elements once outside tick() so timer updates never query the DOM repeatedly
+      const fill = document.getElementById("tv-timer-fill");
+      const num = document.getElementById("tv-timer-num");
+      const stage = document.getElementById("tv-stage") || document.querySelector(".tv-stage");
+      if (!fill || !num) return;
+
+      let lastSecText = "";
+      let lastScaleStr = "";
+      let lastWarn = null;
+      let lastUrgent = null;
+
       function tick() {
         const room = state.room;
-        if (!room || room.phase !== "question" || !room.question) return;
+        if (!room || room.phase !== "question" || !room.question) {
+          stopTimerLoop();
+          return;
+        }
         const q = room.question;
-        const fill = document.getElementById("tv-timer-fill");
-        const num = document.getElementById("tv-timer-num");
-        const stage = document.querySelector(".tv-stage");
-        if (!fill || !num) return;
-
         let rem = q.remaining_seconds || 0;
         if (!room.paused && q.ends_at_ms) {
           rem = Math.max(0, (q.ends_at_ms - (Date.now() + state.serverOffsetMs)) / 1000);
         }
         const allLocked = !room.paused && room.connected_count > 0 && room.locked_in_count >= room.connected_count;
         const sec = Math.ceil(rem);
-        const pct = Math.max(0, Math.min(100, (rem / (q.timer_seconds || 30)) * 100));
+        const ratio = Math.max(0, Math.min(1, rem / (q.timer_seconds || 30)));
+        const scaleStr = ratio.toFixed(3);
+        const isWarn = !allLocked && rem <= 10 && rem > 5;
         const isUrgent = !room.paused && !allLocked && rem <= 5 && rem > 0;
-        fill.style.width = pct.toFixed(1) + "%";
-        fill.classList.toggle("warn", !allLocked && rem <= 10 && rem > 5);
-        fill.classList.toggle("urgent", isUrgent);
-        num.classList.toggle("urgent", isUrgent);
-        if (stage) stage.classList.toggle("tv-stage-urgent", isUrgent);
-        num.textContent = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
+
+        // GPU-composited scaleX avoids layout/paint thrashing on older Smart TVs
+        if (scaleStr !== lastScaleStr) {
+          lastScaleStr = scaleStr;
+          fill.style.transform = `scaleX(${scaleStr})`;
+        }
+        if (isWarn !== lastWarn) {
+          lastWarn = isWarn;
+          fill.classList.toggle("warn", isWarn);
+        }
+        if (isUrgent !== lastUrgent) {
+          lastUrgent = isUrgent;
+          fill.classList.toggle("urgent", isUrgent);
+          num.classList.toggle("urgent", isUrgent);
+          if (stage) stage.classList.toggle("tv-stage-urgent", isUrgent);
+        }
+
+        const nextText = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
+        if (nextText !== lastSecText) {
+          lastSecText = nextText;
+          num.textContent = nextText;
+        }
 
         if (!room.paused && !allLocked && sec > 0 && sec !== state.lastCountdownSec) {
           state.lastCountdownSec = sec;
@@ -450,11 +494,16 @@
           }
         }
 
-        if (!room.paused && !allLocked && rem > 0) {
-          state.timerRaf = requestAnimationFrame(tick);
+        if (room.paused || allLocked || rem <= 0) {
+          stopTimerLoop();
         }
       }
-      state.timerRaf = requestAnimationFrame(tick);
+
+      tick();
+      if (state.room && state.room.phase === "question" && !state.room.paused) {
+        const intervalMs = state.isLiteTV ? 125 : 100;
+        state.timerId = setInterval(tick, intervalMs);
+      }
     }
 
       function render() {
@@ -473,10 +522,14 @@
 
         if (state.tv.mode === "follow" && state.room) {
           stopAttractTimer();
-          renderFollowMode(main, state.room);
-          if (state.room.phase === "question" && !state.room.paused) startTimerLoop();
-          else stopTimerLoop();
+          const stageChanged = renderFollowMode(main, state.room);
+          if (state.room.phase === "question" && !state.room.paused) {
+            if (stageChanged || !state.timerId) startTimerLoop();
+          } else {
+            stopTimerLoop();
+          }
         } else {
+          state.followDom = null;
           stopTimerLoop();
           renderOverviewMode(main);
           if (focusedRoomCode) {
@@ -588,37 +641,118 @@
       </div>`;
       }
 
+      function buildLockBadgesHtml(players, showLockState) {
+        return (players || [])
+          .map((p) => {
+            const lockedCls = showLockState && p.locked_in ? "locked" : "";
+            const prefix = showLockState && p.locked_in ? "✓ " : "";
+            const hostStar = !showLockState && p.is_host ? " ★" : "";
+            return `<span class="tv-lock-badge ${lockedCls}" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
+              ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" decoding="async" />` : ""}
+              ${prefix}${esc(p.nickname)}${hostStar}
+            </span>`;
+          })
+          .join("");
+      }
+
+      function computeStageKey(room) {
+        if (room.phase === "lobby") {
+          const s = room.settings || {};
+          return `lobby:${s.room_name || ""}:${s.round_count}:${s.timer_seconds}:${s.difficulty}:${s.bonus_round ? 1 : 0}:${s.unique_answers_only ? 1 : 0}:${(s.pack_titles || []).join("|")}:${room.cover_url || ""}`;
+        }
+        if (room.phase === "bonus_wager" && room.bonus_wager) {
+          return `bonus_wager:${(room.bonus_wager.options || []).join(",")}`;
+        }
+        if (room.phase === "question" && room.question) {
+          return `question:${room.question.index}:${room.question.id}:${room.paused ? 1 : 0}`;
+        }
+        if (room.phase === "reveal" && room.reveal) {
+          const outSig = (room.reveal.outcomes || [])
+            .slice(0, 8)
+            .map((o) => `${playerKey(o)}:${o.delta}:${o.outcome}:${o.overridden ? 1 : 0}`)
+            .join(",");
+          return `reveal:${room.reveal.round_index}:${outSig}`;
+        }
+        if (room.phase === "finale" && room.finale) {
+          const podSig = (room.finale.podium || [])
+            .map((p) => `${playerKey(p)}:${p.score}`)
+            .join(",");
+          return `finale:${podSig}`;
+        }
+        return String(room.phase || "");
+      }
+
       function renderFollowMode(main, room) {
-        const qr = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl(room.code)) : "";
+        // 1. Mount persistent Follow-mode shell (and static sidebar QR) ONCE per room code
+        let shell = document.getElementById("tv-follow-shell");
+        if (!shell || shell.getAttribute("data-room-code") !== room.code || !state.followDom || state.followDom.roomCode !== room.code) {
+          const qr = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl(room.code)) : "";
+          main.innerHTML = `
+      <div id="tv-follow-shell" class="tv-follow-layout" data-room-code="${esc(room.code)}">
+        <section id="tv-stage" class="studio-card tv-stage"></section>
+        <aside class="studio-card tv-sidebar">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong style="font-size:1.1rem;">Leaderboard</strong>
+            <span class="badge mono">${esc(room.code)}</span>
+          </div>
+          <div id="tv-leaderboard-list" class="tv-leaderboard-list"></div>
+          <div class="tv-sidebar-qr-wrap">
+            <div class="qr-white-frame">${qr}</div>
+            <span style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">Scan to join room ${esc(room.code)}</span>
+          </div>
+        </aside>
+      </div>`;
+          shell = document.getElementById("tv-follow-shell");
+          state.followDom = {
+            roomCode: room.code,
+            stageKey: "",
+            lbSig: "",
+            lockSig: "",
+            allLocked: false,
+          };
+        }
+
+        // 2. Update sidebar Top-10 Leaderboard ONLY when standings, avatars, or reveal deltas change
         const showDeltas =
           room.phase === "reveal" &&
           state.revealHighlights &&
           state.revealHighlights.visible &&
           state.revealHighlights.roomCode === room.code;
         const deltaByPlayer = showDeltas ? state.revealHighlights.byPlayer : null;
+        const topTen = (room.players || []).slice(0, 10);
+        const lbSig =
+          (showDeltas ? `D:${state.revealHighlights.sig}|` : "N|") +
+          topTen
+            .map((p) => {
+              const info = deltaByPlayer ? deltaByPlayer[playerKey(p)] : null;
+              return `${p.rank}:${playerKey(p)}:${p.nickname}:${p.score}:${p.avatar_url || ""}:${info ? info.delta : 0}:${info ? info.rankChange : 0}`;
+            })
+            .join("|");
 
-        const leaderboardHtml = room.players
-          .slice(0, 10)
-          .map((p, idx) => {
-            const info = deltaByPlayer ? deltaByPlayer[playerKey(p)] : null;
-            const delta = info ? info.delta : 0;
-            const rankChange = info ? info.rankChange : 0;
-            const rowMoveCls =
-              rankChange > 0 ? "moved-up" : rankChange < 0 ? "moved-down" : "";
-            const arrowHtml =
-              rankChange > 0
-                ? `<span class="tv-rank-arrow up" aria-label="Up ${rankChange}">▲${rankChange > 1 ? rankChange : ""}</span>`
-                : rankChange < 0
-                ? `<span class="tv-rank-arrow down" aria-label="Down ${Math.abs(rankChange)}">▼${Math.abs(rankChange) > 1 ? Math.abs(rankChange) : ""}</span>`
-                : "";
-            const deltaHtml =
-              delta !== 0
-                ? `<span class="tv-lb-delta-wrap"><span class="tv-lb-delta ${delta > 0 ? "pos" : "neg"}">${delta > 0 ? `+${delta}` : `−${Math.abs(delta)}`}</span></span>`
-                : "";
-            return `
+        if (lbSig !== state.followDom.lbSig) {
+          const lbEl = document.getElementById("tv-leaderboard-list");
+          if (lbEl) {
+            lbEl.innerHTML = topTen
+              .map((p, idx) => {
+                const info = deltaByPlayer ? deltaByPlayer[playerKey(p)] : null;
+                const delta = info ? info.delta : 0;
+                const rankChange = info ? info.rankChange : 0;
+                const rowMoveCls =
+                  rankChange > 0 ? "moved-up" : rankChange < 0 ? "moved-down" : "";
+                const arrowHtml =
+                  rankChange > 0
+                    ? `<span class="tv-rank-arrow up" aria-label="Up ${rankChange}">▲${rankChange > 1 ? rankChange : ""}</span>`
+                    : rankChange < 0
+                    ? `<span class="tv-rank-arrow down" aria-label="Down ${Math.abs(rankChange)}">▼${Math.abs(rankChange) > 1 ? Math.abs(rankChange) : ""}</span>`
+                    : "";
+                const deltaHtml =
+                  delta !== 0
+                    ? `<span class="tv-lb-delta-wrap"><span class="tv-lb-delta ${delta > 0 ? "pos" : "neg"}">${delta > 0 ? `+${delta}` : `−${Math.abs(delta)}`}</span></span>`
+                    : "";
+                return `
         <div class="tv-lb-row ${idx === 0 ? "top-1" : ""} ${rowMoveCls}">
           <span class="tv-lb-name-wrap" dir="auto">
-            ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+            ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-sm" decoding="async" />` : ""}
             <span class="tv-lb-name-text">#${p.rank} ${esc(p.nickname)}</span>
             ${arrowHtml}
           </span>
@@ -627,19 +761,51 @@
             <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
           </span>
         </div>`;
-          })
-          .join("");
+              })
+              .join("");
+          }
+          state.followDom.lbSig = lbSig;
+        }
 
-        let stageHtml = "";
-        let stageUrgentClass = "";
-        const stageDir =
-          (room.question && room.question.rtl) || (room.reveal && room.reveal.rtl) || room.rtl
-            ? "rtl"
-            : "auto";
+        // 3. Fast path for same stage screen (e.g. player lock-ins during Question / Bonus Wager / Lobby)
+        const stageEl = document.getElementById("tv-stage");
+        if (!stageEl) return false;
+
+        const stageKey = computeStageKey(room);
         const allLocked =
           !room.paused &&
           room.connected_count > 0 &&
           room.locked_in_count >= room.connected_count;
+        const showLockState = room.phase === "question" || room.phase === "bonus_wager";
+        const lockSig = (room.players || [])
+          .map((p) => `${playerKey(p)}:${p.nickname}:${p.avatar_url || ""}:${showLockState ? (p.locked_in ? 1 : 0) : (p.is_host ? 1 : 0)}`)
+          .join("|");
+
+        if (stageKey === state.followDom.stageKey) {
+          if (lockSig !== state.followDom.lockSig) {
+            const lockGrid = document.getElementById("tv-lock-grid");
+            if (lockGrid) {
+              lockGrid.innerHTML = buildLockBadgesHtml(room.players, showLockState);
+            }
+            state.followDom.lockSig = lockSig;
+          }
+          if (allLocked !== state.followDom.allLocked) {
+            const banner = document.getElementById("tv-all-locked-banner");
+            if (banner) {
+              banner.classList.toggle("hidden", !allLocked);
+            }
+            state.followDom.allLocked = allLocked;
+          }
+          return false;
+        }
+
+        // 4. Phase or question changed -> rebuild ONLY #tv-stage (sidebar & QR stay untouched!)
+        let stageHtml = "";
+        let stageUrgent = false;
+        const stageDir =
+          (room.question && room.question.rtl) || (room.reveal && room.reveal.rtl) || room.rtl
+            ? "rtl"
+            : "auto";
 
         if (room.phase === "lobby") {
           stageHtml = `
@@ -648,7 +814,7 @@
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
         <div style="display:flex;align-items:center;gap:18px;text-align:start;">
-          ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" style="width:76px;height:76px;border-radius:18px;object-fit:cover;flex:none;border:2px solid var(--border-subtle);" width="76" height="76" />` : ""}
+          ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" style="width:76px;height:76px;border-radius:18px;object-fit:cover;flex:none;border:2px solid var(--border-subtle);" width="76" height="76" decoding="async" />` : ""}
           <div>
             <h2 class="tv-question-text" dir="auto">${esc(room.settings.room_name)}</h2>
             <p style="font-size:1.3rem;color:var(--text-secondary);margin-top:6px;" dir="auto">
@@ -656,13 +822,8 @@
             </p>
           </div>
         </div>
-        <div class="tv-lock-grid">
-          ${room.players
-              .map((p) => `<span class="tv-lock-badge" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
-                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
-                ${esc(p.nickname)}${p.is_host ? " ★" : ""}
-              </span>`)
-              .join("")}
+        <div id="tv-lock-grid" class="tv-lock-grid">
+          ${buildLockBadgesHtml(room.players, false)}
         </div>`;
         } else if (room.phase === "bonus_wager" && room.bonus_wager) {
           const bw = room.bonus_wager;
@@ -689,24 +850,20 @@
           </p>
         </div>
 
-        ${allLocked ? `<div class="tv-all-locked-banner" role="status"><span>✓</span><span>All Wagers Locked In! Revealing bonus question…</span></div>` : ""}
+        <div id="tv-all-locked-banner" class="tv-all-locked-banner ${allLocked ? "" : "hidden"}" role="status">
+          <span>✓</span><span>All Wagers Locked In! Revealing bonus question…</span>
+        </div>
 
-        <div class="tv-lock-grid">
-          ${room.players
-              .map(
-                (p) => `<span class="tv-lock-badge ${p.locked_in ? "locked" : ""}" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
-                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
-                ${p.locked_in ? "✓ " : ""}${esc(p.nickname)}
-              </span>`
-              )
-              .join("")}
+        <div id="tv-lock-grid" class="tv-lock-grid">
+          ${buildLockBadgesHtml(room.players, true)}
         </div>`;
         } else if (room.phase === "question" && room.question) {
           const q = room.question;
           const letters = ["A", "B", "C", "D", "E", "F"];
           const remInit = q.remaining_seconds || 0;
+          const ratioInit = Math.max(0, Math.min(1, remInit / (q.timer_seconds || 30)));
           const isUrgentInit = !room.paused && !allLocked && remInit <= 5 && remInit > 0;
-          if (isUrgentInit) stageUrgentClass = "tv-stage-urgent";
+          stageUrgent = isUrgentInit;
           stageHtml = `
         <div>
           <div class="tv-stage-meta">
@@ -722,15 +879,15 @@
               ${diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
-            <div id="tv-timer-num" class="tv-timer-big ${isUrgentInit ? "urgent" : ""}">${Math.ceil(remInit)}s</div>
+            <div id="tv-timer-num" class="tv-timer-big ${isUrgentInit ? "urgent" : ""}">${room.paused ? `PAUSED (${Math.ceil(remInit)}s)` : `${Math.ceil(remInit)}s`}</div>
           </div>
           <div class="timer-track tv-timer-bar-wrap">
-            <div id="tv-timer-fill" class="timer-fill ${isUrgentInit ? "urgent" : ""}"></div>
+            <div id="tv-timer-fill" class="timer-fill ${isUrgentInit ? "urgent" : ""}" style="transform:scaleX(${ratioInit.toFixed(3)});"></div>
           </div>
         </div>
 
         ${q.media_url
-              ? `<div class="tv-media-showcase"><div class="media-frame"><img src="${esc(q.media_url)}" alt="Question visual" width="640" height="480" /></div></div>`
+              ? `<div class="tv-media-showcase"><div class="media-frame"><img src="${esc(q.media_url)}" alt="Question visual" width="640" height="480" decoding="async" /></div></div>`
               : ""
             }
 
@@ -760,20 +917,12 @@
               </div>`
             }
 
-        ${allLocked
-              ? `<div class="tv-all-locked-banner" role="status"><span>✓</span><span>${q.rtl ? "الجميع أكّدوا الإجابة! جاري كشف الحل…" : "All Locked In! Revealing answer…"}</span></div>`
-              : ""
-            }
+        <div id="tv-all-locked-banner" class="tv-all-locked-banner ${allLocked ? "" : "hidden"}" role="status">
+          <span>✓</span><span>${q.rtl ? "الجميع أكّدوا الإجابة! جاري كشف الحل…" : "All Locked In! Revealing answer…"}</span>
+        </div>
 
-        <div class="tv-lock-grid">
-          ${room.players
-              .map(
-                (p) => `<span class="tv-lock-badge ${p.locked_in ? "locked" : ""}" style="display:inline-flex;align-items:center;gap:8px;" dir="auto">
-                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
-                ${p.locked_in ? "✓ " : ""}${esc(p.nickname)}
-              </span>`
-              )
-              .join("")}
+        <div id="tv-lock-grid" class="tv-lock-grid">
+          ${buildLockBadgesHtml(room.players, true)}
         </div>`;
         } else if (room.phase === "reveal" && room.reveal) {
           const rev = room.reveal;
@@ -804,7 +953,7 @@
                 return `
                 <div class="tv-lb-row" ${o.outcome === "duplicate" ? 'style="border-color:var(--accent-amber);background:var(--accent-amber-soft);"' : ""}>
                   <div style="display:flex;align-items:center;gap:10px;text-align:start;">
-                    ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+                    ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" decoding="async" />` : ""}
                     <div>
                       <div dir="auto">${esc(o.nickname)}${o.outcome === "duplicate" ? ` <span class="badge badge-live" style="font-size:0.68rem;padding:2px 6px;">Repeated</span>` : ""}</div>
                       <div style="font-size:0.85rem;color:var(--text-muted);" dir="auto">
@@ -829,7 +978,7 @@
               .map(
                 (p, i) => `
               <div class="tv-podium-slot rank-${i + 1}">
-                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${i === 0 ? "avatar-xl" : "avatar-lg"}" style="margin-bottom:8px;" />` : ""}
+                ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${i === 0 ? "avatar-xl" : "avatar-lg"}" style="margin-bottom:8px;" decoding="async" />` : ""}
                 <div style="font-size:1.7rem;font-weight:800;">#${i + 1}</div>
                 <div style="font-size:1.5rem;font-weight:800;margin-block:6px;" dir="auto">${esc(p.nickname)}</div>
                 <div class="mono" style="font-size:1.45rem;font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
@@ -842,7 +991,7 @@
               .map(
                 (a) => `
               <div class="tv-award-tile" style="display:flex;align-items:center;gap:12px;text-align:start;">
-                ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-md" />` : ""}
+                ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-md" decoding="async" />` : ""}
                 <div>
                   <div style="font-size:0.82rem;font-weight:800;text-transform:uppercase;color:var(--accent-amber);">${esc(a.title)}</div>
                   <div style="font-size:1.2rem;font-weight:800;margin-block:2px;" dir="auto">${esc(a.nickname)}</div>
@@ -854,23 +1003,14 @@
         </div>`;
         }
 
-        main.innerHTML = `
-      <div class="tv-follow-layout">
-        <section class="studio-card tv-stage animate-in ${stageUrgentClass}" dir="${stageDir}">
-          ${stageHtml}
-        </section>
-        <aside class="studio-card tv-sidebar">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <strong style="font-size:1.1rem;">Leaderboard</strong>
-            <span class="badge mono">${esc(room.code)}</span>
-          </div>
-          <div class="tv-leaderboard-list">${leaderboardHtml}</div>
-          <div class="tv-sidebar-qr-wrap">
-            <div class="qr-white-frame">${qr}</div>
-            <span style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">Scan to join room ${esc(room.code)}</span>
-          </div>
-        </aside>
-      </div>`;
+        stageEl.setAttribute("dir", stageDir);
+        stageEl.className = `studio-card tv-stage${state.isLiteTV ? "" : " animate-in"}${stageUrgent ? " tv-stage-urgent" : ""}`;
+        stageEl.innerHTML = stageHtml;
+
+        state.followDom.stageKey = stageKey;
+        state.followDom.lockSig = lockSig;
+        state.followDom.allLocked = allLocked;
+        return true;
       }
 
       async function fetchBootstrap() {
@@ -1069,6 +1209,6 @@
           if (!state.wsConnected) {
             fetchBootstrap();
           }
-        }, 4500);
+        }, 2000);
       });
     }) ();

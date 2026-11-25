@@ -623,18 +623,26 @@ class QuizRoomsCoordinator:
         if tasks:
             await asyncio.gather(*tasks, return_exceptions=True)
 
-    async def broadcast_lobby_and_tv(self) -> None:
-        """Broadcast open public rooms, capacity, and live global avatar availability."""
-        lobby_payload = {
+    async def broadcast_lobby_and_tv(self, *, include_packs: bool = False) -> None:
+        """Broadcast open public rooms, capacity, and live global avatar availability.
+
+        To keep Smart TV browsers snappy, omits the ~25 KB pack catalog on routine room
+        updates (sending it only when packs are imported, deleted, or reloaded) and skips
+        pushing `lobby_update` to TV clients currently in Follow mode.
+        """
+        lobby_payload: dict[str, Any] = {
             "type": "lobby_update",
             "lobby": self.engine.serialize_public_lobby(),
-            "packs": [p.to_summary() for p in self.pack_registry.list_packs()],
             "avatars": list_preset_catalog(self.engine.get_taken_preset_avatars()),
         }
+        if include_packs:
+            lobby_payload["packs"] = [p.to_summary() for p in self.pack_registry.list_packs()]
+
+        tv_in_follow = self.tv_state.mode == TV_MODE_FOLLOW and bool(self.tv_state.room_code)
         tasks = [
             self._safe_send(client, lobby_payload)
             for client in list(self._ws_clients)
-            if client.role in ("lobby", "tv")
+            if client.role == "lobby" or (client.role == "tv" and not tv_in_follow)
         ]
         if tasks:
             await asyncio.gather(*tasks, return_exceptions=True)
@@ -840,5 +848,5 @@ class QuizRoomsCoordinator:
     async def async_reload_packs(self) -> list[dict[str, Any]]:
         packs = await self.async_run_in_executor(self.pack_registry.reload)
         self.prune_unused_pinned_media()
-        await self.broadcast_lobby_and_tv()
+        await self.broadcast_lobby_and_tv(include_packs=True)
         return [p.to_summary() for p in packs]
