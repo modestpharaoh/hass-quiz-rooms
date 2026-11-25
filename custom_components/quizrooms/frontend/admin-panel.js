@@ -718,7 +718,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
           .pack-toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
           .pack-toolbar-controls { flex: none; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 8px; }
           .pack-toolbar-search { max-width: none; width: 100%; box-sizing: border-box; flex: none; }
-          .filter-pills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; box-sizing: border-box; }
+          .filter-pills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; box-sizing: border-box; }
           .filter-pill { text-align: center; padding: 7px 6px; font-size: 0.74rem; }
         }
       </style>
@@ -1433,6 +1433,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const allPacks = Array.isArray(st.packs) ? st.packs : [];
     const builtinCount = allPacks.filter((p) => p.is_builtin).length;
     const customCount = allPacks.length - builtinCount;
+    const kidsCount = allPacks.filter((p) => p.audience === "kids").length;
 
     mount.innerHTML = `
       <section class="card">
@@ -1498,6 +1499,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
               <button type="button" class="filter-pill ${this._packFilter === "all" ? "active" : ""}" data-pack-filter="all">All (${allPacks.length})</button>
               <button type="button" class="filter-pill ${this._packFilter === "builtin" ? "active" : ""}" data-pack-filter="builtin">Built-in (${builtinCount})</button>
               <button type="button" class="filter-pill ${this._packFilter === "custom" ? "active" : ""}" data-pack-filter="custom">Custom (${customCount})</button>
+              <button type="button" class="filter-pill ${this._packFilter === "kids" ? "active" : ""}" data-pack-filter="kids">🧸 Kids (${kidsCount})</button>
             </div>
           </div>
         </div>
@@ -1564,6 +1566,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
     const filtered = (st.packs || []).filter((p) => {
       if (this._packFilter === "builtin" && !p.is_builtin) return false;
       if (this._packFilter === "custom" && p.is_builtin) return false;
+      if (this._packFilter === "kids" && p.audience !== "kids") return false;
       if (!term) return true;
       return (
         String(p.title || "").toLowerCase().includes(term) ||
@@ -1622,6 +1625,11 @@ class QuizRoomsAdminPanel extends HTMLElement {
                               ${q.open_ended ? "Rule:" : "Answer:"} <strong style="color:var(--ok);">${this._esc(q.answer)}</strong>
                               ${q.choices && q.choices.length ? ` · Choices: ${q.choices.map((c) => this._esc(c)).join(" | ")}` : ""}
                             </div>
+                            ${q.choice_media_urls && q.choice_media_urls.some(Boolean)
+                              ? `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">${q.choice_media_urls
+                                  .map((u, idx) => (u ? `<img src="${this._esc(u)}" alt="${this._esc((q.choices || [])[idx] || "")}" class="preview-thumb" style="width:42px;height:42px;" loading="lazy" decoding="async" />` : ""))
+                                  .join("")}</div>`
+                              : ""}
                           </div>
                         </div>
                       </div>`;
@@ -1640,6 +1648,7 @@ class QuizRoomsAdminPanel extends HTMLElement {
                 <div class="pack-card-title-row">
                   <strong class="pack-card-title" dir="auto">${this._esc(p.title)}</strong>
                   <span class="badge ${p.is_builtin ? "badge-ok" : "badge-warn"}">${p.is_builtin ? "Built-in" : "Custom"}</span>
+                  ${p.audience === "kids" ? `<span class="badge" style="color:var(--accent);border-color:var(--accent);">🧸 Ages ${this._esc(p.age_range || "3–4")}</span>` : ""}
                   ${p.open_ended ? `<span class="badge badge-warn">Open-Ended</span>` : ""}
                 </div>
                 <div class="pack-card-meta">

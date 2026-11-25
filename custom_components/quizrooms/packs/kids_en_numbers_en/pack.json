@@ -1,0 +1,394 @@
+{
+  "pack_id": "kids_en_numbers_en",
+  "title": "Numbers & Counting 1–10",
+  "description": "Count bright stars, apples, and balls from 1 to 10 with giant toddler-friendly number tiles.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "large_glyph",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "Kids · Numbers",
+  "questions": [
+    {
+      "id": "en_num_01",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "Yay! There is 1 star!",
+      "explanation": "Count them one by one: 1 star."
+    },
+    {
+      "id": "en_num_02",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "reveal_message": "Yay! There are 2 stars!",
+      "explanation": "Count them one by one: 2 stars."
+    },
+    {
+      "id": "en_num_03",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "Yay! There are 3 stars!",
+      "explanation": "Count them one by one: 3 stars."
+    },
+    {
+      "id": "en_num_04",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_4.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "reveal_message": "Yay! There are 4 stars!",
+      "explanation": "Count them one by one: 4 stars."
+    },
+    {
+      "id": "en_num_05",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_5.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "Yay! There are 5 stars!",
+      "explanation": "Count them one by one: 5 stars."
+    },
+    {
+      "id": "en_num_06",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_6.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "5",
+        "8"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "reveal_message": "Yay! There are 6 stars!",
+      "explanation": "Count them one by one: 6 stars."
+    },
+    {
+      "id": "en_num_07",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_7.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "reveal_message": "Yay! There are 7 stars!",
+      "explanation": "Count them one by one: 7 stars."
+    },
+    {
+      "id": "en_num_08",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_8.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "8",
+        "7",
+        "10"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "reveal_message": "Yay! There are 8 stars!",
+      "explanation": "Count them one by one: 8 stars."
+    },
+    {
+      "id": "en_num_09",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_9.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "9",
+        "8",
+        "6"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "reveal_message": "Yay! There are 9 stars!",
+      "explanation": "Count them one by one: 9 stars."
+    },
+    {
+      "id": "en_num_10",
+      "prompt": "How many stars do you see?",
+      "spoken_prompt": "Let's count together! How many stars do you see?",
+      "image": "media/stars_10.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "10",
+        "9",
+        "8"
+      ],
+      "answer": "10",
+      "difficulty": "hard",
+      "reveal_message": "Yay! There are 10 stars!",
+      "explanation": "Count them one by one: 10 stars."
+    },
+    {
+      "id": "en_num_11",
+      "prompt": "Count the apples!",
+      "spoken_prompt": "How many apples are in the picture?",
+      "image": "media/apple_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "reveal_message": "Great counting! 2 apples!",
+      "explanation": "There are 2 apples."
+    },
+    {
+      "id": "en_num_12",
+      "prompt": "Count the apples!",
+      "spoken_prompt": "How many apples are in the picture?",
+      "image": "media/apple_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "Great counting! 3 apples!",
+      "explanation": "There are 3 apples."
+    },
+    {
+      "id": "en_num_13",
+      "prompt": "Count the apples!",
+      "spoken_prompt": "How many apples are in the picture?",
+      "image": "media/apple_5.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "Great counting! 5 apples!",
+      "explanation": "There are 5 apples."
+    },
+    {
+      "id": "en_num_14",
+      "prompt": "Count the apples!",
+      "spoken_prompt": "How many apples are in the picture?",
+      "image": "media/apple_6.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "5",
+        "8"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "reveal_message": "Great counting! 6 apples!",
+      "explanation": "There are 6 apples."
+    },
+    {
+      "id": "en_num_15",
+      "prompt": "Count the ball!",
+      "spoken_prompt": "How many ball are in the picture?",
+      "image": "media/ball_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "Great counting! 1 ball!",
+      "explanation": "There is 1 ball."
+    },
+    {
+      "id": "en_num_16",
+      "prompt": "Count the balls!",
+      "spoken_prompt": "How many balls are in the picture?",
+      "image": "media/ball_4.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "reveal_message": "Great counting! 4 balls!",
+      "explanation": "There are 4 balls."
+    },
+    {
+      "id": "en_num_17",
+      "prompt": "Count the balls!",
+      "spoken_prompt": "How many balls are in the picture?",
+      "image": "media/ball_7.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "reveal_message": "Great counting! 7 balls!",
+      "explanation": "There are 7 balls."
+    },
+    {
+      "id": "en_num_18",
+      "prompt": "Count the balls!",
+      "spoken_prompt": "How many balls are in the picture?",
+      "image": "media/ball_8.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "8",
+        "7",
+        "10"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "reveal_message": "Great counting! 8 balls!",
+      "explanation": "There are 8 balls."
+    },
+    {
+      "id": "en_num_19",
+      "prompt": "Tap the number One!",
+      "spoken_prompt": "Can you find the number One?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "Super! That is 1 (One)!",
+      "explanation": "One is written as 1."
+    },
+    {
+      "id": "en_num_20",
+      "prompt": "Tap the number Three!",
+      "spoken_prompt": "Can you find the number Three?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "Super! That is 3 (Three)!",
+      "explanation": "Three is written as 3."
+    },
+    {
+      "id": "en_num_21",
+      "prompt": "Tap the number Five!",
+      "spoken_prompt": "Can you find the number Five?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "Super! That is 5 (Five)!",
+      "explanation": "Five is written as 5."
+    },
+    {
+      "id": "en_num_22",
+      "prompt": "Tap the number Seven!",
+      "spoken_prompt": "Can you find the number Seven?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "reveal_message": "Super! That is 7 (Seven)!",
+      "explanation": "Seven is written as 7."
+    },
+    {
+      "id": "en_num_23",
+      "prompt": "Tap the number Nine!",
+      "spoken_prompt": "Can you find the number Nine?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "9",
+        "8",
+        "6"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "reveal_message": "Super! That is 9 (Nine)!",
+      "explanation": "Nine is written as 9."
+    },
+    {
+      "id": "en_num_24",
+      "prompt": "Tap the number Ten!",
+      "spoken_prompt": "Can you find the number Ten?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "10",
+        "9",
+        "8"
+      ],
+      "answer": "10",
+      "difficulty": "hard",
+      "reveal_message": "Super! That is 10 (Ten)!",
+      "explanation": "Ten is written as 10."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

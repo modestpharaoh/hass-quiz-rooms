@@ -1,0 +1,496 @@
+{
+  "pack_id": "kids_fruits_food_en",
+  "title": "Yummy Fruits & Food",
+  "description": "Colorful fruit, veggie, and everyday food picture quizzes made for 3–4 year olds.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "Kids · Food",
+  "questions": [
+    {
+      "id": "en_food_01",
+      "prompt": "Tap the Apple!",
+      "spoken_prompt": "Find the crunchy red Apple!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Apple",
+        "Banana",
+        "Grapes"
+      ],
+      "choice_images": [
+        "media/apple.svg",
+        "media/banana.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "Apple",
+      "difficulty": "easy",
+      "reveal_message": "Yum! That's an Apple!",
+      "explanation": "Yum! That's an Apple!"
+    },
+    {
+      "id": "en_food_02",
+      "prompt": "Tap the Banana!",
+      "spoken_prompt": "Where is the yellow Banana?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Banana",
+        "Orange",
+        "Carrot"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/orange.svg",
+        "media/carrot.svg"
+      ],
+      "answer": "Banana",
+      "difficulty": "easy",
+      "reveal_message": "Yummy! That's a Banana!",
+      "explanation": "Yummy! That's a Banana!"
+    },
+    {
+      "id": "en_food_03",
+      "prompt": "Tap the Orange!",
+      "spoken_prompt": "Tap the juicy Orange!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Orange",
+        "Apple",
+        "Lemon"
+      ],
+      "choice_images": [
+        "media/orange.svg",
+        "media/apple.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "Orange",
+      "difficulty": "easy",
+      "reveal_message": "Juicy! That's an Orange!",
+      "explanation": "Juicy! That's an Orange!"
+    },
+    {
+      "id": "en_food_04",
+      "prompt": "Tap the Grapes!",
+      "spoken_prompt": "Find the purple Grapes!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Grapes",
+        "Strawberry",
+        "Watermelon"
+      ],
+      "choice_images": [
+        "media/grapes.svg",
+        "media/strawberry.svg",
+        "media/watermelon.svg"
+      ],
+      "answer": "Grapes",
+      "difficulty": "easy",
+      "reveal_message": "Sweet! Those are Grapes!",
+      "explanation": "Sweet! Those are Grapes!"
+    },
+    {
+      "id": "en_food_05",
+      "prompt": "Tap the Strawberry!",
+      "spoken_prompt": "Tap the red Strawberry!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Strawberry",
+        "Banana",
+        "Orange"
+      ],
+      "choice_images": [
+        "media/strawberry.svg",
+        "media/banana.svg",
+        "media/orange.svg"
+      ],
+      "answer": "Strawberry",
+      "difficulty": "easy",
+      "reveal_message": "Yum! That's a Strawberry!",
+      "explanation": "Yum! That's a Strawberry!"
+    },
+    {
+      "id": "en_food_06",
+      "prompt": "Tap the Watermelon!",
+      "spoken_prompt": "Where is the big Watermelon slice?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Watermelon",
+        "Apple",
+        "Cheese"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/apple.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "Watermelon",
+      "difficulty": "easy",
+      "reveal_message": "Refreshing! That's Watermelon!",
+      "explanation": "Refreshing! That's Watermelon!"
+    },
+    {
+      "id": "en_food_07",
+      "prompt": "Tap the Carrot!",
+      "spoken_prompt": "Find the orange Carrot!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Carrot",
+        "Corn",
+        "Banana"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/corn.svg",
+        "media/banana.svg"
+      ],
+      "answer": "Carrot",
+      "difficulty": "easy",
+      "reveal_message": "Crunchy! That's a Carrot!",
+      "explanation": "Crunchy! That's a Carrot!"
+    },
+    {
+      "id": "en_food_08",
+      "prompt": "Tap the Corn!",
+      "spoken_prompt": "Tap the yellow Corn!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Corn",
+        "Carrot",
+        "Bread"
+      ],
+      "choice_images": [
+        "media/corn.svg",
+        "media/carrot.svg",
+        "media/bread.svg"
+      ],
+      "answer": "Corn",
+      "difficulty": "medium",
+      "reveal_message": "Yum! That's yellow Corn!",
+      "explanation": "Yum! That's yellow Corn!"
+    },
+    {
+      "id": "en_food_09",
+      "prompt": "Tap the Lemon!",
+      "spoken_prompt": "Where is the sour yellow Lemon?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lemon",
+        "Orange",
+        "Tomato"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/orange.svg",
+        "media/tomato.svg"
+      ],
+      "answer": "Lemon",
+      "difficulty": "medium",
+      "reveal_message": "Tangy! That's a Lemon!",
+      "explanation": "Tangy! That's a Lemon!"
+    },
+    {
+      "id": "en_food_10",
+      "prompt": "Tap the Pineapple!",
+      "spoken_prompt": "Find the spiky Pineapple!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Pineapple",
+        "Watermelon",
+        "Grapes"
+      ],
+      "choice_images": [
+        "media/pineapple.svg",
+        "media/watermelon.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "Pineapple",
+      "difficulty": "medium",
+      "reveal_message": "Sweet! That's a Pineapple!",
+      "explanation": "Sweet! That's a Pineapple!"
+    },
+    {
+      "id": "en_food_11",
+      "prompt": "Tap the Tomato!",
+      "spoken_prompt": "Tap the round red Tomato!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Tomato",
+        "Carrot",
+        "Lemon"
+      ],
+      "choice_images": [
+        "media/tomato.svg",
+        "media/carrot.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "Tomato",
+      "difficulty": "medium",
+      "reveal_message": "Great! That's a Tomato!",
+      "explanation": "Great! That's a Tomato!"
+    },
+    {
+      "id": "en_food_12",
+      "prompt": "Tap the Cheese!",
+      "spoken_prompt": "Where is the yellow Cheese?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cheese",
+        "Bread",
+        "Egg"
+      ],
+      "choice_images": [
+        "media/cheese.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "Cheese",
+      "difficulty": "easy",
+      "reveal_message": "Cheesy! That's Cheese!",
+      "explanation": "Cheesy! That's Cheese!"
+    },
+    {
+      "id": "en_food_13",
+      "prompt": "Tap the Milk!",
+      "spoken_prompt": "Find the carton of Milk!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Milk",
+        "Juice",
+        "Cheese"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/juice.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "Milk",
+      "difficulty": "easy",
+      "reveal_message": "Healthy! That's Milk!",
+      "explanation": "Healthy! That's Milk!"
+    },
+    {
+      "id": "en_food_14",
+      "prompt": "Tap the Juice!",
+      "spoken_prompt": "Tap the box of Orange Juice!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Juice",
+        "Milk",
+        "Ice Cream"
+      ],
+      "choice_images": [
+        "media/juice.svg",
+        "media/milk.svg",
+        "media/icecream.svg"
+      ],
+      "answer": "Juice",
+      "difficulty": "medium",
+      "reveal_message": "Slurp! That's Juice!",
+      "explanation": "Slurp! That's Juice!"
+    },
+    {
+      "id": "en_food_15",
+      "prompt": "Tap the Bread!",
+      "spoken_prompt": "Where is the loaf of Bread?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bread",
+        "Cheese",
+        "Corn"
+      ],
+      "choice_images": [
+        "media/bread.svg",
+        "media/cheese.svg",
+        "media/corn.svg"
+      ],
+      "answer": "Bread",
+      "difficulty": "medium",
+      "reveal_message": "Warm and yummy! That's Bread!",
+      "explanation": "Warm and yummy! That's Bread!"
+    },
+    {
+      "id": "en_food_16",
+      "prompt": "Tap the Egg!",
+      "spoken_prompt": "Find the Egg!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Egg",
+        "Milk",
+        "Apple"
+      ],
+      "choice_images": [
+        "media/egg.svg",
+        "media/milk.svg",
+        "media/apple.svg"
+      ],
+      "answer": "Egg",
+      "difficulty": "medium",
+      "reveal_message": "Egg-cellent! That's an Egg!",
+      "explanation": "Egg-cellent! That's an Egg!"
+    },
+    {
+      "id": "en_food_17",
+      "prompt": "Tap the Ice Cream!",
+      "spoken_prompt": "Find the cold Ice Cream cone!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ice Cream",
+        "Juice",
+        "Bread"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/juice.svg",
+        "media/bread.svg"
+      ],
+      "answer": "Ice Cream",
+      "difficulty": "easy",
+      "reveal_message": "Yum! Cold Ice Cream!",
+      "explanation": "Yum! Cold Ice Cream!"
+    },
+    {
+      "id": "en_food_18",
+      "prompt": "Tap the Pomegranate!",
+      "spoken_prompt": "Where is the red Pomegranate?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Pomegranate",
+        "Orange",
+        "Pineapple"
+      ],
+      "choice_images": [
+        "media/pomegranate.svg",
+        "media/orange.svg",
+        "media/pineapple.svg"
+      ],
+      "answer": "Pomegranate",
+      "difficulty": "hard",
+      "reveal_message": "Super! That's a Pomegranate!",
+      "explanation": "Super! That's a Pomegranate!"
+    },
+    {
+      "id": "en_food_19",
+      "prompt": "Which fruit is long and yellow?",
+      "spoken_prompt": "Which yummy fruit is long and yellow?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Banana",
+        "Apple",
+        "Grapes"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/apple.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "Banana",
+      "difficulty": "medium",
+      "reveal_message": "Bananas are long and yellow!",
+      "explanation": "Bananas are long and yellow!"
+    },
+    {
+      "id": "en_food_20",
+      "prompt": "Which veggie do rabbits love?",
+      "spoken_prompt": "Which crunchy orange veggie do rabbits love?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Carrot",
+        "Milk",
+        "Bread"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/milk.svg",
+        "media/bread.svg"
+      ],
+      "answer": "Carrot",
+      "difficulty": "medium",
+      "reveal_message": "Rabbits love crunchy Carrots!",
+      "explanation": "Rabbits love crunchy Carrots!"
+    },
+    {
+      "id": "en_food_21",
+      "prompt": "Which treat is cold and sweet?",
+      "spoken_prompt": "Which treat is cold and sweet in summer?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ice Cream",
+        "Bread",
+        "Egg"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "Ice Cream",
+      "difficulty": "medium",
+      "reveal_message": "Ice Cream is cold and sweet!",
+      "explanation": "Ice Cream is cold and sweet!"
+    },
+    {
+      "id": "en_food_22",
+      "prompt": "Which drink comes from cows?",
+      "spoken_prompt": "Which healthy white drink comes from cows?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Milk",
+        "Juice",
+        "Tomato"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/juice.svg",
+        "media/tomato.svg"
+      ],
+      "answer": "Milk",
+      "difficulty": "hard",
+      "reveal_message": "Milk comes from cows!",
+      "explanation": "Milk comes from cows!"
+    },
+    {
+      "id": "en_food_23",
+      "prompt": "Which fruit is green outside and red inside?",
+      "spoken_prompt": "Which big summer fruit is green outside and red inside?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Watermelon",
+        "Lemon",
+        "Banana"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/lemon.svg",
+        "media/banana.svg"
+      ],
+      "answer": "Watermelon",
+      "difficulty": "hard",
+      "reveal_message": "Watermelon is green outside and red inside!",
+      "explanation": "Watermelon is green outside and red inside!"
+    },
+    {
+      "id": "en_food_24",
+      "prompt": "Which fruit tastes very sour?",
+      "spoken_prompt": "Which yellow fruit tastes very sour?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lemon",
+        "Strawberry",
+        "Grapes"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/strawberry.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "Lemon",
+      "difficulty": "hard",
+      "reveal_message": "Lemons taste sour!",
+      "explanation": "Lemons taste sour!"
+    }
+  ],
+  "cover": "media/cover.svg"
+}

@@ -62,6 +62,18 @@ EXPECTED_PACK_IDS = {
     "math_logic_riddles_en",
     "math_logic_riddles_ar",
     "arabic_proverbs_ar",
+    # 11 Kids (Ages 3-4) packs
+    "kids_en_alphabet_en",
+    "kids_ar_alphabet_ar",
+    "kids_en_numbers_en",
+    "kids_ar_numbers_eastern_ar",
+    "kids_ar_numbers_western_ar",
+    "kids_colors_shapes_en",
+    "kids_colors_shapes_ar",
+    "kids_animals_en",
+    "kids_animals_ar",
+    "kids_fruits_food_en",
+    "kids_fruits_food_ar",
 }
 
 
@@ -106,6 +118,12 @@ def test_all_15_builtin_packs_load_with_valid_covers_and_balanced_difficulties(t
         "sports_olympics_ar",
         "math_logic_riddles_ar",
         "arabic_proverbs_ar",
+        "kids_ar_alphabet_ar",
+        "kids_ar_numbers_eastern_ar",
+        "kids_ar_numbers_western_ar",
+        "kids_colors_shapes_ar",
+        "kids_animals_ar",
+        "kids_fruits_food_ar",
     ):
         assert by_id[ar_id].rtl is True
         assert by_id[ar_id].language == "ar"

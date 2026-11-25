@@ -1,0 +1,496 @@
+{
+  "pack_id": "kids_animals_en",
+  "title": "Friendly Animals & Sounds",
+  "description": "Tap cute animals and match their playful sounds (Moo, Meow, Quack, Roar) for ages 3–4.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "Kids · Animals",
+  "questions": [
+    {
+      "id": "en_ani_01",
+      "prompt": "Tap the Cat!",
+      "spoken_prompt": "Tap the cute Cat! Meow!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cat",
+        "Dog",
+        "Fish"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/dog.svg",
+        "media/fish.svg"
+      ],
+      "answer": "Cat",
+      "difficulty": "easy",
+      "reveal_message": "Meow! That's the Cat!",
+      "explanation": "Meow! That's the Cat!"
+    },
+    {
+      "id": "en_ani_02",
+      "prompt": "Tap the Dog!",
+      "spoken_prompt": "Find the happy Dog! Woof woof!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Dog",
+        "Cat",
+        "Duck"
+      ],
+      "choice_images": [
+        "media/dog.svg",
+        "media/cat.svg",
+        "media/duck.svg"
+      ],
+      "answer": "Dog",
+      "difficulty": "easy",
+      "reveal_message": "Woof! That's the Dog!",
+      "explanation": "Woof! That's the Dog!"
+    },
+    {
+      "id": "en_ani_03",
+      "prompt": "Tap the Lion!",
+      "spoken_prompt": "Tap the big Lion! Roar!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lion",
+        "Rabbit",
+        "Frog"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/rabbit.svg",
+        "media/frog.svg"
+      ],
+      "answer": "Lion",
+      "difficulty": "easy",
+      "reveal_message": "Roar! That's the Lion!",
+      "explanation": "Roar! That's the Lion!"
+    },
+    {
+      "id": "en_ani_04",
+      "prompt": "Tap the Duck!",
+      "spoken_prompt": "Where is the yellow Duck? Quack quack!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Duck",
+        "Owl",
+        "Bird"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/owl.svg",
+        "media/bird.svg"
+      ],
+      "answer": "Duck",
+      "difficulty": "easy",
+      "reveal_message": "Quack quack! That's the Duck!",
+      "explanation": "Quack quack! That's the Duck!"
+    },
+    {
+      "id": "en_ani_05",
+      "prompt": "Tap the Elephant!",
+      "spoken_prompt": "Find the big gray Elephant!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Elephant",
+        "Cow",
+        "Bear"
+      ],
+      "choice_images": [
+        "media/elephant.svg",
+        "media/cow.svg",
+        "media/bear.svg"
+      ],
+      "answer": "Elephant",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Elephant!",
+      "explanation": "Yay! That's the Elephant!"
+    },
+    {
+      "id": "en_ani_06",
+      "prompt": "Tap the Fish!",
+      "spoken_prompt": "Where is the swimming Fish?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fish",
+        "Bee",
+        "Bird"
+      ],
+      "choice_images": [
+        "media/fish.svg",
+        "media/bee.svg",
+        "media/bird.svg"
+      ],
+      "answer": "Fish",
+      "difficulty": "easy",
+      "reveal_message": "Splash! That's the Fish!",
+      "explanation": "Splash! That's the Fish!"
+    },
+    {
+      "id": "en_ani_07",
+      "prompt": "Tap the Cow!",
+      "spoken_prompt": "Find the Cow! Moo!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cow",
+        "Sheep",
+        "Horse"
+      ],
+      "choice_images": [
+        "media/cow.svg",
+        "media/sheep.svg",
+        "media/horse.svg"
+      ],
+      "answer": "Cow",
+      "difficulty": "easy",
+      "reveal_message": "Moo! That's the Cow!",
+      "explanation": "Moo! That's the Cow!"
+    },
+    {
+      "id": "en_ani_08",
+      "prompt": "Tap the Sheep!",
+      "spoken_prompt": "Tap the fluffy Sheep! Baa!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sheep",
+        "Dog",
+        "Bear"
+      ],
+      "choice_images": [
+        "media/sheep.svg",
+        "media/dog.svg",
+        "media/bear.svg"
+      ],
+      "answer": "Sheep",
+      "difficulty": "easy",
+      "reveal_message": "Baa! That's the fluffy Sheep!",
+      "explanation": "Baa! That's the fluffy Sheep!"
+    },
+    {
+      "id": "en_ani_09",
+      "prompt": "Tap the Rabbit!",
+      "spoken_prompt": "Find the Rabbit with long ears!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rabbit",
+        "Fox",
+        "Cat"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/fox.svg",
+        "media/cat.svg"
+      ],
+      "answer": "Rabbit",
+      "difficulty": "medium",
+      "reveal_message": "Hop hop! That's the Rabbit!",
+      "explanation": "Hop hop! That's the Rabbit!"
+    },
+    {
+      "id": "en_ani_10",
+      "prompt": "Tap the Frog!",
+      "spoken_prompt": "Tap the green Frog! Ribbit!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Frog",
+        "Duck",
+        "Whale"
+      ],
+      "choice_images": [
+        "media/frog.svg",
+        "media/duck.svg",
+        "media/whale.svg"
+      ],
+      "answer": "Frog",
+      "difficulty": "medium",
+      "reveal_message": "Ribbit! That's the Frog!",
+      "explanation": "Ribbit! That's the Frog!"
+    },
+    {
+      "id": "en_ani_11",
+      "prompt": "Tap the Butterfly!",
+      "spoken_prompt": "Find the colorful Butterfly!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Butterfly",
+        "Bee",
+        "Bird"
+      ],
+      "choice_images": [
+        "media/butterfly.svg",
+        "media/bee.svg",
+        "media/bird.svg"
+      ],
+      "answer": "Butterfly",
+      "difficulty": "medium",
+      "reveal_message": "Flutter! That's the Butterfly!",
+      "explanation": "Flutter! That's the Butterfly!"
+    },
+    {
+      "id": "en_ani_12",
+      "prompt": "Tap the Bee!",
+      "spoken_prompt": "Where is the busy Bee? Buzz!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bee",
+        "Butterfly",
+        "Frog"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/butterfly.svg",
+        "media/frog.svg"
+      ],
+      "answer": "Bee",
+      "difficulty": "medium",
+      "reveal_message": "Buzz! That's the Bee!",
+      "explanation": "Buzz! That's the Bee!"
+    },
+    {
+      "id": "en_ani_13",
+      "prompt": "Tap the Giraffe!",
+      "spoken_prompt": "Find the tall Giraffe!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Giraffe",
+        "Zebra",
+        "Camel"
+      ],
+      "choice_images": [
+        "media/giraffe.svg",
+        "media/zebra.svg",
+        "media/camel.svg"
+      ],
+      "answer": "Giraffe",
+      "difficulty": "medium",
+      "reveal_message": "Yay! That's the Giraffe!",
+      "explanation": "Yay! That's the Giraffe!"
+    },
+    {
+      "id": "en_ani_14",
+      "prompt": "Tap the Zebra!",
+      "spoken_prompt": "Tap the striped Zebra!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Zebra",
+        "Horse",
+        "Cow"
+      ],
+      "choice_images": [
+        "media/zebra.svg",
+        "media/horse.svg",
+        "media/cow.svg"
+      ],
+      "answer": "Zebra",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! That's the striped Zebra!",
+      "explanation": "Awesome! That's the striped Zebra!"
+    },
+    {
+      "id": "en_ani_15",
+      "prompt": "Tap the Penguin!",
+      "spoken_prompt": "Find the Penguin!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Penguin",
+        "Owl",
+        "Duck"
+      ],
+      "choice_images": [
+        "media/penguin.svg",
+        "media/owl.svg",
+        "media/duck.svg"
+      ],
+      "answer": "Penguin",
+      "difficulty": "medium",
+      "reveal_message": "Waddle! That's the Penguin!",
+      "explanation": "Waddle! That's the Penguin!"
+    },
+    {
+      "id": "en_ani_16",
+      "prompt": "Tap the Owl!",
+      "spoken_prompt": "Where is the Owl? Hoo hoo!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Owl",
+        "Bird",
+        "Penguin"
+      ],
+      "choice_images": [
+        "media/owl.svg",
+        "media/bird.svg",
+        "media/penguin.svg"
+      ],
+      "answer": "Owl",
+      "difficulty": "medium",
+      "reveal_message": "Hoo hoo! That's the Owl!",
+      "explanation": "Hoo hoo! That's the Owl!"
+    },
+    {
+      "id": "en_ani_17",
+      "prompt": "Who says Moo?",
+      "spoken_prompt": "Listen! Which animal says Moo?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cow",
+        "Cat",
+        "Duck"
+      ],
+      "choice_images": [
+        "media/cow.svg",
+        "media/cat.svg",
+        "media/duck.svg"
+      ],
+      "answer": "Cow",
+      "difficulty": "easy",
+      "reveal_message": "The Cow says Moo!",
+      "explanation": "The Cow says Moo!"
+    },
+    {
+      "id": "en_ani_18",
+      "prompt": "Who says Meow?",
+      "spoken_prompt": "Which animal says Meow?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cat",
+        "Dog",
+        "Lion"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/dog.svg",
+        "media/lion.svg"
+      ],
+      "answer": "Cat",
+      "difficulty": "easy",
+      "reveal_message": "The Cat says Meow!",
+      "explanation": "The Cat says Meow!"
+    },
+    {
+      "id": "en_ani_19",
+      "prompt": "Who says Quack Quack?",
+      "spoken_prompt": "Which animal says Quack Quack?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Duck",
+        "Frog",
+        "Cow"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/frog.svg",
+        "media/cow.svg"
+      ],
+      "answer": "Duck",
+      "difficulty": "medium",
+      "reveal_message": "The Duck says Quack Quack!",
+      "explanation": "The Duck says Quack Quack!"
+    },
+    {
+      "id": "en_ani_20",
+      "prompt": "Who says Roar?",
+      "spoken_prompt": "Which big animal says Roar?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lion",
+        "Sheep",
+        "Rabbit"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/sheep.svg",
+        "media/rabbit.svg"
+      ],
+      "answer": "Lion",
+      "difficulty": "medium",
+      "reveal_message": "The Lion says Roar!",
+      "explanation": "The Lion says Roar!"
+    },
+    {
+      "id": "en_ani_21",
+      "prompt": "Who lives in the ocean?",
+      "spoken_prompt": "Which huge animal swims in the ocean?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Whale",
+        "Camel",
+        "Fox"
+      ],
+      "choice_images": [
+        "media/whale.svg",
+        "media/camel.svg",
+        "media/fox.svg"
+      ],
+      "answer": "Whale",
+      "difficulty": "hard",
+      "reveal_message": "The Whale swims in the ocean!",
+      "explanation": "The Whale swims in the ocean!"
+    },
+    {
+      "id": "en_ani_22",
+      "prompt": "Who makes sweet honey?",
+      "spoken_prompt": "Which little bug makes sweet honey?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bee",
+        "Butterfly",
+        "Frog"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/butterfly.svg",
+        "media/frog.svg"
+      ],
+      "answer": "Bee",
+      "difficulty": "hard",
+      "reveal_message": "The Bee makes honey!",
+      "explanation": "The Bee makes honey!"
+    },
+    {
+      "id": "en_ani_23",
+      "prompt": "Who hops and has long ears?",
+      "spoken_prompt": "Which animal hops with long ears?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rabbit",
+        "Bear",
+        "Elephant"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/bear.svg",
+        "media/elephant.svg"
+      ],
+      "answer": "Rabbit",
+      "difficulty": "hard",
+      "reveal_message": "The Rabbit hops with long ears!",
+      "explanation": "The Rabbit hops with long ears!"
+    },
+    {
+      "id": "en_ani_24",
+      "prompt": "Who says Hoo Hoo at night?",
+      "spoken_prompt": "Which bird says Hoo Hoo at night?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Owl",
+        "Duck",
+        "Fish"
+      ],
+      "choice_images": [
+        "media/owl.svg",
+        "media/duck.svg",
+        "media/fish.svg"
+      ],
+      "answer": "Owl",
+      "difficulty": "hard",
+      "reveal_message": "The Owl says Hoo Hoo!",
+      "explanation": "The Owl says Hoo Hoo!"
+    }
+  ],
+  "cover": "media/cover.svg"
+}

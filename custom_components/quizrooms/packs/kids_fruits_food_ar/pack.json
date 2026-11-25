@@ -1,0 +1,496 @@
+{
+  "pack_id": "kids_fruits_food_ar",
+  "title": "الفواكه والطعام (٣–٤ سنوات)",
+  "description": "تعرّف على الفواكه والخضروات والأطعمة اليومية بالصور الملونة للأطفال.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "أطفال · طعام وفواكه",
+  "questions": [
+    {
+      "id": "ar_food_01",
+      "prompt": "أين التفاحة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى التُّفَّاحَةِ الحَمْرَاء!",
+      "choice_style": "image_grid",
+      "choices": [
+        "تفاحة",
+        "موزة",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/apple.svg",
+        "media/banana.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "تفاحة",
+      "difficulty": "easy",
+      "reveal_message": "يم يم! هذه تفاحة!",
+      "explanation": "يم يم! هذه تفاحة!"
+    },
+    {
+      "id": "ar_food_02",
+      "prompt": "أين الموزة؟",
+      "spoken_prompt": "أَيْنَ المَوْزَةُ الصَّفْرَاء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "موزة",
+        "برتقالة",
+        "جزرة"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/orange.svg",
+        "media/carrot.svg"
+      ],
+      "answer": "موزة",
+      "difficulty": "easy",
+      "reveal_message": "لذيذة! هذه موزة!",
+      "explanation": "لذيذة! هذه موزة!"
+    },
+    {
+      "id": "ar_food_03",
+      "prompt": "أين البرتقالة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى البُرْتُقَالَة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "برتقالة",
+        "تفاحة",
+        "ليمونة"
+      ],
+      "choice_images": [
+        "media/orange.svg",
+        "media/apple.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "برتقالة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه برتقالة!",
+      "explanation": "أحسنت! هذه برتقالة!"
+    },
+    {
+      "id": "ar_food_04",
+      "prompt": "أين العنب؟",
+      "spoken_prompt": "أَيْنَ العِنَبُ البَنَفْسَجِيّ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "عنب",
+        "فراولة",
+        "بطيخ"
+      ],
+      "choice_images": [
+        "media/grapes.svg",
+        "media/strawberry.svg",
+        "media/watermelon.svg"
+      ],
+      "answer": "عنب",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا عنب!",
+      "explanation": "رائع! هذا عنب!"
+    },
+    {
+      "id": "ar_food_05",
+      "prompt": "أين الفراولة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الفَرَاوِلَةِ الحَمْرَاء!",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراولة",
+        "موزة",
+        "برتقالة"
+      ],
+      "choice_images": [
+        "media/strawberry.svg",
+        "media/banana.svg",
+        "media/orange.svg"
+      ],
+      "answer": "فراولة",
+      "difficulty": "easy",
+      "reveal_message": "جميل! هذه فراولة!",
+      "explanation": "جميل! هذه فراولة!"
+    },
+    {
+      "id": "ar_food_06",
+      "prompt": "أين البطيخ؟",
+      "spoken_prompt": "أَيْنَ قِطْعَةُ البِطِّيخ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطيخ",
+        "تفاحة",
+        "جبنة"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/apple.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "بطيخ",
+      "difficulty": "easy",
+      "reveal_message": "منعش! هذا بطيخ!",
+      "explanation": "منعش! هذا بطيخ!"
+    },
+    {
+      "id": "ar_food_07",
+      "prompt": "أين الجزرة؟",
+      "spoken_prompt": "أَيْنَ الجَزَرَةُ البُرْتُقَالِيَّة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جزرة",
+        "ذرة",
+        "موزة"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/corn.svg",
+        "media/banana.svg"
+      ],
+      "answer": "جزرة",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! هذه جزرة!",
+      "explanation": "ممتاز! هذه جزرة!"
+    },
+    {
+      "id": "ar_food_08",
+      "prompt": "أين الذرة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الذُّرَةِ الصَّفْرَاء!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ذرة",
+        "جزرة",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/corn.svg",
+        "media/carrot.svg",
+        "media/bread.svg"
+      ],
+      "answer": "ذرة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذه ذرة!",
+      "explanation": "أحسنت! هذه ذرة!"
+    },
+    {
+      "id": "ar_food_09",
+      "prompt": "أين الليمونة؟",
+      "spoken_prompt": "أَيْنَ اللَّيْمُونَةُ الصَّفْرَاء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليمونة",
+        "برتقالة",
+        "طماطم"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/orange.svg",
+        "media/tomato.svg"
+      ],
+      "answer": "ليمونة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذه ليمونة!",
+      "explanation": "رائع! هذه ليمونة!"
+    },
+    {
+      "id": "ar_food_10",
+      "prompt": "أين الأناناس؟",
+      "spoken_prompt": "أَيْنَ الأَنَانَاس؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أناناس",
+        "بطيخ",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/pineapple.svg",
+        "media/watermelon.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "أناناس",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا أناناس!",
+      "explanation": "أحسنت! هذا أناناس!"
+    },
+    {
+      "id": "ar_food_11",
+      "prompt": "أين الطماطم؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الطَّمَاطِمِ الحَمْرَاء!",
+      "choice_style": "image_grid",
+      "choices": [
+        "طماطم",
+        "جزرة",
+        "ليمونة"
+      ],
+      "choice_images": [
+        "media/tomato.svg",
+        "media/carrot.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "طماطم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! هذه طماطم!",
+      "explanation": "ممتاز! هذه طماطم!"
+    },
+    {
+      "id": "ar_food_12",
+      "prompt": "أين الجبنة؟",
+      "spoken_prompt": "أَيْنَ الجُبْنَةُ الصَّفْرَاء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جبنة",
+        "خبز",
+        "بيضة"
+      ],
+      "choice_images": [
+        "media/cheese.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "جبنة",
+      "difficulty": "easy",
+      "reveal_message": "لذيذة! هذه جبنة!",
+      "explanation": "لذيذة! هذه جبنة!"
+    },
+    {
+      "id": "ar_food_13",
+      "prompt": "أين الحليب؟",
+      "spoken_prompt": "أَيْنَ عُلْبَةُ الحَلِيب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حليب",
+        "عصير",
+        "جبنة"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/juice.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "حليب",
+      "difficulty": "easy",
+      "reveal_message": "صحي! هذا حليب!",
+      "explanation": "صحي! هذا حليب!"
+    },
+    {
+      "id": "ar_food_14",
+      "prompt": "أين العصير؟",
+      "spoken_prompt": "اضْغَطْ عَلَى عُلْبَةِ العَصِير!",
+      "choice_style": "image_grid",
+      "choices": [
+        "عصير",
+        "حليب",
+        "آيس كريم"
+      ],
+      "choice_images": [
+        "media/juice.svg",
+        "media/milk.svg",
+        "media/icecream.svg"
+      ],
+      "answer": "عصير",
+      "difficulty": "medium",
+      "reveal_message": "منعش! هذا عصير!",
+      "explanation": "منعش! هذا عصير!"
+    },
+    {
+      "id": "ar_food_15",
+      "prompt": "أين الخبز؟",
+      "spoken_prompt": "أَيْنَ الخُبْز؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "خبز",
+        "جبنة",
+        "ذرة"
+      ],
+      "choice_images": [
+        "media/bread.svg",
+        "media/cheese.svg",
+        "media/corn.svg"
+      ],
+      "answer": "خبز",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا خبز!",
+      "explanation": "أحسنت! هذا خبز!"
+    },
+    {
+      "id": "ar_food_16",
+      "prompt": "أين البيضة؟",
+      "spoken_prompt": "أَيْنَ البَيْضَة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بيضة",
+        "حليب",
+        "تفاحة"
+      ],
+      "choice_images": [
+        "media/egg.svg",
+        "media/milk.svg",
+        "media/apple.svg"
+      ],
+      "answer": "بيضة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذه بيضة!",
+      "explanation": "رائع! هذه بيضة!"
+    },
+    {
+      "id": "ar_food_17",
+      "prompt": "أين الآيس كريم؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الآيْس كْرِيم البَارِد!",
+      "choice_style": "image_grid",
+      "choices": [
+        "آيس كريم",
+        "عصير",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/juice.svg",
+        "media/bread.svg"
+      ],
+      "answer": "آيس كريم",
+      "difficulty": "easy",
+      "reveal_message": "لذيذ وبارد! هذا آيس كريم!",
+      "explanation": "لذيذ وبارد! هذا آيس كريم!"
+    },
+    {
+      "id": "ar_food_18",
+      "prompt": "أين الرمان؟",
+      "spoken_prompt": "أَيْنَ الرُّمَّانُ الأَحْمَر؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "رمان",
+        "برتقالة",
+        "أناناس"
+      ],
+      "choice_images": [
+        "media/pomegranate.svg",
+        "media/orange.svg",
+        "media/pineapple.svg"
+      ],
+      "answer": "رمان",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! هذا رمان!",
+      "explanation": "ممتاز! هذا رمان!"
+    },
+    {
+      "id": "ar_food_19",
+      "prompt": "أي فاكهة لونها أصفر وطويلة؟",
+      "spoken_prompt": "أَيُّ فَاكِهَةٍ صَفْرَاءُ وَطَوِيلَة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "موزة",
+        "تفاحة",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/apple.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "موزة",
+      "difficulty": "medium",
+      "reveal_message": "الموزة صفراء وطويلة!",
+      "explanation": "الموزة صفراء وطويلة!"
+    },
+    {
+      "id": "ar_food_20",
+      "prompt": "ماذا يحب الأرنب أن يأكل؟",
+      "spoken_prompt": "مَاذَا يُحِبُّ الأَرْنَبُ أَنْ يَأْكُل؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جزرة",
+        "حليب",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/milk.svg",
+        "media/bread.svg"
+      ],
+      "answer": "جزرة",
+      "difficulty": "medium",
+      "reveal_message": "الأرنب يحب الجزر!",
+      "explanation": "الأرنب يحب الجزر!"
+    },
+    {
+      "id": "ar_food_21",
+      "prompt": "ما الحلوى الباردة في الصيف؟",
+      "spoken_prompt": "مَا الحَلْوَى البَارِدَةُ فِي الصَّيْف؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "آيس كريم",
+        "خبز",
+        "بيضة"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "آيس كريم",
+      "difficulty": "medium",
+      "reveal_message": "الآيس كريم بارد ولذيذ!",
+      "explanation": "الآيس كريم بارد ولذيذ!"
+    },
+    {
+      "id": "ar_food_22",
+      "prompt": "ما المشروب الصحي الذي تعطينا إياه البقرة؟",
+      "spoken_prompt": "مَا المَشْرُوبُ الأَبْيَضُ الصِّحِّيّ مِنَ البَقَرَة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حليب",
+        "عصير",
+        "طماطم"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/juice.svg",
+        "media/tomato.svg"
+      ],
+      "answer": "حليب",
+      "difficulty": "hard",
+      "reveal_message": "الحليب يأتي من البقرة!",
+      "explanation": "الحليب يأتي من البقرة!"
+    },
+    {
+      "id": "ar_food_23",
+      "prompt": "أي فاكهة خضراء من الخارج وحمراء من الداخل؟",
+      "spoken_prompt": "أَيُّ فَاكِهَةٍ خَضْرَاءُ مِنَ الخَارِجِ وَحَمْرَاءُ مِنَ الدَّاخِل؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطيخ",
+        "ليمونة",
+        "موزة"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/lemon.svg",
+        "media/banana.svg"
+      ],
+      "answer": "بطيخ",
+      "difficulty": "hard",
+      "reveal_message": "البطيخ أخضر من الخارج وأحمر من الداخل!",
+      "explanation": "البطيخ أخضر من الخارج وأحمر من الداخل!"
+    },
+    {
+      "id": "ar_food_24",
+      "prompt": "أي فاكهة طعمها حامض؟",
+      "spoken_prompt": "أَيُّ فَاكِهَةٍ طَعْمُهَا حَامِض؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليمونة",
+        "فراولة",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/strawberry.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "ليمونة",
+      "difficulty": "hard",
+      "reveal_message": "الليمون طعمه حامض!",
+      "explanation": "الليمون طعمه حامض!"
+    }
+  ],
+  "cover": "media/cover.svg"
+}

@@ -1,0 +1,523 @@
+{
+  "pack_id": "kids_colors_shapes_ar",
+  "title": "الألوان والأشكال (٣–٤ سنوات)",
+  "description": "تعلّم الألوان والأشكال الهندسية البسيطة ببطاقات ملونة ممتعة للأطفال.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "color_swatch",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "أطفال · ألوان وأشكال",
+  "questions": [
+    {
+      "id": "ar_cs_01",
+      "prompt": "اضغط على اللون أحمر!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأحمر؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أحمر",
+        "أزرق",
+        "أصفر"
+      ],
+      "choice_colors": [
+        "#EF4444",
+        "#3B82F6",
+        "#FACC15"
+      ],
+      "answer": "أحمر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا هو اللون أحمر!",
+      "explanation": "اللون الصحيح هو أحمر."
+    },
+    {
+      "id": "ar_cs_02",
+      "prompt": "اضغط على اللون أزرق!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأزرق؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أزرق",
+        "أحمر",
+        "أخضر"
+      ],
+      "choice_colors": [
+        "#3B82F6",
+        "#EF4444",
+        "#22C55E"
+      ],
+      "answer": "أزرق",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا هو اللون أزرق!",
+      "explanation": "اللون الصحيح هو أزرق."
+    },
+    {
+      "id": "ar_cs_03",
+      "prompt": "اضغط على اللون أصفر!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأصفر؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أصفر",
+        "بنفسجي",
+        "أزرق"
+      ],
+      "choice_colors": [
+        "#FACC15",
+        "#A855F7",
+        "#3B82F6"
+      ],
+      "answer": "أصفر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا هو اللون أصفر!",
+      "explanation": "اللون الصحيح هو أصفر."
+    },
+    {
+      "id": "ar_cs_04",
+      "prompt": "اضغط على اللون أخضر!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأخضر؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أخضر",
+        "برتقالي",
+        "أحمر"
+      ],
+      "choice_colors": [
+        "#22C55E",
+        "#F97316",
+        "#EF4444"
+      ],
+      "answer": "أخضر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا هو اللون أخضر!",
+      "explanation": "اللون الصحيح هو أخضر."
+    },
+    {
+      "id": "ar_cs_05",
+      "prompt": "اضغط على اللون برتقالي!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ البرتقالي؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "برتقالي",
+        "أزرق",
+        "وردي"
+      ],
+      "choice_colors": [
+        "#F97316",
+        "#3B82F6",
+        "#EC4899"
+      ],
+      "answer": "برتقالي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو اللون برتقالي!",
+      "explanation": "اللون الصحيح هو برتقالي."
+    },
+    {
+      "id": "ar_cs_06",
+      "prompt": "اضغط على اللون بنفسجي!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ البنفسجي؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بنفسجي",
+        "أصفر",
+        "أخضر"
+      ],
+      "choice_colors": [
+        "#A855F7",
+        "#FACC15",
+        "#22C55E"
+      ],
+      "answer": "بنفسجي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو اللون بنفسجي!",
+      "explanation": "اللون الصحيح هو بنفسجي."
+    },
+    {
+      "id": "ar_cs_07",
+      "prompt": "اضغط على اللون وردي!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الوردي؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "وردي",
+        "أخضر",
+        "بني"
+      ],
+      "choice_colors": [
+        "#EC4899",
+        "#22C55E",
+        "#92400E"
+      ],
+      "answer": "وردي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو اللون وردي!",
+      "explanation": "اللون الصحيح هو وردي."
+    },
+    {
+      "id": "ar_cs_08",
+      "prompt": "اضغط على اللون بني!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ البني؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بني",
+        "وردي",
+        "أزرق"
+      ],
+      "choice_colors": [
+        "#92400E",
+        "#EC4899",
+        "#3B82F6"
+      ],
+      "answer": "بني",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! هذا هو اللون بني!",
+      "explanation": "اللون الصحيح هو بني."
+    },
+    {
+      "id": "ar_cs_09",
+      "prompt": "اضغط على اللون أسود!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأسود؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أسود",
+        "أصفر",
+        "أحمر"
+      ],
+      "choice_colors": [
+        "#18181B",
+        "#FACC15",
+        "#EF4444"
+      ],
+      "answer": "أسود",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو اللون أسود!",
+      "explanation": "اللون الصحيح هو أسود."
+    },
+    {
+      "id": "ar_cs_10",
+      "prompt": "اضغط على اللون أبيض!",
+      "spoken_prompt": "أَيْنَ اللَّوْنُ الأبيض؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أبيض",
+        "أسود",
+        "بنفسجي"
+      ],
+      "choice_colors": [
+        "#F8FAFC",
+        "#18181B",
+        "#A855F7"
+      ],
+      "answer": "أبيض",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! هذا هو اللون أبيض!",
+      "explanation": "اللون الصحيح هو أبيض."
+    },
+    {
+      "id": "ar_cs_11",
+      "prompt": "أين شكل الدائرة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ الدائرة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "دائرة",
+        "مربع",
+        "مثلث"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_square.svg",
+        "media/shape_triangle.svg"
+      ],
+      "answer": "دائرة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا شكل دائرة!",
+      "explanation": "الشكل الصحيح هو دائرة."
+    },
+    {
+      "id": "ar_cs_12",
+      "prompt": "أين شكل المربع؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ المربع!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مربع",
+        "دائرة",
+        "نجمة"
+      ],
+      "choice_images": [
+        "media/shape_square.svg",
+        "media/shape_circle.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "مربع",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا شكل مربع!",
+      "explanation": "الشكل الصحيح هو مربع."
+    },
+    {
+      "id": "ar_cs_13",
+      "prompt": "أين شكل المثلث؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ المثلث!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مثلث",
+        "مربع",
+        "قلب"
+      ],
+      "choice_images": [
+        "media/shape_triangle.svg",
+        "media/shape_square.svg",
+        "media/shape_heart.svg"
+      ],
+      "answer": "مثلث",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا شكل مثلث!",
+      "explanation": "الشكل الصحيح هو مثلث."
+    },
+    {
+      "id": "ar_cs_14",
+      "prompt": "أين شكل النجمة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ النجمة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "نجمة",
+        "دائرة",
+        "معيّن"
+      ],
+      "choice_images": [
+        "media/shape_star.svg",
+        "media/shape_circle.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "نجمة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا شكل نجمة!",
+      "explanation": "الشكل الصحيح هو نجمة."
+    },
+    {
+      "id": "ar_cs_15",
+      "prompt": "أين شكل القلب؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ القلب!",
+      "choice_style": "image_grid",
+      "choices": [
+        "قلب",
+        "مثلث",
+        "مربع"
+      ],
+      "choice_images": [
+        "media/shape_heart.svg",
+        "media/shape_triangle.svg",
+        "media/shape_square.svg"
+      ],
+      "answer": "قلب",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذا شكل قلب!",
+      "explanation": "الشكل الصحيح هو قلب."
+    },
+    {
+      "id": "ar_cs_16",
+      "prompt": "أين شكل المعيّن؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ المعيّن!",
+      "choice_style": "image_grid",
+      "choices": [
+        "معيّن",
+        "بيضاوي",
+        "دائرة"
+      ],
+      "choice_images": [
+        "media/shape_diamond.svg",
+        "media/shape_oval.svg",
+        "media/shape_circle.svg"
+      ],
+      "answer": "معيّن",
+      "difficulty": "hard",
+      "reveal_message": "رائع! هذا شكل معيّن!",
+      "explanation": "الشكل الصحيح هو معيّن."
+    },
+    {
+      "id": "ar_cs_17",
+      "prompt": "أين شكل المستطيل؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ المستطيل!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مستطيل",
+        "مثلث",
+        "نجمة"
+      ],
+      "choice_images": [
+        "media/shape_rectangle.svg",
+        "media/shape_triangle.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "مستطيل",
+      "difficulty": "hard",
+      "reveal_message": "رائع! هذا شكل مستطيل!",
+      "explanation": "الشكل الصحيح هو مستطيل."
+    },
+    {
+      "id": "ar_cs_18",
+      "prompt": "أين شكل البيضاوي؟",
+      "spoken_prompt": "اضْغَطْ عَلَى شَكْلِ البيضاوي!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بيضاوي",
+        "مربع",
+        "معيّن"
+      ],
+      "choice_images": [
+        "media/shape_oval.svg",
+        "media/shape_square.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "بيضاوي",
+      "difficulty": "hard",
+      "reveal_message": "رائع! هذا شكل بيضاوي!",
+      "explanation": "الشكل الصحيح هو بيضاوي."
+    },
+    {
+      "id": "ar_cs_19",
+      "prompt": "ما لون الموزة؟",
+      "spoken_prompt": "انْظُرْ إِلَى الموزة! مَا لَوْنُهَا؟",
+      "image": "media/banana.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أصفر",
+        "أزرق",
+        "بنفسجي"
+      ],
+      "choice_colors": [
+        "#FACC15",
+        "#3B82F6",
+        "#A855F7"
+      ],
+      "answer": "أصفر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! لون الموزة أصفر!",
+      "explanation": "الموزة لونها أصفر."
+    },
+    {
+      "id": "ar_cs_20",
+      "prompt": "ما لون التفاحة؟",
+      "spoken_prompt": "انْظُرْ إِلَى التفاحة! مَا لَوْنُهَا؟",
+      "image": "media/apple.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أحمر",
+        "أخضر",
+        "أزرق"
+      ],
+      "choice_colors": [
+        "#EF4444",
+        "#22C55E",
+        "#3B82F6"
+      ],
+      "answer": "أحمر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! لون التفاحة أحمر!",
+      "explanation": "التفاحة لونها أحمر."
+    },
+    {
+      "id": "ar_cs_21",
+      "prompt": "ما لون الضفدع؟",
+      "spoken_prompt": "انْظُرْ إِلَى الضفدع! مَا لَوْنُهَا؟",
+      "image": "media/frog.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أخضر",
+        "أحمر",
+        "وردي"
+      ],
+      "choice_colors": [
+        "#22C55E",
+        "#EF4444",
+        "#EC4899"
+      ],
+      "answer": "أخضر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! لون الضفدع أخضر!",
+      "explanation": "الضفدع لونها أخضر."
+    },
+    {
+      "id": "ar_cs_22",
+      "prompt": "ما لون الجزرة؟",
+      "spoken_prompt": "انْظُرْ إِلَى الجزرة! مَا لَوْنُهَا؟",
+      "image": "media/carrot.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "برتقالي",
+        "أزرق",
+        "أصفر"
+      ],
+      "choice_colors": [
+        "#F97316",
+        "#3B82F6",
+        "#FACC15"
+      ],
+      "answer": "برتقالي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! لون الجزرة برتقالي!",
+      "explanation": "الجزرة لونها برتقالي."
+    },
+    {
+      "id": "ar_cs_23",
+      "prompt": "ما لون العنب؟",
+      "spoken_prompt": "انْظُرْ إِلَى العنب! مَا لَوْنُهَا؟",
+      "image": "media/grapes.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بنفسجي",
+        "برتقالي",
+        "أصفر"
+      ],
+      "choice_colors": [
+        "#A855F7",
+        "#F97316",
+        "#FACC15"
+      ],
+      "answer": "بنفسجي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! لون العنب بنفسجي!",
+      "explanation": "العنب لونها بنفسجي."
+    },
+    {
+      "id": "ar_cs_24",
+      "prompt": "ما لون الحوت؟",
+      "spoken_prompt": "انْظُرْ إِلَى الحوت! مَا لَوْنُهَا؟",
+      "image": "media/whale.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أزرق",
+        "أحمر",
+        "أصفر"
+      ],
+      "choice_colors": [
+        "#3B82F6",
+        "#EF4444",
+        "#FACC15"
+      ],
+      "answer": "أزرق",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! لون الحوت أزرق!",
+      "explanation": "الحوت لونها أزرق."
+    },
+    {
+      "id": "ar_cs_25",
+      "prompt": "ما لون الدب؟",
+      "spoken_prompt": "انْظُرْ إِلَى الدب! مَا لَوْنُهَا؟",
+      "image": "media/bear.svg",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بني",
+        "وردي",
+        "أخضر"
+      ],
+      "choice_colors": [
+        "#92400E",
+        "#EC4899",
+        "#22C55E"
+      ],
+      "answer": "بني",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! لون الدب بني!",
+      "explanation": "الدب لونها بني."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

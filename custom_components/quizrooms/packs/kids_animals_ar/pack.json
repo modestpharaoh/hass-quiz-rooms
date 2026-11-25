@@ -1,0 +1,496 @@
+{
+  "pack_id": "kids_animals_ar",
+  "title": "الحيوانات وأصواتها (٣–٤ سنوات)",
+  "description": "تعرّف على الحيوانات اللطيفة وأصواتها بالصور الملونة للأطفال.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "أطفال · حيوانات",
+  "questions": [
+    {
+      "id": "ar_ani_01",
+      "prompt": "أين القطة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى القِطَّة! مِيَاو!",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطة",
+        "كلب",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/dog.svg",
+        "media/fish.svg"
+      ],
+      "answer": "قطة",
+      "difficulty": "easy",
+      "reveal_message": "مياو! هذه هي القطة!",
+      "explanation": "مياو! هذه هي القطة!"
+    },
+    {
+      "id": "ar_ani_02",
+      "prompt": "أين الكلب؟",
+      "spoken_prompt": "أَيْنَ الكَلْبُ اللَّطِيف؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كلب",
+        "قطة",
+        "بطة"
+      ],
+      "choice_images": [
+        "media/dog.svg",
+        "media/cat.svg",
+        "media/duck.svg"
+      ],
+      "answer": "كلب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا هو الكلب!",
+      "explanation": "أحسنت! هذا هو الكلب!"
+    },
+    {
+      "id": "ar_ani_03",
+      "prompt": "أين الأسد؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الأَسَدِ القَوِيّ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "أسد",
+        "أرنب",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/rabbit.svg",
+        "media/frog.svg"
+      ],
+      "answer": "أسد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا هو الأسد!",
+      "explanation": "رائع! هذا هو الأسد!"
+    },
+    {
+      "id": "ar_ani_04",
+      "prompt": "أين البطة؟",
+      "spoken_prompt": "أَيْنَ البَطَّةُ الصَّفْرَاء؟ كْوَاك كْوَاك!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطة",
+        "بومة",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/owl.svg",
+        "media/bird.svg"
+      ],
+      "answer": "بطة",
+      "difficulty": "easy",
+      "reveal_message": "كواك كواك! هذه البطة!",
+      "explanation": "كواك كواك! هذه البطة!"
+    },
+    {
+      "id": "ar_ani_05",
+      "prompt": "أين الفيل؟",
+      "spoken_prompt": "أَيْنَ الفِيلُ الكَبِير؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فيل",
+        "بقرة",
+        "دب"
+      ],
+      "choice_images": [
+        "media/elephant.svg",
+        "media/cow.svg",
+        "media/bear.svg"
+      ],
+      "answer": "فيل",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! هذا هو الفيل!",
+      "explanation": "ممتاز! هذا هو الفيل!"
+    },
+    {
+      "id": "ar_ani_06",
+      "prompt": "أين السمكة؟",
+      "spoken_prompt": "أَيْنَ السَّمَكَةُ الَّتِي تَسْبَح؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سمكة",
+        "نحلة",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/fish.svg",
+        "media/bee.svg",
+        "media/bird.svg"
+      ],
+      "answer": "سمكة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه هي السمكة!",
+      "explanation": "أحسنت! هذه هي السمكة!"
+    },
+    {
+      "id": "ar_ani_07",
+      "prompt": "أين البقرة؟",
+      "spoken_prompt": "أَيْنَ البَقَرَة؟ مُووو!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بقرة",
+        "خروف",
+        "حصان"
+      ],
+      "choice_images": [
+        "media/cow.svg",
+        "media/sheep.svg",
+        "media/horse.svg"
+      ],
+      "answer": "بقرة",
+      "difficulty": "easy",
+      "reveal_message": "مووو! هذه البقرة!",
+      "explanation": "مووو! هذه البقرة!"
+    },
+    {
+      "id": "ar_ani_08",
+      "prompt": "أين الخروف؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الخَرُوفِ الأَبْيَض! بَااا!",
+      "choice_style": "image_grid",
+      "choices": [
+        "خروف",
+        "كلب",
+        "دب"
+      ],
+      "choice_images": [
+        "media/sheep.svg",
+        "media/dog.svg",
+        "media/bear.svg"
+      ],
+      "answer": "خروف",
+      "difficulty": "easy",
+      "reveal_message": "بااا! هذا هو الخروف!",
+      "explanation": "بااا! هذا هو الخروف!"
+    },
+    {
+      "id": "ar_ani_09",
+      "prompt": "أين الأرنب؟",
+      "spoken_prompt": "أَيْنَ الأَرْنَبُ ذُو الأُذُنَيْنِ الطَّوِيلَتَيْن؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أرنب",
+        "ثعلب",
+        "قطة"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/fox.svg",
+        "media/cat.svg"
+      ],
+      "answer": "أرنب",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذا هو الأرنب!",
+      "explanation": "رائع! هذا هو الأرنب!"
+    },
+    {
+      "id": "ar_ani_10",
+      "prompt": "أين الضفدع؟",
+      "spoken_prompt": "أَيْنَ الضِّفْدَعُ الأَخْضَر؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ضفدع",
+        "بطة",
+        "حوت"
+      ],
+      "choice_images": [
+        "media/frog.svg",
+        "media/duck.svg",
+        "media/whale.svg"
+      ],
+      "answer": "ضفدع",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو الضفدع!",
+      "explanation": "أحسنت! هذا هو الضفدع!"
+    },
+    {
+      "id": "ar_ani_11",
+      "prompt": "أين الفراشة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الفَرَاشَةِ المُلَوَّنَة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراشة",
+        "نحلة",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/butterfly.svg",
+        "media/bee.svg",
+        "media/bird.svg"
+      ],
+      "answer": "فراشة",
+      "difficulty": "medium",
+      "reveal_message": "جميل! هذه هي الفراشة!",
+      "explanation": "جميل! هذه هي الفراشة!"
+    },
+    {
+      "id": "ar_ani_12",
+      "prompt": "أين النحلة؟",
+      "spoken_prompt": "أَيْنَ النَّحْلَةُ النَّشِيطَة؟ زززز!",
+      "choice_style": "image_grid",
+      "choices": [
+        "نحلة",
+        "فراشة",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/butterfly.svg",
+        "media/frog.svg"
+      ],
+      "answer": "نحلة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! هذه النحلة!",
+      "explanation": "ممتاز! هذه النحلة!"
+    },
+    {
+      "id": "ar_ani_13",
+      "prompt": "أين الزرافة؟",
+      "spoken_prompt": "أَيْنَ الزَّرَافَةُ الطَّوِيلَة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "زرافة",
+        "حمار وحشي",
+        "جمل"
+      ],
+      "choice_images": [
+        "media/giraffe.svg",
+        "media/zebra.svg",
+        "media/camel.svg"
+      ],
+      "answer": "زرافة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذه الزرافة!",
+      "explanation": "أحسنت! هذه الزرافة!"
+    },
+    {
+      "id": "ar_ani_14",
+      "prompt": "أين الحمار الوحشي؟",
+      "spoken_prompt": "أَيْنَ الحِمَارُ الوَحْشِيّ المُخَطَّط؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حمار وحشي",
+        "حصان",
+        "بقرة"
+      ],
+      "choice_images": [
+        "media/zebra.svg",
+        "media/horse.svg",
+        "media/cow.svg"
+      ],
+      "answer": "حمار وحشي",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذا الحمار الوحشي!",
+      "explanation": "رائع! هذا الحمار الوحشي!"
+    },
+    {
+      "id": "ar_ani_15",
+      "prompt": "أين البطريق؟",
+      "spoken_prompt": "أَيْنَ البِطْرِيق؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطريق",
+        "بومة",
+        "بطة"
+      ],
+      "choice_images": [
+        "media/penguin.svg",
+        "media/owl.svg",
+        "media/duck.svg"
+      ],
+      "answer": "بطريق",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! هذا هو البطريق!",
+      "explanation": "أحسنت! هذا هو البطريق!"
+    },
+    {
+      "id": "ar_ani_16",
+      "prompt": "أين الجمل؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الجَمَل!",
+      "choice_style": "image_grid",
+      "choices": [
+        "جمل",
+        "حصان",
+        "دب"
+      ],
+      "choice_images": [
+        "media/camel.svg",
+        "media/horse.svg",
+        "media/bear.svg"
+      ],
+      "answer": "جمل",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! هذا هو الجمل!",
+      "explanation": "ممتاز! هذا هو الجمل!"
+    },
+    {
+      "id": "ar_ani_17",
+      "prompt": "من يقول مياو؟",
+      "spoken_prompt": "مَنْ يَقُولُ مِيَاو؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطة",
+        "كلب",
+        "أسد"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/dog.svg",
+        "media/lion.svg"
+      ],
+      "answer": "قطة",
+      "difficulty": "easy",
+      "reveal_message": "القطة تقول مياو!",
+      "explanation": "القطة تقول مياو!"
+    },
+    {
+      "id": "ar_ani_18",
+      "prompt": "من يقول مووو ويعطينا الحليب؟",
+      "spoken_prompt": "مَنْ يَقُولُ مُووو وَيُعْطِينَا الحَلِيب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بقرة",
+        "بطة",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/cow.svg",
+        "media/duck.svg",
+        "media/frog.svg"
+      ],
+      "answer": "بقرة",
+      "difficulty": "easy",
+      "reveal_message": "البقرة تعطينا الحليب!",
+      "explanation": "البقرة تعطينا الحليب!"
+    },
+    {
+      "id": "ar_ani_19",
+      "prompt": "من يقول بااا؟",
+      "spoken_prompt": "مَنْ يَقُولُ بَااا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "خروف",
+        "قطة",
+        "فيل"
+      ],
+      "choice_images": [
+        "media/sheep.svg",
+        "media/cat.svg",
+        "media/elephant.svg"
+      ],
+      "answer": "خروف",
+      "difficulty": "medium",
+      "reveal_message": "الخروف يقول بااا!",
+      "explanation": "الخروف يقول بااا!"
+    },
+    {
+      "id": "ar_ani_20",
+      "prompt": "من يقول كواك كواك؟",
+      "spoken_prompt": "مَنْ يَقُولُ كْوَاك كْوَاك؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطة",
+        "عصفور",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/bird.svg",
+        "media/fish.svg"
+      ],
+      "answer": "بطة",
+      "difficulty": "medium",
+      "reveal_message": "البطة تقول كواك كواك!",
+      "explanation": "البطة تقول كواك كواك!"
+    },
+    {
+      "id": "ar_ani_21",
+      "prompt": "من يعيش في البحر الكبير؟",
+      "spoken_prompt": "أَيُّ حَيَوَانٍ يَسْبَحُ فِي البَحْرِ الكَبِير؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حوت",
+        "جمل",
+        "ثعلب"
+      ],
+      "choice_images": [
+        "media/whale.svg",
+        "media/camel.svg",
+        "media/fox.svg"
+      ],
+      "answer": "حوت",
+      "difficulty": "hard",
+      "reveal_message": "الحوت يسبح في البحر!",
+      "explanation": "الحوت يسبح في البحر!"
+    },
+    {
+      "id": "ar_ani_22",
+      "prompt": "من يصنع العسل اللذيذ؟",
+      "spoken_prompt": "مَنْ يَصْنَعُ العَسَلَ اللَّذِيذ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "نحلة",
+        "فراشة",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/butterfly.svg",
+        "media/frog.svg"
+      ],
+      "answer": "نحلة",
+      "difficulty": "hard",
+      "reveal_message": "النحلة تصنع العسل!",
+      "explanation": "النحلة تصنع العسل!"
+    },
+    {
+      "id": "ar_ani_23",
+      "prompt": "من يقفز وله أذنان طويلتان؟",
+      "spoken_prompt": "مَنْ يَقْفِزُ وَلَهُ أُذُنَانِ طَوِيلَتَان؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أرنب",
+        "دب",
+        "فيل"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/bear.svg",
+        "media/elephant.svg"
+      ],
+      "answer": "أرنب",
+      "difficulty": "hard",
+      "reveal_message": "الأرنب يقفز بأذنين طويلتين!",
+      "explanation": "الأرنب يقفز بأذنين طويلتين!"
+    },
+    {
+      "id": "ar_ani_24",
+      "prompt": "من يطير في الليل؟",
+      "spoken_prompt": "أَيُّ طَائِرٍ يَسْهَرُ فِي اللَّيْل؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بومة",
+        "بطة",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/owl.svg",
+        "media/duck.svg",
+        "media/fish.svg"
+      ],
+      "answer": "بومة",
+      "difficulty": "hard",
+      "reveal_message": "البومة تطير في الليل!",
+      "explanation": "البومة تطير في الليل!"
+    }
+  ],
+  "cover": "media/cover.svg"
+}

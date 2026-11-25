@@ -1,0 +1,552 @@
+{
+  "pack_id": "kids_en_alphabet_en",
+  "title": "ABC Letters (Ages 3–4)",
+  "description": "Playful English alphabet learning for toddlers with bright picture clues and giant letters A–Z.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "large_glyph",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "Kids · Alphabet",
+  "questions": [
+    {
+      "id": "en_abc_01",
+      "prompt": "Which letter starts Apple?",
+      "spoken_prompt": "Which letter does Apple start with? Apple!",
+      "image": "media/apple.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "answer": "A",
+      "difficulty": "easy",
+      "reveal_message": "Yay! A is for Apple!",
+      "explanation": "Apple starts with the letter A."
+    },
+    {
+      "id": "en_abc_02",
+      "prompt": "Which letter starts Ball?",
+      "spoken_prompt": "Which letter does Ball start with? Ball!",
+      "image": "media/ball.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "B",
+        "D",
+        "P"
+      ],
+      "answer": "B",
+      "difficulty": "easy",
+      "reveal_message": "Yay! B is for Ball!",
+      "explanation": "Ball starts with the letter B."
+    },
+    {
+      "id": "en_abc_03",
+      "prompt": "Which letter starts Cat?",
+      "spoken_prompt": "Which letter does Cat start with? Cat!",
+      "image": "media/cat.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "C",
+        "G",
+        "O"
+      ],
+      "answer": "C",
+      "difficulty": "easy",
+      "reveal_message": "Yay! C is for Cat!",
+      "explanation": "Cat starts with the letter C."
+    },
+    {
+      "id": "en_abc_04",
+      "prompt": "Which letter starts Duck?",
+      "spoken_prompt": "Which letter does Duck start with? Duck!",
+      "image": "media/duck.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "D",
+        "B",
+        "T"
+      ],
+      "answer": "D",
+      "difficulty": "easy",
+      "reveal_message": "Yay! D is for Duck!",
+      "explanation": "Duck starts with the letter D."
+    },
+    {
+      "id": "en_abc_05",
+      "prompt": "Which letter starts Elephant?",
+      "spoken_prompt": "Which letter does Elephant start with? Elephant!",
+      "image": "media/elephant.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "E",
+        "F",
+        "L"
+      ],
+      "answer": "E",
+      "difficulty": "easy",
+      "reveal_message": "Yay! E is for Elephant!",
+      "explanation": "Elephant starts with the letter E."
+    },
+    {
+      "id": "en_abc_06",
+      "prompt": "Which letter starts Fish?",
+      "spoken_prompt": "Which letter does Fish start with? Fish!",
+      "image": "media/fish.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "F",
+        "E",
+        "P"
+      ],
+      "answer": "F",
+      "difficulty": "easy",
+      "reveal_message": "Yay! F is for Fish!",
+      "explanation": "Fish starts with the letter F."
+    },
+    {
+      "id": "en_abc_07",
+      "prompt": "Which letter starts Grapes?",
+      "spoken_prompt": "Which letter does Grapes start with? Grapes!",
+      "image": "media/grapes.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "G",
+        "C",
+        "Q"
+      ],
+      "answer": "G",
+      "difficulty": "easy",
+      "reveal_message": "Yay! G is for Grapes!",
+      "explanation": "Grapes starts with the letter G."
+    },
+    {
+      "id": "en_abc_08",
+      "prompt": "Which letter starts House?",
+      "spoken_prompt": "Which letter does House start with? House!",
+      "image": "media/house.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "H",
+        "M",
+        "N"
+      ],
+      "answer": "H",
+      "difficulty": "easy",
+      "reveal_message": "Yay! H is for House!",
+      "explanation": "House starts with the letter H."
+    },
+    {
+      "id": "en_abc_09",
+      "prompt": "Which letter starts Ice Cream?",
+      "spoken_prompt": "Which letter does Ice Cream start with? Ice Cream!",
+      "image": "media/icecream.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "I",
+        "L",
+        "T"
+      ],
+      "answer": "I",
+      "difficulty": "easy",
+      "reveal_message": "Yay! I is for Ice Cream!",
+      "explanation": "Ice Cream starts with the letter I."
+    },
+    {
+      "id": "en_abc_10",
+      "prompt": "Which letter starts Juice?",
+      "spoken_prompt": "Which letter does Juice start with? Juice!",
+      "image": "media/juice.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "J",
+        "G",
+        "I"
+      ],
+      "answer": "J",
+      "difficulty": "medium",
+      "reveal_message": "Yay! J is for Juice!",
+      "explanation": "Juice starts with the letter J."
+    },
+    {
+      "id": "en_abc_11",
+      "prompt": "Which letter starts Kite?",
+      "spoken_prompt": "Which letter does Kite start with? Kite!",
+      "image": "media/kite.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "K",
+        "R",
+        "X"
+      ],
+      "answer": "K",
+      "difficulty": "medium",
+      "reveal_message": "Yay! K is for Kite!",
+      "explanation": "Kite starts with the letter K."
+    },
+    {
+      "id": "en_abc_12",
+      "prompt": "Which letter starts Lion?",
+      "spoken_prompt": "Which letter does Lion start with? Lion!",
+      "image": "media/lion.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "L",
+        "I",
+        "T"
+      ],
+      "answer": "L",
+      "difficulty": "easy",
+      "reveal_message": "Yay! L is for Lion!",
+      "explanation": "Lion starts with the letter L."
+    },
+    {
+      "id": "en_abc_13",
+      "prompt": "Which letter starts Moon?",
+      "spoken_prompt": "Which letter does Moon start with? Moon!",
+      "image": "media/moon.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "M",
+        "N",
+        "W"
+      ],
+      "answer": "M",
+      "difficulty": "easy",
+      "reveal_message": "Yay! M is for Moon!",
+      "explanation": "Moon starts with the letter M."
+    },
+    {
+      "id": "en_abc_14",
+      "prompt": "Which letter starts Nest?",
+      "spoken_prompt": "Which letter does Nest start with? Nest!",
+      "image": "media/nest.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "N",
+        "M",
+        "U"
+      ],
+      "answer": "N",
+      "difficulty": "medium",
+      "reveal_message": "Yay! N is for Nest!",
+      "explanation": "Nest starts with the letter N."
+    },
+    {
+      "id": "en_abc_15",
+      "prompt": "Which letter starts Orange?",
+      "spoken_prompt": "Which letter does Orange start with? Orange!",
+      "image": "media/orange.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "O",
+        "C",
+        "Q"
+      ],
+      "answer": "O",
+      "difficulty": "easy",
+      "reveal_message": "Yay! O is for Orange!",
+      "explanation": "Orange starts with the letter O."
+    },
+    {
+      "id": "en_abc_16",
+      "prompt": "Which letter starts Penguin?",
+      "spoken_prompt": "Which letter does Penguin start with? Penguin!",
+      "image": "media/penguin.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "P",
+        "B",
+        "R"
+      ],
+      "answer": "P",
+      "difficulty": "medium",
+      "reveal_message": "Yay! P is for Penguin!",
+      "explanation": "Penguin starts with the letter P."
+    },
+    {
+      "id": "en_abc_17",
+      "prompt": "Which letter starts Queen?",
+      "spoken_prompt": "Which letter does Queen start with? Queen!",
+      "image": "media/queen.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "Q",
+        "O",
+        "G"
+      ],
+      "answer": "Q",
+      "difficulty": "hard",
+      "reveal_message": "Yay! Q is for Queen!",
+      "explanation": "Queen starts with the letter Q."
+    },
+    {
+      "id": "en_abc_18",
+      "prompt": "Which letter starts Rabbit?",
+      "spoken_prompt": "Which letter does Rabbit start with? Rabbit!",
+      "image": "media/rabbit.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "R",
+        "B",
+        "P"
+      ],
+      "answer": "R",
+      "difficulty": "medium",
+      "reveal_message": "Yay! R is for Rabbit!",
+      "explanation": "Rabbit starts with the letter R."
+    },
+    {
+      "id": "en_abc_19",
+      "prompt": "Which letter starts Sun?",
+      "spoken_prompt": "Which letter does Sun start with? Sun!",
+      "image": "media/sun.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "S",
+        "C",
+        "Z"
+      ],
+      "answer": "S",
+      "difficulty": "easy",
+      "reveal_message": "Yay! S is for Sun!",
+      "explanation": "Sun starts with the letter S."
+    },
+    {
+      "id": "en_abc_20",
+      "prompt": "Which letter starts Tree?",
+      "spoken_prompt": "Which letter does Tree start with? Tree!",
+      "image": "media/tree.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "T",
+        "F",
+        "I"
+      ],
+      "answer": "T",
+      "difficulty": "medium",
+      "reveal_message": "Yay! T is for Tree!",
+      "explanation": "Tree starts with the letter T."
+    },
+    {
+      "id": "en_abc_21",
+      "prompt": "Which letter starts Umbrella?",
+      "spoken_prompt": "Which letter does Umbrella start with? Umbrella!",
+      "image": "media/umbrella.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "U",
+        "V",
+        "W"
+      ],
+      "answer": "U",
+      "difficulty": "medium",
+      "reveal_message": "Yay! U is for Umbrella!",
+      "explanation": "Umbrella starts with the letter U."
+    },
+    {
+      "id": "en_abc_22",
+      "prompt": "Which letter starts Van?",
+      "spoken_prompt": "Which letter does Van start with? Van!",
+      "image": "media/van.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "V",
+        "U",
+        "W"
+      ],
+      "answer": "V",
+      "difficulty": "hard",
+      "reveal_message": "Yay! V is for Van!",
+      "explanation": "Van starts with the letter V."
+    },
+    {
+      "id": "en_abc_23",
+      "prompt": "Which letter starts Whale?",
+      "spoken_prompt": "Which letter does Whale start with? Whale!",
+      "image": "media/whale.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "W",
+        "M",
+        "V"
+      ],
+      "answer": "W",
+      "difficulty": "medium",
+      "reveal_message": "Yay! W is for Whale!",
+      "explanation": "Whale starts with the letter W."
+    },
+    {
+      "id": "en_abc_24",
+      "prompt": "Which letter starts Xylophone?",
+      "spoken_prompt": "Which letter does Xylophone start with? Xylophone!",
+      "image": "media/xylophone.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "X",
+        "K",
+        "Z"
+      ],
+      "answer": "X",
+      "difficulty": "hard",
+      "reveal_message": "Yay! X is for Xylophone!",
+      "explanation": "Xylophone starts with the letter X."
+    },
+    {
+      "id": "en_abc_25",
+      "prompt": "Which letter starts Yo-Yo?",
+      "spoken_prompt": "Which letter does Yo-Yo start with? Yo-Yo!",
+      "image": "media/yoyo.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "Y",
+        "V",
+        "J"
+      ],
+      "answer": "Y",
+      "difficulty": "hard",
+      "reveal_message": "Yay! Y is for Yo-Yo!",
+      "explanation": "Yo-Yo starts with the letter Y."
+    },
+    {
+      "id": "en_abc_26",
+      "prompt": "Which letter starts Zebra?",
+      "spoken_prompt": "Which letter does Zebra start with? Zebra!",
+      "image": "media/zebra.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "Z",
+        "S",
+        "N"
+      ],
+      "answer": "Z",
+      "difficulty": "hard",
+      "reveal_message": "Yay! Z is for Zebra!",
+      "explanation": "Zebra starts with the letter Z."
+    },
+    {
+      "id": "en_abc_27",
+      "prompt": "Tap the picture that starts with A!",
+      "spoken_prompt": "Find the picture that starts with the letter A!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Apple",
+        "Ball",
+        "Cat"
+      ],
+      "choice_images": [
+        "media/apple.svg",
+        "media/ball.svg",
+        "media/cat.svg"
+      ],
+      "answer": "Apple",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! A is for Apple!",
+      "explanation": "Apple starts with A."
+    },
+    {
+      "id": "en_abc_28",
+      "prompt": "Tap the picture that starts with B!",
+      "spoken_prompt": "Find the picture that starts with the letter B!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ball",
+        "Fish",
+        "Sun"
+      ],
+      "choice_images": [
+        "media/ball.svg",
+        "media/fish.svg",
+        "media/sun.svg"
+      ],
+      "answer": "Ball",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! B is for Ball!",
+      "explanation": "Ball starts with B."
+    },
+    {
+      "id": "en_abc_29",
+      "prompt": "Tap the picture that starts with L!",
+      "spoken_prompt": "Find the picture that starts with the letter L!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lion",
+        "Duck",
+        "Moon"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/duck.svg",
+        "media/moon.svg"
+      ],
+      "answer": "Lion",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! L is for Lion!",
+      "explanation": "Lion starts with L."
+    },
+    {
+      "id": "en_abc_30",
+      "prompt": "Tap the picture that starts with S!",
+      "spoken_prompt": "Find the picture that starts with the letter S!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sun",
+        "Tree",
+        "House"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/tree.svg",
+        "media/house.svg"
+      ],
+      "answer": "Sun",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! S is for Sun!",
+      "explanation": "Sun starts with S."
+    },
+    {
+      "id": "en_abc_31",
+      "prompt": "Tap the picture that starts with W!",
+      "spoken_prompt": "Find the picture that starts with the letter W!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Whale",
+        "Kite",
+        "Rabbit"
+      ],
+      "choice_images": [
+        "media/whale.svg",
+        "media/kite.svg",
+        "media/rabbit.svg"
+      ],
+      "answer": "Whale",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! W is for Whale!",
+      "explanation": "Whale starts with W."
+    },
+    {
+      "id": "en_abc_32",
+      "prompt": "Tap the picture that starts with Z!",
+      "spoken_prompt": "Find the picture that starts with the letter Z!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Zebra",
+        "Orange",
+        "Penguin"
+      ],
+      "choice_images": [
+        "media/zebra.svg",
+        "media/orange.svg",
+        "media/penguin.svg"
+      ],
+      "answer": "Zebra",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! Z is for Zebra!",
+      "explanation": "Zebra starts with Z."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

@@ -5,8 +5,8 @@
 <h1 align="center">QuizRooms for Home Assistant</h1>
 
 <p align="center">
-  <strong>Local-first, multi-room confidence-wagering party trivia for Home Assistant</strong><br/>
-  Zero external CDNs · Zero Python dependencies · 37 built-in packs (3,064 questions) · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
+  <strong>Local-first, multi-room confidence-wagering party trivia &amp; Kids Early Learning for Home Assistant</strong><br/>
+  Zero external CDNs · Zero Python dependencies · 48 built-in packs (3,348 questions) · 11 Kids Packs (Ages 3–4) · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
 </p>
 
 ---
@@ -86,7 +86,10 @@ The same local UI your household actually uses: a phone in hand, a 16:9 TV on th
 
 ## Key Features
 
-- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 37 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
+- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 48 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, 200+ custom toddler early-learning vector illustrations (813 SVGs total), and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
+- **🧸 Kids Mode & Early Learning (Ages 3–4):**
+  - **11 dedicated bilingual Kids Packs (284 questions)** covering English & Arabic alphabets, counting `1–10` (with **separate Arabic packs** for Eastern Arabic-Indic `١–١٠` and Western `1–10` numerals), colors & shapes, friendly animals & sounds, and fruits & snacks.
+  - **Toddler-friendly gameplay:** One-tap giant visual tiles (`large_glyph`, `color_swatch`, `image_grid` with zero `A/B/C/D` prefixes), **No-Timer relaxed play** (`timer_seconds: 0`), **Star (`⭐`) scoring** (`+1` / `0`, never negative) with joyful All-Star finale badges, **Gentle "Try Again" mode** (wrong taps softly wobble/dim so kids keep trying without losing a turn), **Solo / Parent-Led Auto-Advance (3s)** on Reveal, built-in **🔊 Read Aloud / Auto-Read** (`window.speechSynthesis` EN & AR), and a **Parent Guard** exit prompt.
 - **Strict LAN-Only Security & DoS Hardening (`NetworkGuard`):** Guest, TV, WebSocket, and media routes (`/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/media/...`, `/quizrooms/avatar/...`) allow only RFC 1918 + IPv6 ULA/link-local + admin-configured CIDRs by default, with fail-closed reverse-proxy & tunnel protection (`X-Forwarded-For`, Cloudflare `CF-Connecting-IP`/`CF-Ray`, Nabu Casa `X-Hass-Source`), CSWSH `Origin` checks (blocking `Origin: null`), global/per-IP WebSocket caps + slow-consumer eviction, bounded JSON/multipart stream guards, validated/sandboxed SVG delivery (`CSP: default-src 'none'; sandbox`), and automatic memory pruning.
 - **Multi-Room Confidence Wagering & Blind Final Bonus Round:**
   - Concurrent Public and Private rooms, rounds in multiples of `5` (`5–25`), configurable question timers (`20s / 30s / 45s / 60s`), difficulty filtering (`Random`, `Easy`, `Medium`, `Hard`), snapshot isolation, and automatic idle TTL cleanup (15 min lobbies / 2 hr games).
@@ -310,9 +313,29 @@ automation:
 
 ---
 
-## Built-In Trivia Packs (37 Packs · 3,064 Questions)
+## Built-In Trivia Packs (48 Packs · 3,348 Questions)
 
-Every built-in pack includes a custom `160×160` square SVG cover and per-question `easy` / `medium` / `hard` difficulty tags (`24` English + `13` Arabic/RTL packs):
+Every built-in pack includes a custom `160×160` square SVG cover and per-question `easy` / `medium` / `hard` difficulty tags (`29` English + `19` Arabic/RTL packs — including **11 Kids Packs for Ages 3–4**):
+
+### 🧸 Kids Early-Learning Packs — Ages 3–4 (11 Packs · 284 Questions)
+
+Isolated under the **🧸 Kids (3–4)** filter in Create Room and Admin Panel, automatically enabling Kids Mode defaults (one-tap visual tiles, Star `⭐` scoring, No-Timer relaxed pace, Gentle Try Again, optional 3s Auto-Advance, and browser Read Aloud):
+
+| Pack | Language | Visual Style | Highlights |
+| --- | --- | --- | --- |
+| **ABC Alphabet Adventure (Ages 3–4)** | EN | `large_glyph` & `image_grid` | 32 questions: A–Z letter recognition, uppercase-to-picture matching & phonetic starter cues |
+| **مغامرة الحروف العربية (٣–٤ سنوات)** | AR (RTL) | `large_glyph` & `image_grid` | 34 questions: Arabic letters (`أ`–`ي`) with picture matching, sounds & big RTL letter tiles |
+| **Counting 1 to 10 (Ages 3–4)** | EN | Visual Counting & `large_glyph` | 24 questions: count bundled apples, stars, ducks, balls & cars from `1` to `10` |
+| **الأرقام ١ إلى ١٠ (أرقام عربية)** | AR (RTL) | Visual Counting & `large_glyph` | 24 Arabic counting questions using **Eastern Arabic-Indic numerals (`١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ١٠`)** |
+| **الأرقام 1 إلى 10 (أرقام غربية)** | AR (RTL) | Visual Counting & `large_glyph` | 24 Arabic counting questions using **Western digits (`1 2 3 4 5 6 7 8 9 10`)** |
+| **Colors & Shapes Playground (Ages 3–4)** | EN | `color_swatch` & `image_grid` | 25 questions: big color swatches (Red, Blue, Yellow, Green, Orange, Purple, Pink) & shapes (Circle, Square, Triangle, Star, Heart) |
+| **الألوان والأشكال (٣–٤ سنوات)** | AR (RTL) | `color_swatch` & `image_grid` | 25 Arabic color swatch & shape recognition questions |
+| **Friendly Animals & Sounds (Ages 3–4)** | EN | `image_grid` | 24 questions: tap the matching animal picture from its sound or clue (Cat, Dog, Duck, Cow, Lion, Elephant, Frog, Bee & more) |
+| **الحيوانات وأصواتها (٣–٤ سنوات)** | AR (RTL) | `image_grid` | 24 Arabic animal picture & sound matching questions |
+| **Yummy Fruits & Snacks (Ages 3–4)** | EN | `image_grid` | 24 questions: recognize Apple, Banana, Strawberry, Watermelon, Orange, Grapes, Carrot, Milk, Bread & more |
+| **الفواكه والطعام اللذيذ (٣–٤ سنوات)** | AR (RTL) | `image_grid` | 24 Arabic fruits & healthy snacks visual matching questions |
+
+### 🎉 Party & General Knowledge Packs (37 Packs · 3,064 Questions)
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |

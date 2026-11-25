@@ -62,7 +62,9 @@
     const slice = packs.slice(start, start + pageSize);
     return slice
       .map((p) => {
-        const lang = p.open_ended
+        const lang = p.audience === "kids"
+          ? "🧸 3–4"
+          : p.open_ended
           ? (p.rtl ? "أتوبيس" : "Open")
           : String(p.language || "EN").toUpperCase();
         return `
@@ -523,7 +525,7 @@
         if (state.tv.mode === "follow" && state.room) {
           stopAttractTimer();
           const stageChanged = renderFollowMode(main, state.room);
-          if (state.room.phase === "question" && !state.room.paused) {
+          if (state.room.phase === "question" && !state.room.paused && state.room.question && state.room.question.timer_seconds > 0) {
             if (stageChanged || !state.timerId) startTimerLoop();
           } else {
             stopTimerLoop();
@@ -624,6 +626,7 @@
                   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                     <span class="badge ${statusClass}">${esc(statusText)}</span>
                     <span class="badge">${r.player_count} Player${r.player_count === 1 ? "" : "s"}</span>
+                    ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Kids Mode</span>` : ""}
                     ${diffBadgeHtml(r.difficulty)}
                     ${r.bonus_round ? `<span class="badge badge-accent">★ Bonus</span>` : ""}
                     ${r.unique_answers_only ? `<span class="badge badge-accent">No Repeats</span>` : ""}
@@ -720,7 +723,9 @@
           state.revealHighlights.roomCode === room.code;
         const deltaByPlayer = showDeltas ? state.revealHighlights.byPlayer : null;
         const topTen = (room.players || []).slice(0, 10);
+        const isKidsRoom = Boolean(room.settings && room.settings.kids_mode);
         const lbSig =
+          (isKidsRoom ? "K|" : "S|") +
           (showDeltas ? `D:${state.revealHighlights.sig}|` : "N|") +
           topTen
             .map((p) => {
@@ -747,7 +752,7 @@
                     : "";
                 const deltaHtml =
                   delta !== 0
-                    ? `<span class="tv-lb-delta-wrap"><span class="tv-lb-delta ${delta > 0 ? "pos" : "neg"}">${delta > 0 ? `+${delta}` : `−${Math.abs(delta)}`}</span></span>`
+                    ? `<span class="tv-lb-delta-wrap"><span class="tv-lb-delta ${delta > 0 ? "pos" : "neg"}">${isKidsRoom ? `⭐+${delta}` : (delta > 0 ? `+${delta}` : `−${Math.abs(delta)}`)}</span></span>`
                     : "";
                 return `
         <div class="tv-lb-row ${idx === 0 ? "top-1" : ""} ${rowMoveCls}">
@@ -758,7 +763,7 @@
           </span>
           <span class="tv-lb-score-wrap">
             ${deltaHtml}
-            <span class="mono" style="color:var(--accent-primary);">${p.score}</span>
+            <span class="mono" style="color:var(--accent-primary);">${isKidsRoom ? `⭐ ${p.score}` : p.score}</span>
           </span>
         </div>`;
               })
@@ -860,10 +865,51 @@
         } else if (room.phase === "question" && room.question) {
           const q = room.question;
           const letters = ["A", "B", "C", "D", "E", "F"];
+          const isUntimed = !q.timer_seconds || q.timer_seconds <= 0;
           const remInit = q.remaining_seconds || 0;
-          const ratioInit = Math.max(0, Math.min(1, remInit / (q.timer_seconds || 30)));
-          const isUrgentInit = !room.paused && !allLocked && remInit <= 5 && remInit > 0;
+          const ratioInit = isUntimed ? 1 : Math.max(0, Math.min(1, remInit / (q.timer_seconds || 30)));
+          const isUrgentInit = !isUntimed && !room.paused && !allLocked && remInit <= 5 && remInit > 0;
           stageUrgent = isUrgentInit;
+          const choiceStyle = q.choice_style || "default";
+          const hideChoiceLetters = isKidsRoom || choiceStyle !== "default";
+          const choiceMediaUrls = Array.isArray(q.choice_media_urls) ? q.choice_media_urls : [];
+          const choiceColors = Array.isArray(q.choice_colors) ? q.choice_colors : [];
+
+          const tvChoicesHtml =
+            q.choices && q.choices.length
+              ? `<div class="tv-choices-grid ${isKidsRoom ? "tv-kids-choices-grid" : ""} ${q.choices.length === 3 ? "tv-cols-3" : ""}">
+                ${q.choices
+                .map((c, i) => {
+                  const imgUrl = choiceMediaUrls[i];
+                  const swatch = choiceColors[i];
+                  if (choiceStyle === "image_grid" && imgUrl) {
+                    return `<div class="tv-choice-tile tv-choice-rich tone-${i % 4}">
+                      <img src="${esc(imgUrl)}" alt="${esc(c)}" class="tv-choice-img" width="140" height="140" decoding="async" />
+                      <span class="tv-choice-caption" dir="auto">${esc(c)}</span>
+                    </div>`;
+                  }
+                  if (choiceStyle === "color_swatch" && swatch) {
+                    return `<div class="tv-choice-tile tv-choice-rich tone-${i % 4}">
+                      <span class="tv-choice-swatch" style="background:${esc(swatch)};"></span>
+                      <span class="tv-choice-caption" dir="auto">${esc(c)}</span>
+                    </div>`;
+                  }
+                  if (choiceStyle === "large_glyph") {
+                    return `<div class="tv-choice-tile tv-choice-glyph-tile tone-${i % 4}">
+                      <span class="tv-choice-glyph" dir="auto">${esc(c)}</span>
+                    </div>`;
+                  }
+                  return `<div class="tv-choice-tile ${isKidsRoom ? `tone-${i % 4}` : ""}">
+                      ${hideChoiceLetters ? "" : `<span class="tv-choice-key">${letters[i] || i + 1}</span>`}
+                      <span dir="auto">${esc(c)}</span>
+                    </div>`;
+                })
+                .join("")}
+              </div>`
+              : `<div class="badge badge-accent" style="font-size:1.05rem;padding:10px 18px;align-self:flex-start;">
+                ${q.open_ended ? (q.rtl ? "إجابة مفتوحة فريدة — اكتب إجابتك على هاتفك!" : "Open-Ended Mode — Submit a unique answer on your phone!") : "Free-Text Mode — Submit on your phone!"}
+              </div>`;
+
           stageHtml = `
         <div>
           <div class="tv-stage-meta">
@@ -875,15 +921,19 @@
                   const hi = opts[opts.length - 1] || 30;
                   return `<span class="badge" style="font-size:1rem;padding:8px 16px;background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION · ±${lo}–${hi} PTS</span>`;
                 })()
-                : `<span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`}
-              ${diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
+                : `<span class="badge badge-live" style="font-size:1rem;padding:8px 16px;">${isKidsRoom ? "🧸 " : ""}Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`}
+              ${isKidsRoom ? `<span class="badge badge-lobby" style="font-size:0.95rem;padding:8px 14px;">⭐ Kids Mode</span>` : diffBadgeHtml(q.difficulty, "font-size:0.95rem;padding:8px 14px;")}
               ${room.settings.unique_answers_only ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 14px;">Unique Answers Only</span>` : ""}
             </div>
-            <div id="tv-timer-num" class="tv-timer-big ${isUrgentInit ? "urgent" : ""}">${room.paused ? `PAUSED (${Math.ceil(remInit)}s)` : `${Math.ceil(remInit)}s`}</div>
+            ${isUntimed
+              ? `<span class="badge badge-accent" style="font-size:0.95rem;padding:8px 16px;">Relaxed Pace</span>`
+              : `<div id="tv-timer-num" class="tv-timer-big ${isUrgentInit ? "urgent" : ""}">${room.paused ? `PAUSED (${Math.ceil(remInit)}s)` : `${Math.ceil(remInit)}s`}</div>`}
           </div>
-          <div class="timer-track tv-timer-bar-wrap">
+          ${isUntimed
+            ? ""
+            : `<div class="timer-track tv-timer-bar-wrap">
             <div id="tv-timer-fill" class="timer-fill ${isUrgentInit ? "urgent" : ""}" style="transform:scaleX(${ratioInit.toFixed(3)});"></div>
-          </div>
+          </div>`}
         </div>
 
         ${q.media_url
@@ -901,21 +951,7 @@
               : ""
             }
 
-        ${q.choices && q.choices.length
-              ? `<div class="tv-choices-grid">
-                ${q.choices
-                .map(
-                  (c, i) => `<div class="tv-choice-tile">
-                      <span class="tv-choice-key">${letters[i] || i + 1}</span>
-                      <span dir="auto">${esc(c)}</span>
-                    </div>`
-                )
-                .join("")}
-              </div>`
-              : `<div class="badge badge-accent" style="font-size:1.05rem;padding:10px 18px;align-self:flex-start;">
-                ${q.open_ended ? (q.rtl ? "إجابة مفتوحة فريدة — اكتب إجابتك على هاتفك!" : "Open-Ended Mode — Submit a unique answer on your phone!") : "Free-Text Mode — Submit on your phone!"}
-              </div>`
-            }
+        ${tvChoicesHtml}
 
         <div id="tv-all-locked-banner" class="tv-all-locked-banner ${allLocked ? "" : "hidden"}" role="status">
           <span>✓</span><span>${q.rtl ? "الجميع أكّدوا الإجابة! جاري كشف الحل…" : "All Locked In! Revealing answer…"}</span>
@@ -930,16 +966,16 @@
         <div class="tv-stage-meta">
           ${rev.is_bonus
             ? `<span class="badge" style="font-size:1rem;padding:8px 16px;background:var(--accent-amber);color:#120d02;font-weight:900;">★ Final Bonus Reveal</span>`
-            : `<span class="badge badge-lobby" style="font-size:1rem;padding:8px 16px;">Answer Reveal · Round ${rev.round_index + 1} / ${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
+            : `<span class="badge badge-lobby" style="font-size:1rem;padding:8px 16px;">${isKidsRoom ? "⭐ " : ""}Answer Reveal · Round ${rev.round_index + 1} / ${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
           <span class="tv-room-code">${esc(room.code)}</span>
         </div>
 
         <div class="studio-card tv-reveal-box">
           <div style="font-size:0.86rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-secondary);">
-            ${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}
+            ${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : (isKidsRoom ? "Great Job!" : "Correct Answer")}
           </div>
           <div class="tv-reveal-answer" dir="auto">
-            ${esc(rev.correct_answer)}
+            ${esc(isKidsRoom && rev.reveal_message ? rev.reveal_message : rev.correct_answer)}
           </div>
           ${rev.explanation ? `<p style="margin:0;font-size:clamp(0.95rem,1.65vh,1.2rem);color:var(--text-secondary);" dir="auto">${esc(rev.explanation)}</p>` : ""}
         </div>

@@ -29,6 +29,7 @@ from .const import (
     DOMAIN,
     EVENT_FINALE,
     EVENT_PHASE_CHANGED,
+    KIDS_AUTO_ADVANCE_DELAY_SECONDS,
     MAX_WS_CLIENTS,
     MAX_WS_CLIENTS_PER_IP,
     PHASE_FINALE,
@@ -419,11 +420,15 @@ class QuizRoomsCoordinator:
     # --- Per-room question timer management ---
 
     def _cancel_room_timer(self, code: str) -> None:
+        try:
+            current = asyncio.current_task()
+        except RuntimeError:
+            current = None
         task = self._room_timers.pop(code, None)
-        if task is not None and not task.done():
+        if task is not None and not task.done() and task is not current:
             task.cancel()
         warn_task = self._warning_timers.pop(code, None)
-        if warn_task is not None and not warn_task.done():
+        if warn_task is not None and not warn_task.done() and warn_task is not current:
             warn_task.cancel()
 
     def schedule_room_timer(self, code: str) -> None:
@@ -502,10 +507,48 @@ class QuizRoomsCoordinator:
             await self.broadcast_lobby_and_tv()
             self.notify_entities()
             self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=PHASE_QUESTION)
+            if room.settings.kids_mode and room.settings.kids_auto_advance:
+                self.schedule_kids_auto_advance(code, room.current_index)
         except asyncio.CancelledError:
             return
         except Exception:
             _LOGGER.exception("Error in QuizRooms auto-reveal worker for room %s", code)
+        finally:
+            if self._room_timers.get(code) is asyncio.current_task():
+                self._room_timers.pop(code, None)
+
+    def schedule_kids_auto_advance(
+        self,
+        code: str,
+        expected_index: int,
+        delay: float | None = None,
+    ) -> None:
+        """Schedule automatic Reveal -> Next Question/Finale advance in Kids Auto-Advance mode."""
+        effective_delay = KIDS_AUTO_ADVANCE_DELAY_SECONDS if delay is None else delay
+        self._cancel_room_timer(code)
+        self._room_timers[code] = asyncio.create_task(
+            self._kids_auto_advance_worker(code, expected_index, effective_delay)
+        )
+
+    async def _kids_auto_advance_worker(
+        self, code: str, expected_index: int, delay: float
+    ) -> None:
+        try:
+            await asyncio.sleep(delay)
+            room = self.engine.get_room(code)
+            if (
+                room is None
+                or room.phase != PHASE_REVEAL
+                or room.paused
+                or room.current_index != expected_index
+                or not (room.settings.kids_mode and room.settings.kids_auto_advance)
+            ):
+                return
+            await self.async_next_step(code, is_admin=True)
+        except asyncio.CancelledError:
+            return
+        except Exception:
+            _LOGGER.exception("Error in QuizRooms kids auto-advance worker for room %s", code)
         finally:
             if self._room_timers.get(code) is asyncio.current_task():
                 self._room_timers.pop(code, None)
@@ -524,6 +567,8 @@ class QuizRoomsCoordinator:
             await self.broadcast_lobby_and_tv()
             self.notify_entities()
             self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=PHASE_QUESTION)
+            if room.settings.kids_mode and room.settings.kids_auto_advance:
+                self.schedule_kids_auto_advance(code, room.current_index)
         except asyncio.CancelledError:
             return
         except Exception:
@@ -783,6 +828,8 @@ class QuizRoomsCoordinator:
             code, host_token=host_token, is_admin=is_admin, pin_media=False
         )
         needed_media = {q.media_id for q in room.questions if q.media_id}
+        for q in room.questions:
+            needed_media.update(mid for mid in q.choice_media_ids if mid)
         if needed_media:
             pinned = await self.async_run_in_executor(
                 self.pack_registry.pin_media_for_room, needed_media
@@ -820,6 +867,8 @@ class QuizRoomsCoordinator:
 
         if room.phase == PHASE_REVEAL:
             self.emit_phase_changed(room, sub_event="round_reveal", previous_phase=prev_phase)
+            if room.settings.kids_mode and room.settings.kids_auto_advance:
+                self.schedule_kids_auto_advance(room.code, room.current_index)
         elif room.phase == PHASE_QUESTION:
             self.emit_phase_changed(room, sub_event="round_start", previous_phase=prev_phase)
         elif room.phase == PHASE_FINALE:

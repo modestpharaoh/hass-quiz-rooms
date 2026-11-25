@@ -580,11 +580,30 @@ def build_phase_changed_payload(
             "overall_leader": overall_leader,
         }
 
+    active_q = (
+        room.questions[room.current_index]
+        if 0 <= room.current_index < len(room.questions)
+        else None
+    )
+    spoken_prompt = (
+        (active_q.spoken_prompt or active_q.prompt)
+        if (active_q is not None and room.settings.kids_mode and room.phase == PHASE_QUESTION)
+        else None
+    )
+    reveal_message = (
+        active_q.reveal_message
+        if (active_q is not None and room.settings.kids_mode and room.phase == PHASE_REVEAL)
+        else None
+    )
+
     return {
         "room_code": room.code,
         "room_name": room.settings.room_name,
         "visibility": room.settings.visibility,
         "is_tv_followed": bool(is_tv_followed),
+        "kids_mode": bool(room.settings.kids_mode),
+        "spoken_prompt": spoken_prompt,
+        "reveal_message": reveal_message,
         "phase": room.phase,
         "previous_phase": previous_phase,
         "sub_event": sub_event,
@@ -662,6 +681,7 @@ def build_finale_payload(
         "room_name": room.settings.room_name,
         "visibility": room.settings.visibility,
         "is_tv_followed": bool(is_tv_followed),
+        "kids_mode": bool(room.settings.kids_mode),
         "phase": room.phase,
         "language": room.pack_language,
         "pack_id": pack_id,
@@ -802,6 +822,8 @@ def build_phase_tts_message(
     sub_event = str(event_data.get("sub_event") or "")
 
     if sub_event == "round_start" and speaker_preset == SPEAKER_PRESET_FULL_HOST:
+        if event_data.get("kids_mode") and event_data.get("spoken_prompt"):
+            return str(event_data["spoken_prompt"]), lang
         r_num = int(event_data.get("round_number") or 1)
         total = int(event_data.get("total_rounds") or 10)
         return tpl["round_start"].format(r_num=r_num, total=total), lang
@@ -813,6 +835,8 @@ def build_phase_tts_message(
         SPEAKER_PRESET_WINNER_FINALE,
         SPEAKER_PRESET_FULL_HOST,
     ):
+        if event_data.get("kids_mode") and event_data.get("reveal_message"):
+            return str(event_data["reveal_message"]), lang
         res = event_data.get("round_result") or {}
         top_scorers = res.get("round_top_scorers") or []
         if not top_scorers:

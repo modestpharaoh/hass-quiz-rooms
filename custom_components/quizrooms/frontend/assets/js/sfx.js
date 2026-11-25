@@ -136,6 +136,12 @@
           playTone(783.99, 0.14, { type: "triangle", gain: 0.085, delay: 0.16 });
           playTone(1046.5, 0.28, { type: "triangle", gain: 0.09, delay: 0.24 });
         },
+        /* Gentle encouraging nudge for Kids Mode wrong tap / Try Again */
+        softTry() {
+          vibrate(14);
+          playTone(440.0, 0.09, { type: "sine", gain: 0.055, delay: 0.0 });
+          playTone(392.0, 0.12, { type: "sine", gain: 0.05, delay: 0.08 });
+        },
         /* Playful descending buzzer when player answers wrong */
         wrong() {
           vibrate([45, 30, 45]);

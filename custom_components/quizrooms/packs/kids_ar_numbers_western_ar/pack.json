@@ -1,0 +1,394 @@
+{
+  "pack_id": "kids_ar_numbers_western_ar",
+  "title": "الأرقام والعد 1–10",
+  "description": "تعلّم العدّ والأرقام العربية الغربية (1–10) بالنجوم والتفاح والكرات للأطفال.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "large_glyph",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "أطفال · الأرقام",
+  "questions": [
+    {
+      "id": "ar_num_01",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! العدد هو 1 (وَاحِد)!",
+      "explanation": "عندما نعد النجوم نجد 1."
+    },
+    {
+      "id": "ar_num_02",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! العدد هو 2 (اثْنَان)!",
+      "explanation": "عندما نعد النجوم نجد 2."
+    },
+    {
+      "id": "ar_num_03",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! العدد هو 3 (ثَلَاثَة)!",
+      "explanation": "عندما نعد النجوم نجد 3."
+    },
+    {
+      "id": "ar_num_04",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_4.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! العدد هو 4 (أَرْبَعَة)!",
+      "explanation": "عندما نعد النجوم نجد 4."
+    },
+    {
+      "id": "ar_num_05",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_5.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو 5 (خَمْسَة)!",
+      "explanation": "عندما نعد النجوم نجد 5."
+    },
+    {
+      "id": "ar_num_06",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_6.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "5",
+        "8"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو 6 (سِتَّة)!",
+      "explanation": "عندما نعد النجوم نجد 6."
+    },
+    {
+      "id": "ar_num_07",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_7.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو 7 (سَبْعَة)!",
+      "explanation": "عندما نعد النجوم نجد 7."
+    },
+    {
+      "id": "ar_num_08",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_8.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "8",
+        "7",
+        "10"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! العدد هو 8 (ثَمَانِيَة)!",
+      "explanation": "عندما نعد النجوم نجد 8."
+    },
+    {
+      "id": "ar_num_09",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_9.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "9",
+        "8",
+        "6"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! العدد هو 9 (تِسْعَة)!",
+      "explanation": "عندما نعد النجوم نجد 9."
+    },
+    {
+      "id": "ar_num_10",
+      "prompt": "كم نجمة في الصورة؟",
+      "spoken_prompt": "هَيَّا نَعُدُّ مَعاً! كَمْ نَجْمَةً فِي الصُّورَةِ؟",
+      "image": "media/stars_10.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "10",
+        "9",
+        "8"
+      ],
+      "answer": "10",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! العدد هو 10 (عَشَرَة)!",
+      "explanation": "عندما نعد النجوم نجد 10."
+    },
+    {
+      "id": "ar_num_11",
+      "prompt": "كم عدد التفاحة في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ التفاحة فِي الصُّورَةِ؟",
+      "image": "media/apple_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! 2 (اثْنَان)!",
+      "explanation": "العدد الصحيح هو 2."
+    },
+    {
+      "id": "ar_num_12",
+      "prompt": "كم عدد التفاحات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ التفاحات فِي الصُّورَةِ؟",
+      "image": "media/apple_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! 3 (ثَلَاثَة)!",
+      "explanation": "العدد الصحيح هو 3."
+    },
+    {
+      "id": "ar_num_13",
+      "prompt": "كم عدد التفاحات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ التفاحات فِي الصُّورَةِ؟",
+      "image": "media/apple_5.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! 5 (خَمْسَة)!",
+      "explanation": "العدد الصحيح هو 5."
+    },
+    {
+      "id": "ar_num_14",
+      "prompt": "كم عدد التفاحات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ التفاحات فِي الصُّورَةِ؟",
+      "image": "media/apple_6.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "5",
+        "8"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! 6 (سِتَّة)!",
+      "explanation": "العدد الصحيح هو 6."
+    },
+    {
+      "id": "ar_num_15",
+      "prompt": "كم عدد الكرة في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ الكرة فِي الصُّورَةِ؟",
+      "image": "media/ball_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! 1 (وَاحِد)!",
+      "explanation": "العدد الصحيح هو 1."
+    },
+    {
+      "id": "ar_num_16",
+      "prompt": "كم عدد الكرات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ الكرات فِي الصُّورَةِ؟",
+      "image": "media/ball_4.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! 4 (أَرْبَعَة)!",
+      "explanation": "العدد الصحيح هو 4."
+    },
+    {
+      "id": "ar_num_17",
+      "prompt": "كم عدد الكرات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ الكرات فِي الصُّورَةِ؟",
+      "image": "media/ball_7.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! 7 (سَبْعَة)!",
+      "explanation": "العدد الصحيح هو 7."
+    },
+    {
+      "id": "ar_num_18",
+      "prompt": "كم عدد الكرات في الصورة؟",
+      "spoken_prompt": "كَمْ عَدَدُ الكرات فِي الصُّورَةِ؟",
+      "image": "media/ball_8.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "8",
+        "7",
+        "10"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! 8 (ثَمَانِيَة)!",
+      "explanation": "العدد الصحيح هو 8."
+    },
+    {
+      "id": "ar_num_19",
+      "prompt": "أين الرقم وَاحِد؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ وَاحِد!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا الرقم 1!",
+      "explanation": "الرقم وَاحِد يُكتب هكذا: 1."
+    },
+    {
+      "id": "ar_num_20",
+      "prompt": "أين الرقم ثَلَاثَة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ ثَلَاثَة!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "reveal_message": "رائع! هذا الرقم 3!",
+      "explanation": "الرقم ثَلَاثَة يُكتب هكذا: 3."
+    },
+    {
+      "id": "ar_num_21",
+      "prompt": "أين الرقم خَمْسَة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ خَمْسَة!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "4",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذا الرقم 5!",
+      "explanation": "الرقم خَمْسَة يُكتب هكذا: 5."
+    },
+    {
+      "id": "ar_num_22",
+      "prompt": "أين الرقم سَبْعَة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ سَبْعَة!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "6",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "reveal_message": "رائع! هذا الرقم 7!",
+      "explanation": "الرقم سَبْعَة يُكتب هكذا: 7."
+    },
+    {
+      "id": "ar_num_23",
+      "prompt": "أين الرقم تِسْعَة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ تِسْعَة!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "9",
+        "8",
+        "6"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "reveal_message": "رائع! هذا الرقم 9!",
+      "explanation": "الرقم تِسْعَة يُكتب هكذا: 9."
+    },
+    {
+      "id": "ar_num_24",
+      "prompt": "أين الرقم عَشَرَة؟",
+      "spoken_prompt": "اضْغَطْ عَلَى الرَّقْمِ عَشَرَة!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "10",
+        "9",
+        "8"
+      ],
+      "answer": "10",
+      "difficulty": "hard",
+      "reveal_message": "رائع! هذا الرقم 10!",
+      "explanation": "الرقم عَشَرَة يُكتب هكذا: 10."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

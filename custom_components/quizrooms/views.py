@@ -663,6 +663,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                     bonus_round=data.get("bonus_round"),
+                    kids_mode=data.get("kids_mode"),
+                    kids_try_again=data.get("kids_try_again"),
+                    kids_auto_advance=data.get("kids_auto_advance"),
                 )
                 client.role = "room"
                 client.room_code = room.code
@@ -758,6 +761,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                     bonus_round=data.get("bonus_round"),
+                    kids_mode=data.get("kids_mode"),
+                    kids_try_again=data.get("kids_try_again"),
+                    kids_auto_advance=data.get("kids_auto_advance"),
                 )
                 await self.coordinator.broadcast_room_state(room.code)
                 await self.coordinator.broadcast_lobby_and_tv()
@@ -793,12 +799,33 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     raise EngineError("not_in_room", "Join the room before submitting an answer.")
                 if req_code != bound_code:
                     raise EngineError("room_mismatch", "Socket is bound to a different room.", status_code=403)
-                room, _sub, all_locked = engine.submit_answer(
+                room, sub, all_locked = engine.submit_answer(
                     bound_code,
                     session_token=session_token,
                     answer=str(data.get("answer") or ""),
                     wager=data.get("wager"),
                 )
+                if sub.outcome == "try_again":
+                    cur_q = (
+                        room.questions[room.current_index]
+                        if 0 <= room.current_index < len(room.questions)
+                        else None
+                    )
+                    is_rtl = bool(cur_q.rtl if cur_q is not None else room.pack_rtl)
+                    await client.ws.send_json(
+                        {
+                            "type": "try_again",
+                            "code": room.code,
+                            "answer": sub.answer,
+                            "rtl": is_rtl,
+                            "message": (
+                                "محاولة جميلة! جرّب خياراً آخر!"
+                                if is_rtl
+                                else "Good try! Tap another one!"
+                            ),
+                        }
+                    )
+                    return
                 await self.coordinator.broadcast_room_state(room.code)
                 if all_locked:
                     # Crisp beat before auto-reveal (tracked in coordinator._room_timers)
@@ -1139,6 +1166,12 @@ class QuizRoomsAdminPackPreviewView(_QuizRoomsBaseView):
                         "starts_with": q.starts_with,
                         "rtl": q.rtl,
                         "media_url": f"{URL_MEDIA}/{q.media_id}" if q.media_id else None,
+                        "choice_style": q.choice_style,
+                        "choice_media_urls": [
+                            f"{URL_MEDIA}/{mid}" if mid else None for mid in q.choice_media_ids
+                        ],
+                        "choice_colors": list(q.choice_colors),
+                        "spoken_prompt": q.spoken_prompt,
                     }
                     for q in samples
                 ],

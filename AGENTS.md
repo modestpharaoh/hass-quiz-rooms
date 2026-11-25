@@ -4,7 +4,7 @@ Canonical repository instructions for AI coding agents (**Codex**, **Claude Code
 
 ## Project Overview
 
-**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia (**37 built-in packs / 3,064 original questions / 584 local SVGs**), optional **Blind Final Bonus Question (`PHASE_BONUS_WAGER`)**, full Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard with D-Pad navigation & Overscan Safe Zone, Smart TV launching, LAN-only TV-synced Smart-Home Stage Effects (`stage_effects.py`), and a tabbed Home Assistant Admin Sidebar Panel.
+**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia and **Kids Mode (Ages 3–4)** early-learning games (**48 built-in packs / 3,348 original questions / 813 local SVGs**, including 11 bilingual Kids packs), optional **Blind Final Bonus Question (`PHASE_BONUS_WAGER`)**, full Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard with D-Pad navigation & Overscan Safe Zone, Smart TV launching, LAN-only TV-synced Smart-Home Stage Effects (`stage_effects.py`), and a tabbed Home Assistant Admin Sidebar Panel.
 
 Read these docs before making architectural changes:
 - `docs/ARCHITECTURE.md` — Backend coordinator, game state machine (including `bonus_wager`), WebSocket flow, `NetworkGuard`, `StageDirector`, and Smart TV launcher.
@@ -58,7 +58,7 @@ Read these docs before making architectural changes:
 
 ## Testing & Verification Commands
 
-Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant` — currently 63 tests):
+Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant` — currently 67 tests):
 
 ```bash
 # 1. Full unit test suite

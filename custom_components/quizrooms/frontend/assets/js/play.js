@@ -5,6 +5,7 @@
   const LS_AVATAR = "quizrooms_avatar";
   const LS_HOSTS = "quizrooms_host_tokens";
   const LS_ACTIVE_ROOM = "quizrooms_active_room";
+  const LS_KIDS_AUTOREAD = "quizrooms_kids_autoread";
 
   const state = {
     ws: null,
@@ -21,6 +22,10 @@
     activeRoomCode: loadStr(LS_ACTIVE_ROOM) || "",
     selectedAnswer: "",
     selectedWager: 5,
+    kidsAutoRead: loadStr(LS_KIDS_AUTOREAD) !== "off",
+    kidsTriedWrong: new Set(),
+    kidsTryMessage: "",
+    kidsSubmitBusy: false,
     lastRoundKey: "",
     lastRevealKey: "",
     lastFinaleKey: "",
@@ -105,6 +110,28 @@
     el.className = "toast" + (isError ? " error" : "");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => el.classList.add("hidden"), 3400);
+  }
+
+  function hasSpeechSupport() {
+    return Boolean(window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function");
+  }
+
+  function speakKidsText(text, lang) {
+    if (!text || !hasSpeechSupport()) return;
+    try {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(String(text));
+      const shortLang = String(lang || "en").toLowerCase().slice(0, 2);
+      utt.lang = shortLang === "ar" ? "ar-SA" : "en-US";
+      utt.rate = 0.85;
+      utt.pitch = 1.05;
+      const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+      if (voices && voices.length) {
+        const match = voices.find((v) => String(v.lang || "").toLowerCase().startsWith(shortLang));
+        if (match) utt.voice = match;
+      }
+      window.speechSynthesis.speak(utt);
+    } catch (_) { }
   }
 
   function getHostToken(code) {
@@ -526,6 +553,29 @@
         applyRoomState(msg.room);
         break;
 
+      case "try_again": {
+        state.kidsSubmitBusy = false;
+        const wrongAns = String(msg.answer || "");
+        if (wrongAns) state.kidsTriedWrong.add(wrongAns);
+        state.kidsTryMessage = msg.message || (msg.rtl ? "محاولة جميلة! جرّب خياراً آخر!" : "Good try! Tap another one!");
+        if (window.QuizRoomsSFX && window.QuizRoomsSFX.softTry) window.QuizRoomsSFX.softTry();
+        const banner = document.getElementById("kids-try-banner");
+        if (banner) {
+          banner.textContent = state.kidsTryMessage;
+          banner.classList.remove("hidden");
+        }
+        const grid = document.getElementById("kids-choices-grid");
+        if (grid && wrongAns) {
+          grid.querySelectorAll("[data-kids-choice]").forEach((btn) => {
+            if (btn.dataset.kidsChoice === wrongAns) {
+              btn.classList.add("tried-wrong");
+              btn.disabled = true;
+            }
+          });
+        }
+        break;
+      }
+
       case "room_closed":
         showToast(msg.reason || "Room closed.", true);
         if (state.room && state.room.code === msg.code) {
@@ -602,15 +652,22 @@
     }
 
     // Reset local answer/wager selection when moving to a new question (default to lowest available number)
+    const isKidsRoom = Boolean(room.settings && room.settings.kids_mode);
     if (room.phase === "question" && room.question) {
       const roundKey = `${room.code}:${room.question.index}`;
       if (state.lastRoundKey !== roundKey) {
         state.lastRoundKey = roundKey;
         state.lastCountdownSec = -1;
         state.selectedAnswer = "";
+        state.kidsTriedWrong = new Set();
+        state.kidsTryMessage = "";
+        state.kidsSubmitBusy = false;
         const avail = (room.me && room.me.available_wagers) || [];
         state.selectedWager = avail.length ? Math.min(...avail) : 1;
         if (window.QuizRoomsSFX) window.QuizRoomsSFX.roundStart();
+        if (isKidsRoom && state.kidsAutoRead) {
+          speakKidsText(room.question.spoken_prompt || room.question.prompt, room.question.language);
+        }
       }
     }
 
@@ -619,21 +676,29 @@
       const revKey = `${room.code}:${room.reveal.round_index}`;
       if (state.lastRevealKey !== revKey) {
         state.lastRevealKey = revKey;
+        state.kidsSubmitBusy = false;
         const myOutcome = room.reveal.outcomes.find((o) => o.session_token === state.sessionToken);
-          if (myOutcome) {
-            if (myOutcome.is_correct) {
-              if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(0.9);
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
-            } else if (myOutcome.outcome === "wrong" || myOutcome.outcome === "duplicate") {
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.wrong();
-            } else if (myOutcome.outcome === "timeout") {
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
+        if (myOutcome) {
+          if (myOutcome.is_correct) {
+            if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(isKidsRoom ? 1.1 : 0.9);
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
+          } else if (myOutcome.outcome === "wrong" || myOutcome.outcome === "duplicate") {
+            if (isKidsRoom && window.QuizRoomsSFX && window.QuizRoomsSFX.softTry) {
+              window.QuizRoomsSFX.softTry();
+            } else if (window.QuizRoomsSFX) {
+              window.QuizRoomsSFX.wrong();
             }
-          } else if (window.QuizRoomsSFX) {
-            window.QuizRoomsSFX.reveal();
+          } else if (myOutcome.outcome === "timeout") {
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
           }
+        } else if (window.QuizRoomsSFX) {
+          window.QuizRoomsSFX.reveal();
+        }
+        if (isKidsRoom && state.kidsAutoRead && room.reveal.reveal_message) {
+          speakKidsText(room.reveal.reveal_message, room.reveal.language);
         }
       }
+    }
 
       // Celebratory burst + fanfare on finale podium
       if (room.phase === "finale") {
@@ -656,7 +721,7 @@
           }
         }
       }
-      if (room.phase === "question" && !room.paused) {
+      if (room.phase === "question" && !room.paused && room.question && room.question.timer_seconds > 0) {
         if (!state.timerInterval || state.renderedScreenKey !== prevScreenKey) {
           startTimerLoop();
         }
@@ -805,6 +870,7 @@
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
                   <span class="badge ${statusClass}">${esc(statusText)}</span>
                   <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
+                  ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Kids</span>` : ""}
                   ${diffBadgeHtml(r.difficulty)}
                   ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
                 </div>
@@ -964,21 +1030,44 @@
       const show = isLanguagePackFilter(filter);
       randomBtn.classList.toggle("hidden", !show);
       if (show) {
-        const langLabel = filter.toUpperCase();
-        randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
-        randomBtn.setAttribute("aria-label", `Select random ${langLabel} packs`);
+        if (filter === "kids") {
+          randomBtn.textContent = "🎲 Random Kids Packs";
+          randomBtn.setAttribute("aria-label", "Select random Kids packs");
+        } else {
+          const langLabel = filter.toUpperCase();
+          randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
+          randomBtn.setAttribute("aria-label", `Select random ${langLabel} packs`);
+        }
       }
     }
 
     let packSearchDebounceTimer = null;
     let createFilteredCount = 0;
 
+    function syncKidsModeUI() {
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const kidsMode = Boolean(kidsCheck && kidsCheck.checked);
+      const kidsSubOpts = document.getElementById("cr-kids-suboptions");
+      const kidsCallout = document.getElementById("cr-kids-callout");
+      const adultModeRow = document.getElementById("cr-adult-mode-row");
+      const deductWrap = document.getElementById("cr-deduct-wrong-wrap");
+      const bonusWrap = document.getElementById("cr-bonus-round-wrap");
+      if (kidsSubOpts) kidsSubOpts.classList.toggle("hidden", !kidsMode);
+      if (kidsCallout) kidsCallout.classList.toggle("hidden", !kidsMode);
+      if (adultModeRow) adultModeRow.classList.toggle("hidden", kidsMode);
+      if (deductWrap) deductWrap.classList.toggle("hidden", kidsMode);
+      if (bonusWrap) bonusWrap.classList.toggle("hidden", kidsMode);
+      syncUniqueAnswersVisibility();
+    }
+
     function syncUniqueAnswersVisibility() {
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const kidsMode = Boolean(kidsCheck && kidsCheck.checked);
       const modeSelect = document.getElementById("cr-answer-mode");
       const uniqueWrap = document.getElementById("cr-unique-answers-wrap");
       const uniqueCheck = document.getElementById("cr-unique-answers");
       const lateJoinWrap = document.getElementById("cr-late-join-wrap");
-      const isFreeText = Boolean(modeSelect && modeSelect.value === "free_text");
+      const isFreeText = !kidsMode && Boolean(modeSelect && modeSelect.value === "free_text");
       if (uniqueWrap) uniqueWrap.classList.toggle("hidden", !isFreeText);
       if (uniqueCheck) {
         uniqueCheck.disabled = !isFreeText;
@@ -995,17 +1084,38 @@
         countBadge.textContent = `${state.createSelectedPacks.size} selected · ${createFilteredCount}/${state.packs.length}`;
       }
       renderSelectedPacksSummary();
-      const hasOpenEnded = state.packs.some((p) => state.createSelectedPacks.has(p.pack_id) && p.open_ended);
+      const selectedPacks = state.packs.filter((p) => state.createSelectedPacks.has(p.pack_id));
+      const hasOpenEnded = selectedPacks.some((p) => p.open_ended);
+      const hasKids = selectedPacks.some((p) => p.audience === "kids");
       const modeSelect = document.getElementById("cr-answer-mode");
       const uniqueCheck = document.getElementById("cr-unique-answers");
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const roundsEl = document.getElementById("cr-rounds");
+      const timerEl = document.getElementById("cr-timer");
+
+      if (kidsCheck && kidsCheck.dataset.userTouched !== "true") {
+        const shouldKids = hasKids && !hasOpenEnded;
+        const wasKids = kidsCheck.checked;
+        kidsCheck.checked = shouldKids;
+        if (shouldKids && !wasKids) {
+          if (roundsEl) roundsEl.value = "5";
+          if (timerEl) timerEl.value = "0";
+          const tryAgainEl = document.getElementById("cr-kids-try-again");
+          if (tryAgainEl) tryAgainEl.checked = true;
+        } else if (!shouldKids && wasKids) {
+          if (roundsEl && roundsEl.value === "5") roundsEl.value = "10";
+          if (timerEl && timerEl.value === "0") timerEl.value = "30";
+        }
+      }
+
       if (hasOpenEnded) {
         if (modeSelect) modeSelect.value = "free_text";
-        syncUniqueAnswersVisibility();
+        syncKidsModeUI();
         if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
           uniqueCheck.checked = true;
         }
       } else {
-        syncUniqueAnswersVisibility();
+        syncKidsModeUI();
         if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
           uniqueCheck.checked = false;
         }
@@ -1042,18 +1152,22 @@
       if (!isLanguagePackFilter(filter)) return;
       clearTimeout(packSearchDebounceTimer);
 
-      const langPacks = state.packs.filter(
-        (p) => String(p.language || "").toLowerCase() === filter
-      );
+      // Keep Kids packs isolated from adult EN/AR random picks
+      const langPacks =
+        filter === "kids"
+          ? state.packs.filter((p) => p.audience === "kids")
+          : state.packs.filter(
+              (p) => String(p.language || "").toLowerCase() === filter && p.audience !== "kids"
+            );
       if (!langPacks.length) {
-        showToast(`No ${filter.toUpperCase()} packs available.`, true);
+        showToast(`No ${filter === "kids" ? "Kids" : filter.toUpperCase()} packs available.`, true);
         return;
       }
 
       // Prefer standard (non-open-ended) packs for balanced random trivia mixes
       const standardPacks = langPacks.filter((p) => !p.open_ended);
       const pool = standardPacks.length ? standardPacks : langPacks;
-      const pickCount = Math.min(3, pool.length);
+      const pickCount = Math.min(filter === "kids" ? 2 : 3, pool.length);
 
       function shuffle(arr) {
         const copy = arr.slice();
@@ -1137,8 +1251,10 @@
       const filtered = state.packs.filter((p) => {
         if (filter === "open_ended") {
           if (!p.open_ended) return false;
+        } else if (filter === "kids") {
+          if (p.audience !== "kids") return false;
         } else if (filter !== "all") {
-          if (String(p.language || "").toLowerCase() !== filter) return false;
+          if (String(p.language || "").toLowerCase() !== filter || p.audience === "kids") return false;
         }
         if (!term) return true;
         return (
@@ -1172,6 +1288,7 @@
           <div style="flex:1;min-width:0;text-align:start;">
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;">
               <span>${esc(p.title)}</span>
+              ${p.audience === "kids" ? `<span class="badge badge-lobby" style="font-size:0.68rem;padding:2px 7px;">🧸 Ages ${esc(p.age_range || "3–4")}</span>` : ""}
               ${p.open_ended ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">Open-Ended</span>` : ""}
             </div>
             <div style="font-size:0.78rem;color:var(--text-muted);">
@@ -1226,6 +1343,7 @@
                   <button type="button" class="pack-filter-pill" data-cr-filter="en">EN</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="ar">AR (عربي)</button>
                   ${extraLangs.map((lang) => `<button type="button" class="pack-filter-pill" data-cr-filter="${esc(lang)}">${esc(lang.toUpperCase())}</button>`).join("")}
+                  <button type="button" class="pack-filter-pill" data-cr-filter="kids">🧸 Kids (3–4)</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="open_ended">Open-Ended</button>
                   <button type="button" id="cr-random-packs-btn" class="pack-random-btn hidden">🎲 Random Packs</button>
                 </div>
@@ -1234,20 +1352,41 @@
               <div id="cr-pack-list" class="pack-checklist"></div>
             </div>
 
+            <div>
+              <label class="toggle-line" style="width:100%;cursor:pointer;" title="Kid-friendly mode for ages 3–4: giant one-tap tiles, stars instead of wagers, no negative points, Read-Aloud audio, and optional Try Again & Auto-Next.">
+                <span style="font-size:0.88rem;font-weight:800;">🧸 Kids Mode (Ages 3–4 · One-Tap &amp; Stars)</span>
+                <input id="cr-kids-mode" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+              </label>
+              <div id="cr-kids-callout" class="kids-mode-callout hidden" style="margin-top:8px;">
+                One-tap giant visual tiles · ⭐ Stars (no minus points) · No wagering · Built-in Read Aloud 🔊
+              </div>
+              <div id="cr-kids-suboptions" class="form-row-2 hidden" style="margin-top:8px;">
+                <label class="toggle-line" style="cursor:pointer;" title="When a child taps a wrong choice, dim that tile gently and let them try again until they find the right answer.">
+                  <span style="font-size:0.84rem;font-weight:700;">Try Again on Wrong Tap</span>
+                  <input id="cr-kids-try-again" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+                </label>
+                <label class="toggle-line" style="cursor:pointer;" title="Automatically move to the next question 3 seconds after Reveal (off = Parent-Led Next button).">
+                  <span style="font-size:0.84rem;font-weight:700;">Auto-Next After Reveal (3s)</span>
+                  <input id="cr-kids-auto-advance" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+                </label>
+              </div>
+            </div>
+
             <div class="form-row-2">
               <div>
                 <label class="field-label" for="cr-rounds">Rounds (5–25)</label>
                 <select id="cr-rounds" class="select-input mono">
-                  <option value="5">5 rounds (Wagers 1–5)</option>
-                  <option value="10" selected>10 rounds (Wagers 1–10)</option>
-                  <option value="15">15 rounds (Wagers 1–15)</option>
-                  <option value="20">20 rounds (Wagers 1–20)</option>
-                  <option value="25">25 rounds (Wagers 1–25)</option>
+                  <option value="5">5 rounds</option>
+                  <option value="10" selected>10 rounds</option>
+                  <option value="15">15 rounds</option>
+                  <option value="20">20 rounds</option>
+                  <option value="25">25 rounds</option>
                 </select>
               </div>
               <div>
                 <label class="field-label" for="cr-timer">Question Timer</label>
                 <select id="cr-timer" class="select-input">
+                  <option value="0">No Timer (Relaxed)</option>
                   <option value="20">20 seconds</option>
                   <option value="30" selected>30 seconds</option>
                   <option value="45">45 seconds</option>
@@ -1256,7 +1395,7 @@
               </div>
             </div>
 
-            <div class="form-row-2">
+            <div class="form-row-2" id="cr-adult-mode-row">
               <div>
                 <label class="field-label" for="cr-answer-mode">Answer Mode</label>
                 <select id="cr-answer-mode" class="select-input">
@@ -1283,7 +1422,7 @@
                   <option value="private">Private (Code / QR only)</option>
                 </select>
               </div>
-              <div style="display:flex;align-items:end;">
+              <div id="cr-deduct-wrong-wrap" style="display:flex;align-items:end;">
                 <label class="toggle-line" style="width:100%;cursor:pointer;" title="When enabled, wrong or unanswered questions deduct the selected confidence number.">
                   <span style="font-size:0.86rem;font-weight:700;">Deduct Wager if Wrong</span>
                   <input id="cr-deduct-wrong" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
@@ -1302,7 +1441,7 @@
               </label>
             </div>
 
-            <div>
+            <div id="cr-bonus-round-wrap">
               <label class="toggle-line" style="width:100%;cursor:pointer;" title="Adds one high-stakes blind-wager bonus question at the end. Players choose their points before seeing the question (+score if correct, −score if wrong).">
                 <span id="cr-bonus-label" style="font-size:0.86rem;font-weight:700;">★ Final Bonus Question (blind wager ±5–30 pts)</span>
                 <input id="cr-bonus-round" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-amber);" />
@@ -1322,13 +1461,29 @@
         });
       }
 
+      const kidsModeEl = document.getElementById("cr-kids-mode");
+      if (kidsModeEl) {
+        kidsModeEl.addEventListener("change", () => {
+          kidsModeEl.dataset.userTouched = "true";
+          const roundsSel = document.getElementById("cr-rounds");
+          const timerSel = document.getElementById("cr-timer");
+          if (kidsModeEl.checked) {
+            if (roundsSel && roundsSel.value === "10") roundsSel.value = "5";
+            if (timerSel && timerSel.value === "30") timerSel.value = "0";
+          } else {
+            if (timerSel && timerSel.value === "0") timerSel.value = "30";
+          }
+          syncKidsModeUI();
+        });
+      }
+
       const answerModeEl = document.getElementById("cr-answer-mode");
       if (answerModeEl) {
         answerModeEl.addEventListener("change", () => {
           syncUniqueAnswersVisibility();
         });
       }
-      syncUniqueAnswersVisibility();
+      syncKidsModeUI();
 
       const roundsEl = document.getElementById("cr-rounds");
       const bonusLabelEl = document.getElementById("cr-bonus-label");
@@ -1436,7 +1591,10 @@
           showToast("Select at least one trivia pack.", true);
           return;
         }
-        const answerMode = document.getElementById("cr-answer-mode").value;
+        const kidsMode = Boolean(document.getElementById("cr-kids-mode") && document.getElementById("cr-kids-mode").checked);
+        const answerMode = kidsMode ? "multiple_choice" : document.getElementById("cr-answer-mode").value;
+        const rawTimer = parseInt(document.getElementById("cr-timer").value, 10);
+        const timerSec = Number.isNaN(rawTimer) ? (kidsMode ? 0 : 30) : rawTimer;
         sendWS({
           type: "create_room",
           session_token: state.sessionToken,
@@ -1444,16 +1602,19 @@
           avatar: state.avatar || undefined,
           room_name: document.getElementById("cr-name").value.trim(),
           pack_ids: selectedPacks,
-          round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
-          timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
+          round_count: parseInt(document.getElementById("cr-rounds").value, 10) || (kidsMode ? 5 : 10),
+          timer_seconds: timerSec,
           answer_mode: answerMode,
-          wager_mode: "pool",
-          deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
-          unique_answers_only: answerMode === "free_text" && document.getElementById("cr-unique-answers").checked,
+          wager_mode: kidsMode ? "none" : "pool",
+          deduct_wrong_wager: kidsMode ? false : document.getElementById("cr-deduct-wrong").checked,
+          unique_answers_only: !kidsMode && answerMode === "free_text" && document.getElementById("cr-unique-answers").checked,
           difficulty: document.getElementById("cr-difficulty").value,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
-          bonus_round: document.getElementById("cr-bonus-round").checked,
+          bonus_round: kidsMode ? false : document.getElementById("cr-bonus-round").checked,
+          kids_mode: kidsMode,
+          kids_try_again: kidsMode && Boolean(document.getElementById("cr-kids-try-again") && document.getElementById("cr-kids-try-again").checked),
+          kids_auto_advance: kidsMode && Boolean(document.getElementById("cr-kids-auto-advance") && document.getElementById("cr-kids-auto-advance").checked),
         });
       });
     }
@@ -1475,13 +1636,14 @@
 
     function buildRoomHeaderInnerHtml(room) {
       const isHost = Boolean(getHostToken(room.code) || (room.me && room.me.is_host));
+      const isKids = Boolean(room.settings && room.settings.kids_mode);
       return `
       <div class="studio-card room-header-card">
         <div class="room-meta">
           <span class="room-code-chip">${esc(room.code)}</span>
           <strong dir="auto">${esc(room.settings.room_name)}</strong>
-          <span class="badge">${room.players.length} players</span>
-          ${room.me ? `<span class="badge badge-accent mono">${room.me.score} pts</span>` : ""}
+          <span class="badge">${room.players.length} player${room.players.length === 1 ? "" : "s"}</span>
+          ${room.me ? `<span class="badge badge-accent mono">${isKids ? `⭐ ${room.me.score}` : `${room.me.score} pts`}</span>` : ""}
           ${room.paused ? `<span class="badge badge-paused">PAUSED</span>` : ""}
         </div>
         <div style="display:flex;gap:8px;">
@@ -1506,18 +1668,74 @@
       wireLeaveButton();
     }
 
+    function performLeaveRoom() {
+      if (hasSpeechSupport()) {
+        try { window.speechSynthesis.cancel(); } catch (_) { }
+      }
+      state.room = null;
+      state.activeRoomCode = "";
+      state.renderedScreenKey = "";
+      saveStr(LS_ACTIVE_ROOM, "");
+      updateReconnectBanner(false);
+      stopTimerLoop();
+      sendWS({ type: "leave_room" });
+      render();
+    }
+
+    function openLeaveKidsConfirm() {
+      const modalRoot = document.getElementById("modal-root");
+      if (!modalRoot) {
+        performLeaveRoom();
+        return;
+      }
+      modalRoot.innerHTML = `
+        <div class="modal-backdrop" id="confirm-leave-kids-backdrop">
+          <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Leave Kids Game" style="max-width:380px;">
+            <div class="modal-header">
+              <h2 style="margin:0;">🧸 Parent Check</h2>
+            </div>
+            <p style="margin:0 0 18px;color:var(--text-secondary);font-size:0.94rem;">
+              Leave this Kids Mode game and return to the Lobby?
+            </p>
+            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
+              <button type="button" id="cancel-leave-kids-btn" class="btn btn-primary">Keep Playing</button>
+              <button type="button" id="confirm-leave-kids-btn" class="btn btn-secondary">Leave Room</button>
+            </div>
+          </div>
+        </div>
+      `;
+      const cancelBtn = document.getElementById("cancel-leave-kids-btn");
+      const confirmBtn = document.getElementById("confirm-leave-kids-btn");
+      const backdrop = document.getElementById("confirm-leave-kids-backdrop");
+      if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+      if (backdrop) {
+        backdrop.addEventListener("click", (e) => {
+          if (e.target.id === "confirm-leave-kids-backdrop") closeModal();
+        });
+      }
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
+          closeModal();
+          performLeaveRoom();
+        });
+      }
+    }
+
     function wireLeaveButton() {
       const btn = document.getElementById("leave-room-btn");
       if (btn) {
         btn.addEventListener("click", () => {
-          state.room = null;
-          state.activeRoomCode = "";
-          state.renderedScreenKey = "";
-          saveStr(LS_ACTIVE_ROOM, "");
-          updateReconnectBanner(false);
-          stopTimerLoop();
-          sendWS({ type: "leave_room" });
-          render();
+          const isKidsActive = Boolean(
+            state.room &&
+            state.room.settings &&
+            state.room.settings.kids_mode &&
+            state.room.status === "in_progress"
+          );
+          if (isKidsActive) {
+            openLeaveKidsConfirm();
+            return;
+          }
+          performLeaveRoom();
         });
       }
     }
@@ -1638,19 +1856,24 @@
               </div>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:14px;">
+              ${room.settings.kids_mode ? `<span class="badge badge-lobby">🧸 Kids Mode (Ages 3–4)</span>` : ""}
               <span class="badge">${room.settings.round_count} Rounds</span>
-              <span class="badge">${room.settings.timer_seconds}s Timer</span>
-              <span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
-              ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
-              <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
-              <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
-              ${room.settings.bonus_round ? (() => {
-                const opts = room.settings.bonus_wager_options || [5, 10, 15, 20, 25, 30];
-                const lo = opts[0] || 5;
-                const hi = opts[opts.length - 1] || 30;
-                return `<span class="badge badge-accent">★ Final Bonus (±${lo}–${hi})</span>`;
-              })() : ""}
-              ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}
+              <span class="badge">${room.settings.timer_seconds > 0 ? `${room.settings.timer_seconds}s Timer` : "Relaxed (No Timer)"}</span>
+              ${room.settings.kids_mode
+                ? `${room.settings.kids_try_again ? `<span class="badge badge-accent">Try Again On</span>` : ""}
+                   ${room.settings.kids_auto_advance ? `<span class="badge badge-accent">Auto-Next (3s)</span>` : `<span class="badge">Parent-Led Next</span>`}
+                   <span class="badge">⭐ Star Points</span>`
+                : `<span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
+                   ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
+                   <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
+                   <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
+                   ${room.settings.bonus_round ? (() => {
+                     const opts = room.settings.bonus_wager_options || [5, 10, 15, 20, 25, 30];
+                     const lo = opts[0] || 5;
+                     const hi = opts[opts.length - 1] || 30;
+                     return `<span class="badge badge-accent">★ Final Bonus (±${lo}–${hi})</span>`;
+                   })() : ""}
+                   ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}`}
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
 
@@ -1905,9 +2128,37 @@
           </div>`
         : "";
 
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
+      const isUntimed = !q.timer_seconds || q.timer_seconds <= 0;
+      const choiceStyle = q.choice_style || "default";
+      const choiceMediaUrls = Array.isArray(q.choice_media_urls) ? q.choice_media_urls : [];
+      const choiceColors = Array.isArray(q.choice_colors) ? q.choice_colors : [];
+
       let answerInputHtml = "";
       if (!locked) {
-        if (room.settings.answer_mode === "multiple_choice" && !q.open_ended) {
+        if (kidsMode) {
+          const colsCls = q.choices.length === 3 ? "cols-3" : "";
+          answerInputHtml = `
+          <div id="kids-try-banner" class="kids-try-banner ${state.kidsTryMessage ? "" : "hidden"}" role="status">${esc(state.kidsTryMessage)}</div>
+          <div class="kids-choices-grid ${colsCls}" id="kids-choices-grid">
+            ${q.choices
+              .map((choice, i) => {
+                const alreadyTried = state.kidsTriedWrong.has(choice);
+                const imgUrl = choiceMediaUrls[i];
+                const swatch = choiceColors[i];
+                let inner = `<span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                if (choiceStyle === "image_grid" && imgUrl) {
+                  inner = `<img src="${esc(imgUrl)}" alt="${esc(choice)}" class="kids-choice-img" width="92" height="92" decoding="async" /><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                } else if (choiceStyle === "color_swatch" && swatch) {
+                  inner = `<span class="kids-swatch-circle" style="background:${esc(swatch)};"></span><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                } else if (choiceStyle === "large_glyph") {
+                  inner = `<span class="kids-choice-glyph" dir="auto">${esc(choice)}</span>`;
+                }
+                return `<button type="button" class="kids-choice-btn tone-${i % 4} ${alreadyTried ? "tried-wrong" : ""}" data-kids-choice="${esc(choice)}" ${alreadyTried ? "disabled" : ""}>${inner}</button>`;
+              })
+              .join("")}
+          </div>`;
+        } else if (room.settings.answer_mode === "multiple_choice" && !q.open_ended) {
           answerInputHtml = `
           <div class="choices-grid" id="choices-grid">
             ${q.choices
@@ -1986,7 +2237,16 @@
           </button>
         </div>`;
 
-      const wagerHtml = !locked
+      const wagerHtml = kidsMode
+        ? locked
+          ? `<div class="locked-banner">
+              ⭐ ${q.rtl ? "تم اختيار:" : "Picked:"} <span dir="auto">${esc(me.my_submission.answer)}</span>
+              <div id="locked-count-text" style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
+                ${room.locked_in_count} / ${room.connected_count} ${q.rtl ? "جاهزون" : "ready"}
+              </div>
+            </div>`
+          : ""
+        : !locked
         ? isBonus && lockedBonusWager !== null
           ? `<div class="wager-section" style="border-color:var(--accent-amber);background:var(--accent-amber-soft);">
               <div class="wager-header" style="margin:0;">
@@ -2012,10 +2272,20 @@
 
       const roundBadgeHtml = isBonus
         ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION</span>`
-        : `<span class="badge badge-live">Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`;
+        : `<span class="badge badge-live">${kidsMode ? "🧸 " : ""}Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`;
+
+      const kidsListenRowHtml =
+        kidsMode && hasSpeechSupport()
+          ? `<div class="kids-listen-row">
+              <button type="button" id="kids-listen-btn" class="kids-listen-btn">🔊 ${q.rtl ? "استمع للسؤال" : "Listen"}</button>
+              <button type="button" id="kids-autoread-btn" class="btn btn-secondary btn-sm" aria-pressed="${state.kidsAutoRead}">
+                ${state.kidsAutoRead ? "Auto-Read: On" : "Auto-Read: Off"}
+              </button>
+            </div>`
+          : "";
 
       const initRem = q.remaining_seconds || 0;
-      const initRatio = Math.max(0, Math.min(1, initRem / (q.timer_seconds || 30)));
+      const initRatio = isUntimed ? 1 : Math.max(0, Math.min(1, initRem / (q.timer_seconds || 30)));
       const initReadout = room.paused ? `PAUSED (${Math.ceil(initRem)}s)` : `${Math.ceil(initRem)}s`;
 
       root.innerHTML = `
@@ -2024,21 +2294,22 @@
         <div class="question-top">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             ${roundBadgeHtml}
-            ${diffBadgeHtml(q.difficulty)}
+            ${kidsMode ? `<span class="badge badge-lobby">⭐ Kids Mode</span>` : diffBadgeHtml(q.difficulty)}
             ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
           </div>
-          <span id="timer-readout" class="timer-readout">${initReadout}</span>
+          ${isUntimed ? `<span class="badge badge-accent">${q.rtl ? "وقت مفتوح" : "Relaxed"}</span>` : `<span id="timer-readout" class="timer-readout">${initReadout}</span>`}
         </div>
-        <div class="timer-track"><div id="timer-fill" class="timer-fill" style="transform:scaleX(${initRatio.toFixed(4)})"></div></div>
+        ${isUntimed ? "" : `<div class="timer-track"><div id="timer-fill" class="timer-fill" style="transform:scaleX(${initRatio.toFixed(4)})"></div></div>`}
         ${mediaHtml}
         <h2 class="question-prompt" dir="auto">${esc(q.prompt)}</h2>
+        ${kidsListenRowHtml}
         ${startsWithHtml}
         ${answerInputHtml}
         ${wagerHtml}
 
         ${isHost
           ? `<div class="host-bar">
-                <button id="host-pause-btn" class="btn btn-secondary btn-sm" style="flex:1;">${room.paused ? "Resume Timer" : "Pause Timer"}</button>
+                ${isUntimed ? "" : `<button id="host-pause-btn" class="btn btn-secondary btn-sm" style="flex:1;">${room.paused ? "Resume Timer" : "Pause Timer"}</button>`}
                 <button id="host-reveal-btn" class="btn btn-secondary btn-sm" style="flex:1;">Reveal Now</button>
               </div>
               ${renderHostDangerFooter()}`
@@ -2054,90 +2325,136 @@
         zoomTrigger.addEventListener("click", () => openLightbox(q.media_url));
       }
 
+      const kidsListenBtn = document.getElementById("kids-listen-btn");
+      if (kidsListenBtn) {
+        kidsListenBtn.addEventListener("click", () => {
+          speakKidsText(q.spoken_prompt || q.prompt, q.language);
+        });
+      }
+      const kidsAutoReadBtn = document.getElementById("kids-autoread-btn");
+      if (kidsAutoReadBtn) {
+        kidsAutoReadBtn.addEventListener("click", () => {
+          state.kidsAutoRead = !state.kidsAutoRead;
+          saveStr(LS_KIDS_AUTOREAD, state.kidsAutoRead ? "on" : "off");
+          kidsAutoReadBtn.textContent = state.kidsAutoRead ? "Auto-Read: On" : "Auto-Read: Off";
+          kidsAutoReadBtn.setAttribute("aria-pressed", String(state.kidsAutoRead));
+          if (state.kidsAutoRead) speakKidsText(q.spoken_prompt || q.prompt, q.language);
+        });
+      }
+
       if (!locked) {
-        function submitAnswerNow() {
-          if (!state.selectedAnswer.trim()) {
-            showToast("Choose or enter an answer before locking in!", true);
-            return;
+        if (kidsMode) {
+          const kidsGrid = document.getElementById("kids-choices-grid");
+          if (kidsGrid) {
+            kidsGrid.addEventListener("click", (e) => {
+              const btn = e.target.closest("[data-kids-choice]");
+              if (!btn || btn.disabled || state.kidsSubmitBusy) return;
+              const picked = btn.dataset.kidsChoice;
+              if (!picked) return;
+              state.kidsSubmitBusy = true;
+              if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+              sendWS({
+                type: "submit_answer",
+                code: room.code,
+                session_token: state.sessionToken,
+                answer: picked,
+                wager: 1,
+              });
+              setTimeout(() => { state.kidsSubmitBusy = false; }, 450);
+            });
           }
-          if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
-          sendWS({
-            type: "submit_answer",
-            code: room.code,
-            session_token: state.sessionToken,
-            answer: state.selectedAnswer,
-            wager: state.selectedWager,
-          });
-        }
-
-        const choicesGrid = document.getElementById("choices-grid");
-        if (choicesGrid) {
-          choicesGrid.addEventListener("click", (e) => {
-            const btn = e.target.closest("[data-choice-idx]");
-            if (!btn) return;
-            const picked = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
-            if (state.selectedAnswer === picked) {
-              submitAnswerNow();
+        } else {
+          function submitAnswerNow() {
+            if (!state.selectedAnswer.trim()) {
+              showToast("Choose or enter an answer before locking in!", true);
               return;
             }
-            state.selectedAnswer = picked;
-            if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
-            choicesGrid.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
-            btn.classList.add("selected");
-          });
-        }
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+            sendWS({
+              type: "submit_answer",
+              code: room.code,
+              session_token: state.sessionToken,
+              answer: state.selectedAnswer,
+              wager: state.selectedWager,
+            });
+          }
 
-        const freeInput = document.getElementById("free-text-input");
-        if (freeInput) {
-          freeInput.addEventListener("input", () => {
-            state.selectedAnswer = freeInput.value;
-          });
-          freeInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              submitAnswerNow();
-            }
-          });
-        }
+          const choicesGrid = document.getElementById("choices-grid");
+          if (choicesGrid) {
+            choicesGrid.addEventListener("click", (e) => {
+              const btn = e.target.closest("[data-choice-idx]");
+              if (!btn) return;
+              const picked = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
+              if (state.selectedAnswer === picked) {
+                submitAnswerNow();
+                return;
+              }
+              state.selectedAnswer = picked;
+              if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+              choicesGrid.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
+              btn.classList.add("selected");
+            });
+          }
 
-        const wagerWrap = document.getElementById("wager-section-wrap");
-        if (wagerWrap) {
-          wagerWrap.addEventListener("click", (e) => {
-            const chip = e.target.closest("[data-wager]");
-            if (!chip || chip.disabled) return;
-            const pickedVal = parseInt(chip.dataset.wager, 10);
-            if (pickedVal === state.selectedWager && state.selectedAnswer.trim()) {
-              submitAnswerNow();
-              return;
-            }
-            state.selectedWager = pickedVal;
-            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
-            wagerWrap.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
-            chip.classList.add("selected");
-            const lockBtn = document.getElementById("lock-in-btn");
-            if (lockBtn) {
-              lockBtn.textContent = isBonus
-                ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
-                : `Lock In Answer & Wager (${state.selectedWager} pts)`;
-            }
-            const riskLabel = riskText(state.selectedWager);
-            const riskBadge = document.getElementById("wager-risk-badge");
-            if (riskBadge) riskBadge.textContent = riskLabel;
-            const stickyRisk = document.getElementById("sticky-risk-pill");
-            if (stickyRisk) stickyRisk.textContent = riskLabel;
-          });
-        }
+          const freeInput = document.getElementById("free-text-input");
+          if (freeInput) {
+            freeInput.addEventListener("input", () => {
+              state.selectedAnswer = freeInput.value;
+            });
+            freeInput.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                submitAnswerNow();
+              }
+            });
+          }
 
-        document.getElementById("lock-in-btn").addEventListener("click", submitAnswerNow);
+          const wagerWrap = document.getElementById("wager-section-wrap");
+          if (wagerWrap) {
+            wagerWrap.addEventListener("click", (e) => {
+              const chip = e.target.closest("[data-wager]");
+              if (!chip || chip.disabled) return;
+              const pickedVal = parseInt(chip.dataset.wager, 10);
+              if (pickedVal === state.selectedWager && state.selectedAnswer.trim()) {
+                submitAnswerNow();
+                return;
+              }
+              state.selectedWager = pickedVal;
+              if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
+              wagerWrap.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
+              chip.classList.add("selected");
+              const lockBtn = document.getElementById("lock-in-btn");
+              if (lockBtn) {
+                lockBtn.textContent = isBonus
+                  ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
+                  : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+              }
+              const riskLabel = riskText(state.selectedWager);
+              const riskBadge = document.getElementById("wager-risk-badge");
+              if (riskBadge) riskBadge.textContent = riskLabel;
+              const stickyRisk = document.getElementById("sticky-risk-pill");
+              if (stickyRisk) stickyRisk.textContent = riskLabel;
+            });
+          }
+
+          const lockBtn = document.getElementById("lock-in-btn");
+          if (lockBtn) lockBtn.addEventListener("click", submitAnswerNow);
+        }
       }
 
       if (isHost) {
-        document.getElementById("host-pause-btn").addEventListener("click", () => {
-          sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
-        });
-        document.getElementById("host-reveal-btn").addEventListener("click", () => {
-          sendWS({ type: "next_step", code: room.code, host_token: hostToken });
-        });
+        const pauseBtn = document.getElementById("host-pause-btn");
+        if (pauseBtn) {
+          pauseBtn.addEventListener("click", () => {
+            sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
+          });
+        }
+        const revBtn = document.getElementById("host-reveal-btn");
+        if (revBtn) {
+          revBtn.addEventListener("click", () => {
+            sendWS({ type: "next_step", code: room.code, host_token: hostToken });
+          });
+        }
         wireHostCloseButton(room, hostToken);
       }
     }
@@ -2165,6 +2482,7 @@
       state.renderedScreenKey = screenKey;
       state.lastRevealRenderSig = revealSig;
 
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
       const isFreeText = room.settings.answer_mode === "free_text" || Boolean(rev.open_ended);
       const isLast = rev.round_index + 1 >= rev.total_rounds;
       const nextIsBonus = !isLast && Boolean(room.settings.bonus_round) && (rev.round_index + 2 === rev.total_rounds);
@@ -2172,7 +2490,9 @@
       const outcomesHtml = rev.outcomes
         .map((o) => {
           const deltaClass = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
-          const deltaLabel = o.delta > 0 ? `+${o.delta}` : String(o.delta);
+          const deltaLabel = kidsMode
+            ? (o.delta > 0 ? "⭐ +1" : (rev.rtl ? "أحسنت" : "Nice try"))
+            : (o.delta > 0 ? `+${o.delta}` : String(o.delta));
           const dupTag =
             o.outcome === "duplicate"
               ? ` <span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;" title="${esc(o.duplicate_reason || "Repeated answer")}">Repeated</span>`
@@ -2191,7 +2511,7 @@
               <div style="min-width:0;">
                 <div style="font-weight:800;" dir="auto">${esc(o.nickname)}${dupTag}</div>
                 <div style="font-size:0.84rem;color:var(--text-secondary);" dir="auto">
-                  ${o.answer ? esc(o.answer) : "<em>No answer</em>"} · Wager ${o.wager}
+                  ${o.answer ? esc(o.answer) : "<em>No answer</em>"}${kidsMode ? "" : ` · Wager ${o.wager}`}
                   ${o.duplicate_reason ? ` · <em>${esc(o.duplicate_reason)}</em>` : ""}
                   ${o.overridden ? " · <em>Host override</em>" : ""}
                 </div>
@@ -2200,7 +2520,7 @@
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
               ${overrideBtn}
               <span class="delta-pill ${deltaClass}">${deltaLabel}</span>
-              <span class="mono" style="font-weight:800;min-width:46px;text-align:end;">${o.score}</span>
+              <span class="mono" style="font-weight:800;min-width:46px;text-align:end;">${kidsMode ? `⭐ ${o.score}` : o.score}</span>
             </div>
           </div>`;
         })
@@ -2212,11 +2532,14 @@
         <div class="question-top">
           ${rev.is_bonus
             ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ Final Bonus Reveal</span>`
-            : `<span class="badge badge-lobby">Answer Reveal · Round ${rev.round_index + 1}/${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
+            : `<span class="badge badge-lobby">${kidsMode ? "⭐ " : ""}Answer Reveal · Round ${rev.round_index + 1}/${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
+          ${kidsMode && room.settings.kids_auto_advance ? `<span class="badge badge-accent">Auto-Next (3s)…</span>` : ""}
         </div>
         <div class="reveal-answer-box">
-          <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}</div>
-          <div class="reveal-answer-text" dir="auto">${esc(rev.correct_answer)}</div>
+          <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : (kidsMode ? (rev.rtl ? "أحسنت!" : "Great Job!") : "Correct Answer")}</div>
+          ${kidsMode && rev.reveal_message
+            ? `<div class="kids-reveal-celebrate" dir="auto">${esc(rev.reveal_message)}</div>`
+            : `<div class="reveal-answer-text" dir="auto">${esc(rev.correct_answer)}</div>`}
           ${rev.explanation ? `<p class="reveal-explanation" dir="auto">${esc(rev.explanation)}</p>` : ""}
         </div>
 
@@ -2224,13 +2547,13 @@
 
         ${isHost
           ? `<div class="host-bar">
-                <button id="host-next-btn" class="btn btn-primary" style="flex:1;">
-                  ${isLast ? "Show Finale Podium" : nextIsBonus ? "Place Final Bonus Wagers ★" : "Next Question"}
+                <button id="host-next-btn" class="btn btn-primary" style="flex:1;${kidsMode ? "padding-block:15px;font-size:1.08rem;" : ""}">
+                  ${isLast ? (kidsMode ? "⭐ Celebrate Podium!" : "Show Finale Podium") : nextIsBonus ? "Place Final Bonus Wagers ★" : (kidsMode ? (rev.rtl ? "السؤال التالي ←" : "Next Question →") : "Next Question")}
                 </button>
               </div>
               ${renderHostDangerFooter()}`
           : `<p style="margin:0;text-align:center;color:var(--text-muted);font-weight:700;">
-                Waiting for host to continue…
+                ${kidsMode && room.settings.kids_auto_advance ? "Next question coming up…" : "Waiting for host to continue…"}
               </p>`
         }
       </section>
@@ -2275,7 +2598,8 @@
 
       state.renderedScreenKey = screenKey;
       state.lastFinaleRenderSig = finaleSig;
-      const medals = ["#1", "#2", "#3"];
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
+      const medals = kidsMode ? ["⭐", "🌟", "✨"] : ["#1", "#2", "#3"];
 
       const podiumHtml = fin.podium
         .map(
@@ -2284,7 +2608,7 @@
           ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${idx === 0 ? "avatar-lg" : "avatar-md"}" width="${idx === 0 ? 64 : 42}" height="${idx === 0 ? 64 : 42}" decoding="async" style="margin-bottom:6px;" />` : ""}
           <div class="podium-medal">${medals[idx] || "#" + (idx + 1)}</div>
           <div class="podium-name" dir="auto">${esc(p.nickname)}</div>
-          <div class="podium-score">${p.score} pts</div>
+          <div class="podium-score">${kidsMode ? `⭐ ${p.score}` : `${p.score} pts`}</div>
         </div>`
         )
         .join("");
@@ -2307,8 +2631,8 @@
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in">
         <div style="text-align:center;">
-          <span class="badge badge-live">Game Complete</span>
-          <h2 style="margin:10px 0 4px;font-size:1.7rem;">Final Podium</h2>
+          <span class="badge badge-live">${kidsMode ? "🧸 All-Star Celebration!" : "Game Complete"}</span>
+          <h2 style="margin:10px 0 4px;font-size:1.7rem;">${kidsMode ? "⭐ Super Stars!" : "Final Podium"}</h2>
         </div>
 
         <div class="podium-grid">${podiumHtml}</div>
@@ -2323,7 +2647,7 @@
                   ${row.avatar_url ? `<img src="${esc(row.avatar_url)}" alt="" class="avatar-img avatar-xs" width="24" height="24" loading="lazy" decoding="async" />` : ""}
                   #${row.rank} ${esc(row.nickname)}
                 </div>
-                <div class="mono" style="font-weight:800;color:var(--accent-primary);">${row.score} pts</div>
+                <div class="mono" style="font-weight:800;color:var(--accent-primary);">${kidsMode ? `⭐ ${row.score}` : `${row.score} pts`}</div>
               </div>`
           )
           .join("")}

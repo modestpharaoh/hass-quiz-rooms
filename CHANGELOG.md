@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.5] - 2026-11-25
+
+Kids Early Learning Mode (Ages 3–4) and 11 new bilingual visual learning packs release.
+
+### Added
+- **🧸 Kids Mode (Ages 3–4) Engine & Schema (`const.py`, `models.py`, `packs.py`, `engine.py`, `coordinator.py`, `views.py`, `stage_effects.py`):**
+  - Added optional pack/question schema fields (`audience`, `age_range`, `choice_style`: `default` / `large_glyph` / `color_swatch` / `image_grid`, per-choice `choice_images` with opaque media IDs & sandboxed CSP, `choice_colors` `#RRGGBB`, `spoken_prompt`, and `reveal_message`) with full ZIP security validation and lockstep choice shuffling.
+  - Added `kids_mode`, `kids_try_again`, and `kids_auto_advance` room settings plus untimed `timer_seconds: 0` (`No Timer / Relaxed`), `wager_mode: "none"`, **Star (`⭐`) scoring** (`+1` / `0`, never negative), server-side **Gentle "Try Again"** (`outcome="try_again"` without locking or leaking answers), tracked `3.2s` **Solo / Parent-Led Auto-Advance** on Reveal, and joyful **All-Star** finale awards.
+  - Wired `kids_mode`, `spoken_prompt`, and `reveal_message` into Stage Effects payloads and `full_show_host` TTS announcements.
+- **11 Built-In Kids Early-Learning Packs (284 Questions · 229 New Local SVGs):**
+  - **English (5 packs):** *ABC Alphabet Adventure* (32 Qs), *Counting 1 to 10* (24 Qs), *Colors & Shapes Playground* (25 Qs), *Friendly Animals & Sounds* (24 Qs), *Yummy Fruits & Snacks* (24 Qs).
+  - **Arabic / RTL (6 packs):** *مغامرة الحروف العربية* (34 Qs), *الأرقام ١ إلى ١٠ (أرقام عربية — Eastern Arabic-Indic)* (24 Qs), *الأرقام 1 إلى 10 (أرقام غربية — Western digits)* (24 Qs), *الألوان والأشكال* (25 Qs), *الحيوانات وأصواتها* (24 Qs), *الفواكه والطعام اللذيذ* (24 Qs).
+  - Brings the built-in catalog to **48 packs · 3,348 questions · 813 local XML-validated SVGs**.
+- **Toddler-Friendly Play, TV & Admin UI (`play.js`, `play.css`, `sfx.js`, `tv.js`, `tv.css`, `admin-panel.js`):**
+  - Isolated Kids packs under a dedicated `🧸 Kids (3–4)` filter (plus **🎲 Random Kids Packs**) that auto-configures Kids Mode defaults.
+  - One-tap giant visual tiles (no `A/B/C/D` prefixes, no wager bar), built-in zero-dependency **🔊 Listen / Auto-Read** (`window.speechSynthesis` EN & AR), gentle marimba nudge (`sfx.softTry()`) & wobble on Try Again, Star (`⭐`) scores across mobile and TV, hidden countdown bar on untimed rounds, and a **Parent Guard** exit confirmation modal.
+  - Added `🧸 Kids` filter pill, `🧸 Ages 3–4` badges, and choice image thumbnails in the Admin Panel pack Preview drawer.
+- **Documentation & Tests:** Added `tests/test_kids_mode.py` and updated `docs/ARCHITECTURE.md`, `docs/FRONTEND_DESIGN.md`, `docs/PACK_AUTHORING.md`, and `README.md`.
+
+---
+
 ## [1.0.4] - 2026-11-25
 
 Create Room & Admin Panel UX polish release.

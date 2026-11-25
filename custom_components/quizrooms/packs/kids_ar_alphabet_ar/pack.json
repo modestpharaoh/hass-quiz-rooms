@@ -1,0 +1,584 @@
+{
+  "pack_id": "kids_ar_alphabet_ar",
+  "title": "الحروف العربية (٣–٤ سنوات)",
+  "description": "تعلّم الحروف العربية من الألف إلى الياء مع صور جميلة وأزرار كبيرة مناسبة للأطفال.",
+  "audience": "kids",
+  "age_range": "3-4",
+  "choice_style": "large_glyph",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Kids",
+  "category": "أطفال · الحروف",
+  "questions": [
+    {
+      "id": "ar_abc_01",
+      "prompt": "بأي حرف تبدأ كلمة أَسَد؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ أَسَد؟",
+      "image": "media/lion.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "أ",
+        "ب",
+        "م"
+      ],
+      "answer": "أ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! أ — أَسَد!",
+      "explanation": "كلمة أَسَد تبدأ بحرف (أ)."
+    },
+    {
+      "id": "ar_abc_02",
+      "prompt": "بأي حرف تبدأ كلمة بَطَّة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ بَطَّة؟",
+      "image": "media/duck.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ب",
+        "ت",
+        "ن"
+      ],
+      "answer": "ب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ب — بَطَّة!",
+      "explanation": "كلمة بَطَّة تبدأ بحرف (ب)."
+    },
+    {
+      "id": "ar_abc_03",
+      "prompt": "بأي حرف تبدأ كلمة تُفَّاحَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ تُفَّاحَة؟",
+      "image": "media/apple.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ت",
+        "ب",
+        "ث"
+      ],
+      "answer": "ت",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ت — تُفَّاحَة!",
+      "explanation": "كلمة تُفَّاحَة تبدأ بحرف (ت)."
+    },
+    {
+      "id": "ar_abc_04",
+      "prompt": "بأي حرف تبدأ كلمة ثَعْلَب؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ ثَعْلَب؟",
+      "image": "media/fox.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ث",
+        "ت",
+        "ب"
+      ],
+      "answer": "ث",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ث — ثَعْلَب!",
+      "explanation": "كلمة ثَعْلَب تبدأ بحرف (ث)."
+    },
+    {
+      "id": "ar_abc_05",
+      "prompt": "بأي حرف تبدأ كلمة جَمَل؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ جَمَل؟",
+      "image": "media/camel.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ج",
+        "ح",
+        "خ"
+      ],
+      "answer": "ج",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ج — جَمَل!",
+      "explanation": "كلمة جَمَل تبدأ بحرف (ج)."
+    },
+    {
+      "id": "ar_abc_06",
+      "prompt": "بأي حرف تبدأ كلمة حِصَان؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ حِصَان؟",
+      "image": "media/horse.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ح",
+        "ج",
+        "خ"
+      ],
+      "answer": "ح",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ح — حِصَان!",
+      "explanation": "كلمة حِصَان تبدأ بحرف (ح)."
+    },
+    {
+      "id": "ar_abc_07",
+      "prompt": "بأي حرف تبدأ كلمة خَرُوف؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ خَرُوف؟",
+      "image": "media/sheep.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "خ",
+        "ح",
+        "ج"
+      ],
+      "answer": "خ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! خ — خَرُوف!",
+      "explanation": "كلمة خَرُوف تبدأ بحرف (خ)."
+    },
+    {
+      "id": "ar_abc_08",
+      "prompt": "بأي حرف تبدأ كلمة دُبّ؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ دُبّ؟",
+      "image": "media/bear.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "د",
+        "ذ",
+        "ر"
+      ],
+      "answer": "د",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! د — دُبّ!",
+      "explanation": "كلمة دُبّ تبدأ بحرف (د)."
+    },
+    {
+      "id": "ar_abc_09",
+      "prompt": "بأي حرف تبدأ كلمة ذُرَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ ذُرَة؟",
+      "image": "media/corn.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ذ",
+        "د",
+        "ز"
+      ],
+      "answer": "ذ",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! ذ — ذُرَة!",
+      "explanation": "كلمة ذُرَة تبدأ بحرف (ذ)."
+    },
+    {
+      "id": "ar_abc_10",
+      "prompt": "بأي حرف تبدأ كلمة رُمَّان؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ رُمَّان؟",
+      "image": "media/pomegranate.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ر",
+        "ز",
+        "د"
+      ],
+      "answer": "ر",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ر — رُمَّان!",
+      "explanation": "كلمة رُمَّان تبدأ بحرف (ر)."
+    },
+    {
+      "id": "ar_abc_11",
+      "prompt": "بأي حرف تبدأ كلمة زَرَافَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ زَرَافَة؟",
+      "image": "media/giraffe.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ز",
+        "ر",
+        "ذ"
+      ],
+      "answer": "ز",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ز — زَرَافَة!",
+      "explanation": "كلمة زَرَافَة تبدأ بحرف (ز)."
+    },
+    {
+      "id": "ar_abc_12",
+      "prompt": "بأي حرف تبدأ كلمة سَمَكَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ سَمَكَة؟",
+      "image": "media/fish.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "س",
+        "ش",
+        "ص"
+      ],
+      "answer": "س",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! س — سَمَكَة!",
+      "explanation": "كلمة سَمَكَة تبدأ بحرف (س)."
+    },
+    {
+      "id": "ar_abc_13",
+      "prompt": "بأي حرف تبدأ كلمة شَمْس؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ شَمْس؟",
+      "image": "media/sun.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ش",
+        "س",
+        "ث"
+      ],
+      "answer": "ش",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ش — شَمْس!",
+      "explanation": "كلمة شَمْس تبدأ بحرف (ش)."
+    },
+    {
+      "id": "ar_abc_14",
+      "prompt": "بأي حرف تبدأ كلمة صَارُوخ؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ صَارُوخ؟",
+      "image": "media/rocket.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ص",
+        "ض",
+        "س"
+      ],
+      "answer": "ص",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ص — صَارُوخ!",
+      "explanation": "كلمة صَارُوخ تبدأ بحرف (ص)."
+    },
+    {
+      "id": "ar_abc_15",
+      "prompt": "بأي حرف تبدأ كلمة ضِفْدَع؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ ضِفْدَع؟",
+      "image": "media/frog.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ض",
+        "ص",
+        "ط"
+      ],
+      "answer": "ض",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! ض — ضِفْدَع!",
+      "explanation": "كلمة ضِفْدَع تبدأ بحرف (ض)."
+    },
+    {
+      "id": "ar_abc_16",
+      "prompt": "بأي حرف تبدأ كلمة طَائِرَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ طَائِرَة؟",
+      "image": "media/airplane.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ط",
+        "ظ",
+        "ت"
+      ],
+      "answer": "ط",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ط — طَائِرَة!",
+      "explanation": "كلمة طَائِرَة تبدأ بحرف (ط)."
+    },
+    {
+      "id": "ar_abc_17",
+      "prompt": "بأي حرف تبدأ كلمة ظَرْف؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ ظَرْف؟",
+      "image": "media/envelope.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ظ",
+        "ط",
+        "ذ"
+      ],
+      "answer": "ظ",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! ظ — ظَرْف!",
+      "explanation": "كلمة ظَرْف تبدأ بحرف (ظ)."
+    },
+    {
+      "id": "ar_abc_18",
+      "prompt": "بأي حرف تبدأ كلمة عُصْفُور؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ عُصْفُور؟",
+      "image": "media/bird.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ع",
+        "غ",
+        "ح"
+      ],
+      "answer": "ع",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ع — عُصْفُور!",
+      "explanation": "كلمة عُصْفُور تبدأ بحرف (ع)."
+    },
+    {
+      "id": "ar_abc_19",
+      "prompt": "بأي حرف تبدأ كلمة غَيْمَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ غَيْمَة؟",
+      "image": "media/cloud.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "غ",
+        "ع",
+        "ف"
+      ],
+      "answer": "غ",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! غ — غَيْمَة!",
+      "explanation": "كلمة غَيْمَة تبدأ بحرف (غ)."
+    },
+    {
+      "id": "ar_abc_20",
+      "prompt": "بأي حرف تبدأ كلمة فَرَاشَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ فَرَاشَة؟",
+      "image": "media/butterfly.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ف",
+        "ق",
+        "ب"
+      ],
+      "answer": "ف",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ف — فَرَاشَة!",
+      "explanation": "كلمة فَرَاشَة تبدأ بحرف (ف)."
+    },
+    {
+      "id": "ar_abc_21",
+      "prompt": "بأي حرف تبدأ كلمة قِطَّة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ قِطَّة؟",
+      "image": "media/cat.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ق",
+        "ف",
+        "ك"
+      ],
+      "answer": "ق",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ق — قِطَّة!",
+      "explanation": "كلمة قِطَّة تبدأ بحرف (ق)."
+    },
+    {
+      "id": "ar_abc_22",
+      "prompt": "بأي حرف تبدأ كلمة كِتَاب؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ كِتَاب؟",
+      "image": "media/book.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ك",
+        "ل",
+        "ق"
+      ],
+      "answer": "ك",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ك — كِتَاب!",
+      "explanation": "كلمة كِتَاب تبدأ بحرف (ك)."
+    },
+    {
+      "id": "ar_abc_23",
+      "prompt": "بأي حرف تبدأ كلمة لَيْمُون؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ لَيْمُون؟",
+      "image": "media/lemon.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ل",
+        "ك",
+        "م"
+      ],
+      "answer": "ل",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ل — لَيْمُون!",
+      "explanation": "كلمة لَيْمُون تبدأ بحرف (ل)."
+    },
+    {
+      "id": "ar_abc_24",
+      "prompt": "بأي حرف تبدأ كلمة مَوْز؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ مَوْز؟",
+      "image": "media/banana.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "م",
+        "ن",
+        "ل"
+      ],
+      "answer": "م",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! م — مَوْز!",
+      "explanation": "كلمة مَوْز تبدأ بحرف (م)."
+    },
+    {
+      "id": "ar_abc_25",
+      "prompt": "بأي حرف تبدأ كلمة نَحْلَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ نَحْلَة؟",
+      "image": "media/bee.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ن",
+        "ب",
+        "ت"
+      ],
+      "answer": "ن",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! ن — نَحْلَة!",
+      "explanation": "كلمة نَحْلَة تبدأ بحرف (ن)."
+    },
+    {
+      "id": "ar_abc_26",
+      "prompt": "بأي حرف تبدأ كلمة هِلَال؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ هِلَال؟",
+      "image": "media/moon.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "هـ",
+        "و",
+        "م"
+      ],
+      "answer": "هـ",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! هـ — هِلَال!",
+      "explanation": "كلمة هِلَال تبدأ بحرف (هـ)."
+    },
+    {
+      "id": "ar_abc_27",
+      "prompt": "بأي حرف تبدأ كلمة وَرْدَة؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ وَرْدَة؟",
+      "image": "media/rose.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "و",
+        "ر",
+        "د"
+      ],
+      "answer": "و",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! و — وَرْدَة!",
+      "explanation": "كلمة وَرْدَة تبدأ بحرف (و)."
+    },
+    {
+      "id": "ar_abc_28",
+      "prompt": "بأي حرف تبدأ كلمة يَد؟",
+      "spoken_prompt": "بِأَيِّ حَرْفٍ تَبْدَأُ كَلِمَةُ يَد؟",
+      "image": "media/hand.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ي",
+        "ب",
+        "ن"
+      ],
+      "answer": "ي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! ي — يَد!",
+      "explanation": "كلمة يَد تبدأ بحرف (ي)."
+    },
+    {
+      "id": "ar_abc_29",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (أ)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ أ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أسد",
+        "بطة",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/duck.svg",
+        "media/fish.svg"
+      ],
+      "answer": "أسد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! أ — أسد!",
+      "explanation": "أسد تبدأ بحرف (أ)."
+    },
+    {
+      "id": "ar_abc_30",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (ب)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ ب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطة",
+        "تفاحة",
+        "شمس"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/apple.svg",
+        "media/sun.svg"
+      ],
+      "answer": "بطة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! ب — بطة!",
+      "explanation": "بطة تبدأ بحرف (ب)."
+    },
+    {
+      "id": "ar_abc_31",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (ق)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ ق؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطة",
+        "فراشة",
+        "وردة"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/butterfly.svg",
+        "media/rose.svg"
+      ],
+      "answer": "قطة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! ق — قطة!",
+      "explanation": "قطة تبدأ بحرف (ق)."
+    },
+    {
+      "id": "ar_abc_32",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (ش)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ ش؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "شمس",
+        "غيمة",
+        "هلال"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/cloud.svg",
+        "media/moon.svg"
+      ],
+      "answer": "شمس",
+      "difficulty": "medium",
+      "reveal_message": "رائع! ش — شمس!",
+      "explanation": "شمس تبدأ بحرف (ش)."
+    },
+    {
+      "id": "ar_abc_33",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (ض)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ ض؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ضفدع",
+        "جمل",
+        "ثعلب"
+      ],
+      "choice_images": [
+        "media/frog.svg",
+        "media/camel.svg",
+        "media/fox.svg"
+      ],
+      "answer": "ضفدع",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ض — ضفدع!",
+      "explanation": "ضفدع تبدأ بحرف (ض)."
+    },
+    {
+      "id": "ar_abc_34",
+      "prompt": "اضغط على الصورة التي تبدأ بحرف (غ)!",
+      "spoken_prompt": "أَيْنَ الصُّورَةُ الَّتِي تَبْدَأُ بِحَرْفِ غ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "غيمة",
+        "صاروخ",
+        "كتاب"
+      ],
+      "choice_images": [
+        "media/cloud.svg",
+        "media/rocket.svg",
+        "media/book.svg"
+      ],
+      "answer": "غيمة",
+      "difficulty": "hard",
+      "reveal_message": "رائع! غ — غيمة!",
+      "explanation": "غيمة تبدأ بحرف (غ)."
+    }
+  ],
+  "cover": "media/cover.svg"
+}
