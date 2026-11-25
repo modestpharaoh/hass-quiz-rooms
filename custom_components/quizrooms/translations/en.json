@@ -5,18 +5,28 @@
         "title": "Set up QuizRooms",
         "description": "QuizRooms hosts local-first, multi-room confidence-wagering trivia on your Home Assistant instance. By default, guest play and TV dashboards are restricted to your local network only.",
         "data": {
-          "allow_external_access": "Allow external (non-LAN) access",
+          "allow_external_access": "⚠️ Allow external (non-LAN) access (NOT RECOMMENDED)",
           "allowed_subnets": "Additional Allowed IP Subnets (CIDR)",
           "custom_lan_base_url": "Custom LAN Base URL for QR codes (optional)"
         },
         "data_description": {
+          "allow_external_access": "🔴 NOT RECOMMENDED: Exposes unauthenticated player, TV, and WebSocket endpoints outside your LAN and disables Smart-Home Stage Effects & HA Events. Keep OFF and whitelist specific VPN/VLAN CIDRs below instead.",
           "allowed_subnets": "Type one CIDR subnet at a time (e.g., 100.64.0.0/10) and press Enter to add it. Click × on any chip to remove it."
+        }
+      },
+      "confirm_external": {
+        "title": "⚠️ Security Warning — External Access",
+        "description": "Enabling external access is NOT recommended. Anyone who can reach your Home Assistant URL over the internet will be able to open /quizrooms/play and /quizrooms/tv without logging in, and Smart-Home Stage Effects & HA Events will be automatically disabled.\n\nFor VPN/VLAN access (e.g., Tailscale or WireGuard), close this dialog, keep External Access OFF, and add only your VPN CIDR under Additional Allowed IP Subnets.",
+        "data": {
+          "confirm_external_access": "I understand the risks and want to enable external (non-LAN) access"
         }
       }
     },
     "error": {
       "invalid_subnet": "One or more CIDR subnets are invalid (example: 192.168.1.0/24 or 100.64.0.0/10). Remove the invalid chip with × and try again.",
-      "invalid_url": "Custom LAN Base URL must start with http:// or https://."
+      "invalid_url": "Custom LAN Base URL must start with http:// or https://.",
+      "external_access_warning": "NOT RECOMMENDED: Enabling external (non-LAN) access exposes unauthenticated guest endpoints outside your local network and disables Stage Effects & HA Events.",
+      "must_confirm_external": "Check the confirmation box below to enable external access, or close this dialog to keep LAN-only protection."
     },
     "abort": {
       "already_configured": "QuizRooms is already configured."
@@ -28,18 +38,28 @@
         "title": "QuizRooms Network & Runtime Options",
         "description": "Changes apply immediately without restarting Home Assistant.",
         "data": {
-          "allow_external_access": "Allow external (non-LAN) access",
+          "allow_external_access": "⚠️ Allow external (non-LAN) access (NOT RECOMMENDED)",
           "allowed_subnets": "Additional Allowed IP Subnets (CIDR)",
           "custom_lan_base_url": "Custom LAN Base URL for QR codes (optional)"
         },
         "data_description": {
+          "allow_external_access": "🔴 NOT RECOMMENDED: Exposes unauthenticated player, TV, and WebSocket endpoints outside your LAN and disables Smart-Home Stage Effects & HA Events. Keep OFF and whitelist specific VPN/VLAN CIDRs below instead.",
           "allowed_subnets": "Type one CIDR subnet at a time (e.g., 100.64.0.0/10) and press Enter to add it. Click × on any chip to remove it."
+        }
+      },
+      "confirm_external": {
+        "title": "⚠️ Security Warning — External Access",
+        "description": "Enabling external access is NOT recommended. Anyone who can reach your Home Assistant URL over the internet will be able to open /quizrooms/play and /quizrooms/tv without logging in, and Smart-Home Stage Effects & HA Events will be automatically disabled.\n\nFor VPN/VLAN access (e.g., Tailscale or WireGuard), close this dialog, keep External Access OFF, and add only your VPN CIDR under Additional Allowed IP Subnets.",
+        "data": {
+          "confirm_external_access": "I understand the risks and want to enable external (non-LAN) access"
         }
       }
     },
     "error": {
       "invalid_subnet": "One or more CIDR subnets are invalid (example: 192.168.1.0/24 or 100.64.0.0/10). Remove the invalid chip with × and try again.",
-      "invalid_url": "Custom LAN Base URL must start with http:// or https://."
+      "invalid_url": "Custom LAN Base URL must start with http:// or https://.",
+      "external_access_warning": "NOT RECOMMENDED: Enabling external (non-LAN) access exposes unauthenticated guest endpoints outside your local network and disables Stage Effects & HA Events.",
+      "must_confirm_external": "Check the confirmation box below to enable external access, or close this dialog to keep LAN-only protection."
     }
   },
   "entity": {

@@ -8,11 +8,15 @@ import logging
 from typing import Any, Awaitable, Callable, Iterable, Sequence
 
 from .const import (
+    URL_ADMIN_PANEL_JS,
+    URL_API_ADMIN,
     URL_API_PUBLIC,
     URL_ASSETS,
     URL_AVATAR,
     URL_MEDIA,
     URL_PLAY,
+    URL_PREFIX,
+    URL_SIDEBAR_ICON_JS,
     URL_TV,
     URL_WS,
 )
@@ -44,94 +48,6 @@ GUARDED_PATH_PREFIXES: tuple[str, ...] = (
     URL_ASSETS,
     URL_API_PUBLIC,
 )
-
-FORBIDDEN_HTML = """<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QuizRooms — Local Network Only</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f5f0;
-      --card: #ffffff;
-      --text: #141926;
-      --muted: #556076;
-      --accent: #4338ca;
-      --border: rgba(20, 25, 38, 0.12);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121214;
-        --card: #1c1c1f;
-        --text: #f4f4f5;
-        --muted: #a1a1aa;
-        --accent: #2dd4bf;
-        --border: rgba(255, 255, 255, 0.12);
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-    .card {
-      max-width: 480px;
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-    }
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      margin-bottom: 16px;
-    }
-    h1 { margin: 0 0 12px; font-size: 1.6rem; }
-    p { margin: 0; line-height: 1.6; color: var(--muted); }
-  </style>
-</head>
-<body>
-  <main class="card" role="main">
-    <svg style="display:block;margin:0 auto 14px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="60" height="60" role="img" aria-label="QuizRooms Logo">
-      <defs>
-        <linearGradient id="qr-403-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#242428"/><stop offset="100%" stop-color="#141417"/></linearGradient>
-        <linearGradient id="qr-403-ring" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2DD4BF"/><stop offset="55%" stop-color="#34D399"/><stop offset="100%" stop-color="#FBBF24"/></linearGradient>
-      </defs>
-      <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#qr-403-bg)" stroke="url(#qr-403-ring)" stroke-width="5"/>
-      <circle cx="60" cy="60" r="29" fill="none" stroke="url(#qr-403-ring)" stroke-width="11"/>
-      <path d="M74 74 L95 95" stroke="#FBBF24" stroke-width="11.5" stroke-linecap="round"/>
-      <path d="M52 52 C52 46 56 43 61 43 C66 43 69 46 69 50 C69 54 65 56 62 58 C60.5 59 60 60.5 60 63" fill="none" stroke="#F4F4F5" stroke-width="6.5" stroke-linecap="round"/>
-      <circle cx="60" cy="72.5" r="4" fill="#FBBF24"/>
-    </svg>
-    <div class="badge">403 · Local Network Only</div>
-    <h1>QuizRooms is restricted to your home Wi-Fi</h1>
-    <p>
-      Connect your device to the local network to join or host a trivia room.
-      Home Assistant administrators can adjust allowed IP subnets or external access in
-      <strong>Settings → Devices &amp; Services → QuizRooms → Configure</strong>.
-    </p>
-  </main>
-</body>
-</html>
-"""
 
 
 def parse_ip_address(raw: str | None) -> IPAddress | None:
@@ -397,48 +313,42 @@ class NetworkGuard:
         return AccessDecision(False, str(resolved), "ip_not_allowed")
 
     def should_guard_path(self, path: str) -> bool:
-        """Return True if the request path is an unauthenticated QuizRooms endpoint."""
+        """Return True if path is an unauthenticated QuizRooms route or unknown /quizrooms/* subpath."""
+        if path in (URL_ADMIN_PANEL_JS, URL_SIDEBAR_ICON_JS, URL_PREFIX):
+            return False
+        if path == URL_API_ADMIN or path.startswith(f"{URL_API_ADMIN}/"):
+            return False
+        if path.startswith(f"{URL_PREFIX}/"):
+            return True
         return any(
             path == prefix or path.startswith(f"{prefix}/")
             for prefix in GUARDED_PATH_PREFIXES
         )
 
 
-def build_forbidden_response(request: Any, decision: AccessDecision) -> Any:
-    """Create a 403 Forbidden aiohttp Response (HTML for browsers, JSON for API/WS/media)."""
+def build_stealth_redirect_response() -> Any:
+    """Return a generic 302 redirect to '/' (HA Lovelace or Login) with zero QuizRooms fingerprint."""
     from aiohttp import web
 
-    path = getattr(request, "path", "")
-    accept = (getattr(request, "headers", {}) or {}).get("Accept", "")
-    wants_html = (
-        path in (URL_PLAY, URL_TV)
-        or (
-            "text/html" in accept
-            and not path.startswith(URL_API_PUBLIC)
-            and not path.startswith(URL_MEDIA)
-            and not path.startswith(URL_WS)
-        )
-    )
-    if wants_html:
-        return web.Response(
-            status=403,
-            text=FORBIDDEN_HTML,
-            content_type="text/html",
-            headers={
-                "X-Content-Type-Options": "nosniff",
-                "X-Frame-Options": "SAMEORIGIN",
-                "Referrer-Policy": "same-origin",
-            },
-        )
-    return web.json_response(
-        {
-            "error": "local_network_only",
-            "message": "QuizRooms is restricted to the local network.",
-            "reason": decision.reason,
+    return web.Response(
+        status=302,
+        text="",
+        headers={
+            "Location": "/",
+            "Cache-Control": "no-store",
+            "X-Content-Type-Options": "nosniff",
+            "Referrer-Policy": "no-referrer",
         },
-        status=403,
-        headers={"X-Content-Type-Options": "nosniff"},
     )
+
+
+def build_forbidden_response(request: Any, decision: AccessDecision) -> Any:
+    """Stealth-redirect blocked external/non-whitelisted requests to Home Assistant's default root ('/').
+
+    Returns a generic 302 redirect with an empty body and no QuizRooms branding or error keys
+    so external browsers land on Lovelace (or HA Login) and scanners cannot fingerprint QuizRooms.
+    """
+    return build_stealth_redirect_response()
 
 
 def create_network_guard_middleware(

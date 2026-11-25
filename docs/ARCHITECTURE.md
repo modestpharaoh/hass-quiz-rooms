@@ -231,14 +231,15 @@ flowchart LR
     EXT -->|No (Default LAN-Only)| PROXY["Inspect peer IP,\ntrusted_proxies, X-Forwarded-For,\nCF-Connecting-IP, X-Hass-Source"]
 
     PROXY --> TUNNEL{"Cloudflare Tunnel /\nNabu Casa / Untrusted Proxy?"}
-    TUNNEL -->|Yes| DENY_403B["403 local_network_only\n(Fail-Closed)"]
+    TUNNEL -->|Yes| DENY_302["302 Found -> /\n(Stealth Redirect to HA Lovelace / Login,\nZero QuizRooms Fingerprint)"]
     TUNNEL -->|No| CIDR{"Client IP in RFC 1918 /\nIPv6 ULA / Link-Local /\nallowed_subnets?"}
     CIDR -->|Yes| ALLOW_LAN["Allow LAN Request"]
-    CIDR -->|No| DENY_403B
+    CIDR -->|No| DENY_302
 ```
 
 ### Additional Security & DoS/Leak Controls
 - **Frozen Middleware Handling:** Home Assistant freezes `hass.http.app.middlewares` once the HTTP server starts (e.g., when adding an integration via UI). `__init__.py` detects frozen middleware lists gracefully and every unauthenticated `HomeAssistantView` enforces `_check_network_guard(...)` directly as defense-in-depth.
+- **Stealth External Redirection & Anti-Fingerprinting (`QuizRoomsCatchAllView`):** When `allow_external_access` is `False` (default), any external or non-whitelisted request to `/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/assets/*`, `/quizrooms/media/*`, `/quizrooms/avatar/*`, `/quizrooms/api/public/*`, or any arbitrary probe `/quizrooms/<anything>` receives a generic **`302 Found` → `Location: /`** with an empty body and `Cache-Control: no-store` — sending browsers directly to Home Assistant's default Lovelace dashboard or login screen with zero QuizRooms branding, headers, or error strings that scanners could fingerprint. Enabling `allow_external_access` requires acknowledging a dedicated red HA security warning confirmation step (`confirm_external`).
 - **Fail-Closed Cloud & Tunnel Guard:** `NetworkGuard` explicitly blocks Nabu Casa (`X-Hass-Source`), Cloudflare Tunnel (`CF-Connecting-IP`, `CF-Ray`), `True-Client-IP`, `X-Real-IP`, and malformed proxy IP headers even when relayed over `127.0.0.1` loopback.
 - **WebSocket CSWSH, Connection Caps, Slow-Consumer Eviction & Room Binding:** `/quizrooms/ws` enforces same-origin `Origin` validation (including rejecting sandboxed-iframe `Origin: null`), enforces global (`250`) and per-IP (`40`) socket caps (`429 ws_limit_reached`), applies a `4.0s` send timeout on broadcasts so stalled mobile sockets (`TCP ZeroWindow`) are evicted and closed without stalling timers, and binds each room socket strictly to its `(room_code, session_token)` pair.
 - **Bounded Request Streams & Host Header Sanitization:** All JSON POST endpoints enforce a `64 KB` stream limit (`413 payload_too_large`), multipart uploads bound total stream bytes and part counts across all fields, and `resolve_lan_base_url()` validates host/URL syntax to block `Host` header QR poisoning and shell/URL injection.

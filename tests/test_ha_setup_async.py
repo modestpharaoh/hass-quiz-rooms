@@ -303,12 +303,13 @@ def test_tv_live_overview_updates_and_follow_mode(tmp_path: Path) -> None:
             for m in tv_ws.sent
         )
 
-        # 2. HTTP TV mode fallback follows the room (and blocks public IPs)
+        # 2. HTTP TV mode fallback follows the room (and stealth-redirects public IPs)
         tv_mode_view = QuizRoomsPublicTVModeView(coord)
         blocked = await tv_mode_view.post(
             _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="203.0.113.5")
         )
-        assert blocked.status == 403
+        assert blocked.status == 302
+        assert blocked.headers.get("Location") == "/"
 
         ok = await tv_mode_view.post(
             _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="192.168.1.20")

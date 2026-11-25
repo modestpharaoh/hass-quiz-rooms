@@ -119,10 +119,24 @@ def _build_options_schema(defaults: dict[str, Any]) -> vol.Schema:
     )
 
 
+CONF_CONFIRM_EXTERNAL_ACCESS = "confirm_external_access"
+
+
+def _build_confirm_external_schema() -> vol.Schema:
+    return vol.Schema(
+        {
+            vol.Required(CONF_CONFIRM_EXTERNAL_ACCESS, default=False): bool,
+        }
+    )
+
+
 class QuizRoomsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Zero-config setup flow for QuizRooms."""
 
     VERSION = 1
+
+    def __init__(self) -> None:
+        self._pending_options: dict[str, Any] | None = None
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
@@ -134,24 +148,51 @@ class QuizRoomsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             errors, normalized_subnets = _validate_network_options(user_input)
             if not errors:
+                pending = {
+                    CONF_ALLOW_EXTERNAL_ACCESS: bool(
+                        user_input.get(CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS)
+                    ),
+                    CONF_ALLOWED_SUBNETS: normalized_subnets,
+                    CONF_CUSTOM_LAN_BASE_URL: str(
+                        user_input.get(CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL) or ""
+                    ).strip().rstrip("/"),
+                }
+                if pending[CONF_ALLOW_EXTERNAL_ACCESS]:
+                    self._pending_options = pending
+                    return await self.async_step_confirm_external()
                 return self.async_create_entry(
                     title="QuizRooms",
                     data={},
-                    options={
-                        CONF_ALLOW_EXTERNAL_ACCESS: bool(
-                            user_input.get(CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS)
-                        ),
-                        CONF_ALLOWED_SUBNETS: normalized_subnets,
-                        CONF_CUSTOM_LAN_BASE_URL: str(
-                            user_input.get(CONF_CUSTOM_LAN_BASE_URL, DEFAULT_CUSTOM_LAN_BASE_URL) or ""
-                        ).strip().rstrip("/"),
-                    },
+                    options=pending,
                 )
 
         return self.async_show_form(
             step_id="user",
             data_schema=_build_options_schema(user_input or {}),
             errors=errors,
+        )
+
+    async def async_step_confirm_external(
+        self, user_input: dict[str, Any] | None = None
+    ) -> config_entries.ConfigFlowResult:
+        """Display a native red HA warning banner and require explicit confirmation for external access."""
+        if user_input is not None:
+            if user_input.get(CONF_CONFIRM_EXTERNAL_ACCESS):
+                return self.async_create_entry(
+                    title="QuizRooms",
+                    data={},
+                    options=self._pending_options or {CONF_ALLOW_EXTERNAL_ACCESS: True},
+                )
+            return self.async_show_form(
+                step_id="confirm_external",
+                data_schema=_build_confirm_external_schema(),
+                errors={"base": "must_confirm_external"},
+            )
+
+        return self.async_show_form(
+            step_id="confirm_external",
+            data_schema=_build_confirm_external_schema(),
+            errors={"base": "external_access_warning"},
         )
 
     @staticmethod
@@ -170,6 +211,7 @@ class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
     def __init__(self, config_entry: config_entries.ConfigEntry | None = None) -> None:
         if config_entry is not None:
             self._fallback_config_entry = config_entry
+        self._pending_options: dict[str, Any] | None = None
 
     @property
     def _entry(self) -> config_entries.ConfigEntry:
@@ -182,10 +224,11 @@ class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
     ) -> config_entries.ConfigFlowResult:
         errors: dict[str, str] = {}
         options = self._entry.options
+        was_external = bool(
+            options.get(CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS)
+        )
         current = {
-            CONF_ALLOW_EXTERNAL_ACCESS: options.get(
-                CONF_ALLOW_EXTERNAL_ACCESS, DEFAULT_ALLOW_EXTERNAL_ACCESS
-            ),
+            CONF_ALLOW_EXTERNAL_ACCESS: was_external,
             CONF_ALLOWED_SUBNETS: _coerce_subnet_tokens(
                 options.get(CONF_ALLOWED_SUBNETS, DEFAULT_ALLOWED_SUBNETS)
             ),
@@ -208,6 +251,9 @@ class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
                 }
                 if CONF_STAGE_EFFECTS in options:
                     new_options[CONF_STAGE_EFFECTS] = options[CONF_STAGE_EFFECTS]
+                if new_options[CONF_ALLOW_EXTERNAL_ACCESS] and not was_external:
+                    self._pending_options = new_options
+                    return await self.async_step_confirm_external()
                 return self.async_create_entry(
                     title="",
                     data=new_options,
@@ -228,4 +274,26 @@ class QuizRoomsOptionsFlow(config_entries.OptionsFlow):
             step_id="init",
             data_schema=_build_options_schema(current),
             errors=errors,
+        )
+
+    async def async_step_confirm_external(
+        self, user_input: dict[str, Any] | None = None
+    ) -> config_entries.ConfigFlowResult:
+        """Display a native red HA warning banner and require explicit confirmation for external access."""
+        if user_input is not None:
+            if user_input.get(CONF_CONFIRM_EXTERNAL_ACCESS):
+                return self.async_create_entry(
+                    title="",
+                    data=self._pending_options or {CONF_ALLOW_EXTERNAL_ACCESS: True},
+                )
+            return self.async_show_form(
+                step_id="confirm_external",
+                data_schema=_build_confirm_external_schema(),
+                errors={"base": "must_confirm_external"},
+            )
+
+        return self.async_show_form(
+            step_id="confirm_external",
+            data_schema=_build_confirm_external_schema(),
+            errors={"base": "external_access_warning"},
         )

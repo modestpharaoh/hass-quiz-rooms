@@ -92,11 +92,12 @@ def test_network_guard_middleware_guards_avatar_and_allows_remote_authenticated_
         return web.Response(status=200, text="ok")
 
     async def run() -> None:
-        # Unauthenticated public request to /quizrooms/avatar/... must be blocked by middleware
+        # Unauthenticated public request to /quizrooms/avatar/... must be stealth-redirected by middleware
         blocked = await middleware(
             FakeRequest(path="/quizrooms/avatar/preset/fox", remote="203.0.113.5"), ok_handler
         )
-        assert blocked.status == 403
+        assert blocked.status == 302
+        assert blocked.headers.get("Location") == "/"
 
         # Authenticated remote HA Admin on /quizrooms/media/... and /quizrooms/avatar/... is allowed
         admin = SimpleNamespace(is_admin=True)
@@ -111,11 +112,12 @@ def test_network_guard_middleware_guards_avatar_and_allows_remote_authenticated_
         )
         assert ok_avatar.status == 200
 
-        # Authenticated remote HA user still blocked on /quizrooms/play when allow_external_access=False
+        # Authenticated remote HA user still redirected on /quizrooms/play when allow_external_access=False
         blocked_play = await middleware(
             FakeRequest(path="/quizrooms/play", remote="203.0.113.5", hass_user=admin), ok_handler
         )
-        assert blocked_play.status == 403
+        assert blocked_play.status == 302
+        assert blocked_play.headers.get("Location") == "/"
 
     asyncio.run(run())
 

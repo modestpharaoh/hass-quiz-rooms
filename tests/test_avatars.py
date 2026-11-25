@@ -141,11 +141,12 @@ def test_custom_avatar_upload_validation_and_access_control(tmp_path: Path) -> N
         upload_view = QuizRoomsPublicAvatarUploadView(coord)
         avatar_view = QuizRoomsAvatarView(coord)
 
-        # Public upload blocked
+        # Public upload stealth-redirected
         blocked_up = await upload_view.post(
             _BytesRequest(VALID_PNG, path="/quizrooms/api/public/avatar", remote="198.51.100.7")
         )
-        assert blocked_up.status == 403
+        assert blocked_up.status == 302
+        assert blocked_up.headers.get("Location") == "/"
 
         # LAN upload succeeds
         ok_up = await upload_view.post(
@@ -166,13 +167,14 @@ def test_custom_avatar_upload_validation_and_access_control(tmp_path: Path) -> N
         assert lan_resp.headers["X-Content-Type-Options"] == "nosniff"
         assert lan_resp.headers["Content-Type"] == "image/png"
 
-        # Unauthenticated public IP blocked (403)
+        # Unauthenticated public IP stealth-redirected (302 -> /)
         pub_resp = await avatar_view.get(
             FakeRequest(path=f"/quizrooms/avatar/custom/{cid}", remote="198.51.100.7"),
             "custom",
             cid,
         )
-        assert pub_resp.status == 403
+        assert pub_resp.status == 302
+        assert pub_resp.headers.get("Location") == "/"
 
         # Authenticated remote HA Admin IS allowed (so Admin panel shows player avatars remotely)
         admin_resp = await avatar_view.get(

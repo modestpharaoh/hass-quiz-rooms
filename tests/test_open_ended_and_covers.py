@@ -101,9 +101,10 @@ def test_cover_media_view_allows_lan_and_authenticated_ha_admin_blocks_public(tm
         assert "sandbox" in lan_resp.headers.get("Content-Security-Policy", "")
         assert lan_resp.headers.get("X-Content-Type-Options") == "nosniff"
 
-        # Unauthenticated public IP is blocked (403)
+        # Unauthenticated public IP is stealth-redirected (302 -> /)
         pub_resp = await view.get(FakeRequest(path=f"/quizrooms/media/{mid}", remote="203.0.113.9"), mid)
-        assert pub_resp.status == 403
+        assert pub_resp.status == 302
+        assert pub_resp.headers.get("Location") == "/"
 
         # Authenticated remote HA Admin (e.g. Nabu Casa) can view pack cover thumbnails
         admin_req = FakeRequest(

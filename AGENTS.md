@@ -58,7 +58,7 @@ Read these docs before making architectural changes:
 
 ## Testing & Verification Commands
 
-Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant` — currently 69 tests):
+Run these checks after code, frontend, or pack changes (tests run offline using `tests/conftest.py` shims for `aiohttp`, `voluptuous`, and `homeassistant` — currently 70 tests):
 
 ```bash
 # 1. Full unit test suite

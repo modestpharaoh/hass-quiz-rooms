@@ -119,7 +119,8 @@ def test_frontend_logo_svg_served_and_embedded_across_uis(tmp_path: Path) -> Non
             FakeRequest(path="/quizrooms/assets/img/logo.svg", remote="203.0.113.10"),
             "img/logo.svg",
         )
-        assert blocked_resp.status == 403
+        assert blocked_resp.status == 302
+        assert blocked_resp.headers.get("Location") == "/"
 
         # Custom HA sidebar icon JS module serves cleanly for both LAN & remote HA Admins
         sidebar_js_resp = await QuizRoomsSidebarIconJSView(coord).get(

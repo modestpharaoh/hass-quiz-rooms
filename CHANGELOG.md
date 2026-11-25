@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.9] - 2026-11-25
+
+External-access stealth hardening & red security warning confirmation release.
+
+### Security & Changed
+- **Zero-Fingerprint Stealth Redirect for External Requests (`network_guard.py`, `views.py`):** Replaced the branded `403 QuizRooms — Local Network Only` HTML/JSON responses with a generic **`302 Found` → `Location: /`** (empty body, `Cache-Control: no-store`, `Referrer-Policy: no-referrer`) across `/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/assets/*`, `/quizrooms/media/*`, `/quizrooms/avatar/*`, `/quizrooms/api/public/*`, and a new catch-all `QuizRoomsCatchAllView` (`/quizrooms/{tail:.+}`). External/non-whitelisted browsers land directly on Home Assistant's default Lovelace dashboard or login page, and internet scanners receive zero sign that QuizRooms is installed.
+- **Red Security Warning & Explicit Confirmation for External Access (`config_flow.py`, `strings.json`, `translations/en.json`):** Marked **Allow external (non-LAN) access** as `⚠️ (NOT RECOMMENDED)` with a prominent red warning description, and added a mandatory `confirm_external` confirmation step displaying Home Assistant's native red alert banner (`<ha-alert alert-type="error">`) whenever enabling external access.
+
+---
+
 ## [1.0.8] - 2026-11-25
 
 Chip-based Allowed IP Subnets selector release.

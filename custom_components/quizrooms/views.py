@@ -28,6 +28,7 @@ from .const import (
     URL_AVATAR,
     URL_MEDIA,
     URL_PLAY,
+    URL_PREFIX,
     URL_SIDEBAR_ICON_JS,
     URL_TV,
     URL_WS,
@@ -35,7 +36,7 @@ from .const import (
 )
 from .coordinator import QuizRoomsCoordinator, WSClient
 from .engine import EngineError
-from .network_guard import build_forbidden_response
+from .network_guard import build_forbidden_response, build_stealth_redirect_response
 from .packs import PackValidationError, sample_pack_template
 from .stage_effects import (
     StageEffectError,
@@ -1366,6 +1367,33 @@ class QuizRoomsAdminStageView(_QuizRoomsBaseView):
             )
 
 
+class QuizRoomsCatchAllView(_QuizRoomsBaseView):
+    """Catch-all for any unknown /quizrooms/<tail> path: stealth-redirect to HA root ('/').
+
+    Registered last so all valid QuizRooms views match first; exact '/quizrooms' is left
+    untouched for Home Assistant's sidebar panel route.
+    """
+
+    url = f"{URL_PREFIX}/{{tail:.+}}"
+    name = "quizrooms:catchall"
+    requires_auth = False
+
+    async def get(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def post(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def put(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def delete(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def head(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+
 def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
     """Register all QuizRooms HTTP and WebSocket views on Home Assistant."""
     views = [
@@ -1389,6 +1417,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAdminTVView(coordinator),
         QuizRoomsAdminTVOpenView(coordinator),
         QuizRoomsAdminStageView(coordinator),
+        QuizRoomsCatchAllView(coordinator),
     ]
     for view in views:
         hass.http.register_view(view)
