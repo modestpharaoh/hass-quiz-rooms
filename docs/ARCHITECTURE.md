@@ -101,7 +101,7 @@ flowchart TD
 | **Network Guard** | `custom_components/quizrooms/network_guard.py` | Strict fail-closed LAN access policy with trusted reverse-proxy `X-Forwarded-For` walking, Cloudflare Tunnel (`CF-Connecting-IP`) / Nabu Casa (`X-Hass-Source`) remote detection, and custom CIDR whitelist support. |
 | **Smart TV Launcher** | `custom_components/quizrooms/tv_launcher.py` | Discovers connected supported Smart TV `media_player` entities via HA Entity Registry (`webostv`, `androidtv`, `androidtv_remote`, `samsungtv`, `samsungtv_smart`, `samsungtv_tizen`) and dispatches native URL-open commands with fallbacks. |
 | **Event Bus & Stage Director** | `custom_components/quizrooms/stage_effects.py` | Builds privacy-safe `quizrooms_phase_changed` & `quizrooms_finale` event payloads, discovers connected `light.*` / `media_player.*` / `tts.*` entities, runs non-blocking RGB/dimmer light presets with pre-game scene snapshot & restoration, and dispatches sanitized multilingual TTS announcements (`auto`, `en`, `ar`, `de`, `fr`, `es`, `pt` + Piper voice/locale mapping & optional predefined volume) — strictly gated on LAN-Only mode. |
-| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, CSWSH-guarded WebSocket routing (`WSClient`), strict sandbox CSP headers for media/avatars, bundled `qrcode.js` + `admin-panel.js` delivery, and Admin APIs (`/api/admin/state`, `/api/admin/stage`, `/api/admin/packs/import`, `/api/admin/packs/{id}/preview`, `/api/admin/open_tv`, etc.). |
+| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, CSWSH-guarded WebSocket routing (`WSClient`), immutable 1-year `Cache-Control` for `?v=` versioned static assets, strict sandbox CSP headers for media/avatars, bundled `qrcode.js` + `admin-panel.js` delivery, and Admin APIs (`/api/admin/state`, `/api/admin/stage`, `/api/admin/packs/import`, `/api/admin/packs/{id}/preview`, `/api/admin/open_tv`, etc.). |
 | **HA Entities** | `number.py`, `sensor.py` | Exposes `number.quizrooms_max_rooms`, `sensor.quizrooms_active_games`, and `sensor.quizrooms_active_players` grouped under a single Home Assistant `DeviceEntryType.SERVICE` device. |
 
 ---
@@ -117,7 +117,7 @@ stateDiagram-v2
     Lobby --> Closed: close_room / 15m idle TTL
 
     Question --> Question: submit_answer (lock answer + wager chip)\npause_room / resume_room
-    Question --> Reveal: timer expires OR\nall connected players locked in (+1.1s beat) OR\nhost Reveal Now
+    Question --> Reveal: timer expires OR\nall connected players locked in (+0.7s beat) OR\nhost Reveal Now
 
     Reveal --> Reveal: override_answer\n(Host/Admin approve or mark wrong\nfor Free-Text / Open-Ended / Duplicate)
     Reveal --> Question: next_step (more regular rounds remaining)
@@ -170,7 +170,7 @@ sequenceDiagram
     Eng-->>WS: (room, session_token, host_token)
     WS-->>Host: room_created {code, host_token, room}
     WS->>Coord: broadcast_lobby_and_tv()
-    Coord-->>TV: lobby_update {lobby, packs}
+    Coord-->>TV: lobby_update {lobby, avatars} (Overview TVs only; packs omitted unless reloaded)
 
     TV->>WS: tv_set_mode {mode: "follow", room_code}
     Note over TV,WS: Falls back to POST /api/public/tv_mode if WS is reconnecting
@@ -193,12 +193,17 @@ sequenceDiagram
 
     Host->>WS: submit_answer {answer, wager}
     Guest->>WS: submit_answer {answer, wager}
-    Note over WS,Coord: All connected players locked in -> 1.1s dramatic beat (tracked task, cancelled on pause)
+    Note over WS,Coord: All connected players locked in -> 0.7s dramatic beat (tracked task, cancelled on pause)
     Coord->>Eng: reveal_current_question(code)
     Coord-->>Host: room_state (phase: reveal, outcomes, scores)
     Coord-->>Guest: room_state (phase: reveal)
     Coord-->>TV: room_state (phase: reveal)
 ```
+
+### Real-Time Payload & Client Performance Architecture
+- **Lean `lobby_update` Broadcasts (`broadcast_lobby_and_tv(include_packs=False)`):** Routine room lifecycle events (`create_room`, `join_room`, `leave_room`, `start_game`, `reveal`, `pause`, `close_room`, `subscribe_lobby`) broadcast only lightweight `lobby` and `avatars` state, omitting the ~25 KB `packs` summary array (which is sent once on `hello` / `bootstrap` and re-sent with `include_packs=True` only on pack import, delete, or `quizrooms.reload_packs`). Furthermore, `role == "tv"` sockets currently in `TV_MODE_FOLLOW` are skipped during `lobby_update` broadcasts so Smart TV CPUs never parse discarded lobby JSON mid-game.
+- **WS-First Client Hydration & Fast Resume:** `/quizrooms/play` hydrates directly from the WebSocket `hello` snapshot (triggering `GET /quizrooms/api/public/bootstrap` only as an `800ms` fallback if WS setup lags) and listens to `visibilitychange` + `online` events (with a half-open NAT `ping` check) for instant wake-up after mobile screen lock. `/quizrooms/tv` uses `2.0s` HTTP fallback polling while disconnected and surfaces an `"HTTP Sync (WS Offline)"` badge after repeated WS failures.
+- **Immutable Versioned Asset Caching:** `QuizRoomsAssetsView` serves `?v=<VERSION>` static CSS, JS, SVG, and `.woff` font requests with `Cache-Control: public, max-age=31536000, immutable` (falling back to `public, max-age=3600` when unversioned) so repeat mobile and Smart TV sessions load instantaneously from local cache.
 
 ---
 

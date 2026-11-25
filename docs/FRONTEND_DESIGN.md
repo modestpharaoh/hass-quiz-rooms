@@ -11,9 +11,9 @@ flowchart LR
     subgraph SHARED["Shared Local Assets (/quizrooms/assets/)"]
         THEME["css/theme.css\nDesign Tokens + Logical RTL + Local WOFF Fonts"]
         THEMJS["js/theme.js\nZero-Flash Auto/Light/Dark Switcher"]
-        QR["js/qrcode.js\nPure-JS QR Matrix -> SVG"]
+        QR["js/qrcode.js\nPure-JS QR Matrix -> SVG\n(32-entry LRU Cache)"]
         SFX["js/sfx.js\nWeb Audio API Synth SFX + Haptics"]
-        CONF["js/confetti.js\nCanvas Celebration Particles"]
+        CONF["js/confetti.js\nAdaptive DPR/Lite Canvas Particles"]
         LOGO["img/logo.svg\nQuizRooms Brand Mark"]
         AVATARS["avatars/*.svg\n20 Studio Character SVGs"]
     end
@@ -49,12 +49,12 @@ flowchart LR
 ### Neutral Dark-Grey & Warm Light Themes
 - **Dark Mode (Neutral Charcoal Studio):** Uses neutral charcoal surfaces (`#121214` canvas, `#1c1c1f` cards, `#26262a` elevated tiles) paired with vibrant teal (`#2dd4bf`), emerald (`#34d399`), amber (`#fbbf24`), and coral (`#fb7185`) accents for high legibility on OLED/LED TVs and phones without blue-cast glare.
 - **Light Mode (Warm Studio Paper):** Warm light surface (`#f7f5f0` canvas, `#ffffff` cards, `#f0ece3` controls) with high-contrast indigo (`#4338ca`) and emerald accents.
-- **Zero-Flash Bootstrapping:** Inline `<script>` inside `<head>` of `play.html` and `tv.html` reads `localStorage["quizrooms_theme"]` (`auto` | `light` | `dark`) and sets `document.documentElement.dataset.theme` **before** first paint (and `tv.html` also restores `quizrooms_tv_overscan` before first paint). The Admin panel (`<quizrooms-admin-panel>`) syncs with Home Assistant's `hass.themes.darkMode` when set to `auto`.
+- **Zero-Flash Bootstrapping & Hardware Lite-Mode Detection:** Inline `<script>` inside `<head>` of `play.html` and `tv.html` reads `localStorage["quizrooms_theme"]` (`auto` | `light` | `dark`) and sets `document.documentElement.dataset.theme` **before** first paint. `tv.html` also restores `quizrooms_tv_overscan` and sets `data-tv-perf="lite"` on legacy Smart TVs (`Web0S`/`webOS`/`Tizen`/`SMART-TV` or Chrome `< 80`), while `play.html` sets `data-mobile-perf="lite"` on low-RAM / older mobile devices (`deviceMemory <= 3`, `hardwareConcurrency <= 4`, `saveData`, Chrome `< 85`, or iOS `< 14`). The Admin panel (`<quizrooms-admin-panel>`) syncs with Home Assistant's `hass.themes.darkMode` when set to `auto`.
 
 ### Full Arabic / RTL Layout Architecture
 - **100% Logical CSS Properties:** Spacing, borders, and alignment rely on `margin-inline`, `padding-block`, `border-inline-start`, and `text-align: start` rather than physical left/right offsets.
 - **Per-Element Directionality:** Rooms, pack selectors, prompts, choices, reveal boxes, and text inputs apply `dir="rtl"` for RTL packs/questions and `dir="auto"` for user-entered nicknames and free-text answers.
-- **Local Bilingual Typography:** Bundles local `.woff` fonts only (no unbundled `.woff2` references) for Latin (`QuizDisplay` — Ubuntu), full Arabic regular & bold (`QuizArabic` — DejaVu Sans), and tabular monospace scores/timers (`QuizMono` — Noto Sans Mono).
+- **Local Bilingual Typography & `unicode-range` Subsetting:** Bundles local `.woff` fonts only (no unbundled `.woff2` references) for Latin (`QuizDisplay` — Ubuntu), full Arabic regular & bold (`QuizArabic` — DejaVu Sans), and tabular monospace scores/timers (`QuizMono` — Noto Sans Mono). `@font-face` declarations specify `unicode-range` blocks so English-only devices skip downloading 714 KB of Arabic font files until Arabic characters are rendered, and `?v=` versioned assets are cached with `Cache-Control: public, max-age=31536000, immutable`.
 
 ### Scannable QR Codes & Bounded Media Frames
 - `.qr-white-frame` enforces a guaranteed `#ffffff` quiet zone in both Light and Dark themes so phone cameras scan reliably in dim living rooms.
@@ -70,21 +70,22 @@ flowchart LR
 1. **Open Lobby & Profile Bar:**
    - Persistent `session_token`, `nickname`, `avatar`, and per-room `host_token`s in `localStorage` allow seamless page reloads and mid-game reconnects.
    - **Non-Destructive Reconnect Banner (`#reconnect-banner`):** If mobile Wi-Fi drops briefly mid-round, displays an unobtrusive top banner (`Reconnecting to room Q7KM…`) while preserving any typed free-text answer draft, cursor position, and selected wager chip.
-   - **Avatar Studio Modal:** Players pick from 20 globally-unique studio SVG characters (taken presets show a live `Taken` pill across all active rooms) or upload a custom photo (client-cropped to `160×160` JPEG via `<canvas>` and uploaded to `POST /quizrooms/api/public/avatar`).
-   - Displays live open public rooms with pack cover thumbnails, difficulty badges, bonus/unique indicators, player counts, and capacity (`active_rooms / max_rooms`).
+   - **Avatar Studio Modal:** Players pick from 20 globally-unique studio SVG characters (taken presets show a live `Taken` pill across all active rooms, diff-gated so unrelated lobby updates do not redraw the grid) or upload a custom photo (downscaled during decode via `createImageBitmap(..., { resizeWidth: 320 })` with safe `Image` fallback, cropped to `160×160` JPEG via `<canvas>`, and cleaned up immediately to prevent OOM spikes on 2–3 GB RAM phones).
+   - Displays live open public rooms with lazy-decoded pack cover thumbnails, difficulty badges, bonus/unique indicators, player counts, and capacity (`active_rooms / max_rooms`).
 2. **Create New Room Modal:**
-   - Starts with **no packs selected by default** (`0 selected`), with live search (`#cr-pack-search`) and filter pills (`All`, `EN`, `AR (عربي)`, any extra custom-pack language, and `Open-Ended`).
+   - Starts with **no packs selected by default** (`0 selected`), with `120ms` debounced live search (`#cr-pack-search`), lazy/async pack cover thumbnails (`loading="lazy" decoding="async"`), delegated checkbox/chip listeners, and filter pills (`All`, `EN`, `AR (عربي)`, any extra custom-pack language, and `Open-Ended`).
    - **Per-Language Random Pack Picker (`🎲 Random <LANG> Packs`):** Shown only on language filters (hidden on `All` and `Open-Ended`). Each click deselects all previous selections, picks up to 3 fresh standard packs from that language, floats them to the top of the list, and updates the live **Selected Packs chip bar** (`#cr-selected-summary`) with per-pack `×` remove buttons and **Clear all**.
    - Smart defaults: selecting an open-ended pack (e.g., **أتوبيس كومبليت** or **Autobus Complete**) automatically sets **Answer Mode** to `Free-Text` and checks **No Repeated Answers** (still toggleable by the host).
    - Configurable **Rounds** (`5, 10, 15, 20, 25`), **Question Timer** (`20s, 30s, 45s, 60s`), **Difficulty** (`Random`, `Easy`, `Medium`, `Hard`), **Deduct Wager if Wrong** (default on), **Visibility** (`Public`/`Private`), **Allow Late Joiners**, and **★ Final Bonus Question** (`±5–15` or `±5–30` pts).
 3. **Blind Final Bonus Wager & Question Phase:**
-   - **Sticky Bottom Action Bar:** Pins the primary **Lock In Answer** button (`position: sticky; inset-block-end: 0; padding-block-end: calc(12px + env(safe-area-inset-bottom, 0px))`) for effortless one-handed thumb play on smaller phones.
+   - **Persistent Screen Shells (Zero Mid-Round DOM Wipes):** Open Lobby, Room Lobby, Bonus Wager, and Question screens mount once per state key and patch only counters, headers, or rosters when opponents lock in or join — eliminating dropped taps, repeated `.animate-in` flashes, lost lobby input focus, and mobile virtual keyboard / Arabic IME flicker during Free-Text rounds.
+   - **Sticky Bottom Action Bar & Instant Touch:** Pins the primary **Lock In Answer** button (`position: sticky; inset-block-end: 0; padding-block-end: calc(12px + env(safe-area-inset-bottom, 0px))`) and applies `touch-action: manipulation` across buttons and chips for zero-delay taps and double-tap lock-in. On mobile/touch viewports (`<= 820px` or coarse pointer) and `html[data-mobile-perf="lite"]`, cards and sticky bars use solid theme surfaces (`backdrop-filter: none`, `background-attachment: scroll`) for smooth 60fps scrolling and low battery heat.
    - **Smart Wager Chips (`1..N`):** Defaults to lowest remaining chip, displays a live risk hint (`Risking +7 / −7` or `Risking +7 / 0`), separates `High / Mid / Low` tiers when `N >= 15`, and supports tap-again fast confirm on an already-selected chip or choice.
    - **Haptics + Web Audio SFX:** `sfx.js` pairs subtle `navigator.vibrate()` pulses (`choiceTap`, `wagerClick`, `lockIn`, `tickUrgent`, `correct`, `wrong`) with optional Web Audio sound (`Sound: On/Off`, persisted under `quizrooms_sound_play`).
-   - Server-synchronized countdown bar (`requestAnimationFrame` corrected via `server_now_ms` clock offset), tap-to-zoom lightbox on visuals, and prominent starting-letter pill (`يبدأ بحرف` / `Starts with`).
+   - **GPU-Composited Throttled Timer & Fast Resume:** Server-synchronized countdown bar driven at 8–10 Hz (`100–125ms` `setInterval`) via GPU-composited `transform: scaleX(...)` (LTR & RTL origin-aware) with cached DOM refs and 1 Hz digit/urgency updates, WS-first startup hydration (`800ms` HTTP bootstrap fallback), `visibilitychange` + `online` instant reconnects, tap-to-zoom lightbox on visuals, and prominent starting-letter pill (`يبدأ بحرف` / `Starts with`).
 4. **Safe Room Close, Reveal & Finale Phases:**
    - Moves the host **Close Room** action out of the top header into a dedicated bottom room-footer zone protected by an explicit confirmation modal so hosts never accidentally end a live game.
-   - Color-coded outcome rows (`correct`, `wrong`, `duplicate` amber highlight with reason, `timeout`), confetti + victory chime on correct reveals, Host **Approve / Mark Wrong** override controls, and 3-tier Podium + Superlative Awards (`High Roller`, `Safe Player`, `Streak Master`, `Sharpest Mind`).
+   - Color-coded outcome rows (`correct`, `wrong`, `duplicate` amber highlight with reason, `timeout`), adaptive confetti (capped on low-RAM phones with automatic `#confetti-canvas` removal on completion) + victory chime on correct reveals, Host **Approve / Mark Wrong** override controls, and 3-tier Podium + Superlative Awards (`High Roller`, `Safe Player`, `Streak Master`, `Sharpest Mind`).
 
 ---
 
@@ -106,13 +107,15 @@ flowchart TD
 - **Full HD (1080p), 720p-CSS Smart TV, & 4K Scaling:** On viewports `>= 960px`, `.tv-shell` locks to `height: 100vh; overflow: hidden;` with `box-sizing: border-box` and scales proportionally using `vh` and `clamp(...)` (with pre-`clamp()` fallback declarations for older Chromium 68 engines like LG webOS 5).
 - **TV Safe-Zone / Overscan Padding Toggle:** Header button (`Safe Zone: Off/On`, persisted under `quizrooms_tv_overscan`) combines `env(safe-area-inset-*)` with a ~`3.2%` bezel-safe margin so older TVs never clip header badges or the sidebar QR frame.
 - **D-Pad / TV Remote Navigation:** High-contrast amber `:focus-visible` outlines and spatial `ArrowLeft`/`ArrowRight`/`ArrowUp`/`ArrowDown` navigation across header controls and Overview room cards (preserving focused cards across live `lobby_update` refreshes), plus Back/Return (`Escape`, `Backspace`, LG webOS `461`, Samsung Tizen `10009`) to return to Overview.
+- **Persistent Follow-Mode DOM & Memoized QR SVGs:** `.tv-follow-layout` mounts once per `room.code` (keeping `.tv-sidebar` and the Join QR mounted, backed by `QuizRoomsQR.toSVG()`'s 32-entry LRU cache). Same-round player lock-ins patch only `#tv-lock-grid` and `#tv-all-locked-banner`, while `#tv-leaderboard-list` updates are diff-gated via `lbSig` — reducing transition latency on ~2017 LG webOS 3.5 TVs from 1–3s to ~100–250ms.
+- **GPU-Composited 10 Hz Timer & Legacy Smart TV Lite Mode (`data-tv-perf="lite"`):** Uses a `100–125ms` `setInterval` driving `transform: scaleX(...)` (LTR & RTL origin-aware) with cached DOM refs and 1 Hz digit updates, solid `.studio-card` surfaces (`backdrop-filter: none`, `background-attachment: scroll`), lightweight opacity/color urgency pulses, `decoding="async"` on images, and capped TV confetti (`dpr=1`, `28` particles, `65` frames + canvas cleanup).
 - **Reveal Drama & Urgency Polish:**
-  - Final 5 seconds pulse the timer digits and progress bar amber → coral with a subtle stage border glow (`prefers-reduced-motion` aware).
-  - Displays a crisp **"All Locked In!"** transition banner (EN & AR RTL) during the 1.1s beat before Reveal.
+  - Final 5 seconds pulse the timer digits and progress bar amber → coral with a lightweight urgency cue (`prefers-reduced-motion` and `data-tv-perf="lite"` aware).
+  - Displays a crisp **"All Locked In!"** transition banner (EN & AR RTL) during the `0.7s` beat before Reveal.
   - Top-10 sidebar leaderboard displays animated `+N`/`−N` score delta pills and `▲`/`▼` rank movement arrows for ~4 seconds on Reveal (including host override recalculations).
 - **Idle / Attract Screen Showcase:** When no rooms are active, rotates 4 installed packs every 6 seconds in a gallery of full **1:1 square (`160×160`) cover cards** below the Join QR welcome banner without flickering the QR code.
 - **LG webOS TV SVG Compatibility:** All 584 bundled SVGs (flags, maps, logos, covers, diagrams, avatars) declare explicit `width` and `height` attributes matching their `viewBox`, and `.tv-media-showcase .media-frame img` defines explicit `height` + `width: auto` so older Blink/Chromium browsers never collapse SVGs to `0px`.
-- **Resilient TV Controls:** Uses event delegation on `#tv-main`, an HTTP fallback (`POST /quizrooms/api/public/tv_mode`), and 4.5-second bootstrap polling if a Smart TV browser drops WebSocket connectivity.
+- **Resilient TV Controls & WS Diagnostics:** Uses event delegation on `#tv-main`, an HTTP fallback (`POST /quizrooms/api/public/tv_mode`), and `2.0s` disconnected bootstrap polling if a Smart TV browser drops WebSocket connectivity, updating `#tv-conn-badge` to `"HTTP Sync (WS Offline)"` with a plain-LAN `http://` hint tooltip after 2+ WS failures.
 
 ---
 

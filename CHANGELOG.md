@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.3] - 2026-11-25
+
+Documentation & engineering guidelines synchronization release.
+
+### Changed
+- **Architecture & Frontend Documentation (`docs/ARCHITECTURE.md`, `docs/FRONTEND_DESIGN.md`):** Documented the `v1.0.1`–`v1.0.2` Smart TV and low-end mobile performance architecture (persistent DOM shells, memoized QR SVGs, 8–10 Hz GPU `transform: scaleX()` timers, `data-tv-perf="lite"` & `data-mobile-perf="lite"` modes, `unicode-range` font subsetting, immutable `?v=` asset caching, WS-first hydration & `visibilitychange` resume, lean `lobby_update` broadcasts, and `0.7s` auto-reveal beat).
+- **Agent Engineering Guides (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/quizrooms.mdc`, `.agents/rules/quizrooms.md`):** Added Smart TV & mobile DOM/GPU invariants and updated version sync instructions to `1.0.x`.
+
+---
+
 ## [1.0.2] - 2026-11-25
 
 Mobile Guest SPA (`/quizrooms/play`) performance & battery optimization release targeting low-end and older Android/iOS devices.

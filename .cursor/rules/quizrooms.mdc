@@ -11,7 +11,7 @@ Refer to `AGENTS.md` for full details and `docs/ARCHITECTURE.md` / `docs/FRONTEN
 - **Zero External Dependencies:** Keep `manifest.json` `"requirements": []`, zero external URLs in `frontend/` or `packs/`, and only bundled `.woff` fonts in `theme.css`.
 - **Non-Blocking HA Event Loop:** Never call blocking filesystem I/O inside `async def`; offload with `coordinator.async_run_in_executor(...)`.
 - **LAN-Only Security & Stage Kill Switch:** Preserve fail-closed `NetworkGuard` on all unauthenticated views, `Content-Security-Policy: default-src 'none'; sandbox` on `/media` and `/avatar`, LAN-only gating on `StageDirector` & HA events, and zero answer leakage during `question` or `bonus_wager`.
-- **WebOS / Smart TV Compatibility:** Every SVG must be valid XML with explicit `width` and `height` attributes matching `viewBox`; keep `/tv` viewport-fit for 720p-CSS, 1080p, and 4K (including Overscan Safe Zone and D-Pad navigation).
-- **Neutral Dark Theme & Arabic RTL:** Keep dark theme neutral charcoal (`#121214` / `#1c1c1f` / `#26262a`), use logical CSS properties, and keep QR codes inside `.qr-white-frame`.
-- **Version Sync:** Update `0.1.x` together in `manifest.json`, `const.py`, `play.html`, and `tv.html`.
+- **WebOS / Smart TV & Mobile Performance:** Every SVG must be valid XML with explicit `width` and `height` attributes matching `viewBox`; keep `/tv` viewport-fit for 720p-CSS, 1080p, and 4K (including Overscan Safe Zone and D-Pad navigation), and preserve persistent DOM shells, 8–10 Hz `transform: scaleX()` timers, `qrcode.js` caching, and `data-tv-perf="lite"` / `data-mobile-perf="lite"` across `/tv` and `/play`.
+- **Neutral Dark Theme & Arabic RTL:** Keep dark theme neutral charcoal (`#121214` / `#1c1c1f` / `#26262a`), use logical CSS properties and `@font-face` `unicode-range` subsetting, and keep QR codes inside `.qr-white-frame`.
+- **Version Sync:** Update `1.0.x` together in `manifest.json`, `const.py`, `play.html`, and `tv.html` (plus `pyproject.toml` and `CHANGELOG.md`).
 - **Verification:** Run `pytest -v` and `node --check` after edits.
