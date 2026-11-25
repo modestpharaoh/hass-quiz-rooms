@@ -137,7 +137,7 @@ Available during initial setup and anytime under **Settings → Devices & Servic
 | Option Key | UI Label | Default | Description |
 | --- | --- | --- | --- |
 | `allow_external_access` | Allow External Access | `false` | When `false` (recommended), guest, TV, WebSocket, and unauthenticated media endpoints are restricted strictly to local/allowed networks. Set `true` only if you intentionally want remote players over WAN/reverse proxy (automatically disables Stage Effects & HA Events for home safety). |
-| `allowed_subnets` | Additional Allowed CIDRs | `""` | Optional comma-separated IPv4/IPv6 CIDR subnets (e.g., `100.64.0.0/10, 192.168.50.0/24`) allowed in addition to built-in RFC 1918, IPv6 ULA, and link-local ranges (handy for Tailscale/WireGuard VPNs or VLANs). |
+| `allowed_subnets` | Additional Allowed IP Subnets (CIDR) | `[]` | Optional chip-based list of IPv4/IPv6 CIDR subnets (type one subnet like `100.64.0.0/10` and press Enter to add; click `×` on any chip to remove) allowed in addition to built-in RFC 1918, IPv6 ULA, and link-local ranges (handy for Tailscale/WireGuard VPNs or VLANs). |
 | `custom_lan_base_url` | Custom LAN Base URL | `""` | Optional override URL (e.g., `http://192.168.1.50:8123`) used for QR codes and Smart TV dashboard launching when Home Assistant's detected internal URL differs from your preferred LAN address. |
 
 ---

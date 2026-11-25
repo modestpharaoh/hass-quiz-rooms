@@ -209,3 +209,115 @@ def test_middleware_guards_play_tv_ws_and_media_endpoints(tmp_path: Path) -> Non
         assert ok_resp.headers["Content-Type"] == "image/svg+xml"
 
     asyncio.run(run())
+
+
+def test_options_flow_allows_clearing_allowed_subnets_and_custom_url(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Subnet chip SelectSelector validates entries, removes individual chips, and clears cleanly."""
+    import custom_components.quizrooms.config_flow as cf
+    from custom_components.quizrooms.const import (
+        CONF_ALLOW_EXTERNAL_ACCESS,
+        CONF_ALLOWED_SUBNETS,
+        CONF_CUSTOM_LAN_BASE_URL,
+        CONF_STAGE_EFFECTS,
+    )
+
+    # 1. Verify _build_options_schema uses SelectSelector(multiple=True, custom_value=True)
+    #    with description={"suggested_value": [...]} and NO default= (also auto-migrates legacy strings).
+    captured_optionals: dict[str, dict[str, object]] = {}
+
+    def _capture_optional(key: str, **kwargs: object) -> str:
+        captured_optionals[key] = dict(kwargs)
+        return key
+
+    monkeypatch.setattr(cf.vol, "Optional", _capture_optional)
+    schema = cf._build_options_schema(
+        {
+            CONF_ALLOW_EXTERNAL_ACCESS: False,
+            CONF_ALLOWED_SUBNETS: "100.64.0.0/10, 198.51.100.0/24",
+            CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123",
+        }
+    )
+    assert "default" not in captured_optionals[CONF_ALLOWED_SUBNETS]
+    assert captured_optionals[CONF_ALLOWED_SUBNETS]["description"] == {
+        "suggested_value": ["100.64.0.0/10", "198.51.100.0/24"]
+    }
+    subnet_selector = schema[CONF_ALLOWED_SUBNETS]
+    assert subnet_selector.config["multiple"] is True
+    assert subnet_selector.config["custom_value"] is True
+    assert subnet_selector.config["options"] == ["100.64.0.0/10", "198.51.100.0/24"]
+    assert "default" not in captured_optionals[CONF_CUSTOM_LAN_BASE_URL]
+    assert captured_optionals[CONF_CUSTOM_LAN_BASE_URL]["description"] == {
+        "suggested_value": "http://192.168.1.50:8123"
+    }
+
+    # 2. Setup OptionsFlow with legacy string option and test adding, rejecting invalid, and removing chips
+    fake_entry = SimpleNamespace(
+        options={
+            CONF_ALLOW_EXTERNAL_ACCESS: False,
+            CONF_ALLOWED_SUBNETS: "100.64.0.0/10",
+            CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123",
+            CONF_STAGE_EFFECTS: {"enabled": True},
+        }
+    )
+    flow = cf.QuizRoomsOptionsFlow(fake_entry)
+    flow.async_create_entry = lambda *, title, data: {"type": "create_entry", "title": title, "data": data}  # type: ignore[attr-defined]
+    flow.async_show_form = lambda *, step_id, data_schema, errors: {  # type: ignore[attr-defined]
+        "type": "form",
+        "step_id": step_id,
+        "errors": errors,
+    }
+
+    # 2a. Invalid chip is rejected and NOT saved
+    bad_res = asyncio.run(
+        flow.async_step_init(
+            {
+                CONF_ALLOW_EXTERNAL_ACCESS: False,
+                CONF_ALLOWED_SUBNETS: ["100.64.0.0/10", "not-a-valid-subnet"],
+            }
+        )
+    )
+    assert bad_res["type"] == "form"
+    assert bad_res["errors"] == {CONF_ALLOWED_SUBNETS: "invalid_subnet"}
+
+    # 2b. Valid chips are canonicalized & deduplicated (host bits cleared, duplicates merged)
+    good_res = asyncio.run(
+        flow.async_step_init(
+            {
+                CONF_ALLOW_EXTERNAL_ACCESS: False,
+                CONF_ALLOWED_SUBNETS: ["100.64.0.0/10", "203.0.113.42/24", "100.64.0.0/10"],
+                CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123/",
+            }
+        )
+    )
+    assert good_res["type"] == "create_entry"
+    assert good_res["data"][CONF_ALLOWED_SUBNETS] == ["100.64.0.0/10", "203.0.113.0/24"]
+    assert good_res["data"][CONF_CUSTOM_LAN_BASE_URL] == "http://192.168.1.50:8123"
+
+    # 2c. Removing all chips (empty list or omitted key) clears allowed_subnets & custom URL cleanly
+    clear_res = asyncio.run(
+        flow.async_step_init({CONF_ALLOW_EXTERNAL_ACCESS: False, CONF_ALLOWED_SUBNETS: []})
+    )
+    assert clear_res["type"] == "create_entry"
+    assert clear_res["data"][CONF_ALLOWED_SUBNETS] == []
+    assert clear_res["data"][CONF_CUSTOM_LAN_BASE_URL] == ""
+    assert clear_res["data"][CONF_STAGE_EFFECTS] == {"enabled": True}
+
+    # 3. Verify coordinator.apply_options applies list[str] and clears NetworkGuard.allowed_subnets
+    fake_hass = SimpleNamespace(http=SimpleNamespace(trusted_proxies=[], use_x_forwarded_for=True))
+    coord = QuizRoomsCoordinator(
+        fake_hass,
+        builtin_packs_dir=REPO_ROOT / "custom_components" / "quizrooms" / "packs",
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=REPO_ROOT / "custom_components" / "quizrooms" / "frontend",
+        options=dict(good_res["data"]),
+        load_packs=False,
+    )
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="100.64.1.10")).allowed is True
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="203.0.113.7")).allowed is True
+    coord.apply_options(clear_res["data"])
+    assert coord.network_guard.allowed_subnets == []
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="100.64.1.10")).allowed is False
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="203.0.113.7")).allowed is False
+    assert coord.custom_lan_base_url == ""

@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.8] - 2026-11-25
+
+Chip-based Allowed IP Subnets selector release.
+
+### Changed
+- **Chip-Based Allowed IP Subnets Selector (`config_flow.py`, `strings.json`, `translations/en.json`):** Replaced the comma-separated text box for **Additional Allowed IP Subnets (CIDR)** with Home Assistant's native multi-value chip selector (`SelectSelector` with `multiple=True`, `custom_value=True`) so you enter one CIDR subnet at a time, validate & canonicalize entries on submit (rejecting invalid entries without saving), and remove individual subnets cleanly by clicking `×` on each chip. Existing comma-separated string configs auto-migrate seamlessly.
+
+---
+
+## [1.0.7] - 2026-11-25
+
+OptionsFlow bugfix release.
+
+### Fixed
+- **Clearable Optional Network Options (`config_flow.py`):** Switched `CONF_ALLOWED_SUBNETS` and `CONF_CUSTOM_LAN_BASE_URL` in `_build_options_schema()` from `vol.Optional(..., default=saved_value)` to `description={"suggested_value": saved_value}` so clearing **Additional Allowed CIDRs** or **Custom LAN Base URL** in Home Assistant's **Configure** dialog saves cleanly as empty (`""`) instead of Voluptuous silently re-injecting the previous saved value when HA omits empty optional keys.
+
+---
+
 ## [1.0.6] - 2026-11-25
 
 Early Learner naming polish, independent Stage Effects Q&A Speech toggle (Standard & Early Learner modes), and spoken "Good try!" encouragement release.
