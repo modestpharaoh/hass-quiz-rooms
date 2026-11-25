@@ -617,6 +617,22 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
         return ws
 
     async def _handle_message(self, client: WSClient, raw: str) -> None:
+        allowed, should_close = self.coordinator.allow_ws_message(client)
+        if not allowed:
+            try:
+                await client.ws.send_json(
+                    {
+                        "type": "error",
+                        "code": "rate_limited",
+                        "message": "Too many messages sent too quickly. Please slow down.",
+                    }
+                )
+                if should_close:
+                    await client.ws.close()
+            except Exception:
+                pass
+            return
+
         try:
             data = json.loads(raw)
         except json.JSONDecodeError:
@@ -913,21 +929,42 @@ def _read_admin_panel_bundle_sync(frontend_dir: Path) -> str:
     return f"{qr_js}\n;\n{panel_js}"
 
 
+def _check_panel_asset_access(
+    request: web.Request, coordinator: QuizRoomsCoordinator
+) -> web.StreamResponse | None:
+    """Allow HA sidebar module assets on LAN/whitelisted IPs, authenticated HA sessions, or valid capability token; stealth-redirect external scanners."""
+    import hmac
+
+    if request.get("hass_user") is not None:
+        return None
+    query = getattr(request, "query", None) or {}
+    provided_key = str(query.get("k") or "").strip()
+    expected_key = getattr(coordinator, "panel_asset_token", "") or ""
+    if provided_key and expected_key and hmac.compare_digest(provided_key, expected_key):
+        return None
+    decision = coordinator.network_guard.evaluate_request(request)
+    if decision.allowed:
+        return None
+    return build_forbidden_response(request, decision)
+
+
 class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
     """Serve the HA Sidebar Admin Panel JS module."""
 
     url = URL_ADMIN_PANEL_JS
     name = "quizrooms:admin_panel_js"
-    requires_auth = False  # Browser module import from HA sidebar; all data APIs require HA admin auth
+    requires_auth = False  # Browser module import from HA sidebar; protected via capability token + LAN guard
 
     async def get(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_panel_asset_access(request, self.coordinator):
+            return blocked
         js_text = await self.coordinator.async_run_in_executor(
             _read_admin_panel_bundle_sync, self.coordinator.frontend_dir
         )
         return web.Response(
             text=js_text,
             content_type="application/javascript",
-            headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
+            headers={"Cache-Control": "private, no-cache", "X-Content-Type-Options": "nosniff"},
         )
 
 
@@ -936,15 +973,17 @@ class QuizRoomsSidebarIconJSView(_QuizRoomsBaseView):
 
     url = URL_SIDEBAR_ICON_JS
     name = "quizrooms:sidebar_icon_js"
-    requires_auth = False  # Loaded globally by HA frontend so sidebar icon renders for all admins
+    requires_auth = False  # Loaded by HA frontend; protected via capability token + LAN guard
 
     async def get(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_panel_asset_access(request, self.coordinator):
+            return blocked
         js_path = self.coordinator.frontend_dir / "sidebar-icon.js"
         js_text = await self.coordinator.async_run_in_executor(_read_text_sync, js_path)
         return web.Response(
             text=js_text,
             content_type="application/javascript",
-            headers={"Cache-Control": "public, max-age=3600", "X-Content-Type-Options": "nosniff"},
+            headers={"Cache-Control": "private, max-age=3600", "X-Content-Type-Options": "nosniff"},
         )
 
 

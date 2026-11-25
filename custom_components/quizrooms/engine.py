@@ -300,7 +300,18 @@ class QuizEngine:
             False if kids_auto_advance is None else (enable_kids and bool(kids_auto_advance))
         )
 
-        r_count = DEFAULT_ROUND_COUNT if round_count is None else int(round_count)
+        if isinstance(round_count, bool):
+            raise EngineError(
+                "invalid_round_count",
+                f"Rounds must be a multiple of {ROUND_COUNT_STEP} between {MIN_ROUND_COUNT} and {MAX_ROUND_COUNT}.",
+            )
+        try:
+            r_count = DEFAULT_ROUND_COUNT if round_count is None else int(round_count)
+        except (TypeError, ValueError) as err:
+            raise EngineError(
+                "invalid_round_count",
+                f"Rounds must be a multiple of {ROUND_COUNT_STEP} between {MIN_ROUND_COUNT} and {MAX_ROUND_COUNT}.",
+            ) from err
         if total_available < MIN_ROUND_COUNT:
             # Small custom packs (< 5 questions) play all available questions cleanly
             r_count = max(1, min(r_count, total_available))
@@ -315,7 +326,18 @@ class QuizEngine:
             r_count = min(r_count, max(MIN_ROUND_COUNT, max_multiple))
 
         default_t = 0 if enable_kids else DEFAULT_TIMER_SECONDS
-        t_sec = default_t if timer_seconds is None else int(timer_seconds)
+        if isinstance(timer_seconds, bool):
+            raise EngineError(
+                "invalid_timer",
+                f"Timer must be one of {ALLOWED_TIMERS} seconds.",
+            )
+        try:
+            t_sec = default_t if timer_seconds is None else int(timer_seconds)
+        except (TypeError, ValueError) as err:
+            raise EngineError(
+                "invalid_timer",
+                f"Timer must be one of {ALLOWED_TIMERS} seconds.",
+            ) from err
         if t_sec not in ALLOWED_TIMERS:
             raise EngineError(
                 "invalid_timer",
@@ -1219,6 +1241,7 @@ class QuizEngine:
 
             room.status = ROOM_STATUS_FINISHED
             room.phase = PHASE_FINALE
+            room.pinned_media.clear()
             room.last_activity = self._now()
             return room
 
@@ -1240,18 +1263,24 @@ class QuizEngine:
         now = self._now()
 
         if room.phase == PHASE_QUESTION:
+            is_untimed = room.settings.timer_seconds <= 0
             if target_paused and not room.paused:
-                remaining = max(0.0, (room.question_ends_at or now) - now)
-                room.remaining_when_paused = remaining
+                if is_untimed or room.question_ends_at is None:
+                    room.remaining_when_paused = None
+                else:
+                    room.remaining_when_paused = max(0.0, room.question_ends_at - now)
                 room.question_ends_at = None
                 room.paused = True
             elif not target_paused and room.paused:
-                remaining = (
-                    room.remaining_when_paused
-                    if room.remaining_when_paused is not None
-                    else float(room.settings.timer_seconds)
-                )
-                room.question_ends_at = now + max(1.0, remaining)
+                if is_untimed:
+                    room.question_ends_at = None
+                else:
+                    remaining = (
+                        room.remaining_when_paused
+                        if room.remaining_when_paused is not None
+                        else float(room.settings.timer_seconds)
+                    )
+                    room.question_ends_at = now + max(1.0, remaining)
                 room.remaining_when_paused = None
                 room.paused = False
         else:

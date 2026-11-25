@@ -1022,6 +1022,7 @@ class StageDirector:
             if not task.done():
                 task.cancel()
         self._active_tts_tasks.clear()
+        self._last_try_again_tts_at.clear()
 
     async def async_shutdown(self) -> None:
         """Cancel all running tasks and restore lights cleanly on integration unload."""
@@ -1030,6 +1031,7 @@ class StageDirector:
             if not task.done():
                 task.cancel()
         self._active_tts_tasks.clear()
+        self._last_try_again_tts_at.clear()
         await self.async_restore_lights()
 
     # --- Light Snapshot & Safe Restoration ---
@@ -1496,8 +1498,18 @@ class StageDirector:
                 room_code = str(event_data.get("room_code") or "")
                 now_mono = time.monotonic()
                 last_at = self._last_try_again_tts_at.get(room_code, 0.0)
-                if (now_mono - last_at) < self.try_again_tts_cooldown_seconds:
+                if last_at > 0.0 and (now_mono - last_at) < self.try_again_tts_cooldown_seconds:
                     return
+                if len(self._last_try_again_tts_at) >= 32:
+                    ttl = max(60.0, self.try_again_tts_cooldown_seconds * 4.0)
+                    stale = [
+                        k for k, ts in self._last_try_again_tts_at.items() if (now_mono - ts) > ttl
+                    ]
+                    for k in stale:
+                        self._last_try_again_tts_at.pop(k, None)
+                    while len(self._last_try_again_tts_at) >= 64:
+                        oldest = next(iter(self._last_try_again_tts_at))
+                        self._last_try_again_tts_at.pop(oldest, None)
                 self._last_try_again_tts_at[room_code] = now_mono
             tts_item = build_phase_tts_message(
                 event_data,

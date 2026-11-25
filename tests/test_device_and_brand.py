@@ -122,9 +122,21 @@ def test_frontend_logo_svg_served_and_embedded_across_uis(tmp_path: Path) -> Non
         assert blocked_resp.status == 302
         assert blocked_resp.headers.get("Location") == "/"
 
-        # Custom HA sidebar icon JS module serves cleanly for both LAN & remote HA Admins
-        sidebar_js_resp = await QuizRoomsSidebarIconJSView(coord).get(
+        # Unauthenticated external probe without capability token stealth-redirects to '/'
+        ext_probe_resp = await QuizRoomsSidebarIconJSView(coord).get(
             FakeRequest(path="/quizrooms/sidebar-icon.js", remote="203.0.113.10")
+        )
+        assert ext_probe_resp.status == 302
+        assert ext_probe_resp.headers.get("Location") == "/"
+        assert (ext_probe_resp.text or "") == ""
+
+        # Remote HA Admin frontend with capability token (?k=...) serves cleanly
+        sidebar_js_resp = await QuizRoomsSidebarIconJSView(coord).get(
+            FakeRequest(
+                path="/quizrooms/sidebar-icon.js",
+                remote="203.0.113.10",
+                query={"k": coord.panel_asset_token},
+            )
         )
         assert sidebar_js_resp.status == 200
         assert "window.customIcons.quizrooms" in (sidebar_js_resp.text or "")

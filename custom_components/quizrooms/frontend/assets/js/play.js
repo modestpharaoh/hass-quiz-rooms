@@ -103,6 +103,11 @@
       .replace(/'/g, "&#39;");
   }
 
+  function safeHexColor(val) {
+    const s = String(val == null ? "" : val).trim();
+    return /^#[0-9a-fA-F]{6}$/.test(s) ? s : "";
+  }
+
   let toastTimer = null;
   function showToast(msg, isError = false) {
     const el = document.getElementById("toast-root");
@@ -211,6 +216,7 @@
 
     ws.onclose = () => {
       state.connected = false;
+      state.kidsSubmitBusy = false;
       updateConnStatus("Reconnecting…");
       updateReconnectBanner(true);
       scheduleReconnect();
@@ -595,6 +601,7 @@
         break;
 
       case "error":
+        state.kidsSubmitBusy = false;
         if (msg.code === "room_not_found" && !state.room && state.activeRoomCode) {
           // Stale saved room from an earlier session; silently fall back to open lobby
           setHostToken(state.activeRoomCode, "");
@@ -874,7 +881,7 @@
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
                   <span class="badge ${statusClass}">${esc(statusText)}</span>
                   <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
-                  ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Kids</span>` : ""}
+                  ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Early Learner</span>` : ""}
                   ${diffBadgeHtml(r.difficulty)}
                   ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
                 </div>
@@ -918,7 +925,7 @@
       const roomsSig = rooms
         .map(
           (r) =>
-            `${r.code}|${r.name}|${r.status}|${r.current_round}/${r.total_rounds}|${r.player_count}|${r.allow_late_join ? 1 : 0}|${r.difficulty || ""}|${r.unique_answers_only ? 1 : 0}|${r.cover_url || ""}|${(r.pack_titles || []).join(",")}`
+            `${r.code}|${r.name}|${r.status}|${r.current_round}/${r.total_rounds}|${r.player_count}|${r.allow_late_join ? 1 : 0}|${r.kids_mode ? 1 : 0}|${r.bonus_round ? 1 : 0}|${r.difficulty || ""}|${r.unique_answers_only ? 1 : 0}|${r.cover_url || ""}|${(r.pack_titles || []).join(",")}`
         )
         .join(";");
       if (roomsSig !== state.lastOpenRoomsSig) {
@@ -1829,7 +1836,7 @@
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
       const s = room.settings;
-      const settingsSig = `${s.room_name}|${(s.pack_titles || []).join(",")}|${s.round_count}|${s.timer_seconds}|${s.answer_mode}|${s.difficulty}|${s.deduct_wrong_wager}|${s.bonus_round}|${s.unique_answers_only}|${s.visibility}|${room.cover_url || ""}|${room.rtl ? 1 : 0}`;
+      const settingsSig = `${s.room_name}|${(s.pack_titles || []).join(",")}|${s.round_count}|${s.timer_seconds}|${s.answer_mode}|${s.difficulty}|${s.deduct_wrong_wager}|${s.bonus_round}|${s.unique_answers_only}|${s.visibility}|${s.kids_mode ? 1 : 0}|${s.kids_try_again ? 1 : 0}|${s.kids_auto_advance ? 1 : 0}|${room.cover_url || ""}|${room.rtl ? 1 : 0}`;
       const screenKey = `lobby:${room.code}:${isHost ? 1 : 0}:${settingsSig}`;
 
       if (state.renderedScreenKey === screenKey && document.getElementById("room-player-roster")) {
@@ -2150,12 +2157,12 @@
               .map((choice, i) => {
                 const alreadyTried = state.kidsTriedWrong.has(choice);
                 const imgUrl = choiceMediaUrls[i];
-                const swatch = choiceColors[i];
+                const swatch = safeHexColor(choiceColors[i]);
                 let inner = `<span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
                 if (choiceStyle === "image_grid" && imgUrl) {
                   inner = `<img src="${esc(imgUrl)}" alt="${esc(choice)}" class="kids-choice-img" width="92" height="92" decoding="async" /><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
                 } else if (choiceStyle === "color_swatch" && swatch) {
-                  inner = `<span class="kids-swatch-circle" style="background:${esc(swatch)};"></span><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                  inner = `<span class="kids-swatch-circle" style="background:${swatch};"></span><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
                 } else if (choiceStyle === "large_glyph") {
                   inner = `<span class="kids-choice-glyph" dir="auto">${esc(choice)}</span>`;
                 }
@@ -2720,6 +2727,13 @@
       document.addEventListener("visibilitychange", () => {
         if (document.visibilityState === "visible") {
           reconnectNowIfNeeded();
+        } else if (hasSpeechSupport()) {
+          try { window.speechSynthesis.cancel(); } catch (_) { }
+        }
+      });
+      window.addEventListener("pagehide", () => {
+        if (hasSpeechSupport()) {
+          try { window.speechSynthesis.cancel(); } catch (_) { }
         }
       });
       window.addEventListener("online", () => {

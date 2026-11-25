@@ -30,6 +30,33 @@
     return (p && (p.player_id || p.session_token || p.nickname)) || "";
   }
 
+  function safeHexColor(val) {
+    const s = String(val == null ? "" : val).trim();
+    return /^#[0-9a-fA-F]{6}$/.test(s) ? s : "";
+  }
+
+  function prunePrevRanks() {
+    const activeCodes = new Set();
+    if (state.room && state.room.code) activeCodes.add(state.room.code);
+    const lobbyRooms = (state.lobby && state.lobby.rooms) || [];
+    for (let i = 0; i < lobbyRooms.length; i++) {
+      if (lobbyRooms[i] && lobbyRooms[i].code) activeCodes.add(lobbyRooms[i].code);
+    }
+    const keys = Object.keys(state.prevRanksByRoom);
+    for (let i = 0; i < keys.length; i++) {
+      if (!activeCodes.has(keys[i])) {
+        delete state.prevRanksByRoom[keys[i]];
+      }
+    }
+    const remaining = Object.keys(state.prevRanksByRoom);
+    while (remaining.length > 32) {
+      const oldest = remaining.shift();
+      if (oldest && oldest !== (state.room && state.room.code)) {
+        delete state.prevRanksByRoom[oldest];
+      }
+    }
+  }
+
   function clearDeltaTimers() {
     if (state.deltaFadeTimer) {
       clearTimeout(state.deltaFadeTimer);
@@ -272,6 +299,7 @@
       case "lobby_update":
         if (msg.lobby) state.lobby = msg.lobby;
         if (Array.isArray(msg.packs)) state.packs = msg.packs;
+        prunePrevRanks();
         // Always refresh whenever Overview is being shown (even if tv.mode had no room)
         if (state.tv.mode !== "follow" || !state.room) {
           render();
@@ -368,6 +396,7 @@
         if (k) rankSnap[k] = p.rank;
       });
       state.prevRanksByRoom[room.code] = rankSnap;
+      prunePrevRanks();
       if (state.revealHighlights) {
         clearDeltaTimers();
         state.revealHighlights = null;
@@ -881,7 +910,7 @@
                 ${q.choices
                 .map((c, i) => {
                   const imgUrl = choiceMediaUrls[i];
-                  const swatch = choiceColors[i];
+                  const swatch = safeHexColor(choiceColors[i]);
                   if (choiceStyle === "image_grid" && imgUrl) {
                     return `<div class="tv-choice-tile tv-choice-rich tone-${i % 4}">
                       <img src="${esc(imgUrl)}" alt="${esc(c)}" class="tv-choice-img" width="140" height="140" decoding="async" />
@@ -890,7 +919,7 @@
                   }
                   if (choiceStyle === "color_swatch" && swatch) {
                     return `<div class="tv-choice-tile tv-choice-rich tone-${i % 4}">
-                      <span class="tv-choice-swatch" style="background:${esc(swatch)};"></span>
+                      <span class="tv-choice-swatch" style="background:${swatch};"></span>
                       <span class="tv-choice-caption" dir="auto">${esc(c)}</span>
                     </div>`;
                   }

@@ -85,6 +85,13 @@ class WSClient:
     room_code: str | None = None
     session_token: str | None = None
     client_ip: str | None = None
+    msg_window_start: float = 0.0
+    msg_window_count: int = 0
+
+
+WS_RATE_WINDOW_SECONDS = 2.0
+WS_MAX_MESSAGES_PER_WINDOW = 35
+TRY_AGAIN_EVENT_COOLDOWN_SECONDS = 1.5
 
 
 @dataclass
@@ -116,9 +123,15 @@ class QuizRoomsCoordinator:
         options: dict[str, Any] | None = None,
         load_packs: bool = True,
         entry: Any | None = None,
+        panel_asset_token: str | None = None,
     ) -> None:
+        import secrets
+        import time as _time
+
+        self._mono = _time.monotonic
         self.hass = hass
         self._entry = entry
+        self.panel_asset_token: str = panel_asset_token or secrets.token_urlsafe(24)
         self.frontend_dir = Path(frontend_dir)
         self.avatar_store = AvatarStore(self.frontend_dir)
         self.pack_registry = PackRegistry(builtin_packs_dir, custom_packs_dir)
@@ -136,6 +149,7 @@ class QuizRoomsCoordinator:
         self._ws_clients: set[WSClient] = set()
         self._room_timers: dict[str, asyncio.Task[None]] = {}
         self._warning_timers: dict[str, asyncio.Task[None]] = {}
+        self._last_try_again_event_at: dict[str, float] = {}
         self._cleanup_task: asyncio.Task[None] | None = None
         self._entity_listeners: list[Callable[[], None]] = []
 
@@ -149,10 +163,18 @@ class QuizRoomsCoordinator:
         *,
         entry: Any | None = None,
     ) -> "QuizRoomsCoordinator":
+        import secrets
+
         base_dir = Path(__file__).parent
         builtin_packs_dir = base_dir / "packs"
         frontend_dir = base_dir / "frontend"
         config_path = Path(hass.config.path(CUSTOM_PACKS_REL_DIR))
+        domain_data = getattr(hass, "data", {}).setdefault(DOMAIN, {}) if hasattr(hass, "data") else {}
+        token = domain_data.get("panel_asset_token")
+        if not token:
+            token = secrets.token_urlsafe(24)
+            if isinstance(domain_data, dict):
+                domain_data["panel_asset_token"] = token
         return cls(
             hass,
             builtin_packs_dir=builtin_packs_dir,
@@ -161,6 +183,7 @@ class QuizRoomsCoordinator:
             options=options,
             load_packs=False,
             entry=entry,
+            panel_asset_token=token,
         )
 
     async def async_run_in_executor(self, func: Callable[..., Any], *args: Any) -> Any:
@@ -260,6 +283,19 @@ class QuizRoomsCoordinator:
             )
         return await self.stage_director.async_run_test_effect(effect, language=language)
 
+    def allow_ws_message(self, client: WSClient) -> tuple[bool, bool]:
+        """Sliding-window per-socket flood guard. Returns (allowed, should_disconnect)."""
+        now = self._mono()
+        if (now - client.msg_window_start) >= WS_RATE_WINDOW_SECONDS:
+            client.msg_window_start = now
+            client.msg_window_count = 1
+            return True, False
+        client.msg_window_count += 1
+        if client.msg_window_count <= WS_MAX_MESSAGES_PER_WINDOW:
+            return True, False
+        should_close = client.msg_window_count > (WS_MAX_MESSAGES_PER_WINDOW * 2)
+        return False, should_close
+
     def emit_phase_changed(
         self,
         room: Any,
@@ -271,6 +307,22 @@ class QuizRoomsCoordinator:
         """Fire `quizrooms_phase_changed` on HA Event Bus & drive StageDirector (LAN-Only)."""
         if not self.is_stage_events_allowed():
             return False
+
+        if sub_event == "try_again":
+            now_mono = self._mono()
+            last_at = self._last_try_again_event_at.get(room.code, 0.0)
+            if last_at > 0.0 and (now_mono - last_at) < TRY_AGAIN_EVENT_COOLDOWN_SECONDS:
+                return False
+            if len(self._last_try_again_event_at) >= 32:
+                stale = [
+                    k for k, ts in self._last_try_again_event_at.items() if (now_mono - ts) > 60.0
+                ]
+                for k in stale:
+                    self._last_try_again_event_at.pop(k, None)
+                while len(self._last_try_again_event_at) >= 64:
+                    oldest_key = next(iter(self._last_try_again_event_at))
+                    self._last_try_again_event_at.pop(oldest_key, None)
+            self._last_try_again_event_at[room.code] = now_mono
 
         payload = build_phase_changed_payload(
             self.engine,
@@ -377,6 +429,7 @@ class QuizRoomsCoordinator:
         for task in list(self._warning_timers.values()):
             task.cancel()
         self._warning_timers.clear()
+        self._last_try_again_event_at.clear()
 
         await self.stage_director.async_shutdown()
 
@@ -430,6 +483,7 @@ class QuizRoomsCoordinator:
         warn_task = self._warning_timers.pop(code, None)
         if warn_task is not None and not warn_task.done() and warn_task is not current:
             warn_task.cancel()
+        self._last_try_again_event_at.pop(code, None)
 
     def schedule_room_timer(self, code: str) -> None:
         """Schedule automatic reveal and T-5s countdown warning for the active question."""
@@ -861,6 +915,8 @@ class QuizRoomsCoordinator:
             self.schedule_room_timer(room.code)
         else:
             self._cancel_room_timer(room.code)
+            if room.phase == PHASE_FINALE:
+                self.prune_unused_pinned_media()
         await self.broadcast_room_state(room.code)
         await self.broadcast_lobby_and_tv()
         self.notify_entities()

@@ -45,11 +45,18 @@ def _coerce_subnet_tokens(raw: Any) -> list[str]:
     return parts
 
 
+MAX_ALLOWED_SUBNETS = 64
+MAX_SUBNET_TOKEN_LEN = 128
+MAX_CUSTOM_BASE_URL_LEN = 256
+
+
 def _validate_and_normalize_subnets(raw: Any) -> tuple[list[str], str | None]:
     """Validate every CIDR entry and return canonical deduplicated strings or an error key."""
     tokens = _coerce_subnet_tokens(raw)
     if not tokens:
         return [], None
+    if len(tokens) > MAX_ALLOWED_SUBNETS or any(len(t) > MAX_SUBNET_TOKEN_LEN for t in tokens):
+        return [], "invalid_subnet"
     try:
         networks = parse_cidr_list(tokens)
     except ValueError:
@@ -62,6 +69,8 @@ def _validate_and_normalize_subnets(raw: Any) -> tuple[list[str], str | None]:
         if cidr not in seen:
             seen.add(cidr)
             normalized.append(cidr)
+    if len(normalized) > MAX_ALLOWED_SUBNETS:
+        return [], "invalid_subnet"
     return normalized, None
 
 
@@ -75,7 +84,7 @@ def _validate_network_options(user_input: dict[str, Any]) -> tuple[dict[str, str
         errors[CONF_ALLOWED_SUBNETS] = subnet_err
 
     base_url = str(user_input.get(CONF_CUSTOM_LAN_BASE_URL, "") or "").strip()
-    if base_url and not is_safe_http_url(base_url):
+    if base_url and (len(base_url) > MAX_CUSTOM_BASE_URL_LEN or not is_safe_http_url(base_url)):
         errors[CONF_CUSTOM_LAN_BASE_URL] = "invalid_url"
 
     return errors, normalized_subnets

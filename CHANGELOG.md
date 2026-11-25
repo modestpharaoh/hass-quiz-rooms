@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.0.10] - 2026-11-25
+
+Security, anti-fingerprinting, event-loop DoS protection, and memory-lifecycle hardening release.
+
+### Security & Fixed
+- **Capability-Token Anti-Fingerprinting for HA Sidebar Modules (`__init__.py`, `coordinator.py`, `views.py`):** Protected `/quizrooms/admin-panel.js` and `/quizrooms/sidebar-icon.js` with a per-instance cryptographic capability token (`?k=...`) delivered only to authenticated Home Assistant sessions (alongside LAN `NetworkGuard` & `Cache-Control: private`), returning the zero-fingerprint `302 Found` → `/` stealth redirect to external scanners while keeping remote HA Admin sidebar access working seamlessly.
+- **WebSocket Flood Rate Limiter & `try_again` Event Bus DoS Guard (`coordinator.py`, `views.py`):** Added per-socket sliding-window WebSocket message rate limiting (`rate_limited` + auto-disconnect on flood) and per-room `1.5s` throttling on `quizrooms_phase_changed` (`sub_event="try_again"`) so rapid wrong taps cannot flood Home Assistant's event loop or Recorder.
+- **Memory-Leak & Pinned-Media Eviction Fixes (`engine.py`, `coordinator.py`, `stage_effects.py`, `tv.js`, `play.js`):** Freed `room.pinned_media` and `PackRegistry._pinned_media` immediately upon reaching `PHASE_FINALE` (instead of retaining bytes for the 2-hour finished-room TTL), bounded & cleared `StageDirector._last_try_again_tts_at` and `tv.js` `prevRanksByRoom`, cancelled `window.speechSynthesis` on `visibilitychange`/`pagehide`, and reset `kidsSubmitBusy` on socket disconnect/error.
+- **Untimed Pause & Input Validation Hardening (`engine.py`, `config_flow.py`, `play.js`, `tv.js`):** Fixed `pause_room()` on untimed (`timer_seconds=0`) Early Learner rooms so resuming keeps `question_ends_at = None` instead of setting a 1-second timeout; rejected boolean `timer_seconds`/`round_count` inputs; bounded CIDR count & custom base URL length in `config_flow.py`; and added strict `safeHexColor()` validation for inline `choice_colors` swatches.
+
+---
+
 ## [1.0.9] - 2026-11-25
 
 External-access stealth hardening & red security warning confirmation release.

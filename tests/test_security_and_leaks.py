@@ -607,3 +607,182 @@ def test_cross_room_ws_isolation_lobby_leave_cleanup_and_avatar_hoarding_guard(
         await coord.async_shutdown()
 
     asyncio.run(run())
+
+
+def test_branch_security_and_memory_audit_regressions(tmp_path: Path) -> None:
+    """Verify stealth panel asset tokens, WS flood & try_again bus throttling, finale media eviction, untimed pause, and bool/subnet guards."""
+    from custom_components.quizrooms.config_flow import _validate_network_options
+    from custom_components.quizrooms.const import (
+        CONF_ALLOWED_SUBNETS,
+        CONF_CUSTOM_LAN_BASE_URL,
+        EVENT_PHASE_CHANGED,
+        PHASE_FINALE,
+    )
+    from custom_components.quizrooms.coordinator import WS_MAX_MESSAGES_PER_WINDOW
+    from custom_components.quizrooms.stage_effects import StageDirector, StageEffectsConfig
+    from custom_components.quizrooms.views import (
+        QuizRoomsAdminPanelJSView,
+        QuizRoomsSidebarIconJSView,
+    )
+
+    fired_events: list[tuple[str, dict[str, Any]]] = []
+    fake_hass = SimpleNamespace(
+        http=SimpleNamespace(trusted_proxies=[], use_x_forwarded_for=True),
+        bus=SimpleNamespace(async_fire=lambda ev, data: fired_events.append((ev, data))),
+    )
+    coord = QuizRoomsCoordinator(
+        fake_hass,
+        builtin_packs_dir=BUILTIN_PACKS_DIR,
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=FRONTEND_DIR,
+    )
+
+    # 1. Boolean confusion rejected for timer_seconds and round_count; subnet/URL bounds enforced
+    with pytest.raises(EngineError) as exc_bool_timer:
+        coord.engine.create_room(
+            host_session_token="h_bool",
+            host_nickname="Host",
+            pack_ids=["general_knowledge_en"],
+            timer_seconds=False,  # type: ignore[arg-type]
+        )
+    assert exc_bool_timer.value.code == "invalid_timer"
+
+    with pytest.raises(EngineError) as exc_bool_rounds:
+        coord.engine.create_room(
+            host_session_token="h_bool2",
+            host_nickname="Host",
+            pack_ids=["general_knowledge_en"],
+            round_count=True,  # type: ignore[arg-type]
+        )
+    assert exc_bool_rounds.value.code == "invalid_round_count"
+
+    too_many_subnets = [f"10.0.{i}.0/24" for i in range(70)]
+    errs, _ = _validate_network_options(
+        {
+            CONF_ALLOWED_SUBNETS: too_many_subnets,
+            CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.10/" + ("a" * 300),
+        }
+    )
+    assert errs.get(CONF_ALLOWED_SUBNETS) == "invalid_subnet"
+    assert errs.get(CONF_CUSTOM_LAN_BASE_URL) == "invalid_url"
+
+    # 2. StageDirector _last_try_again_tts_at stays bounded & clears on cancel_active_effects
+    director = StageDirector(
+        None,
+        StageEffectsConfig(
+            enabled=True,
+            only_tv_followed_room=False,
+            speaker_entity="tts.piper",
+            speaker_read_qa=True,
+        ),
+    )
+    director._schedule_tts = lambda _msg, _lang: None  # type: ignore[method-assign]
+    for i in range(90):
+        director.handle_phase_event(
+            {"room_code": f"R{i:03d}", "sub_event": "try_again", "rtl": False, "language": "en"}
+        )
+    assert len(director._last_try_again_tts_at) <= 64
+    director.cancel_active_effects()
+    assert len(director._last_try_again_tts_at) == 0
+
+    class _MockWS:
+        def __init__(self) -> None:
+            self.sent: list[dict[str, Any]] = []
+            self.closed = False
+
+        async def send_json(self, payload: dict[str, Any]) -> None:
+            self.sent.append(payload)
+
+        async def close(self) -> None:
+            self.closed = True
+
+    async def run() -> None:
+        # 3. External scanner probing /quizrooms/admin-panel.js or /quizrooms/sidebar-icon.js gets stealth 302 -> /
+        admin_js_view = QuizRoomsAdminPanelJSView(coord)
+        icon_js_view = QuizRoomsSidebarIconJSView(coord)
+        for view, path in (
+            (admin_js_view, "/quizrooms/admin-panel.js"),
+            (icon_js_view, "/quizrooms/sidebar-icon.js"),
+        ):
+            ext_no_tok = await view.get(FakeRequest(path=path, remote="198.51.100.77"))
+            assert ext_no_tok.status == 302
+            assert ext_no_tok.headers.get("Location") == "/"
+            assert (ext_no_tok.text or "") == ""
+
+            ext_bad_tok = await view.get(
+                FakeRequest(path=path, remote="198.51.100.77", query={"k": "wrong_token"})
+            )
+            assert ext_bad_tok.status == 302
+
+            ext_valid_tok = await view.get(
+                FakeRequest(
+                    path=path,
+                    remote="198.51.100.77",
+                    query={"k": coord.panel_asset_token},
+                )
+            )
+            assert ext_valid_tok.status == 200
+            assert "private" in (ext_valid_tok.headers.get("Cache-Control") or "")
+
+        # 4. Untimed (timer_seconds=0) Early Learner room pause/resume keeps question_ends_at is None
+        kids_room, kids_sess, kids_host = coord.engine.create_room(
+            host_session_token="kids_host_sess",
+            host_nickname="Parent",
+            pack_ids=["kids_animals_en"],
+            round_count=5,
+        )
+        await coord.async_start_game(kids_room.code, host_token=kids_host)
+        assert kids_room.settings.timer_seconds == 0
+        assert kids_room.question_ends_at is None
+        assert len(kids_room.pinned_media) > 0
+        assert len(coord.pack_registry._pinned_media) > 0
+
+        await coord.async_pause_room(kids_room.code, paused=True, host_token=kids_host)
+        assert kids_room.paused is True
+        assert kids_room.remaining_when_paused is None
+        await coord.async_pause_room(kids_room.code, paused=False, host_token=kids_host)
+        assert kids_room.paused is False
+        assert kids_room.question_ends_at is None
+
+        # 5. Rapid wrong taps in Early Learner mode do NOT flood hass.bus (try_again event throttled)
+        ws_view = QuizRoomsWebSocketView(coord)
+        player_ws = _MockWS()
+        player_client = WSClient(
+            ws=player_ws,
+            role="room",
+            room_code=kids_room.code,
+            session_token=kids_sess,
+        )
+        q0 = kids_room.questions[0]
+        wrong_choice = next(c for c in q0.choices if c != q0.answer)
+        fired_events.clear()
+        for _ in range(8):
+            await ws_view._handle_message(
+                player_client,
+                json.dumps({"type": "submit_answer", "code": kids_room.code, "answer": wrong_choice}),
+            )
+        try_again_bus_events = [
+            ev for ev, payload in fired_events
+            if ev == EVENT_PHASE_CHANGED and payload.get("sub_event") == "try_again"
+        ]
+        assert len(try_again_bus_events) == 1
+
+        # 6. Advancing through all 5 rounds to PHASE_FINALE immediately frees pinned media RAM
+        for idx in range(5):
+            await coord.async_next_step(kids_room.code, host_token=kids_host)  # -> reveal
+            await coord.async_next_step(kids_room.code, host_token=kids_host)  # -> next question or finale
+        assert kids_room.phase == PHASE_FINALE
+        assert len(kids_room.pinned_media) == 0
+        assert len(coord.pack_registry._pinned_media) == 0
+
+        # 7. Abusive WS message flood triggers rate_limited and disconnects flooder
+        flood_ws = _MockWS()
+        flood_client = WSClient(ws=flood_ws, role="lobby", client_ip="192.168.1.88")
+        for _ in range(WS_MAX_MESSAGES_PER_WINDOW * 2 + 3):
+            await ws_view._handle_message(flood_client, '{"type":"ping"}')
+        assert any(m.get("code") == "rate_limited" for m in flood_ws.sent)
+        assert flood_ws.closed is True
+
+        await coord.async_shutdown()
+
+    asyncio.run(run())
