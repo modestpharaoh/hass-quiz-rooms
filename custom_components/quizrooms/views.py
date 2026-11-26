@@ -28,13 +28,15 @@ from .const import (
     URL_AVATAR,
     URL_MEDIA,
     URL_PLAY,
+    URL_PREFIX,
     URL_SIDEBAR_ICON_JS,
     URL_TV,
     URL_WS,
+    VERSION,
 )
 from .coordinator import QuizRoomsCoordinator, WSClient
 from .engine import EngineError
-from .network_guard import build_forbidden_response
+from .network_guard import build_forbidden_response, build_stealth_redirect_response
 from .packs import PackValidationError, sample_pack_template
 from .stage_effects import (
     StageEffectError,
@@ -302,11 +304,17 @@ class QuizRoomsAssetsView(_QuizRoomsBaseView):
             return web.Response(status=404)
 
         data, content_type = found
+        query = getattr(request, "query", None) or {}
+        cache_control = (
+            "public, max-age=31536000, immutable"
+            if query.get("v")
+            else "public, max-age=3600"
+        )
         return web.Response(
             body=data,
             headers={
                 "Content-Type": content_type,
-                "Cache-Control": "public, max-age=3600",
+                "Cache-Control": cache_control,
                 "X-Content-Type-Options": "nosniff",
             },
         )
@@ -609,6 +617,22 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
         return ws
 
     async def _handle_message(self, client: WSClient, raw: str) -> None:
+        allowed, should_close = self.coordinator.allow_ws_message(client)
+        if not allowed:
+            try:
+                await client.ws.send_json(
+                    {
+                        "type": "error",
+                        "code": "rate_limited",
+                        "message": "Too many messages sent too quickly. Please slow down.",
+                    }
+                )
+                if should_close:
+                    await client.ws.close()
+            except Exception:
+                pass
+            return
+
         try:
             data = json.loads(raw)
         except json.JSONDecodeError:
@@ -634,7 +658,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     {
                         "type": "lobby_update",
                         "lobby": engine.serialize_public_lobby(),
-                        "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                        "avatars": list_preset_catalog(engine.get_taken_preset_avatars()),
                     }
                 )
                 return
@@ -656,6 +680,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                     bonus_round=data.get("bonus_round"),
+                    kids_mode=data.get("kids_mode"),
+                    kids_try_again=data.get("kids_try_again"),
+                    kids_auto_advance=data.get("kids_auto_advance"),
                 )
                 client.role = "room"
                 client.room_code = room.code
@@ -729,7 +756,7 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     {
                         "type": "lobby_update",
                         "lobby": engine.serialize_public_lobby(),
-                        "packs": [p.to_summary() for p in self.coordinator.pack_registry.list_packs()],
+                        "avatars": list_preset_catalog(engine.get_taken_preset_avatars()),
                     }
                 )
                 return
@@ -751,6 +778,9 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     visibility=data.get("visibility"),
                     allow_late_join=data.get("allow_late_join"),
                     bonus_round=data.get("bonus_round"),
+                    kids_mode=data.get("kids_mode"),
+                    kids_try_again=data.get("kids_try_again"),
+                    kids_auto_advance=data.get("kids_auto_advance"),
                 )
                 await self.coordinator.broadcast_room_state(room.code)
                 await self.coordinator.broadcast_lobby_and_tv()
@@ -786,16 +816,43 @@ class QuizRoomsWebSocketView(_QuizRoomsBaseView):
                     raise EngineError("not_in_room", "Join the room before submitting an answer.")
                 if req_code != bound_code:
                     raise EngineError("room_mismatch", "Socket is bound to a different room.", status_code=403)
-                room, _sub, all_locked = engine.submit_answer(
+                room, sub, all_locked = engine.submit_answer(
                     bound_code,
                     session_token=session_token,
                     answer=str(data.get("answer") or ""),
                     wager=data.get("wager"),
                 )
+                if sub.outcome == "try_again":
+                    cur_q = (
+                        room.questions[room.current_index]
+                        if 0 <= room.current_index < len(room.questions)
+                        else None
+                    )
+                    is_rtl = bool(cur_q.rtl if cur_q is not None else room.pack_rtl)
+                    await client.ws.send_json(
+                        {
+                            "type": "try_again",
+                            "code": room.code,
+                            "answer": sub.answer,
+                            "rtl": is_rtl,
+                            "language": (cur_q.language if cur_q is not None else room.pack_language),
+                            "message": (
+                                "محاولة جميلة! جرّب خياراً آخر!"
+                                if is_rtl
+                                else "Good try! Tap another one!"
+                            ),
+                        }
+                    )
+                    self.coordinator.emit_phase_changed(
+                        room,
+                        sub_event="try_again",
+                        previous_phase=PHASE_QUESTION,
+                    )
+                    return
                 await self.coordinator.broadcast_room_state(room.code)
                 if all_locked:
-                    # Short dramatic beat before auto-reveal (tracked in coordinator._room_timers)
-                    self.coordinator.schedule_auto_reveal(room.code, room.current_index, delay=1.1)
+                    # Crisp beat before auto-reveal (tracked in coordinator._room_timers)
+                    self.coordinator.schedule_auto_reveal(room.code, room.current_index, delay=0.7)
                 return
 
             if msg_type == "next_step":
@@ -872,21 +929,42 @@ def _read_admin_panel_bundle_sync(frontend_dir: Path) -> str:
     return f"{qr_js}\n;\n{panel_js}"
 
 
+def _check_panel_asset_access(
+    request: web.Request, coordinator: QuizRoomsCoordinator
+) -> web.StreamResponse | None:
+    """Allow HA sidebar module assets on LAN/whitelisted IPs, authenticated HA sessions, or valid capability token; stealth-redirect external scanners."""
+    import hmac
+
+    if request.get("hass_user") is not None:
+        return None
+    query = getattr(request, "query", None) or {}
+    provided_key = str(query.get("k") or "").strip()
+    expected_key = getattr(coordinator, "panel_asset_token", "") or ""
+    if provided_key and expected_key and hmac.compare_digest(provided_key, expected_key):
+        return None
+    decision = coordinator.network_guard.evaluate_request(request)
+    if decision.allowed:
+        return None
+    return build_forbidden_response(request, decision)
+
+
 class QuizRoomsAdminPanelJSView(_QuizRoomsBaseView):
     """Serve the HA Sidebar Admin Panel JS module."""
 
     url = URL_ADMIN_PANEL_JS
     name = "quizrooms:admin_panel_js"
-    requires_auth = False  # Browser module import from HA sidebar; all data APIs require HA admin auth
+    requires_auth = False  # Browser module import from HA sidebar; protected via capability token + LAN guard
 
     async def get(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_panel_asset_access(request, self.coordinator):
+            return blocked
         js_text = await self.coordinator.async_run_in_executor(
             _read_admin_panel_bundle_sync, self.coordinator.frontend_dir
         )
         return web.Response(
             text=js_text,
             content_type="application/javascript",
-            headers={"Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff"},
+            headers={"Cache-Control": "private, no-cache", "X-Content-Type-Options": "nosniff"},
         )
 
 
@@ -895,15 +973,17 @@ class QuizRoomsSidebarIconJSView(_QuizRoomsBaseView):
 
     url = URL_SIDEBAR_ICON_JS
     name = "quizrooms:sidebar_icon_js"
-    requires_auth = False  # Loaded globally by HA frontend so sidebar icon renders for all admins
+    requires_auth = False  # Loaded by HA frontend; protected via capability token + LAN guard
 
     async def get(self, request: web.Request) -> web.StreamResponse:
+        if blocked := _check_panel_asset_access(request, self.coordinator):
+            return blocked
         js_path = self.coordinator.frontend_dir / "sidebar-icon.js"
         js_text = await self.coordinator.async_run_in_executor(_read_text_sync, js_path)
         return web.Response(
             text=js_text,
             content_type="application/javascript",
-            headers={"Cache-Control": "public, max-age=3600", "X-Content-Type-Options": "nosniff"},
+            headers={"Cache-Control": "private, max-age=3600", "X-Content-Type-Options": "nosniff"},
         )
 
 
@@ -922,6 +1002,7 @@ class QuizRoomsAdminStateView(_QuizRoomsBaseView):
         stage_available = self.coordinator.is_stage_events_allowed()
         return web.json_response(
             {
+                "version": VERSION,
                 "rooms": self.coordinator.engine.serialize_admin_rooms(),
                 "active_rooms": self.coordinator.engine.active_room_count,
                 "active_players": self.coordinator.engine.active_player_count,
@@ -1076,7 +1157,7 @@ class QuizRoomsAdminPackImportView(_QuizRoomsBaseView):
                 status=err.status_code,
             )
 
-        await self.coordinator.broadcast_lobby_and_tv()
+        await self.coordinator.broadcast_lobby_and_tv(include_packs=True)
         return web.json_response({"ok": True, "pack": pack.to_summary()}, status=201)
 
 
@@ -1131,6 +1212,12 @@ class QuizRoomsAdminPackPreviewView(_QuizRoomsBaseView):
                         "starts_with": q.starts_with,
                         "rtl": q.rtl,
                         "media_url": f"{URL_MEDIA}/{q.media_id}" if q.media_id else None,
+                        "choice_style": q.choice_style,
+                        "choice_media_urls": [
+                            f"{URL_MEDIA}/{mid}" if mid else None for mid in q.choice_media_ids
+                        ],
+                        "choice_colors": list(q.choice_colors),
+                        "spoken_prompt": q.spoken_prompt,
                     }
                     for q in samples
                 ],
@@ -1160,7 +1247,7 @@ class QuizRoomsAdminPackDeleteView(_QuizRoomsBaseView):
             )
 
         self.coordinator.prune_unused_pinned_media()
-        await self.coordinator.broadcast_lobby_and_tv()
+        await self.coordinator.broadcast_lobby_and_tv(include_packs=True)
         return web.json_response({"ok": True, "deleted": pack_id})
 
 
@@ -1319,6 +1406,33 @@ class QuizRoomsAdminStageView(_QuizRoomsBaseView):
             )
 
 
+class QuizRoomsCatchAllView(_QuizRoomsBaseView):
+    """Catch-all for any unknown /quizrooms/<tail> path: stealth-redirect to HA root ('/').
+
+    Registered last so all valid QuizRooms views match first; exact '/quizrooms' is left
+    untouched for Home Assistant's sidebar panel route.
+    """
+
+    url = f"{URL_PREFIX}/{{tail:.+}}"
+    name = "quizrooms:catchall"
+    requires_auth = False
+
+    async def get(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def post(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def put(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def delete(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+    async def head(self, request: web.Request, tail: str = "") -> web.StreamResponse:
+        return build_stealth_redirect_response()
+
+
 def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
     """Register all QuizRooms HTTP and WebSocket views on Home Assistant."""
     views = [
@@ -1342,6 +1456,7 @@ def register_views(hass: Any, coordinator: QuizRoomsCoordinator) -> None:
         QuizRoomsAdminTVView(coordinator),
         QuizRoomsAdminTVOpenView(coordinator),
         QuizRoomsAdminStageView(coordinator),
+        QuizRoomsCatchAllView(coordinator),
     ]
     for view in views:
         hass.http.register_view(view)

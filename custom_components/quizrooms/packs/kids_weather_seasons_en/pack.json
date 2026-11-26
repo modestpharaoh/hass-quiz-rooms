@@ -1,0 +1,766 @@
+{
+  "title": "Weather, Seasons & Sky",
+  "description": "Sun, moon, rain, snow, rainbows, and the four seasons—learn what to wear and spot in the sky!",
+  "age_range": "4-7",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "category": "Early Learner · Weather & Sky",
+  "pack_id": "kids_weather_seasons_en",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "wth_en_01",
+      "prompt": "Tap the Sun!",
+      "spoken_prompt": "Tap the Sun!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sun",
+        "Moon",
+        "Cloud"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/cloud.svg"
+      ],
+      "answer": "Sun",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Sun!",
+      "explanation": "That picture shows Sun."
+    },
+    {
+      "id": "wth_en_02",
+      "prompt": "Tap the Moon!",
+      "spoken_prompt": "Tap the Moon!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Moon",
+        "Sun",
+        "Star"
+      ],
+      "choice_images": [
+        "media/moon.svg",
+        "media/sun.svg",
+        "media/star.svg"
+      ],
+      "answer": "Moon",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Moon!",
+      "explanation": "That picture shows Moon."
+    },
+    {
+      "id": "wth_en_03",
+      "prompt": "Tap the Star!",
+      "spoken_prompt": "Tap the Star!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Star",
+        "Cloud",
+        "Rain"
+      ],
+      "choice_images": [
+        "media/star.svg",
+        "media/cloud.svg",
+        "media/rain.svg"
+      ],
+      "answer": "Star",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Star!",
+      "explanation": "That picture shows Star."
+    },
+    {
+      "id": "wth_en_04",
+      "prompt": "Tap the Cloud!",
+      "spoken_prompt": "Tap the Cloud!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cloud",
+        "Sun",
+        "Snow"
+      ],
+      "choice_images": [
+        "media/cloud.svg",
+        "media/sun.svg",
+        "media/snow.svg"
+      ],
+      "answer": "Cloud",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Cloud!",
+      "explanation": "That picture shows Cloud."
+    },
+    {
+      "id": "wth_en_05",
+      "prompt": "Tap the Rain!",
+      "spoken_prompt": "Tap the Rain!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rain",
+        "Sun",
+        "Wind"
+      ],
+      "choice_images": [
+        "media/rain.svg",
+        "media/sun.svg",
+        "media/wind.svg"
+      ],
+      "answer": "Rain",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Rain!",
+      "explanation": "That picture shows Rain."
+    },
+    {
+      "id": "wth_en_06",
+      "prompt": "Tap the Snow!",
+      "spoken_prompt": "Tap the Snow!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Snow",
+        "Rain",
+        "Rainbow"
+      ],
+      "choice_images": [
+        "media/snow.svg",
+        "media/rain.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "Snow",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Snow!",
+      "explanation": "That picture shows Snow."
+    },
+    {
+      "id": "wth_en_07",
+      "prompt": "Tap the Rainbow!",
+      "spoken_prompt": "Tap the Rainbow!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rainbow",
+        "Cloud",
+        "Lightning"
+      ],
+      "choice_images": [
+        "media/rainbow.svg",
+        "media/cloud.svg",
+        "media/lightning.svg"
+      ],
+      "answer": "Rainbow",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Rainbow!",
+      "explanation": "That picture shows Rainbow."
+    },
+    {
+      "id": "wth_en_08",
+      "prompt": "Tap the Wind!",
+      "spoken_prompt": "Tap the Wind!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Wind",
+        "Sun",
+        "Moon"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/sun.svg",
+        "media/moon.svg"
+      ],
+      "answer": "Wind",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Wind!",
+      "explanation": "That picture shows Wind."
+    },
+    {
+      "id": "wth_en_09",
+      "prompt": "Tap the Umbrella!",
+      "spoken_prompt": "Tap the Umbrella!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Umbrella",
+        "Sunglasses",
+        "Coat"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/coat.svg"
+      ],
+      "answer": "Umbrella",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Umbrella!",
+      "explanation": "That picture shows Umbrella."
+    },
+    {
+      "id": "wth_en_10",
+      "prompt": "Tap the Sunglasses!",
+      "spoken_prompt": "Tap the Sunglasses!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sunglasses",
+        "Coat",
+        "Umbrella"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "Sunglasses",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Sunglasses!",
+      "explanation": "That picture shows Sunglasses."
+    },
+    {
+      "id": "wth_en_11",
+      "prompt": "Tap the Winter Coat!",
+      "spoken_prompt": "Tap the Winter Coat!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Winter Coat",
+        "Sunglasses",
+        "Umbrella"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "Winter Coat",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Winter Coat!",
+      "explanation": "That picture shows Winter Coat."
+    },
+    {
+      "id": "wth_en_12",
+      "prompt": "Tap the Lightning!",
+      "spoken_prompt": "Tap the Lightning!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lightning",
+        "Rainbow",
+        "Star"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/rainbow.svg",
+        "media/star.svg"
+      ],
+      "answer": "Lightning",
+      "difficulty": "easy",
+      "reveal_message": "Yay! That's the Lightning!",
+      "explanation": "That picture shows Lightning."
+    },
+    {
+      "id": "wth_en_13",
+      "prompt": "What shines bright and warm in the daytime sky?",
+      "spoken_prompt": "What shines bright and warm in the daytime sky?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sun",
+        "Moon",
+        "Snow"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/snow.svg"
+      ],
+      "answer": "Sun",
+      "difficulty": "medium",
+      "reveal_message": "Super! Sun!",
+      "explanation": "The answer is Sun."
+    },
+    {
+      "id": "wth_en_14",
+      "prompt": "What glows in the night sky with the stars?",
+      "spoken_prompt": "What glows in the night sky with the stars?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Moon",
+        "Sun",
+        "Rainbow"
+      ],
+      "choice_images": [
+        "media/moon.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "Moon",
+      "difficulty": "medium",
+      "reveal_message": "Super! Moon!",
+      "explanation": "The answer is Moon."
+    },
+    {
+      "id": "wth_en_15",
+      "prompt": "What do you hold over your head when it rains?",
+      "spoken_prompt": "What do you hold over your head when it rains?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Umbrella",
+        "Sunglasses",
+        "Star"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/star.svg"
+      ],
+      "answer": "Umbrella",
+      "difficulty": "medium",
+      "reveal_message": "Super! Umbrella!",
+      "explanation": "The answer is Umbrella."
+    },
+    {
+      "id": "wth_en_16",
+      "prompt": "What do you wear on your eyes on a sunny beach day?",
+      "spoken_prompt": "What do you wear on your eyes on a sunny beach day?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sunglasses",
+        "Winter Coat",
+        "Umbrella"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "Sunglasses",
+      "difficulty": "medium",
+      "reveal_message": "Super! Sunglasses!",
+      "explanation": "The answer is Sunglasses."
+    },
+    {
+      "id": "wth_en_17",
+      "prompt": "What keeps you cozy warm in snowy winter?",
+      "spoken_prompt": "What keeps you cozy warm in snowy winter?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Winter Coat",
+        "Sunglasses",
+        "Wind"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/wind.svg"
+      ],
+      "answer": "Winter Coat",
+      "difficulty": "medium",
+      "reveal_message": "Super! Winter Coat!",
+      "explanation": "The answer is Winter Coat."
+    },
+    {
+      "id": "wth_en_18",
+      "prompt": "What colorful arch appears after rain and sun?",
+      "spoken_prompt": "What colorful arch appears after rain and sun?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rainbow",
+        "Lightning",
+        "Moon"
+      ],
+      "choice_images": [
+        "media/rainbow.svg",
+        "media/lightning.svg",
+        "media/moon.svg"
+      ],
+      "answer": "Rainbow",
+      "difficulty": "medium",
+      "reveal_message": "Super! Rainbow!",
+      "explanation": "The answer is Rainbow."
+    },
+    {
+      "id": "wth_en_19",
+      "prompt": "What falls from clouds to help flowers grow?",
+      "spoken_prompt": "What falls from clouds to help flowers grow?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rain",
+        "Star",
+        "Sunglasses"
+      ],
+      "choice_images": [
+        "media/rain.svg",
+        "media/star.svg",
+        "media/sunglasses.svg"
+      ],
+      "answer": "Rain",
+      "difficulty": "medium",
+      "reveal_message": "Super! Rain!",
+      "explanation": "The answer is Rain."
+    },
+    {
+      "id": "wth_en_20",
+      "prompt": "What cold white flakes do we use to build a snowman?",
+      "spoken_prompt": "What cold white flakes do we use to build a snowman?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Snow",
+        "Sun",
+        "Rainbow"
+      ],
+      "choice_images": [
+        "media/snow.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "Snow",
+      "difficulty": "medium",
+      "reveal_message": "Super! Snow!",
+      "explanation": "The answer is Snow."
+    },
+    {
+      "id": "wth_en_21",
+      "prompt": "What blows kites high into the air?",
+      "spoken_prompt": "What blows kites high into the air?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Wind",
+        "Moon",
+        "Coat"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/moon.svg",
+        "media/coat.svg"
+      ],
+      "answer": "Wind",
+      "difficulty": "medium",
+      "reveal_message": "Super! Wind!",
+      "explanation": "The answer is Wind."
+    },
+    {
+      "id": "wth_en_22",
+      "prompt": "What bright flash lights up the sky during a storm?",
+      "spoken_prompt": "What bright flash lights up the sky during a storm?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lightning",
+        "Sun",
+        "Rainbow"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "Lightning",
+      "difficulty": "medium",
+      "reveal_message": "Super! Lightning!",
+      "explanation": "The answer is Lightning."
+    },
+    {
+      "id": "wth_en_23",
+      "prompt": "What fluffy white puffs float across the sky?",
+      "spoken_prompt": "What fluffy white puffs float across the sky?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cloud",
+        "Umbrella",
+        "Star"
+      ],
+      "choice_images": [
+        "media/cloud.svg",
+        "media/umbrella.svg",
+        "media/star.svg"
+      ],
+      "answer": "Cloud",
+      "difficulty": "medium",
+      "reveal_message": "Super! Cloud!",
+      "explanation": "The answer is Cloud."
+    },
+    {
+      "id": "wth_en_24",
+      "prompt": "What twinkles like tiny diamonds at night?",
+      "spoken_prompt": "What twinkles like tiny diamonds at night?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Star",
+        "Rain",
+        "Coat"
+      ],
+      "choice_images": [
+        "media/star.svg",
+        "media/rain.svg",
+        "media/coat.svg"
+      ],
+      "answer": "Star",
+      "difficulty": "medium",
+      "reveal_message": "Super! Star!",
+      "explanation": "The answer is Star."
+    },
+    {
+      "id": "wth_en_25",
+      "prompt": "Which season is the HOTTEST for swimming?",
+      "spoken_prompt": "Which season is the HOTTEST for swimming?",
+      "choice_style": "default",
+      "choices": [
+        "Summer",
+        "Winter",
+        "Autumn"
+      ],
+      "answer": "Summer",
+      "difficulty": "medium",
+      "reveal_message": "Super! Summer!",
+      "explanation": "The answer is Summer."
+    },
+    {
+      "id": "wth_en_26",
+      "prompt": "Which season is the COLDEST with snow?",
+      "spoken_prompt": "Which season is the COLDEST with snow?",
+      "choice_style": "default",
+      "choices": [
+        "Winter",
+        "Summer",
+        "Spring"
+      ],
+      "answer": "Winter",
+      "difficulty": "medium",
+      "reveal_message": "Super! Winter!",
+      "explanation": "The answer is Winter."
+    },
+    {
+      "id": "wth_en_27",
+      "prompt": "In which season do flowers bloom everywhere?",
+      "spoken_prompt": "In which season do flowers bloom everywhere?",
+      "choice_style": "default",
+      "choices": [
+        "Spring",
+        "Winter",
+        "Autumn"
+      ],
+      "answer": "Spring",
+      "difficulty": "medium",
+      "reveal_message": "Super! Spring!",
+      "explanation": "The answer is Spring."
+    },
+    {
+      "id": "wth_en_28",
+      "prompt": "In which season do leaves turn orange and fall?",
+      "spoken_prompt": "In which season do leaves turn orange and fall?",
+      "choice_style": "default",
+      "choices": [
+        "Autumn",
+        "Summer",
+        "Spring"
+      ],
+      "answer": "Autumn",
+      "difficulty": "medium",
+      "reveal_message": "Super! Autumn!",
+      "explanation": "The answer is Autumn."
+    },
+    {
+      "id": "wth_en_29",
+      "prompt": "How many seasons are in one year?",
+      "spoken_prompt": "How many seasons are in one year?",
+      "choice_style": "default",
+      "choices": [
+        "4",
+        "2",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "reveal_message": "Super! 4!",
+      "explanation": "The answer is 4."
+    },
+    {
+      "id": "wth_en_30",
+      "prompt": "What makes a loud BOOM right after lightning?",
+      "spoken_prompt": "What makes a loud BOOM right after lightning?",
+      "choice_style": "default",
+      "choices": [
+        "Thunder",
+        "Snow",
+        "Wind"
+      ],
+      "answer": "Thunder",
+      "difficulty": "hard",
+      "reveal_message": "Super! Thunder!",
+      "explanation": "The answer is Thunder."
+    },
+    {
+      "id": "wth_en_31",
+      "prompt": "What do you need to make a rainbow?",
+      "spoken_prompt": "What do you need to make a rainbow?",
+      "choice_style": "default",
+      "choices": [
+        "Sun and Rain",
+        "Moon and Snow",
+        "Wind and Night"
+      ],
+      "answer": "Sun and Rain",
+      "difficulty": "hard",
+      "reveal_message": "Super! Sun and Rain!",
+      "explanation": "The answer is Sun and Rain."
+    },
+    {
+      "id": "wth_en_32",
+      "prompt": "Which season comes right after Winter?",
+      "spoken_prompt": "Which season comes right after Winter?",
+      "choice_style": "default",
+      "choices": [
+        "Spring",
+        "Autumn",
+        "Summer"
+      ],
+      "answer": "Spring",
+      "difficulty": "hard",
+      "reveal_message": "Super! Spring!",
+      "explanation": "The answer is Spring."
+    },
+    {
+      "id": "wth_en_33",
+      "prompt": "Which season comes right after Summer?",
+      "spoken_prompt": "Which season comes right after Summer?",
+      "choice_style": "default",
+      "choices": [
+        "Autumn",
+        "Spring",
+        "Winter"
+      ],
+      "answer": "Autumn",
+      "difficulty": "hard",
+      "reveal_message": "Super! Autumn!",
+      "explanation": "The answer is Autumn."
+    },
+    {
+      "id": "wth_en_34",
+      "prompt": "When water freezes super cold, it becomes ___.",
+      "spoken_prompt": "When water freezes super cold, it becomes ___.",
+      "choice_style": "default",
+      "choices": [
+        "Ice",
+        "Wind",
+        "Cloud"
+      ],
+      "answer": "Ice",
+      "difficulty": "hard",
+      "reveal_message": "Super! Ice!",
+      "explanation": "The answer is Ice."
+    },
+    {
+      "id": "wth_en_35",
+      "prompt": "Which sky object is actually a giant glowing star?",
+      "spoken_prompt": "Which sky object is actually a giant glowing star?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sun",
+        "Moon",
+        "Cloud"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/cloud.svg"
+      ],
+      "answer": "Sun",
+      "difficulty": "hard",
+      "reveal_message": "Super! Sun!",
+      "explanation": "The answer is Sun."
+    },
+    {
+      "id": "wth_en_36",
+      "prompt": "Which weather is best for flying a kite?",
+      "spoken_prompt": "Which weather is best for flying a kite?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Wind",
+        "Lightning",
+        "Snow"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/lightning.svg",
+        "media/snow.svg"
+      ],
+      "answer": "Wind",
+      "difficulty": "hard",
+      "reveal_message": "Super! Wind!",
+      "explanation": "The answer is Wind."
+    },
+    {
+      "id": "wth_en_37",
+      "prompt": "Which item protects you from getting wet?",
+      "spoken_prompt": "Which item protects you from getting wet?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Umbrella",
+        "Sunglasses",
+        "Star"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/star.svg"
+      ],
+      "answer": "Umbrella",
+      "difficulty": "hard",
+      "reveal_message": "Super! Umbrella!",
+      "explanation": "The answer is Umbrella."
+    },
+    {
+      "id": "wth_en_38",
+      "prompt": "When should you stay safely indoors?",
+      "spoken_prompt": "When should you stay safely indoors?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lightning",
+        "Rainbow",
+        "Sun"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/rainbow.svg",
+        "media/sun.svg"
+      ],
+      "answer": "Lightning",
+      "difficulty": "hard",
+      "reveal_message": "Super! Lightning!",
+      "explanation": "The answer is Lightning."
+    },
+    {
+      "id": "wth_en_39",
+      "prompt": "In summer, we wear light shirts and ___.",
+      "spoken_prompt": "In summer, we wear light shirts and ___.",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sunglasses",
+        "Winter Coat",
+        "Snow"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/snow.svg"
+      ],
+      "answer": "Sunglasses",
+      "difficulty": "hard",
+      "reveal_message": "Super! Sunglasses!",
+      "explanation": "The answer is Sunglasses."
+    },
+    {
+      "id": "wth_en_40",
+      "prompt": "In winter, we wear gloves, a hat, and a ___.",
+      "spoken_prompt": "In winter, we wear gloves, a hat, and a ___.",
+      "choice_style": "image_grid",
+      "choices": [
+        "Winter Coat",
+        "Sunglasses",
+        "Rainbow"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "Winter Coat",
+      "difficulty": "hard",
+      "reveal_message": "Super! Winter Coat!",
+      "explanation": "The answer is Winter Coat."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

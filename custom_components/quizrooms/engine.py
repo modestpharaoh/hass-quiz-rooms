@@ -25,6 +25,7 @@ from .const import (
     ALLOWED_WAGER_MODES,
     ANSWER_MODE_FREE_TEXT,
     ANSWER_MODE_MULTIPLE_CHOICE,
+    AUDIENCE_KIDS,
     BONUS_WAGER_OPTIONS,
     DEFAULT_BONUS_ROUND,
     DEFAULT_DIFFICULTY,
@@ -56,6 +57,7 @@ from .const import (
     URL_MEDIA,
     VISIBILITY_PUBLIC,
     WAGER_MODE_FREE,
+    WAGER_MODE_NONE,
     WAGER_MODE_POOL,
 )
 from .models import (
@@ -268,6 +270,9 @@ class QuizEngine:
         visibility: str | None,
         allow_late_join: bool | None,
         bonus_round: bool | None = None,
+        kids_mode: bool | None = None,
+        kids_try_again: bool | None = None,
+        kids_auto_advance: bool | None = None,
         fallback_code: str,
     ) -> tuple[RoomSettings, list[str], str, bool, str | None]:
         all_packs = self.pack_registry.list_packs()
@@ -286,7 +291,27 @@ class QuizEngine:
         if total_available == 0:
             raise EngineError("empty_pack", "Selected packs contain no questions.")
 
-        r_count = DEFAULT_ROUND_COUNT if round_count is None else int(round_count)
+        all_kids_packs = bool(selected_packs) and all(p.audience == AUDIENCE_KIDS for p in selected_packs)
+        enable_kids = all_kids_packs if kids_mode is None else bool(kids_mode)
+        enable_kids_try_again = (
+            enable_kids if kids_try_again is None else (enable_kids and bool(kids_try_again))
+        )
+        enable_kids_auto_advance = (
+            False if kids_auto_advance is None else (enable_kids and bool(kids_auto_advance))
+        )
+
+        if isinstance(round_count, bool):
+            raise EngineError(
+                "invalid_round_count",
+                f"Rounds must be a multiple of {ROUND_COUNT_STEP} between {MIN_ROUND_COUNT} and {MAX_ROUND_COUNT}.",
+            )
+        try:
+            r_count = DEFAULT_ROUND_COUNT if round_count is None else int(round_count)
+        except (TypeError, ValueError) as err:
+            raise EngineError(
+                "invalid_round_count",
+                f"Rounds must be a multiple of {ROUND_COUNT_STEP} between {MIN_ROUND_COUNT} and {MAX_ROUND_COUNT}.",
+            ) from err
         if total_available < MIN_ROUND_COUNT:
             # Small custom packs (< 5 questions) play all available questions cleanly
             r_count = max(1, min(r_count, total_available))
@@ -300,7 +325,19 @@ class QuizEngine:
             max_multiple = (min(total_available, MAX_ROUND_COUNT) // ROUND_COUNT_STEP) * ROUND_COUNT_STEP
             r_count = min(r_count, max(MIN_ROUND_COUNT, max_multiple))
 
-        t_sec = DEFAULT_TIMER_SECONDS if timer_seconds is None else int(timer_seconds)
+        default_t = 0 if enable_kids else DEFAULT_TIMER_SECONDS
+        if isinstance(timer_seconds, bool):
+            raise EngineError(
+                "invalid_timer",
+                f"Timer must be one of {ALLOWED_TIMERS} seconds.",
+            )
+        try:
+            t_sec = default_t if timer_seconds is None else int(timer_seconds)
+        except (TypeError, ValueError) as err:
+            raise EngineError(
+                "invalid_timer",
+                f"Timer must be one of {ALLOWED_TIMERS} seconds.",
+            ) from err
         if t_sec not in ALLOWED_TIMERS:
             raise EngineError(
                 "invalid_timer",
@@ -311,18 +348,26 @@ class QuizEngine:
             p.open_ended or any(q.open_ended for q in p.questions) for p in selected_packs
         )
 
-        a_mode = answer_mode or (ANSWER_MODE_FREE_TEXT if has_open_ended else ANSWER_MODE_MULTIPLE_CHOICE)
-        if a_mode not in ALLOWED_ANSWER_MODES:
-            raise EngineError("invalid_answer_mode", f"Invalid answer mode '{a_mode}'.")
-        if has_open_ended:
-            a_mode = ANSWER_MODE_FREE_TEXT
+        if enable_kids:
+            a_mode = ANSWER_MODE_MULTIPLE_CHOICE
+            w_mode = WAGER_MODE_NONE
+            deduct_wrong = False
+            unique_only = False
+            enable_bonus = False
+        else:
+            a_mode = answer_mode or (ANSWER_MODE_FREE_TEXT if has_open_ended else ANSWER_MODE_MULTIPLE_CHOICE)
+            if a_mode not in ALLOWED_ANSWER_MODES:
+                raise EngineError("invalid_answer_mode", f"Invalid answer mode '{a_mode}'.")
+            if has_open_ended:
+                a_mode = ANSWER_MODE_FREE_TEXT
 
-        w_mode = wager_mode or WAGER_MODE_POOL
-        if w_mode not in ALLOWED_WAGER_MODES:
-            raise EngineError("invalid_wager_mode", f"Invalid wager mode '{w_mode}'.")
+            w_mode = wager_mode or WAGER_MODE_POOL
+            if w_mode not in ALLOWED_WAGER_MODES:
+                raise EngineError("invalid_wager_mode", f"Invalid wager mode '{w_mode}'.")
 
-        deduct_wrong = True if deduct_wrong_wager is None else bool(deduct_wrong_wager)
-        unique_only = has_open_ended if unique_answers_only is None else bool(unique_answers_only)
+            deduct_wrong = True if deduct_wrong_wager is None else bool(deduct_wrong_wager)
+            unique_only = has_open_ended if unique_answers_only is None else bool(unique_answers_only)
+            enable_bonus = DEFAULT_BONUS_ROUND if bonus_round is None else bool(bonus_round)
 
         diff = (difficulty or DEFAULT_DIFFICULTY).strip().lower()
         if diff not in ALLOWED_ROOM_DIFFICULTIES:
@@ -336,7 +381,6 @@ class QuizEngine:
             raise EngineError("invalid_visibility", f"Invalid visibility '{vis}'.")
 
         late_join = True if allow_late_join is None else bool(allow_late_join)
-        enable_bonus = DEFAULT_BONUS_ROUND if bonus_round is None else bool(bonus_round)
 
         pack_titles = [p.title for p in selected_packs]
         default_name = pack_titles[0] if len(pack_titles) == 1 else f"Mix ({len(pack_titles)} Packs)"
@@ -365,6 +409,9 @@ class QuizEngine:
             visibility=vis,
             allow_late_join=late_join,
             bonus_round=enable_bonus,
+            kids_mode=enable_kids,
+            kids_try_again=enable_kids_try_again,
+            kids_auto_advance=enable_kids_auto_advance,
         )
         return settings, pack_titles, primary_lang, primary_rtl, cover_url
 
@@ -386,6 +433,9 @@ class QuizEngine:
         visibility: str | None = None,
         allow_late_join: bool | None = None,
         bonus_round: bool | None = None,
+        kids_mode: bool | None = None,
+        kids_try_again: bool | None = None,
+        kids_auto_advance: bool | None = None,
     ) -> tuple[Room, str, str]:
         """Create a new room if under max_rooms and session isn't already hosting.
 
@@ -424,6 +474,9 @@ class QuizEngine:
             visibility=visibility,
             allow_late_join=allow_late_join,
             bonus_round=bonus_round,
+            kids_mode=kids_mode,
+            kids_try_again=kids_try_again,
+            kids_auto_advance=kids_auto_advance,
             fallback_code=code,
         )
 
@@ -491,6 +544,9 @@ class QuizEngine:
         visibility: str | None = None,
         allow_late_join: bool | None = None,
         bonus_round: bool | None = None,
+        kids_mode: bool | None = None,
+        kids_try_again: bool | None = None,
+        kids_auto_advance: bool | None = None,
     ) -> Room:
         """Update settings while the room is in Lobby."""
         room = self._require_room(code)
@@ -516,6 +572,11 @@ class QuizEngine:
             visibility=visibility if visibility is not None else cur.visibility,
             allow_late_join=allow_late_join if allow_late_join is not None else cur.allow_late_join,
             bonus_round=bonus_round if bonus_round is not None else cur.bonus_round,
+            kids_mode=kids_mode if kids_mode is not None else cur.kids_mode,
+            kids_try_again=kids_try_again if kids_try_again is not None else cur.kids_try_again,
+            kids_auto_advance=(
+                kids_auto_advance if kids_auto_advance is not None else cur.kids_auto_advance
+            ),
             fallback_code=room.code,
         )
         room.settings = settings
@@ -668,8 +729,19 @@ class QuizEngine:
                 continue
             pack_titles.append(pack.title)
             for q in pack.questions:
-                choices_list = list(q.choices)
-                self._rng.shuffle(choices_list)
+                order = list(range(len(q.choices)))
+                self._rng.shuffle(order)
+                choices_list = [q.choices[i] for i in order]
+                choice_mids = (
+                    tuple(q.choice_media_ids[i] for i in order)
+                    if len(q.choice_media_ids) == len(q.choices)
+                    else ()
+                )
+                choice_cols = (
+                    tuple(q.choice_colors[i] for i in order)
+                    if len(q.choice_colors) == len(q.choices)
+                    else ()
+                )
                 pool.append(
                     SnapshotQuestion(
                         id=q.id,
@@ -685,6 +757,11 @@ class QuizEngine:
                         open_ended=q.open_ended,
                         starts_with=q.starts_with,
                         difficulty=q.difficulty,
+                        choice_style=q.choice_style,
+                        choice_media_ids=choice_mids,
+                        choice_colors=choice_cols,
+                        spoken_prompt=q.spoken_prompt,
+                        reveal_message=q.reveal_message,
                     )
                 )
 
@@ -711,6 +788,8 @@ class QuizEngine:
         # Pin snapshot media bytes so active games survive admin pack deletion
         if pin_media:
             needed_media = {q.media_id for q in room.questions if q.media_id}
+            for q in room.questions:
+                needed_media.update(mid for mid in q.choice_media_ids if mid)
             room.pinned_media = self.pack_registry.pin_media_for_room(needed_media)
         else:
             room.pinned_media = {}
@@ -744,7 +823,9 @@ class QuizEngine:
         room.phase = PHASE_QUESTION
         room.current_submissions = {}
         room.question_started_at = now
-        room.question_ends_at = now + room.settings.timer_seconds
+        room.question_ends_at = (
+            (now + room.settings.timer_seconds) if room.settings.timer_seconds > 0 else None
+        )
         room.remaining_when_paused = None
         room.paused = False
         room.last_activity = now
@@ -833,8 +914,26 @@ class QuizEngine:
             if clean_answer not in question.choices:
                 raise EngineError("invalid_choice", "Submitted choice is not valid for this question.")
 
-        # Validate wager: bonus round strictly enforces pre-locked blind wager (or min option for late joiners)
-        if question.is_bonus:
+        # Kids Mode gentle "Try Again": wrong tap does not lock submission or reveal answer
+        if room.settings.kids_mode and room.settings.kids_try_again:
+            is_right_now = normalize_answer(clean_answer) == normalize_answer(question.answer)
+            if not is_right_now:
+                now = self._now()
+                room.last_activity = now
+                retry_sub = PlayerSubmission(
+                    answer=clean_answer,
+                    wager=1,
+                    submitted_at=now,
+                    is_correct=False,
+                    delta=0,
+                    outcome="try_again",
+                )
+                return room, retry_sub, False
+
+        # Validate wager: bonus round enforces blind wager; kids/no-wager mode always awards 1 star
+        if room.settings.wager_mode == WAGER_MODE_NONE:
+            chosen_wager = 1
+        elif question.is_bonus:
             bonus_opts = self._bonus_wager_options(room)
             chosen_wager = room.bonus_wagers.setdefault(session_token, bonus_opts[0])
         elif wager is None:
@@ -892,8 +991,11 @@ class QuizEngine:
         for token, player in room.players.items():
             sub = room.current_submissions.get(token)
             if sub is None:
-                # Timer expired without answer -> consume lowest available chip (or min bonus wager)
-                if question.is_bonus:
+                # Timer expired without answer -> consume lowest available chip (or 0 in no-wager Kids Mode)
+                if room.settings.wager_mode == WAGER_MODE_NONE:
+                    default_wager = 1
+                    timeout_delta = 0
+                elif question.is_bonus:
                     bonus_opts = self._bonus_wager_options(room)
                     default_wager = room.bonus_wagers.get(token, bonus_opts[0])
                     timeout_delta = -default_wager
@@ -911,7 +1013,11 @@ class QuizEngine:
                 room.current_submissions[token] = sub
                 player.score += timeout_delta
                 player.streak = 0
-                if not question.is_bonus and default_wager in player.available_wagers:
+                if (
+                    room.settings.wager_mode != WAGER_MODE_NONE
+                    and not question.is_bonus
+                    and default_wager in player.available_wagers
+                ):
                     player.available_wagers.remove(default_wager)
             else:
                 dup_key = canonical_duplicate_key(sub.answer)
@@ -945,9 +1051,12 @@ class QuizEngine:
                     sub.outcome = "correct" if correct else "wrong"
                     sub.duplicate_reason = ""
 
-                deduct_wrong = True if question.is_bonus else room.settings.deduct_wrong_wager
-                wrong_delta = -sub.wager if deduct_wrong else 0
-                sub.delta = sub.wager if correct else wrong_delta
+                if room.settings.wager_mode == WAGER_MODE_NONE:
+                    sub.delta = 1 if correct else 0
+                else:
+                    deduct_wrong = True if question.is_bonus else room.settings.deduct_wrong_wager
+                    wrong_delta = -sub.wager if deduct_wrong else 0
+                    sub.delta = sub.wager if correct else wrong_delta
                 player.score += sub.delta
                 player.answered_count += 1
                 player.total_wagered += sub.wager
@@ -959,7 +1068,11 @@ class QuizEngine:
                 else:
                     player.streak = 0
 
-                if not question.is_bonus and sub.wager in player.available_wagers:
+                if (
+                    room.settings.wager_mode != WAGER_MODE_NONE
+                    and not question.is_bonus
+                    and sub.wager in player.available_wagers
+                ):
                     player.available_wagers.remove(sub.wager)
 
             outcomes.append(
@@ -993,6 +1106,7 @@ class QuizEngine:
             "correct_answer": question.answer,
             "aliases": list(question.aliases),
             "explanation": question.explanation,
+            "reveal_message": question.reveal_message,
             "language": question.language,
             "rtl": question.rtl,
             "open_ended": question.open_ended,
@@ -1127,6 +1241,7 @@ class QuizEngine:
 
             room.status = ROOM_STATUS_FINISHED
             room.phase = PHASE_FINALE
+            room.pinned_media.clear()
             room.last_activity = self._now()
             return room
 
@@ -1148,18 +1263,24 @@ class QuizEngine:
         now = self._now()
 
         if room.phase == PHASE_QUESTION:
+            is_untimed = room.settings.timer_seconds <= 0
             if target_paused and not room.paused:
-                remaining = max(0.0, (room.question_ends_at or now) - now)
-                room.remaining_when_paused = remaining
+                if is_untimed or room.question_ends_at is None:
+                    room.remaining_when_paused = None
+                else:
+                    room.remaining_when_paused = max(0.0, room.question_ends_at - now)
                 room.question_ends_at = None
                 room.paused = True
             elif not target_paused and room.paused:
-                remaining = (
-                    room.remaining_when_paused
-                    if room.remaining_when_paused is not None
-                    else float(room.settings.timer_seconds)
-                )
-                room.question_ends_at = now + max(1.0, remaining)
+                if is_untimed:
+                    room.question_ends_at = None
+                else:
+                    remaining = (
+                        room.remaining_when_paused
+                        if room.remaining_when_paused is not None
+                        else float(room.settings.timer_seconds)
+                    )
+                    room.question_ends_at = now + max(1.0, remaining)
                 room.remaining_when_paused = None
                 room.paused = False
         else:
@@ -1292,10 +1413,29 @@ class QuizEngine:
         return rows
 
     def build_awards(self, room: Room) -> list[dict[str, Any]]:
-        """Compute finale superlative awards."""
+        """Compute finale superlative awards (or joyful All-Star badges in Kids Mode)."""
         players = list(room.players.values())
         if not players:
             return []
+
+        if room.settings.kids_mode:
+            kid_badges = [
+                ("super_star", "Super Star ⭐"),
+                ("bright_explorer", "Bright Explorer 🌟"),
+                ("awesome_helper", "Awesome Learner 🌈"),
+                ("happy_spark", "Happy Spark ✨"),
+            ]
+            ordered = sorted(players, key=lambda p: (-p.score, p.joined_at))
+            return [
+                {
+                    "id": kid_badges[idx % len(kid_badges)][0],
+                    "title": kid_badges[idx % len(kid_badges)][1],
+                    "subtitle": f"⭐ {p.score} star{'' if p.score == 1 else 's'} earned!",
+                    "nickname": p.nickname,
+                    "avatar_url": avatar_to_url(p.avatar),
+                }
+                for idx, p in enumerate(ordered)
+            ]
 
         awards: list[dict[str, Any]] = []
         active_wagerers = [p for p in players if p.answered_count > 0]
@@ -1391,6 +1531,7 @@ class QuizEngine:
                     "unique_answers_only": room.settings.unique_answers_only,
                     "difficulty": room.settings.difficulty,
                     "bonus_round": room.settings.bonus_round,
+                    "kids_mode": room.settings.kids_mode,
                     "top_players": [
                         {
                             "nickname": row["nickname"],
@@ -1429,6 +1570,7 @@ class QuizEngine:
                     "unique_answers_only": room.settings.unique_answers_only,
                     "difficulty": room.settings.difficulty,
                     "bonus_round": room.settings.bonus_round,
+                    "kids_mode": room.settings.kids_mode,
                     "player_count": len(room.players),
                     "connected_count": sum(1 for p in room.players.values() if p.connected),
                     "players": [
@@ -1485,6 +1627,18 @@ class QuizEngine:
                 "choices": list(q.choices)
                 if (room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not q.open_ended)
                 else [],
+                "choice_style": q.choice_style,
+                "choice_media_urls": (
+                    [f"{URL_MEDIA}/{mid}" if mid else None for mid in q.choice_media_ids]
+                    if (room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not q.open_ended)
+                    else []
+                ),
+                "choice_colors": (
+                    list(q.choice_colors)
+                    if (room.settings.answer_mode == ANSWER_MODE_MULTIPLE_CHOICE and not q.open_ended)
+                    else []
+                ),
+                "spoken_prompt": q.spoken_prompt,
                 "open_ended": q.open_ended,
                 "starts_with": q.starts_with,
                 "difficulty": q.difficulty,
@@ -1596,6 +1750,9 @@ class QuizEngine:
                 "allow_late_join": room.settings.allow_late_join,
                 "bonus_round": room.settings.bonus_round,
                 "bonus_wager_options": list(bonus_opts),
+                "kids_mode": room.settings.kids_mode,
+                "kids_try_again": room.settings.kids_try_again,
+                "kids_auto_advance": room.settings.kids_auto_advance,
             },
             "cover_url": room.cover_url,
             "language": room.pack_language,

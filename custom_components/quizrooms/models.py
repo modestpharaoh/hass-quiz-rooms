@@ -8,6 +8,8 @@ from typing import Any
 
 from .const import (
     ANSWER_MODE_MULTIPLE_CHOICE,
+    AUDIENCE_GENERAL,
+    CHOICE_STYLE_DEFAULT,
     DEFAULT_DIFFICULTY,
     DEFAULT_ROUND_COUNT,
     DEFAULT_TIMER_SECONDS,
@@ -52,6 +54,12 @@ class Question:
     starts_with: str | None = None
     difficulty: str = DIFFICULTY_MEDIUM
     is_bonus: bool = False
+    choice_style: str = CHOICE_STYLE_DEFAULT
+    choice_images: tuple[str | None, ...] = ()
+    choice_media_ids: tuple[str | None, ...] = ()
+    choice_colors: tuple[str | None, ...] = ()
+    spoken_prompt: str | None = None
+    reveal_message: str | None = None
 
 
 @dataclass(frozen=True)
@@ -72,6 +80,9 @@ class Pack:
     cover: str | None = None
     cover_media_id: str | None = None
     open_ended: bool = False
+    audience: str = AUDIENCE_GENERAL
+    age_range: str | None = None
+    choice_style: str = CHOICE_STYLE_DEFAULT
 
     def to_summary(self) -> dict[str, Any]:
         """Serialize pack metadata for lobby and admin views."""
@@ -87,9 +98,14 @@ class Pack:
             "rtl": self.rtl,
             "question_count": len(self.questions),
             "difficulties": diff_counts,
-            "has_media": any(q.media_id is not None for q in self.questions),
+            "has_media": any(
+                q.media_id is not None or any(q.choice_media_ids) for q in self.questions
+            ),
             "cover_url": f"{URL_MEDIA}/{self.cover_media_id}" if self.cover_media_id else None,
             "open_ended": self.open_ended,
+            "audience": self.audience,
+            "age_range": self.age_range,
+            "choice_style": self.choice_style,
             "is_builtin": self.is_builtin,
             "version": self.version,
             "author": self.author,
@@ -118,6 +134,11 @@ class SnapshotQuestion:
     starts_with: str | None = None
     difficulty: str = DIFFICULTY_MEDIUM
     is_bonus: bool = False
+    choice_style: str = CHOICE_STYLE_DEFAULT
+    choice_media_ids: tuple[str | None, ...] = ()
+    choice_colors: tuple[str | None, ...] = ()
+    spoken_prompt: str | None = None
+    reveal_message: str | None = None
 
 
 @dataclass
@@ -169,6 +190,9 @@ class RoomSettings:
     visibility: str = VISIBILITY_PUBLIC
     allow_late_join: bool = True
     bonus_round: bool = False
+    kids_mode: bool = False
+    kids_try_again: bool = False
+    kids_auto_advance: bool = False
 
 
 @dataclass

@@ -18,6 +18,9 @@ QuizRooms supports hot-importing custom trivia packs directly from the **Home As
 | `description` | `string` | No | `""` | Short pack description. |
 | `cover` | `string` | No | `null` | Relative path inside ZIP to cover image/icon (e.g., `"media/cover.svg"`). Rejected in plain `.json` uploads. |
 | `open_ended` | `boolean` | No | `false` | Set `true` for open-answer-only packs (no `choices` required; forces Free-Text mode and defaults **No Repeated Answers** to on). |
+| `audience` | `string` | No | `"general"` | Target audience: `"general"` or `"kids"` (isolates early-learning packs into the `🧸 Early Learner` filter and auto-enables Early Learner Mode defaults). |
+| `age_range` | `string` | No | `null` | Optional short age/level label (e.g., `"3-5"`). |
+| `choice_style` | `string` | No | `"default"` | Default choice tile presentation for the pack: `"default"`, `"large_glyph"` (giant letters/digits), `"color_swatch"` (colored circles), or `"image_grid"` (picture choice tiles). |
 | `language` | `string` | No | `"en"` | BCP-47 language code (e.g., `"en"`, `"ar"`, `"fr"`). |
 | `rtl` | `boolean` | No | `language == "ar"` | Enables right-to-left layout flipping. |
 | `version` | `string` | No | `"1.0.0"` | Pack version string. |
@@ -38,6 +41,11 @@ QuizRooms supports hot-importing custom trivia packs directly from the **Home As
 | `open_ended` | `boolean` | No | Pack's `open_ended` | Per-question override for open-ended scoring. |
 | `starts_with` | `string` | No | `null` | Required starting letter/prefix for open-ended answers (Arabic normalization folds `أ/إ/آ → ا` and ignores optional leading `ال`). |
 | `image` | `string` | No | `null` | Relative path inside ZIP (e.g., `"media/q1.png"`). |
+| `choice_style` | `string` | No | Pack's `choice_style` | Per-question choice tile override (`"default"`, `"large_glyph"`, `"color_swatch"`, `"image_grid"`). |
+| `choice_images` | `(string\|null)[]` | No | `[]` | Optional array (same length as `choices`) of relative media paths inside ZIP rendered inside each choice tile. Rejected in plain `.json` uploads. |
+| `choice_colors` | `(string\|null)[]` | No | `[]` | Optional array (same length as `choices`) of 6-digit hex colors (e.g., `"#EF4444"`) for `"color_swatch"` tiles. |
+| `spoken_prompt` | `string` | No | `null` | Optional spoken cue read aloud via browser Web Speech API (`Read Aloud`) and Stage Effects **Read Questions & Answers Aloud** (`speaker_read_qa`, works in Standard & Early Learner modes). |
+| `reveal_message` | `string` | No | `null` | Optional joyful celebration line shown & spoken during Reveal in Early Learner Mode (e.g., `"Yay! A is for Apple!"`). |
 | `explanation` | `string` | No | `""` | Factoid shown during the Reveal phase. |
 | `language` / `rtl` | `string` / `bool` | No | Pack defaults | Per-question language and direction overrides. |
 
@@ -105,7 +113,36 @@ movie_night.zip
 
 ---
 
-## 4. Import Limits & Security Rules
+## 4. Example: Early Learner Pack (`audience: "kids"`)
+
+```json
+{
+  "pack_id": "my_early_learner_animals",
+  "title": "My Animal Friends",
+  "description": "Tap the friendly animal picture!",
+  "cover": "media/cover.svg",
+  "audience": "kids",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "questions": [
+    {
+      "id": "a1",
+      "prompt": "Which animal says MEOW?",
+      "spoken_prompt": "Which animal says meow? Tap the cat!",
+      "reveal_message": "Yay! The Cat says meow!",
+      "choices": ["Cat", "Dog", "Duck"],
+      "choice_images": ["media/cat.svg", "media/dog.svg", "media/duck.svg"],
+      "answer": "Cat",
+      "difficulty": "easy"
+    }
+  ]
+}
+```
+
+---
+
+## 5. Import Limits & Security Rules
 
 - **Max Upload Size:** 25 MB compressed.
 - **Max Uncompressed ZIP Size:** 50 MB (enforced while streaming to block Zip Bombs).
@@ -115,3 +152,13 @@ movie_night.zip
 - **Smart TV SVG & Cover Art Tip:** Always include explicit `width` and `height` attributes on `<svg>` root elements (matching `viewBox`) so older Smart TV browsers such as LG webOS render SVG visuals at full size. Use a `1:1` square cover (e.g., `160×160`) so it displays cleanly in the TV idle Featured Packs gallery and mobile/admin thumbnails.
 - **Verification in Admin Panel:** After uploading a pack in **Sidebar → QuizRooms → Packs & Import**, use the expandable **Preview Questions** drawer on its card to verify difficulty distribution (`Easy / Medium / Hard`) and sample prompts without starting a test game.
 - **Storage Location:** Imported custom packs are stored under `<HA_CONFIG>/quizrooms/packs/<pack_id>/`.
+
+---
+
+## 6. Practical Authoring Tips for Young Arabic & English Learners
+
+When authoring custom Early Learner packs (`"audience": "kids"`):
+
+- **Use `spoken_prompt` with full Arabic Harakat (تشكيل):** Both mobile browser Web Speech (`window.speechSynthesis`) and Home Assistant Stage Effects TTS (`speaker_read_qa`) read `spoken_prompt` aloud. Adding full vowel diacritics in `spoken_prompt` (e.g., `"اِخْتَرْ حَرْفَ الْبَاءِ"` or `"بِأَيِّ عُضْوٍ نَسْمَعُ الْأَصْوَاتَ؟"`) keeps on-screen text clean while making TTS pronunciation dramatically clearer for young Arabic learners.
+- **Lean on `choice_style: "image_grid"` for ages 3–5:** Pairing `choices` with local `choice_images` SVGs lets pre-readers tap pictures independently on a phone or tablet without needing to read text labels.
+- **Use `difficulty` as an age-progression dial:** Put pure recognition (`"Tap the Cat!"`) in `"easy"`, word/sound/sense association in `"medium"`, and simple logic, visual addition, 3D shapes, phonics digraphs, or opposites in `"hard"` — so parents can select **Easy** for a 3-year-old and **Medium/Hard** for a 6–7-year-old inside the very same pack.

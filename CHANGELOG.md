@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.1.0] - 2026-11-25
+
+Early Learner Mode (24 bilingual visual packs, 1,235 questions), Smart TV & low-end mobile performance optimizations, independent Stage Q&A speech, and external-access stealth & security hardening.
+
+### Added
+- **🧸 Early Learner Mode & 24 Built-In Bilingual Visual Packs (1,235 Questions · 450+ Local SVGs):**
+  - Added `kids_mode`, `kids_try_again` (gentle retry without locking or revealing answers), `kids_auto_advance` (`3.2s` Solo / Parent-Led Auto-Advance), untimed rounds (`timer_seconds: 0`), Star (`⭐`) scoring (`wager_mode: "none"`), joyful All-Star awards, and schema support for `choice_style` (`large_glyph`, `color_swatch`, `image_grid`), `choice_images`, `choice_colors`, `spoken_prompt` (with full Arabic Harakat/تشكيل), and `reveal_message`.
+  - Added **24 Early Learner packs (ages 3–8)**: Alphabets (EN 68 Qs, AR 72 Qs), Numbers 1–20 + visual addition & more/fewer (EN, Eastern Arabic-Indic `١–٢٠`, Western Arabic `1–20` — 62 Qs each), Colors/Mixing & 2D/3D Shapes (EN & AR, 58 Qs each), Animals & Habitats (EN & AR, 58 Qs each), Fruits & Food (EN & AR, 56 Qs each), My Body & Five Senses (EN & AR, 40 Qs each), Vehicles & Things That Go (EN & AR, 40 Qs each), Weather, Seasons & Sky (EN & AR, 40 Qs each), Everyday Objects Around the House (EN & AR, 40 Qs each), Opposites & Actions (EN & AR, 45 Qs each), Bilingual Picture-Word Bridge `عربي ↔ EN` (50 Qs), Arabic Letter Positions & Harakat (55 Qs), and English Phonics & Rhyming Words (50 Qs) — bringing the catalog to **61 packs · 4,299 questions · 1,071 local SVGs**.
+  - Added one-tap giant visual tiles, browser **🔊 Listen / Auto-Read** (`window.speechSynthesis` EN & AR including spoken `"Good try! Tap another one!"`), gentle marimba nudge SFX, and a Parent Guard exit modal.
+- **Independent Stage Effects "Read Questions & Answers Aloud" (`speaker_read_qa`):** Separate toggle under **Local Speaker Announcer (Multilingual)** for both Standard and Early Learner modes to speak questions on `round_start`, answers/`reveal_message` on `round_reveal`, and localized Try Again encouragement.
+- **Chip-Based Allowed IP Subnets & External Access Confirmation (`config_flow.py`):** Replaced comma-separated CIDR text input with HA's removable multi-chip `SelectSelector`, fixed clearing optional network fields (`suggested_value`), and added a red `⚠️ (NOT RECOMMENDED)` warning + mandatory confirmation step when enabling external access.
+
+### Performance & UX
+- **Smart TV (LG webOS / Samsung Tizen) & Low-End Mobile Optimization (`tv.js`, `play.js`, `qrcode.js`, `confetti.js`, `theme.css`):**
+  - Replaced routine full-page `innerHTML` teardowns with persistent DOM shells, granular partial patching, and LRU-memoized QR SVGs (reducing Smart TV transition latency from 1–3s to ~100–250ms and preventing mobile keyboard/IME flicker).
+  - Switched countdown bars to 8–10 Hz GPU-composited `transform: scaleX()`, removed heavy `backdrop-filter` / `background-attachment: fixed` on TV & mobile, added `data-tv-perf="lite"` / `data-mobile-perf="lite"`, `unicode-range` Arabic font subsetting, WS-first hydration with `visibilitychange` resume, lean `lobby_update` broadcasts, and `0.7s` auto-reveal beat.
+- **Admin Panel & Create Room Polish (`admin-panel.js`, `play.js`):** Added live version badge in Admin header, non-wrapping 3-column mobile tab bar, responsive 2-column pack cards on wide screens, and hid **No Repeated Answers** when `Multiple Choice` is selected.
+
+### Security & Fixed
+- **Zero-Fingerprint Stealth Redirect & Capability-Token Sidebar Assets (`network_guard.py`, `views.py`, `__init__.py`):** Blocked external/non-whitelisted requests across all `/quizrooms/*` routes (including `/quizrooms/admin-panel.js` & `/quizrooms/sidebar-icon.js` without a valid `?k=` capability token, plus catch-all `/quizrooms/{tail:.+}`) now return a generic empty **`302 Found` → `Location: /`** so scanners see zero sign of QuizRooms while remote logged-in HA Admins keep full sidebar access.
+- **Event-Loop DoS Protection & Memory-Lifecycle Fixes (`coordinator.py`, `views.py`, `engine.py`, `stage_effects.py`, `tv.js`, `play.js`):** Added per-socket WebSocket flood rate limiting, `1.5s` per-room throttling on `try_again` HA Event Bus emissions, immediate `pinned_media` eviction on `PHASE_FINALE`, bounded `StageDirector._last_try_again_tts_at` & `tv.js` `prevRanksByRoom`, `speechSynthesis` cleanup on `visibilitychange`/`pagehide`, strict `safeHexColor()` swatch validation, boolean/CIDR/URL input bounds, and fixed `pause_room()` on untimed (`timer_seconds=0`) rooms.
+
+---
+
 ## [1.0.0] - 2026-11-24
 
 Initial stable **v1.0.0** release of **QuizRooms** — a 100% local-first, zero-dependency, multi-room confidence-wagering party trivia integration for Home Assistant (HACS-installable).

@@ -17,13 +17,24 @@
       canvas.id = "confetti-canvas";
       document.body.appendChild(canvas);
     }
+    const isLiteTV =
+      document.documentElement.dataset.tvPerf === "lite" ||
+      /Web0S|webOS|Tizen|SMART-TV|SmartTV/i.test(navigator.userAgent || "");
+    const isLiteMobile =
+      document.documentElement.dataset.mobilePerf === "lite" ||
+      (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 3) ||
+      (typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4) ||
+      Boolean(navigator.connection && navigator.connection.saveData);
+    const isLite = isLiteTV || isLiteMobile;
     const ctx = canvas.getContext("2d");
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = isLite ? 1 : Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const count = Math.min(140, Math.round(55 * intensity));
+    const maxParticles = isLite ? 28 : 140;
+    const maxFrames = isLite ? 65 : 140;
+    const count = Math.min(maxParticles, Math.round((isLite ? 20 : 55) * intensity));
     const particles = [];
     const cx = window.innerWidth * 0.5;
     const cy = window.innerHeight * 0.38;
@@ -67,11 +78,14 @@
         ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
         ctx.restore();
       }
-      if (alive > 0 && frame < 140) {
+      if (alive > 0 && frame < maxFrames) {
         activeRaf = requestAnimationFrame(tick);
       } else {
         activeRaf = null;
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        canvas.width = 0;
+        canvas.height = 0;
+        if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
       }
     }
     activeRaf = requestAnimationFrame(tick);

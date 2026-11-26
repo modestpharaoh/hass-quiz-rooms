@@ -5,6 +5,7 @@
   const LS_AVATAR = "quizrooms_avatar";
   const LS_HOSTS = "quizrooms_host_tokens";
   const LS_ACTIVE_ROOM = "quizrooms_active_room";
+  const LS_KIDS_AUTOREAD = "quizrooms_kids_autoread";
 
   const state = {
     ws: null,
@@ -21,11 +22,29 @@
     activeRoomCode: loadStr(LS_ACTIVE_ROOM) || "",
     selectedAnswer: "",
     selectedWager: 5,
+    kidsAutoRead: loadStr(LS_KIDS_AUTOREAD) !== "off",
+    kidsTriedWrong: new Set(),
+    kidsTryMessage: "",
+    kidsSubmitBusy: false,
     lastRoundKey: "",
     lastRevealKey: "",
     lastFinaleKey: "",
     lastCountdownSec: -1,
-    timerRaf: null,
+    timerInterval: null,
+    isLiteMobile: document.documentElement.dataset.mobilePerf === "lite",
+    bootstrapFallbackTimer: null,
+    helloReceived: false,
+    renderedScreenKey: "",
+    lastOpenRoomsSig: "",
+    lastRoomHeaderSig: "",
+    lastRoomLobbyRosterSig: "",
+    lastBonusStandingsSig: "",
+    lastRevealRenderSig: "",
+    lastFinaleRenderSig: "",
+    lastAvatarModalSig: "",
+    lastTimerSecText: "",
+    lastTimerWarn: null,
+    lastTimerUrgent: null,
     serverOffsetMs: 0,
     showCreateModal: false,
     showAvatarModal: false,
@@ -84,6 +103,11 @@
       .replace(/'/g, "&#39;");
   }
 
+  function safeHexColor(val) {
+    const s = String(val == null ? "" : val).trim();
+    return /^#[0-9a-fA-F]{6}$/.test(s) ? s : "";
+  }
+
   let toastTimer = null;
   function showToast(msg, isError = false) {
     const el = document.getElementById("toast-root");
@@ -91,6 +115,28 @@
     el.className = "toast" + (isError ? " error" : "");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => el.classList.add("hidden"), 3400);
+  }
+
+  function hasSpeechSupport() {
+    return Boolean(window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function");
+  }
+
+  function speakKidsText(text, lang) {
+    if (!text || !hasSpeechSupport()) return;
+    try {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(String(text));
+      const shortLang = String(lang || "en").toLowerCase().slice(0, 2);
+      utt.lang = shortLang === "ar" ? "ar-SA" : "en-US";
+      utt.rate = 0.85;
+      utt.pitch = 1.05;
+      const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+      if (voices && voices.length) {
+        const match = voices.find((v) => String(v.lang || "").toLowerCase().startsWith(shortLang));
+        if (match) utt.voice = match;
+      }
+      window.speechSynthesis.speak(utt);
+    } catch (_) { }
   }
 
   function getHostToken(code) {
@@ -170,6 +216,7 @@
 
     ws.onclose = () => {
       state.connected = false;
+      state.kidsSubmitBusy = false;
       updateConnStatus("Reconnecting…");
       updateReconnectBanner(true);
       scheduleReconnect();
@@ -187,6 +234,23 @@
         console.error("Invalid WS message", err);
       }
     };
+  }
+
+  function reconnectNowIfNeeded() {
+    if (!state.ws || state.ws.readyState === WebSocket.CLOSED || state.ws.readyState === WebSocket.CLOSING) {
+      reconnectAttempt = 0;
+      connectWS();
+      return;
+    }
+    if (state.ws.readyState === WebSocket.OPEN) {
+      try {
+        state.ws.send(JSON.stringify({ type: "ping" }));
+      } catch (_) {
+        try { state.ws.close(); } catch (_err) { }
+        reconnectAttempt = 0;
+        connectWS();
+      }
+    }
   }
 
   function updateConnStatus(text) {
@@ -228,23 +292,43 @@
   }
 
   async function compressAndUploadAvatar(file) {
-    const imgUrl = URL.createObjectURL(file);
+    let imgUrl = "";
+    let bitmap = null;
+    const canvas = document.createElement("canvas");
     try {
-      const img = await new Promise((resolve, reject) => {
-        const el = new Image();
-        el.onload = () => resolve(el);
-        el.onerror = () => reject(new Error("Invalid image file"));
-        el.src = imgUrl;
-      });
+      let source = null;
+      let srcW = 0;
+      let srcH = 0;
+      if (typeof window.createImageBitmap === "function") {
+        try {
+          bitmap = await createImageBitmap(file, { resizeWidth: 320, resizeQuality: "medium" });
+          source = bitmap;
+          srcW = bitmap.width;
+          srcH = bitmap.height;
+        } catch (_) {
+          bitmap = null;
+        }
+      }
+      if (!source) {
+        imgUrl = URL.createObjectURL(file);
+        const img = await new Promise((resolve, reject) => {
+          const el = new Image();
+          el.onload = () => resolve(el);
+          el.onerror = () => reject(new Error("Invalid image file"));
+          el.src = imgUrl;
+        });
+        source = img;
+        srcW = img.naturalWidth || img.width;
+        srcH = img.naturalHeight || img.height;
+      }
       const size = 160;
-      const canvas = document.createElement("canvas");
       canvas.width = size;
       canvas.height = size;
       const ctx = canvas.getContext("2d");
-      const minSide = Math.min(img.naturalWidth || img.width, img.naturalHeight || img.height);
-      const sx = ((img.naturalWidth || img.width) - minSide) / 2;
-      const sy = ((img.naturalHeight || img.height) - minSide) / 2;
-      ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+      const minSide = Math.min(srcW, srcH);
+      const sx = (srcW - minSide) / 2;
+      const sy = (srcH - minSide) / 2;
+      ctx.drawImage(source, sx, sy, minSide, minSide, 0, 0, size, size);
 
       const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
       if (!blob) throw new Error("Unable to encode profile photo");
@@ -269,14 +353,30 @@
       closeModal();
       render();
     } finally {
-      URL.revokeObjectURL(imgUrl);
+      if (bitmap && typeof bitmap.close === "function") {
+        try { bitmap.close(); } catch (_) { }
+      }
+      if (imgUrl) URL.revokeObjectURL(imgUrl);
+      canvas.width = 0;
+      canvas.height = 0;
     }
   }
 
-  function renderAvatarModalGrid() {
+  function renderAvatarModalGrid(force = false) {
     const grid = document.getElementById("avatar-modal-grid");
     if (!grid) return;
     const myRoomAvatar = state.room && state.room.me ? state.room.me.avatar : "";
+    const sig =
+      `${myRoomAvatar}|${state.avatar}|` +
+      state.avatars.map((a) => `${a.ref}:${a.taken ? 1 : 0}`).join(",");
+    if (!force && sig === state.lastAvatarModalSig) return;
+    state.lastAvatarModalSig = sig;
+
+    const freeBadge = document.getElementById("avatar-free-count");
+    if (freeBadge) {
+      freeBadge.textContent = `${state.avatars.filter((a) => !a.taken).length} free`;
+    }
+
     grid.innerHTML = state.avatars
       .map((a) => {
         const isMine = a.ref === state.avatar || a.ref === myRoomAvatar;
@@ -284,14 +384,55 @@
         return `
           <button type="button" class="avatar-choice ${isMine ? "selected" : ""}" data-pick-avatar="${esc(a.ref)}" ${disabled ? "disabled" : ""} title="${esc(a.label)}">
             ${disabled ? `<span class="avatar-taken-pill">Taken</span>` : ""}
-            <img src="${esc(a.url)}" alt="${esc(a.label)}" class="avatar-img avatar-md" />
+            <img src="${esc(a.url)}" alt="${esc(a.label)}" class="avatar-img avatar-md" width="42" height="42" loading="lazy" decoding="async" />
             <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;">${esc(a.label)}</span>
           </button>`;
       })
       .join("");
+  }
 
-    grid.querySelectorAll("[data-pick-avatar]").forEach((btn) => {
-      btn.addEventListener("click", () => {
+  function openAvatarModal() {
+    state.showAvatarModal = true;
+    state.showCreateModal = false;
+    state.lastAvatarModalSig = "";
+    const modalRoot = document.getElementById("modal-root");
+    modalRoot.innerHTML = `
+      <div class="modal-backdrop" id="avatar-backdrop">
+        <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Choose Profile Avatar">
+          <div class="modal-header">
+            <h2>Choose Your Profile Avatar</h2>
+            <button type="button" class="btn btn-secondary btn-sm" id="close-avatar-modal">Close</button>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:var(--radius-md);background:var(--bg-surface-2);border:1px solid var(--border-subtle);margin-block-end:14px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="${esc(avatarUrlFromRef(state.avatar))}" alt="Current avatar" class="avatar-img avatar-md" width="42" height="42" decoding="async" />
+              <div style="text-align:start;">
+                <div style="font-weight:800;font-size:0.92rem;">Use Your Own Photo</div>
+                <div style="font-size:0.78rem;color:var(--text-muted);">Auto-cropped square · PNG / JPG / WebP</div>
+              </div>
+            </div>
+            <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+              Upload Photo
+              <input id="avatar-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none;" />
+            </label>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:8px;">
+            <span class="field-label" style="margin:0;">Or Pick a Unique Studio SVG Character</span>
+            <span class="badge" id="avatar-free-count">${state.avatars.filter((a) => !a.taken).length} free</span>
+          </div>
+          <div id="avatar-modal-grid" class="avatar-grid"></div>
+        </div>
+      </div>
+    `;
+
+    renderAvatarModalGrid(true);
+    const avatarGrid = document.getElementById("avatar-modal-grid");
+    if (avatarGrid) {
+      avatarGrid.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-pick-avatar]");
+        if (!btn || btn.disabled) return;
         const chosen = btn.dataset.pickAvatar;
         state.avatar = chosen;
         saveStr(LS_AVATAR, chosen);
@@ -306,45 +447,7 @@
         closeModal();
         render();
       });
-    });
-  }
-
-  function openAvatarModal() {
-    state.showAvatarModal = true;
-    state.showCreateModal = false;
-    const modalRoot = document.getElementById("modal-root");
-    modalRoot.innerHTML = `
-      <div class="modal-backdrop" id="avatar-backdrop">
-        <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Choose Profile Avatar">
-          <div class="modal-header">
-            <h2>Choose Your Profile Avatar</h2>
-            <button type="button" class="btn btn-secondary btn-sm" id="close-avatar-modal">Close</button>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:var(--radius-md);background:var(--bg-surface-2);border:1px solid var(--border-subtle);margin-block-end:14px;">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img src="${esc(avatarUrlFromRef(state.avatar))}" alt="Current avatar" class="avatar-img avatar-md" />
-              <div style="text-align:start;">
-                <div style="font-weight:800;font-size:0.92rem;">Use Your Own Photo</div>
-                <div style="font-size:0.78rem;color:var(--text-muted);">Auto-cropped square · PNG / JPG / WebP</div>
-              </div>
-            </div>
-            <label class="btn btn-primary btn-sm" style="cursor:pointer;">
-              Upload Photo
-              <input id="avatar-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none;" />
-            </label>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:8px;">
-            <span class="field-label" style="margin:0;">Or Pick a Unique Studio SVG Character</span>
-            <span class="badge">${state.avatars.filter((a) => !a.taken).length} free</span>
-          </div>
-          <div id="avatar-modal-grid" class="avatar-grid"></div>
-        </div>
-      </div>
-    `;
-
-    renderAvatarModalGrid();
+    }
     document.getElementById("close-avatar-modal").addEventListener("click", closeModal);
     document.getElementById("avatar-backdrop").addEventListener("click", (e) => {
       if (e.target.id === "avatar-backdrop") closeModal();
@@ -390,6 +493,11 @@
   function handleWSMessage(msg) {
     switch (msg.type) {
       case "hello":
+        state.helloReceived = true;
+        if (state.bootstrapFallbackTimer) {
+          clearTimeout(state.bootstrapFallbackTimer);
+          state.bootstrapFallbackTimer = null;
+        }
         if (msg.lan_base_url) state.lanBaseUrl = msg.lan_base_url;
         if (msg.lobby) state.lobby = msg.lobby;
         if (Array.isArray(msg.avatars)) {
@@ -406,21 +514,23 @@
         if (state.showAvatarModal) renderAvatarModalGrid();
         break;
 
-      case "lobby_update":
+      case "lobby_update": {
+        const packsUpdated = Array.isArray(msg.packs);
         if (msg.lobby) state.lobby = msg.lobby;
         if (Array.isArray(msg.avatars)) {
           state.avatars = msg.avatars;
           ensureAvailableAvatar();
         }
-        if (Array.isArray(msg.packs)) {
+        if (packsUpdated) {
           state.packs = msg.packs;
           state.packsLoaded = true;
           state.packsError = "";
         }
         if (!state.room) render();
-        if (state.showCreateModal) renderModalPackList();
+        if (state.showCreateModal && packsUpdated) renderModalPackList();
         if (state.showAvatarModal) renderAvatarModalGrid();
         break;
+      }
 
       case "room_created":
         if (msg.session_token) {
@@ -449,12 +559,40 @@
         applyRoomState(msg.room);
         break;
 
+      case "try_again": {
+        state.kidsSubmitBusy = false;
+        const wrongAns = String(msg.answer || "");
+        if (wrongAns) state.kidsTriedWrong.add(wrongAns);
+        state.kidsTryMessage = msg.message || (msg.rtl ? "محاولة جميلة! جرّب خياراً آخر!" : "Good try! Tap another one!");
+        if (window.QuizRoomsSFX && window.QuizRoomsSFX.softTry) window.QuizRoomsSFX.softTry();
+        if (state.kidsAutoRead) {
+          const tryLang = msg.language || (msg.rtl ? "ar" : (state.room && state.room.question && state.room.question.language) || "en");
+          speakKidsText(state.kidsTryMessage, tryLang);
+        }
+        const banner = document.getElementById("kids-try-banner");
+        if (banner) {
+          banner.textContent = state.kidsTryMessage;
+          banner.classList.remove("hidden");
+        }
+        const grid = document.getElementById("kids-choices-grid");
+        if (grid && wrongAns) {
+          grid.querySelectorAll("[data-kids-choice]").forEach((btn) => {
+            if (btn.dataset.kidsChoice === wrongAns) {
+              btn.classList.add("tried-wrong");
+              btn.disabled = true;
+            }
+          });
+        }
+        break;
+      }
+
       case "room_closed":
         showToast(msg.reason || "Room closed.", true);
         if (state.room && state.room.code === msg.code) {
           setHostToken(msg.code, "");
           state.room = null;
           state.activeRoomCode = "";
+          state.renderedScreenKey = "";
           saveStr(LS_ACTIVE_ROOM, "");
           stopTimerLoop();
           sendWS({ type: "subscribe_lobby" });
@@ -463,10 +601,12 @@
         break;
 
       case "error":
+        state.kidsSubmitBusy = false;
         if (msg.code === "room_not_found" && !state.room && state.activeRoomCode) {
           // Stale saved room from an earlier session; silently fall back to open lobby
           setHostToken(state.activeRoomCode, "");
           state.activeRoomCode = "";
+          state.renderedScreenKey = "";
           saveStr(LS_ACTIVE_ROOM, "");
           sendWS({ type: "subscribe_lobby" });
           render();
@@ -523,15 +663,22 @@
     }
 
     // Reset local answer/wager selection when moving to a new question (default to lowest available number)
+    const isKidsRoom = Boolean(room.settings && room.settings.kids_mode);
     if (room.phase === "question" && room.question) {
       const roundKey = `${room.code}:${room.question.index}`;
       if (state.lastRoundKey !== roundKey) {
         state.lastRoundKey = roundKey;
         state.lastCountdownSec = -1;
         state.selectedAnswer = "";
+        state.kidsTriedWrong = new Set();
+        state.kidsTryMessage = "";
+        state.kidsSubmitBusy = false;
         const avail = (room.me && room.me.available_wagers) || [];
         state.selectedWager = avail.length ? Math.min(...avail) : 1;
         if (window.QuizRoomsSFX) window.QuizRoomsSFX.roundStart();
+        if (isKidsRoom && state.kidsAutoRead) {
+          speakKidsText(room.question.spoken_prompt || room.question.prompt, room.question.language);
+        }
       }
     }
 
@@ -540,21 +687,29 @@
       const revKey = `${room.code}:${room.reveal.round_index}`;
       if (state.lastRevealKey !== revKey) {
         state.lastRevealKey = revKey;
+        state.kidsSubmitBusy = false;
         const myOutcome = room.reveal.outcomes.find((o) => o.session_token === state.sessionToken);
-          if (myOutcome) {
-            if (myOutcome.is_correct) {
-              if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(0.9);
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
-            } else if (myOutcome.outcome === "wrong" || myOutcome.outcome === "duplicate") {
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.wrong();
-            } else if (myOutcome.outcome === "timeout") {
-              if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
+        if (myOutcome) {
+          if (myOutcome.is_correct) {
+            if (window.QuizRoomsConfetti) window.QuizRoomsConfetti.burst(isKidsRoom ? 1.1 : 0.9);
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.correct();
+          } else if (myOutcome.outcome === "wrong" || myOutcome.outcome === "duplicate") {
+            if (isKidsRoom && window.QuizRoomsSFX && window.QuizRoomsSFX.softTry) {
+              window.QuizRoomsSFX.softTry();
+            } else if (window.QuizRoomsSFX) {
+              window.QuizRoomsSFX.wrong();
             }
-          } else if (window.QuizRoomsSFX) {
-            window.QuizRoomsSFX.reveal();
+          } else if (myOutcome.outcome === "timeout") {
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.timeout();
           }
+        } else if (window.QuizRoomsSFX) {
+          window.QuizRoomsSFX.reveal();
+        }
+        if (isKidsRoom && state.kidsAutoRead && room.reveal.reveal_message) {
+          speakKidsText(room.reveal.reveal_message, room.reveal.language);
         }
       }
+    }
 
       // Celebratory burst + fanfare on finale podium
       if (room.phase === "finale") {
@@ -566,8 +721,9 @@
         }
       }
 
+      const prevScreenKey = state.renderedScreenKey;
       render();
-      if (preserveFreeText) {
+      if (preserveFreeText && state.renderedScreenKey !== prevScreenKey) {
         const nextInput = document.getElementById("free-text-input");
         if (nextInput) {
           nextInput.focus();
@@ -576,38 +732,66 @@
           }
         }
       }
-      if (room.phase === "question" && !room.paused) startTimerLoop();
-      else stopTimerLoop();
+      if (room.phase === "question" && !room.paused && room.question && room.question.timer_seconds > 0) {
+        if (!state.timerInterval || state.renderedScreenKey !== prevScreenKey) {
+          startTimerLoop();
+        }
+      } else {
+        stopTimerLoop();
+      }
     }
 
     function stopTimerLoop() {
-      if (state.timerRaf) {
-        cancelAnimationFrame(state.timerRaf);
-        state.timerRaf = null;
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
       }
     }
 
     function startTimerLoop() {
       stopTimerLoop();
-      function frame() {
+      let fill = document.getElementById("timer-fill");
+      let readout = document.getElementById("timer-readout");
+      state.lastTimerSecText = "";
+      state.lastTimerWarn = null;
+      state.lastTimerUrgent = null;
+
+      function tick() {
         const room = state.room;
-        if (!room || room.phase !== "question" || !room.question) return;
-        const q = room.question;
-        const fill = document.getElementById("timer-fill");
-        const readout = document.getElementById("timer-readout");
+        if (!room || room.phase !== "question" || !room.question) {
+          stopTimerLoop();
+          return;
+        }
+        if (!fill || !fill.isConnected) fill = document.getElementById("timer-fill");
+        if (!readout || !readout.isConnected) readout = document.getElementById("timer-readout");
         if (!fill || !readout) return;
 
+        const q = room.question;
         let rem = q.remaining_seconds || 0;
         if (!room.paused && q.ends_at_ms) {
           rem = Math.max(0, (q.ends_at_ms - (Date.now() + state.serverOffsetMs)) / 1000);
         }
         const sec = Math.ceil(rem);
-        const pct = Math.max(0, Math.min(100, (rem / (q.timer_seconds || 30)) * 100));
-        fill.style.width = pct.toFixed(1) + "%";
-        fill.classList.toggle("warn", rem <= 10 && rem > 5);
-        fill.classList.toggle("urgent", rem <= 5);
-        readout.classList.toggle("urgent", rem <= 5);
-        readout.textContent = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
+        const ratio = Math.max(0, Math.min(1, rem / (q.timer_seconds || 30)));
+        fill.style.transform = `scaleX(${ratio.toFixed(4)})`;
+
+        const isWarn = rem <= 10 && rem > 5;
+        const isUrgent = rem <= 5;
+        if (state.lastTimerWarn !== isWarn) {
+          state.lastTimerWarn = isWarn;
+          fill.classList.toggle("warn", isWarn);
+        }
+        if (state.lastTimerUrgent !== isUrgent) {
+          state.lastTimerUrgent = isUrgent;
+          fill.classList.toggle("urgent", isUrgent);
+          readout.classList.toggle("urgent", isUrgent);
+        }
+
+        const secText = room.paused ? `PAUSED (${sec}s)` : `${sec}s`;
+        if (state.lastTimerSecText !== secText) {
+          state.lastTimerSecText = secText;
+          readout.textContent = secText;
+        }
 
         const alreadyLocked = Boolean(room.me && room.me.submitted);
         if (!room.paused && sec > 0 && sec !== state.lastCountdownSec) {
@@ -619,11 +803,16 @@
           }
         }
 
-        if (!room.paused && rem > 0) {
-          state.timerRaf = requestAnimationFrame(frame);
+        if (room.paused || rem <= 0) {
+          stopTimerLoop();
         }
       }
-      state.timerRaf = requestAnimationFrame(frame);
+
+      tick();
+      const room = state.room;
+      if (room && room.phase === "question" && !room.paused) {
+        state.timerInterval = setInterval(tick, state.isLiteMobile ? 125 : 100);
+      }
     }
 
     function getJoinUrl(code) {
@@ -662,59 +851,112 @@
       }
     }
 
-    function renderOpenLobby(root) {
-      const urlCode = new URLSearchParams(window.location.search).get("code") || "";
-      const { rooms, active_rooms, max_rooms, can_create_room } = state.lobby;
+    let nickSaveTimer = null;
 
-      const roomsHtml = rooms.length
-        ? `<div class="rooms-grid">${rooms
-          .map((r) => {
-            const statusClass = r.status === "lobby" ? "badge-lobby" : "badge-live";
-            const statusText = r.status === "lobby" ? "Lobby" : `In Progress · R${r.current_round}/${r.total_rounds}`;
-            const joinDisabled = r.status === "in_progress" && !r.allow_late_join;
-            return `
-              <article class="studio-card room-card animate-in" dir="${r.rtl ? "rtl" : "auto"}">
-                <div class="room-card-top">
-                  <div style="display:flex;align-items:center;gap:10px;min-width:0;">
-                    ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" class="pack-cover-thumb" />` : ""}
-                    <div style="min-width:0;">
-                      <h3 class="room-card-name" dir="auto">${esc(r.name)}</h3>
-                      <p class="room-card-packs" dir="auto">${esc((r.pack_titles || []).join(" · "))}</p>
-                    </div>
-                  </div>
-                  <span class="room-code-chip">${esc(r.code)}</span>
-                </div>
-                <div class="room-card-foot">
-                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                    <span class="badge ${statusClass}">${esc(statusText)}</span>
-                    <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
-                    ${diffBadgeHtml(r.difficulty)}
-                    ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
-                  </div>
-                  <button class="btn btn-primary btn-sm" data-join-code="${esc(r.code)}" ${joinDisabled ? "disabled" : ""}>
-                    ${joinDisabled ? "Closed" : "Join"}
-                  </button>
-                </div>
-              </article>`;
-          })
-          .join("")}</div>`
-        : `<div class="studio-card empty-state">
+    function buildOpenLobbyRoomsHtml(rooms) {
+      if (!rooms.length) {
+        return `<div class="studio-card empty-state">
           <p style="margin:0 0 6px;font-weight:700;color:var(--text-primary);">No open public rooms yet</p>
           <p style="margin:0;font-size:0.9rem;">Create a new trivia room above or enter a private room code to jump in.</p>
         </div>`;
+      }
+      return `<div class="rooms-grid">${rooms
+        .map((r) => {
+          const statusClass = r.status === "lobby" ? "badge-lobby" : "badge-live";
+          const statusText = r.status === "lobby" ? "Lobby" : `In Progress · R${r.current_round}/${r.total_rounds}`;
+          const joinDisabled = r.status === "in_progress" && !r.allow_late_join;
+          return `
+            <article class="studio-card room-card animate-in" dir="${r.rtl ? "rtl" : "auto"}">
+              <div class="room-card-top">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                  ${r.cover_url ? `<img src="${esc(r.cover_url)}" alt="" class="pack-cover-thumb" width="40" height="40" loading="lazy" decoding="async" />` : ""}
+                  <div style="min-width:0;">
+                    <h3 class="room-card-name" dir="auto">${esc(r.name)}</h3>
+                    <p class="room-card-packs" dir="auto">${esc((r.pack_titles || []).join(" · "))}</p>
+                  </div>
+                </div>
+                <span class="room-code-chip">${esc(r.code)}</span>
+              </div>
+              <div class="room-card-foot">
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                  <span class="badge ${statusClass}">${esc(statusText)}</span>
+                  <span class="badge">${r.player_count} player${r.player_count === 1 ? "" : "s"}</span>
+                  ${r.kids_mode ? `<span class="badge badge-lobby">🧸 Early Learner</span>` : ""}
+                  ${diffBadgeHtml(r.difficulty)}
+                  ${r.unique_answers_only ? `<span class="badge badge-accent">Unique Answers</span>` : ""}
+                </div>
+                <button class="btn btn-primary btn-sm" data-join-code="${esc(r.code)}" ${joinDisabled ? "disabled" : ""}>
+                  ${joinDisabled ? "Closed" : "Join"}
+                </button>
+              </div>
+            </article>`;
+        })
+        .join("")}</div>`;
+    }
+
+    function patchOpenLobby() {
+      const { rooms, active_rooms, max_rooms, can_create_room } = state.lobby;
+
+      const avatarImg = document.getElementById("open-avatar-img");
+      const nextAvatarUrl = avatarUrlFromRef(state.avatar);
+      if (avatarImg && avatarImg.getAttribute("src") !== nextAvatarUrl) {
+        avatarImg.setAttribute("src", nextAvatarUrl);
+      }
+
+      const capWrap = document.getElementById("lobby-capacity-wrap");
+      if (capWrap) {
+        const capHtml = `
+          <span class="badge ${can_create_room ? "badge-accent" : "badge-paused"}">
+            Rooms: ${active_rooms} / ${max_rooms}
+          </span>
+          ${!can_create_room ? `<span style="margin-inline-start:8px;font-size:0.84rem;color:var(--accent-coral);font-weight:700;">Room limit reached</span>` : ""}`;
+        if (capWrap.dataset.capSig !== `${active_rooms}/${max_rooms}/${can_create_room ? 1 : 0}`) {
+          capWrap.dataset.capSig = `${active_rooms}/${max_rooms}/${can_create_room ? 1 : 0}`;
+          capWrap.innerHTML = capHtml;
+        }
+      }
+
+      const createBtn = document.getElementById("open-create-btn");
+      if (createBtn) createBtn.disabled = !can_create_room;
+
+      const countBadge = document.getElementById("open-rooms-count");
+      if (countBadge) countBadge.textContent = `${rooms.length} open`;
+
+      const roomsSig = rooms
+        .map(
+          (r) =>
+            `${r.code}|${r.name}|${r.status}|${r.current_round}/${r.total_rounds}|${r.player_count}|${r.allow_late_join ? 1 : 0}|${r.kids_mode ? 1 : 0}|${r.bonus_round ? 1 : 0}|${r.difficulty || ""}|${r.unique_answers_only ? 1 : 0}|${r.cover_url || ""}|${(r.pack_titles || []).join(",")}`
+        )
+        .join(";");
+      if (roomsSig !== state.lastOpenRoomsSig) {
+        state.lastOpenRoomsSig = roomsSig;
+        const roomsWrap = document.getElementById("open-rooms-wrap");
+        if (roomsWrap) roomsWrap.innerHTML = buildOpenLobbyRoomsHtml(rooms);
+      }
+    }
+
+    function renderOpenLobby(root) {
+      if (state.renderedScreenKey === "open_lobby" && document.getElementById("open-lobby-hero")) {
+        patchOpenLobby();
+        return;
+      }
+
+      const urlCode = new URLSearchParams(window.location.search).get("code") || "";
+      state.renderedScreenKey = "open_lobby";
+      state.lastOpenRoomsSig = "";
 
       root.innerHTML = `
-      <section class="studio-card hero-card animate-in">
+      <section id="open-lobby-hero" class="studio-card hero-card animate-in">
         <div class="hero-grid">
           <div>
             <label class="field-label" for="lobby-nickname">Your Profile &amp; Nickname</label>
             <div class="profile-input-row">
               <button type="button" id="open-avatar-btn" class="avatar-picker-btn" title="Change avatar or upload photo">
-                <img src="${esc(avatarUrlFromRef(state.avatar))}" alt="Your avatar" />
+                <img id="open-avatar-img" src="${esc(avatarUrlFromRef(state.avatar))}" alt="Your avatar" width="50" height="50" decoding="async" />
                 <span class="avatar-picker-tag">Edit</span>
               </button>
               <input id="lobby-nickname" class="text-input" dir="auto" maxlength="24"
-                placeholder="e.g., Alex or سارة" value="${esc(state.nickname)}" />
+                placeholder="e.g., Alex" value="${esc(state.nickname)}" />
             </div>
           </div>
           <div>
@@ -727,23 +969,16 @@
           </div>
         </div>
         <div class="capacity-bar">
-          <div>
-            <span class="badge ${can_create_room ? "badge-accent" : "badge-paused"}">
-              Rooms: ${active_rooms} / ${max_rooms}
-            </span>
-            ${!can_create_room ? `<span style="margin-inline-start:8px;font-size:0.84rem;color:var(--accent-coral);font-weight:700;">Room limit reached</span>` : ""}
-          </div>
-          <button id="open-create-btn" class="btn btn-primary" ${can_create_room ? "" : "disabled"}>
-            + Create New Room
-          </button>
+          <div id="lobby-capacity-wrap"></div>
+          <button id="open-create-btn" class="btn btn-primary">+ Create New Room</button>
         </div>
       </section>
 
       <div class="section-header">
         <h2>Open Public Rooms</h2>
-        <span class="badge">${rooms.length} open</span>
+        <span class="badge" id="open-rooms-count">0 open</span>
       </div>
-      ${roomsHtml}
+      <div id="open-rooms-wrap"></div>
     `;
 
       document.getElementById("open-avatar-btn").addEventListener("click", () => {
@@ -753,6 +988,11 @@
       const nickEl = document.getElementById("lobby-nickname");
       nickEl.addEventListener("input", () => {
         state.nickname = nickEl.value;
+        clearTimeout(nickSaveTimer);
+        nickSaveTimer = setTimeout(() => saveStr(LS_NICK, nickEl.value.trim()), 250);
+      });
+      nickEl.addEventListener("blur", () => {
+        clearTimeout(nickSaveTimer);
         saveStr(LS_NICK, nickEl.value.trim());
       });
 
@@ -773,19 +1013,21 @@
         openCreateModal();
       });
 
-      root.querySelectorAll("[data-join-code]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const nick = requireNickname();
-          if (!nick) return;
-          sendWS({
-            type: "join_room",
-            code: btn.dataset.joinCode,
-            session_token: state.sessionToken,
-            nickname: nick,
-            avatar: state.avatar || undefined,
-          });
+      document.getElementById("open-rooms-wrap").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-join-code]");
+        if (!btn || btn.disabled) return;
+        const nick = requireNickname();
+        if (!nick) return;
+        sendWS({
+          type: "join_room",
+          code: btn.dataset.joinCode,
+          session_token: state.sessionToken,
+          nickname: nick,
+          avatar: state.avatar || undefined,
         });
       });
+
+      patchOpenLobby();
     }
 
     function isLanguagePackFilter(filter) {
@@ -799,9 +1041,95 @@
       const show = isLanguagePackFilter(filter);
       randomBtn.classList.toggle("hidden", !show);
       if (show) {
-        const langLabel = filter.toUpperCase();
-        randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
-        randomBtn.setAttribute("aria-label", `Select random ${langLabel} packs`);
+        if (filter === "kids") {
+          randomBtn.textContent = "🎲 Random Early Learner Packs";
+          randomBtn.setAttribute("aria-label", "Select random Early Learner packs");
+        } else {
+          const langLabel = filter.toUpperCase();
+          randomBtn.textContent = `🎲 Random ${langLabel} Packs`;
+          randomBtn.setAttribute("aria-label", `Select random ${langLabel} packs`);
+        }
+      }
+    }
+
+    let packSearchDebounceTimer = null;
+    let createFilteredCount = 0;
+
+    function syncKidsModeUI() {
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const kidsMode = Boolean(kidsCheck && kidsCheck.checked);
+      const kidsSubOpts = document.getElementById("cr-kids-suboptions");
+      const kidsCallout = document.getElementById("cr-kids-callout");
+      const adultModeRow = document.getElementById("cr-adult-mode-row");
+      const deductWrap = document.getElementById("cr-deduct-wrong-wrap");
+      const bonusWrap = document.getElementById("cr-bonus-round-wrap");
+      if (kidsSubOpts) kidsSubOpts.classList.toggle("hidden", !kidsMode);
+      if (kidsCallout) kidsCallout.classList.toggle("hidden", !kidsMode);
+      if (adultModeRow) adultModeRow.classList.toggle("hidden", kidsMode);
+      if (deductWrap) deductWrap.classList.toggle("hidden", kidsMode);
+      if (bonusWrap) bonusWrap.classList.toggle("hidden", kidsMode);
+      syncUniqueAnswersVisibility();
+    }
+
+    function syncUniqueAnswersVisibility() {
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const kidsMode = Boolean(kidsCheck && kidsCheck.checked);
+      const modeSelect = document.getElementById("cr-answer-mode");
+      const uniqueWrap = document.getElementById("cr-unique-answers-wrap");
+      const uniqueCheck = document.getElementById("cr-unique-answers");
+      const lateJoinWrap = document.getElementById("cr-late-join-wrap");
+      const isFreeText = !kidsMode && Boolean(modeSelect && modeSelect.value === "free_text");
+      if (uniqueWrap) uniqueWrap.classList.toggle("hidden", !isFreeText);
+      if (uniqueCheck) {
+        uniqueCheck.disabled = !isFreeText;
+        if (!isFreeText) uniqueCheck.checked = false;
+      }
+      if (lateJoinWrap) {
+        lateJoinWrap.style.gridColumn = isFreeText ? "" : "1 / -1";
+      }
+    }
+
+    function syncCreatePackSelectionUI() {
+      const countBadge = document.getElementById("cr-pack-count");
+      if (countBadge && state.packs.length) {
+        countBadge.textContent = `${state.createSelectedPacks.size} selected · ${createFilteredCount}/${state.packs.length}`;
+      }
+      renderSelectedPacksSummary();
+      const selectedPacks = state.packs.filter((p) => state.createSelectedPacks.has(p.pack_id));
+      const hasOpenEnded = selectedPacks.some((p) => p.open_ended);
+      const hasKids = selectedPacks.some((p) => p.audience === "kids");
+      const modeSelect = document.getElementById("cr-answer-mode");
+      const uniqueCheck = document.getElementById("cr-unique-answers");
+      const kidsCheck = document.getElementById("cr-kids-mode");
+      const roundsEl = document.getElementById("cr-rounds");
+      const timerEl = document.getElementById("cr-timer");
+
+      if (kidsCheck && kidsCheck.dataset.userTouched !== "true") {
+        const shouldKids = hasKids && !hasOpenEnded;
+        const wasKids = kidsCheck.checked;
+        kidsCheck.checked = shouldKids;
+        if (shouldKids && !wasKids) {
+          if (roundsEl) roundsEl.value = "5";
+          if (timerEl) timerEl.value = "0";
+          const tryAgainEl = document.getElementById("cr-kids-try-again");
+          if (tryAgainEl) tryAgainEl.checked = true;
+        } else if (!shouldKids && wasKids) {
+          if (roundsEl && roundsEl.value === "5") roundsEl.value = "10";
+          if (timerEl && timerEl.value === "0") timerEl.value = "30";
+        }
+      }
+
+      if (hasOpenEnded) {
+        if (modeSelect) modeSelect.value = "free_text";
+        syncKidsModeUI();
+        if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
+          uniqueCheck.checked = true;
+        }
+      } else {
+        syncKidsModeUI();
+        if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
+          uniqueCheck.checked = false;
+        }
       }
     }
 
@@ -820,7 +1148,7 @@
           .map(
             (p) => `
           <span class="pack-selected-chip animate-in" dir="${p.rtl ? "rtl" : "auto"}">
-            ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" width="18" height="18" />` : ""}
+            ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" width="18" height="18" decoding="async" />` : ""}
             <span class="pack-selected-chip-title" title="${esc(p.title)}">${esc(p.title)}</span>
             <button type="button" class="pack-selected-chip-remove" data-unselect-pack="${esc(p.pack_id)}" aria-label="Remove ${esc(p.title)}">×</button>
           </span>`
@@ -828,39 +1156,29 @@
           .join("")}
         <button type="button" id="cr-clear-packs-btn" class="pack-clear-btn">Clear all</button>
       `;
-
-      summaryEl.querySelectorAll("[data-unselect-pack]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-unselect-pack");
-          if (id) state.createSelectedPacks.delete(id);
-          renderModalPackList({ syncFromDom: false });
-        });
-      });
-      const clearBtn = document.getElementById("cr-clear-packs-btn");
-      if (clearBtn) {
-        clearBtn.addEventListener("click", () => {
-          state.createSelectedPacks.clear();
-          renderModalPackList({ syncFromDom: false });
-        });
-      }
     }
 
     function selectRandomPacksForActiveLanguage() {
       const filter = state.createPackFilter || "all";
       if (!isLanguagePackFilter(filter)) return;
+      clearTimeout(packSearchDebounceTimer);
 
-      const langPacks = state.packs.filter(
-        (p) => String(p.language || "").toLowerCase() === filter
-      );
+      // Keep Kids packs isolated from adult EN/AR random picks
+      const langPacks =
+        filter === "kids"
+          ? state.packs.filter((p) => p.audience === "kids")
+          : state.packs.filter(
+              (p) => String(p.language || "").toLowerCase() === filter && p.audience !== "kids"
+            );
       if (!langPacks.length) {
-        showToast(`No ${filter.toUpperCase()} packs available.`, true);
+        showToast(`No ${filter === "kids" ? "Early Learner" : filter.toUpperCase()} packs available.`, true);
         return;
       }
 
       // Prefer standard (non-open-ended) packs for balanced random trivia mixes
       const standardPacks = langPacks.filter((p) => !p.open_ended);
       const pool = standardPacks.length ? standardPacks : langPacks;
-      const pickCount = Math.min(3, pool.length);
+      const pickCount = Math.min(filter === "kids" ? 2 : 3, pool.length);
 
       function shuffle(arr) {
         const copy = arr.slice();
@@ -897,7 +1215,8 @@
       if (listEl) listEl.scrollTop = 0;
 
       const titles = picked.map((p) => p.title).join(", ");
-      showToast(`Selected ${picked.length} random ${filter.toUpperCase()} pack${picked.length === 1 ? "" : "s"}: ${titles}`);
+      const filterLabel = filter === "kids" ? "Early Learner" : filter.toUpperCase();
+      showToast(`Selected ${picked.length} random ${filterLabel} pack${picked.length === 1 ? "" : "s"}: ${titles}`);
     }
 
     function renderModalPackList(opts) {
@@ -916,9 +1235,10 @@
       }
 
       syncRandomPacksButton();
-      renderSelectedPacksSummary();
 
       if (!state.packs.length) {
+        createFilteredCount = 0;
+        renderSelectedPacksSummary();
         if (countBadge) countBadge.textContent = "0 available";
         if (state.packsError) {
           listEl.innerHTML = `
@@ -926,8 +1246,6 @@
             <span>${esc(state.packsError)}</span>
             <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Retry</button>
           </div>`;
-          const retryBtn = document.getElementById("retry-packs-btn");
-          if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
         } else if (!state.packsLoaded) {
           listEl.innerHTML = `<div class="pack-empty-box">Loading trivia packs…</div>`;
         } else {
@@ -936,8 +1254,6 @@
             <span>No trivia packs loaded on the server yet.</span>
             <button type="button" class="btn btn-secondary btn-sm" id="retry-packs-btn">Refresh</button>
           </div>`;
-          const retryBtn = document.getElementById("retry-packs-btn");
-          if (retryBtn) retryBtn.addEventListener("click", () => fetchBootstrap());
         }
         return;
       }
@@ -947,8 +1263,10 @@
       const filtered = state.packs.filter((p) => {
         if (filter === "open_ended") {
           if (!p.open_ended) return false;
+        } else if (filter === "kids") {
+          if (p.audience !== "kids") return false;
         } else if (filter !== "all") {
-          if (String(p.language || "").toLowerCase() !== filter) return false;
+          if (String(p.language || "").toLowerCase() !== filter || p.audience === "kids") return false;
         }
         if (!term) return true;
         return (
@@ -964,12 +1282,11 @@
             .concat(filtered.filter((p) => !state.createSelectedPacks.has(p.pack_id)))
         : filtered;
 
-      if (countBadge) {
-        countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
-      }
+      createFilteredCount = filtered.length;
 
       if (!ordered.length) {
         listEl.innerHTML = `<div class="pack-empty-box">No packs match "${esc(state.createPackSearch || filter)}".</div>`;
+        syncCreatePackSelectionUI();
         return;
       }
 
@@ -979,10 +1296,11 @@
           return `
         <label class="pack-check-item ${checked ? "is-selected" : ""}" dir="${p.rtl ? "rtl" : "auto"}">
           <input type="checkbox" name="pack_id" value="${esc(p.pack_id)}" ${checked ? "checked" : ""} />
-          ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="pack-cover-thumb" />` : ""}
+          ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="" class="pack-cover-thumb" width="40" height="40" loading="lazy" decoding="async" />` : ""}
           <div style="flex:1;min-width:0;text-align:start;">
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;">
               <span>${esc(p.title)}</span>
+              ${p.audience === "kids" ? `<span class="badge badge-lobby" style="font-size:0.68rem;padding:2px 7px;">🧸 Early Learner</span>` : ""}
               ${p.open_ended ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">Open-Ended</span>` : ""}
             </div>
             <div style="font-size:0.78rem;color:var(--text-muted);">
@@ -993,34 +1311,7 @@
         })
         .join("");
 
-      function syncOpenEndedDefaults() {
-        listEl.querySelectorAll('input[name="pack_id"]').forEach((el) => {
-          if (el.checked) state.createSelectedPacks.add(el.value);
-          else state.createSelectedPacks.delete(el.value);
-          const row = el.closest(".pack-check-item");
-          if (row) row.classList.toggle("is-selected", el.checked);
-        });
-        if (countBadge) {
-          countBadge.textContent = `${state.createSelectedPacks.size} selected · ${filtered.length}/${state.packs.length}`;
-        }
-        renderSelectedPacksSummary();
-        const hasOpenEnded = state.packs.some((p) => state.createSelectedPacks.has(p.pack_id) && p.open_ended);
-        const modeSelect = document.getElementById("cr-answer-mode");
-        const uniqueCheck = document.getElementById("cr-unique-answers");
-        if (hasOpenEnded) {
-          if (modeSelect) modeSelect.value = "free_text";
-          if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
-            uniqueCheck.checked = true;
-          }
-        } else if (uniqueCheck && uniqueCheck.dataset.userTouched !== "true") {
-          uniqueCheck.checked = false;
-        }
-      }
-
-      listEl.querySelectorAll('input[name="pack_id"]').forEach((cb) => {
-        cb.addEventListener("change", syncOpenEndedDefaults);
-      });
-      syncOpenEndedDefaults();
+      syncCreatePackSelectionUI();
     }
 
     function openCreateModal() {
@@ -1064,6 +1355,7 @@
                   <button type="button" class="pack-filter-pill" data-cr-filter="en">EN</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="ar">AR (عربي)</button>
                   ${extraLangs.map((lang) => `<button type="button" class="pack-filter-pill" data-cr-filter="${esc(lang)}">${esc(lang.toUpperCase())}</button>`).join("")}
+                  <button type="button" class="pack-filter-pill" data-cr-filter="kids">🧸 Early Learner</button>
                   <button type="button" class="pack-filter-pill" data-cr-filter="open_ended">Open-Ended</button>
                   <button type="button" id="cr-random-packs-btn" class="pack-random-btn hidden">🎲 Random Packs</button>
                 </div>
@@ -1072,20 +1364,41 @@
               <div id="cr-pack-list" class="pack-checklist"></div>
             </div>
 
+            <div>
+              <label class="toggle-line" style="width:100%;cursor:pointer;" title="Early Learner mode: giant one-tap visual tiles, stars instead of wagers, no negative points, Read-Aloud audio, and optional Try Again & Auto-Next.">
+                <span style="font-size:0.88rem;font-weight:800;">🧸 Early Learner Mode (One-Tap &amp; Stars)</span>
+                <input id="cr-kids-mode" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+              </label>
+              <div id="cr-kids-callout" class="kids-mode-callout hidden" style="margin-top:8px;">
+                One-tap giant visual tiles · ⭐ Stars (no minus points) · No wagering · Built-in Read Aloud 🔊
+              </div>
+              <div id="cr-kids-suboptions" class="form-row-2 hidden" style="margin-top:8px;">
+                <label class="toggle-line" style="cursor:pointer;" title="When a child taps a wrong choice, dim that tile gently and let them try again until they find the right answer.">
+                  <span style="font-size:0.84rem;font-weight:700;">Try Again on Wrong Tap</span>
+                  <input id="cr-kids-try-again" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+                </label>
+                <label class="toggle-line" style="cursor:pointer;" title="Automatically move to the next question 3 seconds after Reveal (off = Parent-Led Next button).">
+                  <span style="font-size:0.84rem;font-weight:700;">Auto-Next After Reveal (3s)</span>
+                  <input id="cr-kids-auto-advance" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-secondary);" />
+                </label>
+              </div>
+            </div>
+
             <div class="form-row-2">
               <div>
                 <label class="field-label" for="cr-rounds">Rounds (5–25)</label>
                 <select id="cr-rounds" class="select-input mono">
-                  <option value="5">5 rounds (Wagers 1–5)</option>
-                  <option value="10" selected>10 rounds (Wagers 1–10)</option>
-                  <option value="15">15 rounds (Wagers 1–15)</option>
-                  <option value="20">20 rounds (Wagers 1–20)</option>
-                  <option value="25">25 rounds (Wagers 1–25)</option>
+                  <option value="5">5 rounds</option>
+                  <option value="10" selected>10 rounds</option>
+                  <option value="15">15 rounds</option>
+                  <option value="20">20 rounds</option>
+                  <option value="25">25 rounds</option>
                 </select>
               </div>
               <div>
                 <label class="field-label" for="cr-timer">Question Timer</label>
                 <select id="cr-timer" class="select-input">
+                  <option value="0">No Timer (Relaxed)</option>
                   <option value="20">20 seconds</option>
                   <option value="30" selected>30 seconds</option>
                   <option value="45">45 seconds</option>
@@ -1094,7 +1407,7 @@
               </div>
             </div>
 
-            <div class="form-row-2">
+            <div class="form-row-2" id="cr-adult-mode-row">
               <div>
                 <label class="field-label" for="cr-answer-mode">Answer Mode</label>
                 <select id="cr-answer-mode" class="select-input">
@@ -1121,7 +1434,7 @@
                   <option value="private">Private (Code / QR only)</option>
                 </select>
               </div>
-              <div style="display:flex;align-items:end;">
+              <div id="cr-deduct-wrong-wrap" style="display:flex;align-items:end;">
                 <label class="toggle-line" style="width:100%;cursor:pointer;" title="When enabled, wrong or unanswered questions deduct the selected confidence number.">
                   <span style="font-size:0.86rem;font-weight:700;">Deduct Wager if Wrong</span>
                   <input id="cr-deduct-wrong" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
@@ -1130,17 +1443,17 @@
             </div>
 
             <div class="form-row-2">
-              <label class="toggle-line" style="cursor:pointer;">
+              <label id="cr-late-join-wrap" class="toggle-line" style="cursor:pointer;">
                 <span style="font-size:0.86rem;font-weight:700;">Allow Late Joiners</span>
                 <input id="cr-late-join" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--accent-primary);" />
               </label>
-              <label class="toggle-line" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
+              <label id="cr-unique-answers-wrap" class="toggle-line hidden" style="cursor:pointer;" title="Disallow duplicate answers submitted by multiple players in the same round or reused from earlier rounds (auto-enabled for open-ended packs like Autobus Complete).">
                 <span style="font-size:0.86rem;font-weight:700;">No Repeated Answers</span>
-                <input id="cr-unique-answers" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-primary);" />
+                <input id="cr-unique-answers" type="checkbox" disabled style="width:18px;height:18px;accent-color:var(--accent-primary);" />
               </label>
             </div>
 
-            <div>
+            <div id="cr-bonus-round-wrap">
               <label class="toggle-line" style="width:100%;cursor:pointer;" title="Adds one high-stakes blind-wager bonus question at the end. Players choose their points before seeing the question (+score if correct, −score if wrong).">
                 <span id="cr-bonus-label" style="font-size:0.86rem;font-weight:700;">★ Final Bonus Question (blind wager ±5–30 pts)</span>
                 <input id="cr-bonus-round" type="checkbox" style="width:18px;height:18px;accent-color:var(--accent-amber);" />
@@ -1160,6 +1473,30 @@
         });
       }
 
+      const kidsModeEl = document.getElementById("cr-kids-mode");
+      if (kidsModeEl) {
+        kidsModeEl.addEventListener("change", () => {
+          kidsModeEl.dataset.userTouched = "true";
+          const roundsSel = document.getElementById("cr-rounds");
+          const timerSel = document.getElementById("cr-timer");
+          if (kidsModeEl.checked) {
+            if (roundsSel && roundsSel.value === "10") roundsSel.value = "5";
+            if (timerSel && timerSel.value === "30") timerSel.value = "0";
+          } else {
+            if (timerSel && timerSel.value === "0") timerSel.value = "30";
+          }
+          syncKidsModeUI();
+        });
+      }
+
+      const answerModeEl = document.getElementById("cr-answer-mode");
+      if (answerModeEl) {
+        answerModeEl.addEventListener("change", () => {
+          syncUniqueAnswersVisibility();
+        });
+      }
+      syncKidsModeUI();
+
       const roundsEl = document.getElementById("cr-rounds");
       const bonusLabelEl = document.getElementById("cr-bonus-label");
       function syncBonusLabel() {
@@ -1177,17 +1514,70 @@
       if (packSearchEl) {
         packSearchEl.addEventListener("input", () => {
           state.createPackSearch = packSearchEl.value;
-          renderModalPackList();
+          clearTimeout(packSearchDebounceTimer);
+          packSearchDebounceTimer = setTimeout(() => {
+            renderModalPackList({ syncFromDom: false });
+          }, 120);
         });
       }
+
+      const packListEl = document.getElementById("cr-pack-list");
+      if (packListEl) {
+        packListEl.addEventListener("change", (e) => {
+          const cb = e.target.closest('input[name="pack_id"]');
+          if (!cb) return;
+          if (cb.checked) state.createSelectedPacks.add(cb.value);
+          else state.createSelectedPacks.delete(cb.value);
+          const row = cb.closest(".pack-check-item");
+          if (row) row.classList.toggle("is-selected", cb.checked);
+          syncCreatePackSelectionUI();
+        });
+        packListEl.addEventListener("click", (e) => {
+          if (e.target.closest("#retry-packs-btn")) fetchBootstrap();
+        });
+      }
+
+      const selectedSummaryEl = document.getElementById("cr-selected-summary");
+      if (selectedSummaryEl) {
+        selectedSummaryEl.addEventListener("click", (e) => {
+          const removeBtn = e.target.closest("[data-unselect-pack]");
+          if (removeBtn) {
+            const id = removeBtn.getAttribute("data-unselect-pack");
+            if (id) {
+              state.createSelectedPacks.delete(id);
+              const cb = packListEl ? packListEl.querySelector(`input[name="pack_id"][value="${CSS.escape ? CSS.escape(id) : id.replace(/"/g, '\\"')}"]`) : null;
+              if (cb) {
+                cb.checked = false;
+                const row = cb.closest(".pack-check-item");
+                if (row) row.classList.remove("is-selected");
+              }
+            }
+            syncCreatePackSelectionUI();
+            return;
+          }
+          if (e.target.closest("#cr-clear-packs-btn")) {
+            state.createSelectedPacks.clear();
+            if (packListEl) {
+              packListEl.querySelectorAll('input[name="pack_id"]:checked').forEach((cb) => {
+                cb.checked = false;
+                const row = cb.closest(".pack-check-item");
+                if (row) row.classList.remove("is-selected");
+              });
+            }
+            syncCreatePackSelectionUI();
+          }
+        });
+      }
+
       modalRoot.querySelectorAll("[data-cr-filter]").forEach((btn) => {
         btn.addEventListener("click", () => {
+          clearTimeout(packSearchDebounceTimer);
           state.createPackFilter = btn.dataset.crFilter;
           modalRoot.querySelectorAll("[data-cr-filter]").forEach((b) => {
             b.classList.toggle("active", b.dataset.crFilter === state.createPackFilter);
           });
           syncRandomPacksButton();
-          renderModalPackList();
+          renderModalPackList({ syncFromDom: false });
         });
       });
 
@@ -1196,7 +1586,7 @@
         randomPacksBtn.addEventListener("click", selectRandomPacksForActiveLanguage);
       }
 
-      renderModalPackList();
+      renderModalPackList({ syncFromDom: false });
       if (!state.packs.length) {
         fetchBootstrap();
       }
@@ -1213,6 +1603,10 @@
           showToast("Select at least one trivia pack.", true);
           return;
         }
+        const kidsMode = Boolean(document.getElementById("cr-kids-mode") && document.getElementById("cr-kids-mode").checked);
+        const answerMode = kidsMode ? "multiple_choice" : document.getElementById("cr-answer-mode").value;
+        const rawTimer = parseInt(document.getElementById("cr-timer").value, 10);
+        const timerSec = Number.isNaN(rawTimer) ? (kidsMode ? 0 : 30) : rawTimer;
         sendWS({
           type: "create_room",
           session_token: state.sessionToken,
@@ -1220,57 +1614,140 @@
           avatar: state.avatar || undefined,
           room_name: document.getElementById("cr-name").value.trim(),
           pack_ids: selectedPacks,
-          round_count: parseInt(document.getElementById("cr-rounds").value, 10) || 10,
-          timer_seconds: parseInt(document.getElementById("cr-timer").value, 10) || 30,
-          answer_mode: document.getElementById("cr-answer-mode").value,
-          wager_mode: "pool",
-          deduct_wrong_wager: document.getElementById("cr-deduct-wrong").checked,
-          unique_answers_only: document.getElementById("cr-unique-answers").checked,
+          round_count: parseInt(document.getElementById("cr-rounds").value, 10) || (kidsMode ? 5 : 10),
+          timer_seconds: timerSec,
+          answer_mode: answerMode,
+          wager_mode: kidsMode ? "none" : "pool",
+          deduct_wrong_wager: kidsMode ? false : document.getElementById("cr-deduct-wrong").checked,
+          unique_answers_only: !kidsMode && answerMode === "free_text" && document.getElementById("cr-unique-answers").checked,
           difficulty: document.getElementById("cr-difficulty").value,
           visibility: document.getElementById("cr-visibility").value,
           allow_late_join: document.getElementById("cr-late-join").checked,
-          bonus_round: document.getElementById("cr-bonus-round").checked,
+          bonus_round: kidsMode ? false : document.getElementById("cr-bonus-round").checked,
+          kids_mode: kidsMode,
+          kids_try_again: kidsMode && Boolean(document.getElementById("cr-kids-try-again") && document.getElementById("cr-kids-try-again").checked),
+          kids_auto_advance: kidsMode && Boolean(document.getElementById("cr-kids-auto-advance") && document.getElementById("cr-kids-auto-advance").checked),
         });
       });
     }
 
     function closeModal() {
+      clearTimeout(packSearchDebounceTimer);
       state.showCreateModal = false;
       state.showAvatarModal = false;
+      state.lastAvatarModalSig = "";
       const modalRoot = document.getElementById("modal-root");
       if (modalRoot) modalRoot.innerHTML = "";
     }
 
-    function renderRoomHeader(room) {
+    function computeRoomHeaderSig(room) {
       const isHost = Boolean(getHostToken(room.code) || (room.me && room.me.is_host));
+      const score = room.me ? room.me.score : "";
+      return `${room.code}|${room.settings.room_name}|${room.players.length}|${score}|${room.paused ? 1 : 0}|${isHost ? 1 : 0}`;
+    }
+
+    function buildRoomHeaderInnerHtml(room) {
+      const isHost = Boolean(getHostToken(room.code) || (room.me && room.me.is_host));
+      const isKids = Boolean(room.settings && room.settings.kids_mode);
       return `
       <div class="studio-card room-header-card">
         <div class="room-meta">
           <span class="room-code-chip">${esc(room.code)}</span>
           <strong dir="auto">${esc(room.settings.room_name)}</strong>
-          <span class="badge">${room.players.length} players</span>
-          ${room.me ? `<span class="badge badge-accent mono">${room.me.score} pts</span>` : ""}
+          <span class="badge">${room.players.length} player${room.players.length === 1 ? "" : "s"}</span>
+          ${room.me ? `<span class="badge badge-accent mono">${isKids ? `⭐ ${room.me.score}` : `${room.me.score} pts`}</span>` : ""}
           ${room.paused ? `<span class="badge badge-paused">PAUSED</span>` : ""}
         </div>
         <div style="display:flex;gap:8px;">
           ${isHost ? `<span class="badge badge-lobby">Host</span>` : ""}
           <button id="leave-room-btn" class="btn btn-secondary btn-sm">Lobby</button>
         </div>
-      </div>
-    `;
+      </div>`;
+    }
+
+    function renderRoomHeader(room) {
+      state.lastRoomHeaderSig = computeRoomHeaderSig(room);
+      return `<div id="room-header-slot">${buildRoomHeaderInnerHtml(room)}</div>`;
+    }
+
+    function patchRoomHeader(room) {
+      const sig = computeRoomHeaderSig(room);
+      if (sig === state.lastRoomHeaderSig) return;
+      const slot = document.getElementById("room-header-slot");
+      if (!slot) return;
+      state.lastRoomHeaderSig = sig;
+      slot.innerHTML = buildRoomHeaderInnerHtml(room);
+      wireLeaveButton();
+    }
+
+    function performLeaveRoom() {
+      if (hasSpeechSupport()) {
+        try { window.speechSynthesis.cancel(); } catch (_) { }
+      }
+      state.room = null;
+      state.activeRoomCode = "";
+      state.renderedScreenKey = "";
+      saveStr(LS_ACTIVE_ROOM, "");
+      updateReconnectBanner(false);
+      stopTimerLoop();
+      sendWS({ type: "leave_room" });
+      render();
+    }
+
+    function openLeaveKidsConfirm() {
+      const modalRoot = document.getElementById("modal-root");
+      if (!modalRoot) {
+        performLeaveRoom();
+        return;
+      }
+      modalRoot.innerHTML = `
+        <div class="modal-backdrop" id="confirm-leave-kids-backdrop">
+          <div class="studio-card modal-panel animate-in" role="dialog" aria-modal="true" aria-label="Leave Early Learner Game" style="max-width:380px;">
+            <div class="modal-header">
+              <h2 style="margin:0;">🧸 Parent Check</h2>
+            </div>
+            <p style="margin:0 0 18px;color:var(--text-secondary);font-size:0.94rem;">
+              Leave this Early Learner game and return to the Lobby?
+            </p>
+            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
+              <button type="button" id="cancel-leave-kids-btn" class="btn btn-primary">Keep Playing</button>
+              <button type="button" id="confirm-leave-kids-btn" class="btn btn-secondary">Leave Room</button>
+            </div>
+          </div>
+        </div>
+      `;
+      const cancelBtn = document.getElementById("cancel-leave-kids-btn");
+      const confirmBtn = document.getElementById("confirm-leave-kids-btn");
+      const backdrop = document.getElementById("confirm-leave-kids-backdrop");
+      if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+      if (backdrop) {
+        backdrop.addEventListener("click", (e) => {
+          if (e.target.id === "confirm-leave-kids-backdrop") closeModal();
+        });
+      }
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
+          closeModal();
+          performLeaveRoom();
+        });
+      }
     }
 
     function wireLeaveButton() {
       const btn = document.getElementById("leave-room-btn");
       if (btn) {
         btn.addEventListener("click", () => {
-          state.room = null;
-          state.activeRoomCode = "";
-          saveStr(LS_ACTIVE_ROOM, "");
-          updateReconnectBanner(false);
-          stopTimerLoop();
-          sendWS({ type: "leave_room" });
-          render();
+          const isKidsActive = Boolean(
+            state.room &&
+            state.room.settings &&
+            state.room.settings.kids_mode &&
+            state.room.status === "in_progress"
+          );
+          if (isKidsActive) {
+            openLeaveKidsConfirm();
+            return;
+          }
+          performLeaveRoom();
         });
       }
     }
@@ -1329,9 +1806,46 @@
       }
     }
 
+    function buildRoomLobbyRosterHtml(players) {
+      return players
+        .map(
+          (p) => `<span class="player-chip ${p.connected ? "" : "offline"}" dir="auto">
+                  ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" width="24" height="24" loading="lazy" decoding="async" />` : ""}
+                  ${esc(p.nickname)}${p.is_host ? " ★" : ""}
+                </span>`
+        )
+        .join("");
+    }
+
+    function patchRoomLobby(room) {
+      patchRoomHeader(room);
+      const readyEl = document.getElementById("room-players-ready-label");
+      if (readyEl) readyEl.textContent = `Players Ready (${room.players.length})`;
+
+      const rosterSig = room.players
+        .map((p) => `${p.nickname}|${p.connected ? 1 : 0}|${p.is_host ? 1 : 0}|${p.avatar_url || ""}`)
+        .join(";");
+      if (rosterSig !== state.lastRoomLobbyRosterSig) {
+        state.lastRoomLobbyRosterSig = rosterSig;
+        const rosterEl = document.getElementById("room-player-roster");
+        if (rosterEl) rosterEl.innerHTML = buildRoomLobbyRosterHtml(room.players);
+      }
+    }
+
     function renderRoomLobby(root, room) {
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
+      const s = room.settings;
+      const settingsSig = `${s.room_name}|${(s.pack_titles || []).join(",")}|${s.round_count}|${s.timer_seconds}|${s.answer_mode}|${s.difficulty}|${s.deduct_wrong_wager}|${s.bonus_round}|${s.unique_answers_only}|${s.visibility}|${s.kids_mode ? 1 : 0}|${s.kids_try_again ? 1 : 0}|${s.kids_auto_advance ? 1 : 0}|${room.cover_url || ""}|${room.rtl ? 1 : 0}`;
+      const screenKey = `lobby:${room.code}:${isHost ? 1 : 0}:${settingsSig}`;
+
+      if (state.renderedScreenKey === screenKey && document.getElementById("room-player-roster")) {
+        patchRoomLobby(room);
+        return;
+      }
+
+      state.renderedScreenKey = screenKey;
+      state.lastRoomLobbyRosterSig = "";
       const joinUrl = getJoinUrl(room.code);
       const qrSvg = window.QuizRoomsQR ? window.QuizRoomsQR.toSVG(joinUrl) : "";
 
@@ -1345,7 +1859,7 @@
           </div>
           <div style="text-align:start;">
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-              ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" class="pack-cover-thumb lg" />` : ""}
+              ${room.cover_url ? `<img src="${esc(room.cover_url)}" alt="" class="pack-cover-thumb lg" width="54" height="54" decoding="async" />` : ""}
               <div>
                 <h2 style="margin:0 0 4px;" dir="auto">${esc(room.settings.room_name)}</h2>
                 <p style="margin:0;color:var(--text-secondary);" dir="auto">
@@ -1354,36 +1868,32 @@
               </div>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:14px;">
+              ${room.settings.kids_mode ? `<span class="badge badge-lobby">🧸 Early Learner Mode</span>` : ""}
               <span class="badge">${room.settings.round_count} Rounds</span>
-              <span class="badge">${room.settings.timer_seconds}s Timer</span>
-              <span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
-              ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
-              <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
-              <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
-              ${room.settings.bonus_round ? (() => {
-                const opts = room.settings.bonus_wager_options || [5, 10, 15, 20, 25, 30];
-                const lo = opts[0] || 5;
-                const hi = opts[opts.length - 1] || 30;
-                return `<span class="badge badge-accent">★ Final Bonus (±${lo}–${hi})</span>`;
-              })() : ""}
-              ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}
+              <span class="badge">${room.settings.timer_seconds > 0 ? `${room.settings.timer_seconds}s Timer` : "Relaxed (No Timer)"}</span>
+              ${room.settings.kids_mode
+                ? `${room.settings.kids_try_again ? `<span class="badge badge-accent">Try Again On</span>` : ""}
+                   ${room.settings.kids_auto_advance ? `<span class="badge badge-accent">Auto-Next (3s)</span>` : `<span class="badge">Parent-Led Next</span>`}
+                   <span class="badge">⭐ Star Points</span>`
+                : `<span class="badge">${room.settings.answer_mode === "free_text" ? "Free-Text" : "Multiple Choice"}</span>
+                   ${room.settings.difficulty && room.settings.difficulty !== "random" ? diffBadgeHtml(room.settings.difficulty, "Difficulty: ") : `<span class="badge">Difficulty: Random</span>`}
+                   <span class="badge">Wagers 1–${room.settings.round_count} (1× each)</span>
+                   <span class="badge">${room.settings.deduct_wrong_wager === false ? "Wrong: 0 pts" : "Wrong: −Wager"}</span>
+                   ${room.settings.bonus_round ? (() => {
+                     const opts = room.settings.bonus_wager_options || [5, 10, 15, 20, 25, 30];
+                     const lo = opts[0] || 5;
+                     const hi = opts[opts.length - 1] || 30;
+                     return `<span class="badge badge-accent">★ Final Bonus (±${lo}–${hi})</span>`;
+                   })() : ""}
+                   ${room.settings.unique_answers_only ? `<span class="badge badge-live">No Repeated Answers</span>` : ""}`}
               <span class="badge">${room.settings.visibility === "private" ? "Private" : "Public"}</span>
             </div>
 
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-              <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);">Players Ready (${room.players.length})</div>
+              <div id="room-players-ready-label" style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);">Players Ready (${room.players.length})</div>
               <button type="button" id="room-change-avatar-btn" class="btn btn-secondary btn-sm">Change Avatar</button>
             </div>
-            <div class="player-roster">
-              ${room.players
-          .map(
-            (p) => `<span class="player-chip ${p.connected ? "" : "offline"}" dir="auto">
-                    ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
-                    ${esc(p.nickname)}${p.is_host ? " ★" : ""}
-                  </span>`
-          )
-          .join("")}
-            </div>
+            <div id="room-player-roster" class="player-roster"></div>
           </div>
         </div>
 
@@ -1399,6 +1909,7 @@
       </section>
     `;
 
+      patchRoomLobby(room);
       wireLeaveButton();
       const chAvatarBtn = document.getElementById("room-change-avatar-btn");
       if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
@@ -1407,6 +1918,44 @@
           sendWS({ type: "start_game", code: room.code, host_token: hostToken });
         });
         wireHostCloseButton(room, hostToken);
+      }
+    }
+
+    function buildBonusStandingsHtml(players) {
+      return (players || [])
+        .map(
+          (p) => `
+          <div class="outcome-row">
+            <div style="display:inline-flex;align-items:center;gap:8px;font-weight:800;" dir="auto">
+              ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" width="24" height="24" loading="lazy" decoding="async" />` : ""}
+              #${p.rank} ${esc(p.nickname)}
+              ${p.locked_in ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">✓ Ready</span>` : ""}
+            </div>
+            <div class="mono" style="font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
+          </div>`
+        )
+        .join("");
+    }
+
+    function patchBonusWagerPhase(room) {
+      patchRoomHeader(room);
+      const bw = room.bonus_wager || {};
+      const readyText = `${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} ready`;
+      const readyBadge = document.getElementById("bonus-ready-badge");
+      if (readyBadge && readyBadge.textContent !== readyText) readyBadge.textContent = readyText;
+
+      const lockedCountEl = document.getElementById("bonus-locked-count-text");
+      if (lockedCountEl) {
+        lockedCountEl.textContent = `${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} players ready · Waiting for host to reveal the bonus question…`;
+      }
+
+      const standingsSig = (room.players || [])
+        .map((p) => `${p.rank}|${p.nickname}|${p.score}|${p.locked_in ? 1 : 0}|${p.avatar_url || ""}`)
+        .join(";");
+      if (standingsSig !== state.lastBonusStandingsSig) {
+        state.lastBonusStandingsSig = standingsSig;
+        const listEl = document.getElementById("bonus-standings-list");
+        if (listEl) listEl.innerHTML = buildBonusStandingsHtml(room.players);
       }
     }
 
@@ -1421,19 +1970,14 @@
         state.selectedWager = lockedWager && options.includes(lockedWager) ? lockedWager : options[0];
       }
 
-      const standingsHtml = (room.players || [])
-        .map(
-          (p) => `
-          <div class="outcome-row">
-            <div style="display:inline-flex;align-items:center;gap:8px;font-weight:800;" dir="auto">
-              ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
-              #${p.rank} ${esc(p.nickname)}
-              ${p.locked_in ? `<span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;">✓ Ready</span>` : ""}
-            </div>
-            <div class="mono" style="font-weight:800;color:var(--accent-primary);">${p.score} pts</div>
-          </div>`
-        )
-        .join("");
+      const screenKey = `bonus_wager:${room.code}:${isHost ? 1 : 0}:${lockedWager === null ? "open" : "locked:" + lockedWager}`;
+      if (state.renderedScreenKey === screenKey && document.getElementById("bonus-standings-list")) {
+        patchBonusWagerPhase(room);
+        return;
+      }
+
+      state.renderedScreenKey = screenKey;
+      state.lastBonusStandingsSig = "";
 
       const wagerControlsHtml =
         lockedWager === null
@@ -1442,7 +1986,7 @@
                 <span>★ Choose Your Blind Bonus Stake</span>
                 <span class="wager-risk-pill" id="bonus-risk-pill">Risking +${state.selectedWager} / −${state.selectedWager}</span>
               </div>
-              <div class="wager-chips">
+              <div class="wager-chips" id="bonus-wager-chips">
                 ${options
                   .map(
                     (val) => `<button type="button" class="wager-chip ${state.selectedWager === val ? "selected" : ""}" data-bonus-wager="${val}">${val}</button>`
@@ -1460,7 +2004,7 @@
             </div>`
           : `<div class="locked-banner">
               ★ Bonus Wager Locked In: <strong>±${lockedWager} pts</strong>
-              <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
+              <div id="bonus-locked-count-text" style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
                 ${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} players ready · Waiting for host to reveal the bonus question…
               </div>
             </div>`;
@@ -1470,7 +2014,7 @@
       <section class="studio-card question-card animate-in">
         <div class="question-top">
           <span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS WAGER</span>
-          <span class="badge mono">${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} ready</span>
+          <span id="bonus-ready-badge" class="badge mono">${bw.locked_count || 0} / ${bw.connected_count || room.connected_count || 0} ready</span>
         </div>
 
         <h2 class="question-prompt" style="margin-block:6px 4px;">Place Your Secret Bonus Wager!</h2>
@@ -1482,7 +2026,7 @@
 
         <div style="margin-top:18px;">
           <div style="font-size:0.84rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px;">Current Standings</div>
-          <div class="outcomes-list">${standingsHtml}</div>
+          <div id="bonus-standings-list" class="outcomes-list"></div>
         </div>
 
         ${isHost
@@ -1497,6 +2041,7 @@
       </section>
     `;
 
+      patchBonusWagerPhase(room);
       wireLeaveButton();
 
       if (lockedWager === null) {
@@ -1510,8 +2055,11 @@
           });
         }
 
-        root.querySelectorAll("[data-bonus-wager]").forEach((chip) => {
-          chip.addEventListener("click", () => {
+        const chipsWrap = document.getElementById("bonus-wager-chips");
+        if (chipsWrap) {
+          chipsWrap.addEventListener("click", (e) => {
+            const chip = e.target.closest("[data-bonus-wager]");
+            if (!chip) return;
             const clickedVal = parseInt(chip.dataset.bonusWager, 10);
             if (clickedVal === state.selectedWager) {
               submitBonusWagerNow();
@@ -1519,14 +2067,14 @@
             }
             state.selectedWager = clickedVal;
             if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
-            root.querySelectorAll("[data-bonus-wager]").forEach((c) => c.classList.remove("selected"));
+            chipsWrap.querySelectorAll("[data-bonus-wager]").forEach((c) => c.classList.remove("selected"));
             chip.classList.add("selected");
             const btn = document.getElementById("lock-bonus-wager-btn");
             if (btn) btn.textContent = `Lock In Bonus Wager (±${state.selectedWager} pts)`;
             const pill = document.getElementById("bonus-risk-pill");
             if (pill) pill.textContent = `Risking +${state.selectedWager} / −${state.selectedWager}`;
           });
-        });
+        }
 
         const lockBtn = document.getElementById("lock-bonus-wager-btn");
         if (lockBtn) {
@@ -1551,6 +2099,21 @@
       const isBonus = Boolean(q.is_bonus);
       const bonusOptions = q.bonus_wager_options || [5, 10, 15, 20, 25, 30];
       const lockedBonusWager = isBonus && me && typeof me.bonus_wager === "number" ? me.bonus_wager : null;
+      const screenKey = `question:${room.code}:${q.index}:${locked ? "locked" : "open"}:${room.paused ? "paused" : "live"}:${isHost ? 1 : 0}:${lockedBonusWager === null ? "free" : "bw" + lockedBonusWager}`;
+
+      // Fast path: same question & state — never destroy inputs, choices, media, or timer on opponent lock-ins!
+      if (state.renderedScreenKey === screenKey && document.getElementById("question-stage-card")) {
+        patchRoomHeader(room);
+        if (locked) {
+          const lockedCountEl = document.getElementById("locked-count-text");
+          if (lockedCountEl) {
+            lockedCountEl.textContent = `${room.locked_in_count} / ${room.connected_count} players locked in`;
+          }
+        }
+        return;
+      }
+
+      state.renderedScreenKey = screenKey;
       const poolSize = (me && me.wager_pool_size) || q.regular_rounds || room.settings.round_count || 10;
       const allChips = isBonus ? bonusOptions : Array.from({ length: poolSize }, (_, i) => i + 1);
       const availWagers = isBonus ? bonusOptions : ((me && me.available_wagers) || allChips);
@@ -1565,7 +2128,7 @@
       const mediaHtml = q.media_url
         ? `<div class="question-media-wrap">
           <div class="media-frame" id="zoom-media-trigger" title="Tap to zoom">
-            <img src="${esc(q.media_url)}" alt="Question visual" />
+            <img src="${esc(q.media_url)}" alt="Question visual" decoding="async" />
           </div>
         </div>`
         : "";
@@ -1577,11 +2140,39 @@
           </div>`
         : "";
 
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
+      const isUntimed = !q.timer_seconds || q.timer_seconds <= 0;
+      const choiceStyle = q.choice_style || "default";
+      const choiceMediaUrls = Array.isArray(q.choice_media_urls) ? q.choice_media_urls : [];
+      const choiceColors = Array.isArray(q.choice_colors) ? q.choice_colors : [];
+
       let answerInputHtml = "";
       if (!locked) {
-        if (room.settings.answer_mode === "multiple_choice" && !q.open_ended) {
+        if (kidsMode) {
+          const colsCls = q.choices.length === 3 ? "cols-3" : "";
           answerInputHtml = `
-          <div class="choices-grid">
+          <div id="kids-try-banner" class="kids-try-banner ${state.kidsTryMessage ? "" : "hidden"}" role="status">${esc(state.kidsTryMessage)}</div>
+          <div class="kids-choices-grid ${colsCls}" id="kids-choices-grid">
+            ${q.choices
+              .map((choice, i) => {
+                const alreadyTried = state.kidsTriedWrong.has(choice);
+                const imgUrl = choiceMediaUrls[i];
+                const swatch = safeHexColor(choiceColors[i]);
+                let inner = `<span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                if (choiceStyle === "image_grid" && imgUrl) {
+                  inner = `<img src="${esc(imgUrl)}" alt="${esc(choice)}" class="kids-choice-img" width="92" height="92" decoding="async" /><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                } else if (choiceStyle === "color_swatch" && swatch) {
+                  inner = `<span class="kids-swatch-circle" style="background:${swatch};"></span><span class="kids-choice-label" dir="auto">${esc(choice)}</span>`;
+                } else if (choiceStyle === "large_glyph") {
+                  inner = `<span class="kids-choice-glyph" dir="auto">${esc(choice)}</span>`;
+                }
+                return `<button type="button" class="kids-choice-btn tone-${i % 4} ${alreadyTried ? "tried-wrong" : ""}" data-kids-choice="${esc(choice)}" ${alreadyTried ? "disabled" : ""}>${inner}</button>`;
+              })
+              .join("")}
+          </div>`;
+        } else if (room.settings.answer_mode === "multiple_choice" && !q.open_ended) {
+          answerInputHtml = `
+          <div class="choices-grid" id="choices-grid">
             ${q.choices
               .map(
                 (choice, i) => `
@@ -1658,7 +2249,16 @@
           </button>
         </div>`;
 
-      const wagerHtml = !locked
+      const wagerHtml = kidsMode
+        ? locked
+          ? `<div class="locked-banner">
+              ⭐ ${q.rtl ? "تم اختيار:" : "Picked:"} <span dir="auto">${esc(me.my_submission.answer)}</span>
+              <div id="locked-count-text" style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
+                ${room.locked_in_count} / ${room.connected_count} ${q.rtl ? "جاهزون" : "ready"}
+              </div>
+            </div>`
+          : ""
+        : !locked
         ? isBonus && lockedBonusWager !== null
           ? `<div class="wager-section" style="border-color:var(--accent-amber);background:var(--accent-amber-soft);">
               <div class="wager-header" style="margin:0;">
@@ -1667,7 +2267,7 @@
               </div>
             </div>
             ${stickySubmitBar}`
-          : `<div class="wager-section">
+          : `<div class="wager-section" id="wager-section-wrap">
           <div class="wager-header">
             <span>${wagerHeaderLabel}</span>
             <span id="wager-risk-badge" class="wager-risk-pill">${riskText(state.selectedWager)}</span>
@@ -1677,36 +2277,51 @@
         ${stickySubmitBar}`
         : `<div class="locked-banner">
           Locked in: <span dir="auto">${esc(me.my_submission.answer)}</span> · ${isBonus ? `Bonus Wager ±${me.my_submission.wager} pts` : `Wager ${me.my_submission.wager} pts`}
-          <div style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
+          <div id="locked-count-text" style="font-size:0.84rem;margin-top:4px;opacity:0.9;">
             ${room.locked_in_count} / ${room.connected_count} players locked in
           </div>
         </div>`;
 
       const roundBadgeHtml = isBonus
         ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ FINAL BONUS QUESTION</span>`
-        : `<span class="badge badge-live">Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`;
+        : `<span class="badge badge-live">${kidsMode ? "🧸 " : ""}Round ${q.round_number} / ${q.regular_rounds || q.total_rounds}</span>`;
+
+      const kidsListenRowHtml =
+        kidsMode && hasSpeechSupport()
+          ? `<div class="kids-listen-row">
+              <button type="button" id="kids-listen-btn" class="kids-listen-btn">🔊 ${q.rtl ? "استمع للسؤال" : "Listen"}</button>
+              <button type="button" id="kids-autoread-btn" class="btn btn-secondary btn-sm" aria-pressed="${state.kidsAutoRead}">
+                ${state.kidsAutoRead ? "Auto-Read: On" : "Auto-Read: Off"}
+              </button>
+            </div>`
+          : "";
+
+      const initRem = q.remaining_seconds || 0;
+      const initRatio = isUntimed ? 1 : Math.max(0, Math.min(1, initRem / (q.timer_seconds || 30)));
+      const initReadout = room.paused ? `PAUSED (${Math.ceil(initRem)}s)` : `${Math.ceil(initRem)}s`;
 
       root.innerHTML = `
       ${renderRoomHeader(room)}
-      <section class="studio-card question-card animate-in" dir="${dir}">
+      <section id="question-stage-card" class="studio-card question-card animate-in" dir="${dir}">
         <div class="question-top">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             ${roundBadgeHtml}
-            ${diffBadgeHtml(q.difficulty)}
+            ${kidsMode ? `<span class="badge badge-lobby">⭐ Early Learner</span>` : diffBadgeHtml(q.difficulty)}
             ${room.settings.unique_answers_only ? `<span class="badge badge-accent">Unique Answers Only</span>` : ""}
           </div>
-          <span id="timer-readout" class="timer-readout">${Math.ceil(q.remaining_seconds || 0)}s</span>
+          ${isUntimed ? `<span class="badge badge-accent">${q.rtl ? "وقت مفتوح" : "Relaxed"}</span>` : `<span id="timer-readout" class="timer-readout">${initReadout}</span>`}
         </div>
-        <div class="timer-track"><div id="timer-fill" class="timer-fill"></div></div>
+        ${isUntimed ? "" : `<div class="timer-track"><div id="timer-fill" class="timer-fill" style="transform:scaleX(${initRatio.toFixed(4)})"></div></div>`}
         ${mediaHtml}
         <h2 class="question-prompt" dir="auto">${esc(q.prompt)}</h2>
+        ${kidsListenRowHtml}
         ${startsWithHtml}
         ${answerInputHtml}
         ${wagerHtml}
 
         ${isHost
           ? `<div class="host-bar">
-                <button id="host-pause-btn" class="btn btn-secondary btn-sm" style="flex:1;">${room.paused ? "Resume Timer" : "Pause Timer"}</button>
+                ${isUntimed ? "" : `<button id="host-pause-btn" class="btn btn-secondary btn-sm" style="flex:1;">${room.paused ? "Resume Timer" : "Pause Timer"}</button>`}
                 <button id="host-reveal-btn" class="btn btn-secondary btn-sm" style="flex:1;">Reveal Now</button>
               </div>
               ${renderHostDangerFooter()}`
@@ -1722,84 +2337,136 @@
         zoomTrigger.addEventListener("click", () => openLightbox(q.media_url));
       }
 
+      const kidsListenBtn = document.getElementById("kids-listen-btn");
+      if (kidsListenBtn) {
+        kidsListenBtn.addEventListener("click", () => {
+          speakKidsText(q.spoken_prompt || q.prompt, q.language);
+        });
+      }
+      const kidsAutoReadBtn = document.getElementById("kids-autoread-btn");
+      if (kidsAutoReadBtn) {
+        kidsAutoReadBtn.addEventListener("click", () => {
+          state.kidsAutoRead = !state.kidsAutoRead;
+          saveStr(LS_KIDS_AUTOREAD, state.kidsAutoRead ? "on" : "off");
+          kidsAutoReadBtn.textContent = state.kidsAutoRead ? "Auto-Read: On" : "Auto-Read: Off";
+          kidsAutoReadBtn.setAttribute("aria-pressed", String(state.kidsAutoRead));
+          if (state.kidsAutoRead) speakKidsText(q.spoken_prompt || q.prompt, q.language);
+        });
+      }
+
       if (!locked) {
-        function submitAnswerNow() {
-          if (!state.selectedAnswer.trim()) {
-            showToast("Choose or enter an answer before locking in!", true);
-            return;
+        if (kidsMode) {
+          const kidsGrid = document.getElementById("kids-choices-grid");
+          if (kidsGrid) {
+            kidsGrid.addEventListener("click", (e) => {
+              const btn = e.target.closest("[data-kids-choice]");
+              if (!btn || btn.disabled || state.kidsSubmitBusy) return;
+              const picked = btn.dataset.kidsChoice;
+              if (!picked) return;
+              state.kidsSubmitBusy = true;
+              if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+              sendWS({
+                type: "submit_answer",
+                code: room.code,
+                session_token: state.sessionToken,
+                answer: picked,
+                wager: 1,
+              });
+              setTimeout(() => { state.kidsSubmitBusy = false; }, 450);
+            });
           }
-          if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
-          sendWS({
-            type: "submit_answer",
-            code: room.code,
-            session_token: state.sessionToken,
-            answer: state.selectedAnswer,
-            wager: state.selectedWager,
-          });
-        }
-
-        root.querySelectorAll("[data-choice-idx]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const picked = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
-            if (state.selectedAnswer === picked) {
-              submitAnswerNow();
+        } else {
+          function submitAnswerNow() {
+            if (!state.selectedAnswer.trim()) {
+              showToast("Choose or enter an answer before locking in!", true);
               return;
             }
-            state.selectedAnswer = picked;
-            if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
-            root.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
-            btn.classList.add("selected");
-          });
-        });
+            if (window.QuizRoomsSFX) window.QuizRoomsSFX.lockIn();
+            sendWS({
+              type: "submit_answer",
+              code: room.code,
+              session_token: state.sessionToken,
+              answer: state.selectedAnswer,
+              wager: state.selectedWager,
+            });
+          }
 
-        const freeInput = document.getElementById("free-text-input");
-        if (freeInput) {
-          freeInput.addEventListener("input", () => {
-            state.selectedAnswer = freeInput.value;
-          });
-          freeInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              submitAnswerNow();
-            }
-          });
+          const choicesGrid = document.getElementById("choices-grid");
+          if (choicesGrid) {
+            choicesGrid.addEventListener("click", (e) => {
+              const btn = e.target.closest("[data-choice-idx]");
+              if (!btn) return;
+              const picked = q.choices[parseInt(btn.dataset.choiceIdx, 10)];
+              if (state.selectedAnswer === picked) {
+                submitAnswerNow();
+                return;
+              }
+              state.selectedAnswer = picked;
+              if (window.QuizRoomsSFX && window.QuizRoomsSFX.choiceTap) window.QuizRoomsSFX.choiceTap();
+              choicesGrid.querySelectorAll("[data-choice-idx]").forEach((b) => b.classList.remove("selected"));
+              btn.classList.add("selected");
+            });
+          }
+
+          const freeInput = document.getElementById("free-text-input");
+          if (freeInput) {
+            freeInput.addEventListener("input", () => {
+              state.selectedAnswer = freeInput.value;
+            });
+            freeInput.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                submitAnswerNow();
+              }
+            });
+          }
+
+          const wagerWrap = document.getElementById("wager-section-wrap");
+          if (wagerWrap) {
+            wagerWrap.addEventListener("click", (e) => {
+              const chip = e.target.closest("[data-wager]");
+              if (!chip || chip.disabled) return;
+              const pickedVal = parseInt(chip.dataset.wager, 10);
+              if (pickedVal === state.selectedWager && state.selectedAnswer.trim()) {
+                submitAnswerNow();
+                return;
+              }
+              state.selectedWager = pickedVal;
+              if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
+              wagerWrap.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
+              chip.classList.add("selected");
+              const lockBtn = document.getElementById("lock-in-btn");
+              if (lockBtn) {
+                lockBtn.textContent = isBonus
+                  ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
+                  : `Lock In Answer & Wager (${state.selectedWager} pts)`;
+              }
+              const riskLabel = riskText(state.selectedWager);
+              const riskBadge = document.getElementById("wager-risk-badge");
+              if (riskBadge) riskBadge.textContent = riskLabel;
+              const stickyRisk = document.getElementById("sticky-risk-pill");
+              if (stickyRisk) stickyRisk.textContent = riskLabel;
+            });
+          }
+
+          const lockBtn = document.getElementById("lock-in-btn");
+          if (lockBtn) lockBtn.addEventListener("click", submitAnswerNow);
         }
-
-        root.querySelectorAll("[data-wager]").forEach((chip) => {
-          chip.addEventListener("click", () => {
-            const pickedVal = parseInt(chip.dataset.wager, 10);
-            if (pickedVal === state.selectedWager && state.selectedAnswer.trim()) {
-              submitAnswerNow();
-              return;
-            }
-            state.selectedWager = pickedVal;
-            if (window.QuizRoomsSFX) window.QuizRoomsSFX.wagerClick(state.selectedWager);
-            root.querySelectorAll("[data-wager]").forEach((c) => c.classList.remove("selected"));
-            chip.classList.add("selected");
-            const lockBtn = document.getElementById("lock-in-btn");
-            if (lockBtn) {
-              lockBtn.textContent = isBonus
-                ? `Lock In Bonus Answer (±${state.selectedWager} pts)`
-                : `Lock In Answer & Wager (${state.selectedWager} pts)`;
-            }
-            const riskLabel = riskText(state.selectedWager);
-            const riskBadge = document.getElementById("wager-risk-badge");
-            if (riskBadge) riskBadge.textContent = riskLabel;
-            const stickyRisk = document.getElementById("sticky-risk-pill");
-            if (stickyRisk) stickyRisk.textContent = riskLabel;
-          });
-        });
-
-        document.getElementById("lock-in-btn").addEventListener("click", submitAnswerNow);
       }
 
       if (isHost) {
-        document.getElementById("host-pause-btn").addEventListener("click", () => {
-          sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
-        });
-        document.getElementById("host-reveal-btn").addEventListener("click", () => {
-          sendWS({ type: "next_step", code: room.code, host_token: hostToken });
-        });
+        const pauseBtn = document.getElementById("host-pause-btn");
+        if (pauseBtn) {
+          pauseBtn.addEventListener("click", () => {
+            sendWS({ type: "pause_room", code: room.code, host_token: hostToken });
+          });
+        }
+        const revBtn = document.getElementById("host-reveal-btn");
+        if (revBtn) {
+          revBtn.addEventListener("click", () => {
+            sendWS({ type: "next_step", code: room.code, host_token: hostToken });
+          });
+        }
         wireHostCloseButton(room, hostToken);
       }
     }
@@ -1808,6 +2475,26 @@
       const rev = room.reveal;
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
+      const screenKey = `reveal:${room.code}:${rev.round_index}:${isHost ? 1 : 0}`;
+      const revealSig =
+        `${screenKey}|` +
+        rev.outcomes
+          .map(
+            (o) =>
+              `${o.session_token}:${o.outcome}:${o.is_correct ? 1 : 0}:${o.overridden ? 1 : 0}:${o.delta}:${o.score}:${o.avatar_url || ""}`
+          )
+          .join(";");
+
+      if (state.renderedScreenKey === screenKey && state.lastRevealRenderSig === revealSig) {
+        patchRoomHeader(room);
+        return;
+      }
+
+      const animateCls = state.renderedScreenKey === screenKey ? "" : "animate-in";
+      state.renderedScreenKey = screenKey;
+      state.lastRevealRenderSig = revealSig;
+
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
       const isFreeText = room.settings.answer_mode === "free_text" || Boolean(rev.open_ended);
       const isLast = rev.round_index + 1 >= rev.total_rounds;
       const nextIsBonus = !isLast && Boolean(room.settings.bonus_round) && (rev.round_index + 2 === rev.total_rounds);
@@ -1815,7 +2502,9 @@
       const outcomesHtml = rev.outcomes
         .map((o) => {
           const deltaClass = o.delta > 0 ? "delta-pos" : o.delta < 0 ? "delta-neg" : "delta-zero";
-          const deltaLabel = o.delta > 0 ? `+${o.delta}` : String(o.delta);
+          const deltaLabel = kidsMode
+            ? (o.delta > 0 ? "⭐ +1" : (rev.rtl ? "أحسنت" : "Nice try"))
+            : (o.delta > 0 ? `+${o.delta}` : String(o.delta));
           const dupTag =
             o.outcome === "duplicate"
               ? ` <span class="badge badge-live" style="font-size:0.68rem;padding:2px 7px;" title="${esc(o.duplicate_reason || "Repeated answer")}">Repeated</span>`
@@ -1830,11 +2519,11 @@
           return `
           <div class="outcome-row ${esc(o.outcome)}">
             <div style="display:flex;align-items:center;gap:10px;text-align:start;min-width:0;flex:1;">
-              ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+              ${o.avatar_url ? `<img src="${esc(o.avatar_url)}" alt="" class="avatar-img avatar-sm" width="30" height="30" loading="lazy" decoding="async" />` : ""}
               <div style="min-width:0;">
                 <div style="font-weight:800;" dir="auto">${esc(o.nickname)}${dupTag}</div>
                 <div style="font-size:0.84rem;color:var(--text-secondary);" dir="auto">
-                  ${o.answer ? esc(o.answer) : "<em>No answer</em>"} · Wager ${o.wager}
+                  ${o.answer ? esc(o.answer) : "<em>No answer</em>"}${kidsMode ? "" : ` · Wager ${o.wager}`}
                   ${o.duplicate_reason ? ` · <em>${esc(o.duplicate_reason)}</em>` : ""}
                   ${o.overridden ? " · <em>Host override</em>" : ""}
                 </div>
@@ -1843,7 +2532,7 @@
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
               ${overrideBtn}
               <span class="delta-pill ${deltaClass}">${deltaLabel}</span>
-              <span class="mono" style="font-weight:800;min-width:46px;text-align:end;">${o.score}</span>
+              <span class="mono" style="font-weight:800;min-width:46px;text-align:end;">${kidsMode ? `⭐ ${o.score}` : o.score}</span>
             </div>
           </div>`;
         })
@@ -1851,40 +2540,44 @@
 
       root.innerHTML = `
       ${renderRoomHeader(room)}
-      <section class="studio-card question-card animate-in" dir="${rev.rtl ? "rtl" : "auto"}">
+      <section class="studio-card question-card ${animateCls}" dir="${rev.rtl ? "rtl" : "auto"}">
         <div class="question-top">
           ${rev.is_bonus
             ? `<span class="badge" style="background:var(--accent-amber);color:#120d02;font-weight:900;">★ Final Bonus Reveal</span>`
-            : `<span class="badge badge-lobby">Answer Reveal · Round ${rev.round_index + 1}/${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
+            : `<span class="badge badge-lobby">${kidsMode ? "⭐ " : ""}Answer Reveal · Round ${rev.round_index + 1}/${room.settings.bonus_round ? rev.total_rounds - 1 : rev.total_rounds}</span>`}
+          ${kidsMode && room.settings.kids_auto_advance ? `<span class="badge badge-accent">Auto-Next (3s)…</span>` : ""}
         </div>
         <div class="reveal-answer-box">
-          <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : "Correct Answer"}</div>
-          <div class="reveal-answer-text" dir="auto">${esc(rev.correct_answer)}</div>
+          <div class="reveal-answer-label">${rev.open_ended ? (rev.rtl ? "قاعدة الجولة المفتوحة" : "Open-Ended Round Rule") : (kidsMode ? (rev.rtl ? "أحسنت!" : "Great Job!") : "Correct Answer")}</div>
+          ${kidsMode && rev.reveal_message
+            ? `<div class="kids-reveal-celebrate" dir="auto">${esc(rev.reveal_message)}</div>`
+            : `<div class="reveal-answer-text" dir="auto">${esc(rev.correct_answer)}</div>`}
           ${rev.explanation ? `<p class="reveal-explanation" dir="auto">${esc(rev.explanation)}</p>` : ""}
         </div>
 
-        <div class="outcomes-list">${outcomesHtml}</div>
+        <div class="outcomes-list" id="reveal-outcomes-list">${outcomesHtml}</div>
 
         ${isHost
           ? `<div class="host-bar">
-                <button id="host-next-btn" class="btn btn-primary" style="flex:1;">
-                  ${isLast ? "Show Finale Podium" : nextIsBonus ? "Place Final Bonus Wagers ★" : "Next Question"}
+                <button id="host-next-btn" class="btn btn-primary" style="flex:1;${kidsMode ? "padding-block:15px;font-size:1.08rem;" : ""}">
+                  ${isLast ? (kidsMode ? "⭐ Celebrate Podium!" : "Show Finale Podium") : nextIsBonus ? "Place Final Bonus Wagers ★" : (kidsMode ? (rev.rtl ? "السؤال التالي ←" : "Next Question →") : "Next Question")}
                 </button>
               </div>
               ${renderHostDangerFooter()}`
           : `<p style="margin:0;text-align:center;color:var(--text-muted);font-weight:700;">
-                Waiting for host to continue…
+                ${kidsMode && room.settings.kids_auto_advance ? "Next question coming up…" : "Waiting for host to continue…"}
               </p>`
         }
       </section>
     `;
 
       wireLeaveButton();
-      const chAvatarBtn = document.getElementById("room-change-avatar-btn");
-      if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
       if (isHost) {
-        root.querySelectorAll("[data-override-token]").forEach((btn) => {
-          btn.addEventListener("click", () => {
+        const listEl = document.getElementById("reveal-outcomes-list");
+        if (listEl) {
+          listEl.addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-override-token]");
+            if (!btn) return;
             sendWS({
               type: "override_answer",
               code: room.code,
@@ -1893,7 +2586,7 @@
               approve: btn.dataset.overrideApprove === "true",
             });
           });
-        });
+        }
         document.getElementById("host-next-btn").addEventListener("click", () => {
           sendWS({ type: "next_step", code: room.code, host_token: hostToken });
         });
@@ -1905,16 +2598,29 @@
       const fin = room.finale;
       const hostToken = getHostToken(room.code);
       const isHost = Boolean(hostToken);
-      const medals = ["#1", "#2", "#3"];
+      const screenKey = `finale:${room.code}:${isHost ? 1 : 0}`;
+      const finaleSig =
+        `${screenKey}|` +
+        fin.leaderboard.map((r) => `${r.rank}:${r.nickname}:${r.score}:${r.avatar_url || ""}`).join(";");
+
+      if (state.renderedScreenKey === screenKey && state.lastFinaleRenderSig === finaleSig) {
+        patchRoomHeader(room);
+        return;
+      }
+
+      state.renderedScreenKey = screenKey;
+      state.lastFinaleRenderSig = finaleSig;
+      const kidsMode = Boolean(room.settings && room.settings.kids_mode);
+      const medals = kidsMode ? ["⭐", "🌟", "✨"] : ["#1", "#2", "#3"];
 
       const podiumHtml = fin.podium
         .map(
           (p, idx) => `
         <div class="podium-slot rank-${idx + 1}">
-          ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${idx === 0 ? "avatar-lg" : "avatar-md"}" style="margin-bottom:6px;" />` : ""}
+          ${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" class="avatar-img ${idx === 0 ? "avatar-lg" : "avatar-md"}" width="${idx === 0 ? 64 : 42}" height="${idx === 0 ? 64 : 42}" decoding="async" style="margin-bottom:6px;" />` : ""}
           <div class="podium-medal">${medals[idx] || "#" + (idx + 1)}</div>
           <div class="podium-name" dir="auto">${esc(p.nickname)}</div>
-          <div class="podium-score">${p.score} pts</div>
+          <div class="podium-score">${kidsMode ? `⭐ ${p.score}` : `${p.score} pts`}</div>
         </div>`
         )
         .join("");
@@ -1923,7 +2629,7 @@
         .map(
           (a) => `
         <div class="award-card" style="display:flex;align-items:center;gap:10px;">
-          ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-sm" />` : ""}
+          ${a.avatar_url ? `<img src="${esc(a.avatar_url)}" alt="" class="avatar-img avatar-sm" width="30" height="30" loading="lazy" decoding="async" />` : ""}
           <div>
             <div class="award-title">${esc(a.title)}</div>
             <div class="award-winner" dir="auto">${esc(a.nickname)}</div>
@@ -1937,8 +2643,8 @@
       ${renderRoomHeader(room)}
       <section class="studio-card question-card animate-in">
         <div style="text-align:center;">
-          <span class="badge badge-live">Game Complete</span>
-          <h2 style="margin:10px 0 4px;font-size:1.7rem;">Final Podium</h2>
+          <span class="badge badge-live">${kidsMode ? "🧸 All-Star Celebration!" : "Game Complete"}</span>
+          <h2 style="margin:10px 0 4px;font-size:1.7rem;">${kidsMode ? "⭐ Super Stars!" : "Final Podium"}</h2>
         </div>
 
         <div class="podium-grid">${podiumHtml}</div>
@@ -1950,10 +2656,10 @@
             (row) => `
               <div class="outcome-row">
                 <div style="display:inline-flex;align-items:center;gap:8px;font-weight:800;" dir="auto">
-                  ${row.avatar_url ? `<img src="${esc(row.avatar_url)}" alt="" class="avatar-img avatar-xs" />` : ""}
+                  ${row.avatar_url ? `<img src="${esc(row.avatar_url)}" alt="" class="avatar-img avatar-xs" width="24" height="24" loading="lazy" decoding="async" />` : ""}
                   #${row.rank} ${esc(row.nickname)}
                 </div>
-                <div class="mono" style="font-weight:800;color:var(--accent-primary);">${row.score} pts</div>
+                <div class="mono" style="font-weight:800;color:var(--accent-primary);">${kidsMode ? `⭐ ${row.score}` : `${row.score} pts`}</div>
               </div>`
           )
           .join("")}
@@ -1970,8 +2676,6 @@
     `;
 
       wireLeaveButton();
-      const chAvatarBtn = document.getElementById("room-change-avatar-btn");
-      if (chAvatarBtn) chAvatarBtn.addEventListener("click", () => openAvatarModal());
       if (isHost) {
         document.getElementById("play-again-btn").addEventListener("click", () => {
           sendWS({ type: "play_again", code: room.code, host_token: hostToken });
@@ -1985,7 +2689,7 @@
       box.innerHTML = `
       <div class="lightbox" id="lightbox-close">
         <div class="media-frame">
-          <img src="${esc(src)}" alt="Zoomed visual" />
+          <img src="${esc(src)}" alt="Zoomed visual" decoding="async" />
         </div>
       </div>`;
       document.getElementById("lightbox-close").addEventListener("click", () => {
@@ -2011,7 +2715,29 @@
         });
       }
       render();
-      fetchBootstrap();
       connectWS();
+      // WS-first hydration: only fall back to HTTP bootstrap if WS hello doesn't arrive within 800ms
+      state.bootstrapFallbackTimer = setTimeout(() => {
+        state.bootstrapFallbackTimer = null;
+        if (!state.helloReceived && !state.packsLoaded) {
+          fetchBootstrap();
+        }
+      }, 800);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+          reconnectNowIfNeeded();
+        } else if (hasSpeechSupport()) {
+          try { window.speechSynthesis.cancel(); } catch (_) { }
+        }
+      });
+      window.addEventListener("pagehide", () => {
+        if (hasSpeechSupport()) {
+          try { window.speechSynthesis.cancel(); } catch (_) { }
+        }
+      });
+      window.addEventListener("online", () => {
+        reconnectNowIfNeeded();
+      });
     });
   }) ();

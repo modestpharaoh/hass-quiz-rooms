@@ -1,0 +1,766 @@
+{
+  "title": "الطقس والفصول والسماء",
+  "description": "الشمس والقمر والمطر والثلج وقوس قزح وفصول السنة الأربعة بالصور والنطق العربي.",
+  "age_range": "4-7",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "category": "تعلّم مبكر · الطقس والفصول",
+  "pack_id": "kids_weather_seasons_ar",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "wth_ar_01",
+      "prompt": "اضغط على الشمس!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الشَّمْسِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الشمس",
+        "القمر",
+        "الغيمة"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/cloud.svg"
+      ],
+      "answer": "الشمس",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الشمس!",
+      "explanation": "هذه الصورة تمثل الشمس."
+    },
+    {
+      "id": "wth_ar_02",
+      "prompt": "اضغط على القمر!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْقَمَرِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "القمر",
+        "الشمس",
+        "النجمة"
+      ],
+      "choice_images": [
+        "media/moon.svg",
+        "media/sun.svg",
+        "media/star.svg"
+      ],
+      "answer": "القمر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة القمر!",
+      "explanation": "هذه الصورة تمثل القمر."
+    },
+    {
+      "id": "wth_ar_03",
+      "prompt": "اضغط على النجمة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ النَّجْمَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "النجمة",
+        "الغيمة",
+        "المطر"
+      ],
+      "choice_images": [
+        "media/star.svg",
+        "media/cloud.svg",
+        "media/rain.svg"
+      ],
+      "answer": "النجمة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة النجمة!",
+      "explanation": "هذه الصورة تمثل النجمة."
+    },
+    {
+      "id": "wth_ar_04",
+      "prompt": "اضغط على الغيمة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْغَيْمَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الغيمة",
+        "الشمس",
+        "الثلج"
+      ],
+      "choice_images": [
+        "media/cloud.svg",
+        "media/sun.svg",
+        "media/snow.svg"
+      ],
+      "answer": "الغيمة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الغيمة!",
+      "explanation": "هذه الصورة تمثل الغيمة."
+    },
+    {
+      "id": "wth_ar_05",
+      "prompt": "اضغط على المطر!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمَطَرِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "المطر",
+        "الشمس",
+        "الرياح"
+      ],
+      "choice_images": [
+        "media/rain.svg",
+        "media/sun.svg",
+        "media/wind.svg"
+      ],
+      "answer": "المطر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة المطر!",
+      "explanation": "هذه الصورة تمثل المطر."
+    },
+    {
+      "id": "wth_ar_06",
+      "prompt": "اضغط على الثلج!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الثَّلْجِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الثلج",
+        "المطر",
+        "قوس قزح"
+      ],
+      "choice_images": [
+        "media/snow.svg",
+        "media/rain.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "الثلج",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الثلج!",
+      "explanation": "هذه الصورة تمثل الثلج."
+    },
+    {
+      "id": "wth_ar_07",
+      "prompt": "اضغط على قوس قزح!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ قَوْسِ قُزَحَ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "قوس قزح",
+        "الغيمة",
+        "البرق"
+      ],
+      "choice_images": [
+        "media/rainbow.svg",
+        "media/cloud.svg",
+        "media/lightning.svg"
+      ],
+      "answer": "قوس قزح",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة قوس قزح!",
+      "explanation": "هذه الصورة تمثل قوس قزح."
+    },
+    {
+      "id": "wth_ar_08",
+      "prompt": "اضغط على الرياح!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الرِّيَاحِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الرياح",
+        "الشمس",
+        "القمر"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/sun.svg",
+        "media/moon.svg"
+      ],
+      "answer": "الرياح",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الرياح!",
+      "explanation": "هذه الصورة تمثل الرياح."
+    },
+    {
+      "id": "wth_ar_09",
+      "prompt": "اضغط على المظلة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِظَلَّةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "المظلة",
+        "النظارة الشمسية",
+        "المعطف"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/coat.svg"
+      ],
+      "answer": "المظلة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة المظلة!",
+      "explanation": "هذه الصورة تمثل المظلة."
+    },
+    {
+      "id": "wth_ar_10",
+      "prompt": "اضغط على النظارة الشمسية!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ النَّظَّارَةِ الشَّمْسِيَّةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "النظارة الشمسية",
+        "المعطف",
+        "المظلة"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "النظارة الشمسية",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة النظارة الشمسية!",
+      "explanation": "هذه الصورة تمثل النظارة الشمسية."
+    },
+    {
+      "id": "wth_ar_11",
+      "prompt": "اضغط على المعطف!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِعْطَفِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "المعطف",
+        "النظارة الشمسية",
+        "المظلة"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "المعطف",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة المعطف!",
+      "explanation": "هذه الصورة تمثل المعطف."
+    },
+    {
+      "id": "wth_ar_12",
+      "prompt": "اضغط على البرق!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْبَرْقِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "البرق",
+        "قوس قزح",
+        "النجمة"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/rainbow.svg",
+        "media/star.svg"
+      ],
+      "answer": "البرق",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة البرق!",
+      "explanation": "هذه الصورة تمثل البرق."
+    },
+    {
+      "id": "wth_ar_13",
+      "prompt": "ماذا يضيء السماء ويدفئنا في النهار؟",
+      "spoken_prompt": "مَاذَا يُضِيءُ السَّمَاءَ فِي النَّهَارِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الشمس",
+        "القمر",
+        "الثلج"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/snow.svg"
+      ],
+      "answer": "الشمس",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الشمس!",
+      "explanation": "الإجابة الصحيحة هي الشمس."
+    },
+    {
+      "id": "wth_ar_14",
+      "prompt": "ماذا يضيء في السماء ليلاً مع النجوم؟",
+      "spoken_prompt": "مَاذَا يَظْهَرُ فِي السَّمَاءِ لَيْلًا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القمر",
+        "الشمس",
+        "قوس قزح"
+      ],
+      "choice_images": [
+        "media/moon.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "القمر",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي القمر!",
+      "explanation": "الإجابة الصحيحة هي القمر."
+    },
+    {
+      "id": "wth_ar_15",
+      "prompt": "ماذا نحمل فوق رأسنا عندما ينزل المطر؟",
+      "spoken_prompt": "مَاذَا نَحْمِلُ عِنْدَمَا يَنْزِلُ الْمَطَرُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "المظلة",
+        "النظارة الشمسية",
+        "النجمة"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/star.svg"
+      ],
+      "answer": "المظلة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي المظلة!",
+      "explanation": "الإجابة الصحيحة هي المظلة."
+    },
+    {
+      "id": "wth_ar_16",
+      "prompt": "ماذا نلبس على أعيننا في الصيف المشمس؟",
+      "spoken_prompt": "مَاذَا نَلْبَسُ فِي الشَّمْسِ السَّاطِعَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "النظارة الشمسية",
+        "المعطف",
+        "المظلة"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/umbrella.svg"
+      ],
+      "answer": "النظارة الشمسية",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي النظارة الشمسية!",
+      "explanation": "الإجابة الصحيحة هي النظارة الشمسية."
+    },
+    {
+      "id": "wth_ar_17",
+      "prompt": "ماذا نلبس لندفأ في الشتاء البارد؟",
+      "spoken_prompt": "مَاذَا نَلْبَسُ فِي الشِّتَاءِ الْبَارِدِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "المعطف",
+        "النظارة الشمسية",
+        "الرياح"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/wind.svg"
+      ],
+      "answer": "المعطف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي المعطف!",
+      "explanation": "الإجابة الصحيحة هي المعطف."
+    },
+    {
+      "id": "wth_ar_18",
+      "prompt": "ما القوس الملون الذي يظهر بعد المطر والشمس؟",
+      "spoken_prompt": "مَا الْقَوْسُ الْمُلَوَّنُ الَّذِي يَظْهَرُ بَعْدَ الْمَطَرِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قوس قزح",
+        "البرق",
+        "القمر"
+      ],
+      "choice_images": [
+        "media/rainbow.svg",
+        "media/lightning.svg",
+        "media/moon.svg"
+      ],
+      "answer": "قوس قزح",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي قوس قزح!",
+      "explanation": "الإجابة الصحيحة هي قوس قزح."
+    },
+    {
+      "id": "wth_ar_19",
+      "prompt": "ماذا ينزل من الغيوم ليسقي الأزهار؟",
+      "spoken_prompt": "مَاذَا يَنْزِلُ مِنَ الْغُيُومِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "المطر",
+        "النجمة",
+        "النظارة الشمسية"
+      ],
+      "choice_images": [
+        "media/rain.svg",
+        "media/star.svg",
+        "media/sunglasses.svg"
+      ],
+      "answer": "المطر",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي المطر!",
+      "explanation": "الإجابة الصحيحة هي المطر."
+    },
+    {
+      "id": "wth_ar_20",
+      "prompt": "ماذا نستخدم لصنع رجل الثلج في الشتاء؟",
+      "spoken_prompt": "مَاذَا نَسْتَخْدِمُ لِصُنْعِ رَجُلِ الثَّلْجِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الثلج",
+        "الشمس",
+        "قوس قزح"
+      ],
+      "choice_images": [
+        "media/snow.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "الثلج",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الثلج!",
+      "explanation": "الإجابة الصحيحة هي الثلج."
+    },
+    {
+      "id": "wth_ar_21",
+      "prompt": "ماذا يحرك الطائرة الورقية عالياً؟",
+      "spoken_prompt": "مَاذَا يُحَرِّكُ الطَّائِرَةَ الْوَرَقِيَّةَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الرياح",
+        "القمر",
+        "المعطف"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/moon.svg",
+        "media/coat.svg"
+      ],
+      "answer": "الرياح",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الرياح!",
+      "explanation": "الإجابة الصحيحة هي الرياح."
+    },
+    {
+      "id": "wth_ar_22",
+      "prompt": "ما الوميض الساطع الذي يظهر أثناء العاصفة؟",
+      "spoken_prompt": "مَا الْوَمِيضُ السَّاطِعُ أَثْنَاءَ الْعَاصِفَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "البرق",
+        "الشمس",
+        "قوس قزح"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/sun.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "البرق",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي البرق!",
+      "explanation": "الإجابة الصحيحة هي البرق."
+    },
+    {
+      "id": "wth_ar_23",
+      "prompt": "ما السحب البيضاء التي تسبح في السماء؟",
+      "spoken_prompt": "مَا السُّحُبُ الَّتِي تَسْبَحُ فِي السَّمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الغيمة",
+        "المظلة",
+        "النجمة"
+      ],
+      "choice_images": [
+        "media/cloud.svg",
+        "media/umbrella.svg",
+        "media/star.svg"
+      ],
+      "answer": "الغيمة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الغيمة!",
+      "explanation": "الإجابة الصحيحة هي الغيمة."
+    },
+    {
+      "id": "wth_ar_24",
+      "prompt": "ماذا يلمع كالجواهر الصغيرة في الليل؟",
+      "spoken_prompt": "مَاذَا يَلْمَعُ فِي سَمَاءِ اللَّيْلِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "النجمة",
+        "المطر",
+        "المعطف"
+      ],
+      "choice_images": [
+        "media/star.svg",
+        "media/rain.svg",
+        "media/coat.svg"
+      ],
+      "answer": "النجمة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي النجمة!",
+      "explanation": "الإجابة الصحيحة هي النجمة."
+    },
+    {
+      "id": "wth_ar_25",
+      "prompt": "ما هو أدفأ فصل نذهب فيه إلى البحر؟",
+      "spoken_prompt": "مَا هُوَ أَدْفَأُ فَصْلٍ فِي السَّنَةِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الصيف",
+        "الشتاء",
+        "الخريف"
+      ],
+      "answer": "الصيف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الصيف!",
+      "explanation": "الإجابة الصحيحة هي الصيف."
+    },
+    {
+      "id": "wth_ar_26",
+      "prompt": "ما هو أبرد فصل ينزل فيه المطر والثلج؟",
+      "spoken_prompt": "مَا هُوَ أَبْرَدُ فَصْلٍ فِي السَّنَةِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الشتاء",
+        "الصيف",
+        "الربيع"
+      ],
+      "answer": "الشتاء",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الشتاء!",
+      "explanation": "الإجابة الصحيحة هي الشتاء."
+    },
+    {
+      "id": "wth_ar_27",
+      "prompt": "في أي فصل تتفتح الأزهار الجميلة؟",
+      "spoken_prompt": "فِي أَيِّ فَصْلٍ تَتَفَتَّحُ الْأَزْهَارُ؟",
+      "choice_style": "default",
+      "choices": [
+        "الربيع",
+        "الشتاء",
+        "الخريف"
+      ],
+      "answer": "الربيع",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الربيع!",
+      "explanation": "الإجابة الصحيحة هي الربيع."
+    },
+    {
+      "id": "wth_ar_28",
+      "prompt": "في أي فصل تتساقط أوراق الأشجار؟",
+      "spoken_prompt": "فِي أَيِّ فَصْلٍ تَتَسَاقَطُ أَوْرَاقُ الْأَشْجَارِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الخريف",
+        "الصيف",
+        "الربيع"
+      ],
+      "answer": "الخريف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الخريف!",
+      "explanation": "الإجابة الصحيحة هي الخريف."
+    },
+    {
+      "id": "wth_ar_29",
+      "prompt": "كم عدد فصول السنة؟",
+      "spoken_prompt": "كَمْ عَدَدُ فُصُولِ السَّنَةِ؟",
+      "choice_style": "default",
+      "choices": [
+        "٤",
+        "٢",
+        "٦"
+      ],
+      "answer": "٤",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي ٤!",
+      "explanation": "الإجابة الصحيحة هي ٤."
+    },
+    {
+      "id": "wth_ar_30",
+      "prompt": "ما الصوت القوي الذي نسمعه بعد البرق؟",
+      "spoken_prompt": "مَا الصَّوْتُ الْقَوِيُّ الَّذِي نَسْمَعُهُ بَعْدَ الْبَرْقِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الرعد",
+        "الثلج",
+        "الرياح"
+      ],
+      "answer": "الرعد",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الرعد!",
+      "explanation": "الإجابة الصحيحة هي الرعد."
+    },
+    {
+      "id": "wth_ar_31",
+      "prompt": "ماذا نحتاج ليظهر قوس قزح؟",
+      "spoken_prompt": "مَاذَا نَحْتَاجُ لِيَظْهَرَ قَوْسُ قُزَحَ؟",
+      "choice_style": "default",
+      "choices": [
+        "الشمس والمطر",
+        "القمر والثلج",
+        "الليل والرياح"
+      ],
+      "answer": "الشمس والمطر",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الشمس والمطر!",
+      "explanation": "الإجابة الصحيحة هي الشمس والمطر."
+    },
+    {
+      "id": "wth_ar_32",
+      "prompt": "أي فصل يأتي بعد الشتاء مباشرة؟",
+      "spoken_prompt": "أَيُّ فَصْلٍ يَأْتِي بَعْدَ الشِّتَاءِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الربيع",
+        "الخريف",
+        "الصيف"
+      ],
+      "answer": "الربيع",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الربيع!",
+      "explanation": "الإجابة الصحيحة هي الربيع."
+    },
+    {
+      "id": "wth_ar_33",
+      "prompt": "أي فصل يأتي بعد الصيف مباشرة؟",
+      "spoken_prompt": "أَيُّ فَصْلٍ يَأْتِي بَعْدَ الصَّيْفِ؟",
+      "choice_style": "default",
+      "choices": [
+        "الخريف",
+        "الربيع",
+        "الشتاء"
+      ],
+      "answer": "الخريف",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الخريف!",
+      "explanation": "الإجابة الصحيحة هي الخريف."
+    },
+    {
+      "id": "wth_ar_34",
+      "prompt": "عندما يتجمد الماء من شدة البرد يصبح ___.",
+      "spoken_prompt": "عِنْدَمَا يَتَجَمَّدُ الْمَاءُ يُصْبِحُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "جليداً",
+        "رياحاً",
+        "غيمة"
+      ],
+      "answer": "جليداً",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي جليداً!",
+      "explanation": "الإجابة الصحيحة هي جليداً."
+    },
+    {
+      "id": "wth_ar_35",
+      "prompt": "أي جرم في السماء هو نجم عملاق يدفئ الأرض؟",
+      "spoken_prompt": "أَيُّ جِرْمٍ هُوَ نَجْمٌ عِمْلَاقٌ يُدْفِئُ الْأَرْضَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الشمس",
+        "القمر",
+        "الغيمة"
+      ],
+      "choice_images": [
+        "media/sun.svg",
+        "media/moon.svg",
+        "media/cloud.svg"
+      ],
+      "answer": "الشمس",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الشمس!",
+      "explanation": "الإجابة الصحيحة هي الشمس."
+    },
+    {
+      "id": "wth_ar_36",
+      "prompt": "أي طقس هو الأفضل لتطيير الطائرة الورقية؟",
+      "spoken_prompt": "أَيُّ طَقْسٍ مُنَاسِبٌ لِلطَّائِرَةِ الْوَرَقِيَّةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الرياح",
+        "البرق",
+        "الثلج"
+      ],
+      "choice_images": [
+        "media/wind.svg",
+        "media/lightning.svg",
+        "media/snow.svg"
+      ],
+      "answer": "الرياح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الرياح!",
+      "explanation": "الإجابة الصحيحة هي الرياح."
+    },
+    {
+      "id": "wth_ar_37",
+      "prompt": "أي أداة تحمينا من البلل في المطر؟",
+      "spoken_prompt": "أَيُّ أَدَاةٍ تَحْمِينَا مِنَ الْمَطَرِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "المظلة",
+        "النظارة الشمسية",
+        "النجمة"
+      ],
+      "choice_images": [
+        "media/umbrella.svg",
+        "media/sunglasses.svg",
+        "media/star.svg"
+      ],
+      "answer": "المظلة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي المظلة!",
+      "explanation": "الإجابة الصحيحة هي المظلة."
+    },
+    {
+      "id": "wth_ar_38",
+      "prompt": "متى يجب أن نبقى بأمان داخل البيت؟",
+      "spoken_prompt": "مَتَى يَجِبُ أَنْ نَبْقَى دَاخِلَ الْبَيْتِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "البرق",
+        "قوس قزح",
+        "الشمس"
+      ],
+      "choice_images": [
+        "media/lightning.svg",
+        "media/rainbow.svg",
+        "media/sun.svg"
+      ],
+      "answer": "البرق",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي البرق!",
+      "explanation": "الإجابة الصحيحة هي البرق."
+    },
+    {
+      "id": "wth_ar_39",
+      "prompt": "في الصيف نرتدي ملابس خفيفة و___.",
+      "spoken_prompt": "فِي الصَّيْفِ نَرْتَدِي مَاذَا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "النظارة الشمسية",
+        "المعطف",
+        "الثلج"
+      ],
+      "choice_images": [
+        "media/sunglasses.svg",
+        "media/coat.svg",
+        "media/snow.svg"
+      ],
+      "answer": "النظارة الشمسية",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي النظارة الشمسية!",
+      "explanation": "الإجابة الصحيحة هي النظارة الشمسية."
+    },
+    {
+      "id": "wth_ar_40",
+      "prompt": "في الشتاء نرتدي القفازات والقبعة و___.",
+      "spoken_prompt": "فِي الشِّتَاءِ نَرْتَدِي مَاذَا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "المعطف",
+        "النظارة الشمسية",
+        "قوس قزح"
+      ],
+      "choice_images": [
+        "media/coat.svg",
+        "media/sunglasses.svg",
+        "media/rainbow.svg"
+      ],
+      "answer": "المعطف",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي المعطف!",
+      "explanation": "الإجابة الصحيحة هي المعطف."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

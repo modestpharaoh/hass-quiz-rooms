@@ -1,0 +1,766 @@
+{
+  "pack_id": "kids_en_phonics_rhymes_en",
+  "title": "English Phonics & Rhyming Words",
+  "description": "Playful rhyming pairs, short vowel sounds (a/e/i/o/u), and digraphs (sh / ch / th / wh / ph)!",
+  "audience": "kids",
+  "age_range": "4-7",
+  "choice_style": "default",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "category": "Early Learner · Phonics & Rhymes",
+  "questions": [
+    {
+      "id": "en_ph_01",
+      "prompt": "Which word rhymes with Cat?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Cat?",
+      "choice_style": "default",
+      "choices": [
+        "Hat",
+        "Dog",
+        "Sun"
+      ],
+      "answer": "Hat",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Cat and Hat rhyme!",
+      "explanation": "Cat and Hat share the same ending sound."
+    },
+    {
+      "id": "en_ph_02",
+      "prompt": "Which word rhymes with Dog?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Dog?",
+      "choice_style": "default",
+      "choices": [
+        "Frog",
+        "Bus",
+        "Cup"
+      ],
+      "answer": "Frog",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Dog and Frog rhyme!",
+      "explanation": "Dog and Frog share the same ending sound."
+    },
+    {
+      "id": "en_ph_03",
+      "prompt": "Which word rhymes with Sun?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Sun?",
+      "choice_style": "default",
+      "choices": [
+        "Run",
+        "Bed",
+        "Fish"
+      ],
+      "answer": "Run",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Sun and Run rhyme!",
+      "explanation": "Sun and Run share the same ending sound."
+    },
+    {
+      "id": "en_ph_04",
+      "prompt": "Which word rhymes with Star?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Star?",
+      "choice_style": "default",
+      "choices": [
+        "Car",
+        "Boat",
+        "Moon"
+      ],
+      "answer": "Car",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Star and Car rhyme!",
+      "explanation": "Star and Car share the same ending sound."
+    },
+    {
+      "id": "en_ph_05",
+      "prompt": "Which word rhymes with Bee?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Bee?",
+      "choice_style": "default",
+      "choices": [
+        "Tree",
+        "Box",
+        "Hat"
+      ],
+      "answer": "Tree",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Bee and Tree rhyme!",
+      "explanation": "Bee and Tree share the same ending sound."
+    },
+    {
+      "id": "en_ph_06",
+      "prompt": "Which word rhymes with Cake?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Cake?",
+      "choice_style": "default",
+      "choices": [
+        "Snake",
+        "Milk",
+        "Ball"
+      ],
+      "answer": "Snake",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Cake and Snake rhyme!",
+      "explanation": "Cake and Snake share the same ending sound."
+    },
+    {
+      "id": "en_ph_07",
+      "prompt": "Which word rhymes with Boat?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Boat?",
+      "choice_style": "default",
+      "choices": [
+        "Goat",
+        "Duck",
+        "Pin"
+      ],
+      "answer": "Goat",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Boat and Goat rhyme!",
+      "explanation": "Boat and Goat share the same ending sound."
+    },
+    {
+      "id": "en_ph_08",
+      "prompt": "Which word rhymes with Bell?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Bell?",
+      "choice_style": "default",
+      "choices": [
+        "Shell",
+        "Book",
+        "Cat"
+      ],
+      "answer": "Shell",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Bell and Shell rhyme!",
+      "explanation": "Bell and Shell share the same ending sound."
+    },
+    {
+      "id": "en_ph_09",
+      "prompt": "Which word rhymes with Bug?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Bug?",
+      "choice_style": "default",
+      "choices": [
+        "Rug",
+        "Pen",
+        "Star"
+      ],
+      "answer": "Rug",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Bug and Rug rhyme!",
+      "explanation": "Bug and Rug share the same ending sound."
+    },
+    {
+      "id": "en_ph_10",
+      "prompt": "Which word rhymes with King?",
+      "spoken_prompt": "Listen closely! Which word rhymes with King?",
+      "choice_style": "default",
+      "choices": [
+        "Ring",
+        "Lamp",
+        "Bus"
+      ],
+      "answer": "Ring",
+      "difficulty": "easy",
+      "reveal_message": "Yay! King and Ring rhyme!",
+      "explanation": "King and Ring share the same ending sound."
+    },
+    {
+      "id": "en_ph_11",
+      "prompt": "Which word rhymes with Mouse?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Mouse?",
+      "choice_style": "default",
+      "choices": [
+        "House",
+        "Train",
+        "Egg"
+      ],
+      "answer": "House",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Mouse and House rhyme!",
+      "explanation": "Mouse and House share the same ending sound."
+    },
+    {
+      "id": "en_ph_12",
+      "prompt": "Which word rhymes with Bear?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Bear?",
+      "choice_style": "default",
+      "choices": [
+        "Chair",
+        "Fish",
+        "Sun"
+      ],
+      "answer": "Chair",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Bear and Chair rhyme!",
+      "explanation": "Bear and Chair share the same ending sound."
+    },
+    {
+      "id": "en_ph_13",
+      "prompt": "Which word rhymes with Fox?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Fox?",
+      "choice_style": "default",
+      "choices": [
+        "Box",
+        "Cup",
+        "Tree"
+      ],
+      "answer": "Box",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Fox and Box rhyme!",
+      "explanation": "Fox and Box share the same ending sound."
+    },
+    {
+      "id": "en_ph_14",
+      "prompt": "Which word rhymes with Rain?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Rain?",
+      "choice_style": "default",
+      "choices": [
+        "Train",
+        "Dog",
+        "Hat"
+      ],
+      "answer": "Train",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Rain and Train rhyme!",
+      "explanation": "Rain and Train share the same ending sound."
+    },
+    {
+      "id": "en_ph_15",
+      "prompt": "Which word rhymes with Moon?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Moon?",
+      "choice_style": "default",
+      "choices": [
+        "Spoon",
+        "Cat",
+        "Bell"
+      ],
+      "answer": "Spoon",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Moon and Spoon rhyme!",
+      "explanation": "Moon and Spoon share the same ending sound."
+    },
+    {
+      "id": "en_ph_16",
+      "prompt": "Which word rhymes with Bed?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Bed?",
+      "choice_style": "default",
+      "choices": [
+        "Red",
+        "Blue",
+        "Car"
+      ],
+      "answer": "Red",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Bed and Red rhyme!",
+      "explanation": "Bed and Red share the same ending sound."
+    },
+    {
+      "id": "en_ph_17",
+      "prompt": "Which word rhymes with Duck?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Duck?",
+      "choice_style": "default",
+      "choices": [
+        "Truck",
+        "Star",
+        "Bee"
+      ],
+      "answer": "Truck",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Duck and Truck rhyme!",
+      "explanation": "Duck and Truck share the same ending sound."
+    },
+    {
+      "id": "en_ph_18",
+      "prompt": "Which word rhymes with Pan?",
+      "spoken_prompt": "Listen closely! Which word rhymes with Pan?",
+      "choice_style": "default",
+      "choices": [
+        "Van",
+        "Pig",
+        "Net"
+      ],
+      "answer": "Van",
+      "difficulty": "easy",
+      "reveal_message": "Yay! Pan and Van rhyme!",
+      "explanation": "Pan and Van share the same ending sound."
+    },
+    {
+      "id": "en_ph_19",
+      "prompt": "What short vowel is in C_T (Cat)?",
+      "spoken_prompt": "What short vowel is in C blank T (Cat)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "a",
+        "i",
+        "u"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «a»!",
+      "explanation": "The missing short vowel is a."
+    },
+    {
+      "id": "en_ph_20",
+      "prompt": "What short vowel is in B_D (Bed)?",
+      "spoken_prompt": "What short vowel is in B blank D (Bed)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "e",
+        "o",
+        "a"
+      ],
+      "answer": "e",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «e»!",
+      "explanation": "The missing short vowel is e."
+    },
+    {
+      "id": "en_ph_21",
+      "prompt": "What short vowel is in P_G (Pig)?",
+      "spoken_prompt": "What short vowel is in P blank G (Pig)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "i",
+        "a",
+        "u"
+      ],
+      "answer": "i",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «i»!",
+      "explanation": "The missing short vowel is i."
+    },
+    {
+      "id": "en_ph_22",
+      "prompt": "What short vowel is in D_G (Dog)?",
+      "spoken_prompt": "What short vowel is in D blank G (Dog)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "o",
+        "e",
+        "i"
+      ],
+      "answer": "o",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «o»!",
+      "explanation": "The missing short vowel is o."
+    },
+    {
+      "id": "en_ph_23",
+      "prompt": "What short vowel is in S_N (Sun)?",
+      "spoken_prompt": "What short vowel is in S blank N (Sun)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "u",
+        "a",
+        "e"
+      ],
+      "answer": "u",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «u»!",
+      "explanation": "The missing short vowel is u."
+    },
+    {
+      "id": "en_ph_24",
+      "prompt": "What short vowel is in H_T (Hat)?",
+      "spoken_prompt": "What short vowel is in H blank T (Hat)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "a",
+        "o",
+        "u"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «a»!",
+      "explanation": "The missing short vowel is a."
+    },
+    {
+      "id": "en_ph_25",
+      "prompt": "What short vowel is in P_N (Pen)?",
+      "spoken_prompt": "What short vowel is in P blank N (Pen)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "e",
+        "u",
+        "o"
+      ],
+      "answer": "e",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «e»!",
+      "explanation": "The missing short vowel is e."
+    },
+    {
+      "id": "en_ph_26",
+      "prompt": "What short vowel is in F_SH (Fish)?",
+      "spoken_prompt": "What short vowel is in F blank SH (Fish)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "i",
+        "a",
+        "o"
+      ],
+      "answer": "i",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «i»!",
+      "explanation": "The missing short vowel is i."
+    },
+    {
+      "id": "en_ph_27",
+      "prompt": "What short vowel is in B_X (Box)?",
+      "spoken_prompt": "What short vowel is in B blank X (Box)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "o",
+        "i",
+        "u"
+      ],
+      "answer": "o",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «o»!",
+      "explanation": "The missing short vowel is o."
+    },
+    {
+      "id": "en_ph_28",
+      "prompt": "What short vowel is in C_P (Cup)?",
+      "spoken_prompt": "What short vowel is in C blank P (Cup)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "u",
+        "e",
+        "i"
+      ],
+      "answer": "u",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «u»!",
+      "explanation": "The missing short vowel is u."
+    },
+    {
+      "id": "en_ph_29",
+      "prompt": "What short vowel is in B_S (Bus)?",
+      "spoken_prompt": "What short vowel is in B blank S (Bus)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "u",
+        "a",
+        "o"
+      ],
+      "answer": "u",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «u»!",
+      "explanation": "The missing short vowel is u."
+    },
+    {
+      "id": "en_ph_30",
+      "prompt": "What short vowel is in M_P (Map)?",
+      "spoken_prompt": "What short vowel is in M blank P (Map)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "a",
+        "e",
+        "i"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «a»!",
+      "explanation": "The missing short vowel is a."
+    },
+    {
+      "id": "en_ph_31",
+      "prompt": "What short vowel is in N_T (Net)?",
+      "spoken_prompt": "What short vowel is in N blank T (Net)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "e",
+        "o",
+        "u"
+      ],
+      "answer": "e",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «e»!",
+      "explanation": "The missing short vowel is e."
+    },
+    {
+      "id": "en_ph_32",
+      "prompt": "What short vowel is in S_T (Sit)?",
+      "spoken_prompt": "What short vowel is in S blank T (Sit)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "i",
+        "u",
+        "a"
+      ],
+      "answer": "i",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «i»!",
+      "explanation": "The missing short vowel is i."
+    },
+    {
+      "id": "en_ph_33",
+      "prompt": "What short vowel is in H_P (Hop)?",
+      "spoken_prompt": "What short vowel is in H blank P (Hop)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "o",
+        "a",
+        "e"
+      ],
+      "answer": "o",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «o»!",
+      "explanation": "The missing short vowel is o."
+    },
+    {
+      "id": "en_ph_34",
+      "prompt": "What short vowel is in R_G (Rug)?",
+      "spoken_prompt": "What short vowel is in R blank G (Rug)?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "u",
+        "i",
+        "o"
+      ],
+      "answer": "u",
+      "difficulty": "medium",
+      "reveal_message": "Super! The short vowel is «u»!",
+      "explanation": "The missing short vowel is u."
+    },
+    {
+      "id": "en_ph_35",
+      "prompt": "Which word starts with the «sh» sound?",
+      "spoken_prompt": "Listen for the quiet shhh sound! Which word starts with sh?",
+      "choice_style": "default",
+      "choices": [
+        "Ship",
+        "Cat",
+        "Ball"
+      ],
+      "answer": "Ship",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Ship!",
+      "explanation": "The correct phonics match is Ship."
+    },
+    {
+      "id": "en_ph_36",
+      "prompt": "Which word starts with the «ch» sound?",
+      "spoken_prompt": "Which word starts with the ch sound, like choo-choo?",
+      "choice_style": "default",
+      "choices": [
+        "Chair",
+        "Sun",
+        "Dog"
+      ],
+      "answer": "Chair",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Chair!",
+      "explanation": "The correct phonics match is Chair."
+    },
+    {
+      "id": "en_ph_37",
+      "prompt": "Which word starts with the «th» sound?",
+      "spoken_prompt": "Which word starts with the th sound?",
+      "choice_style": "default",
+      "choices": [
+        "Thumb",
+        "Fish",
+        "Cup"
+      ],
+      "answer": "Thumb",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Thumb!",
+      "explanation": "The correct phonics match is Thumb."
+    },
+    {
+      "id": "en_ph_38",
+      "prompt": "Which word starts with the «wh» sound?",
+      "spoken_prompt": "Which word starts with the wh sound?",
+      "choice_style": "default",
+      "choices": [
+        "Whale",
+        "Tree",
+        "Hat"
+      ],
+      "answer": "Whale",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Whale!",
+      "explanation": "The correct phonics match is Whale."
+    },
+    {
+      "id": "en_ph_39",
+      "prompt": "Which word starts with the «ph» (f) sound?",
+      "spoken_prompt": "Which word starts with ph, making the f sound?",
+      "choice_style": "default",
+      "choices": [
+        "Phone",
+        "Book",
+        "Car"
+      ],
+      "answer": "Phone",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Phone!",
+      "explanation": "The correct phonics match is Phone."
+    },
+    {
+      "id": "en_ph_40",
+      "prompt": "Which word ENDS with the «sh» sound?",
+      "spoken_prompt": "Which word ends with the sh sound?",
+      "choice_style": "default",
+      "choices": [
+        "Fish",
+        "Frog",
+        "Duck"
+      ],
+      "answer": "Fish",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Fish!",
+      "explanation": "The correct phonics match is Fish."
+    },
+    {
+      "id": "en_ph_41",
+      "prompt": "Which word ENDS with the «ch» sound?",
+      "spoken_prompt": "Which word ends with the ch sound?",
+      "choice_style": "default",
+      "choices": [
+        "Bench",
+        "Star",
+        "Moon"
+      ],
+      "answer": "Bench",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Bench!",
+      "explanation": "The correct phonics match is Bench."
+    },
+    {
+      "id": "en_ph_42",
+      "prompt": "Which word ENDS with the «th» sound?",
+      "spoken_prompt": "Which word ends with the th sound?",
+      "choice_style": "default",
+      "choices": [
+        "Tooth",
+        "Bed",
+        "Key"
+      ],
+      "answer": "Tooth",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Tooth!",
+      "explanation": "The correct phonics match is Tooth."
+    },
+    {
+      "id": "en_ph_43",
+      "prompt": "What letters make the quiet «shhh» sound in Shell?",
+      "spoken_prompt": "What two letters make the sh sound in Shell?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "sh",
+        "ch",
+        "th"
+      ],
+      "answer": "sh",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is sh!",
+      "explanation": "The correct phonics match is sh."
+    },
+    {
+      "id": "en_ph_44",
+      "prompt": "What letters start the word Cheese?",
+      "spoken_prompt": "What two letters start the word Cheese?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ch",
+        "sh",
+        "wh"
+      ],
+      "answer": "ch",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is ch!",
+      "explanation": "The correct phonics match is ch."
+    },
+    {
+      "id": "en_ph_45",
+      "prompt": "What letters start the word Three?",
+      "spoken_prompt": "What two letters start the word Three?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "th",
+        "ch",
+        "ph"
+      ],
+      "answer": "th",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is th!",
+      "explanation": "The correct phonics match is th."
+    },
+    {
+      "id": "en_ph_46",
+      "prompt": "What letters start the word Wheel?",
+      "spoken_prompt": "What two letters start the word Wheel?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "wh",
+        "sh",
+        "th"
+      ],
+      "answer": "wh",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is wh!",
+      "explanation": "The correct phonics match is wh."
+    },
+    {
+      "id": "en_ph_47",
+      "prompt": "Which word has a SILENT e (makes A say its name)?",
+      "spoken_prompt": "Which word has a magic silent e at the end?",
+      "choice_style": "default",
+      "choices": [
+        "Cake",
+        "Cat",
+        "Cap"
+      ],
+      "answer": "Cake",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Cake!",
+      "explanation": "The correct phonics match is Cake."
+    },
+    {
+      "id": "en_ph_48",
+      "prompt": "Which word starts with the «bl» blend?",
+      "spoken_prompt": "Which word starts with the bl blend?",
+      "choice_style": "default",
+      "choices": [
+        "Blue",
+        "Red",
+        "Sun"
+      ],
+      "answer": "Blue",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Blue!",
+      "explanation": "The correct phonics match is Blue."
+    },
+    {
+      "id": "en_ph_49",
+      "prompt": "Which word starts with the «st» blend?",
+      "spoken_prompt": "Which word starts with the st blend?",
+      "choice_style": "default",
+      "choices": [
+        "Star",
+        "Car",
+        "Moon"
+      ],
+      "answer": "Star",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Star!",
+      "explanation": "The correct phonics match is Star."
+    },
+    {
+      "id": "en_ph_50",
+      "prompt": "Which word starts with the «tr» blend?",
+      "spoken_prompt": "Which word starts with the tr blend?",
+      "choice_style": "default",
+      "choices": [
+        "Train",
+        "Bus",
+        "Boat"
+      ],
+      "answer": "Train",
+      "difficulty": "hard",
+      "reveal_message": "Phonics star! The answer is Train!",
+      "explanation": "The correct phonics match is Train."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

@@ -156,6 +156,28 @@ def _install_test_stubs() -> None:
         ha_er.async_get = _er_async_get
         ha_helpers.entity_registry = ha_er
 
+        ha_sel = types.ModuleType("homeassistant.helpers.selector")
+
+        class SelectSelectorMode:
+            LIST = "list"
+            DROPDOWN = "dropdown"
+
+        class SelectSelectorConfig(dict):
+            def __init__(self, **kwargs: Any) -> None:
+                super().__init__(**kwargs)
+
+        class SelectSelector:
+            def __init__(self, config: SelectSelectorConfig | dict[str, Any]) -> None:
+                self.config = dict(config)
+
+            def __call__(self, value: Any) -> Any:
+                return value
+
+        ha_sel.SelectSelectorMode = SelectSelectorMode
+        ha_sel.SelectSelectorConfig = SelectSelectorConfig
+        ha_sel.SelectSelector = SelectSelector
+        ha_helpers.selector = ha_sel
+
         class _BaseEntity:
             _attr_device_info: Any = None
 
@@ -233,6 +255,7 @@ def _install_test_stubs() -> None:
             ("homeassistant.helpers.entity_registry", ha_er),
             ("homeassistant.helpers.entity_platform", ha_ep),
             ("homeassistant.helpers.restore_state", ha_rs),
+            ("homeassistant.helpers.selector", ha_sel),
         ]:
             sys.modules[name] = mod
 

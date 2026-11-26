@@ -17,8 +17,12 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 from .const import (
+    ALLOWED_CHOICE_STYLES,
     ALLOWED_MEDIA_EXTENSIONS,
+    ALLOWED_PACK_AUDIENCES,
     ALLOWED_QUESTION_DIFFICULTIES,
+    AUDIENCE_GENERAL,
+    CHOICE_STYLE_DEFAULT,
     DIFFICULTY_MEDIUM,
     MAX_ALIASES_PER_QUESTION,
     MAX_CHOICES_PER_QUESTION,
@@ -35,6 +39,7 @@ from .models import MediaAsset, Pack, Question
 _LOGGER = logging.getLogger(__name__)
 
 PACK_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
+SAFE_HEX_COLOR_RE = re.compile(r"^#[0-9a-fA-F]{6}$")
 
 
 class PackValidationError(Exception):
@@ -128,6 +133,31 @@ def _validate_pack_payload(
     if not isinstance(pack_open_ended, bool):
         errors.append("open_ended must be a boolean (true or false).")
         pack_open_ended = False
+
+    audience_raw = raw_data.get("audience", AUDIENCE_GENERAL)
+    if not isinstance(audience_raw, str) or audience_raw.strip().lower() not in ALLOWED_PACK_AUDIENCES:
+        errors.append(f"audience must be one of {ALLOWED_PACK_AUDIENCES}.")
+        audience = AUDIENCE_GENERAL
+    else:
+        audience = audience_raw.strip().lower()
+
+    age_range_raw = raw_data.get("age_range")
+    age_range: str | None = None
+    if age_range_raw is not None and age_range_raw != "":
+        if not isinstance(age_range_raw, str) or len(age_range_raw.strip()) > 24:
+            errors.append("age_range must be a short string (up to 24 characters).")
+        else:
+            age_range = age_range_raw.strip()
+
+    pack_choice_style_raw = raw_data.get("choice_style", CHOICE_STYLE_DEFAULT)
+    if (
+        not isinstance(pack_choice_style_raw, str)
+        or pack_choice_style_raw.strip().lower() not in ALLOWED_CHOICE_STYLES
+    ):
+        errors.append(f"choice_style must be one of {ALLOWED_CHOICE_STYLES}.")
+        pack_choice_style = CHOICE_STYLE_DEFAULT
+    else:
+        pack_choice_style = pack_choice_style_raw.strip().lower()
 
     cover = raw_data.get("cover")
     normalized_cover: str | None = None
@@ -295,12 +325,99 @@ def _validate_pack_payload(
                             )
                         normalized_image = rel_norm
 
+        q_choice_style_raw = q.get("choice_style")
+        if q_choice_style_raw is None or q_choice_style_raw == "":
+            q_choice_style = pack_choice_style
+        elif (
+            not isinstance(q_choice_style_raw, str)
+            or q_choice_style_raw.strip().lower() not in ALLOWED_CHOICE_STYLES
+        ):
+            errors.append(f"{prefix}.choice_style must be one of {ALLOWED_CHOICE_STYLES}.")
+            q_choice_style = pack_choice_style
+        else:
+            q_choice_style = q_choice_style_raw.strip().lower()
+
+        cleaned_choices = [c.strip() for c in choices] if isinstance(choices, list) else []
+
+        choice_images_raw = q.get("choice_images")
+        normalized_choice_images: list[str | None] = []
+        if choice_images_raw is not None and choice_images_raw != []:
+            if not isinstance(choice_images_raw, list) or len(choice_images_raw) != len(cleaned_choices):
+                errors.append(
+                    f"{prefix}.choice_images must be an array with the same length as choices."
+                )
+            else:
+                for c_idx, c_img in enumerate(choice_images_raw):
+                    if c_img is None or c_img == "":
+                        normalized_choice_images.append(None)
+                    elif not isinstance(c_img, str):
+                        errors.append(f"{prefix}.choice_images[{c_idx}] must be a relative path string.")
+                        normalized_choice_images.append(None)
+                    elif not allow_media:
+                        errors.append(
+                            f"{prefix}.choice_images[{c_idx}] ('{c_img}') requires a .zip archive containing the media file."
+                        )
+                        normalized_choice_images.append(None)
+                    else:
+                        rel_norm = _normalize_safe_rel_path(c_img)
+                        if rel_norm is None:
+                            errors.append(
+                                f"{prefix}.choice_images[{c_idx}] ('{c_img}') contains an invalid or unsafe path."
+                            )
+                            normalized_choice_images.append(None)
+                        else:
+                            ext = Path(rel_norm).suffix.lower()
+                            if ext not in ALLOWED_MEDIA_EXTENSIONS:
+                                errors.append(
+                                    f"{prefix}.choice_images[{c_idx}] ('{c_img}') has unsupported extension '{ext}'."
+                                )
+                            elif available_media_paths is not None and rel_norm not in available_media_paths:
+                                errors.append(
+                                    f"{prefix}.choice_images[{c_idx}] ('{c_img}') was not found in the uploaded archive."
+                                )
+                            normalized_choice_images.append(rel_norm)
+
+        choice_colors_raw = q.get("choice_colors")
+        normalized_choice_colors: list[str | None] = []
+        if choice_colors_raw is not None and choice_colors_raw != []:
+            if not isinstance(choice_colors_raw, list) or len(choice_colors_raw) != len(cleaned_choices):
+                errors.append(
+                    f"{prefix}.choice_colors must be an array with the same length as choices."
+                )
+            else:
+                for c_idx, c_col in enumerate(choice_colors_raw):
+                    if c_col is None or c_col == "":
+                        normalized_choice_colors.append(None)
+                    elif not isinstance(c_col, str) or not SAFE_HEX_COLOR_RE.fullmatch(c_col.strip()):
+                        errors.append(
+                            f"{prefix}.choice_colors[{c_idx}] ('{c_col}') must be a 6-digit hex color like '#EF4444'."
+                        )
+                        normalized_choice_colors.append(None)
+                    else:
+                        normalized_choice_colors.append(c_col.strip().upper())
+
+        spoken_prompt_raw = q.get("spoken_prompt")
+        spoken_prompt: str | None = None
+        if spoken_prompt_raw is not None and spoken_prompt_raw != "":
+            if not isinstance(spoken_prompt_raw, str):
+                errors.append(f"{prefix}.spoken_prompt must be a string.")
+            else:
+                spoken_prompt = spoken_prompt_raw.strip()[:MAX_PROMPT_LENGTH] or None
+
+        reveal_message_raw = q.get("reveal_message")
+        reveal_message: str | None = None
+        if reveal_message_raw is not None and reveal_message_raw != "":
+            if not isinstance(reveal_message_raw, str):
+                errors.append(f"{prefix}.reveal_message must be a string.")
+            else:
+                reveal_message = reveal_message_raw.strip()[:MAX_EXPLANATION_LENGTH] or None
+
         cleaned_questions.append(
             {
                 "id": qid,
                 "prompt": prompt.strip() if isinstance(prompt, str) else "",
                 "answer": answer.strip() if isinstance(answer, str) else "",
-                "choices": [c.strip() for c in choices] if isinstance(choices, list) else [],
+                "choices": cleaned_choices,
                 "aliases": [a.strip() for a in aliases if a.strip()],
                 "image": normalized_image,
                 "explanation": explanation.strip(),
@@ -309,6 +426,11 @@ def _validate_pack_payload(
                 "open_ended": q_open_ended,
                 "starts_with": starts_with,
                 "difficulty": q_diff,
+                "choice_style": q_choice_style,
+                "choice_images": normalized_choice_images,
+                "choice_colors": normalized_choice_colors,
+                "spoken_prompt": spoken_prompt,
+                "reveal_message": reveal_message,
             }
         )
 
@@ -327,6 +449,9 @@ def _validate_pack_payload(
         "description": description.strip(),
         "cover": normalized_cover,
         "open_ended": effective_open_ended,
+        "audience": audience,
+        "age_range": age_range,
+        "choice_style": pack_choice_style,
         "language": language.strip(),
         "rtl": rtl,
         "version": str(raw_data.get("version", "1.0.0")).strip() or "1.0.0",
@@ -532,6 +657,31 @@ class PackRegistry:
                     content_type=content_type,
                 )
 
+            choice_media_ids: list[str | None] = []
+            for c_img_rel in q.get("choice_images") or ():
+                if not c_img_rel:
+                    choice_media_ids.append(None)
+                    continue
+                resolved_cimg = (resolved_pack_dir / c_img_rel).resolve()
+                if not resolved_cimg.is_relative_to(resolved_pack_dir) or not resolved_cimg.is_file():
+                    raise PackValidationError(
+                        f"Choice image path '{c_img_rel}' in pack '{cleaned['pack_id']}' is invalid."
+                    )
+                c_ext = resolved_cimg.suffix.lower()
+                c_ct = MEDIA_CONTENT_TYPES.get(c_ext)
+                if c_ct is None:
+                    raise PackValidationError(f"Unsupported choice media extension '{c_ext}'.")
+                c_mid = self._opaque_id_for(cleaned["pack_id"], c_img_rel)
+                media_map[c_mid] = MediaAsset(
+                    opaque_id=c_mid,
+                    pack_id=cleaned["pack_id"],
+                    rel_path=c_img_rel,
+                    file_path=resolved_cimg,
+                    allowed_root=allowed_root,
+                    content_type=c_ct,
+                )
+                choice_media_ids.append(c_mid)
+
             questions.append(
                 Question(
                     id=q["id"],
@@ -547,6 +697,12 @@ class PackRegistry:
                     open_ended=q["open_ended"],
                     starts_with=q["starts_with"],
                     difficulty=q["difficulty"],
+                    choice_style=q["choice_style"],
+                    choice_images=tuple(q.get("choice_images") or ()),
+                    choice_media_ids=tuple(choice_media_ids),
+                    choice_colors=tuple(q.get("choice_colors") or ()),
+                    spoken_prompt=q.get("spoken_prompt"),
+                    reveal_message=q.get("reveal_message"),
                 )
             )
 
@@ -565,6 +721,9 @@ class PackRegistry:
             cover=cover_rel,
             cover_media_id=cover_media_id,
             open_ended=cleaned["open_ended"],
+            audience=cleaned["audience"],
+            age_range=cleaned["age_range"],
+            choice_style=cleaned["choice_style"],
         )
         return pack, media_map
 

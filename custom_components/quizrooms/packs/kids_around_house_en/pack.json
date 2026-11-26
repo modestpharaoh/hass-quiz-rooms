@@ -1,0 +1,816 @@
+{
+  "title": "Everyday Objects & Around the House",
+  "description": "Bed, chair, table, door, key, cup, spoon, book, clock, and lamp—everyday home vocabulary!",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "category": "Early Learner · Around the House",
+  "pack_id": "kids_around_house_en",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "hou_en_01",
+      "prompt": "Tap the Bed!",
+      "spoken_prompt": "Can you tap the Bed?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bed",
+        "Chair",
+        "Table"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/chair.svg",
+        "media/table.svg"
+      ],
+      "answer": "Bed",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Bed!",
+      "explanation": "That picture shows the Bed."
+    },
+    {
+      "id": "hou_en_02",
+      "prompt": "Tap the Chair!",
+      "spoken_prompt": "Can you tap the Chair?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Chair",
+        "Sofa",
+        "Bed"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/sofa.svg",
+        "media/bed.svg"
+      ],
+      "answer": "Chair",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Chair!",
+      "explanation": "That picture shows the Chair."
+    },
+    {
+      "id": "hou_en_03",
+      "prompt": "Tap the Table!",
+      "spoken_prompt": "Can you tap the Table?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Table",
+        "Door",
+        "Chair"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/door.svg",
+        "media/chair.svg"
+      ],
+      "answer": "Table",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Table!",
+      "explanation": "That picture shows the Table."
+    },
+    {
+      "id": "hou_en_04",
+      "prompt": "Tap the Door!",
+      "spoken_prompt": "Can you tap the Door?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Door",
+        "Book",
+        "Key"
+      ],
+      "choice_images": [
+        "media/door.svg",
+        "media/book.svg",
+        "media/key.svg"
+      ],
+      "answer": "Door",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Door!",
+      "explanation": "That picture shows the Door."
+    },
+    {
+      "id": "hou_en_05",
+      "prompt": "Tap the Key!",
+      "spoken_prompt": "Can you tap the Key?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Key",
+        "Spoon",
+        "Clock"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/spoon.svg",
+        "media/clock.svg"
+      ],
+      "answer": "Key",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Key!",
+      "explanation": "That picture shows the Key."
+    },
+    {
+      "id": "hou_en_06",
+      "prompt": "Tap the Cup!",
+      "spoken_prompt": "Can you tap the Cup?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cup",
+        "Lamp",
+        "Book"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/lamp.svg",
+        "media/book.svg"
+      ],
+      "answer": "Cup",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Cup!",
+      "explanation": "That picture shows the Cup."
+    },
+    {
+      "id": "hou_en_07",
+      "prompt": "Tap the Spoon!",
+      "spoken_prompt": "Can you tap the Spoon?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Spoon",
+        "Toothbrush",
+        "Key"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/toothbrush.svg",
+        "media/key.svg"
+      ],
+      "answer": "Spoon",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Spoon!",
+      "explanation": "That picture shows the Spoon."
+    },
+    {
+      "id": "hou_en_08",
+      "prompt": "Tap the Book!",
+      "spoken_prompt": "Can you tap the Book?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Book",
+        "Door",
+        "Clock"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/door.svg",
+        "media/clock.svg"
+      ],
+      "answer": "Book",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Book!",
+      "explanation": "That picture shows the Book."
+    },
+    {
+      "id": "hou_en_09",
+      "prompt": "Tap the Clock!",
+      "spoken_prompt": "Can you tap the Clock?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Clock",
+        "Cup",
+        "Lamp"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/cup.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "Clock",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Clock!",
+      "explanation": "That picture shows the Clock."
+    },
+    {
+      "id": "hou_en_10",
+      "prompt": "Tap the Lamp!",
+      "spoken_prompt": "Can you tap the Lamp?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lamp",
+        "Chair",
+        "Cup"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/chair.svg",
+        "media/cup.svg"
+      ],
+      "answer": "Lamp",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Lamp!",
+      "explanation": "That picture shows the Lamp."
+    },
+    {
+      "id": "hou_en_11",
+      "prompt": "Tap the Toothbrush!",
+      "spoken_prompt": "Can you tap the Toothbrush?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Toothbrush",
+        "Spoon",
+        "Key"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "Toothbrush",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Toothbrush!",
+      "explanation": "That picture shows the Toothbrush."
+    },
+    {
+      "id": "hou_en_12",
+      "prompt": "Tap the Sofa!",
+      "spoken_prompt": "Can you tap the Sofa?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sofa",
+        "Bed",
+        "Table"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/bed.svg",
+        "media/table.svg"
+      ],
+      "answer": "Sofa",
+      "difficulty": "easy",
+      "reveal_message": "Nice! That's the Sofa!",
+      "explanation": "That picture shows the Sofa."
+    },
+    {
+      "id": "hou_en_13",
+      "prompt": "Where do you sleep at night?",
+      "spoken_prompt": "Where do you sleep at night?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bed",
+        "Table",
+        "Door"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/table.svg",
+        "media/door.svg"
+      ],
+      "answer": "Bed",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Bed!",
+      "explanation": "The answer is Bed."
+    },
+    {
+      "id": "hou_en_14",
+      "prompt": "What do you use to eat soup or cereal?",
+      "spoken_prompt": "What do you use to eat soup or cereal?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Spoon",
+        "Key",
+        "Lamp"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/key.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "Spoon",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Spoon!",
+      "explanation": "The answer is Spoon."
+    },
+    {
+      "id": "hou_en_15",
+      "prompt": "What do you use to drink milk or water?",
+      "spoken_prompt": "What do you use to drink milk or water?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cup",
+        "Book",
+        "Clock"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/book.svg",
+        "media/clock.svg"
+      ],
+      "answer": "Cup",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Cup!",
+      "explanation": "The answer is Cup."
+    },
+    {
+      "id": "hou_en_16",
+      "prompt": "What unlocks the front door?",
+      "spoken_prompt": "What unlocks the front door?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Key",
+        "Spoon",
+        "Cup"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/spoon.svg",
+        "media/cup.svg"
+      ],
+      "answer": "Key",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Key!",
+      "explanation": "The answer is Key."
+    },
+    {
+      "id": "hou_en_17",
+      "prompt": "What tells you what time it is?",
+      "spoken_prompt": "What tells you what time it is?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Clock",
+        "Lamp",
+        "Chair"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/lamp.svg",
+        "media/chair.svg"
+      ],
+      "answer": "Clock",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Clock!",
+      "explanation": "The answer is Clock."
+    },
+    {
+      "id": "hou_en_18",
+      "prompt": "What gives light when a room is dark?",
+      "spoken_prompt": "What gives light when a room is dark?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lamp",
+        "Book",
+        "Sofa"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/book.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "Lamp",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Lamp!",
+      "explanation": "The answer is Lamp."
+    },
+    {
+      "id": "hou_en_19",
+      "prompt": "What do you open to read a fun story?",
+      "spoken_prompt": "What do you open to read a fun story?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Book",
+        "Door",
+        "Table"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/door.svg",
+        "media/table.svg"
+      ],
+      "answer": "Book",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Book!",
+      "explanation": "The answer is Book."
+    },
+    {
+      "id": "hou_en_20",
+      "prompt": "What do you use to brush your teeth?",
+      "spoken_prompt": "What do you use to brush your teeth?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Toothbrush",
+        "Spoon",
+        "Key"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "Toothbrush",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Toothbrush!",
+      "explanation": "The answer is Toothbrush."
+    },
+    {
+      "id": "hou_en_21",
+      "prompt": "Where does the whole family sit together in the living room?",
+      "spoken_prompt": "Where does the whole family sit together in the living room?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sofa",
+        "Clock",
+        "Cup"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/clock.svg",
+        "media/cup.svg"
+      ],
+      "answer": "Sofa",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Sofa!",
+      "explanation": "The answer is Sofa."
+    },
+    {
+      "id": "hou_en_22",
+      "prompt": "What do you knock on before entering a room?",
+      "spoken_prompt": "What do you knock on before entering a room?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Door",
+        "Bed",
+        "Lamp"
+      ],
+      "choice_images": [
+        "media/door.svg",
+        "media/bed.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "Door",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Door!",
+      "explanation": "The answer is Door."
+    },
+    {
+      "id": "hou_en_23",
+      "prompt": "Where do we put plates for dinner?",
+      "spoken_prompt": "Where do we put plates for dinner?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Table",
+        "Bed",
+        "Toothbrush"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/bed.svg",
+        "media/toothbrush.svg"
+      ],
+      "answer": "Table",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Table!",
+      "explanation": "The answer is Table."
+    },
+    {
+      "id": "hou_en_24",
+      "prompt": "What do you sit on at the dining table?",
+      "spoken_prompt": "What do you sit on at the dining table?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Chair",
+        "Lamp",
+        "Key"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/lamp.svg",
+        "media/key.svg"
+      ],
+      "answer": "Chair",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Chair!",
+      "explanation": "The answer is Chair."
+    },
+    {
+      "id": "hou_en_25",
+      "prompt": "Which item goes in the BATHROOM?",
+      "spoken_prompt": "Which item goes in the BATHROOM?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Toothbrush",
+        "Sofa",
+        "Table"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/sofa.svg",
+        "media/table.svg"
+      ],
+      "answer": "Toothbrush",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Toothbrush!",
+      "explanation": "The answer is Toothbrush."
+    },
+    {
+      "id": "hou_en_26",
+      "prompt": "Which item goes in the KITCHEN?",
+      "spoken_prompt": "Which item goes in the KITCHEN?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Spoon",
+        "Bed",
+        "Sofa"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/bed.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "Spoon",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Spoon!",
+      "explanation": "The answer is Spoon."
+    },
+    {
+      "id": "hou_en_27",
+      "prompt": "Which item goes in the BEDROOM?",
+      "spoken_prompt": "Which item goes in the BEDROOM?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bed",
+        "Spoon",
+        "Key"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "Bed",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Bed!",
+      "explanation": "The answer is Bed."
+    },
+    {
+      "id": "hou_en_28",
+      "prompt": "Which item goes tick-tock?",
+      "spoken_prompt": "Which item goes tick-tock?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Clock",
+        "Book",
+        "Chair"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/book.svg",
+        "media/chair.svg"
+      ],
+      "answer": "Clock",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Clock!",
+      "explanation": "The answer is Clock."
+    },
+    {
+      "id": "hou_en_29",
+      "prompt": "Which item has a handle for hot cocoa?",
+      "spoken_prompt": "Which item has a handle for hot cocoa?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cup",
+        "Clock",
+        "Door"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/clock.svg",
+        "media/door.svg"
+      ],
+      "answer": "Cup",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Cup!",
+      "explanation": "The answer is Cup."
+    },
+    {
+      "id": "hou_en_30",
+      "prompt": "Which item has pages full of words and pictures?",
+      "spoken_prompt": "Which item has pages full of words and pictures?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Book",
+        "Table",
+        "Lamp"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/table.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "Book",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Book!",
+      "explanation": "The answer is Book."
+    },
+    {
+      "id": "hou_en_31",
+      "prompt": "Which item has a pillow and a blanket?",
+      "spoken_prompt": "Which item has a pillow and a blanket?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bed",
+        "Chair",
+        "Door"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/chair.svg",
+        "media/door.svg"
+      ],
+      "answer": "Bed",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Bed!",
+      "explanation": "The answer is Bed."
+    },
+    {
+      "id": "hou_en_32",
+      "prompt": "Which item uses electricity to shine?",
+      "spoken_prompt": "Which item uses electricity to shine?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lamp",
+        "Spoon",
+        "Book"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/spoon.svg",
+        "media/book.svg"
+      ],
+      "answer": "Lamp",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Lamp!",
+      "explanation": "The answer is Lamp."
+    },
+    {
+      "id": "hou_en_33",
+      "prompt": "Which item has hands that move in a circle?",
+      "spoken_prompt": "Which item has hands that move in a circle?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Clock",
+        "Key",
+        "Cup"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/key.svg",
+        "media/cup.svg"
+      ],
+      "answer": "Clock",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Clock!",
+      "explanation": "The answer is Clock."
+    },
+    {
+      "id": "hou_en_34",
+      "prompt": "Which item fits into a keyhole?",
+      "spoken_prompt": "Which item fits into a keyhole?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Key",
+        "Toothbrush",
+        "Spoon"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/toothbrush.svg",
+        "media/spoon.svg"
+      ],
+      "answer": "Key",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Key!",
+      "explanation": "The answer is Key."
+    },
+    {
+      "id": "hou_en_35",
+      "prompt": "Which two belong together: Table and ___?",
+      "spoken_prompt": "Which two belong together: Table and ___?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Chair",
+        "Toothbrush",
+        "Key"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/toothbrush.svg",
+        "media/key.svg"
+      ],
+      "answer": "Chair",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Chair!",
+      "explanation": "The answer is Chair."
+    },
+    {
+      "id": "hou_en_36",
+      "prompt": "Which two belong together: Door and ___?",
+      "spoken_prompt": "Which two belong together: Door and ___?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Key",
+        "Cup",
+        "Sofa"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/cup.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "Key",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Key!",
+      "explanation": "The answer is Key."
+    },
+    {
+      "id": "hou_en_37",
+      "prompt": "Which item is the SOFTEST to sit on?",
+      "spoken_prompt": "Which item is the SOFTEST to sit on?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sofa",
+        "Table",
+        "Door"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/table.svg",
+        "media/door.svg"
+      ],
+      "answer": "Sofa",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Sofa!",
+      "explanation": "The answer is Sofa."
+    },
+    {
+      "id": "hou_en_38",
+      "prompt": "Which item do we use right before bedtime to clean teeth?",
+      "spoken_prompt": "Which item do we use right before bedtime to clean teeth?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Toothbrush",
+        "Cup",
+        "Key"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/cup.svg",
+        "media/key.svg"
+      ],
+      "answer": "Toothbrush",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Toothbrush!",
+      "explanation": "The answer is Toothbrush."
+    },
+    {
+      "id": "hou_en_39",
+      "prompt": "Which item helps you read a book at night?",
+      "spoken_prompt": "Which item helps you read a book at night?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Lamp",
+        "Spoon",
+        "Chair"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/spoon.svg",
+        "media/chair.svg"
+      ],
+      "answer": "Lamp",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Lamp!",
+      "explanation": "The answer is Lamp."
+    },
+    {
+      "id": "hou_en_40",
+      "prompt": "Which item has four legs and a flat top for homework?",
+      "spoken_prompt": "Which item has four legs and a flat top for homework?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Table",
+        "Clock",
+        "Book"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/clock.svg",
+        "media/book.svg"
+      ],
+      "answer": "Table",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Table!",
+      "explanation": "The answer is Table."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

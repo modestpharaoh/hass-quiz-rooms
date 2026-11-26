@@ -1,0 +1,816 @@
+{
+  "title": "المواصلات والمركبات",
+  "description": "السيارة والقطار والطائرة والقارب والصاروخ — تعلّم وسائل المواصلات بالصور والنطق العربي!",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "category": "تعلّم مبكر · المواصلات",
+  "pack_id": "kids_vehicles_ar",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "veh_ar_01",
+      "prompt": "اضغط على سيارة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ السَّيَّارَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة",
+        "حافلة",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/car.svg",
+        "media/bus.svg",
+        "media/boat.svg"
+      ],
+      "answer": "سيارة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه سيارة!",
+      "explanation": "هذه الصورة تمثل سيارة."
+    },
+    {
+      "id": "veh_ar_02",
+      "prompt": "اضغط على حافلة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْحَافِلَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "حافلة",
+        "قطار",
+        "سيارة"
+      ],
+      "choice_images": [
+        "media/bus.svg",
+        "media/train.svg",
+        "media/car.svg"
+      ],
+      "answer": "حافلة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه حافلة!",
+      "explanation": "هذه الصورة تمثل حافلة."
+    },
+    {
+      "id": "veh_ar_03",
+      "prompt": "اضغط على قطار!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْقِطَارِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطار",
+        "شاحنة",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/truck.svg",
+        "media/boat.svg"
+      ],
+      "answer": "قطار",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه قطار!",
+      "explanation": "هذه الصورة تمثل قطار."
+    },
+    {
+      "id": "veh_ar_04",
+      "prompt": "اضغط على طائرة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الطَّائِرَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "طائرة",
+        "صاروخ",
+        "سيارة"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/rocket.svg",
+        "media/car.svg"
+      ],
+      "answer": "طائرة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه طائرة!",
+      "explanation": "هذه الصورة تمثل طائرة."
+    },
+    {
+      "id": "veh_ar_05",
+      "prompt": "اضغط على قارب!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْقَارِبِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "قارب",
+        "دراجة",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "قارب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه قارب!",
+      "explanation": "هذه الصورة تمثل قارب."
+    },
+    {
+      "id": "veh_ar_06",
+      "prompt": "اضغط على دراجة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الدَّرَّاجَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "دراجة",
+        "سيارة",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/car.svg",
+        "media/train.svg"
+      ],
+      "answer": "دراجة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه دراجة!",
+      "explanation": "هذه الصورة تمثل دراجة."
+    },
+    {
+      "id": "veh_ar_07",
+      "prompt": "اضغط على سيارة إطفاء!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ سَيَّارَةِ الْإِطْفَاءِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة إطفاء",
+        "إسعاف",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ambulance.svg",
+        "media/bus.svg"
+      ],
+      "answer": "سيارة إطفاء",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه سيارة إطفاء!",
+      "explanation": "هذه الصورة تمثل سيارة إطفاء."
+    },
+    {
+      "id": "veh_ar_08",
+      "prompt": "اضغط على إسعاف!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ سَيَّارَةِ الْإِسْعَافِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "إسعاف",
+        "سيارة إطفاء",
+        "شاحنة"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/firetruck.svg",
+        "media/truck.svg"
+      ],
+      "answer": "إسعاف",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه إسعاف!",
+      "explanation": "هذه الصورة تمثل إسعاف."
+    },
+    {
+      "id": "veh_ar_09",
+      "prompt": "اضغط على صاروخ!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الصَّارُوخِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "صاروخ",
+        "طائرة",
+        "مروحية"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/airplane.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "صاروخ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صاروخ!",
+      "explanation": "هذه الصورة تمثل صاروخ."
+    },
+    {
+      "id": "veh_ar_10",
+      "prompt": "اضغط على مروحية!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِرْوَحِيَّةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مروحية",
+        "طائرة",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/airplane.svg",
+        "media/boat.svg"
+      ],
+      "answer": "مروحية",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه مروحية!",
+      "explanation": "هذه الصورة تمثل مروحية."
+    },
+    {
+      "id": "veh_ar_11",
+      "prompt": "اضغط على سفينة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ السَّفِينَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سفينة",
+        "قارب",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/boat.svg",
+        "media/train.svg"
+      ],
+      "answer": "سفينة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه سفينة!",
+      "explanation": "هذه الصورة تمثل سفينة."
+    },
+    {
+      "id": "veh_ar_12",
+      "prompt": "اضغط على شاحنة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الشَّاحِنَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "شاحنة",
+        "سيارة",
+        "دراجة"
+      ],
+      "choice_images": [
+        "media/truck.svg",
+        "media/car.svg",
+        "media/bicycle.svg"
+      ],
+      "answer": "شاحنة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه شاحنة!",
+      "explanation": "هذه الصورة تمثل شاحنة."
+    },
+    {
+      "id": "veh_ar_13",
+      "prompt": "أي مركبة تطير عالياً في السماء بأجنحة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَطِيرُ عَالِيًا فِي السَّمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "طائرة",
+        "سيارة",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/car.svg",
+        "media/boat.svg"
+      ],
+      "answer": "طائرة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي طائرة!",
+      "explanation": "الإجابة الصحيحة هي طائرة."
+    },
+    {
+      "id": "veh_ar_14",
+      "prompt": "أي مركبة تبحر على سطح الماء بالشراع؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَسِيرُ عَلَى الْمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قارب",
+        "حافلة",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bus.svg",
+        "media/train.svg"
+      ],
+      "answer": "قارب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي قارب!",
+      "explanation": "الإجابة الصحيحة هي قارب."
+    },
+    {
+      "id": "veh_ar_15",
+      "prompt": "أي مركبة تنطلق إلى الفضاء الخارجي؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَنْطَلِقُ إِلَى الْفَضَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "صاروخ",
+        "دراجة",
+        "شاحنة"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/bicycle.svg",
+        "media/truck.svg"
+      ],
+      "answer": "صاروخ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي صاروخ!",
+      "explanation": "الإجابة الصحيحة هي صاروخ."
+    },
+    {
+      "id": "veh_ar_16",
+      "prompt": "أي مركبة تسير على قضبان حديدية؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَسِيرُ عَلَى سِكَّةِ الْحَدِيدِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطار",
+        "سفينة",
+        "سيارة"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/ship.svg",
+        "media/car.svg"
+      ],
+      "answer": "قطار",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي قطار!",
+      "explanation": "الإجابة الصحيحة هي قطار."
+    },
+    {
+      "id": "veh_ar_17",
+      "prompt": "أي مركبة لها عجلتان ودواستان؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ لَهَا عَجَلَتَانِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دراجة",
+        "حافلة",
+        "طائرة"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/bus.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "دراجة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي دراجة!",
+      "explanation": "الإجابة الصحيحة هي دراجة."
+    },
+    {
+      "id": "veh_ar_18",
+      "prompt": "أي سيارة حمراء تطفئ الحرائق؟",
+      "spoken_prompt": "أَيُّ سَيَّارَةٍ تُطْفِئُ الْحَرَائِقَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة إطفاء",
+        "قارب",
+        "سيارة"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/boat.svg",
+        "media/car.svg"
+      ],
+      "answer": "سيارة إطفاء",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سيارة إطفاء!",
+      "explanation": "الإجابة الصحيحة هي سيارة إطفاء."
+    },
+    {
+      "id": "veh_ar_19",
+      "prompt": "أي مركبة تنقل المرضى بسرعة إلى المستشفى؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَنْقُلُ الْمَرْضَى إِلَى الْمُسْتَشْفَى؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "إسعاف",
+        "قطار",
+        "سفينة"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/train.svg",
+        "media/ship.svg"
+      ],
+      "answer": "إسعاف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي إسعاف!",
+      "explanation": "الإجابة الصحيحة هي إسعاف."
+    },
+    {
+      "id": "veh_ar_20",
+      "prompt": "أي مركبة صفراء كبيرة توصل الأطفال للمدرسة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تُوصِلُ الْأَطْفَالَ لِلْمَدْرَسَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حافلة",
+        "صاروخ",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/bus.svg",
+        "media/rocket.svg",
+        "media/boat.svg"
+      ],
+      "answer": "حافلة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي حافلة!",
+      "explanation": "الإجابة الصحيحة هي حافلة."
+    },
+    {
+      "id": "veh_ar_21",
+      "prompt": "أي طائرة لها مروحة تدور في الأعلى؟",
+      "spoken_prompt": "أَيُّ طَائِرَةٍ لَهَا مِرْوَحَةٌ تَدُورُ فِي الْأَعْلَى؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مروحية",
+        "سيارة",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/car.svg",
+        "media/train.svg"
+      ],
+      "answer": "مروحية",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي مروحية!",
+      "explanation": "الإجابة الصحيحة هي مروحية."
+    },
+    {
+      "id": "veh_ar_22",
+      "prompt": "أي مركبة بحرية عملاقة تعبر المحيط؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ بَحْرِيَّةٍ كَبِيرَةٍ تَعْبُرُ الْمُحِيطَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سفينة",
+        "دراجة",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "سفينة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سفينة!",
+      "explanation": "الإجابة الصحيحة هي سفينة."
+    },
+    {
+      "id": "veh_ar_23",
+      "prompt": "أي مركبة قوية تحمل البضائع الثقيلة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَحْمِلُ الْبَضَائِعَ الثَّقِيلَةَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "شاحنة",
+        "قارب",
+        "صاروخ"
+      ],
+      "choice_images": [
+        "media/truck.svg",
+        "media/boat.svg",
+        "media/rocket.svg"
+      ],
+      "answer": "شاحنة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي شاحنة!",
+      "explanation": "الإجابة الصحيحة هي شاحنة."
+    },
+    {
+      "id": "veh_ar_24",
+      "prompt": "أي مركبة تركبها العائلة في الطريق؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَرْكَبُهَا الْعَائِلَةُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة",
+        "سفينة",
+        "مروحية"
+      ],
+      "choice_images": [
+        "media/car.svg",
+        "media/ship.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "سيارة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سيارة!",
+      "explanation": "الإجابة الصحيحة هي سيارة."
+    },
+    {
+      "id": "veh_ar_25",
+      "prompt": "أي مركبة تصدر صوت توت توت على السكة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَسِيرُ وَتَقُولُ تُوتْ تُوتْ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطار",
+        "سيارة",
+        "قارب"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/car.svg",
+        "media/boat.svg"
+      ],
+      "answer": "قطار",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي قطار!",
+      "explanation": "الإجابة الصحيحة هي قطار."
+    },
+    {
+      "id": "veh_ar_26",
+      "prompt": "أي مركبة نركبها في الحديقة للرياضة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ نَرْكَبُهَا فِي الْحَدِيقَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دراجة",
+        "شاحنة",
+        "صاروخ"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/truck.svg",
+        "media/rocket.svg"
+      ],
+      "answer": "دراجة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي دراجة!",
+      "explanation": "الإجابة الصحيحة هي دراجة."
+    },
+    {
+      "id": "veh_ar_27",
+      "prompt": "أي مركبة يدفعها الهواء بالشراع؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ يَدْفَعُهَا الْهَوَاءُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قارب",
+        "حافلة",
+        "سيارة"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bus.svg",
+        "media/car.svg"
+      ],
+      "answer": "قارب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي قارب!",
+      "explanation": "الإجابة الصحيحة هي قارب."
+    },
+    {
+      "id": "veh_ar_28",
+      "prompt": "أي مركبة فوقها سلم طويل للإنقاذ؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ فَوْقَهَا سُلَّمٌ طَوِيلٌ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة إطفاء",
+        "سفينة",
+        "طائرة"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ship.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "سيارة إطفاء",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سيارة إطفاء!",
+      "explanation": "الإجابة الصحيحة هي سيارة إطفاء."
+    },
+    {
+      "id": "veh_ar_29",
+      "prompt": "أي مركبة ليس لها عجلات؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ لَيْسَ لَهَا عَجَلَاتٌ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قارب",
+        "سيارة",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/car.svg",
+        "media/bus.svg"
+      ],
+      "answer": "قارب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي قارب!",
+      "explanation": "الإجابة الصحيحة هي قارب."
+    },
+    {
+      "id": "veh_ar_30",
+      "prompt": "أي مركبة هي الأسرع على الإطلاق؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ هِيَ الْأَسْرَعُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "صاروخ",
+        "دراجة",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "صاروخ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي صاروخ!",
+      "explanation": "الإجابة الصحيحة هي صاروخ."
+    },
+    {
+      "id": "veh_ar_31",
+      "prompt": "أي مركبة لا تحتاج إلى وقود؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ لَا تَحْتَاجُ إِلَى وَقُودٍ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دراجة",
+        "شاحنة",
+        "طائرة"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/truck.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "دراجة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي دراجة!",
+      "explanation": "الإجابة الصحيحة هي دراجة."
+    },
+    {
+      "id": "veh_ar_32",
+      "prompt": "أي مركبة تستطيع الوقوف في الهواء؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَسْتَطِيعُ التَّحْلِيقَ ثَابِتَةً فِي الْهَوَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مروحية",
+        "قطار",
+        "سفينة"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/train.svg",
+        "media/ship.svg"
+      ],
+      "answer": "مروحية",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مروحية!",
+      "explanation": "الإجابة الصحيحة هي مروحية."
+    },
+    {
+      "id": "veh_ar_33",
+      "prompt": "أي مركبة عليها علامة طبية حمراء؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ عَلَيْهَا عَلَامَةٌ طِبِّيَّةٌ حَمْرَاءُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "إسعاف",
+        "سيارة إطفاء",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/firetruck.svg",
+        "media/bus.svg"
+      ],
+      "answer": "إسعاف",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي إسعاف!",
+      "explanation": "الإجابة الصحيحة هي إسعاف."
+    },
+    {
+      "id": "veh_ar_34",
+      "prompt": "أي مركبة تهبط في المطار؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَهْبِطُ فِي الْمَطَارِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "طائرة",
+        "سفينة",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/ship.svg",
+        "media/train.svg"
+      ],
+      "answer": "طائرة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي طائرة!",
+      "explanation": "الإجابة الصحيحة هي طائرة."
+    },
+    {
+      "id": "veh_ar_35",
+      "prompt": "أي مركبة تتكون من عربات كثيرة متصلة؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ لَهَا عَرَبَاتٌ كَثِيرَةٌ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطار",
+        "سيارة",
+        "دراجة"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/car.svg",
+        "media/bicycle.svg"
+      ],
+      "answer": "قطار",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي قطار!",
+      "explanation": "الإجابة الصحيحة هي قطار."
+    },
+    {
+      "id": "veh_ar_36",
+      "prompt": "أي مركبة ترسو في الميناء البحري؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَرْسُو فِي الْمِينَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سفينة",
+        "حافلة",
+        "مروحية"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/bus.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "سفينة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي سفينة!",
+      "explanation": "الإجابة الصحيحة هي سفينة."
+    },
+    {
+      "id": "veh_ar_37",
+      "prompt": "تطير في السماء: الطائرة و___؟",
+      "spoken_prompt": "مَا الْمَرْكَبَةُ الْأُخْرَى الَّتِي تَطِيرُ فِي السَّمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مروحية",
+        "قطار",
+        "شاحنة"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/train.svg",
+        "media/truck.svg"
+      ],
+      "answer": "مروحية",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مروحية!",
+      "explanation": "الإجابة الصحيحة هي مروحية."
+    },
+    {
+      "id": "veh_ar_38",
+      "prompt": "تبحر في الماء: القارب و___؟",
+      "spoken_prompt": "مَا الْمَرْكَبَةُ الْأُخْرَى الَّتِي تُبْحِرُ فِي الْمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سفينة",
+        "سيارة",
+        "حافلة"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/car.svg",
+        "media/bus.svg"
+      ],
+      "answer": "سفينة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي سفينة!",
+      "explanation": "الإجابة الصحيحة هي سفينة."
+    },
+    {
+      "id": "veh_ar_39",
+      "prompt": "أي مركبة تحمل خراطيم المياه لإطفاء النار؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَحْمِلُ خَرَاطِيمَ الْمِيَاهِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سيارة إطفاء",
+        "إسعاف",
+        "شاحنة"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ambulance.svg",
+        "media/truck.svg"
+      ],
+      "answer": "سيارة إطفاء",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي سيارة إطفاء!",
+      "explanation": "الإجابة الصحيحة هي سيارة إطفاء."
+    },
+    {
+      "id": "veh_ar_40",
+      "prompt": "أي مركبة تنطلق بعد العد التنازلي ٣-٢-١؟",
+      "spoken_prompt": "أَيُّ مَرْكَبَةٍ تَنْطَلِقُ بَعْدَ الْعَدِّ التَّنَازُلِيِّ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "صاروخ",
+        "طائرة",
+        "قطار"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/airplane.svg",
+        "media/train.svg"
+      ],
+      "answer": "صاروخ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي صاروخ!",
+      "explanation": "الإجابة الصحيحة هي صاروخ."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

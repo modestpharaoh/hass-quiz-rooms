@@ -6,7 +6,7 @@ This document describes the end-to-end backend, networking, security, real-time 
 
 ## 1. Design Principles
 
-1. **Local-First & Zero External Dependencies:** No external CDNs, no cloud APIs, no telemetry, and no third-party Python `requirements` in `manifest.json`. Every HTML page, stylesheet, JavaScript module, QR generator, Web Audio synthesizer, local WOFF font file, avatar, pack cover, flag, map silhouette, logo, and diagram SVG (584 SVGs across 37 built-in packs / 3,064 questions) is served locally by Home Assistant.
+1. **Local-First & Zero External Dependencies:** No external CDNs, no cloud APIs, no telemetry, and no third-party Python `requirements` in `manifest.json`. Every HTML page, stylesheet, JavaScript module, QR generator, Web Audio synthesizer, local WOFF font file, avatar, pack cover, flag, map silhouette, logo, early-learning illustration, and diagram SVG (813 SVGs across 48 built-in packs / 3,348 questions) is served locally by Home Assistant.
 2. **Defense-in-Depth LAN Isolation:** Guest phones and Smart TVs join without Home Assistant credentials, so every unauthenticated route is strictly protected by a fail-closed `NetworkGuard` allowing only RFC 1918 / IPv6 ULA / link-local / admin-configured CIDRs by default.
 3. **Strict Home Assistant Async Compliance:** Zero blocking filesystem I/O inside any `async def` coroutine. Disk scans, pack loading, ZIP imports, asset reads, and media pinning are offloaded via `hass.async_add_executor_job`.
 4. **Snapshot Isolation:** Running games snapshot their selected questions and pin referenced media bytes in memory on `start_game`, preventing mid-game pack edits or deletions from disrupting live rooms.
@@ -92,16 +92,16 @@ flowchart TD
 | Module | File | Responsibility |
 | --- | --- | --- |
 | **Entrypoint** | `custom_components/quizrooms/__init__.py` | Sets up `QuizRoomsCoordinator`, registers HTTP/WS views once, registers custom sidebar icon (`quizrooms:logo`) and Admin Sidebar Panel (`?v=VERSION`), registers HA services, binds dynamic `OptionsFlow` listener, and forwards `number` & `sensor` platforms. |
-| **Coordinator** | `custom_components/quizrooms/coordinator.py` | Owns live runtime state, multiplexed WebSocket client registry (`set[WSClient]`), per-room question countdown `asyncio.Task` timers, tracked auto-reveal tasks (cancelled on pause), 60-second TTL cleanup loop, `TVState` synchronization, entity change callbacks, and executor offloading (`async_run_in_executor`). |
-| **Game Engine** | `custom_components/quizrooms/engine.py` | Pure domain engine: room creation, 1-room-per-browser enforcement, globally unique preset avatar reservation, difficulty filtering, question snapshotting, 1–N one-time confidence wager pool, blind Final Bonus Round (`PHASE_BONUS_WAGER`), answer evaluation, duplicate-answer rejection, host overrides, leaderboards, finale awards, and anti-leakage state serialization with redacted public player IDs (`plr_<12-hex>`). |
+| **Coordinator** | `custom_components/quizrooms/coordinator.py` | Owns live runtime state, multiplexed WebSocket client registry (`set[WSClient]`), per-room question countdown `asyncio.Task` timers, tracked auto-reveal & Kids auto-advance (`3.2s`) tasks (cancelled on pause/close), 60-second TTL cleanup loop, `TVState` synchronization, entity change callbacks, and executor offloading (`async_run_in_executor`). |
+| **Game Engine** | `custom_components/quizrooms/engine.py` | Pure domain engine: room creation, 1-room-per-browser enforcement, globally unique preset avatar reservation, difficulty filtering, question snapshotting (including lockstep shuffling of `choices`, `choice_media_ids`, and `choice_colors`), 1–N one-time confidence wager pool, blind Final Bonus Round (`PHASE_BONUS_WAGER`), **Early Learner Mode** (`kids_mode`, `wager_mode="none"`, untimed `timer_seconds=0`, Star `+1`/`0` scoring, server-side `try_again` without answer leakage, and joyful All-Star finale awards), answer evaluation, duplicate-answer rejection, host overrides, leaderboards, finale awards, and anti-leakage state serialization with redacted public player IDs (`plr_<12-hex>`). |
 | **Data Models** | `custom_components/quizrooms/models.py` | Typed dataclasses (`Pack`, `Question`, `SnapshotQuestion`, `MediaAsset`, `RoomSettings`, `Room`, `Player`, `PlayerSubmission`). |
-| **Pack Registry & Importer** | `custom_components/quizrooms/packs.py` | Loads built-in (`packs/`, 37 packs / 3,064 questions) and custom (`<config>/quizrooms/packs/`) packs, maps media & covers to salted opaque SHA-256 IDs, pins active room media bytes in memory (pruned on room close/shutdown), and securely validates/extracts `.json` and `.zip` uploads. |
+| **Pack Registry & Importer** | `custom_components/quizrooms/packs.py` | Loads built-in (`packs/`, 48 packs / 3,348 questions including 11 Early Learner packs / 284 questions) and custom (`<config>/quizrooms/packs/`) packs, maps question media, per-choice `choice_images`, and covers to salted opaque SHA-256 IDs, pins active room media bytes (including `choice_media_ids`) in memory (pruned on room close/shutdown), and securely validates/extracts `.json` and `.zip` uploads. |
 | **Normalization** | `custom_components/quizrooms/normalization.py` | Latin + Arabic text normalization (Tashkeel/Tatweel stripping, Alef/Teh Marbuta/Alef Maksura folding, Eastern Arabic/Persian digit conversion, article stripping), Levenshtein + `SequenceMatcher` fuzzy matching, canonical duplicate keys, and Arabic-aware `starts_with` prefix matching. |
 | **Avatars** | `custom_components/quizrooms/avatars.py` | Serves 20 bundled studio SVG avatars and validates/stores in-memory custom user photo uploads (bounded body check, magic-byte check for PNG/JPEG/WebP/GIF, max 256 KB, SVG rejected on user upload). |
 | **Network Guard** | `custom_components/quizrooms/network_guard.py` | Strict fail-closed LAN access policy with trusted reverse-proxy `X-Forwarded-For` walking, Cloudflare Tunnel (`CF-Connecting-IP`) / Nabu Casa (`X-Hass-Source`) remote detection, and custom CIDR whitelist support. |
 | **Smart TV Launcher** | `custom_components/quizrooms/tv_launcher.py` | Discovers connected supported Smart TV `media_player` entities via HA Entity Registry (`webostv`, `androidtv`, `androidtv_remote`, `samsungtv`, `samsungtv_smart`, `samsungtv_tizen`) and dispatches native URL-open commands with fallbacks. |
 | **Event Bus & Stage Director** | `custom_components/quizrooms/stage_effects.py` | Builds privacy-safe `quizrooms_phase_changed` & `quizrooms_finale` event payloads, discovers connected `light.*` / `media_player.*` / `tts.*` entities, runs non-blocking RGB/dimmer light presets with pre-game scene snapshot & restoration, and dispatches sanitized multilingual TTS announcements (`auto`, `en`, `ar`, `de`, `fr`, `es`, `pt` + Piper voice/locale mapping & optional predefined volume) — strictly gated on LAN-Only mode. |
-| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, CSWSH-guarded WebSocket routing (`WSClient`), strict sandbox CSP headers for media/avatars, bundled `qrcode.js` + `admin-panel.js` delivery, and Admin APIs (`/api/admin/state`, `/api/admin/stage`, `/api/admin/packs/import`, `/api/admin/packs/{id}/preview`, `/api/admin/open_tv`, etc.). |
+| **HTTP & WS Views** | `custom_components/quizrooms/views.py` | Implements all `HomeAssistantView` endpoints, CSWSH-guarded WebSocket routing (`WSClient`), immutable 1-year `Cache-Control` for `?v=` versioned static assets, strict sandbox CSP headers for media/avatars, bundled `qrcode.js` + `admin-panel.js` delivery, and Admin APIs (`/api/admin/state`, `/api/admin/stage`, `/api/admin/packs/import`, `/api/admin/packs/{id}/preview`, `/api/admin/open_tv`, etc.). |
 | **HA Entities** | `number.py`, `sensor.py` | Exposes `number.quizrooms_max_rooms`, `sensor.quizrooms_active_games`, and `sensor.quizrooms_active_players` grouped under a single Home Assistant `DeviceEntryType.SERVICE` device. |
 
 ---
@@ -117,7 +117,7 @@ stateDiagram-v2
     Lobby --> Closed: close_room / 15m idle TTL
 
     Question --> Question: submit_answer (lock answer + wager chip)\npause_room / resume_room
-    Question --> Reveal: timer expires OR\nall connected players locked in (+1.1s beat) OR\nhost Reveal Now
+    Question --> Reveal: timer expires OR\nall connected players locked in (+0.7s beat) OR\nhost Reveal Now
 
     Reveal --> Reveal: override_answer\n(Host/Admin approve or mark wrong\nfor Free-Text / Open-Ended / Duplicate)
     Reveal --> Question: next_step (more regular rounds remaining)
@@ -134,9 +134,16 @@ stateDiagram-v2
     Closed --> [*]
 ```
 
-### Confidence Wagering, Blind Bonus Round & Scoring Rules
-- **Rounds & Timers:** Regular rounds in multiples of `5` from `5` to `25` (`5, 10, 15, 20, 25`), capped automatically for small custom packs. Question timers support `20`, `30`, `45`, and `60` seconds (`ALLOWED_TIMERS`).
+### Confidence Wagering, Blind Bonus Round, Early Learner Mode & Scoring Rules
+- **Rounds & Timers:** Regular rounds in multiples of `5` from `5` to `25` (`5, 10, 15, 20, 25`), capped automatically for small custom packs. Question timers support `0` (`No Timer / Relaxed`, used by default in Early Learner Mode), `20`, `30`, `45`, and `60` seconds (`ALLOWED_TIMERS`). When `timer_seconds == 0`, `question_ends_at` is `None` and no countdown task is scheduled.
 - **One-Time Confidence Wager Pool (`1..N`):** Each player starts with chips `1` through `N` (where `N = regular_rounds`). Each chip can be spent **once** per game. If omitted or if the timer expires unanswered, the player's **lowest available** chip is automatically consumed.
+- **Early Learner Mode (`kids_mode`, `kids_try_again`, `kids_auto_advance`):**
+  - Enabling `kids_mode=True` automatically normalizes room settings to `answer_mode="multiple_choice"`, `wager_mode="none"`, `deduct_wrong_wager=False`, `unique_answers_only=False`, `bonus_round=False`, and defaults `timer_seconds=0` (relaxed untimed pace; optional timers still selectable).
+  - **Star Scoring (`+1` / `0`):** Correct answers award `+1` Star (`⭐`); wrong or timed-out answers score `0` (never negative). At Finale, `build_awards()` issues joyful All-Star badges so every learner is celebrated.
+  - **Server-Side Gentle "Try Again" (`kids_try_again=True`):** When a player taps an incorrect tile, `QuizEngine.submit_answer()` returns `sub.outcome == "try_again"` without recording a locked submission or leaking `correct_answer`. `QuizRoomsWebSocketView` replies directly to that socket with `{"type": "try_again", "code", "answer", "language", "rtl", "message"}` (triggering a gentle wobble/dim, soft marimba nudge, and spoken `"Good try! Tap another one!"` / `"محاولة جميلة! جرّب خياراً آخر!"` via browser speech synthesis) and emits a LAN-only `sub_event="try_again"` phase event so an enabled Stage Effects speaker can also speak the encouragement cue (cooldown-throttled to `2.0s` per room).
+  - **Solo / Parent-Led Auto-Advance (`kids_auto_advance=True`):** Upon entering `PHASE_REVEAL`, `coordinator.schedule_kids_auto_advance()` schedules a tracked `3.2s` `asyncio.Task` (cancelled cleanly on pause, manual host advance, or room close) to advance smoothly to the next round or Finale without needing a parent to tap **Next** every round.
+  - **Rich Choice Payloads & Pinning:** Choice tiles support `choice_style` (`default`, `large_glyph`, `color_swatch`, `image_grid`), `choice_images` (resolved to opaque `choice_media_ids` and pinned alongside `media_id` during `async_start_game`), `choice_colors` (`#RRGGBB`), `spoken_prompt`, and `reveal_message`. When shuffling choices in `start_game()`, `choices`, `choice_media_ids`, and `choice_colors` are permuted in strict lockstep.
+  - **Independent Stage Effects Q&A Speech (`speaker_read_qa`):** Under **Local Speaker Announcer (Multilingual)**, `speaker_read_qa` is an independent boolean toggle separate from `speaker_preset` that works in **both Standard and Early Learner modes** — reading `spoken_prompt` / `prompt` on `round_start`, the localized correct answer or `reveal_message` on `round_reveal` (combining cleanly with round-winner announcements when active), and localized `"Good try! Tap another one!"` cues on `try_again`.
 - **Deduction Toggle (`deduct_wrong_wager`):** Default `true`. Correct answers award `+wager`; wrong, duplicate, or timed-out answers score `-wager` when enabled or `0` when disabled.
 - **Blind Final Bonus Question (`bonus_round` / `PHASE_BONUS_WAGER`):**
   - When enabled by the host (and an extra unused question exists), an extra `is_bonus=True` question is appended to `room.questions`.
@@ -170,7 +177,7 @@ sequenceDiagram
     Eng-->>WS: (room, session_token, host_token)
     WS-->>Host: room_created {code, host_token, room}
     WS->>Coord: broadcast_lobby_and_tv()
-    Coord-->>TV: lobby_update {lobby, packs}
+    Coord-->>TV: lobby_update {lobby, avatars} (Overview TVs only; packs omitted unless reloaded)
 
     TV->>WS: tv_set_mode {mode: "follow", room_code}
     Note over TV,WS: Falls back to POST /api/public/tv_mode if WS is reconnecting
@@ -193,12 +200,17 @@ sequenceDiagram
 
     Host->>WS: submit_answer {answer, wager}
     Guest->>WS: submit_answer {answer, wager}
-    Note over WS,Coord: All connected players locked in -> 1.1s dramatic beat (tracked task, cancelled on pause)
+    Note over WS,Coord: All connected players locked in -> 0.7s dramatic beat (tracked task, cancelled on pause)
     Coord->>Eng: reveal_current_question(code)
     Coord-->>Host: room_state (phase: reveal, outcomes, scores)
     Coord-->>Guest: room_state (phase: reveal)
     Coord-->>TV: room_state (phase: reveal)
 ```
+
+### Real-Time Payload & Client Performance Architecture
+- **Lean `lobby_update` Broadcasts (`broadcast_lobby_and_tv(include_packs=False)`):** Routine room lifecycle events (`create_room`, `join_room`, `leave_room`, `start_game`, `reveal`, `pause`, `close_room`, `subscribe_lobby`) broadcast only lightweight `lobby` and `avatars` state, omitting the ~25 KB `packs` summary array (which is sent once on `hello` / `bootstrap` and re-sent with `include_packs=True` only on pack import, delete, or `quizrooms.reload_packs`). Furthermore, `role == "tv"` sockets currently in `TV_MODE_FOLLOW` are skipped during `lobby_update` broadcasts so Smart TV CPUs never parse discarded lobby JSON mid-game.
+- **WS-First Client Hydration & Fast Resume:** `/quizrooms/play` hydrates directly from the WebSocket `hello` snapshot (triggering `GET /quizrooms/api/public/bootstrap` only as an `800ms` fallback if WS setup lags) and listens to `visibilitychange` + `online` events (with a half-open NAT `ping` check) for instant wake-up after mobile screen lock. `/quizrooms/tv` uses `2.0s` HTTP fallback polling while disconnected and surfaces an `"HTTP Sync (WS Offline)"` badge after repeated WS failures.
+- **Immutable Versioned Asset Caching:** `QuizRoomsAssetsView` serves `?v=<VERSION>` static CSS, JS, SVG, and `.woff` font requests with `Cache-Control: public, max-age=31536000, immutable` (falling back to `public, max-age=3600` when unversioned) so repeat mobile and Smart TV sessions load instantaneously from local cache.
 
 ---
 
@@ -219,14 +231,15 @@ flowchart LR
     EXT -->|No (Default LAN-Only)| PROXY["Inspect peer IP,\ntrusted_proxies, X-Forwarded-For,\nCF-Connecting-IP, X-Hass-Source"]
 
     PROXY --> TUNNEL{"Cloudflare Tunnel /\nNabu Casa / Untrusted Proxy?"}
-    TUNNEL -->|Yes| DENY_403B["403 local_network_only\n(Fail-Closed)"]
+    TUNNEL -->|Yes| DENY_302["302 Found -> /\n(Stealth Redirect to HA Lovelace / Login,\nZero QuizRooms Fingerprint)"]
     TUNNEL -->|No| CIDR{"Client IP in RFC 1918 /\nIPv6 ULA / Link-Local /\nallowed_subnets?"}
     CIDR -->|Yes| ALLOW_LAN["Allow LAN Request"]
-    CIDR -->|No| DENY_403B
+    CIDR -->|No| DENY_302
 ```
 
 ### Additional Security & DoS/Leak Controls
 - **Frozen Middleware Handling:** Home Assistant freezes `hass.http.app.middlewares` once the HTTP server starts (e.g., when adding an integration via UI). `__init__.py` detects frozen middleware lists gracefully and every unauthenticated `HomeAssistantView` enforces `_check_network_guard(...)` directly as defense-in-depth.
+- **Stealth External Redirection & Anti-Fingerprinting (`QuizRoomsCatchAllView`):** When `allow_external_access` is `False` (default), any external or non-whitelisted request to `/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/assets/*`, `/quizrooms/media/*`, `/quizrooms/avatar/*`, `/quizrooms/api/public/*`, or any arbitrary probe `/quizrooms/<anything>` receives a generic **`302 Found` → `Location: /`** with an empty body and `Cache-Control: no-store` — sending browsers directly to Home Assistant's default Lovelace dashboard or login screen with zero QuizRooms branding, headers, or error strings that scanners could fingerprint. Enabling `allow_external_access` requires acknowledging a dedicated red HA security warning confirmation step (`confirm_external`).
 - **Fail-Closed Cloud & Tunnel Guard:** `NetworkGuard` explicitly blocks Nabu Casa (`X-Hass-Source`), Cloudflare Tunnel (`CF-Connecting-IP`, `CF-Ray`), `True-Client-IP`, `X-Real-IP`, and malformed proxy IP headers even when relayed over `127.0.0.1` loopback.
 - **WebSocket CSWSH, Connection Caps, Slow-Consumer Eviction & Room Binding:** `/quizrooms/ws` enforces same-origin `Origin` validation (including rejecting sandboxed-iframe `Origin: null`), enforces global (`250`) and per-IP (`40`) socket caps (`429 ws_limit_reached`), applies a `4.0s` send timeout on broadcasts so stalled mobile sockets (`TCP ZeroWindow`) are evicted and closed without stalling timers, and binds each room socket strictly to its `(room_code, session_token)` pair.
 - **Bounded Request Streams & Host Header Sanitization:** All JSON POST endpoints enforce a `64 KB` stream limit (`413 payload_too_large`), multipart uploads bound total stream bytes and part counts across all fields, and `resolve_lan_base_url()` validates host/URL syntax to block `Host` header QR poisoning and shell/URL injection.

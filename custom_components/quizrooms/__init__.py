@@ -92,11 +92,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         register_views(hass, coordinator)
         domain_data["views_registered"] = True
 
-    # Register custom HA sidebar icon module (quizrooms:logo) once
+    # Register custom HA sidebar icon module (quizrooms:logo) once with capability token
     if not domain_data.get("sidebar_icon_registered"):
         add_extra_js = getattr(frontend, "add_extra_js_url", None)
         if callable(add_extra_js):
-            add_extra_js(hass, f"{URL_SIDEBAR_ICON_JS}?v={VERSION}")
+            add_extra_js(
+                hass,
+                f"{URL_SIDEBAR_ICON_JS}?v={VERSION}&k={coordinator.panel_asset_token}",
+            )
         domain_data["sidebar_icon_registered"] = True
 
     # Register HA Admin Sidebar Panel (clean up any stale registration on reload)
@@ -112,7 +115,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         frontend_url_path=DOMAIN,
         sidebar_title="QuizRooms",
         sidebar_icon="quizrooms:logo",
-        module_url=f"{URL_ADMIN_PANEL_JS}?v={VERSION}",
+        module_url=f"{URL_ADMIN_PANEL_JS}?v={VERSION}&k={coordinator.panel_asset_token}",
         require_admin=True,
         config={"domain": DOMAIN},
     )

@@ -148,36 +148,37 @@ def test_middleware_guards_play_tv_ws_and_media_endpoints(tmp_path: Path) -> Non
         return web.Response(status=200, text="OK")
 
     async def run() -> None:
-        # Public IP to /quizrooms/play -> 403 HTML "Local Network Only"
-        req_play = FakeRequest(
-            path="/quizrooms/play",
-            remote="198.51.100.5",
-            headers={"Accept": "text/html"},
-        )
-        resp_play = await middleware(req_play, ok_handler)
-        assert resp_play.status == 403
-        assert "Local Network Only" in (resp_play.text or "")
+        # Public IP to /quizrooms/play, /tv, /xxx, /media, /ws -> stealth 302 redirect to '/'
+        # with empty body and ZERO QuizRooms fingerprint
+        for probe_path in (
+            "/quizrooms/play",
+            "/quizrooms/tv",
+            "/quizrooms/xxx",
+            "/quizrooms/media/abcdef1234567890abcdef12",
+            "/quizrooms/ws",
+        ):
+            req = FakeRequest(
+                path=probe_path,
+                remote="198.51.100.5",
+                headers={"Accept": "text/html"},
+            )
+            resp = await middleware(req, ok_handler)
+            assert resp.status == 302, f"Expected 302 for {probe_path}"
+            assert resp.headers.get("Location") == "/"
+            body_text = (resp.text or "").lower()
+            assert body_text == ""
+            assert "quizrooms" not in body_text
+            assert "local_network_only" not in body_text
 
-        # Public IP to /quizrooms/media/{opaque_id} -> 403 JSON
-        req_media = FakeRequest(
-            path="/quizrooms/media/abcdef1234567890abcdef12",
-            remote="198.51.100.5",
-        )
-        resp_media = await middleware(req_media, ok_handler)
-        assert resp_media.status == 403
-        assert "local_network_only" in (resp_media.text or "")
-
-        # Public IP to /quizrooms/ws -> 403
-        req_ws = FakeRequest(path="/quizrooms/ws", remote="198.51.100.5")
-        resp_ws = await middleware(req_ws, ok_handler)
-        assert resp_ws.status == 403
-
-        # Admin API is NOT blocked by LAN-only middleware (handled by HA admin auth instead)
+        # Admin API & exact /quizrooms sidebar panel route are NOT intercepted by LAN-only middleware
         req_admin = FakeRequest(path="/quizrooms/api/admin/state", remote="198.51.100.5")
         resp_admin = await middleware(req_admin, ok_handler)
         assert resp_admin.status == 200
+        req_panel = FakeRequest(path="/quizrooms", remote="198.51.100.5")
+        resp_panel = await middleware(req_panel, ok_handler)
+        assert resp_panel.status == 200
 
-        # Direct MediaView check also enforces NetworkGuard even without middleware
+        # Direct MediaView & CatchAllView checks also stealth-redirect with zero fingerprint
         fake_hass = SimpleNamespace(http=SimpleNamespace(trusted_proxies=[], use_x_forwarded_for=True))
         coord = QuizRoomsCoordinator(
             fake_hass,
@@ -185,18 +186,30 @@ def test_middleware_guards_play_tv_ws_and_media_endpoints(tmp_path: Path) -> Non
             custom_packs_dir=tmp_path / "custom",
             frontend_dir=REPO_ROOT / "custom_components" / "quizrooms" / "frontend",
         )
+        from custom_components.quizrooms.views import QuizRoomsCatchAllView
+
+        catchall_resp = await QuizRoomsCatchAllView(coord).get(
+            FakeRequest(path="/quizrooms/unknown_probe", remote="203.0.113.10"),
+            "unknown_probe",
+        )
+        assert catchall_resp.status == 302
+        assert catchall_resp.headers.get("Location") == "/"
+        assert (catchall_resp.text or "") == ""
+
         media_view = QuizRoomsMediaView(coord)
         pack = coord.pack_registry.get_pack("countries_flags")
         assert pack is not None
         sample_mid = pack.questions[0].media_id
         assert sample_mid is not None
 
-        # Blocked from public IP
+        # Blocked from public IP -> stealth 302 redirect to '/'
         blocked_resp = await media_view.get(
             FakeRequest(path=f"/quizrooms/media/{sample_mid}", remote="203.0.113.10"),
             sample_mid,
         )
-        assert blocked_resp.status == 403
+        assert blocked_resp.status == 302
+        assert blocked_resp.headers.get("Location") == "/"
+        assert (blocked_resp.text or "") == ""
 
         # Allowed from LAN IP with strict sandbox CSP + nosniff headers
         ok_resp = await media_view.get(
@@ -209,3 +222,163 @@ def test_middleware_guards_play_tv_ws_and_media_endpoints(tmp_path: Path) -> Non
         assert ok_resp.headers["Content-Type"] == "image/svg+xml"
 
     asyncio.run(run())
+
+
+def test_options_flow_allows_clearing_allowed_subnets_and_custom_url(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Subnet chip SelectSelector validates entries, removes individual chips, and clears cleanly."""
+    import custom_components.quizrooms.config_flow as cf
+    from custom_components.quizrooms.const import (
+        CONF_ALLOW_EXTERNAL_ACCESS,
+        CONF_ALLOWED_SUBNETS,
+        CONF_CUSTOM_LAN_BASE_URL,
+        CONF_STAGE_EFFECTS,
+    )
+
+    # 1. Verify _build_options_schema uses SelectSelector(multiple=True, custom_value=True)
+    #    with description={"suggested_value": [...]} and NO default= (also auto-migrates legacy strings).
+    captured_optionals: dict[str, dict[str, object]] = {}
+
+    def _capture_optional(key: str, **kwargs: object) -> str:
+        captured_optionals[key] = dict(kwargs)
+        return key
+
+    monkeypatch.setattr(cf.vol, "Optional", _capture_optional)
+    schema = cf._build_options_schema(
+        {
+            CONF_ALLOW_EXTERNAL_ACCESS: False,
+            CONF_ALLOWED_SUBNETS: "100.64.0.0/10, 198.51.100.0/24",
+            CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123",
+        }
+    )
+    assert "default" not in captured_optionals[CONF_ALLOWED_SUBNETS]
+    assert captured_optionals[CONF_ALLOWED_SUBNETS]["description"] == {
+        "suggested_value": ["100.64.0.0/10", "198.51.100.0/24"]
+    }
+    subnet_selector = schema[CONF_ALLOWED_SUBNETS]
+    assert subnet_selector.config["multiple"] is True
+    assert subnet_selector.config["custom_value"] is True
+    assert subnet_selector.config["options"] == ["100.64.0.0/10", "198.51.100.0/24"]
+    assert "default" not in captured_optionals[CONF_CUSTOM_LAN_BASE_URL]
+    assert captured_optionals[CONF_CUSTOM_LAN_BASE_URL]["description"] == {
+        "suggested_value": "http://192.168.1.50:8123"
+    }
+
+    # 2. Setup OptionsFlow with legacy string option and test adding, rejecting invalid, and removing chips
+    fake_entry = SimpleNamespace(
+        options={
+            CONF_ALLOW_EXTERNAL_ACCESS: False,
+            CONF_ALLOWED_SUBNETS: "100.64.0.0/10",
+            CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123",
+            CONF_STAGE_EFFECTS: {"enabled": True},
+        }
+    )
+    flow = cf.QuizRoomsOptionsFlow(fake_entry)
+    flow.async_create_entry = lambda *, title, data: {"type": "create_entry", "title": title, "data": data}  # type: ignore[attr-defined]
+    flow.async_show_form = lambda *, step_id, data_schema, errors: {  # type: ignore[attr-defined]
+        "type": "form",
+        "step_id": step_id,
+        "errors": errors,
+    }
+
+    # 2a. Invalid chip is rejected and NOT saved
+    bad_res = asyncio.run(
+        flow.async_step_init(
+            {
+                CONF_ALLOW_EXTERNAL_ACCESS: False,
+                CONF_ALLOWED_SUBNETS: ["100.64.0.0/10", "not-a-valid-subnet"],
+            }
+        )
+    )
+    assert bad_res["type"] == "form"
+    assert bad_res["errors"] == {CONF_ALLOWED_SUBNETS: "invalid_subnet"}
+
+    # 2b. Valid chips are canonicalized & deduplicated (host bits cleared, duplicates merged)
+    good_res = asyncio.run(
+        flow.async_step_init(
+            {
+                CONF_ALLOW_EXTERNAL_ACCESS: False,
+                CONF_ALLOWED_SUBNETS: ["100.64.0.0/10", "203.0.113.42/24", "100.64.0.0/10"],
+                CONF_CUSTOM_LAN_BASE_URL: "http://192.168.1.50:8123/",
+            }
+        )
+    )
+    assert good_res["type"] == "create_entry"
+    assert good_res["data"][CONF_ALLOWED_SUBNETS] == ["100.64.0.0/10", "203.0.113.0/24"]
+    assert good_res["data"][CONF_CUSTOM_LAN_BASE_URL] == "http://192.168.1.50:8123"
+
+    # 2c. Removing all chips (empty list or omitted key) clears allowed_subnets & custom URL cleanly
+    clear_res = asyncio.run(
+        flow.async_step_init({CONF_ALLOW_EXTERNAL_ACCESS: False, CONF_ALLOWED_SUBNETS: []})
+    )
+    assert clear_res["type"] == "create_entry"
+    assert clear_res["data"][CONF_ALLOWED_SUBNETS] == []
+    assert clear_res["data"][CONF_CUSTOM_LAN_BASE_URL] == ""
+    assert clear_res["data"][CONF_STAGE_EFFECTS] == {"enabled": True}
+
+    # 3. Verify coordinator.apply_options applies list[str] and clears NetworkGuard.allowed_subnets
+    fake_hass = SimpleNamespace(http=SimpleNamespace(trusted_proxies=[], use_x_forwarded_for=True))
+    coord = QuizRoomsCoordinator(
+        fake_hass,
+        builtin_packs_dir=REPO_ROOT / "custom_components" / "quizrooms" / "packs",
+        custom_packs_dir=tmp_path / "custom",
+        frontend_dir=REPO_ROOT / "custom_components" / "quizrooms" / "frontend",
+        options=dict(good_res["data"]),
+        load_packs=False,
+    )
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="100.64.1.10")).allowed is True
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="203.0.113.7")).allowed is True
+    coord.apply_options(clear_res["data"])
+    assert coord.network_guard.allowed_subnets == []
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="100.64.1.10")).allowed is False
+    assert coord.network_guard.evaluate_request(FakeRequest(remote="203.0.113.7")).allowed is False
+    assert coord.custom_lan_base_url == ""
+
+
+def test_external_access_requires_red_warning_confirmation_step() -> None:
+    """Enabling allow_external_access must show a native HA red warning alert and require explicit confirmation."""
+    import custom_components.quizrooms.config_flow as cf
+    from custom_components.quizrooms.const import (
+        CONF_ALLOW_EXTERNAL_ACCESS,
+        CONF_ALLOWED_SUBNETS,
+        CONF_CUSTOM_LAN_BASE_URL,
+    )
+
+    fake_entry = SimpleNamespace(
+        options={
+            CONF_ALLOW_EXTERNAL_ACCESS: False,
+            CONF_ALLOWED_SUBNETS: [],
+            CONF_CUSTOM_LAN_BASE_URL: "",
+        }
+    )
+    flow = cf.QuizRoomsOptionsFlow(fake_entry)
+    flow.async_create_entry = lambda *, title, data: {"type": "create_entry", "title": title, "data": data}  # type: ignore[attr-defined]
+    flow.async_show_form = lambda *, step_id, data_schema, errors: {  # type: ignore[attr-defined]
+        "type": "form",
+        "step_id": step_id,
+        "errors": errors,
+    }
+
+    # 1. Turning external access ON transitions to confirm_external with native red error alert banner
+    warn_res = asyncio.run(
+        flow.async_step_init({CONF_ALLOW_EXTERNAL_ACCESS: True, CONF_ALLOWED_SUBNETS: []})
+    )
+    assert warn_res["type"] == "form"
+    assert warn_res["step_id"] == "confirm_external"
+    assert warn_res["errors"] == {"base": "external_access_warning"}
+
+    # 2. Submitting confirm_external WITHOUT checking confirmation box refuses to save
+    unchecked_res = asyncio.run(
+        flow.async_step_confirm_external({cf.CONF_CONFIRM_EXTERNAL_ACCESS: False})
+    )
+    assert unchecked_res["type"] == "form"
+    assert unchecked_res["step_id"] == "confirm_external"
+    assert unchecked_res["errors"] == {"base": "must_confirm_external"}
+
+    # 3. Checking confirmation box saves allow_external_access=True
+    confirmed_res = asyncio.run(
+        flow.async_step_confirm_external({cf.CONF_CONFIRM_EXTERNAL_ACCESS: True})
+    )
+    assert confirmed_res["type"] == "create_entry"
+    assert confirmed_res["data"][CONF_ALLOW_EXTERNAL_ACCESS] is True

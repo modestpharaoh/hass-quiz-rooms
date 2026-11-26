@@ -124,7 +124,7 @@ def test_setup_entry_handles_frozen_app_and_offloads_all_file_io(tmp_path: Path)
         assert len(hass.executor_calls) >= 1
 
         coord = hass.data[DOMAIN]["coordinator"]
-        assert len(coord.pack_registry.list_packs()) == 37
+        assert len(coord.pack_registry.list_packs()) == 61
 
         # 2. All file-serving views offload reads to hass.async_add_executor_job
         before = len(hass.executor_calls)
@@ -246,7 +246,7 @@ def test_websocket_lifecycle_create_and_start_room(tmp_path: Path, monkeypatch) 
         assert "hello" in types_sent
         assert "room_created" in types_sent
         hello_msg = next(m for m in ws_instance.sent if m["type"] == "hello")
-        assert len(hello_msg["packs"]) == 37
+        assert len(hello_msg["packs"]) == 61
         created_msg = next(m for m in ws_instance.sent if m["type"] == "room_created")
         assert created_msg["code"] in coord.engine.rooms
         assert created_msg["host_token"]
@@ -303,12 +303,13 @@ def test_tv_live_overview_updates_and_follow_mode(tmp_path: Path) -> None:
             for m in tv_ws.sent
         )
 
-        # 2. HTTP TV mode fallback follows the room (and blocks public IPs)
+        # 2. HTTP TV mode fallback follows the room (and stealth-redirects public IPs)
         tv_mode_view = QuizRoomsPublicTVModeView(coord)
         blocked = await tv_mode_view.post(
             _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="203.0.113.5")
         )
-        assert blocked.status == 403
+        assert blocked.status == 302
+        assert blocked.headers.get("Location") == "/"
 
         ok = await tv_mode_view.post(
             _JsonRequest({"mode": "follow", "room_code": room.code}, path="/quizrooms/api/public/tv_mode", remote="192.168.1.20")

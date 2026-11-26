@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>QuizRooms — Play</title>
-  <link rel="icon" type="image/svg+xml" href="/quizrooms/assets/img/logo.svg?v=1.0.0" />
+  <link rel="icon" type="image/svg+xml" href="/quizrooms/assets/img/logo.svg?v=1.1.0" />
   <script>
     (function () {
       try {
@@ -14,18 +14,30 @@
         var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.dataset.themeMode = mode;
         document.documentElement.dataset.theme = mode === "auto" ? (dark ? "dark" : "light") : mode;
+        var ua = navigator.userAgent || "";
+        var chromeMatch = ua.match(/Chrome\/(\d+)/i);
+        var iosMatch = ua.match(/OS (\d+)_/i);
+        var lowMem = typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 3;
+        var lowCores = typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+        var saveData = Boolean(navigator.connection && navigator.connection.saveData);
+        var oldMobile =
+          (chromeMatch && parseInt(chromeMatch[1], 10) < 85) ||
+          (/iPhone|iPad|iPod/i.test(ua) && iosMatch && parseInt(iosMatch[1], 10) < 14);
+        if (lowMem || lowCores || saveData || oldMobile) {
+          document.documentElement.dataset.mobilePerf = "lite";
+        }
       } catch (e) { }
     })();
   </script>
-  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=1.0.0" />
-  <link rel="stylesheet" href="/quizrooms/assets/css/play.css?v=1.0.0" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/theme.css?v=1.1.0" />
+  <link rel="stylesheet" href="/quizrooms/assets/css/play.css?v=1.1.0" />
 </head>
 
 <body>
   <div class="app-shell">
     <header class="topbar">
       <div class="brand">
-        <img src="/quizrooms/assets/img/logo.svg?v=1.0.0" alt="QuizRooms" class="brand-logo" width="44" height="44" />
+        <img src="/quizrooms/assets/img/logo.svg?v=1.1.0" alt="QuizRooms" class="brand-logo" width="44" height="44" />
         <div>
           <h1 class="brand-title">QuizRooms</h1>
           <p class="brand-sub" id="connection-status">Connecting…</p>
@@ -38,18 +50,18 @@
     </header>
 
     <div id="reconnect-banner" class="reconnect-banner hidden" role="status" aria-live="polite"></div>
-    <main id="app-root" aria-live="polite"></main>
+    <main id="app-root"></main>
   </div>
 
   <div id="modal-root"></div>
   <div id="lightbox-root"></div>
-  <div id="toast-root" class="toast hidden" role="status"></div>
+  <div id="toast-root" class="toast hidden" role="status" aria-live="polite"></div>
 
-  <script src="/quizrooms/assets/js/theme.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/qrcode.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/confetti.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/sfx.js?v=1.0.0"></script>
-  <script src="/quizrooms/assets/js/play.js?v=1.0.0"></script>
+  <script defer src="/quizrooms/assets/js/theme.js?v=1.1.0"></script>
+  <script defer src="/quizrooms/assets/js/qrcode.js?v=1.1.0"></script>
+  <script defer src="/quizrooms/assets/js/confetti.js?v=1.1.0"></script>
+  <script defer src="/quizrooms/assets/js/sfx.js?v=1.1.0"></script>
+  <script defer src="/quizrooms/assets/js/play.js?v=1.1.0"></script>
 </body>
 
 </html>

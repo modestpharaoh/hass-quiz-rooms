@@ -5,8 +5,8 @@
 <h1 align="center">QuizRooms for Home Assistant</h1>
 
 <p align="center">
-  <strong>Local-first, multi-room confidence-wagering party trivia for Home Assistant</strong><br/>
-  Zero external CDNs · Zero Python dependencies · 37 built-in packs (3,064 questions) · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
+  <strong>Local-first, multi-room confidence-wagering party trivia &amp; Early Learner Mode for Home Assistant</strong><br/>
+  Zero external CDNs · Zero Python dependencies · 61 built-in packs (4,299 questions) · 24 Early Learner Packs · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
 </p>
 
 ---
@@ -86,8 +86,11 @@ The same local UI your household actually uses: a phone in hand, a 16:9 TV on th
 
 ## Key Features
 
-- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 37 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
-- **Strict LAN-Only Security & DoS Hardening (`NetworkGuard`):** Guest, TV, WebSocket, and media routes (`/quizrooms/play`, `/quizrooms/tv`, `/quizrooms/ws`, `/quizrooms/media/...`, `/quizrooms/avatar/...`) allow only RFC 1918 + IPv6 ULA/link-local + admin-configured CIDRs by default, with fail-closed reverse-proxy & tunnel protection (`X-Forwarded-For`, Cloudflare `CF-Connecting-IP`/`CF-Ray`, Nabu Casa `X-Hass-Source`), CSWSH `Origin` checks (blocking `Origin: null`), global/per-IP WebSocket caps + slow-consumer eviction, bounded JSON/multipart stream guards, validated/sandboxed SVG delivery (`CSP: default-src 'none'; sandbox`), and automatic memory pruning.
+- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 61 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, 450+ custom Early Learner vector illustrations (1,071 SVGs total), and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
+- **🧸 Early Learner Mode:**
+  - **24 dedicated bilingual Early Learner Packs (1,235 questions, ages 3–8)** covering English & Arabic alphabets, Arabic letter forms & Harakat (`بـ / ـبـ / ـب`, `بَ / بِ / بُ`), English phonics & rhyming words, counting `1–20` + visual addition & more/fewer comparisons (with **separate Arabic packs** for Eastern Arabic-Indic `١–٢٠` and Western `1–20` numerals), colors/mixing & 2D/3D shapes, animals & habitats, fruits & foods, **My Body & Five Senses**, **Vehicles & Things That Go**, **Weather, Seasons & Sky**, **Everyday Objects Around the House**, **Opposites & Actions**, and a **Bilingual Picture-Word Bridge (`عربي ↔ EN`)**.
+  - **Gentle, accessible gameplay:** One-tap giant visual tiles (`large_glyph`, `color_swatch`, `image_grid` with zero `A/B/C/D` prefixes), **No-Timer relaxed play** (`timer_seconds: 0`), **Star (`⭐`) scoring** (`+1` / `0`, never negative) with joyful All-Star finale badges, **Gentle "Try Again" mode** (wrong taps softly wobble/dim and speak *"Good try! Tap another one!"* / *"محاولة جميلة! جرّب خياراً آخر!"* on both mobile browser speech synthesis and Stage Effects speakers), **Solo / Parent-Led Auto-Advance (3s)** on Reveal, built-in **🔊 Listen / Auto-Read** (`window.speechSynthesis` EN & AR), and a **Parent Check** exit prompt.
+- **Strict LAN-Only Stealth Security & DoS Hardening (`NetworkGuard`):** Guest, TV, WebSocket, media, and unknown `/quizrooms/*` routes allow only RFC 1918 + IPv6 ULA/link-local + admin-configured CIDRs by default. External or non-whitelisted requests are stealth-redirected (`302 Found → /`) straight to Home Assistant's default Lovelace dashboard or login screen with an empty body and zero QuizRooms fingerprint (so external scanners cannot detect QuizRooms), with fail-closed reverse-proxy & tunnel protection (`X-Forwarded-For`, Cloudflare `CF-Connecting-IP`/`CF-Ray`, Nabu Casa `X-Hass-Source`), CSWSH `Origin` checks (blocking `Origin: null`), global/per-IP WebSocket caps + slow-consumer eviction, bounded JSON/multipart stream guards, validated/sandboxed SVG delivery (`CSP: default-src 'none'; sandbox`), and automatic memory pruning.
 - **Multi-Room Confidence Wagering & Blind Final Bonus Round:**
   - Concurrent Public and Private rooms, rounds in multiples of `5` (`5–25`), configurable question timers (`20s / 30s / 45s / 60s`), difficulty filtering (`Random`, `Easy`, `Medium`, `Hard`), snapshot isolation, and automatic idle TTL cleanup (15 min lobbies / 2 hr games).
   - One-time confidence wager chips (`1..N`, defaulting to lowest remaining chip) with optional wrong-wager deduction toggle.
@@ -134,7 +137,7 @@ Available during initial setup and anytime under **Settings → Devices & Servic
 | Option Key | UI Label | Default | Description |
 | --- | --- | --- | --- |
 | `allow_external_access` | Allow External Access | `false` | When `false` (recommended), guest, TV, WebSocket, and unauthenticated media endpoints are restricted strictly to local/allowed networks. Set `true` only if you intentionally want remote players over WAN/reverse proxy (automatically disables Stage Effects & HA Events for home safety). |
-| `allowed_subnets` | Additional Allowed CIDRs | `""` | Optional comma-separated IPv4/IPv6 CIDR subnets (e.g., `100.64.0.0/10, 192.168.50.0/24`) allowed in addition to built-in RFC 1918, IPv6 ULA, and link-local ranges (handy for Tailscale/WireGuard VPNs or VLANs). |
+| `allowed_subnets` | Additional Allowed IP Subnets (CIDR) | `[]` | Optional chip-based list of IPv4/IPv6 CIDR subnets (type one subnet like `100.64.0.0/10` and press Enter to add; click `×` on any chip to remove) allowed in addition to built-in RFC 1918, IPv6 ULA, and link-local ranges (handy for Tailscale/WireGuard VPNs or VLANs). |
 | `custom_lan_base_url` | Custom LAN Base URL | `""` | Optional override URL (e.g., `http://192.168.1.50:8123`) used for QR codes and Smart TV dashboard launching when Home Assistant's detected internal URL differs from your preferred LAN address. |
 
 ---
@@ -230,7 +233,7 @@ action: quizrooms.reload_packs
 ### Built-In Stage Director (Zero-YAML Admin Panel Setup)
 Open **Sidebar → QuizRooms → Stage Effects** to pair your living-room devices with the game currently followed on your TV Dashboard:
 - **Stage Lights (`light.*`):** Multi-select RGB bulbs/strips or dimmers (with instant search filter and a dedicated **Selected Lights** removable chip bar), pick a preset (**Studio Showdown**, **Subtle Cue**, or **Dramatic Pulse**), and enable **Restore pre-game light state** so lights pulse **Amber** in the final 5 seconds, flash **Emerald Green** / **Crimson Red** on reveal, shimmer **Gold** at Finale, and automatically return to their original pre-game brightness & color.
-- **Local Multilingual Speaker Announcer (`media_player.*` + `tts.*`):** Announces round winners and the grand champion with configurable **Announcement Language** (**Auto** matching the pack language, or force **English**, **Arabic**, **German**, **French**, **Spanish**, or **Portuguese**) and optional **Predefined Announcement Volume** (`5%–100%` slider + quick presets, or disabled to follow your speaker's existing volume), plus nickname SSML sanitization and automatic `tts.speak` (with Piper voice/locale switching) / legacy `tts.*_say` detection.
+- **Local Multilingual Speaker Announcer (`media_player.*` + `tts.*`):** Announces round winners and the grand champion with configurable **Announcement Language** (**Auto** matching the pack language, or force **English**, **Arabic**, **German**, **French**, **Spanish**, or **Portuguese**), an independent **Read Questions & Answers Aloud** toggle (works separately from the Announcer Preset in both **Standard** and **Early Learner** modes, including spoken *"Good try! Tap another one!"* prompts), and optional **Predefined Announcement Volume** (`5%–100%` slider + quick presets, or disabled to follow your speaker's existing volume), plus nickname/text SSML sanitization and automatic `tts.speak` (with Piper voice/locale switching) / legacy `tts.*_say` detection.
 
 ### Native Home Assistant Events
 | Event Type | Triggered When | Key Payload Fields |
@@ -310,9 +313,29 @@ automation:
 
 ---
 
-## Built-In Trivia Packs (37 Packs · 3,064 Questions)
+## Built-In Trivia Packs (48 Packs · 3,348 Questions)
 
-Every built-in pack includes a custom `160×160` square SVG cover and per-question `easy` / `medium` / `hard` difficulty tags (`24` English + `13` Arabic/RTL packs):
+Every built-in pack includes a custom `160×160` square SVG cover and per-question `easy` / `medium` / `hard` difficulty tags (`29` English + `19` Arabic/RTL packs — including **11 Early Learner Packs**):
+
+### 🧸 Early Learner Packs (11 Packs · 284 Questions)
+
+Isolated under the **🧸 Early Learner** filter in Create Room and Admin Panel, automatically enabling Early Learner Mode defaults (one-tap visual tiles, Star `⭐` scoring, No-Timer relaxed pace, Gentle Try Again with spoken encouragement, optional 3s Auto-Advance, and browser Read Aloud):
+
+| Pack | Language | Visual Style | Highlights |
+| --- | --- | --- | --- |
+| **ABC Letters** | EN | `large_glyph` & `image_grid` | 32 questions: A–Z letter recognition, uppercase-to-picture matching & phonetic starter cues |
+| **الحروف العربية** | AR (RTL) | `large_glyph` & `image_grid` | 34 questions: Arabic letters (`أ`–`ي`) with picture matching, sounds & big RTL letter tiles |
+| **Numbers & Counting 1–10** | EN | Visual Counting & `large_glyph` | 24 questions: count bundled apples, stars, ducks, balls & cars from `1` to `10` |
+| **الأرقام والعد ١–١٠** | AR (RTL) | Visual Counting & `large_glyph` | 24 Arabic counting questions using **Eastern Arabic-Indic numerals (`١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ١٠`)** |
+| **الأرقام والعد 1–10** | AR (RTL) | Visual Counting & `large_glyph` | 24 Arabic counting questions using **Western digits (`1 2 3 4 5 6 7 8 9 10`)** |
+| **Colors & Shapes** | EN | `color_swatch` & `image_grid` | 25 questions: big color swatches (Red, Blue, Yellow, Green, Orange, Purple, Pink) & shapes (Circle, Square, Triangle, Star, Heart) |
+| **الألوان والأشكال** | AR (RTL) | `color_swatch` & `image_grid` | 25 Arabic color swatch & shape recognition questions |
+| **Friendly Animals & Sounds** | EN | `image_grid` | 24 questions: tap the matching animal picture from its sound or clue (Cat, Dog, Duck, Cow, Lion, Elephant, Frog, Bee & more) |
+| **الحيوانات وأصواتها** | AR (RTL) | `image_grid` | 24 Arabic animal picture & sound matching questions |
+| **Yummy Fruits & Food** | EN | `image_grid` | 24 questions: recognize Apple, Banana, Strawberry, Watermelon, Orange, Grapes, Carrot, Milk, Bread & more |
+| **الفواكه والطعام** | AR (RTL) | `image_grid` | 24 Arabic fruits & healthy snacks visual matching questions |
+
+### 🎉 Party & General Knowledge Packs (37 Packs · 3,064 Questions)
 
 | Pack | Language | Mode | Highlights |
 | --- | --- | --- | --- |
@@ -352,7 +375,7 @@ Every built-in pack includes a custom `160×160` square SVG cover and per-questi
 
 - **QR Codes point to the wrong IP or external domain:** Set **Custom LAN Base URL** (e.g., `http://192.168.1.50:8123`) under **Settings → Devices & Services → QuizRooms → Configure**.
 - **TV edges slightly clipped on an older TV:** Click **Safe Zone: Off → On** in the top-right header of `/quizrooms/tv` (accessible via TV remote D-Pad) to enable overscan-safe bezel margins.
-- **Guests on a guest VLAN / Tailscale get `403 local_network_only`:** Add their subnet CIDR (e.g., `192.168.50.0/24` or `100.64.0.0/10`) to **Additional Allowed CIDRs** in Configure.
+- **Guests on a guest VLAN / Tailscale get redirected back to Home Assistant's login/dashboard (`/`):** By design, non-whitelisted IPs are stealth-redirected to `/` with zero QuizRooms fingerprint. Add their subnet CIDR (e.g., `192.168.50.0/24` or `100.64.0.0/10`) as a chip under **Additional Allowed IP Subnets (CIDR)** in Configure.
 - **Stage Effects show "Disabled while External Access is enabled":** By design, smart-home light/speaker effects and HA events run strictly in LAN-Only mode (`allow_external_access: false`).
 
 ---

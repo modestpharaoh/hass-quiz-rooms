@@ -322,8 +322,16 @@
     return bestGrid;
   }
 
+  const _svgCache = new Map();
+  const MAX_QR_CACHE = 32;
+
   function toSVG(text, quietZone = 2) {
-    const { version, codewords } = encodeData(String(text || ""));
+    const str = String(text || "");
+    const cacheKey = `${quietZone}:${str}`;
+    if (_svgCache.has(cacheKey)) {
+      return _svgCache.get(cacheKey);
+    }
+    const { version, codewords } = encodeData(str);
     const grid = makeMatrix(version, codewords);
     const size = grid.length;
     const total = size + quietZone * 2;
@@ -335,12 +343,17 @@
         }
       }
     }
-    return (
+    const svg =
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${total}" shape-rendering="crispEdges" role="img" aria-label="QR Code">` +
       `<rect width="${total}" height="${total}" fill="#FFFFFF"/>` +
       `<path d="${paths.join("")}" fill="#000000"/>` +
-      `</svg>`
-    );
+      `</svg>`;
+    if (_svgCache.size >= MAX_QR_CACHE) {
+      const oldestKey = _svgCache.keys().next().value;
+      if (oldestKey !== undefined) _svgCache.delete(oldestKey);
+    }
+    _svgCache.set(cacheKey, svg);
+    return svg;
   }
 
   window.QuizRoomsQR = { toSVG };

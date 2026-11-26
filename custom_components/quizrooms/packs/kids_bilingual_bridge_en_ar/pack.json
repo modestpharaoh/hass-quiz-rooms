@@ -1,0 +1,816 @@
+{
+  "pack_id": "kids_bilingual_bridge_en_ar",
+  "title": "Bilingual Picture-Word Bridge · أول كلماتي",
+  "description": "Connect pictures with Arabic and English words in both directions (عربي ↔ English) with spoken pronunciation.",
+  "audience": "kids",
+  "age_range": "5-8",
+  "choice_style": "default",
+  "language": "en",
+  "rtl": false,
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "category": "Early Learner · Bilingual EN ↔ AR",
+  "questions": [
+    {
+      "id": "bridge_a2e_01",
+      "prompt": "What is «تفاحة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Apple!",
+      "image": "media/apple.svg",
+      "choice_style": "default",
+      "choices": [
+        "Apple",
+        "Grapes",
+        "Egg"
+      ],
+      "answer": "Apple",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! تفاحة = Apple!",
+      "explanation": "تفاحة means Apple in English."
+    },
+    {
+      "id": "bridge_a2e_02",
+      "prompt": "What is «موز» in English?",
+      "spoken_prompt": "What is the English word for this picture? Banana!",
+      "image": "media/banana.svg",
+      "choice_style": "default",
+      "choices": [
+        "Banana",
+        "Carrot",
+        "Cat"
+      ],
+      "answer": "Banana",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! موز = Banana!",
+      "explanation": "موز means Banana in English."
+    },
+    {
+      "id": "bridge_a2e_03",
+      "prompt": "What is «برتقال» in English?",
+      "spoken_prompt": "What is the English word for this picture? Orange!",
+      "image": "media/orange.svg",
+      "choice_style": "default",
+      "choices": [
+        "Orange",
+        "Milk",
+        "Dog"
+      ],
+      "answer": "Orange",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! برتقال = Orange!",
+      "explanation": "برتقال means Orange in English."
+    },
+    {
+      "id": "bridge_a2e_04",
+      "prompt": "What is «عنب» in English?",
+      "spoken_prompt": "What is the English word for this picture? Grapes!",
+      "image": "media/grapes.svg",
+      "choice_style": "default",
+      "choices": [
+        "Grapes",
+        "Bread",
+        "Lion"
+      ],
+      "answer": "Grapes",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! عنب = Grapes!",
+      "explanation": "عنب means Grapes in English."
+    },
+    {
+      "id": "bridge_a2e_05",
+      "prompt": "What is «جزر» in English?",
+      "spoken_prompt": "What is the English word for this picture? Carrot!",
+      "image": "media/carrot.svg",
+      "choice_style": "default",
+      "choices": [
+        "Carrot",
+        "Egg",
+        "Duck"
+      ],
+      "answer": "Carrot",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! جزر = Carrot!",
+      "explanation": "جزر means Carrot in English."
+    },
+    {
+      "id": "bridge_a2e_06",
+      "prompt": "What is «حليب» in English?",
+      "spoken_prompt": "What is the English word for this picture? Milk!",
+      "image": "media/milk.svg",
+      "choice_style": "default",
+      "choices": [
+        "Milk",
+        "Cat",
+        "Fish"
+      ],
+      "answer": "Milk",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! حليب = Milk!",
+      "explanation": "حليب means Milk in English."
+    },
+    {
+      "id": "bridge_a2e_07",
+      "prompt": "What is «خبز» in English?",
+      "spoken_prompt": "What is the English word for this picture? Bread!",
+      "image": "media/bread.svg",
+      "choice_style": "default",
+      "choices": [
+        "Bread",
+        "Dog",
+        "Bird"
+      ],
+      "answer": "Bread",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! خبز = Bread!",
+      "explanation": "خبز means Bread in English."
+    },
+    {
+      "id": "bridge_a2e_08",
+      "prompt": "What is «بيض» in English?",
+      "spoken_prompt": "What is the English word for this picture? Egg!",
+      "image": "media/egg.svg",
+      "choice_style": "default",
+      "choices": [
+        "Egg",
+        "Lion",
+        "Horse"
+      ],
+      "answer": "Egg",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! بيض = Egg!",
+      "explanation": "بيض means Egg in English."
+    },
+    {
+      "id": "bridge_a2e_09",
+      "prompt": "What is «قطة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Cat!",
+      "image": "media/cat.svg",
+      "choice_style": "default",
+      "choices": [
+        "Cat",
+        "Duck",
+        "Camel"
+      ],
+      "answer": "Cat",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! قطة = Cat!",
+      "explanation": "قطة means Cat in English."
+    },
+    {
+      "id": "bridge_a2e_10",
+      "prompt": "What is «كلب» in English?",
+      "spoken_prompt": "What is the English word for this picture? Dog!",
+      "image": "media/dog.svg",
+      "choice_style": "default",
+      "choices": [
+        "Dog",
+        "Fish",
+        "Elephant"
+      ],
+      "answer": "Dog",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! كلب = Dog!",
+      "explanation": "كلب means Dog in English."
+    },
+    {
+      "id": "bridge_a2e_11",
+      "prompt": "What is «أسد» in English?",
+      "spoken_prompt": "What is the English word for this picture? Lion!",
+      "image": "media/lion.svg",
+      "choice_style": "default",
+      "choices": [
+        "Lion",
+        "Bird",
+        "Butterfly"
+      ],
+      "answer": "Lion",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! أسد = Lion!",
+      "explanation": "أسد means Lion in English."
+    },
+    {
+      "id": "bridge_a2e_12",
+      "prompt": "What is «بطة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Duck!",
+      "image": "media/duck.svg",
+      "choice_style": "default",
+      "choices": [
+        "Duck",
+        "Horse",
+        "Bee"
+      ],
+      "answer": "Duck",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! بطة = Duck!",
+      "explanation": "بطة means Duck in English."
+    },
+    {
+      "id": "bridge_a2e_13",
+      "prompt": "What is «سمكة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Fish!",
+      "image": "media/fish.svg",
+      "choice_style": "default",
+      "choices": [
+        "Fish",
+        "Camel",
+        "Frog"
+      ],
+      "answer": "Fish",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! سمكة = Fish!",
+      "explanation": "سمكة means Fish in English."
+    },
+    {
+      "id": "bridge_a2e_14",
+      "prompt": "What is «عصفور» in English?",
+      "spoken_prompt": "What is the English word for this picture? Bird!",
+      "image": "media/bird.svg",
+      "choice_style": "default",
+      "choices": [
+        "Bird",
+        "Elephant",
+        "Giraffe"
+      ],
+      "answer": "Bird",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! عصفور = Bird!",
+      "explanation": "عصفور means Bird in English."
+    },
+    {
+      "id": "bridge_a2e_15",
+      "prompt": "What is «حصان» in English?",
+      "spoken_prompt": "What is the English word for this picture? Horse!",
+      "image": "media/horse.svg",
+      "choice_style": "default",
+      "choices": [
+        "Horse",
+        "Butterfly",
+        "Whale"
+      ],
+      "answer": "Horse",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! حصان = Horse!",
+      "explanation": "حصان means Horse in English."
+    },
+    {
+      "id": "bridge_a2e_16",
+      "prompt": "What is «جمل» in English?",
+      "spoken_prompt": "What is the English word for this picture? Camel!",
+      "image": "media/camel.svg",
+      "choice_style": "default",
+      "choices": [
+        "Camel",
+        "Bee",
+        "Watermelon"
+      ],
+      "answer": "Camel",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! جمل = Camel!",
+      "explanation": "جمل means Camel in English."
+    },
+    {
+      "id": "bridge_a2e_17",
+      "prompt": "What is «فيل» in English?",
+      "spoken_prompt": "What is the English word for this picture? Elephant!",
+      "image": "media/elephant.svg",
+      "choice_style": "default",
+      "choices": [
+        "Elephant",
+        "Frog",
+        "Strawberry"
+      ],
+      "answer": "Elephant",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! فيل = Elephant!",
+      "explanation": "فيل means Elephant in English."
+    },
+    {
+      "id": "bridge_a2e_18",
+      "prompt": "What is «فراشة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Butterfly!",
+      "image": "media/butterfly.svg",
+      "choice_style": "default",
+      "choices": [
+        "Butterfly",
+        "Giraffe",
+        "Cheese"
+      ],
+      "answer": "Butterfly",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! فراشة = Butterfly!",
+      "explanation": "فراشة means Butterfly in English."
+    },
+    {
+      "id": "bridge_a2e_19",
+      "prompt": "What is «نحلة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Bee!",
+      "image": "media/bee.svg",
+      "choice_style": "default",
+      "choices": [
+        "Bee",
+        "Whale",
+        "Apple"
+      ],
+      "answer": "Bee",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! نحلة = Bee!",
+      "explanation": "نحلة means Bee in English."
+    },
+    {
+      "id": "bridge_a2e_20",
+      "prompt": "What is «ضفدع» in English?",
+      "spoken_prompt": "What is the English word for this picture? Frog!",
+      "image": "media/frog.svg",
+      "choice_style": "default",
+      "choices": [
+        "Frog",
+        "Watermelon",
+        "Banana"
+      ],
+      "answer": "Frog",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! ضفدع = Frog!",
+      "explanation": "ضفدع means Frog in English."
+    },
+    {
+      "id": "bridge_a2e_21",
+      "prompt": "What is «زرافة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Giraffe!",
+      "image": "media/giraffe.svg",
+      "choice_style": "default",
+      "choices": [
+        "Giraffe",
+        "Strawberry",
+        "Orange"
+      ],
+      "answer": "Giraffe",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! زرافة = Giraffe!",
+      "explanation": "زرافة means Giraffe in English."
+    },
+    {
+      "id": "bridge_a2e_22",
+      "prompt": "What is «حوت» in English?",
+      "spoken_prompt": "What is the English word for this picture? Whale!",
+      "image": "media/whale.svg",
+      "choice_style": "default",
+      "choices": [
+        "Whale",
+        "Cheese",
+        "Grapes"
+      ],
+      "answer": "Whale",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! حوت = Whale!",
+      "explanation": "حوت means Whale in English."
+    },
+    {
+      "id": "bridge_a2e_23",
+      "prompt": "What is «بطيخ» in English?",
+      "spoken_prompt": "What is the English word for this picture? Watermelon!",
+      "image": "media/watermelon.svg",
+      "choice_style": "default",
+      "choices": [
+        "Watermelon",
+        "Apple",
+        "Carrot"
+      ],
+      "answer": "Watermelon",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! بطيخ = Watermelon!",
+      "explanation": "بطيخ means Watermelon in English."
+    },
+    {
+      "id": "bridge_a2e_24",
+      "prompt": "What is «فراولة» in English?",
+      "spoken_prompt": "What is the English word for this picture? Strawberry!",
+      "image": "media/strawberry.svg",
+      "choice_style": "default",
+      "choices": [
+        "Strawberry",
+        "Banana",
+        "Milk"
+      ],
+      "answer": "Strawberry",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! فراولة = Strawberry!",
+      "explanation": "فراولة means Strawberry in English."
+    },
+    {
+      "id": "bridge_a2e_25",
+      "prompt": "What is «جبن» in English?",
+      "spoken_prompt": "What is the English word for this picture? Cheese!",
+      "image": "media/cheese.svg",
+      "choice_style": "default",
+      "choices": [
+        "Cheese",
+        "Orange",
+        "Bread"
+      ],
+      "answer": "Cheese",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! جبن = Cheese!",
+      "explanation": "جبن means Cheese in English."
+    },
+    {
+      "id": "bridge_e2a_01",
+      "prompt": "ما معنى «Apple» بالعربية؟",
+      "spoken_prompt": "What is Apple in Arabic?",
+      "image": "media/apple.svg",
+      "choice_style": "default",
+      "choices": [
+        "تفاحة",
+        "جزر",
+        "كلب"
+      ],
+      "answer": "تفاحة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Apple = تفاحة!",
+      "explanation": "كلمة Apple تعني تفاحة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_02",
+      "prompt": "ما معنى «Banana» بالعربية؟",
+      "spoken_prompt": "What is Banana in Arabic?",
+      "image": "media/banana.svg",
+      "choice_style": "default",
+      "choices": [
+        "موز",
+        "حليب",
+        "أسد"
+      ],
+      "answer": "موز",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Banana = موز!",
+      "explanation": "كلمة Banana تعني موز بالعربية."
+    },
+    {
+      "id": "bridge_e2a_03",
+      "prompt": "ما معنى «Orange» بالعربية؟",
+      "spoken_prompt": "What is Orange in Arabic?",
+      "image": "media/orange.svg",
+      "choice_style": "default",
+      "choices": [
+        "برتقال",
+        "خبز",
+        "بطة"
+      ],
+      "answer": "برتقال",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Orange = برتقال!",
+      "explanation": "كلمة Orange تعني برتقال بالعربية."
+    },
+    {
+      "id": "bridge_e2a_04",
+      "prompt": "ما معنى «Grapes» بالعربية؟",
+      "spoken_prompt": "What is Grapes in Arabic?",
+      "image": "media/grapes.svg",
+      "choice_style": "default",
+      "choices": [
+        "عنب",
+        "بيض",
+        "سمكة"
+      ],
+      "answer": "عنب",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Grapes = عنب!",
+      "explanation": "كلمة Grapes تعني عنب بالعربية."
+    },
+    {
+      "id": "bridge_e2a_05",
+      "prompt": "ما معنى «Carrot» بالعربية؟",
+      "spoken_prompt": "What is Carrot in Arabic?",
+      "image": "media/carrot.svg",
+      "choice_style": "default",
+      "choices": [
+        "جزر",
+        "قطة",
+        "عصفور"
+      ],
+      "answer": "جزر",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Carrot = جزر!",
+      "explanation": "كلمة Carrot تعني جزر بالعربية."
+    },
+    {
+      "id": "bridge_e2a_06",
+      "prompt": "ما معنى «Milk» بالعربية؟",
+      "spoken_prompt": "What is Milk in Arabic?",
+      "image": "media/milk.svg",
+      "choice_style": "default",
+      "choices": [
+        "حليب",
+        "كلب",
+        "حصان"
+      ],
+      "answer": "حليب",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Milk = حليب!",
+      "explanation": "كلمة Milk تعني حليب بالعربية."
+    },
+    {
+      "id": "bridge_e2a_07",
+      "prompt": "ما معنى «Bread» بالعربية؟",
+      "spoken_prompt": "What is Bread in Arabic?",
+      "image": "media/bread.svg",
+      "choice_style": "default",
+      "choices": [
+        "خبز",
+        "أسد",
+        "جمل"
+      ],
+      "answer": "خبز",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Bread = خبز!",
+      "explanation": "كلمة Bread تعني خبز بالعربية."
+    },
+    {
+      "id": "bridge_e2a_08",
+      "prompt": "ما معنى «Egg» بالعربية؟",
+      "spoken_prompt": "What is Egg in Arabic?",
+      "image": "media/egg.svg",
+      "choice_style": "default",
+      "choices": [
+        "بيض",
+        "بطة",
+        "فيل"
+      ],
+      "answer": "بيض",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Egg = بيض!",
+      "explanation": "كلمة Egg تعني بيض بالعربية."
+    },
+    {
+      "id": "bridge_e2a_09",
+      "prompt": "ما معنى «Cat» بالعربية؟",
+      "spoken_prompt": "What is Cat in Arabic?",
+      "image": "media/cat.svg",
+      "choice_style": "default",
+      "choices": [
+        "قطة",
+        "سمكة",
+        "فراشة"
+      ],
+      "answer": "قطة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Cat = قطة!",
+      "explanation": "كلمة Cat تعني قطة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_10",
+      "prompt": "ما معنى «Dog» بالعربية؟",
+      "spoken_prompt": "What is Dog in Arabic?",
+      "image": "media/dog.svg",
+      "choice_style": "default",
+      "choices": [
+        "كلب",
+        "عصفور",
+        "نحلة"
+      ],
+      "answer": "كلب",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Dog = كلب!",
+      "explanation": "كلمة Dog تعني كلب بالعربية."
+    },
+    {
+      "id": "bridge_e2a_11",
+      "prompt": "ما معنى «Lion» بالعربية؟",
+      "spoken_prompt": "What is Lion in Arabic?",
+      "image": "media/lion.svg",
+      "choice_style": "default",
+      "choices": [
+        "أسد",
+        "حصان",
+        "ضفدع"
+      ],
+      "answer": "أسد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Lion = أسد!",
+      "explanation": "كلمة Lion تعني أسد بالعربية."
+    },
+    {
+      "id": "bridge_e2a_12",
+      "prompt": "ما معنى «Duck» بالعربية؟",
+      "spoken_prompt": "What is Duck in Arabic?",
+      "image": "media/duck.svg",
+      "choice_style": "default",
+      "choices": [
+        "بطة",
+        "جمل",
+        "زرافة"
+      ],
+      "answer": "بطة",
+      "difficulty": "easy",
+      "reveal_message": "رائع! Duck = بطة!",
+      "explanation": "كلمة Duck تعني بطة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_13",
+      "prompt": "ما معنى «Fish» بالعربية؟",
+      "spoken_prompt": "What is Fish in Arabic?",
+      "image": "media/fish.svg",
+      "choice_style": "default",
+      "choices": [
+        "سمكة",
+        "فيل",
+        "حوت"
+      ],
+      "answer": "سمكة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Fish = سمكة!",
+      "explanation": "كلمة Fish تعني سمكة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_14",
+      "prompt": "ما معنى «Bird» بالعربية؟",
+      "spoken_prompt": "What is Bird in Arabic?",
+      "image": "media/bird.svg",
+      "choice_style": "default",
+      "choices": [
+        "عصفور",
+        "فراشة",
+        "بطيخ"
+      ],
+      "answer": "عصفور",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Bird = عصفور!",
+      "explanation": "كلمة Bird تعني عصفور بالعربية."
+    },
+    {
+      "id": "bridge_e2a_15",
+      "prompt": "ما معنى «Horse» بالعربية؟",
+      "spoken_prompt": "What is Horse in Arabic?",
+      "image": "media/horse.svg",
+      "choice_style": "default",
+      "choices": [
+        "حصان",
+        "نحلة",
+        "فراولة"
+      ],
+      "answer": "حصان",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Horse = حصان!",
+      "explanation": "كلمة Horse تعني حصان بالعربية."
+    },
+    {
+      "id": "bridge_e2a_16",
+      "prompt": "ما معنى «Camel» بالعربية؟",
+      "spoken_prompt": "What is Camel in Arabic?",
+      "image": "media/camel.svg",
+      "choice_style": "default",
+      "choices": [
+        "جمل",
+        "ضفدع",
+        "جبن"
+      ],
+      "answer": "جمل",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Camel = جمل!",
+      "explanation": "كلمة Camel تعني جمل بالعربية."
+    },
+    {
+      "id": "bridge_e2a_17",
+      "prompt": "ما معنى «Elephant» بالعربية؟",
+      "spoken_prompt": "What is Elephant in Arabic?",
+      "image": "media/elephant.svg",
+      "choice_style": "default",
+      "choices": [
+        "فيل",
+        "زرافة",
+        "تفاحة"
+      ],
+      "answer": "فيل",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Elephant = فيل!",
+      "explanation": "كلمة Elephant تعني فيل بالعربية."
+    },
+    {
+      "id": "bridge_e2a_18",
+      "prompt": "ما معنى «Butterfly» بالعربية؟",
+      "spoken_prompt": "What is Butterfly in Arabic?",
+      "image": "media/butterfly.svg",
+      "choice_style": "default",
+      "choices": [
+        "فراشة",
+        "حوت",
+        "موز"
+      ],
+      "answer": "فراشة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Butterfly = فراشة!",
+      "explanation": "كلمة Butterfly تعني فراشة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_19",
+      "prompt": "ما معنى «Bee» بالعربية؟",
+      "spoken_prompt": "What is Bee in Arabic?",
+      "image": "media/bee.svg",
+      "choice_style": "default",
+      "choices": [
+        "نحلة",
+        "بطيخ",
+        "برتقال"
+      ],
+      "answer": "نحلة",
+      "difficulty": "medium",
+      "reveal_message": "رائع! Bee = نحلة!",
+      "explanation": "كلمة Bee تعني نحلة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_20",
+      "prompt": "ما معنى «Frog» بالعربية؟",
+      "spoken_prompt": "What is Frog in Arabic?",
+      "image": "media/frog.svg",
+      "choice_style": "default",
+      "choices": [
+        "ضفدع",
+        "فراولة",
+        "عنب"
+      ],
+      "answer": "ضفدع",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Frog = ضفدع!",
+      "explanation": "كلمة Frog تعني ضفدع بالعربية."
+    },
+    {
+      "id": "bridge_e2a_21",
+      "prompt": "ما معنى «Giraffe» بالعربية؟",
+      "spoken_prompt": "What is Giraffe in Arabic?",
+      "image": "media/giraffe.svg",
+      "choice_style": "default",
+      "choices": [
+        "زرافة",
+        "جبن",
+        "جزر"
+      ],
+      "answer": "زرافة",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Giraffe = زرافة!",
+      "explanation": "كلمة Giraffe تعني زرافة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_22",
+      "prompt": "ما معنى «Whale» بالعربية؟",
+      "spoken_prompt": "What is Whale in Arabic?",
+      "image": "media/whale.svg",
+      "choice_style": "default",
+      "choices": [
+        "حوت",
+        "تفاحة",
+        "حليب"
+      ],
+      "answer": "حوت",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Whale = حوت!",
+      "explanation": "كلمة Whale تعني حوت بالعربية."
+    },
+    {
+      "id": "bridge_e2a_23",
+      "prompt": "ما معنى «Watermelon» بالعربية؟",
+      "spoken_prompt": "What is Watermelon in Arabic?",
+      "image": "media/watermelon.svg",
+      "choice_style": "default",
+      "choices": [
+        "بطيخ",
+        "موز",
+        "خبز"
+      ],
+      "answer": "بطيخ",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Watermelon = بطيخ!",
+      "explanation": "كلمة Watermelon تعني بطيخ بالعربية."
+    },
+    {
+      "id": "bridge_e2a_24",
+      "prompt": "ما معنى «Strawberry» بالعربية؟",
+      "spoken_prompt": "What is Strawberry in Arabic?",
+      "image": "media/strawberry.svg",
+      "choice_style": "default",
+      "choices": [
+        "فراولة",
+        "برتقال",
+        "بيض"
+      ],
+      "answer": "فراولة",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Strawberry = فراولة!",
+      "explanation": "كلمة Strawberry تعني فراولة بالعربية."
+    },
+    {
+      "id": "bridge_e2a_25",
+      "prompt": "ما معنى «Cheese» بالعربية؟",
+      "spoken_prompt": "What is Cheese in Arabic?",
+      "image": "media/cheese.svg",
+      "choice_style": "default",
+      "choices": [
+        "جبن",
+        "عنب",
+        "قطة"
+      ],
+      "answer": "جبن",
+      "difficulty": "hard",
+      "reveal_message": "رائع! Cheese = جبن!",
+      "explanation": "كلمة Cheese تعني جبن بالعربية."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

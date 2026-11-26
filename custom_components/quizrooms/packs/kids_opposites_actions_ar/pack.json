@@ -1,0 +1,766 @@
+{
+  "title": "الأضداد والأفعال",
+  "description": "كبير وصغير، حار وبارد، سريع وبطيء، وأفعال يومية ممتعة مع صور ونطق عربي مشكّل.",
+  "age_range": "4-7",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "category": "تعلّم مبكر · الأضداد والأفعال",
+  "pack_id": "kids_opposites_actions_ar",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "opp_ar_01",
+      "prompt": "ما عكس كلمة «كبير»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ كَبِير؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "صغير",
+        "حار",
+        "فوق"
+      ],
+      "choice_images": [
+        "media/small.svg",
+        "media/hot.svg",
+        "media/up.svg"
+      ],
+      "answer": "صغير",
+      "difficulty": "easy",
+      "reveal_message": "رائع! صغير!",
+      "explanation": "الإجابة الصحيحة هي صغير."
+    },
+    {
+      "id": "opp_ar_02",
+      "prompt": "ما عكس كلمة «صغير»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ صَغِير؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كبير",
+        "بارد",
+        "تحت"
+      ],
+      "choice_images": [
+        "media/big.svg",
+        "media/cold.svg",
+        "media/down.svg"
+      ],
+      "answer": "كبير",
+      "difficulty": "easy",
+      "reveal_message": "رائع! كبير!",
+      "explanation": "الإجابة الصحيحة هي كبير."
+    },
+    {
+      "id": "opp_ar_03",
+      "prompt": "ما عكس كلمة «حار»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ حَار؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بارد",
+        "كبير",
+        "سعيد"
+      ],
+      "choice_images": [
+        "media/cold.svg",
+        "media/big.svg",
+        "media/happy.svg"
+      ],
+      "answer": "بارد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! بارد!",
+      "explanation": "الإجابة الصحيحة هي بارد."
+    },
+    {
+      "id": "opp_ar_04",
+      "prompt": "ما عكس كلمة «بارد»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ بَارِد؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حار",
+        "صغير",
+        "حزين"
+      ],
+      "choice_images": [
+        "media/hot.svg",
+        "media/small.svg",
+        "media/sad.svg"
+      ],
+      "answer": "حار",
+      "difficulty": "easy",
+      "reveal_message": "رائع! حار!",
+      "explanation": "الإجابة الصحيحة هي حار."
+    },
+    {
+      "id": "opp_ar_05",
+      "prompt": "ما عكس كلمة «فوق»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ فَوْق؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "تحت",
+        "سريع",
+        "نهار"
+      ],
+      "choice_images": [
+        "media/down.svg",
+        "media/fast.svg",
+        "media/day.svg"
+      ],
+      "answer": "تحت",
+      "difficulty": "easy",
+      "reveal_message": "رائع! تحت!",
+      "explanation": "الإجابة الصحيحة هي تحت."
+    },
+    {
+      "id": "opp_ar_06",
+      "prompt": "ما عكس كلمة «تحت»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ تَحْت؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فوق",
+        "بطيء",
+        "ليل"
+      ],
+      "choice_images": [
+        "media/up.svg",
+        "media/slow.svg",
+        "media/night.svg"
+      ],
+      "answer": "فوق",
+      "difficulty": "easy",
+      "reveal_message": "رائع! فوق!",
+      "explanation": "الإجابة الصحيحة هي فوق."
+    },
+    {
+      "id": "opp_ar_07",
+      "prompt": "ما عكس كلمة «سعيد»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ سَعِيد؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حزين",
+        "حار",
+        "كبير"
+      ],
+      "choice_images": [
+        "media/sad.svg",
+        "media/hot.svg",
+        "media/big.svg"
+      ],
+      "answer": "حزين",
+      "difficulty": "easy",
+      "reveal_message": "رائع! حزين!",
+      "explanation": "الإجابة الصحيحة هي حزين."
+    },
+    {
+      "id": "opp_ar_08",
+      "prompt": "ما عكس كلمة «حزين»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ حَزِين؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سعيد",
+        "بارد",
+        "صغير"
+      ],
+      "choice_images": [
+        "media/happy.svg",
+        "media/cold.svg",
+        "media/small.svg"
+      ],
+      "answer": "سعيد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! سعيد!",
+      "explanation": "الإجابة الصحيحة هي سعيد."
+    },
+    {
+      "id": "opp_ar_09",
+      "prompt": "ما عكس كلمة «نهار»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ نَهَار؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليل",
+        "فوق",
+        "سريع"
+      ],
+      "choice_images": [
+        "media/night.svg",
+        "media/up.svg",
+        "media/fast.svg"
+      ],
+      "answer": "ليل",
+      "difficulty": "easy",
+      "reveal_message": "رائع! ليل!",
+      "explanation": "الإجابة الصحيحة هي ليل."
+    },
+    {
+      "id": "opp_ar_10",
+      "prompt": "ما عكس كلمة «ليل»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ لَيْل؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "نهار",
+        "تحت",
+        "بطيء"
+      ],
+      "choice_images": [
+        "media/day.svg",
+        "media/down.svg",
+        "media/slow.svg"
+      ],
+      "answer": "نهار",
+      "difficulty": "easy",
+      "reveal_message": "رائع! نهار!",
+      "explanation": "الإجابة الصحيحة هي نهار."
+    },
+    {
+      "id": "opp_ar_11",
+      "prompt": "ما عكس كلمة «سريع»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ سَرِيع؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطيء",
+        "حار",
+        "سعيد"
+      ],
+      "choice_images": [
+        "media/slow.svg",
+        "media/hot.svg",
+        "media/happy.svg"
+      ],
+      "answer": "بطيء",
+      "difficulty": "easy",
+      "reveal_message": "رائع! بطيء!",
+      "explanation": "الإجابة الصحيحة هي بطيء."
+    },
+    {
+      "id": "opp_ar_12",
+      "prompt": "ما عكس كلمة «بطيء»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ بَطِيء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سريع",
+        "بارد",
+        "حزين"
+      ],
+      "choice_images": [
+        "media/fast.svg",
+        "media/cold.svg",
+        "media/sad.svg"
+      ],
+      "answer": "سريع",
+      "difficulty": "easy",
+      "reveal_message": "رائع! سريع!",
+      "explanation": "الإجابة الصحيحة هي سريع."
+    },
+    {
+      "id": "opp_ar_13",
+      "prompt": "اضغط على صورة «كبير»!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ كَبِير!",
+      "choice_style": "image_grid",
+      "choices": [
+        "كبير",
+        "صغير",
+        "فوق"
+      ],
+      "choice_images": [
+        "media/big.svg",
+        "media/small.svg",
+        "media/up.svg"
+      ],
+      "answer": "كبير",
+      "difficulty": "easy",
+      "reveal_message": "رائع! كبير!",
+      "explanation": "الإجابة الصحيحة هي كبير."
+    },
+    {
+      "id": "opp_ar_14",
+      "prompt": "اضغط على صورة «سعيد»!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ سَعِيد!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سعيد",
+        "حزين",
+        "بارد"
+      ],
+      "choice_images": [
+        "media/happy.svg",
+        "media/sad.svg",
+        "media/cold.svg"
+      ],
+      "answer": "سعيد",
+      "difficulty": "easy",
+      "reveal_message": "رائع! سعيد!",
+      "explanation": "الإجابة الصحيحة هي سعيد."
+    },
+    {
+      "id": "opp_ar_15",
+      "prompt": "اضغط على صورة «ليل»!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ لَيْل!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليل",
+        "نهار",
+        "حار"
+      ],
+      "choice_images": [
+        "media/night.svg",
+        "media/day.svg",
+        "media/hot.svg"
+      ],
+      "answer": "ليل",
+      "difficulty": "easy",
+      "reveal_message": "رائع! ليل!",
+      "explanation": "الإجابة الصحيحة هي ليل."
+    },
+    {
+      "id": "opp_ar_16",
+      "prompt": "ما عكس كلمة «مفتوح»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ مَفْتُوح؟",
+      "choice_style": "default",
+      "choices": [
+        "مغلق",
+        "ممتلئ",
+        "عالٍ"
+      ],
+      "answer": "مغلق",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! مغلق!",
+      "explanation": "الإجابة الصحيحة هي مغلق."
+    },
+    {
+      "id": "opp_ar_17",
+      "prompt": "ما عكس كلمة «ممتلئ»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ مُمْتَلِئ؟",
+      "choice_style": "default",
+      "choices": [
+        "فارغ",
+        "مبلل",
+        "طويل"
+      ],
+      "answer": "فارغ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! فارغ!",
+      "explanation": "الإجابة الصحيحة هي فارغ."
+    },
+    {
+      "id": "opp_ar_18",
+      "prompt": "ما عكس كلمة «مبلل»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ مُبَلَّل؟",
+      "choice_style": "default",
+      "choices": [
+        "جاف",
+        "مظلم",
+        "ثقيل"
+      ],
+      "answer": "جاف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! جاف!",
+      "explanation": "الإجابة الصحيحة هي جاف."
+    },
+    {
+      "id": "opp_ar_19",
+      "prompt": "ما عكس كلمة «صوت عالٍ»؟",
+      "spoken_prompt": "مَا عَكْسُ صَوْتٍ عَالٍ؟",
+      "choice_style": "default",
+      "choices": [
+        "هادئ",
+        "ناعم",
+        "نظيف"
+      ],
+      "answer": "هادئ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! هادئ!",
+      "explanation": "الإجابة الصحيحة هي هادئ."
+    },
+    {
+      "id": "opp_ar_20",
+      "prompt": "ما عكس كلمة «طويل»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ طَوِيل؟",
+      "choice_style": "default",
+      "choices": [
+        "قصير",
+        "خفيف",
+        "قاسٍ"
+      ],
+      "answer": "قصير",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! قصير!",
+      "explanation": "الإجابة الصحيحة هي قصير."
+    },
+    {
+      "id": "opp_ar_21",
+      "prompt": "ما عكس كلمة «ثقيل»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ ثَقِيل؟",
+      "choice_style": "default",
+      "choices": [
+        "خفيف",
+        "متسخ",
+        "مفتوح"
+      ],
+      "answer": "خفيف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! خفيف!",
+      "explanation": "الإجابة الصحيحة هي خفيف."
+    },
+    {
+      "id": "opp_ar_22",
+      "prompt": "ما عكس كلمة «نظيف»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ نَظِيف؟",
+      "choice_style": "default",
+      "choices": [
+        "متسخ",
+        "جاف",
+        "هادئ"
+      ],
+      "answer": "متسخ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! متسخ!",
+      "explanation": "الإجابة الصحيحة هي متسخ."
+    },
+    {
+      "id": "opp_ar_23",
+      "prompt": "ما عكس كلمة «قاسٍ»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ قَاسٍ؟",
+      "choice_style": "default",
+      "choices": [
+        "ناعم",
+        "ممتلئ",
+        "طويل"
+      ],
+      "answer": "ناعم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ناعم!",
+      "explanation": "الإجابة الصحيحة هي ناعم."
+    },
+    {
+      "id": "opp_ar_24",
+      "prompt": "ما عكس كلمة «داخل»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ دَاخِل؟",
+      "choice_style": "default",
+      "choices": [
+        "خارج",
+        "فوق",
+        "قريب"
+      ],
+      "answer": "خارج",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! خارج!",
+      "explanation": "الإجابة الصحيحة هي خارج."
+    },
+    {
+      "id": "opp_ar_25",
+      "prompt": "ما عكس كلمة «قريب»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ قَرِيب؟",
+      "choice_style": "default",
+      "choices": [
+        "بعيد",
+        "داخل",
+        "قديم"
+      ],
+      "answer": "بعيد",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! بعيد!",
+      "explanation": "الإجابة الصحيحة هي بعيد."
+    },
+    {
+      "id": "opp_ar_26",
+      "prompt": "ما عكس كلمة «جديد»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ جَدِيد؟",
+      "choice_style": "default",
+      "choices": [
+        "قديم",
+        "مبلل",
+        "سريع"
+      ],
+      "answer": "قديم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! قديم!",
+      "explanation": "الإجابة الصحيحة هي قديم."
+    },
+    {
+      "id": "opp_ar_27",
+      "prompt": "ما عكس كلمة «أمام»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ أَمَام؟",
+      "choice_style": "default",
+      "choices": [
+        "خلف",
+        "يسار",
+        "فوق"
+      ],
+      "answer": "خلف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! خلف!",
+      "explanation": "الإجابة الصحيحة هي خلف."
+    },
+    {
+      "id": "opp_ar_28",
+      "prompt": "ما عكس كلمة «يسار»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ يَسَار؟",
+      "choice_style": "default",
+      "choices": [
+        "يمين",
+        "خلف",
+        "تحت"
+      ],
+      "answer": "يمين",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! يمين!",
+      "explanation": "الإجابة الصحيحة هي يمين."
+    },
+    {
+      "id": "opp_ar_29",
+      "prompt": "ما عكس كلمة «مستيقظ»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ مُسْتَيْقِظ؟",
+      "choice_style": "default",
+      "choices": [
+        "نائم",
+        "سعيد",
+        "عالٍ"
+      ],
+      "answer": "نائم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! نائم!",
+      "explanation": "الإجابة الصحيحة هي نائم."
+    },
+    {
+      "id": "opp_ar_30",
+      "prompt": "ما عكس كلمة «يدفع»؟",
+      "spoken_prompt": "مَا عَكْسُ كَلِمَةِ يَدْفَع؟",
+      "choice_style": "default",
+      "choices": [
+        "يسحب",
+        "يقفز",
+        "يجلس"
+      ],
+      "answer": "يسحب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! يسحب!",
+      "explanation": "الإجابة الصحيحة هي يسحب."
+    },
+    {
+      "id": "opp_ar_31",
+      "prompt": "ماذا نفعل في السرير ليلاً؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ فِي السَّرِيرِ لَيْلًا؟",
+      "choice_style": "default",
+      "choices": [
+        "ننام",
+        "نسبح",
+        "نركض"
+      ],
+      "answer": "ننام",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ننام!",
+      "explanation": "الإجابة الصحيحة هي ننام."
+    },
+    {
+      "id": "opp_ar_32",
+      "prompt": "ماذا نفعل بالطعام اللذيذ؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ بِالطَّعَامِ اللَّذِيذِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نأكل",
+        "نقرأ",
+        "نقفز"
+      ],
+      "answer": "نأكل",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نأكل!",
+      "explanation": "الإجابة الصحيحة هي نأكل."
+    },
+    {
+      "id": "opp_ar_33",
+      "prompt": "ماذا نفعل بكتاب القصص؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ بِكِتَابِ الْقِصَصِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نقرأ",
+        "ننام",
+        "نسبح"
+      ],
+      "answer": "نقرأ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نقرأ!",
+      "explanation": "الإجابة الصحيحة هي نقرأ."
+    },
+    {
+      "id": "opp_ar_34",
+      "prompt": "ماذا نفعل في المسبح؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ فِي الْمَسْبَحِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نسبح",
+        "نرسم",
+        "نأكل"
+      ],
+      "answer": "نسبح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نسبح!",
+      "explanation": "الإجابة الصحيحة هي نسبح."
+    },
+    {
+      "id": "opp_ar_35",
+      "prompt": "ماذا نفعل بأقلام التلوين والورق؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ بِأَقْلَامِ التَّلْوِينِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نرسم",
+        "نركض",
+        "ننام"
+      ],
+      "answer": "نرسم",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نرسم!",
+      "explanation": "الإجابة الصحيحة هي نرسم."
+    },
+    {
+      "id": "opp_ar_36",
+      "prompt": "ماذا نفعل لننتقل بسرعة بأقدامنا؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ لِنَنْتَقِلَ بِسُرْعَةٍ؟",
+      "choice_style": "default",
+      "choices": [
+        "نركض",
+        "نجلس",
+        "نقرأ"
+      ],
+      "answer": "نركض",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نركض!",
+      "explanation": "الإجابة الصحيحة هي نركض."
+    },
+    {
+      "id": "opp_ar_37",
+      "prompt": "ماذا يفعل الضفدع على أوراق الماء؟",
+      "spoken_prompt": "مَاذَا يَفْعَلُ الضِّفْدَعُ؟",
+      "choice_style": "default",
+      "choices": [
+        "يقفز",
+        "ينام",
+        "يأكل"
+      ],
+      "answer": "يقفز",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! يقفز!",
+      "explanation": "الإجابة الصحيحة هي يقفز."
+    },
+    {
+      "id": "opp_ar_38",
+      "prompt": "ماذا نفعل مع الأنشودة الجميلة؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ مَعَ الْأُنْشُودَةِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نغني",
+        "نسبح",
+        "نسحب"
+      ],
+      "answer": "نغني",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نغني!",
+      "explanation": "الإجابة الصحيحة هي نغني."
+    },
+    {
+      "id": "opp_ar_39",
+      "prompt": "ماذا نفعل بكوب الماء؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ بِكُوبِ الْمَاءِ؟",
+      "choice_style": "default",
+      "choices": [
+        "نشرب",
+        "نرسم",
+        "نقفز"
+      ],
+      "answer": "نشرب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نشرب!",
+      "explanation": "الإجابة الصحيحة هي نشرب."
+    },
+    {
+      "id": "opp_ar_40",
+      "prompt": "ماذا نفعل عندما نسمع طرفة مضحكة؟",
+      "spoken_prompt": "مَاذَا نَفْعَلُ عِنْدَمَا نَسْمَعُ طُرْفَةً مُضْحِكَةً؟",
+      "choice_style": "default",
+      "choices": [
+        "نضحك",
+        "ننام",
+        "ندفع"
+      ],
+      "answer": "نضحك",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! نضحك!",
+      "explanation": "الإجابة الصحيحة هي نضحك."
+    },
+    {
+      "id": "opp_ar_41",
+      "prompt": "الزرافة طويلة، والفأر ___.",
+      "spoken_prompt": "الزَّرَافَةُ طَوِيلَةٌ، وَالْفَأْرُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "قصير",
+        "عالٍ",
+        "مبلل"
+      ],
+      "answer": "قصير",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! قصير!",
+      "explanation": "الإجابة الصحيحة هي قصير."
+    },
+    {
+      "id": "opp_ar_42",
+      "prompt": "الآيس كريم بارد، والحساء ___.",
+      "spoken_prompt": "الْآيْسْ كْرِيمُ بَارِدٌ، وَالْحَسَاءُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "حار",
+        "جاف",
+        "بطيء"
+      ],
+      "answer": "حار",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! حار!",
+      "explanation": "الإجابة الصحيحة هي حار."
+    },
+    {
+      "id": "opp_ar_43",
+      "prompt": "الريشة خفيفة، والصخرة الكبيرة ___.",
+      "spoken_prompt": "الرِّيشَةُ خَفِيفَةٌ، وَالصَّخْرَةُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "ثقيلة",
+        "ناعمة",
+        "فارغة"
+      ],
+      "answer": "ثقيلة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ثقيلة!",
+      "explanation": "الإجابة الصحيحة هي ثقيلة."
+    },
+    {
+      "id": "opp_ar_44",
+      "prompt": "السلحفاة بطيئة، والفهد ___.",
+      "spoken_prompt": "السُّلَحْفَاةُ بَطِيئَةٌ، وَالْفَهْدُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "سريع",
+        "هادئ",
+        "قديم"
+      ],
+      "answer": "سريع",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! سريع!",
+      "explanation": "الإجابة الصحيحة هي سريع."
+    },
+    {
+      "id": "opp_ar_45",
+      "prompt": "الوسادة ناعمة، والحجر ___.",
+      "spoken_prompt": "الْوِسَادَةُ نَاعِمَةٌ، وَالْحَجَرُ مَاذَا؟",
+      "choice_style": "default",
+      "choices": [
+        "قاسٍ",
+        "نظيف",
+        "قريب"
+      ],
+      "answer": "قاسٍ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! قاسٍ!",
+      "explanation": "الإجابة الصحيحة هي قاسٍ."
+    }
+  ],
+  "cover": "media/cover.svg"
+}
