@@ -3,7 +3,7 @@
   "title": "Colors & Shapes",
   "description": "Tap bright color circles and bold geometric shapes designed for preschoolers.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "color_swatch",
   "language": "en",
   "rtl": false,
@@ -517,6 +517,666 @@
       "difficulty": "hard",
       "reveal_message": "Yes! The Bear is Brown!",
       "explanation": "The Bear in the picture is Brown."
+    },
+    {
+      "id": "kids_colors_shapes_en_26",
+      "prompt": "Red + Yellow = ?",
+      "spoken_prompt": "What color do you get when you mix Red and Yellow?",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Orange",
+        "Green",
+        "Purple"
+      ],
+      "choice_colors": [
+        "#f97316",
+        "#22c55e",
+        "#a855f7"
+      ],
+      "answer": "Orange",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Orange!",
+      "explanation": "Awesome! Orange!"
+    },
+    {
+      "id": "kids_colors_shapes_en_27",
+      "prompt": "Blue + Yellow = ?",
+      "spoken_prompt": "What color do you get when you mix Blue and Yellow?",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Green",
+        "Orange",
+        "Pink"
+      ],
+      "choice_colors": [
+        "#22c55e",
+        "#f97316",
+        "#ec4899"
+      ],
+      "answer": "Green",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Green!",
+      "explanation": "Awesome! Green!"
+    },
+    {
+      "id": "kids_colors_shapes_en_28",
+      "prompt": "Red + Blue = ?",
+      "spoken_prompt": "What color do you get when you mix Red and Blue?",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Purple",
+        "Yellow",
+        "Green"
+      ],
+      "choice_colors": [
+        "#a855f7",
+        "#eab308",
+        "#22c55e"
+      ],
+      "answer": "Purple",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Purple!",
+      "explanation": "Awesome! Purple!"
+    },
+    {
+      "id": "kids_colors_shapes_en_29",
+      "prompt": "Red + White = ?",
+      "spoken_prompt": "What color do you get when you mix Red and White?",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Pink",
+        "Blue",
+        "Brown"
+      ],
+      "choice_colors": [
+        "#ec4899",
+        "#3b82f6",
+        "#92400e"
+      ],
+      "answer": "Pink",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Pink!",
+      "explanation": "Awesome! Pink!"
+    },
+    {
+      "id": "kids_colors_shapes_en_30",
+      "prompt": "Black + White = ?",
+      "spoken_prompt": "What color do you get when you mix Black and White?",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Gray",
+        "Yellow",
+        "Red"
+      ],
+      "choice_colors": [
+        "#6b7280",
+        "#eab308",
+        "#ef4444"
+      ],
+      "answer": "Gray",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Gray!",
+      "explanation": "Awesome! Gray!"
+    },
+    {
+      "id": "kids_colors_shapes_en_31",
+      "prompt": "Which color is the sunny sky?",
+      "spoken_prompt": "Tap the color of a clear daytime sky!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Blue",
+        "Red",
+        "Brown"
+      ],
+      "choice_colors": [
+        "#3b82f6",
+        "#ef4444",
+        "#92400e"
+      ],
+      "answer": "Blue",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Blue!",
+      "explanation": "Awesome! Blue!"
+    },
+    {
+      "id": "kids_colors_shapes_en_32",
+      "prompt": "Which color is fresh grass?",
+      "spoken_prompt": "Tap the color of fresh green grass!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Green",
+        "Purple",
+        "Orange"
+      ],
+      "choice_colors": [
+        "#22c55e",
+        "#a855f7",
+        "#f97316"
+      ],
+      "answer": "Green",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Green!",
+      "explanation": "Awesome! Green!"
+    },
+    {
+      "id": "kids_colors_shapes_en_33",
+      "prompt": "Which color is a ripe banana?",
+      "spoken_prompt": "Tap the color of a ripe banana!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Yellow",
+        "Blue",
+        "Black"
+      ],
+      "choice_colors": [
+        "#eab308",
+        "#3b82f6",
+        "#111827"
+      ],
+      "answer": "Yellow",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Yellow!",
+      "explanation": "Awesome! Yellow!"
+    },
+    {
+      "id": "kids_colors_shapes_en_34",
+      "prompt": "Which color is a firetruck?",
+      "spoken_prompt": "Tap the bright color of a firetruck!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Red",
+        "Green",
+        "Pink"
+      ],
+      "choice_colors": [
+        "#ef4444",
+        "#22c55e",
+        "#ec4899"
+      ],
+      "answer": "Red",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Red!",
+      "explanation": "Awesome! Red!"
+    },
+    {
+      "id": "kids_colors_shapes_en_35",
+      "prompt": "Which color is chocolate?",
+      "spoken_prompt": "Tap the yummy color of chocolate!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "Brown",
+        "Yellow",
+        "Cyan"
+      ],
+      "choice_colors": [
+        "#92400e",
+        "#eab308",
+        "#06b6d4"
+      ],
+      "answer": "Brown",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! Brown!",
+      "explanation": "Awesome! Brown!"
+    },
+    {
+      "id": "kids_colors_shapes_en_36",
+      "prompt": "What shape is a pizza slice?",
+      "spoken_prompt": "What shape is a pizza slice?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Triangle",
+        "Circle",
+        "Square"
+      ],
+      "choice_images": [
+        "media/shape_triangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_square.svg"
+      ],
+      "answer": "Triangle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Triangle!",
+      "explanation": "Spot on! It's a Triangle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_37",
+      "prompt": "What shape is a bicycle wheel?",
+      "spoken_prompt": "What shape is a bicycle wheel?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Circle",
+        "Triangle",
+        "Rectangle"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_triangle.svg",
+        "media/shape_rectangle.svg"
+      ],
+      "answer": "Circle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Circle!",
+      "explanation": "Spot on! It's a Circle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_38",
+      "prompt": "What shape is a bedroom door?",
+      "spoken_prompt": "What shape is a bedroom door?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rectangle",
+        "Circle",
+        "Star"
+      ],
+      "choice_images": [
+        "media/shape_rectangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "Rectangle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Rectangle!",
+      "explanation": "Spot on! It's a Rectangle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_39",
+      "prompt": "What shape is a round wall clock?",
+      "spoken_prompt": "What shape is a round wall clock?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Circle",
+        "Square",
+        "Heart"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_square.svg",
+        "media/shape_heart.svg"
+      ],
+      "answer": "Circle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Circle!",
+      "explanation": "Spot on! It's a Circle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_40",
+      "prompt": "What shape is a square window?",
+      "spoken_prompt": "What shape is a square window?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Square",
+        "Oval",
+        "Triangle"
+      ],
+      "choice_images": [
+        "media/shape_square.svg",
+        "media/shape_oval.svg",
+        "media/shape_triangle.svg"
+      ],
+      "answer": "Square",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Square!",
+      "explanation": "Spot on! It's a Square!"
+    },
+    {
+      "id": "kids_colors_shapes_en_41",
+      "prompt": "What shape is an egg?",
+      "spoken_prompt": "What shape is an egg?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Oval",
+        "Square",
+        "Star"
+      ],
+      "choice_images": [
+        "media/shape_oval.svg",
+        "media/shape_square.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "Oval",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Oval!",
+      "explanation": "Spot on! It's a Oval!"
+    },
+    {
+      "id": "kids_colors_shapes_en_42",
+      "prompt": "What shape twinkles in the night sky?",
+      "spoken_prompt": "What shape twinkles in the night sky?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Star",
+        "Rectangle",
+        "Oval"
+      ],
+      "choice_images": [
+        "media/shape_star.svg",
+        "media/shape_rectangle.svg",
+        "media/shape_oval.svg"
+      ],
+      "answer": "Star",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Star!",
+      "explanation": "Spot on! It's a Star!"
+    },
+    {
+      "id": "kids_colors_shapes_en_43",
+      "prompt": "What shape is a flying kite?",
+      "spoken_prompt": "What shape is a flying kite?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Diamond",
+        "Circle",
+        "Oval"
+      ],
+      "choice_images": [
+        "media/shape_diamond.svg",
+        "media/shape_circle.svg",
+        "media/shape_oval.svg"
+      ],
+      "answer": "Diamond",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Diamond!",
+      "explanation": "Spot on! It's a Diamond!"
+    },
+    {
+      "id": "kids_colors_shapes_en_44",
+      "prompt": "What shape shows love?",
+      "spoken_prompt": "What shape shows love?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Heart",
+        "Square",
+        "Triangle"
+      ],
+      "choice_images": [
+        "media/shape_heart.svg",
+        "media/shape_square.svg",
+        "media/shape_triangle.svg"
+      ],
+      "answer": "Heart",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Heart!",
+      "explanation": "Spot on! It's a Heart!"
+    },
+    {
+      "id": "kids_colors_shapes_en_45",
+      "prompt": "What shape is a road yield sign?",
+      "spoken_prompt": "What shape is a road yield sign?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Triangle",
+        "Oval",
+        "Heart"
+      ],
+      "choice_images": [
+        "media/shape_triangle.svg",
+        "media/shape_oval.svg",
+        "media/shape_heart.svg"
+      ],
+      "answer": "Triangle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Triangle!",
+      "explanation": "Spot on! It's a Triangle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_46",
+      "prompt": "What shape is a book cover?",
+      "spoken_prompt": "What shape is a book cover?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rectangle",
+        "Circle",
+        "Diamond"
+      ],
+      "choice_images": [
+        "media/shape_rectangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "Rectangle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Rectangle!",
+      "explanation": "Spot on! It's a Rectangle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_47",
+      "prompt": "What shape is a coin?",
+      "spoken_prompt": "What shape is a coin?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Circle",
+        "Triangle",
+        "Diamond"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_triangle.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "Circle",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Circle!",
+      "explanation": "Spot on! It's a Circle!"
+    },
+    {
+      "id": "kids_colors_shapes_en_48",
+      "prompt": "What shape has 4 equal sides?",
+      "spoken_prompt": "What shape has 4 equal sides?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Square",
+        "Triangle",
+        "Circle"
+      ],
+      "choice_images": [
+        "media/shape_square.svg",
+        "media/shape_triangle.svg",
+        "media/shape_circle.svg"
+      ],
+      "answer": "Square",
+      "difficulty": "medium",
+      "reveal_message": "Spot on! It's a Square!",
+      "explanation": "Spot on! It's a Square!"
+    },
+    {
+      "id": "kids_colors_shapes_en_49",
+      "prompt": "Tap the 3D Cube!",
+      "spoken_prompt": "Tap the 3D Cube!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cube",
+        "Sphere",
+        "Cone"
+      ],
+      "choice_images": [
+        "media/shape_cube.svg",
+        "media/shape_sphere.svg",
+        "media/shape_cone.svg"
+      ],
+      "answer": "Cube",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cube!",
+      "explanation": "Brilliant! That's a Cube!"
+    },
+    {
+      "id": "kids_colors_shapes_en_50",
+      "prompt": "Tap the 3D Sphere!",
+      "spoken_prompt": "Tap the 3D Sphere!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sphere",
+        "Cube",
+        "Pyramid"
+      ],
+      "choice_images": [
+        "media/shape_sphere.svg",
+        "media/shape_cube.svg",
+        "media/shape_pyramid.svg"
+      ],
+      "answer": "Sphere",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Sphere!",
+      "explanation": "Brilliant! That's a Sphere!"
+    },
+    {
+      "id": "kids_colors_shapes_en_51",
+      "prompt": "Tap the 3D Cone!",
+      "spoken_prompt": "Tap the 3D Cone!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cone",
+        "Cylinder",
+        "Cube"
+      ],
+      "choice_images": [
+        "media/shape_cone.svg",
+        "media/shape_cylinder.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "Cone",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cone!",
+      "explanation": "Brilliant! That's a Cone!"
+    },
+    {
+      "id": "kids_colors_shapes_en_52",
+      "prompt": "Tap the 3D Cylinder!",
+      "spoken_prompt": "Tap the 3D Cylinder!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cylinder",
+        "Cone",
+        "Sphere"
+      ],
+      "choice_images": [
+        "media/shape_cylinder.svg",
+        "media/shape_cone.svg",
+        "media/shape_sphere.svg"
+      ],
+      "answer": "Cylinder",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cylinder!",
+      "explanation": "Brilliant! That's a Cylinder!"
+    },
+    {
+      "id": "kids_colors_shapes_en_53",
+      "prompt": "Tap the 3D Pyramid!",
+      "spoken_prompt": "Tap the 3D Pyramid!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Pyramid",
+        "Cube",
+        "Cylinder"
+      ],
+      "choice_images": [
+        "media/shape_pyramid.svg",
+        "media/shape_cube.svg",
+        "media/shape_cylinder.svg"
+      ],
+      "answer": "Pyramid",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Pyramid!",
+      "explanation": "Brilliant! That's a Pyramid!"
+    },
+    {
+      "id": "kids_colors_shapes_en_54",
+      "prompt": "Which 3D shape looks like a dice block?",
+      "spoken_prompt": "Which 3D shape looks like a dice block?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cube",
+        "Cone",
+        "Sphere"
+      ],
+      "choice_images": [
+        "media/shape_cube.svg",
+        "media/shape_cone.svg",
+        "media/shape_sphere.svg"
+      ],
+      "answer": "Cube",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cube!",
+      "explanation": "Brilliant! That's a Cube!"
+    },
+    {
+      "id": "kids_colors_shapes_en_55",
+      "prompt": "Which 3D shape looks like a soccer ball?",
+      "spoken_prompt": "Which 3D shape looks like a soccer ball?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sphere",
+        "Cube",
+        "Cylinder"
+      ],
+      "choice_images": [
+        "media/shape_sphere.svg",
+        "media/shape_cube.svg",
+        "media/shape_cylinder.svg"
+      ],
+      "answer": "Sphere",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Sphere!",
+      "explanation": "Brilliant! That's a Sphere!"
+    },
+    {
+      "id": "kids_colors_shapes_en_56",
+      "prompt": "Which 3D shape looks like an ice cream cone?",
+      "spoken_prompt": "Which 3D shape looks like an ice cream cone?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cone",
+        "Pyramid",
+        "Cube"
+      ],
+      "choice_images": [
+        "media/shape_cone.svg",
+        "media/shape_pyramid.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "Cone",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cone!",
+      "explanation": "Brilliant! That's a Cone!"
+    },
+    {
+      "id": "kids_colors_shapes_en_57",
+      "prompt": "Which 3D shape looks like a soup can?",
+      "spoken_prompt": "Which 3D shape looks like a soup can?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cylinder",
+        "Sphere",
+        "Pyramid"
+      ],
+      "choice_images": [
+        "media/shape_cylinder.svg",
+        "media/shape_sphere.svg",
+        "media/shape_pyramid.svg"
+      ],
+      "answer": "Cylinder",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Cylinder!",
+      "explanation": "Brilliant! That's a Cylinder!"
+    },
+    {
+      "id": "kids_colors_shapes_en_58",
+      "prompt": "Which 3D shape looks like the pyramids of Egypt?",
+      "spoken_prompt": "Which 3D shape looks like the pyramids of Egypt?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Pyramid",
+        "Cone",
+        "Cube"
+      ],
+      "choice_images": [
+        "media/shape_pyramid.svg",
+        "media/shape_cone.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "Pyramid",
+      "difficulty": "hard",
+      "reveal_message": "Brilliant! That's a Pyramid!",
+      "explanation": "Brilliant! That's a Pyramid!"
     }
   ],
   "cover": "media/cover.svg"

@@ -3,7 +3,7 @@
   "title": "الأرقام والعد ١–١٠",
   "description": "تعلّم العدّ والأرقام العربية الشرقية (١–١٠) بالنجوم والتفاح والكرات للأطفال.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "large_glyph",
   "language": "ar",
   "rtl": true,
@@ -388,6 +388,606 @@
       "difficulty": "hard",
       "reveal_message": "رائع! هذا الرقم ١٠!",
       "explanation": "الرقم عَشَرَة يُكتب هكذا: ١٠."
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n11",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_11.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١١",
+        "١٣",
+        "١٢"
+      ],
+      "answer": "١١",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١١!",
+      "explanation": "أحسنت! العدد هو ١١!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n12",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_12.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٢",
+        "١١",
+        "١٣"
+      ],
+      "answer": "١٢",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٢!",
+      "explanation": "أحسنت! العدد هو ١٢!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n13",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_13.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٣",
+        "١٢",
+        "١٤"
+      ],
+      "answer": "١٣",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٣!",
+      "explanation": "أحسنت! العدد هو ١٣!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n14",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_14.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٤",
+        "١٣",
+        "١٥"
+      ],
+      "answer": "١٤",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٤!",
+      "explanation": "أحسنت! العدد هو ١٤!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n15",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_15.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٥",
+        "١٤",
+        "١٦"
+      ],
+      "answer": "١٥",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٥!",
+      "explanation": "أحسنت! العدد هو ١٥!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n16",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_16.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٦",
+        "١٥",
+        "١٧"
+      ],
+      "answer": "١٦",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٦!",
+      "explanation": "أحسنت! العدد هو ١٦!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n17",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_17.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٧",
+        "١٦",
+        "١٨"
+      ],
+      "answer": "١٧",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٧!",
+      "explanation": "أحسنت! العدد هو ١٧!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n18",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_18.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٨",
+        "١٧",
+        "١٩"
+      ],
+      "answer": "١٨",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٨!",
+      "explanation": "أحسنت! العدد هو ١٨!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n19",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_19.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٩",
+        "١٨",
+        "٢٠"
+      ],
+      "answer": "١٩",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ١٩!",
+      "explanation": "أحسنت! العدد هو ١٩!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_n20",
+      "prompt": "كم نقطة توجد في الصورة؟",
+      "spoken_prompt": "عُدَّ النِّقَاطَ الْمُلَوَّنَةَ! كَمْ عَدَدُهَا؟",
+      "image": "media/count_20.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٢٠",
+        "١٩",
+        "١٨"
+      ],
+      "answer": "٢٠",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! العدد هو ٢٠!",
+      "explanation": "أحسنت! العدد هو ٢٠!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_01",
+      "prompt": "أي مجموعة فيها أكثر؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَكْثَرَ؟",
+      "image": "media/cmp_01.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة أ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة أ فيها أكثر!",
+      "explanation": "أحسنت! المجموعة أ فيها أكثر!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_02",
+      "prompt": "أي مجموعة فيها أكثر؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَكْثَرَ؟",
+      "image": "media/cmp_02.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة ب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة ب فيها أكثر!",
+      "explanation": "أحسنت! المجموعة ب فيها أكثر!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_03",
+      "prompt": "أي مجموعة فيها أكثر؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَكْثَرَ؟",
+      "image": "media/cmp_03.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة أ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة أ فيها أكثر!",
+      "explanation": "أحسنت! المجموعة أ فيها أكثر!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_04",
+      "prompt": "أي مجموعة فيها أكثر؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَكْثَرَ؟",
+      "image": "media/cmp_04.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة ب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة ب فيها أكثر!",
+      "explanation": "أحسنت! المجموعة ب فيها أكثر!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_05",
+      "prompt": "أي مجموعة فيها أكثر؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَكْثَرَ؟",
+      "image": "media/cmp_05.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة أ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة أ فيها أكثر!",
+      "explanation": "أحسنت! المجموعة أ فيها أكثر!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_06",
+      "prompt": "أي مجموعة فيها أقل؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَقَلَّ؟",
+      "image": "media/cmp_06.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة أ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة أ فيها أقل!",
+      "explanation": "أحسنت! المجموعة أ فيها أقل!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_07",
+      "prompt": "أي مجموعة فيها أقل؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَقَلَّ؟",
+      "image": "media/cmp_07.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة ب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة ب فيها أقل!",
+      "explanation": "أحسنت! المجموعة ب فيها أقل!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_08",
+      "prompt": "أي مجموعة فيها أقل؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَقَلَّ؟",
+      "image": "media/cmp_08.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة أ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة أ فيها أقل!",
+      "explanation": "أحسنت! المجموعة أ فيها أقل!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_09",
+      "prompt": "أي مجموعة فيها أقل؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَقَلَّ؟",
+      "image": "media/cmp_09.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة ب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة ب فيها أقل!",
+      "explanation": "أحسنت! المجموعة ب فيها أقل!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_cmp_10",
+      "prompt": "أي مجموعة فيها أقل؟",
+      "spoken_prompt": "انْظُرْ إِلَى الْمَجْمُوعَتَيْنِ! أَيُّ مَجْمُوعَةٍ فِيهَا عَدَدٌ أَقَلَّ؟",
+      "image": "media/cmp_10.svg",
+      "choice_style": "default",
+      "choices": [
+        "المجموعة أ",
+        "المجموعة ب",
+        "متساويتان"
+      ],
+      "answer": "المجموعة ب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! المجموعة ب فيها أقل!",
+      "explanation": "أحسنت! المجموعة ب فيها أقل!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_01",
+      "prompt": "عدّ تنازلياً: ٥، ٤، __، ٢",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٥، ٤، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٢؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٣",
+        "٥",
+        "٢"
+      ],
+      "answer": "٣",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ٥، ٤، ٣، ٢!",
+      "explanation": "ممتاز! ٥، ٤، ٣، ٢!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_02",
+      "prompt": "عدّ تنازلياً: ٦، ٥، __، ٣",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٦، ٥، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٣؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٤",
+        "٦",
+        "٣"
+      ],
+      "answer": "٤",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ٦، ٥، ٤، ٣!",
+      "explanation": "ممتاز! ٦، ٥، ٤، ٣!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_03",
+      "prompt": "عدّ تنازلياً: ٧، ٦، __، ٤",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٧، ٦، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٤؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٥",
+        "٧",
+        "٤"
+      ],
+      "answer": "٥",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ٧، ٦، ٥، ٤!",
+      "explanation": "ممتاز! ٧، ٦، ٥، ٤!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_04",
+      "prompt": "عدّ تنازلياً: ٨، ٧، __، ٥",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٨، ٧، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٥؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٦",
+        "٨",
+        "٥"
+      ],
+      "answer": "٦",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ٨، ٧، ٦، ٥!",
+      "explanation": "ممتاز! ٨، ٧، ٦، ٥!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_05",
+      "prompt": "عدّ تنازلياً: ٩، ٨، __، ٦",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٩، ٨، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٦؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٧",
+        "٩",
+        "٦"
+      ],
+      "answer": "٧",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ٩، ٨، ٧، ٦!",
+      "explanation": "ممتاز! ٩، ٨، ٧، ٦!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_06",
+      "prompt": "عدّ تنازلياً: ١٠، ٩، __، ٧",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ١٠، ٩، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٧؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٨",
+        "١٠",
+        "٧"
+      ],
+      "answer": "٨",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ١٠، ٩، ٨، ٧!",
+      "explanation": "ممتاز! ١٠، ٩، ٨، ٧!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_07",
+      "prompt": "عدّ تنازلياً: ٤، ٣، __، ١",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ٤، ٣، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ١؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٢",
+        "٤",
+        "١"
+      ],
+      "answer": "٢",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ٤، ٣، ٢، ١!",
+      "explanation": "ممتاز! ٤، ٣، ٢، ١!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_back_08",
+      "prompt": "عدّ تنازلياً: ١٢، ١١، __، ٩",
+      "spoken_prompt": "عُدَّ تَنَازُلِيًّا! ١٢، ١١، مَا الرَّقْمُ النَّاقِصُ قَبْلَ ٩؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "١٠",
+        "١٢",
+        "٩"
+      ],
+      "answer": "١٠",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! ١٢، ١١، ١٠، ٩!",
+      "explanation": "ممتاز! ١٢، ١١، ١٠، ٩!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_01",
+      "prompt": "١ + ١ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ١ زَائِدْ ١؟",
+      "image": "media/add_1_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٢",
+        "٣",
+        "١"
+      ],
+      "answer": "٢",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ١ + ١ = ٢!",
+      "explanation": "رائع! ١ + ١ = ٢!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_02",
+      "prompt": "٢ + ١ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٢ زَائِدْ ١؟",
+      "image": "media/add_2_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٣",
+        "٤",
+        "٢"
+      ],
+      "answer": "٣",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٢ + ١ = ٣!",
+      "explanation": "رائع! ٢ + ١ = ٣!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_03",
+      "prompt": "٢ + ٢ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٢ زَائِدْ ٢؟",
+      "image": "media/add_2_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٤",
+        "٥",
+        "٣"
+      ],
+      "answer": "٤",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٢ + ٢ = ٤!",
+      "explanation": "رائع! ٢ + ٢ = ٤!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_04",
+      "prompt": "٣ + ١ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٣ زَائِدْ ١؟",
+      "image": "media/add_3_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٤",
+        "٥",
+        "٣"
+      ],
+      "answer": "٤",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٣ + ١ = ٤!",
+      "explanation": "رائع! ٣ + ١ = ٤!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_05",
+      "prompt": "٣ + ٢ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٣ زَائِدْ ٢؟",
+      "image": "media/add_3_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٥",
+        "٦",
+        "٤"
+      ],
+      "answer": "٥",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٣ + ٢ = ٥!",
+      "explanation": "رائع! ٣ + ٢ = ٥!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_06",
+      "prompt": "٤ + ١ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٤ زَائِدْ ١؟",
+      "image": "media/add_4_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٥",
+        "٦",
+        "٤"
+      ],
+      "answer": "٥",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٤ + ١ = ٥!",
+      "explanation": "رائع! ٤ + ١ = ٥!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_07",
+      "prompt": "٤ + ٢ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٤ زَائِدْ ٢؟",
+      "image": "media/add_4_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٦",
+        "٧",
+        "٥"
+      ],
+      "answer": "٦",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٤ + ٢ = ٦!",
+      "explanation": "رائع! ٤ + ٢ = ٦!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_08",
+      "prompt": "٣ + ٣ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٣ زَائِدْ ٣؟",
+      "image": "media/add_3_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٦",
+        "٧",
+        "٥"
+      ],
+      "answer": "٦",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٣ + ٣ = ٦!",
+      "explanation": "رائع! ٣ + ٣ = ٦!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_09",
+      "prompt": "٥ + ١ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٥ زَائِدْ ١؟",
+      "image": "media/add_5_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٦",
+        "٧",
+        "٥"
+      ],
+      "answer": "٦",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٥ + ١ = ٦!",
+      "explanation": "رائع! ٥ + ١ = ٦!"
+    },
+    {
+      "id": "kids_ar_numbers_eastern_ar_add_10",
+      "prompt": "٤ + ٣ = ؟",
+      "spoken_prompt": "اجْمَعِ التُّفَّاحَاتِ مَعًا! كَمْ يُسَاوِي ٤ زَائِدْ ٣؟",
+      "image": "media/add_4_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "٧",
+        "٨",
+        "٦"
+      ],
+      "answer": "٧",
+      "difficulty": "hard",
+      "reveal_message": "رائع! ٤ + ٣ = ٧!",
+      "explanation": "رائع! ٤ + ٣ = ٧!"
     }
   ],
   "cover": "media/cover.svg"

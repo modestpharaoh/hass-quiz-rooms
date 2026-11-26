@@ -1,0 +1,816 @@
+{
+  "title": "Vehicles & Things That Go",
+  "description": "Cars, trains, airplanes, boats, fire trucks, and rockets—discover what drives, floats, and flies!",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "category": "Early Learner · Vehicles",
+  "pack_id": "kids_vehicles_en",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "veh_en_01",
+      "prompt": "Tap the Car!",
+      "spoken_prompt": "Can you find the Car?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Car",
+        "Bus",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/car.svg",
+        "media/bus.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Car",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Car!",
+      "explanation": "That picture shows the Car."
+    },
+    {
+      "id": "veh_en_02",
+      "prompt": "Tap the Bus!",
+      "spoken_prompt": "Can you find the Bus?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bus",
+        "Train",
+        "Car"
+      ],
+      "choice_images": [
+        "media/bus.svg",
+        "media/train.svg",
+        "media/car.svg"
+      ],
+      "answer": "Bus",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Bus!",
+      "explanation": "That picture shows the Bus."
+    },
+    {
+      "id": "veh_en_03",
+      "prompt": "Tap the Train!",
+      "spoken_prompt": "Can you find the Train?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Train",
+        "Truck",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/truck.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Train",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Train!",
+      "explanation": "That picture shows the Train."
+    },
+    {
+      "id": "veh_en_04",
+      "prompt": "Tap the Airplane!",
+      "spoken_prompt": "Can you find the Airplane?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Airplane",
+        "Rocket",
+        "Car"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/rocket.svg",
+        "media/car.svg"
+      ],
+      "answer": "Airplane",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Airplane!",
+      "explanation": "That picture shows the Airplane."
+    },
+    {
+      "id": "veh_en_05",
+      "prompt": "Tap the Boat!",
+      "spoken_prompt": "Can you find the Boat?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Boat",
+        "Bicycle",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Boat",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Boat!",
+      "explanation": "That picture shows the Boat."
+    },
+    {
+      "id": "veh_en_06",
+      "prompt": "Tap the Bicycle!",
+      "spoken_prompt": "Can you find the Bicycle?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bicycle",
+        "Car",
+        "Train"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/car.svg",
+        "media/train.svg"
+      ],
+      "answer": "Bicycle",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Bicycle!",
+      "explanation": "That picture shows the Bicycle."
+    },
+    {
+      "id": "veh_en_07",
+      "prompt": "Tap the Fire Truck!",
+      "spoken_prompt": "Can you find the Fire Truck?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fire Truck",
+        "Ambulance",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ambulance.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Fire Truck",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Fire Truck!",
+      "explanation": "That picture shows the Fire Truck."
+    },
+    {
+      "id": "veh_en_08",
+      "prompt": "Tap the Ambulance!",
+      "spoken_prompt": "Can you find the Ambulance?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ambulance",
+        "Fire Truck",
+        "Truck"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/firetruck.svg",
+        "media/truck.svg"
+      ],
+      "answer": "Ambulance",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Ambulance!",
+      "explanation": "That picture shows the Ambulance."
+    },
+    {
+      "id": "veh_en_09",
+      "prompt": "Tap the Rocket!",
+      "spoken_prompt": "Can you find the Rocket?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rocket",
+        "Airplane",
+        "Helicopter"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/airplane.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "Rocket",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Rocket!",
+      "explanation": "That picture shows the Rocket."
+    },
+    {
+      "id": "veh_en_10",
+      "prompt": "Tap the Helicopter!",
+      "spoken_prompt": "Can you find the Helicopter?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Helicopter",
+        "Airplane",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/airplane.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Helicopter",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Helicopter!",
+      "explanation": "That picture shows the Helicopter."
+    },
+    {
+      "id": "veh_en_11",
+      "prompt": "Tap the Ship!",
+      "spoken_prompt": "Can you find the Ship?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ship",
+        "Boat",
+        "Train"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/boat.svg",
+        "media/train.svg"
+      ],
+      "answer": "Ship",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Ship!",
+      "explanation": "That picture shows the Ship."
+    },
+    {
+      "id": "veh_en_12",
+      "prompt": "Tap the Truck!",
+      "spoken_prompt": "Can you find the Truck?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Truck",
+        "Car",
+        "Bicycle"
+      ],
+      "choice_images": [
+        "media/truck.svg",
+        "media/car.svg",
+        "media/bicycle.svg"
+      ],
+      "answer": "Truck",
+      "difficulty": "easy",
+      "reveal_message": "Zoom! That's the Truck!",
+      "explanation": "That picture shows the Truck."
+    },
+    {
+      "id": "veh_en_13",
+      "prompt": "Which one flies high in the sky with wings?",
+      "spoken_prompt": "Which one flies high in the sky with wings?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Airplane",
+        "Car",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/car.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Airplane",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Airplane!",
+      "explanation": "The answer is Airplane."
+    },
+    {
+      "id": "veh_en_14",
+      "prompt": "Which one sails on water with a sail?",
+      "spoken_prompt": "Which one sails on water with a sail?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Boat",
+        "Bus",
+        "Train"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bus.svg",
+        "media/train.svg"
+      ],
+      "answer": "Boat",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Boat!",
+      "explanation": "The answer is Boat."
+    },
+    {
+      "id": "veh_en_15",
+      "prompt": "Which one zooms to outer space?",
+      "spoken_prompt": "Which one zooms to outer space?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rocket",
+        "Bicycle",
+        "Truck"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/bicycle.svg",
+        "media/truck.svg"
+      ],
+      "answer": "Rocket",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Rocket!",
+      "explanation": "The answer is Rocket."
+    },
+    {
+      "id": "veh_en_16",
+      "prompt": "Which one rides on steel train tracks?",
+      "spoken_prompt": "Which one rides on steel train tracks?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Train",
+        "Ship",
+        "Car"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/ship.svg",
+        "media/car.svg"
+      ],
+      "answer": "Train",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Train!",
+      "explanation": "The answer is Train."
+    },
+    {
+      "id": "veh_en_17",
+      "prompt": "Which one has two wheels and pedals?",
+      "spoken_prompt": "Which one has two wheels and pedals?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bicycle",
+        "Bus",
+        "Airplane"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/bus.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "Bicycle",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Bicycle!",
+      "explanation": "The answer is Bicycle."
+    },
+    {
+      "id": "veh_en_18",
+      "prompt": "Which bright red truck puts out fires?",
+      "spoken_prompt": "Which bright red truck puts out fires?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fire Truck",
+        "Boat",
+        "Car"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/boat.svg",
+        "media/car.svg"
+      ],
+      "answer": "Fire Truck",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Fire Truck!",
+      "explanation": "The answer is Fire Truck."
+    },
+    {
+      "id": "veh_en_19",
+      "prompt": "Which vehicle rushes sick people to the hospital?",
+      "spoken_prompt": "Which vehicle rushes sick people to the hospital?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ambulance",
+        "Train",
+        "Ship"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/train.svg",
+        "media/ship.svg"
+      ],
+      "answer": "Ambulance",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Ambulance!",
+      "explanation": "The answer is Ambulance."
+    },
+    {
+      "id": "veh_en_20",
+      "prompt": "Which big yellow vehicle takes kids to school?",
+      "spoken_prompt": "Which big yellow vehicle takes kids to school?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bus",
+        "Rocket",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/bus.svg",
+        "media/rocket.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Bus",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Bus!",
+      "explanation": "The answer is Bus."
+    },
+    {
+      "id": "veh_en_21",
+      "prompt": "Which flying machine has spinning blades on top?",
+      "spoken_prompt": "Which flying machine has spinning blades on top?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Helicopter",
+        "Car",
+        "Train"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/car.svg",
+        "media/train.svg"
+      ],
+      "answer": "Helicopter",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Helicopter!",
+      "explanation": "The answer is Helicopter."
+    },
+    {
+      "id": "veh_en_22",
+      "prompt": "Which giant boat crosses the deep ocean?",
+      "spoken_prompt": "Which giant boat crosses the deep ocean?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ship",
+        "Bicycle",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Ship",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Ship!",
+      "explanation": "The answer is Ship."
+    },
+    {
+      "id": "veh_en_23",
+      "prompt": "Which strong vehicle carries heavy boxes?",
+      "spoken_prompt": "Which strong vehicle carries heavy boxes?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Truck",
+        "Boat",
+        "Rocket"
+      ],
+      "choice_images": [
+        "media/truck.svg",
+        "media/boat.svg",
+        "media/rocket.svg"
+      ],
+      "answer": "Truck",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Truck!",
+      "explanation": "The answer is Truck."
+    },
+    {
+      "id": "veh_en_24",
+      "prompt": "Which vehicle takes a family on road trips?",
+      "spoken_prompt": "Which vehicle takes a family on road trips?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Car",
+        "Ship",
+        "Helicopter"
+      ],
+      "choice_images": [
+        "media/car.svg",
+        "media/ship.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "Car",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Car!",
+      "explanation": "The answer is Car."
+    },
+    {
+      "id": "veh_en_25",
+      "prompt": "Which one goes choo-choo?",
+      "spoken_prompt": "Which one goes choo-choo?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Train",
+        "Car",
+        "Boat"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/car.svg",
+        "media/boat.svg"
+      ],
+      "answer": "Train",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Train!",
+      "explanation": "The answer is Train."
+    },
+    {
+      "id": "veh_en_26",
+      "prompt": "Which one rings a little bell on the handlebars?",
+      "spoken_prompt": "Which one rings a little bell on the handlebars?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bicycle",
+        "Truck",
+        "Rocket"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/truck.svg",
+        "media/rocket.svg"
+      ],
+      "answer": "Bicycle",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Bicycle!",
+      "explanation": "The answer is Bicycle."
+    },
+    {
+      "id": "veh_en_27",
+      "prompt": "Which one uses wind in its sails?",
+      "spoken_prompt": "Which one uses wind in its sails?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Boat",
+        "Bus",
+        "Car"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/bus.svg",
+        "media/car.svg"
+      ],
+      "answer": "Boat",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Boat!",
+      "explanation": "The answer is Boat."
+    },
+    {
+      "id": "veh_en_28",
+      "prompt": "Which one has a long ladder on top?",
+      "spoken_prompt": "Which one has a long ladder on top?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fire Truck",
+        "Ship",
+        "Airplane"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ship.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "Fire Truck",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! It's the Fire Truck!",
+      "explanation": "The answer is Fire Truck."
+    },
+    {
+      "id": "veh_en_29",
+      "prompt": "Which vehicle does NOT have wheels?",
+      "spoken_prompt": "Which vehicle does NOT have wheels?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Boat",
+        "Car",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/boat.svg",
+        "media/car.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Boat",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Boat!",
+      "explanation": "The answer is Boat."
+    },
+    {
+      "id": "veh_en_30",
+      "prompt": "Which vehicle travels the FASTEST?",
+      "spoken_prompt": "Which vehicle travels the FASTEST?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rocket",
+        "Bicycle",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/bicycle.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Rocket",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Rocket!",
+      "explanation": "The answer is Rocket."
+    },
+    {
+      "id": "veh_en_31",
+      "prompt": "Which vehicle uses NO gasoline (only your legs)?",
+      "spoken_prompt": "Which vehicle uses NO gasoline (only your legs)?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Bicycle",
+        "Truck",
+        "Airplane"
+      ],
+      "choice_images": [
+        "media/bicycle.svg",
+        "media/truck.svg",
+        "media/airplane.svg"
+      ],
+      "answer": "Bicycle",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Bicycle!",
+      "explanation": "The answer is Bicycle."
+    },
+    {
+      "id": "veh_en_32",
+      "prompt": "Which vehicle can hover straight up in the air?",
+      "spoken_prompt": "Which vehicle can hover straight up in the air?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Helicopter",
+        "Train",
+        "Ship"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/train.svg",
+        "media/ship.svg"
+      ],
+      "answer": "Helicopter",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Helicopter!",
+      "explanation": "The answer is Helicopter."
+    },
+    {
+      "id": "veh_en_33",
+      "prompt": "Which vehicle has a red cross symbol?",
+      "spoken_prompt": "Which vehicle has a red cross symbol?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ambulance",
+        "Fire Truck",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/ambulance.svg",
+        "media/firetruck.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Ambulance",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Ambulance!",
+      "explanation": "The answer is Ambulance."
+    },
+    {
+      "id": "veh_en_34",
+      "prompt": "Which vehicle lands on an airport runway?",
+      "spoken_prompt": "Which vehicle lands on an airport runway?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Airplane",
+        "Ship",
+        "Train"
+      ],
+      "choice_images": [
+        "media/airplane.svg",
+        "media/ship.svg",
+        "media/train.svg"
+      ],
+      "answer": "Airplane",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Airplane!",
+      "explanation": "The answer is Airplane."
+    },
+    {
+      "id": "veh_en_35",
+      "prompt": "Which vehicle pulls many connected cars behind it?",
+      "spoken_prompt": "Which vehicle pulls many connected cars behind it?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Train",
+        "Car",
+        "Bicycle"
+      ],
+      "choice_images": [
+        "media/train.svg",
+        "media/car.svg",
+        "media/bicycle.svg"
+      ],
+      "answer": "Train",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Train!",
+      "explanation": "The answer is Train."
+    },
+    {
+      "id": "veh_en_36",
+      "prompt": "Which vehicle docks at a sea harbor?",
+      "spoken_prompt": "Which vehicle docks at a sea harbor?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ship",
+        "Bus",
+        "Helicopter"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/bus.svg",
+        "media/helicopter.svg"
+      ],
+      "answer": "Ship",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Ship!",
+      "explanation": "The answer is Ship."
+    },
+    {
+      "id": "veh_en_37",
+      "prompt": "Which two travel in the SKY: Airplane and ___?",
+      "spoken_prompt": "Which two travel in the SKY: Airplane and ___?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Helicopter",
+        "Train",
+        "Truck"
+      ],
+      "choice_images": [
+        "media/helicopter.svg",
+        "media/train.svg",
+        "media/truck.svg"
+      ],
+      "answer": "Helicopter",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Helicopter!",
+      "explanation": "The answer is Helicopter."
+    },
+    {
+      "id": "veh_en_38",
+      "prompt": "Which two travel on WATER: Boat and ___?",
+      "spoken_prompt": "Which two travel on WATER: Boat and ___?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ship",
+        "Car",
+        "Bus"
+      ],
+      "choice_images": [
+        "media/ship.svg",
+        "media/car.svg",
+        "media/bus.svg"
+      ],
+      "answer": "Ship",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Ship!",
+      "explanation": "The answer is Ship."
+    },
+    {
+      "id": "veh_en_39",
+      "prompt": "Which emergency vehicle carries water hoses?",
+      "spoken_prompt": "Which emergency vehicle carries water hoses?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fire Truck",
+        "Ambulance",
+        "Truck"
+      ],
+      "choice_images": [
+        "media/firetruck.svg",
+        "media/ambulance.svg",
+        "media/truck.svg"
+      ],
+      "answer": "Fire Truck",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Fire Truck!",
+      "explanation": "The answer is Fire Truck."
+    },
+    {
+      "id": "veh_en_40",
+      "prompt": "Which vehicle blasts off with a countdown 3-2-1?",
+      "spoken_prompt": "Which vehicle blasts off with a countdown 3-2-1?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Rocket",
+        "Airplane",
+        "Train"
+      ],
+      "choice_images": [
+        "media/rocket.svg",
+        "media/airplane.svg",
+        "media/train.svg"
+      ],
+      "answer": "Rocket",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! It's the Rocket!",
+      "explanation": "The answer is Rocket."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

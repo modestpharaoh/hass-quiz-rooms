@@ -62,7 +62,7 @@ EXPECTED_PACK_IDS = {
     "math_logic_riddles_en",
     "math_logic_riddles_ar",
     "arabic_proverbs_ar",
-    # 11 Kids (Ages 3-4) packs
+    # 24 Early Learner packs
     "kids_en_alphabet_en",
     "kids_ar_alphabet_ar",
     "kids_en_numbers_en",
@@ -74,6 +74,19 @@ EXPECTED_PACK_IDS = {
     "kids_animals_ar",
     "kids_fruits_food_en",
     "kids_fruits_food_ar",
+    "kids_body_senses_en",
+    "kids_body_senses_ar",
+    "kids_vehicles_en",
+    "kids_vehicles_ar",
+    "kids_weather_seasons_en",
+    "kids_weather_seasons_ar",
+    "kids_around_house_en",
+    "kids_around_house_ar",
+    "kids_bilingual_bridge_en_ar",
+    "kids_ar_letter_forms_ar",
+    "kids_en_phonics_rhymes_en",
+    "kids_opposites_actions_en",
+    "kids_opposites_actions_ar",
 }
 
 

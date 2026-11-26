@@ -3,7 +3,7 @@
   "title": "الحيوانات وأصواتها",
   "description": "تعرّف على الحيوانات اللطيفة وأصواتها بالصور الملونة للأطفال.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "image_grid",
   "language": "ar",
   "rtl": true,
@@ -490,6 +490,686 @@
       "difficulty": "hard",
       "reveal_message": "البومة تطير في الليل!",
       "explanation": "البومة تطير في الليل!"
+    },
+    {
+      "id": "kids_animals_ar_25",
+      "prompt": "اضغط على الحيوان الذي يعيش في المحيط!",
+      "spoken_prompt": "اضغط على الحيوان الذي يعيش في المحيط!",
+      "choice_style": "image_grid",
+      "choices": [
+        "حوت",
+        "أسد",
+        "أرنب"
+      ],
+      "choice_images": [
+        "media/whale.svg",
+        "media/lion.svg",
+        "media/rabbit.svg"
+      ],
+      "answer": "حوت",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه حوت!",
+      "explanation": "أحسنت! إنه حوت!"
+    },
+    {
+      "id": "kids_animals_ar_26",
+      "prompt": "اضغط على الحيوان ذي الرقبة الطويلة جداً!",
+      "spoken_prompt": "اضغط على الحيوان ذي الرقبة الطويلة جداً!",
+      "choice_style": "image_grid",
+      "choices": [
+        "زرافة",
+        "ضفدع",
+        "قطة"
+      ],
+      "choice_images": [
+        "media/giraffe.svg",
+        "media/frog.svg",
+        "media/cat.svg"
+      ],
+      "answer": "زرافة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه زرافة!",
+      "explanation": "أحسنت! إنه زرافة!"
+    },
+    {
+      "id": "kids_animals_ar_27",
+      "prompt": "اضغط على الحشرة التي تصنع العسل اللذيذ!",
+      "spoken_prompt": "اضغط على الحشرة التي تصنع العسل اللذيذ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "نحلة",
+        "بقرة",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/cow.svg",
+        "media/fish.svg"
+      ],
+      "answer": "نحلة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه نحلة!",
+      "explanation": "أحسنت! إنه نحلة!"
+    },
+    {
+      "id": "kids_animals_ar_28",
+      "prompt": "اضغط على الحيوان الذي يعطينا الحليب!",
+      "spoken_prompt": "اضغط على الحيوان الذي يعطينا الحليب!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بقرة",
+        "ثعلب",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/cow.svg",
+        "media/fox.svg",
+        "media/bird.svg"
+      ],
+      "answer": "بقرة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه بقرة!",
+      "explanation": "أحسنت! إنه بقرة!"
+    },
+    {
+      "id": "kids_animals_ar_29",
+      "prompt": "اضغط على الحيوان الذي يعطينا الصوف الدافئ!",
+      "spoken_prompt": "اضغط على الحيوان الذي يعطينا الصوف الدافئ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "خروف",
+        "بطة",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/sheep.svg",
+        "media/duck.svg",
+        "media/frog.svg"
+      ],
+      "answer": "خروف",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه خروف!",
+      "explanation": "أحسنت! إنه خروف!"
+    },
+    {
+      "id": "kids_animals_ar_30",
+      "prompt": "اضغط على الحيوان المخطط بالأبيض والأسود!",
+      "spoken_prompt": "اضغط على الحيوان المخطط بالأبيض والأسود!",
+      "choice_style": "image_grid",
+      "choices": [
+        "حمار وحشي",
+        "دب",
+        "كلب"
+      ],
+      "choice_images": [
+        "media/zebra.svg",
+        "media/bear.svg",
+        "media/dog.svg"
+      ],
+      "answer": "حمار وحشي",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه حمار وحشي!",
+      "explanation": "أحسنت! إنه حمار وحشي!"
+    },
+    {
+      "id": "kids_animals_ar_31",
+      "prompt": "اضغط على الحيوان ذي الخرطوم الطويل!",
+      "spoken_prompt": "اضغط على الحيوان ذي الخرطوم الطويل!",
+      "choice_style": "image_grid",
+      "choices": [
+        "فيل",
+        "حصان",
+        "قطة"
+      ],
+      "choice_images": [
+        "media/elephant.svg",
+        "media/horse.svg",
+        "media/cat.svg"
+      ],
+      "answer": "فيل",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه فيل!",
+      "explanation": "أحسنت! إنه فيل!"
+    },
+    {
+      "id": "kids_animals_ar_32",
+      "prompt": "اضغط على الحيوان الذي يعيش في الصحراء!",
+      "spoken_prompt": "اضغط على الحيوان الذي يعيش في الصحراء!",
+      "choice_style": "image_grid",
+      "choices": [
+        "جمل",
+        "بطريق",
+        "حوت"
+      ],
+      "choice_images": [
+        "media/camel.svg",
+        "media/penguin.svg",
+        "media/whale.svg"
+      ],
+      "answer": "جمل",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه جمل!",
+      "explanation": "أحسنت! إنه جمل!"
+    },
+    {
+      "id": "kids_animals_ar_33",
+      "prompt": "اضغط على الطائر الذي يحب الثلج!",
+      "spoken_prompt": "اضغط على الطائر الذي يحب الثلج!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطريق",
+        "جمل",
+        "أسد"
+      ],
+      "choice_images": [
+        "media/penguin.svg",
+        "media/camel.svg",
+        "media/lion.svg"
+      ],
+      "answer": "بطريق",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه بطريق!",
+      "explanation": "أحسنت! إنه بطريق!"
+    },
+    {
+      "id": "kids_animals_ar_34",
+      "prompt": "اضغط على الطائر الذي يستيقظ ليلاً!",
+      "spoken_prompt": "اضغط على الطائر الذي يستيقظ ليلاً!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بومة",
+        "بطة",
+        "بقرة"
+      ],
+      "choice_images": [
+        "media/owl.svg",
+        "media/duck.svg",
+        "media/cow.svg"
+      ],
+      "answer": "بومة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه بومة!",
+      "explanation": "أحسنت! إنه بومة!"
+    },
+    {
+      "id": "kids_animals_ar_35",
+      "prompt": "اضغط على الحيوان الأخضر الذي يقفز!",
+      "spoken_prompt": "اضغط على الحيوان الأخضر الذي يقفز!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ضفدع",
+        "خروف",
+        "حصان"
+      ],
+      "choice_images": [
+        "media/frog.svg",
+        "media/sheep.svg",
+        "media/horse.svg"
+      ],
+      "answer": "ضفدع",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه ضفدع!",
+      "explanation": "أحسنت! إنه ضفدع!"
+    },
+    {
+      "id": "kids_animals_ar_36",
+      "prompt": "اضغط على الحيوان الذي يحب الجزر!",
+      "spoken_prompt": "اضغط على الحيوان الذي يحب الجزر!",
+      "choice_style": "image_grid",
+      "choices": [
+        "أرنب",
+        "حوت",
+        "نحلة"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/whale.svg",
+        "media/bee.svg"
+      ],
+      "answer": "أرنب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه أرنب!",
+      "explanation": "أحسنت! إنه أرنب!"
+    },
+    {
+      "id": "kids_animals_ar_37",
+      "prompt": "اضغط على الحشرة ذات الأجنحة الملونة!",
+      "spoken_prompt": "اضغط على الحشرة ذات الأجنحة الملونة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراشة",
+        "كلب",
+        "دب"
+      ],
+      "choice_images": [
+        "media/butterfly.svg",
+        "media/dog.svg",
+        "media/bear.svg"
+      ],
+      "answer": "فراشة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه فراشة!",
+      "explanation": "أحسنت! إنه فراشة!"
+    },
+    {
+      "id": "kids_animals_ar_38",
+      "prompt": "اضغط على الحيوان الذي يسبح بالزعانف!",
+      "spoken_prompt": "اضغط على الحيوان الذي يسبح بالزعانف!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سمكة",
+        "زرافة",
+        "قطة"
+      ],
+      "choice_images": [
+        "media/fish.svg",
+        "media/giraffe.svg",
+        "media/cat.svg"
+      ],
+      "answer": "سمكة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه سمكة!",
+      "explanation": "أحسنت! إنه سمكة!"
+    },
+    {
+      "id": "kids_animals_ar_39",
+      "prompt": "اضغط على ملك الغابة!",
+      "spoken_prompt": "اضغط على ملك الغابة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "أسد",
+        "أرنب",
+        "بطة"
+      ],
+      "choice_images": [
+        "media/lion.svg",
+        "media/rabbit.svg",
+        "media/duck.svg"
+      ],
+      "answer": "أسد",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه أسد!",
+      "explanation": "أحسنت! إنه أسد!"
+    },
+    {
+      "id": "kids_animals_ar_40",
+      "prompt": "اضغط على الحيوان السريع الذي نركبه!",
+      "spoken_prompt": "اضغط على الحيوان السريع الذي نركبه!",
+      "choice_style": "image_grid",
+      "choices": [
+        "حصان",
+        "ضفدع",
+        "نحلة"
+      ],
+      "choice_images": [
+        "media/horse.svg",
+        "media/frog.svg",
+        "media/bee.svg"
+      ],
+      "answer": "حصان",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه حصان!",
+      "explanation": "أحسنت! إنه حصان!"
+    },
+    {
+      "id": "kids_animals_ar_41",
+      "prompt": "اضغط على الحيوان البرتقالي ذي الذيل الكثيف!",
+      "spoken_prompt": "اضغط على الحيوان البرتقالي ذي الذيل الكثيف!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ثعلب",
+        "بطريق",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/fox.svg",
+        "media/penguin.svg",
+        "media/fish.svg"
+      ],
+      "answer": "ثعلب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه ثعلب!",
+      "explanation": "أحسنت! إنه ثعلب!"
+    },
+    {
+      "id": "kids_animals_ar_42",
+      "prompt": "اضغط على الحيوان الكبير الذي يحب العسل!",
+      "spoken_prompt": "اضغط على الحيوان الكبير الذي يحب العسل!",
+      "choice_style": "image_grid",
+      "choices": [
+        "دب",
+        "عصفور",
+        "فراشة"
+      ],
+      "choice_images": [
+        "media/bear.svg",
+        "media/bird.svg",
+        "media/butterfly.svg"
+      ],
+      "answer": "دب",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه دب!",
+      "explanation": "أحسنت! إنه دب!"
+    },
+    {
+      "id": "kids_animals_ar_43",
+      "prompt": "اضغط على الحيوان الذي يضع البيض في العش!",
+      "spoken_prompt": "اضغط على الحيوان الذي يضع البيض في العش!",
+      "choice_style": "image_grid",
+      "choices": [
+        "عصفور",
+        "قطة",
+        "بقرة"
+      ],
+      "choice_images": [
+        "media/bird.svg",
+        "media/cat.svg",
+        "media/cow.svg"
+      ],
+      "answer": "عصفور",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه عصفور!",
+      "explanation": "أحسنت! إنه عصفور!"
+    },
+    {
+      "id": "kids_animals_ar_44",
+      "prompt": "اضغط على الطائر الذي يسبح في البركة!",
+      "spoken_prompt": "اضغط على الطائر الذي يسبح في البركة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطة",
+        "أسد",
+        "حمار وحشي"
+      ],
+      "choice_images": [
+        "media/duck.svg",
+        "media/lion.svg",
+        "media/zebra.svg"
+      ],
+      "answer": "بطة",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! إنه بطة!",
+      "explanation": "أحسنت! إنه بطة!"
+    },
+    {
+      "id": "kids_animals_ar_45",
+      "prompt": "أي حيوان هو الأضخم في البحر؟",
+      "spoken_prompt": "أي حيوان هو الأضخم في البحر؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حوت",
+        "سمكة",
+        "بطة"
+      ],
+      "choice_images": [
+        "media/whale.svg",
+        "media/fish.svg",
+        "media/duck.svg"
+      ],
+      "answer": "حوت",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه حوت!",
+      "explanation": "أحسنت! إنه حوت!"
+    },
+    {
+      "id": "kids_animals_ar_46",
+      "prompt": "أي حيوان هو الأطول على اليابسة؟",
+      "spoken_prompt": "أي حيوان هو الأطول على اليابسة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "زرافة",
+        "فيل",
+        "جمل"
+      ],
+      "choice_images": [
+        "media/giraffe.svg",
+        "media/elephant.svg",
+        "media/camel.svg"
+      ],
+      "answer": "زرافة",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه زرافة!",
+      "explanation": "أحسنت! إنه زرافة!"
+    },
+    {
+      "id": "kids_animals_ar_47",
+      "prompt": "أي حيوان هو الأثقل على اليابسة؟",
+      "spoken_prompt": "أي حيوان هو الأثقل على اليابسة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فيل",
+        "دب",
+        "حصان"
+      ],
+      "choice_images": [
+        "media/elephant.svg",
+        "media/bear.svg",
+        "media/horse.svg"
+      ],
+      "answer": "فيل",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه فيل!",
+      "explanation": "أحسنت! إنه فيل!"
+    },
+    {
+      "id": "kids_animals_ar_48",
+      "prompt": "أي حيوان ينام طوال فصل الشتاء؟",
+      "spoken_prompt": "أي حيوان ينام طوال فصل الشتاء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دب",
+        "حمار وحشي",
+        "جمل"
+      ],
+      "choice_images": [
+        "media/bear.svg",
+        "media/zebra.svg",
+        "media/camel.svg"
+      ],
+      "answer": "دب",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه دب!",
+      "explanation": "أحسنت! إنه دب!"
+    },
+    {
+      "id": "kids_animals_ar_49",
+      "prompt": "أي حشرة تبدأ حياتها كيرقة صغيرة؟",
+      "spoken_prompt": "أي حشرة تبدأ حياتها كيرقة صغيرة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراشة",
+        "نحلة",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/butterfly.svg",
+        "media/bee.svg",
+        "media/bird.svg"
+      ],
+      "answer": "فراشة",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه فراشة!",
+      "explanation": "أحسنت! إنه فراشة!"
+    },
+    {
+      "id": "kids_animals_ar_50",
+      "prompt": "أي حيوان يبدأ حياته في الماء ثم يقفز على البر؟",
+      "spoken_prompt": "أي حيوان يبدأ حياته في الماء ثم يقفز على البر؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ضفدع",
+        "سمكة",
+        "بطة"
+      ],
+      "choice_images": [
+        "media/frog.svg",
+        "media/fish.svg",
+        "media/duck.svg"
+      ],
+      "answer": "ضفدع",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه ضفدع!",
+      "explanation": "أحسنت! إنه ضفدع!"
+    },
+    {
+      "id": "kids_animals_ar_51",
+      "prompt": "أي حيوان يُلقّب بسفينة الصحراء؟",
+      "spoken_prompt": "أي حيوان يُلقّب بسفينة الصحراء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جمل",
+        "حصان",
+        "بقرة"
+      ],
+      "choice_images": [
+        "media/camel.svg",
+        "media/horse.svg",
+        "media/cow.svg"
+      ],
+      "answer": "جمل",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه جمل!",
+      "explanation": "أحسنت! إنه جمل!"
+    },
+    {
+      "id": "kids_animals_ar_52",
+      "prompt": "أي طائر لا يطير لكنه يسبح بمهارة؟",
+      "spoken_prompt": "أي طائر لا يطير لكنه يسبح بمهارة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطريق",
+        "بومة",
+        "عصفور"
+      ],
+      "choice_images": [
+        "media/penguin.svg",
+        "media/owl.svg",
+        "media/bird.svg"
+      ],
+      "answer": "بطريق",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه بطريق!",
+      "explanation": "أحسنت! إنه بطريق!"
+    },
+    {
+      "id": "kids_animals_ar_53",
+      "prompt": "أي حيوان أليف يموء عندما يجوع؟",
+      "spoken_prompt": "أي حيوان أليف يموء عندما يجوع؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قطة",
+        "كلب",
+        "ثعلب"
+      ],
+      "choice_images": [
+        "media/cat.svg",
+        "media/dog.svg",
+        "media/fox.svg"
+      ],
+      "answer": "قطة",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه قطة!",
+      "explanation": "أحسنت! إنه قطة!"
+    },
+    {
+      "id": "kids_animals_ar_54",
+      "prompt": "أي حيوان وفيّ يهز ذيله فرحاً؟",
+      "spoken_prompt": "أي حيوان وفيّ يهز ذيله فرحاً؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كلب",
+        "قطة",
+        "خروف"
+      ],
+      "choice_images": [
+        "media/dog.svg",
+        "media/cat.svg",
+        "media/sheep.svg"
+      ],
+      "answer": "كلب",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه كلب!",
+      "explanation": "أحسنت! إنه كلب!"
+    },
+    {
+      "id": "kids_animals_ar_55",
+      "prompt": "أي حشرة تطير بين الأزهار وتطنّ؟",
+      "spoken_prompt": "أي حشرة تطير بين الأزهار وتطنّ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "نحلة",
+        "بومة",
+        "ضفدع"
+      ],
+      "choice_images": [
+        "media/bee.svg",
+        "media/owl.svg",
+        "media/frog.svg"
+      ],
+      "answer": "نحلة",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه نحلة!",
+      "explanation": "أحسنت! إنه نحلة!"
+    },
+    {
+      "id": "kids_animals_ar_56",
+      "prompt": "أي طائر يرى جيداً في الظلام؟",
+      "spoken_prompt": "أي طائر يرى جيداً في الظلام؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بومة",
+        "بطة",
+        "أسد"
+      ],
+      "choice_images": [
+        "media/owl.svg",
+        "media/duck.svg",
+        "media/lion.svg"
+      ],
+      "answer": "بومة",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه بومة!",
+      "explanation": "أحسنت! إنه بومة!"
+    },
+    {
+      "id": "kids_animals_ar_57",
+      "prompt": "أي حيوان له أذنان طويلتان؟",
+      "spoken_prompt": "أي حيوان له أذنان طويلتان؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أرنب",
+        "دب",
+        "سمكة"
+      ],
+      "choice_images": [
+        "media/rabbit.svg",
+        "media/bear.svg",
+        "media/fish.svg"
+      ],
+      "answer": "أرنب",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه أرنب!",
+      "explanation": "أحسنت! إنه أرنب!"
+    },
+    {
+      "id": "kids_animals_ar_58",
+      "prompt": "أي حيوان يعيش في المزرعة ويقول ماء ماء؟",
+      "spoken_prompt": "أي حيوان يعيش في المزرعة ويقول ماء ماء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "خروف",
+        "حمار وحشي",
+        "ثعلب"
+      ],
+      "choice_images": [
+        "media/sheep.svg",
+        "media/zebra.svg",
+        "media/fox.svg"
+      ],
+      "answer": "خروف",
+      "difficulty": "hard",
+      "reveal_message": "أحسنت! إنه خروف!",
+      "explanation": "أحسنت! إنه خروف!"
     }
   ],
   "cover": "media/cover.svg"

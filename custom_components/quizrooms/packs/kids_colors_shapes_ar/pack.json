@@ -3,7 +3,7 @@
   "title": "الألوان والأشكال",
   "description": "تعلّم الألوان والأشكال الهندسية البسيطة ببطاقات ملونة ممتعة للأطفال.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "color_swatch",
   "language": "ar",
   "rtl": true,
@@ -517,6 +517,666 @@
       "difficulty": "hard",
       "reveal_message": "أحسنت! لون الدب بني!",
       "explanation": "الدب لونها بني."
+    },
+    {
+      "id": "kids_colors_shapes_ar_26",
+      "prompt": "أحمر + أصفر = ؟",
+      "spoken_prompt": "مَا اللَّوْنُ الَّذِي نَحْصُلُ عَلَيْهِ عِنْدَ خَلْطِ الْأَحْمَرِ وَالْأَصْفَرِ؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "برتقالي",
+        "أخضر",
+        "بنفسجي"
+      ],
+      "choice_colors": [
+        "#f97316",
+        "#22c55e",
+        "#a855f7"
+      ],
+      "answer": "برتقالي",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو برتقالي!",
+      "explanation": "رائع! اللون هو برتقالي!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_27",
+      "prompt": "أزرق + أصفر = ؟",
+      "spoken_prompt": "مَا اللَّوْنُ الَّذِي نَحْصُلُ عَلَيْهِ عِنْدَ خَلْطِ الْأَزْرَقِ وَالْأَصْفَرِ؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أخضر",
+        "برتقالي",
+        "وردي"
+      ],
+      "choice_colors": [
+        "#22c55e",
+        "#f97316",
+        "#ec4899"
+      ],
+      "answer": "أخضر",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو أخضر!",
+      "explanation": "رائع! اللون هو أخضر!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_28",
+      "prompt": "أحمر + أزرق = ؟",
+      "spoken_prompt": "مَا اللَّوْنُ الَّذِي نَحْصُلُ عَلَيْهِ عِنْدَ خَلْطِ الْأَحْمَرِ وَالْأَزْرَقِ؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بنفسجي",
+        "أصفر",
+        "أخضر"
+      ],
+      "choice_colors": [
+        "#a855f7",
+        "#eab308",
+        "#22c55e"
+      ],
+      "answer": "بنفسجي",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو بنفسجي!",
+      "explanation": "رائع! اللون هو بنفسجي!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_29",
+      "prompt": "أحمر + أبيض = ؟",
+      "spoken_prompt": "مَا اللَّوْنُ الَّذِي نَحْصُلُ عَلَيْهِ عِنْدَ خَلْطِ الْأَحْمَرِ وَالْأَبْيَضِ؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "وردي",
+        "أزرق",
+        "بني"
+      ],
+      "choice_colors": [
+        "#ec4899",
+        "#3b82f6",
+        "#92400e"
+      ],
+      "answer": "وردي",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو وردي!",
+      "explanation": "رائع! اللون هو وردي!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_30",
+      "prompt": "أسود + أبيض = ؟",
+      "spoken_prompt": "مَا اللَّوْنُ الَّذِي نَحْصُلُ عَلَيْهِ عِنْدَ خَلْطِ الْأَسْوَدِ وَالْأَبْيَضِ؟",
+      "choice_style": "color_swatch",
+      "choices": [
+        "رمادي",
+        "أصفر",
+        "أحمر"
+      ],
+      "choice_colors": [
+        "#6b7280",
+        "#eab308",
+        "#ef4444"
+      ],
+      "answer": "رمادي",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو رمادي!",
+      "explanation": "رائع! اللون هو رمادي!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_31",
+      "prompt": "ما لون السماء الصافية؟",
+      "spoken_prompt": "اخْتَرْ لَوْنَ السَّمَاءِ الصَّافِيَةِ فِي النَّهَارِ!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أزرق",
+        "أحمر",
+        "بني"
+      ],
+      "choice_colors": [
+        "#3b82f6",
+        "#ef4444",
+        "#92400e"
+      ],
+      "answer": "أزرق",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو أزرق!",
+      "explanation": "رائع! اللون هو أزرق!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_32",
+      "prompt": "ما لون العشب في الحديقة؟",
+      "spoken_prompt": "اخْتَرْ لَوْنَ الْعُشْبِ الطَّازَجِ!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أخضر",
+        "بنفسجي",
+        "برتقالي"
+      ],
+      "choice_colors": [
+        "#22c55e",
+        "#a855f7",
+        "#f97316"
+      ],
+      "answer": "أخضر",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو أخضر!",
+      "explanation": "رائع! اللون هو أخضر!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_33",
+      "prompt": "ما لون الموز الناضج؟",
+      "spoken_prompt": "اخْتَرْ لَوْنَ الْمَوْزِ اللَّذِيذِ!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أصفر",
+        "أزرق",
+        "أسود"
+      ],
+      "choice_colors": [
+        "#eab308",
+        "#3b82f6",
+        "#111827"
+      ],
+      "answer": "أصفر",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو أصفر!",
+      "explanation": "رائع! اللون هو أصفر!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_34",
+      "prompt": "ما لون سيارة الإطفاء؟",
+      "spoken_prompt": "اخْتَرْ لَوْنَ سَيَّارَةِ الْإِطْفَاءِ!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "أحمر",
+        "أخضر",
+        "وردي"
+      ],
+      "choice_colors": [
+        "#ef4444",
+        "#22c55e",
+        "#ec4899"
+      ],
+      "answer": "أحمر",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو أحمر!",
+      "explanation": "رائع! اللون هو أحمر!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_35",
+      "prompt": "ما لون الشوكولاتة؟",
+      "spoken_prompt": "اخْتَرْ لَوْنَ الشُّوكُولَاتَةِ!",
+      "choice_style": "color_swatch",
+      "choices": [
+        "بني",
+        "أصفر",
+        "سماوي"
+      ],
+      "choice_colors": [
+        "#92400e",
+        "#eab308",
+        "#06b6d4"
+      ],
+      "answer": "بني",
+      "difficulty": "medium",
+      "reveal_message": "رائع! اللون هو بني!",
+      "explanation": "رائع! اللون هو بني!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_36",
+      "prompt": "ما شكل قطعة البيتزا؟",
+      "spoken_prompt": "ما شكل قطعة البيتزا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مثلث",
+        "دائرة",
+        "مربع"
+      ],
+      "choice_images": [
+        "media/shape_triangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_square.svg"
+      ],
+      "answer": "مثلث",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مثلث!",
+      "explanation": "ممتاز! الشكل هو مثلث!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_37",
+      "prompt": "ما شكل عجلة الدراجة؟",
+      "spoken_prompt": "ما شكل عجلة الدراجة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دائرة",
+        "مثلث",
+        "مستطيل"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_triangle.svg",
+        "media/shape_rectangle.svg"
+      ],
+      "answer": "دائرة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو دائرة!",
+      "explanation": "ممتاز! الشكل هو دائرة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_38",
+      "prompt": "ما شكل باب الغرفة؟",
+      "spoken_prompt": "ما شكل باب الغرفة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مستطيل",
+        "دائرة",
+        "نجمة"
+      ],
+      "choice_images": [
+        "media/shape_rectangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "مستطيل",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مستطيل!",
+      "explanation": "ممتاز! الشكل هو مستطيل!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_39",
+      "prompt": "ما شكل ساعة الحائط المستديرة؟",
+      "spoken_prompt": "ما شكل ساعة الحائط المستديرة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دائرة",
+        "مربع",
+        "قلب"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_square.svg",
+        "media/shape_heart.svg"
+      ],
+      "answer": "دائرة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو دائرة!",
+      "explanation": "ممتاز! الشكل هو دائرة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_40",
+      "prompt": "ما شكل الشباك المربع؟",
+      "spoken_prompt": "ما شكل الشباك المربع؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مربع",
+        "بيضاوي",
+        "مثلث"
+      ],
+      "choice_images": [
+        "media/shape_square.svg",
+        "media/shape_oval.svg",
+        "media/shape_triangle.svg"
+      ],
+      "answer": "مربع",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مربع!",
+      "explanation": "ممتاز! الشكل هو مربع!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_41",
+      "prompt": "ما شكل البيضة؟",
+      "spoken_prompt": "ما شكل البيضة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بيضاوي",
+        "مربع",
+        "نجمة"
+      ],
+      "choice_images": [
+        "media/shape_oval.svg",
+        "media/shape_square.svg",
+        "media/shape_star.svg"
+      ],
+      "answer": "بيضاوي",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو بيضاوي!",
+      "explanation": "ممتاز! الشكل هو بيضاوي!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_42",
+      "prompt": "ما الشكل الذي يلمع في السماء ليلاً؟",
+      "spoken_prompt": "ما الشكل الذي يلمع في السماء ليلاً؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "نجمة",
+        "مستطيل",
+        "بيضاوي"
+      ],
+      "choice_images": [
+        "media/shape_star.svg",
+        "media/shape_rectangle.svg",
+        "media/shape_oval.svg"
+      ],
+      "answer": "نجمة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو نجمة!",
+      "explanation": "ممتاز! الشكل هو نجمة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_43",
+      "prompt": "ما شكل الطائرة الورقية؟",
+      "spoken_prompt": "ما شكل الطائرة الورقية؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "معيّن",
+        "دائرة",
+        "بيضاوي"
+      ],
+      "choice_images": [
+        "media/shape_diamond.svg",
+        "media/shape_circle.svg",
+        "media/shape_oval.svg"
+      ],
+      "answer": "معيّن",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو معيّن!",
+      "explanation": "ممتاز! الشكل هو معيّن!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_44",
+      "prompt": "ما الشكل الذي يعبر عن الحب؟",
+      "spoken_prompt": "ما الشكل الذي يعبر عن الحب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "قلب",
+        "مربع",
+        "مثلث"
+      ],
+      "choice_images": [
+        "media/shape_heart.svg",
+        "media/shape_square.svg",
+        "media/shape_triangle.svg"
+      ],
+      "answer": "قلب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو قلب!",
+      "explanation": "ممتاز! الشكل هو قلب!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_45",
+      "prompt": "ما شكل إشارة التحذير المثلثة؟",
+      "spoken_prompt": "ما شكل إشارة التحذير المثلثة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مثلث",
+        "بيضاوي",
+        "قلب"
+      ],
+      "choice_images": [
+        "media/shape_triangle.svg",
+        "media/shape_oval.svg",
+        "media/shape_heart.svg"
+      ],
+      "answer": "مثلث",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مثلث!",
+      "explanation": "ممتاز! الشكل هو مثلث!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_46",
+      "prompt": "ما شكل غلاف الكتاب؟",
+      "spoken_prompt": "ما شكل غلاف الكتاب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مستطيل",
+        "دائرة",
+        "معيّن"
+      ],
+      "choice_images": [
+        "media/shape_rectangle.svg",
+        "media/shape_circle.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "مستطيل",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مستطيل!",
+      "explanation": "ممتاز! الشكل هو مستطيل!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_47",
+      "prompt": "ما شكل العملة المعدنية؟",
+      "spoken_prompt": "ما شكل العملة المعدنية؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "دائرة",
+        "مثلث",
+        "معيّن"
+      ],
+      "choice_images": [
+        "media/shape_circle.svg",
+        "media/shape_triangle.svg",
+        "media/shape_diamond.svg"
+      ],
+      "answer": "دائرة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو دائرة!",
+      "explanation": "ممتاز! الشكل هو دائرة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_48",
+      "prompt": "ما الشكل الذي له ٤ أضلاع متساوية؟",
+      "spoken_prompt": "ما الشكل الذي له ٤ أضلاع متساوية؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مربع",
+        "مثلث",
+        "دائرة"
+      ],
+      "choice_images": [
+        "media/shape_square.svg",
+        "media/shape_triangle.svg",
+        "media/shape_circle.svg"
+      ],
+      "answer": "مربع",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الشكل هو مربع!",
+      "explanation": "ممتاز! الشكل هو مربع!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_49",
+      "prompt": "اضغط على المكعب!",
+      "spoken_prompt": "اضغط على المكعب!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مكعب",
+        "كرة",
+        "مخروط"
+      ],
+      "choice_images": [
+        "media/shape_cube.svg",
+        "media/shape_sphere.svg",
+        "media/shape_cone.svg"
+      ],
+      "answer": "مكعب",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل مكعب!",
+      "explanation": "عبقري! هذا شكل مكعب!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_50",
+      "prompt": "اضغط على الكرة!",
+      "spoken_prompt": "اضغط على الكرة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "كرة",
+        "مكعب",
+        "هرم"
+      ],
+      "choice_images": [
+        "media/shape_sphere.svg",
+        "media/shape_cube.svg",
+        "media/shape_pyramid.svg"
+      ],
+      "answer": "كرة",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل كرة!",
+      "explanation": "عبقري! هذا شكل كرة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_51",
+      "prompt": "اضغط على المخروط!",
+      "spoken_prompt": "اضغط على المخروط!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مخروط",
+        "أسطوانة",
+        "مكعب"
+      ],
+      "choice_images": [
+        "media/shape_cone.svg",
+        "media/shape_cylinder.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "مخروط",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل مخروط!",
+      "explanation": "عبقري! هذا شكل مخروط!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_52",
+      "prompt": "اضغط على الأسطوانة!",
+      "spoken_prompt": "اضغط على الأسطوانة!",
+      "choice_style": "image_grid",
+      "choices": [
+        "أسطوانة",
+        "مخروط",
+        "كرة"
+      ],
+      "choice_images": [
+        "media/shape_cylinder.svg",
+        "media/shape_cone.svg",
+        "media/shape_sphere.svg"
+      ],
+      "answer": "أسطوانة",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل أسطوانة!",
+      "explanation": "عبقري! هذا شكل أسطوانة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_53",
+      "prompt": "اضغط على الهرم!",
+      "spoken_prompt": "اضغط على الهرم!",
+      "choice_style": "image_grid",
+      "choices": [
+        "هرم",
+        "مكعب",
+        "أسطوانة"
+      ],
+      "choice_images": [
+        "media/shape_pyramid.svg",
+        "media/shape_cube.svg",
+        "media/shape_cylinder.svg"
+      ],
+      "answer": "هرم",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل هرم!",
+      "explanation": "عبقري! هذا شكل هرم!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_54",
+      "prompt": "أي شكل ثلاثي الأبعاد يشبه حجر النرد؟",
+      "spoken_prompt": "أي شكل ثلاثي الأبعاد يشبه حجر النرد؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مكعب",
+        "مخروط",
+        "كرة"
+      ],
+      "choice_images": [
+        "media/shape_cube.svg",
+        "media/shape_cone.svg",
+        "media/shape_sphere.svg"
+      ],
+      "answer": "مكعب",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل مكعب!",
+      "explanation": "عبقري! هذا شكل مكعب!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_55",
+      "prompt": "أي شكل ثلاثي الأبعاد يشبه كرة القدم؟",
+      "spoken_prompt": "أي شكل ثلاثي الأبعاد يشبه كرة القدم؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كرة",
+        "مكعب",
+        "أسطوانة"
+      ],
+      "choice_images": [
+        "media/shape_sphere.svg",
+        "media/shape_cube.svg",
+        "media/shape_cylinder.svg"
+      ],
+      "answer": "كرة",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل كرة!",
+      "explanation": "عبقري! هذا شكل كرة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_56",
+      "prompt": "أي شكل ثلاثي الأبعاد يشبه بسكويت الآيس كريم؟",
+      "spoken_prompt": "أي شكل ثلاثي الأبعاد يشبه بسكويت الآيس كريم؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مخروط",
+        "هرم",
+        "مكعب"
+      ],
+      "choice_images": [
+        "media/shape_cone.svg",
+        "media/shape_pyramid.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "مخروط",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل مخروط!",
+      "explanation": "عبقري! هذا شكل مخروط!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_57",
+      "prompt": "أي شكل ثلاثي الأبعاد يشبه علبة العصير؟",
+      "spoken_prompt": "أي شكل ثلاثي الأبعاد يشبه علبة العصير؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أسطوانة",
+        "كرة",
+        "هرم"
+      ],
+      "choice_images": [
+        "media/shape_cylinder.svg",
+        "media/shape_sphere.svg",
+        "media/shape_pyramid.svg"
+      ],
+      "answer": "أسطوانة",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل أسطوانة!",
+      "explanation": "عبقري! هذا شكل أسطوانة!"
+    },
+    {
+      "id": "kids_colors_shapes_ar_58",
+      "prompt": "أي شكل ثلاثي الأبعاد يشبه أهرامات مصر؟",
+      "spoken_prompt": "أي شكل ثلاثي الأبعاد يشبه أهرامات مصر؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "هرم",
+        "مخروط",
+        "مكعب"
+      ],
+      "choice_images": [
+        "media/shape_pyramid.svg",
+        "media/shape_cone.svg",
+        "media/shape_cube.svg"
+      ],
+      "answer": "هرم",
+      "difficulty": "hard",
+      "reveal_message": "عبقري! هذا شكل هرم!",
+      "explanation": "عبقري! هذا شكل هرم!"
     }
   ],
   "cover": "media/cover.svg"

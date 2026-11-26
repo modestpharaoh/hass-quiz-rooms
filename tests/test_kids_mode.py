@@ -49,12 +49,25 @@ KIDS_PACK_IDS = {
     "kids_animals_ar",
     "kids_fruits_food_en",
     "kids_fruits_food_ar",
+    "kids_body_senses_en",
+    "kids_body_senses_ar",
+    "kids_vehicles_en",
+    "kids_vehicles_ar",
+    "kids_weather_seasons_en",
+    "kids_weather_seasons_ar",
+    "kids_around_house_en",
+    "kids_around_house_ar",
+    "kids_bilingual_bridge_en_ar",
+    "kids_ar_letter_forms_ar",
+    "kids_en_phonics_rhymes_en",
+    "kids_opposites_actions_en",
+    "kids_opposites_actions_ar",
 }
 
 HEX_RE = re.compile(r"^#[0-9a-fA-F]{6}$")
 
 
-def test_all_11_kids_packs_load_with_valid_visual_assets(tmp_path: Path) -> None:
+def test_all_24_kids_packs_load_with_valid_visual_assets(tmp_path: Path) -> None:
     registry = PackRegistry(BUILTIN_PACKS_DIR, tmp_path / "custom")
     packs = registry.reload()
     by_id = {p.pack_id: p for p in packs}
@@ -65,8 +78,9 @@ def test_all_11_kids_packs_load_with_valid_visual_assets(tmp_path: Path) -> None
         summary = pack.to_summary()
         assert pack.audience == AUDIENCE_KIDS
         assert summary["audience"] == AUDIENCE_KIDS
+        assert pack.age_range in ("3-6", "4-7", "5-8"), f"Unexpected age_range {pack.age_range} in {pid}"
         assert pack.open_ended is False
-        assert len(pack.questions) >= 24
+        assert len(pack.questions) >= 40, f"{pid} has only {len(pack.questions)} questions"
 
         for q in pack.questions:
             assert len(q.choices) in (3, 4)

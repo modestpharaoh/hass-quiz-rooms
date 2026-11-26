@@ -4,7 +4,7 @@ Canonical repository instructions for AI coding agents (**Codex**, **Claude Code
 
 ## Project Overview
 
-**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia and **Early Learner Mode** games (**48 built-in packs / 3,348 original questions / 813 local SVGs**, including 11 bilingual Early Learner packs), optional **Blind Final Bonus Question (`PHASE_BONUS_WAGER`)**, full Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard with D-Pad navigation & Overscan Safe Zone, Smart TV launching, LAN-only TV-synced Smart-Home Stage Effects (`stage_effects.py`), and a tabbed Home Assistant Admin Sidebar Panel.
+**QuizRooms** (`custom_components/quizrooms/`) is a local-first, zero-dependency Home Assistant custom integration (HACS-installable) providing multi-room confidence-wagering party trivia and **Early Learner Mode** games (**61 built-in packs / 4,299 original questions / 1,071 local SVGs**, including 24 bilingual Early Learner packs), optional **Blind Final Bonus Question (`PHASE_BONUS_WAGER`)**, full Arabic/RTL support, open-ended games (**أتوبيس كومبليت** & **Autobus Complete**), globally unique player avatars, a 16:9 Studio TV Dashboard with D-Pad navigation & Overscan Safe Zone, Smart TV launching, LAN-only TV-synced Smart-Home Stage Effects (`stage_effects.py`), and a tabbed Home Assistant Admin Sidebar Panel.
 
 Read these docs before making architectural changes:
 - `docs/ARCHITECTURE.md` — Backend coordinator, game state machine (including `bonus_wager`), WebSocket flow, `NetworkGuard`, `StageDirector`, and Smart TV launcher.

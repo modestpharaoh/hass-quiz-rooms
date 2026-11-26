@@ -1,0 +1,841 @@
+{
+  "pack_id": "kids_ar_letter_forms_ar",
+  "title": "أشكال الحروف والحركات",
+  "description": "ميّز أشكال الحرف في أول ووسط وآخر الكلمة (بـ / ـبـ / ـب) والفتحة والكسرة والضمة والسكون.",
+  "audience": "kids",
+  "age_range": "5-8",
+  "choice_style": "large_glyph",
+  "language": "ar",
+  "rtl": true,
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "category": "تعلّم مبكر · الحركات وأشكال الحروف",
+  "questions": [
+    {
+      "id": "ar_frm_01",
+      "prompt": "اختر حرف (ب) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْبَاءِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "بَ",
+        "بِ",
+        "بُ"
+      ],
+      "answer": "بَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (بَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: بَ."
+    },
+    {
+      "id": "ar_frm_02",
+      "prompt": "اختر حرف (ب) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْبَاءِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "بِ",
+        "بَ",
+        "بُ"
+      ],
+      "answer": "بِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (بِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: بِ."
+    },
+    {
+      "id": "ar_frm_03",
+      "prompt": "اختر حرف (ت) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ التَّاءِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "تَ",
+        "تِ",
+        "تُ"
+      ],
+      "answer": "تَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (تَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: تَ."
+    },
+    {
+      "id": "ar_frm_04",
+      "prompt": "اختر حرف (ت) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ التَّاءِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "تِ",
+        "تَ",
+        "تُ"
+      ],
+      "answer": "تِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (تِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: تِ."
+    },
+    {
+      "id": "ar_frm_05",
+      "prompt": "اختر حرف (ج) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْجِيمِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "جَ",
+        "جِ",
+        "جُ"
+      ],
+      "answer": "جَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (جَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: جَ."
+    },
+    {
+      "id": "ar_frm_06",
+      "prompt": "اختر حرف (ج) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْجِيمِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "جِ",
+        "جَ",
+        "جُ"
+      ],
+      "answer": "جِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (جِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: جِ."
+    },
+    {
+      "id": "ar_frm_07",
+      "prompt": "اختر حرف (س) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ السِّينِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "سَ",
+        "سِ",
+        "سُ"
+      ],
+      "answer": "سَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (سَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: سَ."
+    },
+    {
+      "id": "ar_frm_08",
+      "prompt": "اختر حرف (س) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ السِّينِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "سِ",
+        "سَ",
+        "سُ"
+      ],
+      "answer": "سِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (سِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: سِ."
+    },
+    {
+      "id": "ar_frm_09",
+      "prompt": "اختر حرف (م) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْمِيمِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "مَ",
+        "مِ",
+        "مُ"
+      ],
+      "answer": "مَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (مَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: مَ."
+    },
+    {
+      "id": "ar_frm_10",
+      "prompt": "اختر حرف (م) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْمِيمِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "مِ",
+        "مَ",
+        "مُ"
+      ],
+      "answer": "مِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (مِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: مِ."
+    },
+    {
+      "id": "ar_frm_11",
+      "prompt": "اختر حرف (ن) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ النُّونِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "نَ",
+        "نِ",
+        "نُ"
+      ],
+      "answer": "نَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (نَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: نَ."
+    },
+    {
+      "id": "ar_frm_12",
+      "prompt": "اختر حرف (ن) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ النُّونِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "نِ",
+        "نَ",
+        "نُ"
+      ],
+      "answer": "نِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (نِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: نِ."
+    },
+    {
+      "id": "ar_frm_13",
+      "prompt": "اختر حرف (ل) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ اللَّامِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "لَ",
+        "لِ",
+        "لُ"
+      ],
+      "answer": "لَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (لَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: لَ."
+    },
+    {
+      "id": "ar_frm_14",
+      "prompt": "اختر حرف (ل) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ اللَّامِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "لِ",
+        "لَ",
+        "لُ"
+      ],
+      "answer": "لِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (لِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: لِ."
+    },
+    {
+      "id": "ar_frm_15",
+      "prompt": "اختر حرف (ك) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْكَافِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "كَ",
+        "كِ",
+        "كُ"
+      ],
+      "answer": "كَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (كَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: كَ."
+    },
+    {
+      "id": "ar_frm_16",
+      "prompt": "اختر حرف (ك) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْكَافِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "كِ",
+        "كَ",
+        "كُ"
+      ],
+      "answer": "كِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (كِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: كِ."
+    },
+    {
+      "id": "ar_frm_17",
+      "prompt": "اختر حرف (ق) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْقَافِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "قَ",
+        "قِ",
+        "قُ"
+      ],
+      "answer": "قَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (قَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: قَ."
+    },
+    {
+      "id": "ar_frm_18",
+      "prompt": "اختر حرف (ق) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْقَافِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "قِ",
+        "قَ",
+        "قُ"
+      ],
+      "answer": "قِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (قِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: قِ."
+    },
+    {
+      "id": "ar_frm_19",
+      "prompt": "اختر حرف (ع) بالفتحة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْعَيْنِ مَعَ الْفَتْحَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "عَ",
+        "عِ",
+        "عُ"
+      ],
+      "answer": "عَ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! (عَ) بالفتحة!",
+      "explanation": "الفتحة توضع فوق الحرف: عَ."
+    },
+    {
+      "id": "ar_frm_20",
+      "prompt": "اختر حرف (ع) بالكسرة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْعَيْنِ مَعَ الْكَسْرَةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "عِ",
+        "عَ",
+        "عُ"
+      ],
+      "answer": "عِ",
+      "difficulty": "easy",
+      "reveal_message": "ممتاز! (عِ) بالكسرة!",
+      "explanation": "الكسرة توضع تحت الحرف: عِ."
+    },
+    {
+      "id": "ar_frm_21",
+      "prompt": "ما شكل حرف (ب) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْبَاءِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "بـ",
+        "ـبـ",
+        "ـب"
+      ],
+      "answer": "بـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (بـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ب) في أول الكلمة هكذا: بـ."
+    },
+    {
+      "id": "ar_frm_22",
+      "prompt": "ما شكل حرف (ب) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْبَاءِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـبـ",
+        "بـ",
+        "ـب"
+      ],
+      "answer": "ـبـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـبـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ب) في وسط الكلمة هكذا: ـبـ."
+    },
+    {
+      "id": "ar_frm_23",
+      "prompt": "ما شكل حرف (ت) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ التَّاءِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "تـ",
+        "ـتـ",
+        "ـت"
+      ],
+      "answer": "تـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (تـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ت) في أول الكلمة هكذا: تـ."
+    },
+    {
+      "id": "ar_frm_24",
+      "prompt": "ما شكل حرف (ت) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ التَّاءِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـتـ",
+        "تـ",
+        "ـت"
+      ],
+      "answer": "ـتـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـتـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ت) في وسط الكلمة هكذا: ـتـ."
+    },
+    {
+      "id": "ar_frm_25",
+      "prompt": "ما شكل حرف (ج) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْجِيمِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "جـ",
+        "ـجـ",
+        "ـج"
+      ],
+      "answer": "جـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (جـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ج) في أول الكلمة هكذا: جـ."
+    },
+    {
+      "id": "ar_frm_26",
+      "prompt": "ما شكل حرف (ج) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْجِيمِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـجـ",
+        "جـ",
+        "ـج"
+      ],
+      "answer": "ـجـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـجـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ج) في وسط الكلمة هكذا: ـجـ."
+    },
+    {
+      "id": "ar_frm_27",
+      "prompt": "ما شكل حرف (س) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ السِّينِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "سـ",
+        "ـسـ",
+        "ـس"
+      ],
+      "answer": "سـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (سـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (س) في أول الكلمة هكذا: سـ."
+    },
+    {
+      "id": "ar_frm_28",
+      "prompt": "ما شكل حرف (س) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ السِّينِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـسـ",
+        "سـ",
+        "ـس"
+      ],
+      "answer": "ـسـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـسـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (س) في وسط الكلمة هكذا: ـسـ."
+    },
+    {
+      "id": "ar_frm_29",
+      "prompt": "ما شكل حرف (ع) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْعَيْنِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "عـ",
+        "ـعـ",
+        "ـع"
+      ],
+      "answer": "عـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (عـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ع) في أول الكلمة هكذا: عـ."
+    },
+    {
+      "id": "ar_frm_30",
+      "prompt": "ما شكل حرف (ع) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْعَيْنِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـعـ",
+        "عـ",
+        "ـع"
+      ],
+      "answer": "ـعـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـعـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ع) في وسط الكلمة هكذا: ـعـ."
+    },
+    {
+      "id": "ar_frm_31",
+      "prompt": "ما شكل حرف (ف) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْفَاءِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "فـ",
+        "ـفـ",
+        "ـف"
+      ],
+      "answer": "فـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (فـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ف) في أول الكلمة هكذا: فـ."
+    },
+    {
+      "id": "ar_frm_32",
+      "prompt": "ما شكل حرف (ف) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْفَاءِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـفـ",
+        "فـ",
+        "ـف"
+      ],
+      "answer": "ـفـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـفـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ف) في وسط الكلمة هكذا: ـفـ."
+    },
+    {
+      "id": "ar_frm_33",
+      "prompt": "ما شكل حرف (ك) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْكَافِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "كـ",
+        "ـكـ",
+        "ـك"
+      ],
+      "answer": "كـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (كـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ك) في أول الكلمة هكذا: كـ."
+    },
+    {
+      "id": "ar_frm_34",
+      "prompt": "ما شكل حرف (ك) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْكَافِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـكـ",
+        "كـ",
+        "ـك"
+      ],
+      "answer": "ـكـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـكـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ك) في وسط الكلمة هكذا: ـكـ."
+    },
+    {
+      "id": "ar_frm_35",
+      "prompt": "ما شكل حرف (م) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْمِيمِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "مـ",
+        "ـمـ",
+        "ـم"
+      ],
+      "answer": "مـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (مـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (م) في أول الكلمة هكذا: مـ."
+    },
+    {
+      "id": "ar_frm_36",
+      "prompt": "ما شكل حرف (م) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْمِيمِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـمـ",
+        "مـ",
+        "ـم"
+      ],
+      "answer": "ـمـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـمـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (م) في وسط الكلمة هكذا: ـمـ."
+    },
+    {
+      "id": "ar_frm_37",
+      "prompt": "ما شكل حرف (ه) في أول الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْهَاءِ فِي أَوَّلِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "هـ",
+        "ـهـ",
+        "ـه"
+      ],
+      "answer": "هـ",
+      "difficulty": "medium",
+      "reveal_message": "رائع! (هـ) في أول الكلمة!",
+      "explanation": "يُكتب حرف (ه) في أول الكلمة هكذا: هـ."
+    },
+    {
+      "id": "ar_frm_38",
+      "prompt": "ما شكل حرف (ه) في وسط الكلمة؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْهَاءِ فِي وَسَطِ الْكَلِمَةِ؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـهـ",
+        "هـ",
+        "ـه"
+      ],
+      "answer": "ـهـ",
+      "difficulty": "medium",
+      "reveal_message": "أحسنت! (ـهـ) في وسط الكلمة!",
+      "explanation": "يُكتب حرف (ه) في وسط الكلمة هكذا: ـهـ."
+    },
+    {
+      "id": "ar_frm_39",
+      "prompt": "ما شكل حرف (ب) في آخر كلمة «كِتَا__»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْبَاءِ فِي آخِرِ كَلِمَةِ كِتَاب؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ب",
+        "بـ",
+        "ـبـ"
+      ],
+      "answer": "ب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ب) — كِتَاب!",
+      "explanation": "الإجابة الصحيحة هي (ب)."
+    },
+    {
+      "id": "ar_frm_40",
+      "prompt": "ما شكل حرف (ب) في وسط كلمة «مَكْتَ__ة»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْبَاءِ فِي وَسَطِ كَلِمَةِ مَكْتَبَة؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـبـ",
+        "بـ",
+        "ـب"
+      ],
+      "answer": "ـبـ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ـبـ) — مَكْتَبَة!",
+      "explanation": "الإجابة الصحيحة هي (ـبـ)."
+    },
+    {
+      "id": "ar_frm_41",
+      "prompt": "ما شكل حرف (ع) في وسط كلمة «مَلْ__ب»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْعَيْنِ فِي وَسَطِ كَلِمَةِ مَلْعَب؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـعـ",
+        "عـ",
+        "ـع"
+      ],
+      "answer": "ـعـ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ـعـ) — مَلْعَب!",
+      "explanation": "الإجابة الصحيحة هي (ـعـ)."
+    },
+    {
+      "id": "ar_frm_42",
+      "prompt": "ما شكل حرف (ع) في آخر كلمة «رَبِي__»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْعَيْنِ فِي آخِرِ كَلِمَةِ رَبِيع؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـع",
+        "عـ",
+        "ـعـ"
+      ],
+      "answer": "ـع",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ـع) — رَبِيع!",
+      "explanation": "الإجابة الصحيحة هي (ـع)."
+    },
+    {
+      "id": "ar_frm_43",
+      "prompt": "ما شكل حرف (ه) في وسط كلمة «نَ__ر»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْهَاءِ فِي وَسَطِ كَلِمَةِ نَهْر؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـهـ",
+        "هـ",
+        "ـه"
+      ],
+      "answer": "ـهـ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ـهـ) — نَهْر!",
+      "explanation": "الإجابة الصحيحة هي (ـهـ)."
+    },
+    {
+      "id": "ar_frm_44",
+      "prompt": "ما شكل حرف (ك) في أول كلمة «__تَاب»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْكَافِ فِي أَوَّلِ كَلِمَةِ كِتَاب؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "كـ",
+        "ـك",
+        "ـكـ"
+      ],
+      "answer": "كـ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (كـ) — كِتَاب!",
+      "explanation": "الإجابة الصحيحة هي (كـ)."
+    },
+    {
+      "id": "ar_frm_45",
+      "prompt": "ما شكل حرف (م) في آخر كلمة «قَلَ__»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْمِيمِ فِي آخِرِ كَلِمَةِ قَلَم؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ـم",
+        "مـ",
+        "ـمـ"
+      ],
+      "answer": "ـم",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ـم) — قَلَم!",
+      "explanation": "الإجابة الصحيحة هي (ـم)."
+    },
+    {
+      "id": "ar_frm_46",
+      "prompt": "ما شكل حرف (س) في أول كلمة «__مَكَة»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ السِّينِ فِي أَوَّلِ كَلِمَةِ سَمَكَة؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "سـ",
+        "ـسـ",
+        "ـس"
+      ],
+      "answer": "سـ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (سـ) — سَمَكَة!",
+      "explanation": "الإجابة الصحيحة هي (سـ)."
+    },
+    {
+      "id": "ar_frm_47",
+      "prompt": "ما شكل حرف (ف) في آخر كلمة «خَرُو__»؟",
+      "spoken_prompt": "مَا شَكْلُ حَرْفِ الْفَاءِ فِي آخِرِ كَلِمَةِ خَرُوف؟",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ف",
+        "فـ",
+        "ـفـ"
+      ],
+      "answer": "ف",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ف) — خَرُوف!",
+      "explanation": "الإجابة الصحيحة هي (ف)."
+    },
+    {
+      "id": "ar_frm_48",
+      "prompt": "اختر حرف (ب) بالضمة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْبَاءِ مَعَ الضَّمَّةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "بُ",
+        "بَ",
+        "بِ"
+      ],
+      "answer": "بُ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (بُ) — بُ!",
+      "explanation": "الإجابة الصحيحة هي (بُ)."
+    },
+    {
+      "id": "ar_frm_49",
+      "prompt": "اختر حرف (س) بالضمة:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ السِّينِ مَعَ الضَّمَّةِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "سُ",
+        "سَ",
+        "سِ"
+      ],
+      "answer": "سُ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (سُ) — سُ!",
+      "explanation": "الإجابة الصحيحة هي (سُ)."
+    },
+    {
+      "id": "ar_frm_50",
+      "prompt": "اختر حرف (م) بالسكون:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ الْمِيمِ مَعَ السُّكُونِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "مْ",
+        "مَ",
+        "مُ"
+      ],
+      "answer": "مْ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (مْ) — مْ!",
+      "explanation": "الإجابة الصحيحة هي (مْ)."
+    },
+    {
+      "id": "ar_frm_51",
+      "prompt": "اختر حرف (ن) بالسكون:",
+      "spoken_prompt": "اخْتَرْ حَرْفَ النُّونِ مَعَ السُّكُونِ!",
+      "choice_style": "large_glyph",
+      "choices": [
+        "نْ",
+        "نِ",
+        "نَ"
+      ],
+      "answer": "نْ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (نْ) — نْ!",
+      "explanation": "الإجابة الصحيحة هي (نْ)."
+    },
+    {
+      "id": "ar_frm_52",
+      "prompt": "ما حركة الحرف الأول في كلمة «بَطَّة»؟",
+      "spoken_prompt": "مَا حَرَكَةُ حَرْفِ الْبَاءِ فِي كَلِمَةِ بَطَّة؟",
+      "choice_style": "default",
+      "choices": [
+        "فتحة ( ـَ )",
+        "كسرة ( ـِ )",
+        "ضمة ( ـُ )"
+      ],
+      "answer": "فتحة ( ـَ )",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (فتحة ( ـَ )) — بَطَّة!",
+      "explanation": "الإجابة الصحيحة هي (فتحة ( ـَ ))."
+    },
+    {
+      "id": "ar_frm_53",
+      "prompt": "ما حركة الحرف الأول في كلمة «تُفَّاحَة»؟",
+      "spoken_prompt": "مَا حَرَكَةُ حَرْفِ التَّاءِ فِي كَلِمَةِ تُفَّاحَة؟",
+      "choice_style": "default",
+      "choices": [
+        "ضمة ( ـُ )",
+        "فتحة ( ـَ )",
+        "كسرة ( ـِ )"
+      ],
+      "answer": "ضمة ( ـُ )",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (ضمة ( ـُ )) — تُفَّاحَة!",
+      "explanation": "الإجابة الصحيحة هي (ضمة ( ـُ ))."
+    },
+    {
+      "id": "ar_frm_54",
+      "prompt": "ما حركة الحرف الأول في كلمة «كِتَاب»؟",
+      "spoken_prompt": "مَا حَرَكَةُ حَرْفِ الْكَافِ فِي كَلِمَةِ كِتَاب؟",
+      "choice_style": "default",
+      "choices": [
+        "كسرة ( ـِ )",
+        "ضمة ( ـُ )",
+        "فتحة ( ـَ )"
+      ],
+      "answer": "كسرة ( ـِ )",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (كسرة ( ـِ )) — كِتَاب!",
+      "explanation": "الإجابة الصحيحة هي (كسرة ( ـِ ))."
+    },
+    {
+      "id": "ar_frm_55",
+      "prompt": "ما حركة الحرف الأول في كلمة «قَمَر»؟",
+      "spoken_prompt": "مَا حَرَكَةُ حَرْفِ الْقَافِ فِي كَلِمَةِ قَمَر؟",
+      "choice_style": "default",
+      "choices": [
+        "فتحة ( ـَ )",
+        "كسرة ( ـِ )",
+        "ضمة ( ـُ )"
+      ],
+      "answer": "فتحة ( ـَ )",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة (فتحة ( ـَ )) — قَمَر!",
+      "explanation": "الإجابة الصحيحة هي (فتحة ( ـَ ))."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

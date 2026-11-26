@@ -3,7 +3,7 @@
   "title": "الفواكه والطعام",
   "description": "تعرّف على الفواكه والخضروات والأطعمة اليومية بالصور الملونة للأطفال.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "image_grid",
   "language": "ar",
   "rtl": true,
@@ -490,6 +490,646 @@
       "difficulty": "hard",
       "reveal_message": "الليمون طعمه حامض!",
       "explanation": "الليمون طعمه حامض!"
+    },
+    {
+      "id": "kids_fruits_food_ar_25",
+      "prompt": "أي فاكهة صفراء ومقوسة؟",
+      "spoken_prompt": "أي فاكهة صفراء ومقوسة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "موز",
+        "تفاحة",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/apple.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "موز",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه موز!",
+      "explanation": "لذيذ! إنه موز!"
+    },
+    {
+      "id": "kids_fruits_food_ar_26",
+      "prompt": "أي فاكهة خضراء من الخارج وحمراء من الداخل؟",
+      "spoken_prompt": "أي فاكهة خضراء من الخارج وحمراء من الداخل؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطيخ",
+        "ليمون",
+        "برتقال"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/lemon.svg",
+        "media/orange.svg"
+      ],
+      "answer": "بطيخ",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه بطيخ!",
+      "explanation": "لذيذ! إنه بطيخ!"
+    },
+    {
+      "id": "kids_fruits_food_ar_27",
+      "prompt": "أي فاكهة صفراء وحامضة جداً؟",
+      "spoken_prompt": "أي فاكهة صفراء وحامضة جداً؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليمون",
+        "فراولة",
+        "موز"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/strawberry.svg",
+        "media/banana.svg"
+      ],
+      "answer": "ليمون",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه ليمون!",
+      "explanation": "لذيذ! إنه ليمون!"
+    },
+    {
+      "id": "kids_fruits_food_ar_28",
+      "prompt": "أي فاكهة حمراء عليها بذور صغيرة من الخارج؟",
+      "spoken_prompt": "أي فاكهة حمراء عليها بذور صغيرة من الخارج؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراولة",
+        "تفاحة",
+        "برتقال"
+      ],
+      "choice_images": [
+        "media/strawberry.svg",
+        "media/apple.svg",
+        "media/orange.svg"
+      ],
+      "answer": "فراولة",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه فراولة!",
+      "explanation": "لذيذ! إنه فراولة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_29",
+      "prompt": "أي فاكهة تنمو في عنقود بنفسجي؟",
+      "spoken_prompt": "أي فاكهة تنمو في عنقود بنفسجي؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "عنب",
+        "بطيخ",
+        "أناناس"
+      ],
+      "choice_images": [
+        "media/grapes.svg",
+        "media/watermelon.svg",
+        "media/pineapple.svg"
+      ],
+      "answer": "عنب",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه عنب!",
+      "explanation": "لذيذ! إنه عنب!"
+    },
+    {
+      "id": "kids_fruits_food_ar_30",
+      "prompt": "أي فاكهة لها تاج أخضر فوقها؟",
+      "spoken_prompt": "أي فاكهة لها تاج أخضر فوقها؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أناناس",
+        "موز",
+        "ليمون"
+      ],
+      "choice_images": [
+        "media/pineapple.svg",
+        "media/banana.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "أناناس",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه أناناس!",
+      "explanation": "لذيذ! إنه أناناس!"
+    },
+    {
+      "id": "kids_fruits_food_ar_31",
+      "prompt": "أي فاكهة مليئة بحبات حمراء كالـياقوت؟",
+      "spoken_prompt": "أي فاكهة مليئة بحبات حمراء كالـياقوت؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "رمان",
+        "خبز",
+        "ذرة"
+      ],
+      "choice_images": [
+        "media/pomegranate.svg",
+        "media/bread.svg",
+        "media/corn.svg"
+      ],
+      "answer": "رمان",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه رمان!",
+      "explanation": "لذيذ! إنه رمان!"
+    },
+    {
+      "id": "kids_fruits_food_ar_32",
+      "prompt": "أي خضار برتقالي مقرمش يحبه الأرنب؟",
+      "spoken_prompt": "أي خضار برتقالي مقرمش يحبه الأرنب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جزر",
+        "طماطم",
+        "جبن"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/tomato.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "جزر",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه جزر!",
+      "explanation": "لذيذ! إنه جزر!"
+    },
+    {
+      "id": "kids_fruits_food_ar_33",
+      "prompt": "أي خضار أصفر ينمو على كوز؟",
+      "spoken_prompt": "أي خضار أصفر ينمو على كوز؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ذرة",
+        "جزر",
+        "تفاحة"
+      ],
+      "choice_images": [
+        "media/corn.svg",
+        "media/carrot.svg",
+        "media/apple.svg"
+      ],
+      "answer": "ذرة",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه ذرة!",
+      "explanation": "لذيذ! إنه ذرة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_34",
+      "prompt": "أي طعام أحمر نصنع منه صلصة البيتزا؟",
+      "spoken_prompt": "أي طعام أحمر نصنع منه صلصة البيتزا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "طماطم",
+        "موز",
+        "حليب"
+      ],
+      "choice_images": [
+        "media/tomato.svg",
+        "media/banana.svg",
+        "media/milk.svg"
+      ],
+      "answer": "طماطم",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه طماطم!",
+      "explanation": "لذيذ! إنه طماطم!"
+    },
+    {
+      "id": "kids_fruits_food_ar_35",
+      "prompt": "أي شراب أبيض يأتينا من البقرة؟",
+      "spoken_prompt": "أي شراب أبيض يأتينا من البقرة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حليب",
+        "عصير",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/juice.svg",
+        "media/bread.svg"
+      ],
+      "answer": "حليب",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه حليب!",
+      "explanation": "لذيذ! إنه حليب!"
+    },
+    {
+      "id": "kids_fruits_food_ar_36",
+      "prompt": "أي حلوى باردة تذوب في الشمس؟",
+      "spoken_prompt": "أي حلوى باردة تذوب في الشمس؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "آيس كريم",
+        "خبز",
+        "بيض"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "آيس كريم",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه آيس كريم!",
+      "explanation": "لذيذ! إنه آيس كريم!"
+    },
+    {
+      "id": "kids_fruits_food_ar_37",
+      "prompt": "أي طعام يأتينا من الدجاجة؟",
+      "spoken_prompt": "أي طعام يأتينا من الدجاجة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بيض",
+        "جبن",
+        "تفاحة"
+      ],
+      "choice_images": [
+        "media/egg.svg",
+        "media/cheese.svg",
+        "media/apple.svg"
+      ],
+      "answer": "بيض",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه بيض!",
+      "explanation": "لذيذ! إنه بيض!"
+    },
+    {
+      "id": "kids_fruits_food_ar_38",
+      "prompt": "أي طعام يُصنع من الحليب؟",
+      "spoken_prompt": "أي طعام يُصنع من الحليب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جبن",
+        "ذرة",
+        "ليمون"
+      ],
+      "choice_images": [
+        "media/cheese.svg",
+        "media/corn.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "جبن",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه جبن!",
+      "explanation": "لذيذ! إنه جبن!"
+    },
+    {
+      "id": "kids_fruits_food_ar_39",
+      "prompt": "أي طعام مخبوز نستخدمه للسندويتشات؟",
+      "spoken_prompt": "أي طعام مخبوز نستخدمه للسندويتشات؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "خبز",
+        "بطيخ",
+        "حليب"
+      ],
+      "choice_images": [
+        "media/bread.svg",
+        "media/watermelon.svg",
+        "media/milk.svg"
+      ],
+      "answer": "خبز",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه خبز!",
+      "explanation": "لذيذ! إنه خبز!"
+    },
+    {
+      "id": "kids_fruits_food_ar_40",
+      "prompt": "أي مشروب لذيذ يُعصر من الفاكهة؟",
+      "spoken_prompt": "أي مشروب لذيذ يُعصر من الفاكهة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "عصير",
+        "جبن",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/juice.svg",
+        "media/cheese.svg",
+        "media/bread.svg"
+      ],
+      "answer": "عصير",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه عصير!",
+      "explanation": "لذيذ! إنه عصير!"
+    },
+    {
+      "id": "kids_fruits_food_ar_41",
+      "prompt": "أي فاكهة اسمها مثل لونها؟",
+      "spoken_prompt": "أي فاكهة اسمها مثل لونها؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "برتقال",
+        "تفاحة",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/orange.svg",
+        "media/apple.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "برتقال",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه برتقال!",
+      "explanation": "لذيذ! إنه برتقال!"
+    },
+    {
+      "id": "kids_fruits_food_ar_42",
+      "prompt": "أي فاكهة تنمو على شجرة التفاح؟",
+      "spoken_prompt": "أي فاكهة تنمو على شجرة التفاح؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "تفاحة",
+        "جزر",
+        "ذرة"
+      ],
+      "choice_images": [
+        "media/apple.svg",
+        "media/carrot.svg",
+        "media/corn.svg"
+      ],
+      "answer": "تفاحة",
+      "difficulty": "medium",
+      "reveal_message": "لذيذ! إنه تفاحة!",
+      "explanation": "لذيذ! إنه تفاحة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_43",
+      "prompt": "أي طعام ينمو تحت الأرض؟",
+      "spoken_prompt": "أي طعام ينمو تحت الأرض؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جزر",
+        "تفاحة",
+        "موز"
+      ],
+      "choice_images": [
+        "media/carrot.svg",
+        "media/apple.svg",
+        "media/banana.svg"
+      ],
+      "answer": "جزر",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه جزر!",
+      "explanation": "لذيذ! إنه جزر!"
+    },
+    {
+      "id": "kids_fruits_food_ar_44",
+      "prompt": "أي طعام من منتجات الألبان؟",
+      "spoken_prompt": "أي طعام من منتجات الألبان؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "جبن",
+        "طماطم",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/cheese.svg",
+        "media/tomato.svg",
+        "media/bread.svg"
+      ],
+      "answer": "جبن",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه جبن!",
+      "explanation": "لذيذ! إنه جبن!"
+    },
+    {
+      "id": "kids_fruits_food_ar_45",
+      "prompt": "أي طعام يُصنع من دقيق القمح؟",
+      "spoken_prompt": "أي طعام يُصنع من دقيق القمح؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "خبز",
+        "بيض",
+        "حليب"
+      ],
+      "choice_images": [
+        "media/bread.svg",
+        "media/egg.svg",
+        "media/milk.svg"
+      ],
+      "answer": "خبز",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه خبز!",
+      "explanation": "لذيذ! إنه خبز!"
+    },
+    {
+      "id": "kids_fruits_food_ar_46",
+      "prompt": "أي فاكهة يحب القرد تقشيرها؟",
+      "spoken_prompt": "أي فاكهة يحب القرد تقشيرها؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "موز",
+        "أناناس",
+        "طماطم"
+      ],
+      "choice_images": [
+        "media/banana.svg",
+        "media/pineapple.svg",
+        "media/tomato.svg"
+      ],
+      "answer": "موز",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه موز!",
+      "explanation": "لذيذ! إنه موز!"
+    },
+    {
+      "id": "kids_fruits_food_ar_47",
+      "prompt": "أي فاكهة غنية بفيتامين سي؟",
+      "spoken_prompt": "أي فاكهة غنية بفيتامين سي؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "برتقال",
+        "خبز",
+        "بيض"
+      ],
+      "choice_images": [
+        "media/orange.svg",
+        "media/bread.svg",
+        "media/egg.svg"
+      ],
+      "answer": "برتقال",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه برتقال!",
+      "explanation": "لذيذ! إنه برتقال!"
+    },
+    {
+      "id": "kids_fruits_food_ar_48",
+      "prompt": "أي فاكهة صيفية منعشة مليئة بالماء؟",
+      "spoken_prompt": "أي فاكهة صيفية منعشة مليئة بالماء؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بطيخ",
+        "جبن",
+        "خبز"
+      ],
+      "choice_images": [
+        "media/watermelon.svg",
+        "media/cheese.svg",
+        "media/bread.svg"
+      ],
+      "answer": "بطيخ",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه بطيخ!",
+      "explanation": "لذيذ! إنه بطيخ!"
+    },
+    {
+      "id": "kids_fruits_food_ar_49",
+      "prompt": "أي طعام له قشرة نكسرها قبل الطبخ؟",
+      "spoken_prompt": "أي طعام له قشرة نكسرها قبل الطبخ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "بيض",
+        "موز",
+        "حليب"
+      ],
+      "choice_images": [
+        "media/egg.svg",
+        "media/banana.svg",
+        "media/milk.svg"
+      ],
+      "answer": "بيض",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه بيض!",
+      "explanation": "لذيذ! إنه بيض!"
+    },
+    {
+      "id": "kids_fruits_food_ar_50",
+      "prompt": "أي حلوى تُصنع بتجميد الحليب والكريمة؟",
+      "spoken_prompt": "أي حلوى تُصنع بتجميد الحليب والكريمة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "آيس كريم",
+        "عصير",
+        "جبن"
+      ],
+      "choice_images": [
+        "media/icecream.svg",
+        "media/juice.svg",
+        "media/cheese.svg"
+      ],
+      "answer": "آيس كريم",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه آيس كريم!",
+      "explanation": "لذيذ! إنه آيس كريم!"
+    },
+    {
+      "id": "kids_fruits_food_ar_51",
+      "prompt": "أي فاكهة حمراء مقرمشة ولذيذة؟",
+      "spoken_prompt": "أي فاكهة حمراء مقرمشة ولذيذة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "تفاحة",
+        "ليمون",
+        "ذرة"
+      ],
+      "choice_images": [
+        "media/apple.svg",
+        "media/lemon.svg",
+        "media/corn.svg"
+      ],
+      "answer": "تفاحة",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه تفاحة!",
+      "explanation": "لذيذ! إنه تفاحة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_52",
+      "prompt": "أي طعام نصنع منه الفشار؟",
+      "spoken_prompt": "أي طعام نصنع منه الفشار؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ذرة",
+        "جزر",
+        "عنب"
+      ],
+      "choice_images": [
+        "media/corn.svg",
+        "media/carrot.svg",
+        "media/grapes.svg"
+      ],
+      "answer": "ذرة",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه ذرة!",
+      "explanation": "لذيذ! إنه ذرة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_53",
+      "prompt": "أي شراب يقوّي العظام والأسنان؟",
+      "spoken_prompt": "أي شراب يقوّي العظام والأسنان؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "حليب",
+        "آيس كريم",
+        "ليمون"
+      ],
+      "choice_images": [
+        "media/milk.svg",
+        "media/icecream.svg",
+        "media/lemon.svg"
+      ],
+      "answer": "حليب",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه حليب!",
+      "explanation": "لذيذ! إنه حليب!"
+    },
+    {
+      "id": "kids_fruits_food_ar_54",
+      "prompt": "أي فاكهة نصنع منها عصير الليموناضة؟",
+      "spoken_prompt": "أي فاكهة نصنع منها عصير الليموناضة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ليمون",
+        "فراولة",
+        "تفاحة"
+      ],
+      "choice_images": [
+        "media/lemon.svg",
+        "media/strawberry.svg",
+        "media/apple.svg"
+      ],
+      "answer": "ليمون",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه ليمون!",
+      "explanation": "لذيذ! إنه ليمون!"
+    },
+    {
+      "id": "kids_fruits_food_ar_55",
+      "prompt": "أي فاكهة حمراء صغيرة تشبه القلب؟",
+      "spoken_prompt": "أي فاكهة حمراء صغيرة تشبه القلب؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فراولة",
+        "عنب",
+        "برتقال"
+      ],
+      "choice_images": [
+        "media/strawberry.svg",
+        "media/grapes.svg",
+        "media/orange.svg"
+      ],
+      "answer": "فراولة",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه فراولة!",
+      "explanation": "لذيذ! إنه فراولة!"
+    },
+    {
+      "id": "kids_fruits_food_ar_56",
+      "prompt": "أي فاكهة استوائية قشرتها خشنة؟",
+      "spoken_prompt": "أي فاكهة استوائية قشرتها خشنة؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أناناس",
+        "طماطم",
+        "موز"
+      ],
+      "choice_images": [
+        "media/pineapple.svg",
+        "media/tomato.svg",
+        "media/banana.svg"
+      ],
+      "answer": "أناناس",
+      "difficulty": "hard",
+      "reveal_message": "لذيذ! إنه أناناس!",
+      "explanation": "لذيذ! إنه أناناس!"
     }
   ],
   "cover": "media/cover.svg"

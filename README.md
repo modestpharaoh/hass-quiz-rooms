@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Local-first, multi-room confidence-wagering party trivia &amp; Early Learner Mode for Home Assistant</strong><br/>
-  Zero external CDNs · Zero Python dependencies · 48 built-in packs (3,348 questions) · 11 Early Learner Packs · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
+  Zero external CDNs · Zero Python dependencies · 61 built-in packs (4,299 questions) · 24 Early Learner Packs · Full English &amp; Arabic/RTL · 16:9 Smart TV Studio · TV-Synced Smart-Home Stage Effects
 </p>
 
 ---
@@ -86,9 +86,9 @@ The same local UI your household actually uses: a phone in hand, a 16:9 TV on th
 
 ## Key Features
 
-- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 48 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, 200+ custom Early Learner vector illustrations (813 SVGs total), and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
+- **100% Local-First & Zero External Dependencies:** All HTML, CSS, JavaScript, QR code generation, Web Audio SFX, 208 vector flags, 169 country map silhouettes, 110 brand logos, 61 square pack covers, 20 studio SVG avatars, original science/anatomy/wildlife/landmark diagrams, 450+ custom Early Learner vector illustrations (1,071 SVGs total), and local Latin + Arabic + Monospace WOFF fonts are served directly by Home Assistant (`"requirements": []`).
 - **🧸 Early Learner Mode:**
-  - **11 dedicated bilingual Early Learner Packs (284 questions)** covering English & Arabic alphabets, counting `1–10` (with **separate Arabic packs** for Eastern Arabic-Indic `١–١٠` and Western `1–10` numerals), colors & shapes, friendly animals & sounds, and fruits & snacks.
+  - **24 dedicated bilingual Early Learner Packs (1,235 questions, ages 3–8)** covering English & Arabic alphabets, Arabic letter forms & Harakat (`بـ / ـبـ / ـب`, `بَ / بِ / بُ`), English phonics & rhyming words, counting `1–20` + visual addition & more/fewer comparisons (with **separate Arabic packs** for Eastern Arabic-Indic `١–٢٠` and Western `1–20` numerals), colors/mixing & 2D/3D shapes, animals & habitats, fruits & foods, **My Body & Five Senses**, **Vehicles & Things That Go**, **Weather, Seasons & Sky**, **Everyday Objects Around the House**, **Opposites & Actions**, and a **Bilingual Picture-Word Bridge (`عربي ↔ EN`)**.
   - **Gentle, accessible gameplay:** One-tap giant visual tiles (`large_glyph`, `color_swatch`, `image_grid` with zero `A/B/C/D` prefixes), **No-Timer relaxed play** (`timer_seconds: 0`), **Star (`⭐`) scoring** (`+1` / `0`, never negative) with joyful All-Star finale badges, **Gentle "Try Again" mode** (wrong taps softly wobble/dim and speak *"Good try! Tap another one!"* / *"محاولة جميلة! جرّب خياراً آخر!"* on both mobile browser speech synthesis and Stage Effects speakers), **Solo / Parent-Led Auto-Advance (3s)** on Reveal, built-in **🔊 Listen / Auto-Read** (`window.speechSynthesis` EN & AR), and a **Parent Check** exit prompt.
 - **Strict LAN-Only Stealth Security & DoS Hardening (`NetworkGuard`):** Guest, TV, WebSocket, media, and unknown `/quizrooms/*` routes allow only RFC 1918 + IPv6 ULA/link-local + admin-configured CIDRs by default. External or non-whitelisted requests are stealth-redirected (`302 Found → /`) straight to Home Assistant's default Lovelace dashboard or login screen with an empty body and zero QuizRooms fingerprint (so external scanners cannot detect QuizRooms), with fail-closed reverse-proxy & tunnel protection (`X-Forwarded-For`, Cloudflare `CF-Connecting-IP`/`CF-Ray`, Nabu Casa `X-Hass-Source`), CSWSH `Origin` checks (blocking `Origin: null`), global/per-IP WebSocket caps + slow-consumer eviction, bounded JSON/multipart stream guards, validated/sandboxed SVG delivery (`CSP: default-src 'none'; sandbox`), and automatic memory pruning.
 - **Multi-Room Confidence Wagering & Blind Final Bonus Round:**

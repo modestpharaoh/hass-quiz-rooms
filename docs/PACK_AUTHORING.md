@@ -152,3 +152,13 @@ movie_night.zip
 - **Smart TV SVG & Cover Art Tip:** Always include explicit `width` and `height` attributes on `<svg>` root elements (matching `viewBox`) so older Smart TV browsers such as LG webOS render SVG visuals at full size. Use a `1:1` square cover (e.g., `160×160`) so it displays cleanly in the TV idle Featured Packs gallery and mobile/admin thumbnails.
 - **Verification in Admin Panel:** After uploading a pack in **Sidebar → QuizRooms → Packs & Import**, use the expandable **Preview Questions** drawer on its card to verify difficulty distribution (`Easy / Medium / Hard`) and sample prompts without starting a test game.
 - **Storage Location:** Imported custom packs are stored under `<HA_CONFIG>/quizrooms/packs/<pack_id>/`.
+
+---
+
+## 6. Practical Authoring Tips for Young Arabic & English Learners
+
+When authoring custom Early Learner packs (`"audience": "kids"`):
+
+- **Use `spoken_prompt` with full Arabic Harakat (تشكيل):** Both mobile browser Web Speech (`window.speechSynthesis`) and Home Assistant Stage Effects TTS (`speaker_read_qa`) read `spoken_prompt` aloud. Adding full vowel diacritics in `spoken_prompt` (e.g., `"اِخْتَرْ حَرْفَ الْبَاءِ"` or `"بِأَيِّ عُضْوٍ نَسْمَعُ الْأَصْوَاتَ؟"`) keeps on-screen text clean while making TTS pronunciation dramatically clearer for young Arabic learners.
+- **Lean on `choice_style: "image_grid"` for ages 3–5:** Pairing `choices` with local `choice_images` SVGs lets pre-readers tap pictures independently on a phone or tablet without needing to read text labels.
+- **Use `difficulty` as an age-progression dial:** Put pure recognition (`"Tap the Cat!"`) in `"easy"`, word/sound/sense association in `"medium"`, and simple logic, visual addition, 3D shapes, phonics digraphs, or opposites in `"hard"` — so parents can select **Easy** for a 3-year-old and **Medium/Hard** for a 6–7-year-old inside the very same pack.

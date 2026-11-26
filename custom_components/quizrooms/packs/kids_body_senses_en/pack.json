@@ -1,0 +1,786 @@
+{
+  "title": "My Body & Five Senses",
+  "description": "Explore eyes, ears, nose, hands, teeth, and the five senses with friendly tap-to-pick pictures.",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "category": "Early Learner · Body & Senses",
+  "pack_id": "kids_body_senses_en",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "body_en_01",
+      "prompt": "Tap the Eyes!",
+      "spoken_prompt": "Can you tap the Eyes?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Eyes",
+        "Ears",
+        "Nose"
+      ],
+      "choice_images": [
+        "media/eye.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ],
+      "answer": "Eyes",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Eyes!",
+      "explanation": "That picture shows the Eyes."
+    },
+    {
+      "id": "body_en_02",
+      "prompt": "Tap the Ears!",
+      "spoken_prompt": "Can you tap the Ears?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ears",
+        "Hands",
+        "Feet"
+      ],
+      "choice_images": [
+        "media/ear.svg",
+        "media/hand.svg",
+        "media/foot.svg"
+      ],
+      "answer": "Ears",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Ears!",
+      "explanation": "That picture shows the Ears."
+    },
+    {
+      "id": "body_en_03",
+      "prompt": "Tap the Nose!",
+      "spoken_prompt": "Can you tap the Nose?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Nose",
+        "Mouth",
+        "Eyes"
+      ],
+      "choice_images": [
+        "media/nose.svg",
+        "media/mouth.svg",
+        "media/eye.svg"
+      ],
+      "answer": "Nose",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Nose!",
+      "explanation": "That picture shows the Nose."
+    },
+    {
+      "id": "body_en_04",
+      "prompt": "Tap the Mouth!",
+      "spoken_prompt": "Can you tap the Mouth?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Mouth",
+        "Nose",
+        "Ears"
+      ],
+      "choice_images": [
+        "media/mouth.svg",
+        "media/nose.svg",
+        "media/ear.svg"
+      ],
+      "answer": "Mouth",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Mouth!",
+      "explanation": "That picture shows the Mouth."
+    },
+    {
+      "id": "body_en_05",
+      "prompt": "Tap the Hands!",
+      "spoken_prompt": "Can you tap the Hands?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hands",
+        "Feet",
+        "Teeth"
+      ],
+      "choice_images": [
+        "media/hand.svg",
+        "media/foot.svg",
+        "media/teeth.svg"
+      ],
+      "answer": "Hands",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Hands!",
+      "explanation": "That picture shows the Hands."
+    },
+    {
+      "id": "body_en_06",
+      "prompt": "Tap the Feet!",
+      "spoken_prompt": "Can you tap the Feet?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Feet",
+        "Hands",
+        "Hair"
+      ],
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/hair.svg"
+      ],
+      "answer": "Feet",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Feet!",
+      "explanation": "That picture shows the Feet."
+    },
+    {
+      "id": "body_en_07",
+      "prompt": "Tap the Teeth!",
+      "spoken_prompt": "Can you tap the Teeth?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Teeth",
+        "Tongue",
+        "Eyes"
+      ],
+      "choice_images": [
+        "media/teeth.svg",
+        "media/tongue.svg",
+        "media/eye.svg"
+      ],
+      "answer": "Teeth",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Teeth!",
+      "explanation": "That picture shows the Teeth."
+    },
+    {
+      "id": "body_en_08",
+      "prompt": "Tap the Tongue!",
+      "spoken_prompt": "Can you tap the Tongue?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Tongue",
+        "Teeth",
+        "Nose"
+      ],
+      "choice_images": [
+        "media/tongue.svg",
+        "media/teeth.svg",
+        "media/nose.svg"
+      ],
+      "answer": "Tongue",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Tongue!",
+      "explanation": "That picture shows the Tongue."
+    },
+    {
+      "id": "body_en_09",
+      "prompt": "Tap the Heart!",
+      "spoken_prompt": "Can you tap the Heart?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Heart",
+        "Brain",
+        "Hands"
+      ],
+      "choice_images": [
+        "media/heart.svg",
+        "media/brain.svg",
+        "media/hand.svg"
+      ],
+      "answer": "Heart",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Heart!",
+      "explanation": "That picture shows the Heart."
+    },
+    {
+      "id": "body_en_10",
+      "prompt": "Tap the Brain!",
+      "spoken_prompt": "Can you tap the Brain?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Brain",
+        "Heart",
+        "Feet"
+      ],
+      "choice_images": [
+        "media/brain.svg",
+        "media/heart.svg",
+        "media/foot.svg"
+      ],
+      "answer": "Brain",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Brain!",
+      "explanation": "That picture shows the Brain."
+    },
+    {
+      "id": "body_en_11",
+      "prompt": "Tap the Hair!",
+      "spoken_prompt": "Can you tap the Hair?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hair",
+        "Knee",
+        "Ears"
+      ],
+      "choice_images": [
+        "media/hair.svg",
+        "media/knee.svg",
+        "media/ear.svg"
+      ],
+      "answer": "Hair",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Hair!",
+      "explanation": "That picture shows the Hair."
+    },
+    {
+      "id": "body_en_12",
+      "prompt": "Tap the Knee!",
+      "spoken_prompt": "Can you tap the Knee?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Knee",
+        "Hand",
+        "Nose"
+      ],
+      "choice_images": [
+        "media/knee.svg",
+        "media/hand.svg",
+        "media/nose.svg"
+      ],
+      "answer": "Knee",
+      "difficulty": "easy",
+      "reveal_message": "Great job! That's the Knee!",
+      "explanation": "That picture shows the Knee."
+    },
+    {
+      "id": "body_en_13",
+      "prompt": "Which body part do we use to SEE?",
+      "spoken_prompt": "Which body part do we use to SEE?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Eyes",
+        "Ears",
+        "Nose"
+      ],
+      "answer": "Eyes",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Eyes!",
+      "explanation": "The answer is Eyes.",
+      "choice_images": [
+        "media/eye.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_en_14",
+      "prompt": "Which body part do we use to HEAR music?",
+      "spoken_prompt": "Which body part do we use to HEAR music?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ears",
+        "Eyes",
+        "Hands"
+      ],
+      "answer": "Ears",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Ears!",
+      "explanation": "The answer is Ears.",
+      "choice_images": [
+        "media/ear.svg",
+        "media/eye.svg",
+        "media/hand.svg"
+      ]
+    },
+    {
+      "id": "body_en_15",
+      "prompt": "Which body part do we use to SMELL flowers?",
+      "spoken_prompt": "Which body part do we use to SMELL flowers?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Nose",
+        "Mouth",
+        "Feet"
+      ],
+      "answer": "Nose",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Nose!",
+      "explanation": "The answer is Nose.",
+      "choice_images": [
+        "media/nose.svg",
+        "media/mouth.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_en_16",
+      "prompt": "Which body part do we use to TASTE ice cream?",
+      "spoken_prompt": "Which body part do we use to TASTE ice cream?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Tongue",
+        "Ears",
+        "Knee"
+      ],
+      "answer": "Tongue",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Tongue!",
+      "explanation": "The answer is Tongue.",
+      "choice_images": [
+        "media/tongue.svg",
+        "media/ear.svg",
+        "media/knee.svg"
+      ]
+    },
+    {
+      "id": "body_en_17",
+      "prompt": "Which body part do we use to TOUCH and hold?",
+      "spoken_prompt": "Which body part do we use to TOUCH and hold?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hands",
+        "Nose",
+        "Eyes"
+      ],
+      "answer": "Hands",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Hands!",
+      "explanation": "The answer is Hands.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/nose.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_en_18",
+      "prompt": "Which body part do we use to CHEW crunchy apples?",
+      "spoken_prompt": "Which body part do we use to CHEW crunchy apples?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Teeth",
+        "Ears",
+        "Hair"
+      ],
+      "answer": "Teeth",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Teeth!",
+      "explanation": "The answer is Teeth.",
+      "choice_images": [
+        "media/teeth.svg",
+        "media/ear.svg",
+        "media/hair.svg"
+      ]
+    },
+    {
+      "id": "body_en_19",
+      "prompt": "Which body part do we use to WALK and jump?",
+      "spoken_prompt": "Which body part do we use to WALK and jump?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Feet",
+        "Hands",
+        "Nose"
+      ],
+      "answer": "Feet",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Feet!",
+      "explanation": "The answer is Feet.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_en_20",
+      "prompt": "Which body part do we use to SMILE and talk?",
+      "spoken_prompt": "Which body part do we use to SMILE and talk?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Mouth",
+        "Knee",
+        "Ears"
+      ],
+      "answer": "Mouth",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Mouth!",
+      "explanation": "The answer is Mouth.",
+      "choice_images": [
+        "media/mouth.svg",
+        "media/knee.svg",
+        "media/ear.svg"
+      ]
+    },
+    {
+      "id": "body_en_21",
+      "prompt": "Which body part waves hello?",
+      "spoken_prompt": "Which body part waves hello?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hands",
+        "Feet",
+        "Eyes"
+      ],
+      "answer": "Hands",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Hands!",
+      "explanation": "The answer is Hands.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/foot.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_en_22",
+      "prompt": "Which body part blinks?",
+      "spoken_prompt": "Which body part blinks?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Eyes",
+        "Nose",
+        "Tongue"
+      ],
+      "answer": "Eyes",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Eyes!",
+      "explanation": "The answer is Eyes.",
+      "choice_images": [
+        "media/eye.svg",
+        "media/nose.svg",
+        "media/tongue.svg"
+      ]
+    },
+    {
+      "id": "body_en_23",
+      "prompt": "Which body part listens to a bedtime story?",
+      "spoken_prompt": "Which body part listens to a bedtime story?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Ears",
+        "Teeth",
+        "Feet"
+      ],
+      "answer": "Ears",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Ears!",
+      "explanation": "The answer is Ears.",
+      "choice_images": [
+        "media/ear.svg",
+        "media/teeth.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_en_24",
+      "prompt": "Which body part smells yummy cookies?",
+      "spoken_prompt": "Which body part smells yummy cookies?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Nose",
+        "Hands",
+        "Eyes"
+      ],
+      "answer": "Nose",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Nose!",
+      "explanation": "The answer is Nose.",
+      "choice_images": [
+        "media/nose.svg",
+        "media/hand.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_en_25",
+      "prompt": "Which body part wears shoes and socks?",
+      "spoken_prompt": "Which body part wears shoes and socks?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Feet",
+        "Hands",
+        "Ears"
+      ],
+      "answer": "Feet",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Feet!",
+      "explanation": "The answer is Feet.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/ear.svg"
+      ]
+    },
+    {
+      "id": "body_en_26",
+      "prompt": "Which body part do we brush every morning?",
+      "spoken_prompt": "Which body part do we brush every morning?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Teeth",
+        "Knee",
+        "Nose"
+      ],
+      "answer": "Teeth",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Teeth!",
+      "explanation": "The answer is Teeth.",
+      "choice_images": [
+        "media/teeth.svg",
+        "media/knee.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_en_27",
+      "prompt": "Which body part do we comb?",
+      "spoken_prompt": "Which body part do we comb?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hair",
+        "Teeth",
+        "Heart"
+      ],
+      "answer": "Hair",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Hair!",
+      "explanation": "The answer is Hair.",
+      "choice_images": [
+        "media/hair.svg",
+        "media/teeth.svg",
+        "media/heart.svg"
+      ]
+    },
+    {
+      "id": "body_en_28",
+      "prompt": "Which body part bends in the middle of your leg?",
+      "spoken_prompt": "Which body part bends in the middle of your leg?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Knee",
+        "Hand",
+        "Eye"
+      ],
+      "answer": "Knee",
+      "difficulty": "medium",
+      "reveal_message": "Awesome! The answer is Knee!",
+      "explanation": "The answer is Knee.",
+      "choice_images": [
+        "media/knee.svg",
+        "media/hand.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_en_29",
+      "prompt": "Which organ pumps blood inside your chest?",
+      "spoken_prompt": "Which organ pumps blood inside your chest?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Heart",
+        "Brain",
+        "Tongue"
+      ],
+      "answer": "Heart",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Heart!",
+      "explanation": "The answer is Heart.",
+      "choice_images": [
+        "media/heart.svg",
+        "media/brain.svg",
+        "media/tongue.svg"
+      ]
+    },
+    {
+      "id": "body_en_30",
+      "prompt": "Which organ inside your head helps you THINK?",
+      "spoken_prompt": "Which organ inside your head helps you THINK?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Brain",
+        "Heart",
+        "Feet"
+      ],
+      "answer": "Brain",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Brain!",
+      "explanation": "The answer is Brain.",
+      "choice_images": [
+        "media/brain.svg",
+        "media/heart.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_en_31",
+      "prompt": "Which sense do your EYES give you?",
+      "spoken_prompt": "Which sense do your EYES give you?",
+      "choice_style": "default",
+      "choices": [
+        "Sight",
+        "Hearing",
+        "Smell"
+      ],
+      "answer": "Sight",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Sight!",
+      "explanation": "The answer is Sight."
+    },
+    {
+      "id": "body_en_32",
+      "prompt": "Which sense do your EARS give you?",
+      "spoken_prompt": "Which sense do your EARS give you?",
+      "choice_style": "default",
+      "choices": [
+        "Hearing",
+        "Taste",
+        "Touch"
+      ],
+      "answer": "Hearing",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Hearing!",
+      "explanation": "The answer is Hearing."
+    },
+    {
+      "id": "body_en_33",
+      "prompt": "Which sense does your NOSE give you?",
+      "spoken_prompt": "Which sense does your NOSE give you?",
+      "choice_style": "default",
+      "choices": [
+        "Smell",
+        "Sight",
+        "Hearing"
+      ],
+      "answer": "Smell",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Smell!",
+      "explanation": "The answer is Smell."
+    },
+    {
+      "id": "body_en_34",
+      "prompt": "Which sense does your TONGUE give you?",
+      "spoken_prompt": "Which sense does your TONGUE give you?",
+      "choice_style": "default",
+      "choices": [
+        "Taste",
+        "Touch",
+        "Smell"
+      ],
+      "answer": "Taste",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Taste!",
+      "explanation": "The answer is Taste."
+    },
+    {
+      "id": "body_en_35",
+      "prompt": "Which sense do your HANDS give you?",
+      "spoken_prompt": "Which sense do your HANDS give you?",
+      "choice_style": "default",
+      "choices": [
+        "Touch",
+        "Sight",
+        "Taste"
+      ],
+      "answer": "Touch",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Touch!",
+      "explanation": "The answer is Touch."
+    },
+    {
+      "id": "body_en_36",
+      "prompt": "How many senses do people have?",
+      "spoken_prompt": "How many senses do people have?",
+      "choice_style": "default",
+      "choices": [
+        "5",
+        "3",
+        "8"
+      ],
+      "answer": "5",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is 5!",
+      "explanation": "The answer is 5."
+    },
+    {
+      "id": "body_en_37",
+      "prompt": "Which body part helps you clap?",
+      "spoken_prompt": "Which body part helps you clap?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hands",
+        "Ears",
+        "Nose"
+      ],
+      "answer": "Hands",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Hands!",
+      "explanation": "The answer is Hands.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_en_38",
+      "prompt": "Which body part helps you kick a ball?",
+      "spoken_prompt": "Which body part helps you kick a ball?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Feet",
+        "Hands",
+        "Teeth"
+      ],
+      "answer": "Feet",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Feet!",
+      "explanation": "The answer is Feet.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/teeth.svg"
+      ]
+    },
+    {
+      "id": "body_en_39",
+      "prompt": "Which body part feels if water is warm or cold?",
+      "spoken_prompt": "Which body part feels if water is warm or cold?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hands",
+        "Hair",
+        "Teeth"
+      ],
+      "answer": "Hands",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Hands!",
+      "explanation": "The answer is Hands.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/hair.svg",
+        "media/teeth.svg"
+      ]
+    },
+    {
+      "id": "body_en_40",
+      "prompt": "Which body part beats thump-thump when you run?",
+      "spoken_prompt": "Which body part beats thump-thump when you run?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Heart",
+        "Knee",
+        "Nose"
+      ],
+      "answer": "Heart",
+      "difficulty": "hard",
+      "reveal_message": "Awesome! The answer is Heart!",
+      "explanation": "The answer is Heart.",
+      "choice_images": [
+        "media/heart.svg",
+        "media/knee.svg",
+        "media/nose.svg"
+      ]
+    }
+  ],
+  "cover": "media/cover.svg"
+}

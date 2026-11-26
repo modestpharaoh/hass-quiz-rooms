@@ -3,7 +3,7 @@
   "title": "Numbers & Counting 1–10",
   "description": "Count bright stars, apples, and balls from 1 to 10 with giant toddler-friendly number tiles.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "large_glyph",
   "language": "en",
   "rtl": false,
@@ -388,6 +388,606 @@
       "difficulty": "hard",
       "reveal_message": "Super! That is 10 (Ten)!",
       "explanation": "Ten is written as 10."
+    },
+    {
+      "id": "kids_en_numbers_en_n11",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_11.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "11",
+        "13",
+        "12"
+      ],
+      "answer": "11",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 11 dots!",
+      "explanation": "Awesome counting! There are 11 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n12",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_12.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "12",
+        "11",
+        "13"
+      ],
+      "answer": "12",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 12 dots!",
+      "explanation": "Awesome counting! There are 12 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n13",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_13.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "13",
+        "12",
+        "14"
+      ],
+      "answer": "13",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 13 dots!",
+      "explanation": "Awesome counting! There are 13 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n14",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_14.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "14",
+        "13",
+        "15"
+      ],
+      "answer": "14",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 14 dots!",
+      "explanation": "Awesome counting! There are 14 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n15",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_15.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "15",
+        "14",
+        "16"
+      ],
+      "answer": "15",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 15 dots!",
+      "explanation": "Awesome counting! There are 15 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n16",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_16.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "16",
+        "15",
+        "17"
+      ],
+      "answer": "16",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 16 dots!",
+      "explanation": "Awesome counting! There are 16 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n17",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_17.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "17",
+        "16",
+        "18"
+      ],
+      "answer": "17",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 17 dots!",
+      "explanation": "Awesome counting! There are 17 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n18",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_18.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "18",
+        "17",
+        "19"
+      ],
+      "answer": "18",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 18 dots!",
+      "explanation": "Awesome counting! There are 18 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n19",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_19.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "19",
+        "18",
+        "20"
+      ],
+      "answer": "19",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 19 dots!",
+      "explanation": "Awesome counting! There are 19 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_n20",
+      "prompt": "How many dots do you count?",
+      "spoken_prompt": "Count all the bright dots! How many are there?",
+      "image": "media/count_20.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "20",
+        "19",
+        "18"
+      ],
+      "answer": "20",
+      "difficulty": "medium",
+      "reveal_message": "Awesome counting! There are 20 dots!",
+      "explanation": "Awesome counting! There are 20 dots!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_01",
+      "prompt": "Which group has MORE?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has more?",
+      "image": "media/cmp_01.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group A (Blue)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group A (Blue) has more!",
+      "explanation": "Great eyes! Group A (Blue) has more!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_02",
+      "prompt": "Which group has MORE?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has more?",
+      "image": "media/cmp_02.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group B (Pink)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group B (Pink) has more!",
+      "explanation": "Great eyes! Group B (Pink) has more!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_03",
+      "prompt": "Which group has MORE?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has more?",
+      "image": "media/cmp_03.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group A (Blue)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group A (Blue) has more!",
+      "explanation": "Great eyes! Group A (Blue) has more!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_04",
+      "prompt": "Which group has MORE?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has more?",
+      "image": "media/cmp_04.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group B (Pink)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group B (Pink) has more!",
+      "explanation": "Great eyes! Group B (Pink) has more!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_05",
+      "prompt": "Which group has MORE?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has more?",
+      "image": "media/cmp_05.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group A (Blue)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group A (Blue) has more!",
+      "explanation": "Great eyes! Group A (Blue) has more!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_06",
+      "prompt": "Which group has FEWER?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has fewer?",
+      "image": "media/cmp_06.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group A (Blue)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group A (Blue) has fewer!",
+      "explanation": "Great eyes! Group A (Blue) has fewer!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_07",
+      "prompt": "Which group has FEWER?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has fewer?",
+      "image": "media/cmp_07.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group B (Pink)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group B (Pink) has fewer!",
+      "explanation": "Great eyes! Group B (Pink) has fewer!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_08",
+      "prompt": "Which group has FEWER?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has fewer?",
+      "image": "media/cmp_08.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group A (Blue)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group A (Blue) has fewer!",
+      "explanation": "Great eyes! Group A (Blue) has fewer!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_09",
+      "prompt": "Which group has FEWER?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has fewer?",
+      "image": "media/cmp_09.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group B (Pink)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group B (Pink) has fewer!",
+      "explanation": "Great eyes! Group B (Pink) has fewer!"
+    },
+    {
+      "id": "kids_en_numbers_en_cmp_10",
+      "prompt": "Which group has FEWER?",
+      "spoken_prompt": "Look at Group A and Group B. Which group has fewer?",
+      "image": "media/cmp_10.svg",
+      "choice_style": "default",
+      "choices": [
+        "Group A (Blue)",
+        "Group B (Pink)",
+        "Same"
+      ],
+      "answer": "Group B (Pink)",
+      "difficulty": "medium",
+      "reveal_message": "Great eyes! Group B (Pink) has fewer!",
+      "explanation": "Great eyes! Group B (Pink) has fewer!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_01",
+      "prompt": "Count backwards: 5, 4, __, 2",
+      "spoken_prompt": "Let's count backwards! 5, 4, what comes next before 2?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "5",
+        "2"
+      ],
+      "answer": "3",
+      "difficulty": "medium",
+      "reveal_message": "Super! 5, 4, 3, 2!",
+      "explanation": "Super! 5, 4, 3, 2!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_02",
+      "prompt": "Count backwards: 6, 5, __, 3",
+      "spoken_prompt": "Let's count backwards! 6, 5, what comes next before 3?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "6",
+        "3"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "reveal_message": "Super! 6, 5, 4, 3!",
+      "explanation": "Super! 6, 5, 4, 3!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_03",
+      "prompt": "Count backwards: 7, 6, __, 4",
+      "spoken_prompt": "Let's count backwards! 7, 6, what comes next before 4?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "7",
+        "4"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "reveal_message": "Super! 7, 6, 5, 4!",
+      "explanation": "Super! 7, 6, 5, 4!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_04",
+      "prompt": "Count backwards: 8, 7, __, 5",
+      "spoken_prompt": "Let's count backwards! 8, 7, what comes next before 5?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "8",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "reveal_message": "Super! 8, 7, 6, 5!",
+      "explanation": "Super! 8, 7, 6, 5!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_05",
+      "prompt": "Count backwards: 9, 8, __, 6",
+      "spoken_prompt": "Let's count backwards! 9, 8, what comes next before 6?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "9",
+        "6"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "reveal_message": "Super! 9, 8, 7, 6!",
+      "explanation": "Super! 9, 8, 7, 6!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_06",
+      "prompt": "Count backwards: 10, 9, __, 7",
+      "spoken_prompt": "Let's count backwards! 10, 9, what comes next before 7?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "8",
+        "10",
+        "7"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "reveal_message": "Super! 10, 9, 8, 7!",
+      "explanation": "Super! 10, 9, 8, 7!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_07",
+      "prompt": "Count backwards: 4, 3, __, 1",
+      "spoken_prompt": "Let's count backwards! 4, 3, what comes next before 1?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "4",
+        "1"
+      ],
+      "answer": "2",
+      "difficulty": "hard",
+      "reveal_message": "Super! 4, 3, 2, 1!",
+      "explanation": "Super! 4, 3, 2, 1!"
+    },
+    {
+      "id": "kids_en_numbers_en_back_08",
+      "prompt": "Count backwards: 12, 11, __, 9",
+      "spoken_prompt": "Let's count backwards! 12, 11, what comes next before 9?",
+      "choice_style": "large_glyph",
+      "choices": [
+        "10",
+        "12",
+        "9"
+      ],
+      "answer": "10",
+      "difficulty": "hard",
+      "reveal_message": "Super! 12, 11, 10, 9!",
+      "explanation": "Super! 12, 11, 10, 9!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_01",
+      "prompt": "1 + 1 = ?",
+      "spoken_prompt": "Count all the apples together! What is 1 plus 1?",
+      "image": "media/add_1_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "2",
+        "3",
+        "1"
+      ],
+      "answer": "2",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 1 + 1 = 2!",
+      "explanation": "Yay! 1 + 1 = 2!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_02",
+      "prompt": "2 + 1 = ?",
+      "spoken_prompt": "Count all the apples together! What is 2 plus 1?",
+      "image": "media/add_2_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "3",
+        "4",
+        "2"
+      ],
+      "answer": "3",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 2 + 1 = 3!",
+      "explanation": "Yay! 2 + 1 = 3!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_03",
+      "prompt": "2 + 2 = ?",
+      "spoken_prompt": "Count all the apples together! What is 2 plus 2?",
+      "image": "media/add_2_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "5",
+        "3"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 2 + 2 = 4!",
+      "explanation": "Yay! 2 + 2 = 4!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_04",
+      "prompt": "3 + 1 = ?",
+      "spoken_prompt": "Count all the apples together! What is 3 plus 1?",
+      "image": "media/add_3_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "4",
+        "5",
+        "3"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 3 + 1 = 4!",
+      "explanation": "Yay! 3 + 1 = 4!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_05",
+      "prompt": "3 + 2 = ?",
+      "spoken_prompt": "Count all the apples together! What is 3 plus 2?",
+      "image": "media/add_3_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "6",
+        "4"
+      ],
+      "answer": "5",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 3 + 2 = 5!",
+      "explanation": "Yay! 3 + 2 = 5!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_06",
+      "prompt": "4 + 1 = ?",
+      "spoken_prompt": "Count all the apples together! What is 4 plus 1?",
+      "image": "media/add_4_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "5",
+        "6",
+        "4"
+      ],
+      "answer": "5",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 4 + 1 = 5!",
+      "explanation": "Yay! 4 + 1 = 5!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_07",
+      "prompt": "4 + 2 = ?",
+      "spoken_prompt": "Count all the apples together! What is 4 plus 2?",
+      "image": "media/add_4_2.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "7",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 4 + 2 = 6!",
+      "explanation": "Yay! 4 + 2 = 6!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_08",
+      "prompt": "3 + 3 = ?",
+      "spoken_prompt": "Count all the apples together! What is 3 plus 3?",
+      "image": "media/add_3_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "7",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 3 + 3 = 6!",
+      "explanation": "Yay! 3 + 3 = 6!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_09",
+      "prompt": "5 + 1 = ?",
+      "spoken_prompt": "Count all the apples together! What is 5 plus 1?",
+      "image": "media/add_5_1.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "6",
+        "7",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 5 + 1 = 6!",
+      "explanation": "Yay! 5 + 1 = 6!"
+    },
+    {
+      "id": "kids_en_numbers_en_add_10",
+      "prompt": "4 + 3 = ?",
+      "spoken_prompt": "Count all the apples together! What is 4 plus 3?",
+      "image": "media/add_4_3.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "7",
+        "8",
+        "6"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "reveal_message": "Yay! 4 + 3 = 7!",
+      "explanation": "Yay! 4 + 3 = 7!"
     }
   ],
   "cover": "media/cover.svg"

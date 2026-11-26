@@ -1,0 +1,766 @@
+{
+  "title": "Opposites & Actions",
+  "description": "Big vs. Small, Hot vs. Cold, Fast vs. Slow, Up vs. Down, plus fun everyday action verbs!",
+  "age_range": "4-7",
+  "choice_style": "image_grid",
+  "language": "en",
+  "rtl": false,
+  "category": "Early Learner · Opposites & Actions",
+  "pack_id": "kids_opposites_actions_en",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "opp_en_01",
+      "prompt": "What is the opposite of BIG?",
+      "spoken_prompt": "What is the opposite of BIG?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Small",
+        "Hot",
+        "Up"
+      ],
+      "choice_images": [
+        "media/small.svg",
+        "media/hot.svg",
+        "media/up.svg"
+      ],
+      "answer": "Small",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Small!",
+      "explanation": "The answer is Small."
+    },
+    {
+      "id": "opp_en_02",
+      "prompt": "What is the opposite of SMALL?",
+      "spoken_prompt": "What is the opposite of SMALL?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Big",
+        "Cold",
+        "Down"
+      ],
+      "choice_images": [
+        "media/big.svg",
+        "media/cold.svg",
+        "media/down.svg"
+      ],
+      "answer": "Big",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Big!",
+      "explanation": "The answer is Big."
+    },
+    {
+      "id": "opp_en_03",
+      "prompt": "What is the opposite of HOT?",
+      "spoken_prompt": "What is the opposite of HOT?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Cold",
+        "Big",
+        "Happy"
+      ],
+      "choice_images": [
+        "media/cold.svg",
+        "media/big.svg",
+        "media/happy.svg"
+      ],
+      "answer": "Cold",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Cold!",
+      "explanation": "The answer is Cold."
+    },
+    {
+      "id": "opp_en_04",
+      "prompt": "What is the opposite of COLD?",
+      "spoken_prompt": "What is the opposite of COLD?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Hot",
+        "Small",
+        "Sad"
+      ],
+      "choice_images": [
+        "media/hot.svg",
+        "media/small.svg",
+        "media/sad.svg"
+      ],
+      "answer": "Hot",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Hot!",
+      "explanation": "The answer is Hot."
+    },
+    {
+      "id": "opp_en_05",
+      "prompt": "What is the opposite of UP?",
+      "spoken_prompt": "What is the opposite of UP?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Down",
+        "Fast",
+        "Day"
+      ],
+      "choice_images": [
+        "media/down.svg",
+        "media/fast.svg",
+        "media/day.svg"
+      ],
+      "answer": "Down",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Down!",
+      "explanation": "The answer is Down."
+    },
+    {
+      "id": "opp_en_06",
+      "prompt": "What is the opposite of DOWN?",
+      "spoken_prompt": "What is the opposite of DOWN?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Up",
+        "Slow",
+        "Night"
+      ],
+      "choice_images": [
+        "media/up.svg",
+        "media/slow.svg",
+        "media/night.svg"
+      ],
+      "answer": "Up",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Up!",
+      "explanation": "The answer is Up."
+    },
+    {
+      "id": "opp_en_07",
+      "prompt": "What is the opposite of HAPPY?",
+      "spoken_prompt": "What is the opposite of HAPPY?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Sad",
+        "Hot",
+        "Big"
+      ],
+      "choice_images": [
+        "media/sad.svg",
+        "media/hot.svg",
+        "media/big.svg"
+      ],
+      "answer": "Sad",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Sad!",
+      "explanation": "The answer is Sad."
+    },
+    {
+      "id": "opp_en_08",
+      "prompt": "What is the opposite of SAD?",
+      "spoken_prompt": "What is the opposite of SAD?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Happy",
+        "Cold",
+        "Small"
+      ],
+      "choice_images": [
+        "media/happy.svg",
+        "media/cold.svg",
+        "media/small.svg"
+      ],
+      "answer": "Happy",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Happy!",
+      "explanation": "The answer is Happy."
+    },
+    {
+      "id": "opp_en_09",
+      "prompt": "What is the opposite of DAY?",
+      "spoken_prompt": "What is the opposite of DAY?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Night",
+        "Up",
+        "Fast"
+      ],
+      "choice_images": [
+        "media/night.svg",
+        "media/up.svg",
+        "media/fast.svg"
+      ],
+      "answer": "Night",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Night!",
+      "explanation": "The answer is Night."
+    },
+    {
+      "id": "opp_en_10",
+      "prompt": "What is the opposite of NIGHT?",
+      "spoken_prompt": "What is the opposite of NIGHT?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Day",
+        "Down",
+        "Slow"
+      ],
+      "choice_images": [
+        "media/day.svg",
+        "media/down.svg",
+        "media/slow.svg"
+      ],
+      "answer": "Day",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Day!",
+      "explanation": "The answer is Day."
+    },
+    {
+      "id": "opp_en_11",
+      "prompt": "What is the opposite of FAST?",
+      "spoken_prompt": "What is the opposite of FAST?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Slow",
+        "Hot",
+        "Happy"
+      ],
+      "choice_images": [
+        "media/slow.svg",
+        "media/hot.svg",
+        "media/happy.svg"
+      ],
+      "answer": "Slow",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Slow!",
+      "explanation": "The answer is Slow."
+    },
+    {
+      "id": "opp_en_12",
+      "prompt": "What is the opposite of SLOW?",
+      "spoken_prompt": "What is the opposite of SLOW?",
+      "choice_style": "image_grid",
+      "choices": [
+        "Fast",
+        "Cold",
+        "Sad"
+      ],
+      "choice_images": [
+        "media/fast.svg",
+        "media/cold.svg",
+        "media/sad.svg"
+      ],
+      "answer": "Fast",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Fast!",
+      "explanation": "The answer is Fast."
+    },
+    {
+      "id": "opp_en_13",
+      "prompt": "Tap the picture for BIG!",
+      "spoken_prompt": "Tap the picture for BIG!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Big",
+        "Small",
+        "Up"
+      ],
+      "choice_images": [
+        "media/big.svg",
+        "media/small.svg",
+        "media/up.svg"
+      ],
+      "answer": "Big",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Big!",
+      "explanation": "The answer is Big."
+    },
+    {
+      "id": "opp_en_14",
+      "prompt": "Tap the picture for HAPPY!",
+      "spoken_prompt": "Tap the picture for HAPPY!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Happy",
+        "Sad",
+        "Cold"
+      ],
+      "choice_images": [
+        "media/happy.svg",
+        "media/sad.svg",
+        "media/cold.svg"
+      ],
+      "answer": "Happy",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Happy!",
+      "explanation": "The answer is Happy."
+    },
+    {
+      "id": "opp_en_15",
+      "prompt": "Tap the picture for NIGHT!",
+      "spoken_prompt": "Tap the picture for NIGHT!",
+      "choice_style": "image_grid",
+      "choices": [
+        "Night",
+        "Day",
+        "Hot"
+      ],
+      "choice_images": [
+        "media/night.svg",
+        "media/day.svg",
+        "media/hot.svg"
+      ],
+      "answer": "Night",
+      "difficulty": "easy",
+      "reveal_message": "Awesome! Night!",
+      "explanation": "The answer is Night."
+    },
+    {
+      "id": "opp_en_16",
+      "prompt": "What is the opposite of OPEN?",
+      "spoken_prompt": "What is the opposite of OPEN?",
+      "choice_style": "default",
+      "choices": [
+        "Closed",
+        "Full",
+        "Loud"
+      ],
+      "answer": "Closed",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Closed!",
+      "explanation": "The answer is Closed."
+    },
+    {
+      "id": "opp_en_17",
+      "prompt": "What is the opposite of FULL?",
+      "spoken_prompt": "What is the opposite of FULL?",
+      "choice_style": "default",
+      "choices": [
+        "Empty",
+        "Wet",
+        "Tall"
+      ],
+      "answer": "Empty",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Empty!",
+      "explanation": "The answer is Empty."
+    },
+    {
+      "id": "opp_en_18",
+      "prompt": "What is the opposite of WET?",
+      "spoken_prompt": "What is the opposite of WET?",
+      "choice_style": "default",
+      "choices": [
+        "Dry",
+        "Dark",
+        "Heavy"
+      ],
+      "answer": "Dry",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Dry!",
+      "explanation": "The answer is Dry."
+    },
+    {
+      "id": "opp_en_19",
+      "prompt": "What is the opposite of LOUD?",
+      "spoken_prompt": "What is the opposite of LOUD?",
+      "choice_style": "default",
+      "choices": [
+        "Quiet",
+        "Soft",
+        "Clean"
+      ],
+      "answer": "Quiet",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Quiet!",
+      "explanation": "The answer is Quiet."
+    },
+    {
+      "id": "opp_en_20",
+      "prompt": "What is the opposite of TALL?",
+      "spoken_prompt": "What is the opposite of TALL?",
+      "choice_style": "default",
+      "choices": [
+        "Short",
+        "Light",
+        "Hard"
+      ],
+      "answer": "Short",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Short!",
+      "explanation": "The answer is Short."
+    },
+    {
+      "id": "opp_en_21",
+      "prompt": "What is the opposite of HEAVY?",
+      "spoken_prompt": "What is the opposite of HEAVY?",
+      "choice_style": "default",
+      "choices": [
+        "Light",
+        "Dirty",
+        "Open"
+      ],
+      "answer": "Light",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Light!",
+      "explanation": "The answer is Light."
+    },
+    {
+      "id": "opp_en_22",
+      "prompt": "What is the opposite of CLEAN?",
+      "spoken_prompt": "What is the opposite of CLEAN?",
+      "choice_style": "default",
+      "choices": [
+        "Dirty",
+        "Dry",
+        "Quiet"
+      ],
+      "answer": "Dirty",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Dirty!",
+      "explanation": "The answer is Dirty."
+    },
+    {
+      "id": "opp_en_23",
+      "prompt": "What is the opposite of HARD?",
+      "spoken_prompt": "What is the opposite of HARD?",
+      "choice_style": "default",
+      "choices": [
+        "Soft",
+        "Full",
+        "Tall"
+      ],
+      "answer": "Soft",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Soft!",
+      "explanation": "The answer is Soft."
+    },
+    {
+      "id": "opp_en_24",
+      "prompt": "What is the opposite of IN?",
+      "spoken_prompt": "What is the opposite of IN?",
+      "choice_style": "default",
+      "choices": [
+        "Out",
+        "Up",
+        "Near"
+      ],
+      "answer": "Out",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Out!",
+      "explanation": "The answer is Out."
+    },
+    {
+      "id": "opp_en_25",
+      "prompt": "What is the opposite of NEAR?",
+      "spoken_prompt": "What is the opposite of NEAR?",
+      "choice_style": "default",
+      "choices": [
+        "Far",
+        "In",
+        "Old"
+      ],
+      "answer": "Far",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Far!",
+      "explanation": "The answer is Far."
+    },
+    {
+      "id": "opp_en_26",
+      "prompt": "What is the opposite of NEW?",
+      "spoken_prompt": "What is the opposite of NEW?",
+      "choice_style": "default",
+      "choices": [
+        "Old",
+        "Wet",
+        "Fast"
+      ],
+      "answer": "Old",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Old!",
+      "explanation": "The answer is Old."
+    },
+    {
+      "id": "opp_en_27",
+      "prompt": "What is the opposite of FRONT?",
+      "spoken_prompt": "What is the opposite of FRONT?",
+      "choice_style": "default",
+      "choices": [
+        "Back",
+        "Left",
+        "Top"
+      ],
+      "answer": "Back",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Back!",
+      "explanation": "The answer is Back."
+    },
+    {
+      "id": "opp_en_28",
+      "prompt": "What is the opposite of LEFT?",
+      "spoken_prompt": "What is the opposite of LEFT?",
+      "choice_style": "default",
+      "choices": [
+        "Right",
+        "Back",
+        "Down"
+      ],
+      "answer": "Right",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Right!",
+      "explanation": "The answer is Right."
+    },
+    {
+      "id": "opp_en_29",
+      "prompt": "What is the opposite of AWAKE?",
+      "spoken_prompt": "What is the opposite of AWAKE?",
+      "choice_style": "default",
+      "choices": [
+        "Asleep",
+        "Happy",
+        "Loud"
+      ],
+      "answer": "Asleep",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Asleep!",
+      "explanation": "The answer is Asleep."
+    },
+    {
+      "id": "opp_en_30",
+      "prompt": "What is the opposite of PUSH?",
+      "spoken_prompt": "What is the opposite of PUSH?",
+      "choice_style": "default",
+      "choices": [
+        "Pull",
+        "Jump",
+        "Sit"
+      ],
+      "answer": "Pull",
+      "difficulty": "medium",
+      "reveal_message": "Great job! Pull!",
+      "explanation": "The answer is Pull."
+    },
+    {
+      "id": "opp_en_31",
+      "prompt": "What action do you do in a bed at night?",
+      "spoken_prompt": "What action do you do in a bed at night?",
+      "choice_style": "default",
+      "choices": [
+        "Sleep",
+        "Swim",
+        "Run"
+      ],
+      "answer": "Sleep",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Sleep!",
+      "explanation": "The answer is Sleep."
+    },
+    {
+      "id": "opp_en_32",
+      "prompt": "What action do you do with a yummy sandwich?",
+      "spoken_prompt": "What action do you do with a yummy sandwich?",
+      "choice_style": "default",
+      "choices": [
+        "Eat",
+        "Read",
+        "Jump"
+      ],
+      "answer": "Eat",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Eat!",
+      "explanation": "The answer is Eat."
+    },
+    {
+      "id": "opp_en_33",
+      "prompt": "What action do you do with a storybook?",
+      "spoken_prompt": "What action do you do with a storybook?",
+      "choice_style": "default",
+      "choices": [
+        "Read",
+        "Sleep",
+        "Swim"
+      ],
+      "answer": "Read",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Read!",
+      "explanation": "The answer is Read."
+    },
+    {
+      "id": "opp_en_34",
+      "prompt": "What action do you do in a swimming pool?",
+      "spoken_prompt": "What action do you do in a swimming pool?",
+      "choice_style": "default",
+      "choices": [
+        "Swim",
+        "Draw",
+        "Eat"
+      ],
+      "answer": "Swim",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Swim!",
+      "explanation": "The answer is Swim."
+    },
+    {
+      "id": "opp_en_35",
+      "prompt": "What action do you do with crayons and paper?",
+      "spoken_prompt": "What action do you do with crayons and paper?",
+      "choice_style": "default",
+      "choices": [
+        "Draw",
+        "Run",
+        "Sleep"
+      ],
+      "answer": "Draw",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Draw!",
+      "explanation": "The answer is Draw."
+    },
+    {
+      "id": "opp_en_36",
+      "prompt": "What action do you do to move super fast on your feet?",
+      "spoken_prompt": "What action do you do to move super fast on your feet?",
+      "choice_style": "default",
+      "choices": [
+        "Run",
+        "Sit",
+        "Read"
+      ],
+      "answer": "Run",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Run!",
+      "explanation": "The answer is Run."
+    },
+    {
+      "id": "opp_en_37",
+      "prompt": "What action do you do like a frog on a lily pad?",
+      "spoken_prompt": "What action do you do like a frog on a lily pad?",
+      "choice_style": "default",
+      "choices": [
+        "Jump",
+        "Sleep",
+        "Eat"
+      ],
+      "answer": "Jump",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Jump!",
+      "explanation": "The answer is Jump."
+    },
+    {
+      "id": "opp_en_38",
+      "prompt": "What action do you do with a fun song?",
+      "spoken_prompt": "What action do you do with a fun song?",
+      "choice_style": "default",
+      "choices": [
+        "Sing",
+        "Swim",
+        "Pull"
+      ],
+      "answer": "Sing",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Sing!",
+      "explanation": "The answer is Sing."
+    },
+    {
+      "id": "opp_en_39",
+      "prompt": "What action do you do with a glass of water?",
+      "spoken_prompt": "What action do you do with a glass of water?",
+      "choice_style": "default",
+      "choices": [
+        "Drink",
+        "Draw",
+        "Jump"
+      ],
+      "answer": "Drink",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Drink!",
+      "explanation": "The answer is Drink."
+    },
+    {
+      "id": "opp_en_40",
+      "prompt": "What action do you do when you hear a funny joke?",
+      "spoken_prompt": "What action do you do when you hear a funny joke?",
+      "choice_style": "default",
+      "choices": [
+        "Laugh",
+        "Sleep",
+        "Push"
+      ],
+      "answer": "Laugh",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Laugh!",
+      "explanation": "The answer is Laugh."
+    },
+    {
+      "id": "opp_en_41",
+      "prompt": "A giraffe is TALL, and a mouse is ___.",
+      "spoken_prompt": "A giraffe is TALL, and a mouse is ___.",
+      "choice_style": "default",
+      "choices": [
+        "Short",
+        "Loud",
+        "Wet"
+      ],
+      "answer": "Short",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Short!",
+      "explanation": "The answer is Short."
+    },
+    {
+      "id": "opp_en_42",
+      "prompt": "Ice cream is COLD, and soup is ___.",
+      "spoken_prompt": "Ice cream is COLD, and soup is ___.",
+      "choice_style": "default",
+      "choices": [
+        "Hot",
+        "Dry",
+        "Slow"
+      ],
+      "answer": "Hot",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Hot!",
+      "explanation": "The answer is Hot."
+    },
+    {
+      "id": "opp_en_43",
+      "prompt": "A feather is LIGHT, and a big rock is ___.",
+      "spoken_prompt": "A feather is LIGHT, and a big rock is ___.",
+      "choice_style": "default",
+      "choices": [
+        "Heavy",
+        "Soft",
+        "Empty"
+      ],
+      "answer": "Heavy",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Heavy!",
+      "explanation": "The answer is Heavy."
+    },
+    {
+      "id": "opp_en_44",
+      "prompt": "A turtle is SLOW, and a cheetah is ___.",
+      "spoken_prompt": "A turtle is SLOW, and a cheetah is ___.",
+      "choice_style": "default",
+      "choices": [
+        "Fast",
+        "Quiet",
+        "Old"
+      ],
+      "answer": "Fast",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Fast!",
+      "explanation": "The answer is Fast."
+    },
+    {
+      "id": "opp_en_45",
+      "prompt": "A pillow is SOFT, and a brick is ___.",
+      "spoken_prompt": "A pillow is SOFT, and a brick is ___.",
+      "choice_style": "default",
+      "choices": [
+        "Hard",
+        "Clean",
+        "Near"
+      ],
+      "answer": "Hard",
+      "difficulty": "hard",
+      "reveal_message": "Great job! Hard!",
+      "explanation": "The answer is Hard."
+    }
+  ],
+  "cover": "media/cover.svg"
+}

@@ -1,0 +1,786 @@
+{
+  "title": "جسمي والحواس الخمس",
+  "description": "تعرّف على أعضاء الجسم والحواس الخمس مع صور واضحة ونطق عربي مشكّل للأطفال.",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "category": "تعلّم مبكر · الجسم والحواس",
+  "pack_id": "kids_body_senses_ar",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "body_ar_01",
+      "prompt": "اضغط على العين!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْعَيْنِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "العين",
+        "الأذن",
+        "الأنف"
+      ],
+      "choice_images": [
+        "media/eye.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ],
+      "answer": "العين",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة العين!",
+      "explanation": "هذه الصورة تمثل العين."
+    },
+    {
+      "id": "body_ar_02",
+      "prompt": "اضغط على الأذن!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْأُذُنِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأذن",
+        "اليد",
+        "القدم"
+      ],
+      "choice_images": [
+        "media/ear.svg",
+        "media/hand.svg",
+        "media/foot.svg"
+      ],
+      "answer": "الأذن",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الأذن!",
+      "explanation": "هذه الصورة تمثل الأذن."
+    },
+    {
+      "id": "body_ar_03",
+      "prompt": "اضغط على الأنف!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْأَنْفِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأنف",
+        "الفم",
+        "العين"
+      ],
+      "choice_images": [
+        "media/nose.svg",
+        "media/mouth.svg",
+        "media/eye.svg"
+      ],
+      "answer": "الأنف",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الأنف!",
+      "explanation": "هذه الصورة تمثل الأنف."
+    },
+    {
+      "id": "body_ar_04",
+      "prompt": "اضغط على الفم!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْفَمِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الفم",
+        "الأنف",
+        "الأذن"
+      ],
+      "choice_images": [
+        "media/mouth.svg",
+        "media/nose.svg",
+        "media/ear.svg"
+      ],
+      "answer": "الفم",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الفم!",
+      "explanation": "هذه الصورة تمثل الفم."
+    },
+    {
+      "id": "body_ar_05",
+      "prompt": "اضغط على اليد!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْيَدِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "اليد",
+        "القدم",
+        "الأسنان"
+      ],
+      "choice_images": [
+        "media/hand.svg",
+        "media/foot.svg",
+        "media/teeth.svg"
+      ],
+      "answer": "اليد",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة اليد!",
+      "explanation": "هذه الصورة تمثل اليد."
+    },
+    {
+      "id": "body_ar_06",
+      "prompt": "اضغط على القدم!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْقَدَمِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "القدم",
+        "اليد",
+        "الشعر"
+      ],
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/hair.svg"
+      ],
+      "answer": "القدم",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة القدم!",
+      "explanation": "هذه الصورة تمثل القدم."
+    },
+    {
+      "id": "body_ar_07",
+      "prompt": "اضغط على الأسنان!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْأَسْنَانِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأسنان",
+        "اللسان",
+        "العين"
+      ],
+      "choice_images": [
+        "media/teeth.svg",
+        "media/tongue.svg",
+        "media/eye.svg"
+      ],
+      "answer": "الأسنان",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الأسنان!",
+      "explanation": "هذه الصورة تمثل الأسنان."
+    },
+    {
+      "id": "body_ar_08",
+      "prompt": "اضغط على اللسان!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ اللِّسَانِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "اللسان",
+        "الأسنان",
+        "الأنف"
+      ],
+      "choice_images": [
+        "media/tongue.svg",
+        "media/teeth.svg",
+        "media/nose.svg"
+      ],
+      "answer": "اللسان",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة اللسان!",
+      "explanation": "هذه الصورة تمثل اللسان."
+    },
+    {
+      "id": "body_ar_09",
+      "prompt": "اضغط على القلب!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْقَلْبِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "القلب",
+        "الدماغ",
+        "اليد"
+      ],
+      "choice_images": [
+        "media/heart.svg",
+        "media/brain.svg",
+        "media/hand.svg"
+      ],
+      "answer": "القلب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة القلب!",
+      "explanation": "هذه الصورة تمثل القلب."
+    },
+    {
+      "id": "body_ar_10",
+      "prompt": "اضغط على الدماغ!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الدِّمَاغِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الدماغ",
+        "القلب",
+        "القدم"
+      ],
+      "choice_images": [
+        "media/brain.svg",
+        "media/heart.svg",
+        "media/foot.svg"
+      ],
+      "answer": "الدماغ",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الدماغ!",
+      "explanation": "هذه الصورة تمثل الدماغ."
+    },
+    {
+      "id": "body_ar_11",
+      "prompt": "اضغط على الشعر!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الشَّعْرِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الشعر",
+        "الركبة",
+        "الأذن"
+      ],
+      "choice_images": [
+        "media/hair.svg",
+        "media/knee.svg",
+        "media/ear.svg"
+      ],
+      "answer": "الشعر",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الشعر!",
+      "explanation": "هذه الصورة تمثل الشعر."
+    },
+    {
+      "id": "body_ar_12",
+      "prompt": "اضغط على الركبة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الرُّكْبَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "الركبة",
+        "اليد",
+        "الأنف"
+      ],
+      "choice_images": [
+        "media/knee.svg",
+        "media/hand.svg",
+        "media/nose.svg"
+      ],
+      "answer": "الركبة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذه صورة الركبة!",
+      "explanation": "هذه الصورة تمثل الركبة."
+    },
+    {
+      "id": "body_ar_13",
+      "prompt": "بأي عضو نرى الأشياء من حولنا؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَرَى الْأَشْيَاءَ مِنْ حَوْلِنَا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "العين",
+        "الأذن",
+        "الأنف"
+      ],
+      "answer": "العين",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي العين!",
+      "explanation": "الإجابة الصحيحة هي العين.",
+      "choice_images": [
+        "media/eye.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_ar_14",
+      "prompt": "بأي عضو نسمع الأصوات والموسيقى؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَسْمَعُ الْأَصْوَاتَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأذن",
+        "العين",
+        "اليد"
+      ],
+      "answer": "الأذن",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأذن!",
+      "explanation": "الإجابة الصحيحة هي الأذن.",
+      "choice_images": [
+        "media/ear.svg",
+        "media/eye.svg",
+        "media/hand.svg"
+      ]
+    },
+    {
+      "id": "body_ar_15",
+      "prompt": "بأي عضو نشمّ رائحة الورد؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَشُمُّ رَائِحَةَ الْوَرْدِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأنف",
+        "الفم",
+        "القدم"
+      ],
+      "answer": "الأنف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأنف!",
+      "explanation": "الإجابة الصحيحة هي الأنف.",
+      "choice_images": [
+        "media/nose.svg",
+        "media/mouth.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_ar_16",
+      "prompt": "بأي عضو نتذوق طعم الآيس كريم؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَتَذَوَّقُ طَعْمَ الطَّعَامِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "اللسان",
+        "الأذن",
+        "الركبة"
+      ],
+      "answer": "اللسان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي اللسان!",
+      "explanation": "الإجابة الصحيحة هي اللسان.",
+      "choice_images": [
+        "media/tongue.svg",
+        "media/ear.svg",
+        "media/knee.svg"
+      ]
+    },
+    {
+      "id": "body_ar_17",
+      "prompt": "بأي عضو نلمس الأشياء ونمسكها؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَلْمِسُ الْأَشْيَاءَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "اليد",
+        "الأنف",
+        "العين"
+      ],
+      "answer": "اليد",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي اليد!",
+      "explanation": "الإجابة الصحيحة هي اليد.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/nose.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_ar_18",
+      "prompt": "بماذا نمضغ التفاح والطعام؟",
+      "spoken_prompt": "بِمَاذَا نَمْضُغُ الطَّعَامَ اللَّذِيذَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأسنان",
+        "الأذن",
+        "الشعر"
+      ],
+      "answer": "الأسنان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأسنان!",
+      "explanation": "الإجابة الصحيحة هي الأسنان.",
+      "choice_images": [
+        "media/teeth.svg",
+        "media/ear.svg",
+        "media/hair.svg"
+      ]
+    },
+    {
+      "id": "body_ar_19",
+      "prompt": "بأي عضو نمشي ونقفز؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَمْشِي وَنَقْفِزُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القدم",
+        "اليد",
+        "الأنف"
+      ],
+      "answer": "القدم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي القدم!",
+      "explanation": "الإجابة الصحيحة هي القدم.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_ar_20",
+      "prompt": "بأي عضو نبتسم ونتكلم؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَبْتَسِمُ وَنَتَكَلَّمُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الفم",
+        "الركبة",
+        "الأذن"
+      ],
+      "answer": "الفم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الفم!",
+      "explanation": "الإجابة الصحيحة هي الفم.",
+      "choice_images": [
+        "media/mouth.svg",
+        "media/knee.svg",
+        "media/ear.svg"
+      ]
+    },
+    {
+      "id": "body_ar_21",
+      "prompt": "بأي عضو نلوّح بالسلام؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نُلَوِّحُ بِالسَّلَامِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "اليد",
+        "القدم",
+        "العين"
+      ],
+      "answer": "اليد",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي اليد!",
+      "explanation": "الإجابة الصحيحة هي اليد.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/foot.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_ar_22",
+      "prompt": "أي عضو يرمش ليحمي بصرنا؟",
+      "spoken_prompt": "أَيُّ عُضْوٍ يَرْمِشُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "العين",
+        "الأنف",
+        "اللسان"
+      ],
+      "answer": "العين",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي العين!",
+      "explanation": "الإجابة الصحيحة هي العين.",
+      "choice_images": [
+        "media/eye.svg",
+        "media/nose.svg",
+        "media/tongue.svg"
+      ]
+    },
+    {
+      "id": "body_ar_23",
+      "prompt": "بأي عضو نستمع إلى القصة؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَسْتَمِعُ إِلَى الْقِصَّةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأذن",
+        "الأسنان",
+        "القدم"
+      ],
+      "answer": "الأذن",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأذن!",
+      "explanation": "الإجابة الصحيحة هي الأذن.",
+      "choice_images": [
+        "media/ear.svg",
+        "media/teeth.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_ar_24",
+      "prompt": "بأي عضو نشم رائحة الكعك؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَشُمُّ رَائِحَةَ الْكَعْكِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأنف",
+        "اليد",
+        "العين"
+      ],
+      "answer": "الأنف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأنف!",
+      "explanation": "الإجابة الصحيحة هي الأنف.",
+      "choice_images": [
+        "media/nose.svg",
+        "media/hand.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_ar_25",
+      "prompt": "أين نلبس الحذاء والجورب؟",
+      "spoken_prompt": "أَيْنَ نَلْبَسُ الْحِذَاءَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القدم",
+        "اليد",
+        "الأذن"
+      ],
+      "answer": "القدم",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي القدم!",
+      "explanation": "الإجابة الصحيحة هي القدم.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/ear.svg"
+      ]
+    },
+    {
+      "id": "body_ar_26",
+      "prompt": "ماذا ننظف بالفرشاة والمعجون كل يوم؟",
+      "spoken_prompt": "مَاذَا نُنَظِّفُ بِالْفُرْشَاةِ كُلَّ يَوْمٍ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الأسنان",
+        "الركبة",
+        "الأنف"
+      ],
+      "answer": "الأسنان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الأسنان!",
+      "explanation": "الإجابة الصحيحة هي الأسنان.",
+      "choice_images": [
+        "media/teeth.svg",
+        "media/knee.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_ar_27",
+      "prompt": "ماذا نمشط بالمشط؟",
+      "spoken_prompt": "مَاذَا نُمَشِّطُ بِالْمُشْطِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الشعر",
+        "الأسنان",
+        "القلب"
+      ],
+      "answer": "الشعر",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الشعر!",
+      "explanation": "الإجابة الصحيحة هي الشعر.",
+      "choice_images": [
+        "media/hair.svg",
+        "media/teeth.svg",
+        "media/heart.svg"
+      ]
+    },
+    {
+      "id": "body_ar_28",
+      "prompt": "أي جزء ينثني في منتصف الساق؟",
+      "spoken_prompt": "أَيُّ جُزْءٍ يَنْثَنِي فِي السَّاقِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الركبة",
+        "اليد",
+        "العين"
+      ],
+      "answer": "الركبة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي الركبة!",
+      "explanation": "الإجابة الصحيحة هي الركبة.",
+      "choice_images": [
+        "media/knee.svg",
+        "media/hand.svg",
+        "media/eye.svg"
+      ]
+    },
+    {
+      "id": "body_ar_29",
+      "prompt": "أي عضو ينبض داخل الصدر؟",
+      "spoken_prompt": "أَيُّ عُضْوٍ يَنْبِضُ دَاخِلَ الصَّدْرِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القلب",
+        "الدماغ",
+        "اللسان"
+      ],
+      "answer": "القلب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي القلب!",
+      "explanation": "الإجابة الصحيحة هي القلب.",
+      "choice_images": [
+        "media/heart.svg",
+        "media/brain.svg",
+        "media/tongue.svg"
+      ]
+    },
+    {
+      "id": "body_ar_30",
+      "prompt": "أي عضو داخل الرأس يساعدنا على التفكير؟",
+      "spoken_prompt": "أَيُّ عُضْوٍ يُسَاعِدُنَا عَلَى التَّفْكِيرِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "الدماغ",
+        "القلب",
+        "القدم"
+      ],
+      "answer": "الدماغ",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الدماغ!",
+      "explanation": "الإجابة الصحيحة هي الدماغ.",
+      "choice_images": [
+        "media/brain.svg",
+        "media/heart.svg",
+        "media/foot.svg"
+      ]
+    },
+    {
+      "id": "body_ar_31",
+      "prompt": "ما اسم الحاسة التي نستخدم فيها العين؟",
+      "spoken_prompt": "مَا اسْمُ الْحَاسَّةِ الَّتِي نَسْتَخْدِمُ فِيهَا الْعَيْنَ؟",
+      "choice_style": "default",
+      "choices": [
+        "البصر",
+        "السمع",
+        "الشم"
+      ],
+      "answer": "البصر",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي البصر!",
+      "explanation": "الإجابة الصحيحة هي البصر."
+    },
+    {
+      "id": "body_ar_32",
+      "prompt": "ما اسم الحاسة التي نستخدم فيها الأذن؟",
+      "spoken_prompt": "مَا اسْمُ الْحَاسَّةِ الَّتِي نَسْتَخْدِمُ فِيهَا الْأُذُنَ؟",
+      "choice_style": "default",
+      "choices": [
+        "السمع",
+        "التذوق",
+        "اللمس"
+      ],
+      "answer": "السمع",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي السمع!",
+      "explanation": "الإجابة الصحيحة هي السمع."
+    },
+    {
+      "id": "body_ar_33",
+      "prompt": "ما اسم الحاسة التي نستخدم فيها الأنف؟",
+      "spoken_prompt": "مَا اسْمُ الْحَاسَّةِ الَّتِي نَسْتَخْدِمُ فِيهَا الْأَنْفَ؟",
+      "choice_style": "default",
+      "choices": [
+        "الشم",
+        "البصر",
+        "السمع"
+      ],
+      "answer": "الشم",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي الشم!",
+      "explanation": "الإجابة الصحيحة هي الشم."
+    },
+    {
+      "id": "body_ar_34",
+      "prompt": "ما اسم الحاسة التي نستخدم فيها اللسان؟",
+      "spoken_prompt": "مَا اسْمُ الْحَاسَّةِ الَّتِي نَسْتَخْدِمُ فِيهَا اللِّسَانَ؟",
+      "choice_style": "default",
+      "choices": [
+        "التذوق",
+        "اللمس",
+        "الشم"
+      ],
+      "answer": "التذوق",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي التذوق!",
+      "explanation": "الإجابة الصحيحة هي التذوق."
+    },
+    {
+      "id": "body_ar_35",
+      "prompt": "ما اسم الحاسة التي نستخدم فيها اليد؟",
+      "spoken_prompt": "مَا اسْمُ الْحَاسَّةِ الَّتِي نَسْتَخْدِمُ فِيهَا الْيَدَ؟",
+      "choice_style": "default",
+      "choices": [
+        "اللمس",
+        "البصر",
+        "التذوق"
+      ],
+      "answer": "اللمس",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي اللمس!",
+      "explanation": "الإجابة الصحيحة هي اللمس."
+    },
+    {
+      "id": "body_ar_36",
+      "prompt": "كم عدد الحواس الخمس عند الإنسان؟",
+      "spoken_prompt": "كَمْ عَدَدُ الْحَوَاسِّ عِنْدَ الْإِنْسَانِ؟",
+      "choice_style": "default",
+      "choices": [
+        "٥",
+        "٣",
+        "٨"
+      ],
+      "answer": "٥",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي ٥!",
+      "explanation": "الإجابة الصحيحة هي ٥."
+    },
+    {
+      "id": "body_ar_37",
+      "prompt": "بأي عضو نصفق عندما نفرح؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نُصَفِّقُ عِنْدَمَا نَفْرَحُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "اليد",
+        "الأذن",
+        "الأنف"
+      ],
+      "answer": "اليد",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي اليد!",
+      "explanation": "الإجابة الصحيحة هي اليد.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/ear.svg",
+        "media/nose.svg"
+      ]
+    },
+    {
+      "id": "body_ar_38",
+      "prompt": "بأي عضو نركل كرة القدم؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَرْكُلُ كُرَةَ الْقَدَمِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القدم",
+        "اليد",
+        "الأسنان"
+      ],
+      "answer": "القدم",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي القدم!",
+      "explanation": "الإجابة الصحيحة هي القدم.",
+      "choice_images": [
+        "media/foot.svg",
+        "media/hand.svg",
+        "media/teeth.svg"
+      ]
+    },
+    {
+      "id": "body_ar_39",
+      "prompt": "بأي عضو نشعر إن كان الماء دافئاً أو بارداً؟",
+      "spoken_prompt": "بِأَيِّ عُضْوٍ نَشْعُرُ بِدِفْءِ الْمَاءِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "اليد",
+        "الشعر",
+        "الأسنان"
+      ],
+      "answer": "اليد",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي اليد!",
+      "explanation": "الإجابة الصحيحة هي اليد.",
+      "choice_images": [
+        "media/hand.svg",
+        "media/hair.svg",
+        "media/teeth.svg"
+      ]
+    },
+    {
+      "id": "body_ar_40",
+      "prompt": "أي عضو تسرع نبضاته عندما نركض؟",
+      "spoken_prompt": "أَيُّ عُضْوٍ تَسْرَعُ نَبَضَاتُهُ عِنْدَمَا نَرْكُضُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "القلب",
+        "الركبة",
+        "الأنف"
+      ],
+      "answer": "القلب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي القلب!",
+      "explanation": "الإجابة الصحيحة هي القلب.",
+      "choice_images": [
+        "media/heart.svg",
+        "media/knee.svg",
+        "media/nose.svg"
+      ]
+    }
+  ],
+  "cover": "media/cover.svg"
+}

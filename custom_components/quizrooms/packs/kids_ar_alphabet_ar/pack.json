@@ -3,7 +3,7 @@
   "title": "الحروف العربية",
   "description": "تعلّم الحروف العربية من الألف إلى الياء مع صور جميلة وأزرار كبيرة مناسبة للأطفال.",
   "audience": "kids",
-  "age_range": null,
+  "age_range": "3-6",
   "choice_style": "large_glyph",
   "language": "ar",
   "rtl": true,
@@ -578,6 +578,594 @@
       "difficulty": "hard",
       "reveal_message": "رائع! غ — غيمة!",
       "explanation": "غيمة تبدأ بحرف (غ)."
+    },
+    {
+      "id": "ar_abc_35",
+      "prompt": "أي كلمة تبدأ بحرف (أ)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـأَلِف؟",
+      "choice_style": "default",
+      "choices": [
+        "أَسَد",
+        "بَطَّة",
+        "سَمَكَة"
+      ],
+      "answer": "أَسَد",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! أَسَد تبدأ بحرف (أ)!",
+      "explanation": "كلمة أَسَد تبدأ بحرف (أ)."
+    },
+    {
+      "id": "ar_abc_36",
+      "prompt": "أي كلمة تبدأ بحرف (ب)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـبَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "بَطَّة",
+        "قَمَر",
+        "شَمْس"
+      ],
+      "answer": "بَطَّة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! بَطَّة تبدأ بحرف (ب)!",
+      "explanation": "كلمة بَطَّة تبدأ بحرف (ب)."
+    },
+    {
+      "id": "ar_abc_37",
+      "prompt": "أي كلمة تبدأ بحرف (ت)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـتَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "تُفَّاحَة",
+        "جَمَل",
+        "دُبّ"
+      ],
+      "answer": "تُفَّاحَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! تُفَّاحَة تبدأ بحرف (ت)!",
+      "explanation": "كلمة تُفَّاحَة تبدأ بحرف (ت)."
+    },
+    {
+      "id": "ar_abc_38",
+      "prompt": "أي كلمة تبدأ بحرف (ث)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـثَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "ثَعْلَب",
+        "قِطَّة",
+        "مَوْز"
+      ],
+      "answer": "ثَعْلَب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ثَعْلَب تبدأ بحرف (ث)!",
+      "explanation": "كلمة ثَعْلَب تبدأ بحرف (ث)."
+    },
+    {
+      "id": "ar_abc_39",
+      "prompt": "أي كلمة تبدأ بحرف (ج)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـجِيم؟",
+      "choice_style": "default",
+      "choices": [
+        "جَمَل",
+        "نَحْلَة",
+        "وَرْدَة"
+      ],
+      "answer": "جَمَل",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! جَمَل تبدأ بحرف (ج)!",
+      "explanation": "كلمة جَمَل تبدأ بحرف (ج)."
+    },
+    {
+      "id": "ar_abc_40",
+      "prompt": "أي كلمة تبدأ بحرف (ح)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـحَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "حِصَان",
+        "خَرُوف",
+        "ذُرَة"
+      ],
+      "answer": "حِصَان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! حِصَان تبدأ بحرف (ح)!",
+      "explanation": "كلمة حِصَان تبدأ بحرف (ح)."
+    },
+    {
+      "id": "ar_abc_41",
+      "prompt": "أي كلمة تبدأ بحرف (خ)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـخَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "خَرُوف",
+        "كِتَاب",
+        "لَيْمُون"
+      ],
+      "answer": "خَرُوف",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! خَرُوف تبدأ بحرف (خ)!",
+      "explanation": "كلمة خَرُوف تبدأ بحرف (خ)."
+    },
+    {
+      "id": "ar_abc_42",
+      "prompt": "أي كلمة تبدأ بحرف (د)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـدَال؟",
+      "choice_style": "default",
+      "choices": [
+        "دُبّ",
+        "زَرَافَة",
+        "فَرَاشَة"
+      ],
+      "answer": "دُبّ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! دُبّ تبدأ بحرف (د)!",
+      "explanation": "كلمة دُبّ تبدأ بحرف (د)."
+    },
+    {
+      "id": "ar_abc_43",
+      "prompt": "أي كلمة تبدأ بحرف (ذ)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـذَال؟",
+      "choice_style": "default",
+      "choices": [
+        "ذُرَة",
+        "رُمَّان",
+        "طَائِرَة"
+      ],
+      "answer": "ذُرَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! ذُرَة تبدأ بحرف (ذ)!",
+      "explanation": "كلمة ذُرَة تبدأ بحرف (ذ)."
+    },
+    {
+      "id": "ar_abc_44",
+      "prompt": "أي كلمة تبدأ بحرف (ر)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـرَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "رُمَّان",
+        "سَمَكَة",
+        "قَمَر"
+      ],
+      "answer": "رُمَّان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! رُمَّان تبدأ بحرف (ر)!",
+      "explanation": "كلمة رُمَّان تبدأ بحرف (ر)."
+    },
+    {
+      "id": "ar_abc_45",
+      "prompt": "أي كلمة تبدأ بحرف (ز)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـزَاي؟",
+      "choice_style": "default",
+      "choices": [
+        "زَرَافَة",
+        "ضِفْدَع",
+        "يَد"
+      ],
+      "answer": "زَرَافَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! زَرَافَة تبدأ بحرف (ز)!",
+      "explanation": "كلمة زَرَافَة تبدأ بحرف (ز)."
+    },
+    {
+      "id": "ar_abc_46",
+      "prompt": "أي كلمة تبدأ بحرف (س)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـسِين؟",
+      "choice_style": "default",
+      "choices": [
+        "سَمَكَة",
+        "شَمْس",
+        "صَارُوخ"
+      ],
+      "answer": "سَمَكَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! سَمَكَة تبدأ بحرف (س)!",
+      "explanation": "كلمة سَمَكَة تبدأ بحرف (س)."
+    },
+    {
+      "id": "ar_abc_47",
+      "prompt": "أي كلمة تبدأ بحرف (ش)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـشِين؟",
+      "choice_style": "default",
+      "choices": [
+        "شَمْس",
+        "سَمَكَة",
+        "غَيْمَة"
+      ],
+      "answer": "شَمْس",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! شَمْس تبدأ بحرف (ش)!",
+      "explanation": "كلمة شَمْس تبدأ بحرف (ش)."
+    },
+    {
+      "id": "ar_abc_48",
+      "prompt": "أي كلمة تبدأ بحرف (ص)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـصَاد؟",
+      "choice_style": "default",
+      "choices": [
+        "صَارُوخ",
+        "ضِفْدَع",
+        "عُصْفُور"
+      ],
+      "answer": "صَارُوخ",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! صَارُوخ تبدأ بحرف (ص)!",
+      "explanation": "كلمة صَارُوخ تبدأ بحرف (ص)."
+    },
+    {
+      "id": "ar_abc_49",
+      "prompt": "أي كلمة تبدأ بحرف (ع)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـعَيْن؟",
+      "choice_style": "default",
+      "choices": [
+        "عُصْفُور",
+        "غَيْمَة",
+        "قِطَّة"
+      ],
+      "answer": "عُصْفُور",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! عُصْفُور تبدأ بحرف (ع)!",
+      "explanation": "كلمة عُصْفُور تبدأ بحرف (ع)."
+    },
+    {
+      "id": "ar_abc_50",
+      "prompt": "أي كلمة تبدأ بحرف (ف)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـفَاء؟",
+      "choice_style": "default",
+      "choices": [
+        "فَرَاشَة",
+        "قَمَر",
+        "كِتَاب"
+      ],
+      "answer": "فَرَاشَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! فَرَاشَة تبدأ بحرف (ف)!",
+      "explanation": "كلمة فَرَاشَة تبدأ بحرف (ف)."
+    },
+    {
+      "id": "ar_abc_51",
+      "prompt": "أي كلمة تبدأ بحرف (ق)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـقَاف؟",
+      "choice_style": "default",
+      "choices": [
+        "قَمَر",
+        "شَمْس",
+        "لَيْمُون"
+      ],
+      "answer": "قَمَر",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! قَمَر تبدأ بحرف (ق)!",
+      "explanation": "كلمة قَمَر تبدأ بحرف (ق)."
+    },
+    {
+      "id": "ar_abc_52",
+      "prompt": "أي كلمة تبدأ بحرف (ك)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـكَاف؟",
+      "choice_style": "default",
+      "choices": [
+        "كِتَاب",
+        "مَوْز",
+        "نَحْلَة"
+      ],
+      "answer": "كِتَاب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! كِتَاب تبدأ بحرف (ك)!",
+      "explanation": "كلمة كِتَاب تبدأ بحرف (ك)."
+    },
+    {
+      "id": "ar_abc_53",
+      "prompt": "أي كلمة تبدأ بحرف (م)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـمِيم؟",
+      "choice_style": "default",
+      "choices": [
+        "مَوْز",
+        "لَيْمُون",
+        "وَرْدَة"
+      ],
+      "answer": "مَوْز",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! مَوْز تبدأ بحرف (م)!",
+      "explanation": "كلمة مَوْز تبدأ بحرف (م)."
+    },
+    {
+      "id": "ar_abc_54",
+      "prompt": "أي كلمة تبدأ بحرف (ن)؟",
+      "spoken_prompt": "أَيُّ كَلِمَةٍ تَبْدَأُ بِحَرْفِ الْـنُون؟",
+      "choice_style": "default",
+      "choices": [
+        "نَحْلَة",
+        "بَطَّة",
+        "أَسَد"
+      ],
+      "answer": "نَحْلَة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! نَحْلَة تبدأ بحرف (ن)!",
+      "explanation": "كلمة نَحْلَة تبدأ بحرف (ن)."
+    },
+    {
+      "id": "ar_abc_55",
+      "prompt": "أكمل الحرف الأول: ____ـسَد",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ أَسَد؟",
+      "image": "media/lion.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "أ",
+        "ب",
+        "م"
+      ],
+      "answer": "أ",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (أ) + ـسَد = أَسَد!",
+      "explanation": "الحرف الأول في كلمة أَسَد هو (أ)."
+    },
+    {
+      "id": "ar_abc_56",
+      "prompt": "أكمل الحرف الأول: ____ـطَّة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ بَطَّة؟",
+      "image": "media/duck.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ب",
+        "ت",
+        "ن"
+      ],
+      "answer": "ب",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ب) + ـطَّة = بَطَّة!",
+      "explanation": "الحرف الأول في كلمة بَطَّة هو (ب)."
+    },
+    {
+      "id": "ar_abc_57",
+      "prompt": "أكمل الحرف الأول: ____ـفَّاحَة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ تُفَّاحَة؟",
+      "image": "media/apple.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ت",
+        "ث",
+        "ب"
+      ],
+      "answer": "ت",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ت) + ـفَّاحَة = تُفَّاحَة!",
+      "explanation": "الحرف الأول في كلمة تُفَّاحَة هو (ت)."
+    },
+    {
+      "id": "ar_abc_58",
+      "prompt": "أكمل الحرف الأول: ____ـعْلَب",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ ثَعْلَب؟",
+      "image": "media/fox.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ث",
+        "ت",
+        "س"
+      ],
+      "answer": "ث",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ث) + ـعْلَب = ثَعْلَب!",
+      "explanation": "الحرف الأول في كلمة ثَعْلَب هو (ث)."
+    },
+    {
+      "id": "ar_abc_59",
+      "prompt": "أكمل الحرف الأول: ____ـمَل",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ جَمَل؟",
+      "image": "media/camel.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ج",
+        "ح",
+        "خ"
+      ],
+      "answer": "ج",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ج) + ـمَل = جَمَل!",
+      "explanation": "الحرف الأول في كلمة جَمَل هو (ج)."
+    },
+    {
+      "id": "ar_abc_60",
+      "prompt": "أكمل الحرف الأول: ____ـصَان",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ حِصَان؟",
+      "image": "media/horse.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ح",
+        "خ",
+        "ج"
+      ],
+      "answer": "ح",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ح) + ـصَان = حِصَان!",
+      "explanation": "الحرف الأول في كلمة حِصَان هو (ح)."
+    },
+    {
+      "id": "ar_abc_61",
+      "prompt": "أكمل الحرف الأول: ____ـرُوف",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ خَرُوف؟",
+      "image": "media/sheep.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "خ",
+        "ح",
+        "غ"
+      ],
+      "answer": "خ",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (خ) + ـرُوف = خَرُوف!",
+      "explanation": "الحرف الأول في كلمة خَرُوف هو (خ)."
+    },
+    {
+      "id": "ar_abc_62",
+      "prompt": "أكمل الحرف الأول: ____ـبّ",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ دُبّ؟",
+      "image": "media/bear.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "د",
+        "ذ",
+        "ر"
+      ],
+      "answer": "د",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (د) + ـبّ = دُبّ!",
+      "explanation": "الحرف الأول في كلمة دُبّ هو (د)."
+    },
+    {
+      "id": "ar_abc_63",
+      "prompt": "أكمل الحرف الأول: ____ـمَّان",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ رُمَّان؟",
+      "image": "media/pomegranate.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ر",
+        "ز",
+        "د"
+      ],
+      "answer": "ر",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ر) + ـمَّان = رُمَّان!",
+      "explanation": "الحرف الأول في كلمة رُمَّان هو (ر)."
+    },
+    {
+      "id": "ar_abc_64",
+      "prompt": "أكمل الحرف الأول: ____ـرَافَة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ زَرَافَة؟",
+      "image": "media/giraffe.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ز",
+        "ر",
+        "ذ"
+      ],
+      "answer": "ز",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ز) + ـرَافَة = زَرَافَة!",
+      "explanation": "الحرف الأول في كلمة زَرَافَة هو (ز)."
+    },
+    {
+      "id": "ar_abc_65",
+      "prompt": "أكمل الحرف الأول: ____ـمَكَة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ سَمَكَة؟",
+      "image": "media/fish.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "س",
+        "ش",
+        "ص"
+      ],
+      "answer": "س",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (س) + ـمَكَة = سَمَكَة!",
+      "explanation": "الحرف الأول في كلمة سَمَكَة هو (س)."
+    },
+    {
+      "id": "ar_abc_66",
+      "prompt": "أكمل الحرف الأول: ____ـمْس",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ شَمْس؟",
+      "image": "media/sun.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ش",
+        "س",
+        "ث"
+      ],
+      "answer": "ش",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ش) + ـمْس = شَمْس!",
+      "explanation": "الحرف الأول في كلمة شَمْس هو (ش)."
+    },
+    {
+      "id": "ar_abc_67",
+      "prompt": "أكمل الحرف الأول: ____ـارُوخ",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ صَارُوخ؟",
+      "image": "media/rocket.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ص",
+        "ض",
+        "ط"
+      ],
+      "answer": "ص",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ص) + ـارُوخ = صَارُوخ!",
+      "explanation": "الحرف الأول في كلمة صَارُوخ هو (ص)."
+    },
+    {
+      "id": "ar_abc_68",
+      "prompt": "أكمل الحرف الأول: ____ـفْدَع",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ ضِفْدَع؟",
+      "image": "media/frog.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ض",
+        "ص",
+        "د"
+      ],
+      "answer": "ض",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ض) + ـفْدَع = ضِفْدَع!",
+      "explanation": "الحرف الأول في كلمة ضِفْدَع هو (ض)."
+    },
+    {
+      "id": "ar_abc_69",
+      "prompt": "أكمل الحرف الأول: ____ـائِرَة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ طَائِرَة؟",
+      "image": "media/airplane.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ط",
+        "ظ",
+        "ت"
+      ],
+      "answer": "ط",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ط) + ـائِرَة = طَائِرَة!",
+      "explanation": "الحرف الأول في كلمة طَائِرَة هو (ط)."
+    },
+    {
+      "id": "ar_abc_70",
+      "prompt": "أكمل الحرف الأول: ____ـرَاشَة",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ فَرَاشَة؟",
+      "image": "media/butterfly.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ف",
+        "ق",
+        "ب"
+      ],
+      "answer": "ف",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ف) + ـرَاشَة = فَرَاشَة!",
+      "explanation": "الحرف الأول في كلمة فَرَاشَة هو (ف)."
+    },
+    {
+      "id": "ar_abc_71",
+      "prompt": "أكمل الحرف الأول: ____ـمَر",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ قَمَر؟",
+      "image": "media/moon.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ق",
+        "ف",
+        "ك"
+      ],
+      "answer": "ق",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ق) + ـمَر = قَمَر!",
+      "explanation": "الحرف الأول في كلمة قَمَر هو (ق)."
+    },
+    {
+      "id": "ar_abc_72",
+      "prompt": "أكمل الحرف الأول: ____ـتَاب",
+      "spoken_prompt": "مَا هُوَ الْحَرْفُ النَّاقِصُ فِي أَوَّلِ كَلِمَةِ كِتَاب؟",
+      "image": "media/book.svg",
+      "choice_style": "large_glyph",
+      "choices": [
+        "ك",
+        "ق",
+        "ل"
+      ],
+      "answer": "ك",
+      "difficulty": "hard",
+      "reveal_message": "رائع! (ك) + ـتَاب = كِتَاب!",
+      "explanation": "الحرف الأول في كلمة كِتَاب هو (ك)."
     }
   ],
   "cover": "media/cover.svg"

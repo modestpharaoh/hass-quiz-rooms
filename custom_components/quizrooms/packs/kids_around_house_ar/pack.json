@@ -1,0 +1,816 @@
+{
+  "title": "أشياء حولنا في البيت",
+  "description": "السرير والكرسي والطاولة والباب والمفتاح والكوب والكتاب — مفردات يومية للأطفال.",
+  "age_range": "3-6",
+  "choice_style": "image_grid",
+  "language": "ar",
+  "rtl": true,
+  "category": "تعلّم مبكر · في البيت",
+  "pack_id": "kids_around_house_ar",
+  "audience": "kids",
+  "version": "1.0.0",
+  "author": "QuizRooms Early Learner",
+  "questions": [
+    {
+      "id": "hou_ar_01",
+      "prompt": "اضغط على سرير!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ السَّرِيرِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "سرير",
+        "كرسي",
+        "طاولة"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/chair.svg",
+        "media/table.svg"
+      ],
+      "answer": "سرير",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا سرير!",
+      "explanation": "هذه الصورة تمثل سرير."
+    },
+    {
+      "id": "hou_ar_02",
+      "prompt": "اضغط على كرسي!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْكُرْسِيِّ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "كرسي",
+        "أريكة",
+        "سرير"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/sofa.svg",
+        "media/bed.svg"
+      ],
+      "answer": "كرسي",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا كرسي!",
+      "explanation": "هذه الصورة تمثل كرسي."
+    },
+    {
+      "id": "hou_ar_03",
+      "prompt": "اضغط على طاولة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الطَّاوِلَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "طاولة",
+        "باب",
+        "كرسي"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/door.svg",
+        "media/chair.svg"
+      ],
+      "answer": "طاولة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا طاولة!",
+      "explanation": "هذه الصورة تمثل طاولة."
+    },
+    {
+      "id": "hou_ar_04",
+      "prompt": "اضغط على باب!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْبَابِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "باب",
+        "كتاب",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/door.svg",
+        "media/book.svg",
+        "media/key.svg"
+      ],
+      "answer": "باب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا باب!",
+      "explanation": "هذه الصورة تمثل باب."
+    },
+    {
+      "id": "hou_ar_05",
+      "prompt": "اضغط على مفتاح!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِفْتَاحِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مفتاح",
+        "ملعقة",
+        "ساعة"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/spoon.svg",
+        "media/clock.svg"
+      ],
+      "answer": "مفتاح",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا مفتاح!",
+      "explanation": "هذه الصورة تمثل مفتاح."
+    },
+    {
+      "id": "hou_ar_06",
+      "prompt": "اضغط على كوب!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْكُوبِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "كوب",
+        "مصباح",
+        "كتاب"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/lamp.svg",
+        "media/book.svg"
+      ],
+      "answer": "كوب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا كوب!",
+      "explanation": "هذه الصورة تمثل كوب."
+    },
+    {
+      "id": "hou_ar_07",
+      "prompt": "اضغط على ملعقة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِلْعَقَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ملعقة",
+        "فرشاة أسنان",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/toothbrush.svg",
+        "media/key.svg"
+      ],
+      "answer": "ملعقة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا ملعقة!",
+      "explanation": "هذه الصورة تمثل ملعقة."
+    },
+    {
+      "id": "hou_ar_08",
+      "prompt": "اضغط على كتاب!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْكِتَابِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "كتاب",
+        "باب",
+        "ساعة"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/door.svg",
+        "media/clock.svg"
+      ],
+      "answer": "كتاب",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا كتاب!",
+      "explanation": "هذه الصورة تمثل كتاب."
+    },
+    {
+      "id": "hou_ar_09",
+      "prompt": "اضغط على ساعة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ السَّاعَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "ساعة",
+        "كوب",
+        "مصباح"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/cup.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "ساعة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا ساعة!",
+      "explanation": "هذه الصورة تمثل ساعة."
+    },
+    {
+      "id": "hou_ar_10",
+      "prompt": "اضغط على مصباح!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْمِصْبَاحِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "مصباح",
+        "كرسي",
+        "كوب"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/chair.svg",
+        "media/cup.svg"
+      ],
+      "answer": "مصباح",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا مصباح!",
+      "explanation": "هذه الصورة تمثل مصباح."
+    },
+    {
+      "id": "hou_ar_11",
+      "prompt": "اضغط على فرشاة أسنان!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ فُرْشَاةِ الْأَسْنَانِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "فرشاة أسنان",
+        "ملعقة",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "فرشاة أسنان",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا فرشاة أسنان!",
+      "explanation": "هذه الصورة تمثل فرشاة أسنان."
+    },
+    {
+      "id": "hou_ar_12",
+      "prompt": "اضغط على أريكة!",
+      "spoken_prompt": "اضْغَطْ عَلَى صُورَةِ الْأَرِيكَةِ!",
+      "choice_style": "image_grid",
+      "choices": [
+        "أريكة",
+        "سرير",
+        "طاولة"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/bed.svg",
+        "media/table.svg"
+      ],
+      "answer": "أريكة",
+      "difficulty": "easy",
+      "reveal_message": "أحسنت! هذا أريكة!",
+      "explanation": "هذه الصورة تمثل أريكة."
+    },
+    {
+      "id": "hou_ar_13",
+      "prompt": "أين ننام في الليل؟",
+      "spoken_prompt": "أَيْنَ نَنَامُ فِي اللَّيْلِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سرير",
+        "طاولة",
+        "باب"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/table.svg",
+        "media/door.svg"
+      ],
+      "answer": "سرير",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سرير!",
+      "explanation": "الإجابة الصحيحة هي سرير."
+    },
+    {
+      "id": "hou_ar_14",
+      "prompt": "بماذا نأكل الحساء والطعام؟",
+      "spoken_prompt": "بِمَاذَا نَأْكُلُ الْحَسَاءَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ملعقة",
+        "مفتاح",
+        "مصباح"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/key.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "ملعقة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي ملعقة!",
+      "explanation": "الإجابة الصحيحة هي ملعقة."
+    },
+    {
+      "id": "hou_ar_15",
+      "prompt": "بماذا نشرب الماء والحليب؟",
+      "spoken_prompt": "بِمَاذَا نَشْرَبُ الْمَاءَ وَالْحَلِيبَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كوب",
+        "كتاب",
+        "ساعة"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/book.svg",
+        "media/clock.svg"
+      ],
+      "answer": "كوب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي كوب!",
+      "explanation": "الإجابة الصحيحة هي كوب."
+    },
+    {
+      "id": "hou_ar_16",
+      "prompt": "بماذا نفتح قفل الباب؟",
+      "spoken_prompt": "بِمَاذَا نَفْتَحُ قُفْلَ الْبَابِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مفتاح",
+        "ملعقة",
+        "كوب"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/spoon.svg",
+        "media/cup.svg"
+      ],
+      "answer": "مفتاح",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي مفتاح!",
+      "explanation": "الإجابة الصحيحة هي مفتاح."
+    },
+    {
+      "id": "hou_ar_17",
+      "prompt": "ما الذي يخبرنا بالوقت؟",
+      "spoken_prompt": "مَا الَّذِي يُخْبِرُنَا بِالْوَقْتِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ساعة",
+        "مصباح",
+        "كرسي"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/lamp.svg",
+        "media/chair.svg"
+      ],
+      "answer": "ساعة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي ساعة!",
+      "explanation": "الإجابة الصحيحة هي ساعة."
+    },
+    {
+      "id": "hou_ar_18",
+      "prompt": "ما الذي يضيء الغرفة في الظلام؟",
+      "spoken_prompt": "مَا الَّذِي يُضِيءُ الْغُرْفَةَ فِي الظَّلَامِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مصباح",
+        "كتاب",
+        "أريكة"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/book.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "مصباح",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي مصباح!",
+      "explanation": "الإجابة الصحيحة هي مصباح."
+    },
+    {
+      "id": "hou_ar_19",
+      "prompt": "ماذا نفتح لنقرأ قصة جميلة؟",
+      "spoken_prompt": "مَاذَا نَفْتَحُ لِنَقْرَأَ قِصَّةً جَمِيلَةً؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كتاب",
+        "باب",
+        "طاولة"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/door.svg",
+        "media/table.svg"
+      ],
+      "answer": "كتاب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي كتاب!",
+      "explanation": "الإجابة الصحيحة هي كتاب."
+    },
+    {
+      "id": "hou_ar_20",
+      "prompt": "بماذا ننظف أسناننا؟",
+      "spoken_prompt": "بِمَاذَا نُنَظِّفُ أَسْنَانَنَا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فرشاة أسنان",
+        "ملعقة",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "فرشاة أسنان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي فرشاة أسنان!",
+      "explanation": "الإجابة الصحيحة هي فرشاة أسنان."
+    },
+    {
+      "id": "hou_ar_21",
+      "prompt": "أين تجلس العائلة معاً في غرفة الجلوس؟",
+      "spoken_prompt": "أَيْنَ تَجْلِسُ الْعَائِلَةُ مَعًا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أريكة",
+        "ساعة",
+        "كوب"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/clock.svg",
+        "media/cup.svg"
+      ],
+      "answer": "أريكة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي أريكة!",
+      "explanation": "الإجابة الصحيحة هي أريكة."
+    },
+    {
+      "id": "hou_ar_22",
+      "prompt": "على ماذا نطرق قبل دخول الغرفة؟",
+      "spoken_prompt": "عَلَى مَاذَا نَطْرُقُ قَبْلَ الدُّخُولِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "باب",
+        "سرير",
+        "مصباح"
+      ],
+      "choice_images": [
+        "media/door.svg",
+        "media/bed.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "باب",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي باب!",
+      "explanation": "الإجابة الصحيحة هي باب."
+    },
+    {
+      "id": "hou_ar_23",
+      "prompt": "أين نضع الأطباق وقت الطعام؟",
+      "spoken_prompt": "أَيْنَ نَضَعُ الْأَطْبَاقَ وَقْتَ الطَّعَامِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "طاولة",
+        "سرير",
+        "فرشاة أسنان"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/bed.svg",
+        "media/toothbrush.svg"
+      ],
+      "answer": "طاولة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي طاولة!",
+      "explanation": "الإجابة الصحيحة هي طاولة."
+    },
+    {
+      "id": "hou_ar_24",
+      "prompt": "على ماذا نجلس حول الطاولة؟",
+      "spoken_prompt": "عَلَى مَاذَا نَجْلِسُ حَوْلَ الطَّاوِلَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كرسي",
+        "مصباح",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/lamp.svg",
+        "media/key.svg"
+      ],
+      "answer": "كرسي",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي كرسي!",
+      "explanation": "الإجابة الصحيحة هي كرسي."
+    },
+    {
+      "id": "hou_ar_25",
+      "prompt": "أي شيء نضعه في الحمام؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ نَضَعُهُ فِي الْحَمَّامِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فرشاة أسنان",
+        "أريكة",
+        "طاولة"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/sofa.svg",
+        "media/table.svg"
+      ],
+      "answer": "فرشاة أسنان",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي فرشاة أسنان!",
+      "explanation": "الإجابة الصحيحة هي فرشاة أسنان."
+    },
+    {
+      "id": "hou_ar_26",
+      "prompt": "أي شيء نستخدمه في المطبخ؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ نَسْتَخْدِمُهُ فِي الْمَطْبَخِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ملعقة",
+        "سرير",
+        "أريكة"
+      ],
+      "choice_images": [
+        "media/spoon.svg",
+        "media/bed.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "ملعقة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي ملعقة!",
+      "explanation": "الإجابة الصحيحة هي ملعقة."
+    },
+    {
+      "id": "hou_ar_27",
+      "prompt": "أي شيء يوجد في غرفة النوم؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ يُوجَدُ فِي غُرْفَةِ النَّوْمِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سرير",
+        "ملعقة",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/spoon.svg",
+        "media/key.svg"
+      ],
+      "answer": "سرير",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي سرير!",
+      "explanation": "الإجابة الصحيحة هي سرير."
+    },
+    {
+      "id": "hou_ar_28",
+      "prompt": "أي شيء يصدر صوت تك تاك؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ يُصْدِرُ صَوْتَ تِكْ تَاكْ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ساعة",
+        "كتاب",
+        "كرسي"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/book.svg",
+        "media/chair.svg"
+      ],
+      "answer": "ساعة",
+      "difficulty": "medium",
+      "reveal_message": "ممتاز! الإجابة هي ساعة!",
+      "explanation": "الإجابة الصحيحة هي ساعة."
+    },
+    {
+      "id": "hou_ar_29",
+      "prompt": "أي شيء له مقبض لشرب الحليب الدافئ؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ لَهُ مَقْبَضٌ لِلشُّرْبِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كوب",
+        "ساعة",
+        "باب"
+      ],
+      "choice_images": [
+        "media/cup.svg",
+        "media/clock.svg",
+        "media/door.svg"
+      ],
+      "answer": "كوب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي كوب!",
+      "explanation": "الإجابة الصحيحة هي كوب."
+    },
+    {
+      "id": "hou_ar_30",
+      "prompt": "أي شيء فيه صفحات وكلمات وصور؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ فِيهِ صَفَحَاتٌ وَصُوَرٌ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كتاب",
+        "طاولة",
+        "مصباح"
+      ],
+      "choice_images": [
+        "media/book.svg",
+        "media/table.svg",
+        "media/lamp.svg"
+      ],
+      "answer": "كتاب",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي كتاب!",
+      "explanation": "الإجابة الصحيحة هي كتاب."
+    },
+    {
+      "id": "hou_ar_31",
+      "prompt": "أي شيء نضع عليه الوسادة والغطاء؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ نَضَعُ عَلَيْهِ الْوِسَادَةَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "سرير",
+        "كرسي",
+        "باب"
+      ],
+      "choice_images": [
+        "media/bed.svg",
+        "media/chair.svg",
+        "media/door.svg"
+      ],
+      "answer": "سرير",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي سرير!",
+      "explanation": "الإجابة الصحيحة هي سرير."
+    },
+    {
+      "id": "hou_ar_32",
+      "prompt": "أي شيء يعمل بالكهرباء لينير المكان؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ يَعْمَلُ بِالْكَهْرَبَاءِ لِلْإِضَاءَةِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مصباح",
+        "ملعقة",
+        "كتاب"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/spoon.svg",
+        "media/book.svg"
+      ],
+      "answer": "مصباح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مصباح!",
+      "explanation": "الإجابة الصحيحة هي مصباح."
+    },
+    {
+      "id": "hou_ar_33",
+      "prompt": "أي شيء له عقارب تدور؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ لَهُ عَقَارِبُ تَدُورُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "ساعة",
+        "مفتاح",
+        "كوب"
+      ],
+      "choice_images": [
+        "media/clock.svg",
+        "media/key.svg",
+        "media/cup.svg"
+      ],
+      "answer": "ساعة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي ساعة!",
+      "explanation": "الإجابة الصحيحة هي ساعة."
+    },
+    {
+      "id": "hou_ar_34",
+      "prompt": "أي شيء يدخل في القفل؟",
+      "spoken_prompt": "أَيُّ شَيْءٍ يَدْخُلُ فِي الْقُفْلِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مفتاح",
+        "فرشاة أسنان",
+        "ملعقة"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/toothbrush.svg",
+        "media/spoon.svg"
+      ],
+      "answer": "مفتاح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مفتاح!",
+      "explanation": "الإجابة الصحيحة هي مفتاح."
+    },
+    {
+      "id": "hou_ar_35",
+      "prompt": "ما الذي يناسب الطاولة: طاولة و___؟",
+      "spoken_prompt": "مَا الَّذِي يُنَاسِبُ الطَّاوِلَةَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "كرسي",
+        "فرشاة أسنان",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/chair.svg",
+        "media/toothbrush.svg",
+        "media/key.svg"
+      ],
+      "answer": "كرسي",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي كرسي!",
+      "explanation": "الإجابة الصحيحة هي كرسي."
+    },
+    {
+      "id": "hou_ar_36",
+      "prompt": "ما الذي يناسب الباب: باب و___؟",
+      "spoken_prompt": "مَا الَّذِي يُنَاسِبُ الْبَابَ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مفتاح",
+        "كوب",
+        "أريكة"
+      ],
+      "choice_images": [
+        "media/key.svg",
+        "media/cup.svg",
+        "media/sofa.svg"
+      ],
+      "answer": "مفتاح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مفتاح!",
+      "explanation": "الإجابة الصحيحة هي مفتاح."
+    },
+    {
+      "id": "hou_ar_37",
+      "prompt": "أي مقعد هو الأنعم والأكثر راحة؟",
+      "spoken_prompt": "أَيُّ مَقْعَدٍ هُوَ الْأَكْثَرُ رَاحَةً؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "أريكة",
+        "طاولة",
+        "باب"
+      ],
+      "choice_images": [
+        "media/sofa.svg",
+        "media/table.svg",
+        "media/door.svg"
+      ],
+      "answer": "أريكة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي أريكة!",
+      "explanation": "الإجابة الصحيحة هي أريكة."
+    },
+    {
+      "id": "hou_ar_38",
+      "prompt": "ماذا نستخدم قبل النوم لتنظيف أسناننا؟",
+      "spoken_prompt": "مَاذَا نَسْتَخْدِمُ قَبْلَ النَّوْمِ لِلْأَسْنَانِ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "فرشاة أسنان",
+        "كوب",
+        "مفتاح"
+      ],
+      "choice_images": [
+        "media/toothbrush.svg",
+        "media/cup.svg",
+        "media/key.svg"
+      ],
+      "answer": "فرشاة أسنان",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي فرشاة أسنان!",
+      "explanation": "الإجابة الصحيحة هي فرشاة أسنان."
+    },
+    {
+      "id": "hou_ar_39",
+      "prompt": "ما الذي يساعدنا على القراءة ليلاً؟",
+      "spoken_prompt": "مَا الَّذِي يُسَاعِدُنَا عَلَى الْقِرَاءَةِ لَيْلًا؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "مصباح",
+        "ملعقة",
+        "كرسي"
+      ],
+      "choice_images": [
+        "media/lamp.svg",
+        "media/spoon.svg",
+        "media/chair.svg"
+      ],
+      "answer": "مصباح",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي مصباح!",
+      "explanation": "الإجابة الصحيحة هي مصباح."
+    },
+    {
+      "id": "hou_ar_40",
+      "prompt": "أين نكتب واجباتنا ونرسم؟",
+      "spoken_prompt": "أَيْنَ نَكْتُبُ وَاجِبَاتِنَا وَنَرْسُمُ؟",
+      "choice_style": "image_grid",
+      "choices": [
+        "طاولة",
+        "ساعة",
+        "كتاب"
+      ],
+      "choice_images": [
+        "media/table.svg",
+        "media/clock.svg",
+        "media/book.svg"
+      ],
+      "answer": "طاولة",
+      "difficulty": "hard",
+      "reveal_message": "ممتاز! الإجابة هي طاولة!",
+      "explanation": "الإجابة الصحيحة هي طاولة."
+    }
+  ],
+  "cover": "media/cover.svg"
+}
